@@ -58,7 +58,7 @@ def write_pdb(df,pdb_file,overwrite=False):
             if len(atom) < 5:
                 atom = f" {atom:<4s}"
             
-            f.write(f" {atom}{row['resid']:3s} {row['chain']}{row['resid_num']:4d}")
+            f.write(f" {atom}{row['resid']:3s} {row['chain']}{row['resid_num']:4s}")
             f.write(f"    {row['x']:8.3f}{row['y']:8.3f}{row['z']:8.3f}")
             f.write(f"{row['occ']:6.2f}{row['b']:6.2f}{row['elem']:>12s}\n")
         

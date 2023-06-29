@@ -105,13 +105,7 @@ def _load_structure_cif(cif_file):
                     out["alternate"].append(columns[4].strip())
                     out["resid"].append(columns[5].strip())
                     out["chain"].append(columns[6].strip())
-
-                    try:
-                        resid_num = int(columns[8])
-                    except ValueError:
-                        resid_num = np.nan
-
-                    out["resid_num"].append(resid_num)
+                    out["resid_num"].append(columns[8])
                     out["x"].append(float(columns[10]))
                     out["y"].append(float(columns[11]))
                     out["z"].append(float(columns[12]))
