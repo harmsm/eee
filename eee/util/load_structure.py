@@ -2,9 +2,11 @@
 Load an rcsb file (pdb or cif) into a pandas data frame, pre-processing to 
 remove solvent atoms, etc. 
 """
+
+from eee.util.data import AA_3TO1
+
 import pandas as pd
 import numpy as np
-
 
 def _load_structure_pdb(pdb_file):
     """
@@ -34,34 +36,37 @@ def _load_structure_pdb(pdb_file):
                 
                 if model is None:
                     model = 1
-                
+
                 try:
                     out["model"].append(model)
                     out["class"].append(line[0:6].strip())
+                    out["chain"].append(line[21])
                     out["atom_num"].append(int(line[6:11]))
                     out["atom"].append(line[12:16].strip())
+                    out["resid"].append(line[17:20].strip())
+                    out["resid_num"].append(line[22:28].strip())
 
                     alternate = line[16]
                     if alternate == " ":
                         alternate = "."
 
                     out["alternate"].append(alternate)
-                    out["resid"].append(line[17:20].strip())
-                    out["chain"].append(line[21])
-                    out["resid_num"].append(int(line[22:26]))
                     out["x"].append(float(line[30:38]))
                     out["y"].append(float(line[38:46]))
                     out["z"].append(float(line[46:54]))
                     out["occ"].append(float(line[54:60]))
                     out["b"].append(float(line[60:66]))
                     out["elem"].append(line[75:].strip())
+
                 except Exception as e:
                     print(f"Could not parse line:\n\n{line}\n\n",flush=True)
                     raise(e)
                 
             if line.startswith("MODEL"):
                 model = int(line[6:].strip())
-                                      
+
+
+
     return pd.DataFrame(out)
 
 
@@ -86,7 +91,6 @@ def _load_structure_cif(cif_file):
            "b":[],
            "occ":[]}
 
-    model = None
     with open(cif_file) as f:
         for line in f:
             if line[0:6] in ["ATOM  ","HETATM"]:
@@ -97,11 +101,17 @@ def _load_structure_cif(cif_file):
                     out["model"].append(int(columns[20]))
                     out["class"].append(columns[0].strip())
                     out["atom_num"].append(int(columns[1]))
-                    out["atom"].append(columns[19])
+                    out["atom"].append(columns[3])
                     out["alternate"].append(columns[4].strip())
-                    out["resid"].append(columns[17].strip())
-                    out["chain"].append(columns[18].strip())
-                    out["resid_num"].append(int(columns[16]))
+                    out["resid"].append(columns[5].strip())
+                    out["chain"].append(columns[6].strip())
+
+                    try:
+                        resid_num = int(columns[8])
+                    except ValueError:
+                        resid_num = np.nan
+
+                    out["resid_num"].append(resid_num)
                     out["x"].append(float(columns[10]))
                     out["y"].append(float(columns[11]))
                     out["z"].append(float(columns[12]))

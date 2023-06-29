@@ -38,7 +38,7 @@ package_data = {"eee":["reports/assets/*"]}
 
 # Where the magic happens:
 setup(
-    name="ensemble-epistasis-engine", # For pip name
+    name="eee", # For pip name
     version=about['__version__'],
     description=DESCRIPTION,
     long_description=long_description,
