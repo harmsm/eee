@@ -1,0 +1,9 @@
+name: eee
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - tqdm
