@@ -93,10 +93,10 @@ def _load_structure_cif(cif_file):
 
     with open(cif_file) as f:
         for line in f:
-            if line[0:6] in ["ATOM  ","HETATM"]:
+
+            columns = line.split()
+            if columns[0] in ["ATOM","HETATM"]:
                 
-                columns = line.split()
-        
                 try:
                     out["model"].append(int(columns[20]))
                     out["class"].append(columns[0].strip())

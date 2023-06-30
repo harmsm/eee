@@ -40,3 +40,18 @@ def test_pdbs():
     """
 
     return _file_globber("data","test_structures","*.pdb")
+
+@pytest.fixture(scope="module")
+def ensembles():
+
+    base_dir = os.path.dirname(os.path.realpath(__file__))
+    search_string = os.path.join(base_dir,"data","ensembles","*")
+
+    file_dict = {}
+    for g in glob.glob(search_string):
+        key = os.path.basename(g)
+        rcsb_files = glob.glob(os.path.join(g,"*.*"))
+
+        file_dict[key] = rcsb_files
+
+    return file_dict

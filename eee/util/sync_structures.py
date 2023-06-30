@@ -14,7 +14,10 @@ import subprocess
 import re
 
 
-def _align_seq(seq_list,muscle_binary="muscle",verbose=False):
+def _align_seq(seq_list,
+               muscle_binary="muscle",
+               verbose=False,
+               keep_temporary=False):
     """
     Use muscle to align sequences from rcsb files. Returns which sequences align
     with which column and the column indexes for each site in each sequence.
@@ -36,6 +39,8 @@ def _align_seq(seq_list,muscle_binary="muscle",verbose=False):
         path to muscle binary
     verbose : bool, default=True
         whether or not to print out muscle output
+    keep_temporary : bool, default=False
+        do not delete temporary files
         
     Returns
     -------
@@ -84,29 +89,24 @@ def _align_seq(seq_list,muscle_binary="muscle",verbose=False):
     
     # If we did not actually do alignment, throw error
     if not successful:
-        err = f"Alignment failed. Is muscle in the path?\n"
+        err = f"Alignment failed!\n"
         raise RuntimeError(err)
 
     # Read output fasta file
     output = {}
     with open(output_fasta) as f:
         
-        buffer = []
         for line in f:
             if line.startswith(">"):
-                if len(buffer) != 0:
-                    output[key] = buffer[:]
-                    buffer = []
-
                 key = int(line[4:])
+                output[key] = []
             else:
-                buffer.extend(list(line.strip()))
-    
-        output[key] = buffer[:]
+                output[key].extend(list(line.strip()))
 
     # Delete temporary files
-    os.remove(input_fasta)
-    os.remove(output_fasta)
+    if not keep_temporary:
+        os.remove(input_fasta)
+        os.remove(output_fasta)
         
     # Get alignment columns for each site
     keys = list(output.keys())
@@ -117,8 +117,8 @@ def _align_seq(seq_list,muscle_binary="muscle",verbose=False):
     for k in keys:
         
         counter = 0
-        alignment = output[key]
-        
+        alignment = output[k]
+    
         for s in seq_list[k]:
             aa = AA_3TO1[s]
             while aa != alignment[counter]:
@@ -132,7 +132,10 @@ def _align_seq(seq_list,muscle_binary="muscle",verbose=False):
     return column_contents, column_indexes
     
 
-def _align_structures(dfs,lovoalign_binary="lovoalign",verbose=True):
+def _align_structures(dfs,
+                      lovoalign_binary="lovoalign",
+                      verbose=False,
+                      keep_temporary=False):
     """
     Align the structures in the dataframes using lovoalign. Align all structures
     individually to the first dataframe.
@@ -145,6 +148,8 @@ def _align_structures(dfs,lovoalign_binary="lovoalign",verbose=True):
         lovoalign binary
     verbose : bool, defualt = True
         whether or not to print lovoalign output
+    keep_temporary : bool, default=False
+        do not delete temporary files
     
     Returns
     -------
@@ -170,7 +175,7 @@ def _align_structures(dfs,lovoalign_binary="lovoalign",verbose=True):
     for i, f in enumerate(files[1:]):
         
         # Align file to first file using lovoalign
-        out_file = f"tmp-out_{out_base}.pdb"
+        out_file = f"tmp-out_{out_base}-{i+1}.pdb"
         cmd = [lovoalign_binary,"-p1",f,"-p2",files[0],"-o",out_file]
         
         popen = subprocess.Popen(cmd,
@@ -189,16 +194,19 @@ def _align_structures(dfs,lovoalign_binary="lovoalign",verbose=True):
         
         # Move coordinates from aligned structure into dfs
         new_df = load_structure(out_file)
-        dfs[i+1].loc[:,"x"] = new_df["x"]
-        dfs[i+1].loc[:,"y"] = new_df["y"]
-        dfs[i+1].loc[:,"z"] = new_df["z"]
-        
+
+        dfs[i+1].loc[:,"x"] = np.array(new_df["x"])
+        dfs[i+1].loc[:,"y"] = np.array(new_df["y"])
+        dfs[i+1].loc[:,"z"] = np.array(new_df["z"])
+
         # Remove output file
-        #os.remove(out_file)
+        if not keep_temporary:
+            os.remove(out_file)
         
     # Remove all temporary files
-    #for f in files:
-    #    os.remove(f)
+    if not keep_temporary:
+        for f in files:
+            os.remove(f)
         
     return dfs
     
