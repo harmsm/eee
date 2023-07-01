@@ -4,9 +4,9 @@ import pytest
 from eee.util import load_structure
 from eee.util.data import AA_1TO3
 
-from eee.util.sync_structures import _align_seq
-from eee.util.sync_structures import _align_structures
-from eee.util.sync_structures import sync_structures
+from eee.util._sync_structures import _align_seq
+from eee.util._sync_structures import _align_structures
+from eee.util._sync_structures import sync_structures
 
 import numpy as np
 

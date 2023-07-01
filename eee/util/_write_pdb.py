@@ -3,7 +3,11 @@ Write a pdb file from a dataframe with atom information.
 """
 import os
 
-def write_pdb(df,pdb_file,overwrite=False):
+def write_pdb(df,
+              pdb_file,
+              overwrite=False,
+              bfactor_column=None,
+              occ_column=None):
     """
     Write a pdb file given a pandas dataframe.
 
@@ -15,6 +19,10 @@ def write_pdb(df,pdb_file,overwrite=False):
         name of pdb file to write
     overwrite : bool, default=False
         overwrite the pdb file if it exists
+    bfactor_column : str, optional
+        name of a column in df to use for the bfactor data in the pdb
+    occ_column : str, optional 
+        name of a column in df to use for the occupancy data in the pdb
     """
     
     if os.path.exists(pdb_file):
@@ -47,7 +55,7 @@ def write_pdb(df,pdb_file,overwrite=False):
             atom_class = row['class']
             if last_class is None:
                 last_class = atom_class
-                
+            
             if chain != last_chain and last_class == "ATOM":
                 f.write("TER\n")
                 last_chain = chain 
@@ -57,10 +65,22 @@ def write_pdb(df,pdb_file,overwrite=False):
             atom = row["atom"]
             if len(atom) < 5:
                 atom = f" {atom:<4s}"
-            
+
             f.write(f" {atom}{row['resid']:3s} {row['chain']}{row['resid_num']:4s}")
             f.write(f"    {row['x']:8.3f}{row['y']:8.3f}{row['z']:8.3f}")
-            f.write(f"{row['occ']:6.2f}{row['b']:6.2f}{row['elem']:>12s}\n")
+
+            if bfactor_column is None:
+                b = row["b"]
+            else:
+                b = row[bfactor_column]
+            
+            if occ_column is None:
+                occ = row["occ"]
+            else:
+                occ = row[occ_column]
+
+
+            f.write(f"{occ:6.2f}{b:6.2f}{row['elem']:>12s}\n")
         
             last_class = atom_class
             counter += 1

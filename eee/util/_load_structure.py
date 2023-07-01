@@ -186,7 +186,7 @@ def load_structure(rcsb_file,
         df = df.loc[df["elem"] != "H",:]
 
     # Clean up dataframe indexes
-    df = df.reindex()
+    df.index = np.arange(len(df.index),dtype=int)
 
     return df
         
