@@ -38,7 +38,6 @@ class FitnessContainer:
     and temperature), allowing us to calculate fitness given only the 
     mut_energy of a particular gentoype. 
     """
-
     def __init__(self,
                  ens,
                  mu_dict,

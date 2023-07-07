@@ -1,5 +1,7 @@
 
 """
+Functions for calculating fitness from an ensemble during an evolutionary 
+simulation. 
 """
 
 import numpy as np

@@ -1,5 +1,5 @@
 """
-Functions for simulating evolution in the presence of ensemble epistasis. 
+Functions to run a Wright-Fisher simulation given an ensemble.
 """
 
 from eee.ddg import create_ddg_dict
@@ -32,6 +32,7 @@ def wright_fisher(ens,
                   mutation_rate,
                   num_generations):
     """
+    
     """
 
     # genotypes: list of genotypes seen over simulation. entries are 

@@ -353,8 +353,8 @@ def sync_structures(structure_files,
         list of structure files to use for the calculation. These files should 
         be in RCSB cif (preferred) or pdb format.
     out_dir : str
-        output directory for the cleaned up files. This directory should either
-        not exist or be empty. 
+        output directory for the cleaned up files in pdb format. This directory
+        should either not exist or be empty. 
     overwrite : bool, default=False
         overwrite an existing output directory
     verbose : bool, default=False
@@ -365,7 +365,7 @@ def sync_structures(structure_files,
     exists = False
     if os.path.exists(out_dir):
         if os.path.isdir(out_dir):
-            if len(glob.glob(os.path.join(out_dir,"*.*"))) > 0:
+            if len(glob.glob(os.path.join(out_dir,"*"))) > 0:
                 exists = True
         else:
             exists = True
@@ -377,7 +377,11 @@ def sync_structures(structure_files,
         else:
             shutil.rmtree(out_dir)
     
-    os.mkdir(out_dir)
+    # Make new directory. 
+    try:
+        os.mkdir(out_dir)
+    except FileExistsError:
+        pass
 
     # Load the specified structure files
     dfs = []
@@ -385,18 +389,17 @@ def sync_structures(structure_files,
         dfs.append(load_structure(f))
 
     # Clean up structures --> build missing atoms or delete residues with
-    # missing amino acids. 
+    # missing backbone atoms. 
     dfs = _clean_structures(dfs,verbose=verbose)
 
     # Figure out which residues are shared between what structures
     dfs = _align_seq(dfs,verbose=verbose)
 
+    
+
     # Align structures in 3D
     dfs = _align_structures(dfs,verbose=verbose)
 
-
-
-    
     for i in range(len(dfs)):
         
         # Make output file names have path to original files as names, replacing

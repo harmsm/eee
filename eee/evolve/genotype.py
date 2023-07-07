@@ -1,4 +1,6 @@
 """
+Helper functions/classes for keeping track of genotypes during an evolutionary 
+simulation.
 """
 from numpy import np
 
@@ -6,6 +8,8 @@ import copy
 
 class Genotype:
     """
+    Class to hold a genotype including the mutated sites, mutations, and the
+    combined energetic effects of all mutations.
     """
 
     def __init__(self,
@@ -15,6 +19,21 @@ class Genotype:
                  mutations=None,
                  mut_energy=None):
         """
+        Initialize instance.
+
+        Parameters
+        ----------
+        ens : eee.Ensemble
+            initialized ensemble
+        ddg_dict : dict
+            nested dictionary of mutational effects [site][mutation][species]
+        sites : list, optional
+            list of sites that already have mutations
+        mutations : list, optional
+            list of mutations in the genotype
+        mut_energy : dict, optional
+            dictionary (keyed to species) holding the total energetic effects
+            of all mutations
         """
 
         self._ens = ens
@@ -43,11 +62,11 @@ class Genotype:
             
     def copy(self):
         """
-        Return a copy of the Genotype instance.
+        Return a copy of the Genotype instance. This will copy the ens and
+        ddg_dict objects as references, but make new instances of the sites, 
+        mutations, and mut_energy attributes. 
         """
-
-        # This will copy ens and ddg_dict as references, but make new instances
-        # of the sites, mutations, and mut_energy attributes. 
+        
         return Genotype(self._ens,
                         self._ddg_dict,
                         sites=self._sites,
@@ -57,6 +76,9 @@ class Genotype:
 
     def mutate(self):
         """
+        Introduce a random mutation into the genotype. A mutation of some sort
+        is guaranteed to occur. This mutation may be a mutation a site where 
+        a mutation has already occured. 
         """
 
         # Mutation to revert before adding new one
