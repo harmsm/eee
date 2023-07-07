@@ -72,52 +72,6 @@ def _array_expander(values):
 
     return out, length
 
-def _get_epistasis(m00,m10,m01,m11):
-    """
-    Get epistasis for values given in m00, m10, m01, and m11. These values 
-    have some quantitative observable for wt (00), individual mutants (m01 and
-    m10), and the double mutant (m11). 
-    """
-
-    # magnitude of epistasis (signed)
-    mag = (m11 - m10) - (m01 - m00)
-    
-    # Sign of mutation 1 (will be False if mutation effect has same
-    # sign in both backgrounds; True if opposite signs)
-    sign1 = (m11 - m01)/(m10 - m00)
-    sign1 = sign1 < 0
-
-    # Sign of mutation 1 (will be False if mutation effect has same
-    # sign in both backgrounds; True if opposite signs)
-    sign2 = (m11 - m10)/(m01 - m00)
-    sign2 = sign2 < 0
-
-    # Is epistasis > 0?
-    is_epistasis = np.logical_not(np.isclose(mag,0))
-    
-    # Some kind of sign epistasis
-    is_sign = np.logical_or(sign1,sign2)
-
-    # Magnitude if not sign
-    is_mag = np.logical_not(is_sign)
-    
-    # Separate reciprocal from simple sign epistasis
-    is_recip = np.logical_and(sign1,sign2)
-    
-    is_sign = np.logical_and(is_sign,np.logical_not(is_recip))
-
-    # Filter all classes of epistasis based on magnitude
-    is_mag = np.logical_and(is_mag,is_epistasis)
-    is_sign = np.logical_and(is_sign,is_epistasis)
-    is_recip = np.logical_and(is_recip,is_epistasis)
-    
-    # Record classes
-    ep_class = np.array([None for _ in range(len(mag))])
-    ep_class[is_mag] = "mag"
-    ep_class[is_sign] = "sign"
-    ep_class[is_recip] = "recip"
-
-    return mag, sign1, sign2, ep_class
 
 class Ensemble:
     """
@@ -130,6 +84,7 @@ class Ensemble:
     + This analysis assumes that the macromolecular concentration is much lower
       than the Kds for any binding reactions (i.e., that we are not in the
       stoichiometric binding regime). 
+
     + Each species must be assigned a dG0, the chemical potentials that perturb 
       the species, and the stoichiometry of the interaction with the molecule
       defined by the chemical potential. dG0 is the difference in free energy 
@@ -415,72 +370,16 @@ class Ensemble:
 
         return pd.DataFrame(out)
 
-
-    def get_epistasis(self,
-                      mut1_dict=None,
-                      mut2_dict=None,
-                      mut12_dict=None,
-                      mu_dict=None,
-                      T=298.15):
-
-        # Calculate observables for each genotype
-
-        df_00 = self.get_obs(mut_energy=None,
-                             mu_dict=mu_dict,
-                             T=T)
-
-        df_10 = self.get_obs(mut_energy=mut1_dict,
-                             mu_dict=mu_dict,
-                             T=T)
-
-        df_01 = self.get_obs(mut_energy=mut2_dict,
-                             mu_dict=mu_dict,
-                             T=T)
-
-        df_11 = self.get_obs(mut_energy=mut12_dict,
-                             mu_dict=mu_dict,
-                             T=T)
-
-        # Create dataframe
-        columns = self._mu_list[:]
-        columns.insert(0,"T")
-        df = df_00.loc[:,columns]
-
-        # Epistasis in fx_obs
-        df["fx_obs_00"] = df_00.loc[:,"fx_obs"]
-        df["fx_obs_10"] = df_10.loc[:,"fx_obs"]
-        df["fx_obs_01"] = df_01.loc[:,"fx_obs"]
-        df["fx_obs_11"] = df_11.loc[:,"fx_obs"]
-
-        ep_mag, ep_sign1, ep_sign2, ep_class = _get_epistasis(df_00.loc[:,"fx_obs"],
-                                                              df_10.loc[:,"fx_obs"],
-                                                              df_01.loc[:,"fx_obs"],
-                                                              df_11.loc[:,"fx_obs"])
-            
-        df["fx_ep_mag"] = ep_mag
-        df["fx_ep_sign1"] = ep_sign1
-        df["fx_ep_sign2"] = ep_sign2
-        df["fx_ep_class"] = ep_class
-
-        # Epistasis in dG_obs
-        df["dG_obs_00"] = df_00.loc[:,"dG_obs"]
-        df["dG_obs_10"] = df_10.loc[:,"dG_obs"]
-        df["dG_obs_01"] = df_01.loc[:,"dG_obs"]
-        df["dG_obs_11"] = df_11.loc[:,"dG_obs"]
-
-        ep_mag, ep_sign1, ep_sign2, ep_class = _get_epistasis(df_00.loc[:,"dG_obs"],
-                                                              df_10.loc[:,"dG_obs"],
-                                                              df_01.loc[:,"dG_obs"],
-                                                              df_11.loc[:,"dG_obs"])
-            
-        df["dG_ep_mag"] = ep_mag
-        df["dG_ep_sign1"] = ep_sign1
-        df["dG_ep_sign2"] = ep_sign2
-        df["dG_ep_class"] = ep_class
-
-        return df
-
-
     @property
     def species(self):
+        """
+        Species in the ensemble.
+        """
         return list(self._species.keys())
+    
+    @property
+    def mu_list(self):
+        """
+        Chemical potentials in the ensemble.
+        """
+        return list(self._mu_list)

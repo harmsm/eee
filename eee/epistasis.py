@@ -1,11 +1,188 @@
 """
-Functions to analyze epistasis within the ensemble between many combinations of 
-mutations.
+Functions to analyze epistasis.
 """
 
 import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
+
+
+def get_epistasis(m00,m10,m01,m11):
+    """
+    Get epistasis for values given in m00, m10, m01, and m11. 
+    
+    Parameters
+    ----------
+    m00 : float or np.array
+        value of observable without mutations. can be a float or an array of
+        floats. If an array, it must have the same length as arrays for m10, 
+        m01, and m11.
+    m10 : float or np.array
+        value of observable with mutation 1
+    m01 : float or np.array
+        value of observable with mutation 2
+    m11 : float o rnp.array
+        value of observable with both mutations 1 and 2
+        
+    Returns
+    -------
+    mag : float or np.array
+        magnitude of the epistasis
+    sign1 : bool or np.array
+        whether mutation 1 changes sign due to mutation 2
+    sign2 : bool or np.array
+        whether mutation 2 changes sign due to mutation 1
+    ep_class : str or np.array
+        type of epistasis seen. None (no epistasis), "mag" (magnitude), 
+        "sign" (sign), or "recip" (reciprocal sign).
+    """
+
+    # magnitude of epistasis (signed)
+    mag = (m11 - m10) - (m01 - m00)
+    
+    # Sign of mutation 1 (will be False if mutation effect has same
+    # sign in both backgrounds; True if opposite signs)
+    sign1 = (m11 - m01)/(m10 - m00)
+    sign1 = sign1 < 0
+
+    # Sign of mutation 1 (will be False if mutation effect has same
+    # sign in both backgrounds; True if opposite signs)
+    sign2 = (m11 - m10)/(m01 - m00)
+    sign2 = sign2 < 0
+
+    # Is epistasis > 0?
+    is_epistasis = np.logical_not(np.isclose(mag,0))
+    
+    # Some kind of sign epistasis
+    is_sign = np.logical_or(sign1,sign2)
+
+    # Magnitude if not sign
+    is_mag = np.logical_not(is_sign)
+    
+    # Separate reciprocal from simple sign epistasis
+    is_recip = np.logical_and(sign1,sign2)
+    
+    is_sign = np.logical_and(is_sign,np.logical_not(is_recip))
+
+    # Filter all classes of epistasis based on magnitude
+    is_mag = np.logical_and(is_mag,is_epistasis)
+    is_sign = np.logical_and(is_sign,is_epistasis)
+    is_recip = np.logical_and(is_recip,is_epistasis)
+    
+    # Record classes. If iterable, create numpy array. If single value, return
+    # single values
+    if hasattr(mag,'__iter__'):
+        ep_class = np.array([None for _ in range(len(mag))])
+        ep_class[is_mag] = "mag"
+        ep_class[is_sign] = "sign"
+        ep_class[is_recip] = "recip"
+    else:
+        if is_recip:
+            ep_class = "recip"
+        elif is_sign:
+            ep_class = "sign"
+        elif is_mag:
+            ep_class = "mag"
+        else:
+            ep_class = None
+
+    return mag, sign1, sign2, ep_class
+
+
+def get_ensemble_epistasis(self,
+                           ens,
+                           mut1_dict=None,
+                           mut2_dict=None,
+                           mut12_dict=None,
+                           mu_dict=None,
+                           T=298.15):
+        """
+        Get the epistasis between two mutations across different chemical 
+        potentials.
+        
+        Parameters
+        ----------
+        ens : eee.Ensemble 
+            ensemble instance whose species whose names match the keys in the
+            mut_dicts and whose mu_list matches the keys in mu_dict
+        in a ddg csv file
+        mut_dict1 : dict
+            dictionary holding effects of mutation 1 on different species. 
+        mut_dict2 : dict
+            dictionary holding effects of mutation 2 on different species. 
+        mut_dict12 : dict
+            dictionary holding combined effects of mutations 1 and 2 on
+            different species. 
+        mu_dict : dict
+            dictionary of chemical potentials
+        T : float, default=298.15
+            temperature in Kelvin
+
+        Returns
+        -------
+        df : pandas.DataFrame
+            pandas dataframe with fx_obs for each genotype (00,10,01,11), 
+            the magnitude, sign, and class (mag, sign, reciprocal 
+            sign) of epistasis in fx_obs, dG_obs for each genotype, and then
+            the epistasis in dG_obs. These are reported as a function of the 
+            species concentrations in mu_dict. 
+        """
+
+        # Calculate observables for each genotype
+        df_00 = ens.get_obs(mut_energy=None,
+                            mu_dict=mu_dict,
+                            T=T)
+
+        df_10 = ens.get_obs(mut_energy=mut1_dict,
+                            mu_dict=mu_dict,
+                            T=T)
+
+        df_01 = ens.get_obs(mut_energy=mut2_dict,
+                            mu_dict=mu_dict,
+                            T=T)
+
+        df_11 = ens.get_obs(mut_energy=mut12_dict,
+                            mu_dict=mu_dict,
+                            T=T)
+
+        # Create dataframe
+        columns = ens.mu_list[:]
+        columns.insert(0,"T")
+        df = df_00.loc[:,columns]
+
+        # Epistasis in fx_obs
+        df["fx_obs_00"] = df_00.loc[:,"fx_obs"]
+        df["fx_obs_10"] = df_10.loc[:,"fx_obs"]
+        df["fx_obs_01"] = df_01.loc[:,"fx_obs"]
+        df["fx_obs_11"] = df_11.loc[:,"fx_obs"]
+
+        ep_mag, ep_sign1, ep_sign2, ep_class = get_epistasis(df_00.loc[:,"fx_obs"],
+                                                             df_10.loc[:,"fx_obs"],
+                                                             df_01.loc[:,"fx_obs"],
+                                                             df_11.loc[:,"fx_obs"])
+            
+        df["fx_ep_mag"] = ep_mag
+        df["fx_ep_sign1"] = ep_sign1
+        df["fx_ep_sign2"] = ep_sign2
+        df["fx_ep_class"] = ep_class
+
+        # Epistasis in dG_obs
+        df["dG_obs_00"] = df_00.loc[:,"dG_obs"]
+        df["dG_obs_10"] = df_10.loc[:,"dG_obs"]
+        df["dG_obs_01"] = df_01.loc[:,"dG_obs"]
+        df["dG_obs_11"] = df_11.loc[:,"dG_obs"]
+
+        ep_mag, ep_sign1, ep_sign2, ep_class = get_epistasis(df_00.loc[:,"dG_obs"],
+                                                             df_10.loc[:,"dG_obs"],
+                                                             df_01.loc[:,"dG_obs"],
+                                                             df_11.loc[:,"dG_obs"])
+            
+        df["dG_ep_mag"] = ep_mag
+        df["dG_ep_sign1"] = ep_sign1
+        df["dG_ep_sign2"] = ep_sign2
+        df["dG_ep_class"] = ep_class
+
+        return df
 
 
 def get_all_pairs_epistasis(ens,ddg_df,mu_dict,get_only=None):

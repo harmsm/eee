@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 
-def load_ddG(ddg_file):
+def load_ddg(ddg_file):
     """
     Load a ddg file, enforcing the rule that all self mutations (i.e., A21A)
     have ddG = 0.
@@ -55,22 +55,5 @@ def load_ddG(ddg_file):
     df.loc[wt_mask,columns] = 0.0
     
     return df
-
-def create_ddg_dict(ddg_df):
-
-    ddg_dict = {}
-    for i in ddg_df.index:
-        row = ddg_df.loc[i,:]
-        
-        site = row["site"]
-        mut = row["mut"]
-        if site not in ddg_dict:
-            ddg_dict[site] = {}
-            
-        ddg_dict[site][mut] = {}
-        for k in row.keys()[1:-2]:
-            ddg_dict[site][mut][k] = row[k]
-
-    return ddg_dict
 
 

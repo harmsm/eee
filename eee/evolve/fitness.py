@@ -4,6 +4,20 @@
 
 import numpy as np
 
+def ff_on(value):
+    """
+    Microscopic fitness function for fx_obs. Fitness is linearly proportional
+    to value. Useful for simulating selection to keep observable 'on'.
+    """
+    return value
+
+def ff_off(value):
+    """
+    Microscopic fitness function for fx_obs. Fitness is linearly proportional
+    to 1 - value. Useful for simulating selection to keep observable 'off'. 
+    """
+    return 1 - value
+
 def _fitness_function(ens,
                       mut_energy,
                       mu_dict,
@@ -37,7 +51,10 @@ def fitness_function(ens,
                      fitness_kwargs={},
                      T=298.15):
     """
-
+    Calculate fitness from the ensemble given mutations (in mut_energy), 
+    chemical potentials (mu_dict), and fitness functions for each condition in 
+    mu_dict (fitness_fcns). 
+    
     Parameters
     ----------
     ens : eee.Ensemble 
@@ -98,37 +115,3 @@ def fitness_function(ens,
                              fitness_kwargs=fitness_kwargs,
                              T=T)
 
-class FitnessContainer:
-    """
-    """
-
-    def __init__(self,
-                 ens,
-                 mu_dict,
-                 fitness_fcns,
-                 select_on="fx_obs",
-                 fitness_kwargs={},
-                 T=298.15):
-        """
-        """
-        
-        self._ens = ens
-        self._mu_dict = mu_dict
-        self._fitness_fcns = fitness_fcns
-        self._select_on = select_on
-        self._fitness_kwargs = fitness_kwargs
-        self._T = T
-
-    def fitness(self,mut_energy):
-        """
-        """
-        
-        F = _fitness_function(ens=self._ens,
-                              mut_energy=mut_energy,
-                              mu_dict=self._mu_dict,
-                              fitness_fcns=self._fitness_fcns,
-                              select_on=self._select_on,
-                              fitness_kwargs=self._fitness_kwargs,
-                              T=self._T)
-
-        return np.prod(F)
