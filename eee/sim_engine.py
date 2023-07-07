@@ -1,313 +1,380 @@
 """
-Ensemble epistasis structural analysis and simulation software.
+Functions for simulating evolution in the presence of ensemble epistasis. 
 """
+
+from eee.ddg import create_ddg_dict
 
 import numpy as np
 import pandas as pd
-
 from tqdm.auto import tqdm
 
+import copy
 
-
-# ------------------------------------------------------------------------------
-# Analysis functions
-# ------------------------------------------------------------------------------
-
-def load_ddG(ddg_file):
+def _fitness_function(ens,
+                      mut_energy,
+                      mu_dict,
+                      fitness_fcns,
+                      select_on,
+                      fitness_kwargs,
+                      T):
     """
-    Load a ddg file, enforcing the rule that all self mutations (i.e., A21A)
-    have ddG = 0.
+    Private fitness function without error checking. Should be called via the
+    public fitness_function for use in the API.
+    """
+    
+    num_conditions = len(fitness_fcns)
+
+    values = ens.get_obs(mut_energy=mut_energy,
+                         mu_dict=mu_dict,
+                         T=T)
+    
+    all_F = np.zeros(num_conditions)
+    for i in range(num_conditions):
+        all_F[i] = fitness_fcns[i](values[select_on].iloc[i],**fitness_kwargs)
+
+    return all_F
+       
+
+def fitness_function(ens,
+                     mut_energy,
+                     mu_dict,
+                     fitness_fcns,
+                     select_on="fx_obs",
+                     fitness_kwargs={},
+                     T=298.15):
+    """
 
     Parameters
     ----------
-    ddg_file : str
-        csv file with "mut" column (formatted like A21A, Q45L, etc.) and columns
-        for each species in the ensemble. The values in the species columns are
-        the predicted effect of that mutation on that ensemble species. 
-        
+    ens : eee.Ensemble 
+        initialized instance of an Ensemble class
+    mut_energy : dict, optional
+        dictionary holding effects of mutations on different species. Keys
+        should be species names, values should be floats with mutational
+        effects in energy units determined by the ensemble gas constant. 
+        If a species is not in the dictionary, the mutational effect for 
+        that species is set to zero. 
+    mu_dict : dict, optional
+        dictionary of chemical potentials. keys are the names of chemical
+        potentials. Values are floats or arrays of floats. Any arrays 
+        specified must have the same length. If a chemical potential is not
+        specified in the dictionary, its value is set to 0. 
+    fitness_fcns : list-like
+        list of fitness functions to apply. There should be one fitness function
+        for each condition specified in mu_dict. The first argument of each 
+        function must be either fx_obs or dG_obs. Other keyword arguments can be
+        specified in fitness_kwargs.
+    select_on : str, default="fx_obs"
+        observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
+    fitness_kwargs : dict, optional
+        pass these keyword arguments to the fitness_fcn
+    T : float, default=298.15
+        temperature in Kelvin. This can be an array; if so, its length must
+        match the length of the arrays specified in mu_dict. 
+
     Returns
     -------
-    df : pandas.DataFrame
-        pandas dataframe with columns holding 'mut', 'site' (i.e., the 21 in 
-        A21P), 'is_wt' (whether or not the mutation is wildtype), and then 
-        columns for the predicted ddG for each species. 
+    F : numpy.array
+        float numpy array with one fitness per condition. 
+    """
+
+    num_conditions = len(mu_dict[list(mu_dict.keys())[0]])
+
+    if len(fitness_fcns) != num_conditions:
+        err = "fitness should be the same length as the number of conditions\n"
+        err += "in mu_dict.\n"
+        raise ValueError(err)
+
+    for f in fitness_fcns:
+        if not callable(f):
+            err = "Elements of the fitness vector must all be functions that\n"
+            err += "take the values specified in `select_on` as inputs and\n"
+            err += "return the absolute fitness.\n"
+            raise ValueError(err)
         
-    Example
-    -------
-    Here is an example ddg_file for an ensemble with the species erg, erg-oht, 
-    and erg-oht-pep.
-    
-    ..code-block::
-    
-        mut,erg,erg-oht,erg-oht-pep
-        Y1A,-0.1510000000000673,-0.12999999999999545,0.4900000000000091
-        Y1C,0.4880000000000564,0.17599999999993088,2.2889999999999873
-        Y1D,-2.433999999999969,-2.3319999999999936,-1.6990000000000691
-        Y1F,-4.645999999999958,-0.4049999999999727,3.1989999999999554
+    if select_on not in ["fx_obs","dG_obs"]:
+        err = "select_on should be either fx_obs or dG_obs\n"
+        raise ValueError(err)ddg_dict
+
+    return _fitness_function(ens=ens,
+                             mut_energy=mut_energy,
+                             mu_dict=mu_dict,
+                             fitness_fcns=fitness_fcns,
+                             select_on=select_on,
+                             fitness_kwargs=fitness_kwargs,
+                             T=T)
+
+class FitnessContainer:
+
+    def __init__(self,
+                 ens,
+                 fitness_fcns,
+                 select_on="fx_obs",
+                 fitness_kwargs={},
+                 T=298.15):
         
-    
-    """
-    
-    # Read csv file and extract sites seen
-    df = pd.read_csv(ddg_file)
-    df["site"] = [int(m[1:-1]) for m in list(df.mut)]
+        self._ens = ens
+        self._mut_energy = fitness_fcns
+        self._select_on = select_on
+        self._fitness_kwargs = fitness_kwargs
+        self._T = T
 
-    # Find the wildtype entries (i.e., Q45Q). 
-    wt_mask = np.array([m[0] == m[-1] for m in df.mut],dtype=bool)
-    df["is_wt"] = wt_mask
-    
-    # Figure out the species columns
-    columns = list(df.columns)
-    columns.remove("mut")
-    columns.remove("site")
-    columns.remove("is_wt")
-    
-    # Set the ddG for wildtype to 0
-    df.loc[wt_mask,columns] = 0.0
-    
-    return df
-
-def get_all_pairs_epistasis(ens,ddg_file,mu_dict,get_only=None):
-    """
-    Given an ensemble and a mutation ddG file, calculate epistasis for all 
-    pairs of mutations.
-    
-    Parameters
-    ----------
-    ens : Ensemble instance
-        ensemble instance holding species whose names match the column names
-        in a ddg csv file
-    ddg_file : str
-        file holding the energetic effects of a list of mutations on the species
-        in the ensemble. 
-    mu_dict : dict
-        dictionary holding chemical potentials at which to make the calculation.
-        See Ensemble docs for details.
-    get_only : int, optional
-        if set, take only get_only lines from the ddg file.
+    def fitness(self,
+                mut_energy,
+                mu_dict):
         
-    Returns
-    -------
-    out_df : pandas.DataFrame
-        dataframe with six columns: m1 (mutation 1), m2 (mutation 2), s1 (site 1),
-        s2 (site 2), ep_mag (magnitude of the observed epistasis), ep_class 
-        (class of epistasis: mag, sign, recip_sign). 
-    """
+        F = _fitness_function(ens=self._ens,
+                              mut_energy=mut_energy,
+                              mu_dict=mu_dict,
+                              fitness_fcns=self._fitness_fcns,
+                              select_on=self._select_on,
+                              fitness_kwargs=self._fitness_kwargs,
+                              T=self._T)
 
-    # Load ddG
-    df = load_ddG(ddg_file)
-
-    if get_only is not None:
-        if get_only < len(df.index):
-            idx = np.random.choice(df.index,size=get_only,replace=False)
-            df = df.loc[idx,:]
-    
-    # Get names of molecular species
-    species = ens.species 
-
-    # Create output dictionary (source for dataframe)
-    columns = ["m1","m2","s1","s2","ep_mag","ep_class"]
-    out = dict([(c,[]) for c in columns])
-    
-    # Create status bar
-    N = len(df.index)
-    total = N*(N-1)//2
-    with tqdm(total=total) as p:
-
-        # Go over all entries
-        for i in range(len(df.index)):
-            
-            # i is wildtype
-            if np.sum(df.loc[df.index[i],"is_wt"]) > 0:
-                p.update(1)
-                continue
-
-            # Mutational effects at site i
-            mut1_dict = {}
-            for s in species:
-                mut1_dict[s] = df.loc[df.index[i],s]
-
-            # Paired entries
-            for j in range(i+1,len(df.index)):
-
-                # i and j are at same site
-                if df.loc[df.index[i],"site"] == df.loc[df.index[j],"site"]:
-                    p.update(1)
-                    continue
-                
-                # j is wildtype
-                if np.sum(df.loc[df.index[j],"is_wt"]) > 0:
-                    p.update(1)
-                    continue
-
-                # Mutational effects at site j
-                mut2_dict = {}
-                for s in species:
-                    mut2_dict[s] = df.loc[df.index[j],s]
-
-                # Get epistasis
-                df_ep = ens.get_epistasis(mut1_dict=mut1_dict,
-                                          mut2_dict=mut2_dict,
-                                          mu_dict=mu_dict)
-
-                # Get mag and class
-                ep_mag = np.max(df_ep.dG_ep_mag)
-                ep_class = df_ep["dG_ep_class"].iloc[np.argmax(df_ep.dG_ep_mag)]
-
-                # Record output
-                out["m1"].append(df.loc[df.index[i],"mut"])
-                out["m2"].append(df.loc[df.index[j],"mut"])
-                out["s1"].append(df.loc[df.index[i],"site"])
-                out["s2"].append(df.loc[df.index[j],"site"])
-                out["ep_mag"].append(ep_mag)
-                out["ep_class"].append(ep_class)
-                
-                p.update(1)
-
-    out_df = pd.DataFrame(out)
-
-    return out_df
-
-def load_bfactor(pdb_file,df,column,chain=None,out_file=None):
-    """
-    Load the values from a column in a dataframe into the bfactor column of a pdb
-    file.
-    
-    Parameters
-    ----------
-    pdb_file : str
-        pdb file to load data into
-    df : pandas.DataFrame
-        pandas dataframe with data. This function assumes the dataframe has a
-        column called "site" that corresponds to the *sequential* number of the
-        residues in the pdb file. A pdb file might have residues 51-60; the 
-        dataframe could have sites 1-10, 0-9, or 51-60--as long as they 
-        sequential. (It could even have skipped residues). The function does
-        assume the there site for every residue in the pdb file; it will 
-        choke if there is a residue in the pdb that is *not* in the dataframe.
-    column : str
-        column in the dataframe to use to get the data to put into the pdb file. 
-        column should be a float
-    chain : str, optional
-        only load bfactors into the specified chain if specified
-    out_file : str, optional
-        output pdb file. If not specified, will write to {pdb_file}_bfactor.pdb
-    """
-
-    out = []
-    
-    sites_list = np.unique(df.site)
-    sites_list.sort()
-
-    resid_counter = -1
-    last_resid = None
-    resid_found = True
-    with open(pdb_file,'r') as f:
-        for line in f:
-            
-            if not line.startswith("ATOM"):
-                out.append(line)
-                continue
-            
-            if chain is not None:
-                if line[21] != chain:
-                    out.append(line)
-                    continue
-            
-            resid = int(line[22:26])
-            if resid != last_resid:
-                
-                last_resid = resid
-                resid_counter += 1
-                try:
-                    site = sites_list[resid_counter]
-                    resid_found = True
-                except IndexError:
-                    resid_found = False
-            
-            if resid_found:
-                new_bfactor = np.array(df.loc[df.site == site,column])[0]
-            else:
-                new_bfactor = 0.0
-            out.append(f"{line[:60]}{new_bfactor:>6.2f}{line[66:]}")
+        return np.prod(F)
 
 
-    if out_file is None:
-        out_file = f"{pdb_file}_bfactor.pdb"
+class Genotype:
 
-    f = open(out_file,"w")
-    f.write("".join(out))
-    f.close()
-
-def summarize_epistasis(df,cutoff=None):
-    """
-    Summarize the epistasis in a site-by-site manner.
-    
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        output from get_all_pairs_epistasis
-    cutoff : float, optional
-        only keep epistasis whose absolute mangitude is above cutoff
-    
-    Returns
-    -------
-    summary_df : pandas.DataFrame
-        dataframe with columns holding summary information for each site. The 
-        columns are the mean absolute value epistatic magnitude, the mean epistatic
-        magntitutde, the standard deviation of the epistaitc magnitude, the 
-        number of times the site has no epistaiss, the number of time the site has
-        magnitude epistasis, the number of times the site has reciprocal epistasis,
-        and the number of times the site has sign epistasis. 
-    """
-
-    columns = ["site",
-               "abs_mag","avg_mag","std_mag",
-               "ep_none","ep_mag","ep_recip","ep_sign"]
-    out = dict([(c,[]) for c in columns])
-
-    s1_sites = np.unique(df.s1)
-    s2_sites = np.unique(df.s2)
-    all_sites = list(s1_sites)
-    all_sites.extend(s2_sites)
-    all_sites = list(set(all_sites))
-    all_sites = np.array(all_sites)
-
-    for s in all_sites:
-
-        site_mask = np.logical_or(df.s1 == s,df.s2 == s)
-        site_df = df.loc[site_mask,:]
+    def __init__(self,
+                 ens,
+                 ddg_dict,
+                 sites=None,
+                 mutations=None,
+                 mut_energy=None,
+                 fitness=None):
         
-        # Drop epistasis below the cutoff
-        if cutoff is not None:
-            above_cutoff = np.abs(site_df.ep_mag) > cutoff
-            site_df = site_df.loc[above_cutoff,:]
+        if sites is None:
+            sites = []
+        if mutations is None:
+            mutations = []
+        if fitness is None:
+            fitness = 0.0
 
-        abs_mag = np.mean(np.abs(site_df.ep_mag))
-        avg_mag = np.mean(site_df.ep_mag)
-        std_mag = np.std(site_df.ep_mag)
-        nothing_mask = pd.isnull(df.ep_class)
+        self._sites = copy.deepcopy(sites)
+        self._mutations = copy.deepcopy(mutations)
+        self._fitness = fitness
 
-        classy_sites = site_df.loc[np.logical_not(nothing_mask),"ep_class"]
-        class_bins, class_counts = np.unique(classy_sites,return_counts=True)
+        self._ens = ens
+        self._ddg_dict = ddg_dict
+        self._possible_sites = list(self._ddg_dict.keys())
+        self._mutations_at_sites= [list(self._ddg_dict[s].keys())
+                                   for s in self._possible_sites]
 
-        count_dict = dict(zip(class_bins,class_counts))
-        for c in ["mag","recip","sign"]:
-            if c not in count_dict:
-                count_dict[c] = 0
+        # Update mut_energy
+        if mut_energy is not None:
+            self._mut_energy = copy.deepcopy(mut_energy)
+        else:
+            self._mut_energy = {}
+            for s in self._ens.species:
+                self._mut_energy[s] = 0
+            
 
-        out["site"].append(s)
-        out["abs_mag"].append(abs_mag)
-        out["avg_mag"].append(avg_mag)
-        out["std_mag"].append(std_mag)
-        out["ep_none"].append(np.sum(nothing_mask))
-        out["ep_mag"].append(count_dict["mag"])
-        out["ep_recip"].append(count_dict["recip"])
-        out["ep_sign"].append(count_dict["sign"])
+    def copy(self):
+        """
+        Return a copy of the Genotype instance.
+        """
+
+        # This will copy ens and ddg_dict as references, but make new instances
+        # of the sites, mutations, mut_energy, and fitness attributes. 
+        return Genotype(self._ens,
+                        self._ddg_dict,
+                        sites=self._sites,
+                        mutations=self._mutations,
+                        fitness=self._fitness)
 
 
-    summary_df = pd.DataFrame(out)
+    def mutate(self):
 
-    return summary_df
+        # Mutation to revert before adding new one
+        prev_mut = None
+
+        # Randomly choose a site to mutate
+        site = np.random.choice(self._possible_sites)
+
+        # If the site was already mutated, we need to mutate site back to wt
+        # before mutating to new genotype
+        if site in self._sites:
+
+            # Get site of mutation in genotype
+            idx = self._sites.index(site)
+
+            # Get mutation to revert before adding new one
+            prev_mut = self._mutations[idx]
+
+            # Subtract the energetic effect of the previous mutation
+            for species in self._ddg_dict[site][prev_mut]:
+                self._mut_energy[species] -= self._ddg_dict[site][prev_mut][species]
+
+            # Remove the old mutation
+            self._sites.remove(idx)
+            self._mutations.remove(idx)
+
+        # Choose what mutation to introduce. It must be different than the 
+        # previous mutation at this site. 
+        while True:
+            mutation = np.random.choice(self._mutations_at_sites[site])
+            if mutation != prev_mut:
+                break
+
+        # Update genotype with new site mutation, mutation made, 
+        # trajectory step, overall energy, and fitness
+        self._sites.append(site)
+        self._mutations.append(mutation)
+
+    
 
 
+def engine(ens,
+           ddg_df,
+           mu_dict,
+           fitness_fcns,
+           select_on,
+           fitness_kwargs,
+           population_size,
+           mutation_rate,
+           num_generations,
+           T=298.15):
+
+
+    # Convert the ddg dataframe into a dictionary of the form: 
+    # ddg_dict[site][mutation_at_site][conformation_in_ensemble]
+    ddg_dict = create_ddg_dict(ddg_df)
+
+    # Create wildtype genotype
+    wt = Genotype(ens,ddg_dict)
+
+    # This list holds all genotypes seen over the simulation. Each genotype 
+    all_genotypes = [wt]
+
+    # Get the mutation rate
+    expected_num_mutations = mutation_rate*population_size
+
+    # List of generations. Is list of dicts, where each list entry is a
+    # generation. Each dict keys indexes in all_genotypes to the population of
+    # that genotype at that generation. 
+    generations = [{0:population_size}]
+
+    # Current population as a vector with individual genotypes.
+    pop_vector = np.zeros(population_size,dtype=int)
+    for i in range(1,num_generations):
+
+        # Get fitness values for all genotypes in the population
+        prob = np.array([all_genotypes[g]["fitness"] for g in pop_vector])
+
+        # If total prob is non-zero, weight populations. Otherwise, just take
+        # populations
+        if np.sum(prob) != 0:
+            prob = pop_vector*prob
+        else:
+            prob = pop_vector
+
+        # Calculate relative probability
+        prob = prob/np.sum(prob)
+
+        # Select offspring, with replacement weighted by prob
+        pop_vector = np.random.choice(pop_vector,p=prob,replace=True)
+        
+        # Introduce mutations
+        num_to_mutate = np.random.poisson(expected_num_mutations)
+
+        # If we have a ridiculously high mutation rate, do not mutate each
+        # genotype more than once.
+        if num_to_mutate > population_size:
+            num_to_mutate = population_size
+
+        # Mutate first num_to_mutate population members
+        for j in range(num_to_mutate):
+
+            starting_genotype = pop_vector[j]
+            new_genotype = copy.deepcopy(all_genotypes[starting_genotype])
+
+            new_genotype["fitness"] = _fitness_function(ens=ens,
+                                                        mut_energy=new_genotype["mut_energy"],
+                                                        mu_dict=mu_dict,
+                                                        fitness_fcns=fitness_fcns,
+                                                        select_on=select_on,
+                                                        fitness_kwargs=fitness_kwargs,
+                                                        T=T)
+            
+            pop_vector[j] = len(all_genotypes)
+            all_genotypes.append(new_genotype)
+        
+        # Record populations
+        seen, counts = np.unique(pop_vector,return_counts=True)
+
+        ## XX NOT RIGHT --> make trajectory
+        compressed_pop.append(zip(seen,counts))
+        
+
+
+
+def wf_engine_python(pops,
+                     mutation_rate,
+                     fitness,
+                     neighbor_slicer,
+                     neighbors):
+    """
+    A python implementation of the Wright Fisher engine.
+
+    This function should not be called directly. Instead, use wf_engine
+    wrapper. Wrapper has argument docs and does argument sanity checking.
+    """
+
+    # If zero population, don't bother with simulation
+    if np.sum(pops[0,:]) == 0:
+        return pops
+
+    # Get number of genoptypes, population size, and expected number of mutations
+    # each generation
+    num_genotypes = len(fitness)
+    population_size = sum(pops[0,:])
+    expected_num_mutations = mutation_rate*population_size
+    num_generations = len(pops)
+
+    indexes = np.arange(num_genotypes,dtype=int)
+    for i in range(1,num_generations):
+
+        # Look at non-zero genotypes
+        mask = indexes[pops[i-1,:] != 0]
+        local_fitness = fitness[mask]
+        local_pop = pops[i-1,mask]
+
+        # If all fitness are 0 for the populated genotypes, probability of
+        # reproducing depends only on how often each genotype occurs.
+        if np.sum(local_fitness) == 0:
+            prob = local_pop
+
+        # In most cases, reproduction probability is given by how many of each
+        # genotype times its fitness
+        else:
+            prob = local_pop*local_fitness
+
+        # Normalize prob
+        prob = prob/np.sum(prob)
+
+        # New population selected based on relative fitness
+        new_pop = np.random.choice(mask,size=population_size,p=prob,replace=True)
+
+        # Introduce mutations
+        num_to_mutate = np.random.poisson(expected_num_mutations)
+
+        # If we have a ridiculously high mutation rate, do not mutate each
+        # genotype more than once.
+        if num_to_mutate > population_size:
+            num_to_mutate = population_size
+
+        for j in range(num_to_mutate):
+            k = new_pop[j]
+
+            # If neighbor_slicer[k,0] == -1, this genotype *has* no neighbors.
+            # Mutation should lead to self.
+            if neighbor_slicer[k,0] != -1:
+                a = neighbors[neighbor_slicer[k,0]:neighbor_slicer[k,1]]
+                new_pop[j] = np.random.choice(a,size=1)[0]
+
+        # Count how often each genotype occurs and store in pops array
+        idx, counts = np.unique(new_pop,return_counts=True)
+        pops[i,idx] = counts
+
+    return pops

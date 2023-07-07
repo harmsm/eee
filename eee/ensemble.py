@@ -1,5 +1,5 @@
 """
-Ensemble class and helper functions
+Ensemble class and helper functions.
 """
 
 import numpy as np

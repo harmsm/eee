@@ -16,6 +16,55 @@ import re
 import glob
 import shutil
 
+def _clean_structures(dfs,foldx_binary="foldx",verbose=False):
+    """
+    Run the structures through foldx to build missing atoms in sidechains. Will
+    delete residues with incomplete backbones. 
+    """
+
+    new_dfs = []
+
+    out_base = "".join([random.choice(string.ascii_letters) for _ in range(10)])
+    tmp_dir = f"tmp-dir_{out_base}"
+    os.mkdir(tmp_dir)
+    os.chdir(tmp_dir)
+    for df in dfs:
+        write_pdb(df,"tmp-input.pdb",overwrite=True)
+
+        cmd = [foldx_binary,
+               "-c","PDBFile",
+               "--fixSideChains","1",
+               "--pdb","tmp-input.pdb"]
+        
+        popen = subprocess.Popen(cmd,
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.STDOUT,
+                                 universal_newlines=True)
+        for line in popen.stdout:
+            if verbose:
+                print(line,end="",flush=True)
+        
+        # Check for success
+        return_code = popen.wait()
+        if return_code != 0:
+            os.chdir("..")
+            err = "Could not clean structure using foldx!\n"
+            raise RuntimeError(err)
+        
+        shutil.move("PF_tmp-input.fxout","tmp-output.pdb")
+        new_df = load_structure("tmp-output.pdb")
+
+        # foldx will drop all hetatms. bring them back in
+        hetatm_df = df.loc[df["class"] == "HETATM",:]
+        new_df = pd.concat((new_df,hetatm_df))
+        new_df.index = np.arange(len(new_df.index),dtype=int)
+
+        new_dfs.append(new_df)
+
+    os.chdir("..")
+
+    return new_dfs
+
 def _run_muscle(seq_list,
                 muscle_binary="muscle",
                 verbose=False,
@@ -88,11 +137,7 @@ def _align_seq(dfs,
                verbose=False,
                keep_temporary=False):
     """
-    Use muscle to align sequences from rcsb files. Returns which sequences align
-    with which column and the column indexes for each site in each sequence.
-    The alignment:
-    
-
+    Use muscle to align sequences from rcsb files. 
     
     Parameters
     ----------
@@ -107,12 +152,9 @@ def _align_seq(dfs,
         
     Returns
     -------
-    column_contents : list
-        list of lists. list containing which sequences have a non-gap character
-        at this position. 
-    column_indexes : list
-        list of lists. indexes correspond to input list. sub-lists are the 
-        alignment columns for the amino acids input to seq_list.
+    dfs : list
+        list of pandas dataframes with structures updated to have the shared_fx
+        and alignment_site columns. 
     """
 
     seq_list = []
@@ -188,6 +230,26 @@ def _align_seq(dfs,
         
     return dfs
 
+
+def _check_residues(df):
+    """
+    Check identical amino acids. 
+    If Cys and Ser --> mutate Ser to Cys
+    Check for missing backbone residues
+    """
+
+    # Get lists of all CA atoms and residues
+    residues = []
+    for df in dfs:
+        df["_resid_key"] = list(zip(df["chain"],df["resid"],df["resid_num"]))
+        
+        mask = np.logical_and(df.atom == "CA",df["class"] == "ATOM")
+        this_df = df.loc[mask,:]
+
+        residues.append(list(this_df["_resid_key"]))
+
+
+    pass
 
 
 def _align_structures(dfs,
@@ -268,79 +330,14 @@ def _align_structures(dfs,
         
     return dfs
 
-def _clean_structures(dfs,foldx_binary="foldx",verbose=False):
-    """
-    Run the structures through foldx to build missing atoms in sidechains. Will
-    delete residues with incomplete backbones. 
-    """
 
-    new_dfs = []
-
-    out_base = "".join([random.choice(string.ascii_letters) for _ in range(10)])
-    tmp_dir = f"tmp-dir_{out_base}"
-    os.mkdir(tmp_dir)
-    os.chdir(tmp_dir)
-    for df in dfs:
-        write_pdb(df,"tmp-input.pdb",overwrite=True)
-
-        cmd = [foldx_binary,
-               "-c","PDBFile",
-               "--fixSideChains","1",
-               "--pdb","tmp-input.pdb"]
         
-        popen = subprocess.Popen(cmd,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT,
-                                 universal_newlines=True)
-        for line in popen.stdout:
-            if verbose:
-                print(line,end="",flush=True)
-        
-        # Check for success
-        return_code = popen.wait()
-        if return_code != 0:
-            os.chdir("..")
-            err = "Could not clean structure using foldx!\n"
-            raise RuntimeError(err)
-        
-        shutil.move("PF_tmp-input.fxout","tmp-output.pdb")
-        new_df = load_structure("tmp-output.pdb")
 
-        # foldx will drop all hetatms. bring them back in
-        hetatm_df = df.loc[df["class"] == "HETATM",:]
-        new_df = pd.concat((new_df,hetatm_df))
-        new_df.index = np.arange(len(new_df.index),dtype=int)
-
-        new_dfs.append(new_df)
-
-    os.chdir("..")
-
-    return new_dfs
-        
-def _check_residues(df):
-    """
-    Check identical amino acids. 
-    If Cys and Ser --> mutate Ser to Cys
-    Check for missing backbone residues
-    """
-
-    # Get lists of all CA atoms and residues
-    residues = []
-    for df in dfs:
-        df["_resid_key"] = list(zip(df["chain"],df["resid"],df["resid_num"]))
-        
-        mask = np.logical_and(df.atom == "CA",df["class"] == "ATOM")
-        this_df = df.loc[mask,:]
-
-        residues.append(list(this_df["_resid_key"]))
-
-
-    pass
-    
 
 
 def sync_structures(structure_files,
                     out_dir,
+                    allowed_hetam=None,
                     overwrite=False,
                     verbose=False):
     """
@@ -396,6 +393,8 @@ def sync_structures(structure_files,
 
     # Align structures in 3D
     dfs = _align_structures(dfs,verbose=verbose)
+
+
 
     
     for i in range(len(dfs)):
