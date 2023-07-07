@@ -1,3 +1,3 @@
 
 from . import util
-from ensemble import Ensemble
+from .ensemble import Ensemble

@@ -24,7 +24,6 @@ def _file_globber(*args):
 
     return file_dict
 
-
 @pytest.fixture(scope="module")
 def test_cifs():
     """
@@ -55,3 +54,8 @@ def ensembles():
         file_dict[key] = rcsb_files
 
     return file_dict
+
+@pytest.fixture(scope="module")
+def test_ddg():
+
+    return _file_globber("data","test_ddg","*.csv")

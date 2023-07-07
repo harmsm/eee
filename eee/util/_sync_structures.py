@@ -131,7 +131,6 @@ def _run_muscle(seq_list,
 
     return [output[k] for k in keys]
 
-
 def _align_seq(dfs,
                muscle_binary="muscle",
                verbose=False,
@@ -230,7 +229,6 @@ def _align_seq(dfs,
         
     return dfs
 
-
 def _check_residues(df):
     """
     Check identical amino acids. 
@@ -250,7 +248,6 @@ def _check_residues(df):
 
 
     pass
-
 
 def _align_structures(dfs,
                       lovoalign_binary="lovoalign",
@@ -329,11 +326,6 @@ def _align_structures(dfs,
             os.remove(f)
         
     return dfs
-
-
-        
-
-
 
 def sync_structures(structure_files,
                     out_dir,
