@@ -1,0 +1,5 @@
+pandas
+numpy
+tqdm
+sphinx-rtd-theme
+sphinxcontrib-napoleon
