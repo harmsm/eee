@@ -36,10 +36,15 @@ def _clean_structures(dfs,foldx_binary="foldx",verbose=False):
                "--fixSideChains","1",
                "--pdb","tmp-input.pdb"]
         
-        popen = subprocess.Popen(cmd,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT,
-                                 universal_newlines=True)
+        try:
+            popen = subprocess.Popen(cmd,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT,
+                                     universal_newlines=True)
+        except FileNotFoundError:
+            err = f"could not find {foldx_binary} in the path.\n"
+            raise RuntimeError(err)
+        
         for line in popen.stdout:
             if verbose:
                 print(line,end="",flush=True)
@@ -90,10 +95,15 @@ def _run_muscle(seq_list,
     for cmd in cmd_list:
 
         # Run muscle, capturing output to avoid cluttering terminal
-        popen = subprocess.Popen(cmd,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT,
-                                 universal_newlines=True)
+        try:
+            popen = subprocess.Popen(cmd,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT,
+                                     universal_newlines=True)
+        except FileNotFoundError:
+            err = f"could not find {muscle_binary} in the path.\n"
+            raise RuntimeError(err)
+        
         for line in popen.stdout:
             if verbose:
                 print(line,end="",flush=True)
@@ -295,10 +305,15 @@ def _align_structures(dfs,
         out_file = f"tmp-out_{out_base}-{i+1}.pdb"
         cmd = [lovoalign_binary,"-p1",f,"-p2",files[0],"-o",out_file]
         
-        popen = subprocess.Popen(cmd,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT,
-                                 universal_newlines=True)
+        try:
+            popen = subprocess.Popen(cmd,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT,
+                                     universal_newlines=True)
+        except FileNotFoundError:
+            err = f"could not find {lovoalign_binary} in the path.\n"
+            raise RuntimeError(err)
+        
         for line in popen.stdout:
             if verbose:
                 print(line,end="",flush=True)

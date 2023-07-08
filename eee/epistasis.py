@@ -89,8 +89,7 @@ def get_epistasis(m00,m10,m01,m11):
     return mag, sign1, sign2, ep_class
 
 
-def get_ensemble_epistasis(self,
-                           ens,
+def get_ensemble_epistasis(ens,
                            mut1_dict=None,
                            mut2_dict=None,
                            mut12_dict=None,

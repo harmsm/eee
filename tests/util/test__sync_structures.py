@@ -91,7 +91,7 @@ def test__align_seq(ensembles,tmpdir):
         assert lengths[0] - 1 == np.nanmax(all_indexes)
 
         # make sure muscle_binary is interpreted correctly
-        with pytest.raises(FileNotFoundError):
+        with pytest.raises(RuntimeError):
             _align_seq(dfs,muscle_binary="not_real")
 
         # Delete temporary files
