@@ -2,11 +2,10 @@
 Functions to run a Wright-Fisher simulation given an ensemble.
 """
 
-from eee.ddg import create_ddg_dict
 from eee.evolve import Genotype
-from eee.evolve import FitnessContainer
 
 import numpy as np
+from tqdm.auto import tqdm
 
 class EvolutionResults:
     """
@@ -59,7 +58,7 @@ def wright_fisher(ens,
     # Lists of genotypes trajectories, and fitnesses. These all have the same
     # index scheme
     genotypes = [wt]
-    trajectories = [0]
+    trajectories = [[0]]
     fitnesses = [fc.fitness(wt.mut_energy)]
 
     # Dictionary of genotype populations
@@ -67,23 +66,24 @@ def wright_fisher(ens,
 
     # Current population as a vector with individual genotypes.
     current_pop = np.zeros(population_size,dtype=int)
-    for i in range(1,num_generations):
+    for i in tqdm(range(1,num_generations)):
 
         # Get fitness values for all genotypes in the population
         prob = np.array([fitnesses[g] for g in current_pop])
-
-        # If total prob is non-zero, weight populations. Otherwise, just take
-        # populations
-        if np.sum(prob) != 0:
-            prob = current_pop*prob
-        else:
-            prob = current_pop
+        
+        # If total prob is zero, give all equal weights. (edge case -- all 
+        # genotypes equally terrible)
+        if np.sum(prob) == 0:
+            prob = np.ones(population_size)
 
         # Calculate relative probability
         prob = prob/np.sum(prob)
 
         # Select offspring, with replacement weighted by prob
-        current_pop = np.random.choice(current_pop,p=prob,replace=True)
+        current_pop = np.random.choice(current_pop,
+                                       size=population_size,
+                                       p=prob,
+                                       replace=True)
         
         # Introduce mutations
         num_to_mutate = np.random.poisson(expected_num_mutations)

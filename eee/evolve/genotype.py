@@ -2,7 +2,7 @@
 Helper functions/classes for keeping track of genotypes during an evolutionary 
 simulation.
 """
-from numpy import np
+import numpy as np
 
 import copy
 
@@ -56,10 +56,9 @@ class Genotype:
                 self._mut_energy[s] = 0
 
         self._possible_sites = list(self._ddg_dict.keys())
-        self._mutations_at_sites= [list(self._ddg_dict[s].keys())
-                                   for s in self._possible_sites]
-
-            
+        self._mutations_at_sites = dict([(s,list(self._ddg_dict[s].keys()))
+                                         for s in self._possible_sites])
+        
     def copy(self):
         """
         Return a copy of the Genotype instance. This will copy the ens and
@@ -102,8 +101,8 @@ class Genotype:
                 self._mut_energy[species] -= self._ddg_dict[site][prev_mut][species]
 
             # Remove the old mutation
-            self._sites.remove(idx)
-            self._mutations.remove(idx)
+            self._sites.pop(idx)
+            self._mutations.pop(idx)
 
         # Choose what mutation to introduce. It must be different than the 
         # previous mutation at this site. 

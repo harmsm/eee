@@ -1,12 +1,10 @@
 
-from eee import Ensemble
-from eee.evolve import FitnessContainer
+from eee.ensemble import Ensemble
 from eee.evolve import wright_fisher
 from eee.evolve.fitness import _fitness_function
 
 import numpy as np
 import pandas as pd
-
 
 def _create_ddg_dict(ddg_df):
     """
@@ -188,7 +186,7 @@ def simulate_evolution(ens,
     # Population size
     try:
         population_size = int(population_size)
-        if population_size > 1:
+        if population_size < 1:
             raise ValueError
     except ValueError:
         err = "population_size must be an integer greater than or equal to 1"
@@ -206,7 +204,7 @@ def simulate_evolution(ens,
     # Number of generations
     try:
         num_generations = int(num_generations)
-        if num_generations > 1:
+        if num_generations < 1:
             raise ValueError
     except ValueError:
         err = "num_generations must be an integer greater than or equal to 1"
@@ -226,7 +224,7 @@ def simulate_evolution(ens,
     
     # Run and return a Wright Fisher simulation.
     out =  wright_fisher(ens=ens,
-                         ddg_df=ddg_dict,
+                         ddg_dict=ddg_dict,
                          fc=fc,
                          population_size=population_size,
                          mutation_rate=mutation_rate,
