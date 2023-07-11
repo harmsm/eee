@@ -7,8 +7,8 @@ from eee.util.data import AA_1TO3
 from eee.util._sync_structures import _clean_structures
 from eee.util._sync_structures import _run_muscle
 from eee.util._sync_structures import _align_seq
-from eee.util._sync_structures import _check_residues
 from eee.util._sync_structures import _align_structures
+from eee.util._sync_structures import _create_unique_filenames
 from eee.util._sync_structures import sync_structures
 
 import numpy as np
@@ -47,12 +47,9 @@ def test__align_seq(ensembles,tmpdir):
         assert len(aligned_dfs) == len(dfs)
         all_rows = np.sum([len(out_df) for out_df in aligned_dfs])
         for out_df in aligned_dfs:
-            assert "alignment_site" in out_df.columns
             assert "shared_fx" in out_df.columns
             assert np.min(out_df["shared_fx"]) >= 0
             assert np.max(out_df["shared_fx"]) <= 1
-            assert np.min(out_df["alignment_site"]) >= 0
-            assert np.max(out_df["alignment_site"]) <= all_rows
 
         assert len(glob.glob("*.fasta")) == 2
         
@@ -84,11 +81,6 @@ def test__align_seq(ensembles,tmpdir):
         # Only one length allowed; same as length of column_contents
         lengths = np.unique([len(s) for s in output_seqs])
         assert len(lengths) == 1
-        all_indexes = []
-        for out_df in aligned_dfs:
-            all_indexes.extend(out_df["alignment_site"])
-
-        assert lengths[0] - 1 == np.nanmax(all_indexes)
 
         # make sure muscle_binary is interpreted correctly
         with pytest.raises(RuntimeError):
@@ -105,11 +97,39 @@ def test__align_seq(ensembles,tmpdir):
 
     os.chdir(current_dir)
 
-def test__check_residues():
-    pass
-
 def test__align_structures(ensembles,tmpdir):
     pass
 
-def test_sync_structures():
+def test__create_unique_filenames():
+
+    files = ["1stn.pdb",
+            "../test/1stn.pdb",
+            "../test/this/1stn.pdb"]
+    
+    mapper = _create_unique_filenames(files)
+    assert mapper["1stn.pdb"] == "1stn.pdb"
+    assert mapper["../test/1stn.pdb"] == "test__1stn.pdb"
+    assert mapper["../test/this/1stn.pdb"] == "this__1stn.pdb"
+
+    files = ["../lab/1stn.pdb","../rocket/1stn.cif"]
+    mapper = _create_unique_filenames(files)
+    assert mapper["../lab/1stn.pdb"] == "1stn.pdb"
+    assert mapper["../rocket/1stn.cif"] == "1stn.cif"
+
+    files = ["../test/1stn.pdb",
+            "../test/1stn.pdb",
+            "../test/this/1stn.pdb"]
+    with pytest.raises(ValueError):
+        _create_unique_filenames(files)
+
+def test_sync_structures(ensembles,tmpdir):
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    dfs = sync_structures(ensembles["missing_residues"],
+                          "missing_residues")
+
+    os.chdir(current_dir)
+
     pass

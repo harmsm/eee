@@ -51,7 +51,7 @@ setup(
     package_data=package_data,
     zip_safe=False,
     include_package_data=True,
-    scripts=glob.glob("bin/eee=*"),
+    scripts=glob.glob("bin/eee-*"),
     license='MIT',
     classifiers=[
       'Development Status :: 3 - Alpha',
