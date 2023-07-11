@@ -1,9 +1,12 @@
 """
+Functions for taking raw RCSB output with several structures and creating input
+for an EEE calculation. 
 """
 
 from eee.util.data import AA_3TO1
 from eee.util import write_pdb
 from eee.util import load_structure
+from eee.util import logger
 
 import numpy as np
 import pandas as pd
@@ -12,14 +15,16 @@ import os
 import random
 import string
 import subprocess
-import re
 import glob
 import shutil
 
-def _clean_structures(dfs,foldx_binary="foldx",verbose=False):
+def _clean_structures(dfs,
+                      foldx_binary="foldx",
+                      verbose=False,
+                      keep_temporary=False):
     """
     Run the structures through foldx to build missing atoms in sidechains. Will
-    delete residues with incomplete backbones. 
+    delete residues with incomplete backbones.   
     """
 
     new_dfs = []
@@ -67,6 +72,8 @@ def _clean_structures(dfs,foldx_binary="foldx",verbose=False):
         new_dfs.append(new_df)
 
     os.chdir("..")
+    if not keep_temporary:
+        shutil.rmtree(tmp_dir)
 
     return new_dfs
 
@@ -74,6 +81,9 @@ def _run_muscle(seq_list,
                 muscle_binary="muscle",
                 verbose=False,
                 keep_temporary=False):
+    """
+    Actually run muscle.
+    """
 
     # Construct temporary files
     r = "".join([random.choice(string.ascii_letters) for _ in range(10)])
@@ -146,7 +156,9 @@ def _align_seq(dfs,
                verbose=False,
                keep_temporary=False):
     """
-    Use muscle to align sequences from rcsb files. 
+    Use muscle to align sequences from rcsb files, then do some clean up. 
+    Renumber residues so they match between structures. If a site has a mixture
+    of CYS and SER across structures, mutate the SER to CYS. 
     
     Parameters
     ----------
@@ -162,8 +174,8 @@ def _align_seq(dfs,
     Returns
     -------
     dfs : list
-        list of pandas dataframes with structures updated to have the shared_fx
-        and alignment_site columns. 
+        list of pandas dataframes with structures updated to have the shared_fx,
+        alignment_site, and identical_aa columns. 
     """
 
     seq_list = []
@@ -177,7 +189,6 @@ def _align_seq(dfs,
                          verbose=verbose,
                          keep_temporary=keep_temporary)
     
-
     # Convert output into column indexes and column contents. For example: 
     # MAST-
     # -ASTP
@@ -199,11 +210,34 @@ def _align_seq(dfs,
         for j, c in enumerate(alignment):
             if c != "-":
                 column_contents[j].append(i)
-            
+
+    # Check sequence identity. identical_aa is True if the amino acids are the 
+    # same at that site (or a mix of Ser and Cys), False if they differ. Gaps
+    # do not count as different. 
+    ser_to_cys = {}
+    identical_aa = np.ones(len(column_contents),dtype=float)
+    for i in range(len(column_contents)):
+
+        struct_seen = column_contents[i]
+        aa_seen = list(set([output[j][i] for j in struct_seen]))
+
+        # All same
+        if len(aa_seen) == 1:
+            continue
+
+        # If mixture of Cys and Ser seen, mutate SER --> CYS
+        if set(aa_seen) == set(["C","S"]):
+            ser_to_cys[i] = []
+            for j in range(len(column_contents[i])):
+                if output[j][i] == "S":
+                    ser_to_cys[i].append(j)
+        else:
+            identical_aa[i] = False
 
     # Get lists of all CA atoms and residues
     residues = []
     for df in dfs:
+
         df["_resid_key"] = list(zip(df["chain"],df["resid"],df["resid_num"]))
         
         mask = np.logical_and(df.atom == "CA",df["class"] == "ATOM")
@@ -211,7 +245,7 @@ def _align_seq(dfs,
 
         residues.append(list(this_df["_resid_key"]))
 
-    # Create an array indicating the fraction of structures sharing the site
+    # Create an array indicating the fraction of structures sharing the site. 
     shared_column = np.zeros(len(column_contents),dtype=float)
     num_structures = len(dfs)
     for i in range(len(column_contents)):
@@ -222,6 +256,7 @@ def _align_seq(dfs,
         
         this_df = dfs[i]
         this_df["shared_fx"] = 0.0
+        this_df["identical_aa"] = 0.0
         
         for j in range(len(column_indexes[i])):
             
@@ -230,8 +265,28 @@ def _align_seq(dfs,
             # Record how many structures share the column
             this_resid = residues[i][j]
             this_resid_mask = this_df["_resid_key"] == this_resid
-            this_df.loc[this_resid_mask,"alignment_site"] = idx
+
+            # Change residue numbering
+            this_df.loc[this_resid_mask,"resid_num"] = f"{idx + 1:d}"
+
+            # Record shared fraction
             this_df.loc[this_resid_mask,"shared_fx"] = shared_column[idx]
+
+            # Record identical amino acids. 
+            this_df.loc[this_resid_mask,"identical_aa"] = identical_aa[idx]        
+
+            # Mutate ser to cys from sites with mix of ser and cys across the
+            # structures
+            if j in ser_to_cys:
+                if i in ser_to_cys[j]:
+                    if verbose:
+                        logger.log(f"Introducing S{j}C into structure {i}")
+                        
+                    this_df.loc[this_resid_mask,"resid"] = "CYS"
+                    atom_mask = np.logical_and(this_resid_mask,
+                                               this_df["atom"] == "OG")
+                    this_df.loc[atom_mask,"atom"] = "SG"
+
                     
     # Remove "_resid_key" convenience column
     for i in range(len(dfs)):
@@ -239,25 +294,6 @@ def _align_seq(dfs,
         
     return dfs
 
-def _check_residues(df):
-    """
-    Check identical amino acids. 
-    If Cys and Ser --> mutate Ser to Cys
-    Check for missing backbone residues
-    """
-
-    # Get lists of all CA atoms and residues
-    residues = []
-    for df in dfs:
-        df["_resid_key"] = list(zip(df["chain"],df["resid"],df["resid_num"]))
-        
-        mask = np.logical_and(df.atom == "CA",df["class"] == "ATOM")
-        this_df = df.loc[mask,:]
-
-        residues.append(list(this_df["_resid_key"]))
-
-
-    pass
 
 def _align_structures(dfs,
                       lovoalign_binary="lovoalign",
@@ -273,7 +309,7 @@ def _align_structures(dfs,
         list of pandas dataframes containing structures
     lovoalign_binary : default = "lovoalign"
         lovoalign binary
-    verbose : bool, defualt = True
+    verbose : bool, default = True
         whether or not to print lovoalign output
     keep_temporary : bool, default=False
         do not delete temporary files
@@ -294,9 +330,12 @@ def _align_structures(dfs,
 
     # Write out pdb files to align
     files = []
+    
     for i, df in enumerate(dfs):
+        no_het_df = df.loc[df["class"] == "ATOM",:]
+
         files.append(f"tmp-align_{i}_{out_base}.pdb")
-        write_pdb(df,files[-1])
+        write_pdb(no_het_df,files[-1])
         
     # Go through all but first file
     for i, f in enumerate(files[1:]):
@@ -326,10 +365,11 @@ def _align_structures(dfs,
         
         # Move coordinates from aligned structure into dfs
         new_df = load_structure(out_file)
+        mask = dfs[i+1]["class"] == "ATOM"
 
-        dfs[i+1].loc[:,"x"] = np.array(new_df["x"])
-        dfs[i+1].loc[:,"y"] = np.array(new_df["y"])
-        dfs[i+1].loc[:,"z"] = np.array(new_df["z"])
+        dfs[i+1].loc[mask,"x"] = np.array(new_df["x"])
+        dfs[i+1].loc[mask,"y"] = np.array(new_df["y"])
+        dfs[i+1].loc[mask,"z"] = np.array(new_df["z"])
 
         # Remove output file
         if not keep_temporary:
@@ -342,17 +382,55 @@ def _align_structures(dfs,
         
     return dfs
 
+
+def _create_unique_filenames(files):
+    """
+    This wacky block of code trims back filenames, right to left, until they
+    are unique. This solves edge case where someone puts in files with same
+    name from different directory (like 1stn.pdb and ../test/1stn.pdb). This
+    loop would create output files "1stn.pdb" and "test__1stn.pdb". 
+    """
+
+    found_filenames = False
+    counter = -1
+    while not found_filenames:
+        name_mapper = []
+
+        if len(list(set(files))) != len(files):
+            err = "structure_files must have unique filenames!"
+            raise ValueError(err)
+
+        for i in range(len(files)):    
+            real_path = "__".join(files[i].split(os.path.sep)[counter:])
+            if real_path not in name_mapper:
+                name_mapper.append(real_path)
+                found_filenames = True
+            else:
+                counter -= 1
+                found_filenames = False
+                break
+
+    name_mapper = dict([(files[i],name_mapper[i]) for i in range(len(files))])
+
+    return name_mapper
+
+
 def sync_structures(structure_files,
                     out_dir,
-                    allowed_hetam=None,
                     overwrite=False,
-                    verbose=False):
+                    verbose=False,
+                    keep_temporary=False):
     """
     Take a set of structures, clean up, align, and figure out which sites are
     shared among all structures. Output is a directory with pdb files and a
-    report describing structures. The b-factor column of each pdb file has the
-    number of structures in which that specific site is seen. (HETATM b-factor 
-    is always 0). 
+    report describing structures. The residue numbers are replaced with their 
+    sites in the alignment (meaning residue numbers compare between structures).
+    The b-factor column of each pdb file has the fraction of structures in which
+    that specific site is seen. The occupancy column is 1 if the amino acids are
+    same at the site for all structures, 0 if the amino acids are different. 
+    (Note: at sites with a mix of Cys and Ser across structures, the Ser 
+    residues are mutated to Cys). HETATM entries will always have 0 occupancy
+    and b-factors. 
 
     Parameters
     ----------
@@ -366,6 +444,8 @@ def sync_structures(structure_files,
         overwrite an existing output directory
     verbose : bool, default=False
         write out all output to standard output
+    keep_temporary : bool, default=False
+        do not delete temporary files
     """
     
     # See if the output directory exists
@@ -397,31 +477,31 @@ def sync_structures(structure_files,
 
     # Clean up structures --> build missing atoms or delete residues with
     # missing backbone atoms. 
-    dfs = _clean_structures(dfs,verbose=verbose)
+    logger.log("Cleaning up structures with FoldX.")
+    dfs = _clean_structures(dfs,verbose=verbose,keep_temporary=keep_temporary)
 
     # Figure out which residues are shared between what structures
-    dfs = _align_seq(dfs,verbose=verbose)
-
-    
+    logger.log("Aligning sequences using muscle.")
+    dfs = _align_seq(dfs,verbose=verbose,keep_temporary=keep_temporary)
 
     # Align structures in 3D
-    dfs = _align_structures(dfs,verbose=verbose)
+    logger.log("Aligning structures using lovoalign.")
+    dfs = _align_structures(dfs,verbose=verbose,keep_temporary=keep_temporary)
 
-    for i in range(len(dfs)):
-        
-        # Make output file names have path to original files as names, replacing
-        # path separators with __ and appending _clean.pdb. This is to make sure
-        # all output file names are unique and can be mapped back to the input 
-        # file names. test/this/out.pdb will be placed in 
-        # out_dir/test__this__out_clean.pdb
-        f = re.sub(os.sep,"__",structure_files[i])
-        f = f"{f}_clean.pdb"
+    # Create a unique output name for each structure file
+    name_mapper = _create_unique_filenames(structure_files)
+
+    # Write out file names. 
+    logger.log(f"Writing output to '{out_dir}'.")
+    for i in range(len(structure_files)):
+
+        f = f"{name_mapper[structure_files[i]]}_clean.pdb"
         f = os.path.join(out_dir,f)
         
         write_pdb(dfs[i],
                   f,
                   bfactor_column="shared_fx",
-                  occ_column="alignment_site")
+                  occ_column="identical_aa")
     
 
     return dfs

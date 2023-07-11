@@ -1,3 +1,6 @@
+"""
+Useful data for manipulating pdb files etc.
+"""
 
 AA = [("A","ALA"),
       ("C","CYS"),
