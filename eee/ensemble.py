@@ -321,6 +321,9 @@ class Ensemble:
         beta = -1/(self._R*T)
         T = mu_dict.pop("_dummy_temperature")
 
+        # Get maximum allowable value for an exponent before an overflow
+        max_into_exponent = np.log(np.finfo("d").max) - 1
+
         # Create pops arrays
         if length == 0:
             pops = np.zeros((1,num_species),dtype=float)
@@ -338,15 +341,30 @@ class Ensemble:
         # Go through each species.
         for i, s in enumerate(self._species):
 
-            # Calculate dG and boltzmann weight
+            # Calculate dG store dG*beta in pops
             dG = self.get_species_dG(name=s,
                                      mut_energy=mut_energy[s],
                                      mu_dict=mu_dict)
-            pops[:,i] = np.exp(dG*beta)
+            pops[:,i] = dG*beta
+
+        # Shift dG*beta so the maximum species for a given condition is
+        # max_into_exponent. This prevents numerical overflows because the max
+        # value will now never be too big. Any values less than this that are 
+        # too small will underflow and go to zero -- which is fine because the
+        # species that went to zero is not populated anyway. (Only way this 
+        # would fail would be if there were like 1e500 states each with prob 
+        # less than 1e-500, such that the aggregate of the low probability 
+        # states can't be neglected. We'd hit other memory problems if someone
+        # tried to run this simulator for such a system...)
+        diff = np.max(pops - max_into_exponent,axis=1)
+        pops = pops - diff[:,None]
+
+        # Take exponential. 
+        pops = np.exp(pops)
 
         # Get partition function
         Q = np.sum(pops,axis=1)
-
+        
         # Start building an output dataframe holding the temperature and 
         # chemical potentials
         out = {}
