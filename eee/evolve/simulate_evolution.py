@@ -7,6 +7,8 @@ from eee.evolve import wright_fisher
 from eee.evolve.fitness import FitnessContainer
 from eee.evolve.genotype import GenotypeContainer
 
+from eee.evolve._helper import check_arg_sanity
+
 import numpy as np
 import pandas as pd
 
@@ -73,75 +75,14 @@ def simulate_evolution(ens,
         and the values are the counts of those genotypes in that generation.
     """
 
-    if not issubclass(type(ens),Ensemble):
-        err = "ens should be an instance of the Ensemble class"
-        raise ValueError(f"\n{err}\n\n")
-    
-    if not issubclass(type(ddg_df),pd.DataFrame):
-        err = "ddg_df should be a pandas dataframe with mutational effects"
-        raise ValueError(f"\n{err}\n\n")
-    
-    if not issubclass(type(mu_dict),dict):
-        err = "mu_dict should be a dictionary of chemical potentials"
-        raise ValueError(f"\n{err}\n\n")
-
-    # Check lengths of mu_dict
-    mu_lengths = []
-    for m in mu_dict:
-        mu_lengths.append(len(mu_dict[m]))
-    mu_lengths = np.unique(mu_lengths)
-    if len(mu_lengths) > 1:
-        err = "All entries in mu_dict must have the same length."
-        raise ValueError(f"\n{err}\n\n")
-    
-    # Check length of fitness_fcns
-    if len(fitness_fcns) != mu_lengths[0]:
-        err = "There must be an entry in fitness_fcns for each condition in\n "
-        err += "mu_dict."
-        raise ValueError(f"\n{err}\n\n")
-    
-    # Make sure all fitness_fcns can be called
-    for f in fitness_fcns:
-        if not callable(f):
-            err = "All entries in fitness_fcns should be functions that take\n"
-            err += "an ensemble observable as their first argument."
-            raise ValueError(f"\n{err}\n\n")
-    
-    # Temperature
-    try:
-        T = float(T)
-        if T <= 0:
-            raise ValueError
-    except ValueError:
-        err = "T (temperature in K) must be a float greater than zero."
-        raise ValueError(f"\n{err}\n\n")
-    
-    # Population size
-    try:
-        population_size = int(population_size)
-        if population_size < 1:
-            raise ValueError
-    except ValueError:
-        err = "population_size must be an integer greater than or equal to 1"
-        raise ValueError(f"\n{err}\n\n")
-
-    # Mutation rate
-    try:
-        mutation_rate = float(mutation_rate)
-        if mutation_rate <= 0:
-            raise ValueError
-    except ValueError:
-        err = "mutation_rate must be a float greater than zero"
-        raise ValueError(f"\n{err}\n\n")
-
-    # Number of generations
-    try:
-        num_generations = int(num_generations)
-        if num_generations < 1:
-            raise ValueError
-    except ValueError:
-        err = "num_generations must be an integer greater than or equal to 1"
-        raise ValueError(f"\n{err}\n\n")
+    check_arg_sanity(ens=ens,
+                     ddg_df=ddg_df,
+                     mu_dict=mu_dict,
+                     fitness_fcns=fitness_fcns,
+                     T=T,
+                     population_size=population_size,
+                     mutation_rate=mutation_rate,
+                     num_generations=num_generations)
 
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.

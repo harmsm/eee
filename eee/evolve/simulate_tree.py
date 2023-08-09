@@ -6,10 +6,11 @@ from eee.evolve.fitness import FitnessContainer
 from eee.evolve.genotype import GenotypeContainer
 from eee.evolve import wright_fisher
 from eee.evolve._helper import get_num_accumulated_mutations
+from eee.evolve._helper import check_arg_sanity
 
 import ete3
-
 import numpy as np
+from tqdm.auto import tqdm
 
 def _simulate_branch(start_node,
                      end_node,
@@ -43,7 +44,8 @@ def _simulate_branch(start_node,
                                     population=start_node.generations[-1],
                                     mutation_rate=mutation_rate,
                                     num_generations=num_generations,
-                                    num_mutations=num_mutations)
+                                    num_mutations=num_mutations,
+                                    disable_status_bar=True)
     
     # record generations, discarding first one because that was the initial generation
     end_node.add_feature("generations",
@@ -63,7 +65,16 @@ def simulate_tree(ens,
                   num_generations=100,
                   burn_in_generations=10):
 
-    tree = ete3.Tree(newick)
+
+    check_arg_sanity(ens=ens,
+                     ddg_df=ddg_df,
+                     mu_dict=mu_dict,
+                     fitness_fcns=fitness_fcns,
+                     T=T,
+                     population_size=population_size,
+                     mutation_rate=mutation_rate,
+                     num_generations=num_generations,
+                     burn_in_generations=burn_in_generations)
 
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.
@@ -79,42 +90,60 @@ def simulate_tree(ens,
     gc = GenotypeContainer(fc=fc,
                            ddg_df=ddg_df)
     
-    # Burn in to generate initial population
-    gc, generations =  wright_fisher(gc=gc,
-                                     population=population_size,
-                                     mutation_rate=mutation_rate,
-                                     num_generations=burn_in_generations)
-
-
+    # Get length of sequence for branch length to number of mutations calc
     sequence_length = len(gc.wt_sequence)
-    
-    root = tree.get_tree_root()
-    root.add_feature("generations",generations[:])
 
+    # Load tree
+    tree = ete3.Tree(newick)
+
+    # Figure out the number of branches for the status bar
+    total_branches = 1
     for n in tree.traverse(strategy="levelorder"):
-        
         if not n.is_leaf():
+            total_branches += 2
+
+    pbar = tqdm(total=total_branches)
+
+    with pbar:
+
+        # Burn in to generate initial population
+        gc, generations = wright_fisher(gc=gc,
+                                        population=population_size,
+                                        mutation_rate=mutation_rate,
+                                        num_generations=burn_in_generations,
+                                        disable_status_bar=True)
+        pbar.update(n=1)
+
+        # Get the tree root and append the generations from the burn in.
+        root = tree.get_tree_root()
+        root.add_feature("generations",generations[:])
+
+        for n in tree.traverse(strategy="levelorder"):
             
-            # Get descendants
-            left, right = n.get_children()
+            if not n.is_leaf():
+                
+                # Get descendants
+                left, right = n.get_children()
 
-            # Simulate evolution from n to left descendant. (implicitly updates
-            # gc and left node)
-            _simulate_branch(start_node=n,
-                             end_node=left,
-                             gc=gc,
-                             seq_length=sequence_length,
-                             mutation_rate=mutation_rate,
-                             num_generations=num_generations)
+                # Simulate evolution from n to left descendant. (implicitly updates
+                # gc and left node)
+                _simulate_branch(start_node=n,
+                                end_node=left,
+                                gc=gc,
+                                seq_length=sequence_length,
+                                mutation_rate=mutation_rate,
+                                num_generations=num_generations)
+                pbar.update(n=1)
 
-            # Simulate evolution from n to right descendent. (implicitly updates
-            # gc and right node)
-            _simulate_branch(start_node=n,
-                             end_node=right,
-                             gc=gc,
-                             seq_length=sequence_length,
-                             mutation_rate=mutation_rate,
-                             num_generations=num_generations)
+                # Simulate evolution from n to right descendent. (implicitly updates
+                # gc and right node)
+                _simulate_branch(start_node=n,
+                                end_node=right,
+                                gc=gc,
+                                seq_length=sequence_length,
+                                mutation_rate=mutation_rate,
+                                num_generations=num_generations)
+                pbar.update(n=1)
 
 
     return gc, tree

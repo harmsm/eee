@@ -4,16 +4,20 @@ Run a Wright-Fisher simulation given an ensemble.
 
 from eee.evolve.genotype import GenotypeContainer
 from eee.evolve._helper import get_num_accumulated_mutations
+from eee.evolve._helper import MockTqdm
 
 import numpy as np
 from tqdm.auto import tqdm
+
+import warnings
 
 
 def wright_fisher(gc,
                   population,
                   mutation_rate,
                   num_generations,
-                  num_mutations=None):
+                  num_mutations=None,
+                  disable_status_bar=False):
     """
     Run a Wright-Fisher simulation. This is a relatively low-level function. 
     Most users should probably call this via other simulation functions like
@@ -42,7 +46,9 @@ def wright_fisher(gc,
     num_mutations : int, optional
         stop the simulation after the most frequent genotype has num_mutations 
         mutations. Should be >= 1. If specified, the simulation will run until
-        either num_mutations is reached OR the simulation hits num_generations. 
+        either num_mutations is reached OR the simulation hits num_generations.
+    disable_status_bar : bool, default=False
+        turn off the tqdm status bar for the calculation 
     
     Returns
     -------
@@ -101,11 +107,14 @@ def wright_fisher(gc,
         err = "\nmutation_rate should be a float > 0\n\n"
         raise ValueError(err)
     
+    # Convergence assumed unless num_mutations is defined
+    success = True
     if num_generations < 1:
         err = "\nnum_generations should be an integer >= 1\n\n"
         raise ValueError(err)
     
     if num_mutations is not None:
+        success = False
         if num_mutations < 1:
             err = "\nIf specified, num_mutations should be an integer >= 1\n\n"
             raise ValueError(err)
@@ -117,60 +126,86 @@ def wright_fisher(gc,
     seen, counts = np.unique(population,return_counts=True)
     generations = [(seen,counts)]
 
-    # Current population as a vector with individual genotypes.
-    for _ in tqdm(range(1,num_generations)):
+    
 
-        # Get the probability of each genotype: it's frequency times its 
-        # relative fitness. Get the current genotypes and their counts from the
-        # last generation recorded
-        current_genotypes, counts = generations[-1]
-        prob = np.array([gc.fitnesses[g] for g in current_genotypes])
-        prob = prob*counts
-        
-        # If total prob is zero, give all equal weights. (edge case -- all 
-        # genotypes equally terrible)
-        if np.sum(prob) == 0:
-           prob = np.ones(population_size)
+    # Turn off status bar if requested
+    if disable_status_bar:
+        pbar = MockTqdm(total=num_generations-1)
+    else:
+        pbar = tqdm(total=num_generations-1)
 
-        # Calculate relative probability
-        prob = prob/np.sum(prob)
+    with pbar:
+    
+        for _ in range(1,num_generations):
 
-        # Select offspring, with replacement weighted by prob
-        population = np.random.choice(current_genotypes,
-                                      size=population_size,
-                                      p=prob,
-                                      replace=True)
-
-        # Introduce mutations
-        num_to_mutate = np.random.poisson(expected_num_mutations)
-
-        # If we have a ridiculously high mutation rate, do not mutate each
-        # genotype more than once.
-        if num_to_mutate > population_size:
-            num_to_mutate = population_size
-
-        # Mutate first num_to_mutate population members
-        for j in range(num_to_mutate):
-
-            # Generate a new mutant with a new index, then store that new index
-            # in the population. 
-            new_index = gc.mutate(index=population[j])        
-            population[j] = new_index
-
-        # Record populations
-        seen, counts = np.unique(population,return_counts=True)
-        generations.append((seen,counts))
-
-        # If we are checking for number of mutations, check to see what the 
-        # number of mutations is in the most frequent genotype. If that has 
-        # greater than or equal to num_mutations, break. 
-        if num_mutations is not None:
-            num_mutations_seen = get_num_accumulated_mutations(seen=seen,
-                                                               counts=counts,
-                                                               gc=gc)
+            # Get the probability of each genotype: it's frequency times its 
+            # relative fitness. Get the current genotypes and their counts from the
+            # last generation recorded
+            current_genotypes, counts = generations[-1]
+            prob = np.array([gc.fitnesses[g] for g in current_genotypes])
+            prob = prob*counts
             
-            if num_mutations_seen >= num_mutations:
-                break
+            # If total prob is zero, give all equal weights. (edge case -- all 
+            # genotypes equally terrible)
+            if np.sum(prob) == 0:
+                prob = np.ones(population_size)
+
+            # Calculate relative probability
+            prob = prob/np.sum(prob)
+
+            # Select offspring, with replacement weighted by prob
+            population = np.random.choice(current_genotypes,
+                                        size=population_size,
+                                        p=prob,
+                                        replace=True)
+
+            # Introduce mutations
+            num_to_mutate = np.random.poisson(expected_num_mutations)
+
+            # If we have a ridiculously high mutation rate, do not mutate each
+            # genotype more than once.
+            if num_to_mutate > population_size:
+                num_to_mutate = population_size
+
+            # Mutate first num_to_mutate population members
+            for j in range(num_to_mutate):
+
+                # Generate a new mutant with a new index, then store that new index
+                # in the population. 
+                new_index = gc.mutate(index=population[j])        
+                population[j] = new_index
+
+            # Record populations
+            seen, counts = np.unique(population,return_counts=True)
+            generations.append((seen,counts))
+
+            # If we are checking for number of mutations, check to see what the 
+            # number of mutations is in the most frequent genotype. If that has 
+            # greater than or equal to num_mutations, break. 
+            if num_mutations is not None:
+                num_mutations_seen = get_num_accumulated_mutations(seen=seen,
+                                                                   counts=counts,
+                                                                   gc=gc)
+                
+                if num_mutations_seen >= num_mutations:
+                    success = True
+                    break
+            
+            pbar.update(n=1)
+
+    # Warn if we did not get all of the requested mutations
+    if not success:
+        seen = generations[-1][0]
+        counts = generations[-1][1]
+    
+        num_accum = get_num_accumulated_mutations(seen=seen,
+                                                  counts=counts,
+                                                  gc=gc)
+        
+        w = f"\n\nDid not accumulate requested number of mutations after {num_generations}\n"
+        w += f"generations. Accumulated {num_accum} of {num_mutations} requested.\n"
+        w += "Try increasing num_generations and/or mutation_rate.\n\n"
+        warnings.warn(w)
 
     generations = [dict(zip(*g)) for g in generations]
 
