@@ -2,89 +2,131 @@
 Functions to run a Wright-Fisher simulation given an ensemble.
 """
 
-from eee.evolve import Genotype
+from eee.evolve import GenotypeContainer
 
 import numpy as np
 from tqdm.auto import tqdm
 
-class EvolutionResults:
-    """
-    Container class with attributes holding results of the simulation. 
-    """
 
-    def __init__(self,
-                 genotypes,
-                 trajectories,
-                 fitnesses,
-                 generations):
-        
-        self.genotypes = genotypes
-        self.trajectories = trajectories
-        self.fitnesses = fitnesses
-        self.generations = generations
-
-
-def wright_fisher(ens,
-                  ddg_dict,
-                  fc,
-                  population_size,
+def wright_fisher(gc,
+                  population,
                   mutation_rate,
                   num_generations):
     """
+    Run a Wright-Fisher simulation. This is a relatively low-level function. 
+    Most users should probably call this via other simulation functions. 
     
+    Parameters
+    ----------
+    gc : GenotypeContainer
+        container holding genotypes with either a wildtype sequence or a 
+        sequences from a previous evolutionary simulation. This will bring in 
+        everything we need to calculate fitness of each genotype. 
+    population : dict, list-like, or int
+        population for the simulation. Can be a dictionary of populations where
+        keys are genotypes and values are populations. Can be an array where the
+        length is the total population size and the values are the genotypes. 
+        {5:2,4:1,0:2} is equivalent to [5,5,4,0,0]. If an integer, interpret as
+        the population size. Create an initial population consisting of all 
+        wildtype.
+    mutation_rate : float
+        Lambda for poisson distribution to select the number of genotypes to 
+        mutate at each generation. Should be >= 0. 
+    num_generations : int
+        number of generations to run the simulation. Should be >= 1. 
+    
+    Returns
+    -------
+    gc : GenotypeContainer
+        updated GenotypeContainer holding all new genotypes that appeared over 
+        the simulation
+    generations : list
+        list of dicts where each entry in the list is a generation. each dict
+        holds the population at that generation with keys as genotypes and 
+        values as populations. 
     """
 
-    # genotypes: list of genotypes seen over simulation. entries are 
-    #                instances of Genotype class
-    # trajectories : list of list. each entry is a genotype (matches 
-    #                genotypes) showing the evolutionary history of that 
-    #                genotype
-    # fitnesses : list of float. fitness for each genotype (matches 
-    #             genotypes)
-    # generations: list of dicts, where each list entry is a generation. Each
-    #              dict keys indexes in genotypes to the population of
-    #              that genotype at that generation. 
+    if not issubclass(type(gc),GenotypeContainer):
+        err = "\ngc should be a GenotypeContainer instance.\n\n"
+        raise ValueError(err)
 
+    parse_err = \
+    """
+    population should be a population dictionary, array of genotype indexes,
+    or a positive integer indicating the population size.
+    """
 
-    # Convert the ddg dataframe into a dictionary of the form: 
-    # ddg_dict[site][mutation_at_site][conformation_in_ensemble]
+    if hasattr(population,"__iter__"):
 
-    # Create wildtype genotype
-    wt = Genotype(ens,ddg_dict)
+        # If someone passes in something like {5:10,8:40,9:1}, where keys are 
+        # genotype indexes and values are population size, expand to a list of 
+        # genotypes
+        if issubclass(type(population),dict):
+            _population = []
+            for p in population:
+                _population.extend([p for _ in range(population[p])])
+            population = _population
+
+        # Make sure population is a numpy array, whether passed in by user as 
+        # a list or from the list built from _population above. 
+        population = np.array(population,dtype=int)
+        population_size = len(population)
+
+    else:
+
+        # Get the population size
+        try:
+            population_size = int(population)
+        except (ValueError,TypeError):
+            raise(parse_err)
+        
+        # Build a population of all wildtype
+        population = np.zeros(population_size,dtype=int)
+            
+    # Check for sane population size
+    if population_size < 1:
+        raise ValueError(parse_err)
+    
+    # Check for sane mutation rate
+    if mutation_rate < 0:
+        err = "\nmutation_rate should be a float > 0\n\n"
+        raise ValueError(err)
+    
+    if num_generations < 1:
+        err = "\nnum_generations should be an integer >= 1\n\n"
+        raise ValueError(err)
 
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
 
-    # Lists of genotypes trajectories, and fitnesses. These all have the same
-    # index scheme
-    genotypes = [wt]
-    trajectories = [[0]]
-    fitnesses = [fc.fitness(wt.mut_energy)]
-
     # Dictionary of genotype populations
-    generations = [{0:population_size}]
+    seen, counts = np.unique(population,return_counts=True)
+    generations = [(seen,counts)]
 
     # Current population as a vector with individual genotypes.
-    current_pop = np.zeros(population_size,dtype=int)
-    for i in tqdm(range(1,num_generations)):
+    for _ in tqdm(range(1,num_generations)):
 
-        # Get fitness values for all genotypes in the population
-        prob = np.array([fitnesses[g] for g in current_pop])
+        # Get the probability of each genotype: it's frequency times its 
+        # relative fitness. Get the current genotypes and their counts from the
+        # last generation recorded
+        current_genotypes, counts = generations[-1]
+        prob = np.array([gc.fitnesses[g] for g in current_genotypes])
+        prob = prob*counts
         
         # If total prob is zero, give all equal weights. (edge case -- all 
         # genotypes equally terrible)
         if np.sum(prob) == 0:
-            prob = np.ones(population_size)
+           prob = np.ones(population_size)
 
         # Calculate relative probability
         prob = prob/np.sum(prob)
 
         # Select offspring, with replacement weighted by prob
-        current_pop = np.random.choice(current_pop,
-                                       size=population_size,
-                                       p=prob,
-                                       replace=True)
-        
+        population = np.random.choice(current_genotypes,
+                                      size=population_size,
+                                      p=prob,
+                                      replace=True)
+
         # Introduce mutations
         num_to_mutate = np.random.poisson(expected_num_mutations)
 
@@ -96,38 +138,15 @@ def wright_fisher(ens,
         # Mutate first num_to_mutate population members
         for j in range(num_to_mutate):
 
-            # Genotype to mutate
-            old_genotype = genotypes[current_pop[j]]
-
-            # Create a new genotype and mutate
-            new_genotype = old_genotype.copy()
-            new_genotype.mutate()
-            
-            # Get index for new genotype
-            new_index = len(genotypes)
-
-            # Replace genotype "j" with the index of the new genotype in the 
-            # population            
-            current_pop[j] = new_index
-
-            # Record the new genotype
-            genotypes.append(new_genotype)
-
-            # Record the trajectory of the current genotype
-            new_trajectory = trajectories[j][:]
-            new_trajectory.append(new_index)
-            trajectories.append(new_trajectory)
-            
-            fitnesses.append(fc.fitness(new_genotype.mut_energy))
+            # Generate a new mutant with a new index, then store that new index
+            # in the population. 
+            new_index = gc.mutate(index=population[j])        
+            population[j] = new_index
 
         # Record populations
-        seen, counts = np.unique(current_pop,return_counts=True)
-        generations.append(dict(zip(seen,counts)))
+        seen, counts = np.unique(population,return_counts=True)
+        generations.append((seen,counts))
 
-    return EvolutionResults(genotypes=genotypes,
-                            trajectories=trajectories,
-                            fitnesses=fitnesses,
-                            generations=generations)
-   
-        
+    generations = [dict(zip(*g)) for g in generations]
 
+    return gc, generations

@@ -117,3 +117,54 @@ def fitness_function(ens,
                              fitness_kwargs=fitness_kwargs,
                              T=T)
 
+
+class FitnessContainer:
+    """
+    Convenience class used in evolutionary simulations. Holds onto fixed 
+    aspects of the fitness (ensemble, chemical potentials, fitness functions,
+    and temperature), allowing us to calculate fitness given only the 
+    mut_energy of a particular gentoype. 
+    """
+    def __init__(self,
+                 ens,
+                 mu_dict,
+                 fitness_fcns,
+                 select_on="fx_obs",
+                 fitness_kwargs={},
+                 T=298.15):
+        """
+        See eee.evolve.fitness_function docstring for information on arguments.
+        """
+        
+        self._ens = ens
+        self._mu_dict = mu_dict
+        self._fitness_fcns = fitness_fcns
+        self._select_on = select_on
+        self._fitness_kwargs = fitness_kwargs
+        self._T = T
+
+    def fitness(self,mut_energy):
+        """
+        Calculate the fitness of a genotype with total mutational energies 
+        given by mut_dict. Fitness is defined as the product of the fitness 
+        in each of the conditions specified in mu_dict. 
+        """
+        
+        F = _fitness_function(ens=self._ens,
+                              mut_energy=mut_energy,
+                              mu_dict=self._mu_dict,
+                              fitness_fcns=self._fitness_fcns,
+                              select_on=self._select_on,
+                              fitness_kwargs=self._fitness_kwargs,
+                              T=self._T)
+ 
+        return np.prod(F)
+    
+    @property
+    def ens(self):
+        return self._ens
+
+    @property
+    def T(self):
+        return self._T
+

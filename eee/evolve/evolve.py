@@ -1,76 +1,31 @@
 
 from eee.ensemble import Ensemble
 from eee.evolve import wright_fisher
-from eee.evolve.fitness import _fitness_function
+from eee.evolve.fitness import FitnessContainer
+from eee.evolve import GenotypeContainer
 
 import numpy as np
 import pandas as pd
 
-def _create_ddg_dict(ddg_df):
+
+class EvolutionResults:
     """
-    Convert a ddg_df dataframe in to a dictionary of the form:
-    
-    ddg_dict["site"]["mut"]["species"]
+    Container class with attributes holding results of the simulation. 
     """
 
-    ddg_dict = {}
-    for i in ddg_df.index:
-        row = ddg_df.loc[i,:]
-        
-        site = row["site"]
-        mut = row["mut"]
-        if site not in ddg_dict:
-            ddg_dict[site] = {}
-            
-        ddg_dict[site][mut] = {}
-        for k in row.keys()[1:-2]:
-            ddg_dict[site][mut][k] = row[k]
-
-    return ddg_dict
-
-
-class FitnessContainer:
-    """
-    Convenience class used in evolutionary simulations. Holds onto fixed 
-    aspects of the fitness (ensemble, chemical potentials, fitness functions,
-    and temperature), allowing us to calculate fitness given only the 
-    mut_energy of a particular gentoype. 
-    """
     def __init__(self,
-                 ens,
-                 mu_dict,
-                 fitness_fcns,
-                 select_on="fx_obs",
-                 fitness_kwargs={},
-                 T=298.15):
-        """
-        See eee.evolve.fitness_function docstring for information on arguments.
-        """
+                 genotypes,
+                 trajectories,
+                 fitnesses,
+                 generations):
         
-        self._ens = ens
-        self._mu_dict = mu_dict
-        self._fitness_fcns = fitness_fcns
-        self._select_on = select_on
-        self._fitness_kwargs = fitness_kwargs
-        self._T = T
+        self.genotypes = genotypes
+        self.trajectories = trajectories
+        self.fitnesses = fitnesses
+        self.generations = generations
 
-    def fitness(self,mut_energy):
-        """
-        Calculate the fitness of a genotype with total mutational energies 
-        given by mut_dict. Fitness is defined as the product of the fitness 
-        in each of the conditions specified in mu_dict. 
-        """
-        
-        F = _fitness_function(ens=self._ens,
-                              mut_energy=mut_energy,
-                              mu_dict=self._mu_dict,
-                              fitness_fcns=self._fitness_fcns,
-                              select_on=self._select_on,
-                              fitness_kwargs=self._fitness_kwargs,
-                              T=self._T)
 
-        return np.prod(F)
-    
+
 
 def simulate_evolution(ens,
                        ddg_df,
@@ -210,9 +165,6 @@ def simulate_evolution(ens,
         err = "num_generations must be an integer greater than or equal to 1"
         raise ValueError(f"\n{err}\n\n")
 
-    # Create a dictionary of mutational effects 
-    ddg_dict = _create_ddg_dict(ddg_df)
-
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.
     fc = FitnessContainer(ens=ens,
@@ -222,14 +174,22 @@ def simulate_evolution(ens,
                           fitness_kwargs=fitness_kwargs,
                           T=T)
     
-    # Run and return a Wright Fisher simulation.
-    out =  wright_fisher(ens=ens,
-                         ddg_dict=ddg_dict,
-                         fc=fc,
-                         population_size=population_size,
-                         mutation_rate=mutation_rate,
-                         num_generations=num_generations)
+    # Build a GenotypeContainer object which manages the genotypes over the 
+    # simulation
+    gc = GenotypeContainer(fc=fc,
+                           ddg_df=ddg_df)
     
-    return out
+    # Run and return a Wright Fisher simulation.
+    gc, generations =  wright_fisher(gc=gc,
+                                     population=population_size,
+                                     mutation_rate=mutation_rate,
+                                     num_generations=num_generations)
+    
+
+    return EvolutionResults(genotypes=gc.genotypes,
+                            trajectories=gc.trajectories,
+                            fitnesses=gc.fitnesses,
+                            generations=generations)
+
 
 

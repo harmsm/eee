@@ -1,5 +1,5 @@
 
-from .genotype import Genotype
+from .genotype import GenotypeContainer
 from .fitness import fitness_function
 from .fitness import ff_off
 from .fitness import ff_on
