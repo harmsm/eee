@@ -116,7 +116,7 @@ def extract_alignment(gc,tree,include_ancestors=False):
             this_seq = wt_seq[:]
 
             # Get most common genotype in the last generation
-            genotype, count = get_most_common(n.generations[-1])
+            genotype, _ = get_most_common(n.generations[-1])
 
             # Update this_seq with the mutations present in that genotype
             for m in gc.genotypes[genotype].mutations:

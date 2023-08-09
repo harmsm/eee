@@ -3,6 +3,7 @@ Run a Wright-Fisher simulation given an ensemble.
 """
 
 from eee.evolve.genotype import GenotypeContainer
+from eee.evolve._helper import get_num_accumulated_mutations
 
 import numpy as np
 from tqdm.auto import tqdm
@@ -11,7 +12,8 @@ from tqdm.auto import tqdm
 def wright_fisher(gc,
                   population,
                   mutation_rate,
-                  num_generations):
+                  num_generations,
+                  num_mutations=None):
     """
     Run a Wright-Fisher simulation. This is a relatively low-level function. 
     Most users should probably call this via other simulation functions like
@@ -34,7 +36,13 @@ def wright_fisher(gc,
         Lambda for poisson distribution to select the number of genotypes to 
         mutate at each generation. Should be >= 0. 
     num_generations : int
-        number of generations to run the simulation. Should be >= 1. 
+        number of generations to run the simulation. Should be >= 1. If 
+        num_mutations is specified, this is the *maximum* number of generations 
+        allowed. 
+    num_mutations : int, optional
+        stop the simulation after the most frequent genotype has num_mutations 
+        mutations. Should be >= 1. If specified, the simulation will run until
+        either num_mutations is reached OR the simulation hits num_generations. 
     
     Returns
     -------
@@ -96,6 +104,11 @@ def wright_fisher(gc,
     if num_generations < 1:
         err = "\nnum_generations should be an integer >= 1\n\n"
         raise ValueError(err)
+    
+    if num_mutations is not None:
+        if num_mutations < 1:
+            err = "\nIf specified, num_mutations should be an integer >= 1\n\n"
+            raise ValueError(err)
 
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
@@ -147,6 +160,17 @@ def wright_fisher(gc,
         # Record populations
         seen, counts = np.unique(population,return_counts=True)
         generations.append((seen,counts))
+
+        # If we are checking for number of mutations, check to see what the 
+        # number of mutations is in the most frequent genotype. If that has 
+        # greater than or equal to num_mutations, break. 
+        if num_mutations is not None:
+            num_mutations_seen = get_num_accumulated_mutations(seen=seen,
+                                                               counts=counts,
+                                                               gc=gc)
+            
+            if num_mutations_seen >= num_mutations:
+                break
 
     generations = [dict(zip(*g)) for g in generations]
 

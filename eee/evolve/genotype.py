@@ -40,6 +40,7 @@ class Genotype:
                  ddg_dict,
                  sites=None,
                  mutations=None,
+                 mutations_accumulated=None,
                  mut_energy=None):
         """
         Initialize instance.
@@ -53,7 +54,12 @@ class Genotype:
         sites : list, optional
             list of sites that already have mutations
         mutations : list, optional
-            list of mutations in the genotype
+            list of mutations to the genotype in an absolute Hamming distance 
+            sense relative to wildtype. There is guaranteed to be a single 
+            mutation at each site in this list. 
+        mutations_accumulated : list, optional
+            list of all mutations that have occurred to this genotype, in order, 
+            over its history
         mut_energy : dict, optional
             dictionary (keyed to species) holding the total energetic effects
             of all mutations
@@ -75,6 +81,12 @@ class Genotype:
         else:
             self._mutations = copy.deepcopy(mutations)
 
+        # Mutations is a new copy. 
+        if mutations_accumulated is None:
+            self._mutations_accumulated = []
+        else:
+            self._mutations_accumulated = copy.deepcopy(mutations_accumulated)
+
         # mut_energy is a new copy. 
         if mut_energy is None:
             self._mut_energy = {}
@@ -95,6 +107,7 @@ class Genotype:
                         self._ddg_dict,
                         sites=self._sites,
                         mutations=self._mutations,
+                        mutations_accumulated=self._mutations_accumulated,
                         mut_energy=self._mut_energy)
 
 
@@ -139,19 +152,43 @@ class Genotype:
             self._sites.append(site)
             self._mutations.append(mutation)
 
+            # This was a mutation from the previous mutation state to the new 
+            # state. Change mutation string to indicate
+            final_mut_name = mutation[:]
+            if prev_mut is not None:
+                final_mut_name = f"{prev_mut[-1]}{mutation[1:]}"
+        
+        else:
+            # This was a reversion, update the mutation string to indicate this
+            final_mut_name = f"{mutation[-1]}{mutation[1:-1]}{mutation[0]}"
+        
+        # Record mutation that occurred (new site, change at existing site, 
+        # reversion at site)
+        self._mutations_accumulated.append(final_mut_name)
+
+
     @property
     def sites(self):
         """
-        List of sites that are mutated relative to wildtype.
+        List of sites that are mutated relative to wildtype. Index synced with
+        mutations.
         """
         return self._sites
 
     @property
     def mutations(self):
         """
-        List of mutations in this genotype relative to wildtype.
+        List of mutations in this genotype relative to wildtype. Index synced
+        with sites.
         """
         return self._mutations
+    
+    @property
+    def mutations_accumulated(self):
+        """
+        List of all mutations in the order they occurred.
+        """
+        return self._mutations_accumulated
 
     @property
     def mut_energy(self):
