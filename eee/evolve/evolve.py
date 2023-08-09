@@ -1,3 +1,6 @@
+"""
+Simulate a simple evolutionary trajectory.
+"""
 
 from eee.ensemble import Ensemble
 from eee.evolve import wright_fisher
@@ -6,25 +9,6 @@ from eee.evolve import GenotypeContainer
 
 import numpy as np
 import pandas as pd
-
-
-class EvolutionResults:
-    """
-    Container class with attributes holding results of the simulation. 
-    """
-
-    def __init__(self,
-                 genotypes,
-                 trajectories,
-                 fitnesses,
-                 generations):
-        
-        self.genotypes = genotypes
-        self.trajectories = trajectories
-        self.fitnesses = fitnesses
-        self.generations = generations
-
-
 
 
 def simulate_evolution(ens,
@@ -76,23 +60,17 @@ def simulate_evolution(ens,
 
     Returns
     -------
-    out : EvolutionResults
-        The EvolutionResults class has four attributes. 
-
-        + out.genotypes:  all genotypes seen (as Genotype instances).
-
-        + out.trajectories: the trajectory taken by each genotype. Each entry
-          is a list of steps taken to get to that genotype, where the steps are
-          integer indexes pointing to out.genotype. A trajectory of [0,10,48]
-          means the genotype started as out.genotypes[0], became
-          out.genotypes[10], then finally out.genotypes[48].
-          
-        + out.fitnesses holds the absolute fitness of each genotype.
-
-        + out.generations is a list of dictionaries, with one entry per step 
-          of the simulation. For each generation, the dictionary keys are the
-          genotypes (e.g., 0, 11, 48) and the values are the counts of those
-          genotypes in that generation.
+    gc : GenotypeContainer
+        This object holds information about the genotypes seen over the 
+        simulation. Key attributes include out.genotypes (all genotypes seen
+        as Genotype instances), out.trajectories (list of mutations that 
+        occurred to get to the specific genotype), and out.fitnesses 
+        (absolute fitness of each genotype). See the GenotypeContainer docstring
+        for more details.
+    generations : list
+        list of dictionaries, with one entry per step of the simulation. For
+        each generation, the dictionary keys are the genotypes (e.g., 0, 11, 48)
+        and the values are the counts of those genotypes in that generation.
     """
 
     if not issubclass(type(ens),Ensemble):
@@ -185,11 +163,10 @@ def simulate_evolution(ens,
                                      mutation_rate=mutation_rate,
                                      num_generations=num_generations)
     
+    return gc, generations
 
-    return EvolutionResults(genotypes=gc.genotypes,
-                            trajectories=gc.trajectories,
-                            fitnesses=gc.fitnesses,
-                            generations=generations)
+
+
 
 
 
