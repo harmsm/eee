@@ -290,5 +290,17 @@ class GenotypeContainer:
         
         return pd.DataFrame(out)
 
+    @property
+    def wt_sequence(self):
+        """
+        Wildtype protein sequence (extracted from possible mutations).
+        """
+
+        wt = []
+        for s in self._possible_sites:
+            wt.append(self._mutations_at_sites[s][0][0])
+
+        return "".join(wt)
+
 
     

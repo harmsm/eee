@@ -1,6 +1,6 @@
 """
-Functions for calculating fitness from an ensemble during an evolutionary 
-simulation. 
+Functions and classes for calculating fitness from an ensemble during an
+evolutionary simulation. 
 """
 
 import numpy as np

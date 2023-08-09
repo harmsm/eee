@@ -5,7 +5,7 @@ Simulate a simple evolutionary trajectory.
 from eee.ensemble import Ensemble
 from eee.evolve import wright_fisher
 from eee.evolve.fitness import FitnessContainer
-from eee.evolve import GenotypeContainer
+from eee.evolve.genotype import GenotypeContainer
 
 import numpy as np
 import pandas as pd

@@ -1,8 +1,8 @@
 """
-Functions to run a Wright-Fisher simulation given an ensemble.
+Run a Wright-Fisher simulation given an ensemble.
 """
 
-from eee.evolve import GenotypeContainer
+from eee.evolve.genotype import GenotypeContainer
 
 import numpy as np
 from tqdm.auto import tqdm
@@ -14,7 +14,8 @@ def wright_fisher(gc,
                   num_generations):
     """
     Run a Wright-Fisher simulation. This is a relatively low-level function. 
-    Most users should probably call this via other simulation functions. 
+    Most users should probably call this via other simulation functions like
+    simulate_evolution and simulate_tree. 
     
     Parameters
     ----------
