@@ -3,6 +3,12 @@ Functions and classes for calculating fitness from an ensemble during an
 evolutionary simulation. 
 """
 
+from eee._private.check.eee_variables import check_calc_params
+from eee._private.check.ensemble import check_ensemble
+from eee._private.check.eee_variables import check_fitness_fcns
+from eee._private.check.eee_variables import check_mu_dict
+from eee._private.check.eee_variables import check_mut_energy
+
 import numpy as np
 
 def ff_on(value):
@@ -33,9 +39,12 @@ def _fitness_function(ens,
     
     num_conditions = len(fitness_fcns)
 
+    state = ens.do_arg_checking
+    ens.do_arg_checking = False
     values = ens.get_obs(mut_energy=mut_energy,
                          mu_dict=mu_dict,
                          T=T)
+    ens.do_arg_checking = state
     
     all_F = np.zeros(num_conditions)
     for i in range(num_conditions):
@@ -90,19 +99,11 @@ def fitness_function(ens,
         float numpy array with one fitness per condition. 
     """
 
-    num_conditions = len(mu_dict[list(mu_dict.keys())[0]])
-
-    if len(fitness_fcns) != num_conditions:
-        err = "fitness should be the same length as the number of conditions\n"
-        err += "in mu_dict.\n"
-        raise ValueError(err)
-
-    for f in fitness_fcns:
-        if not callable(f):
-            err = "Elements of the fitness vector must all be functions that\n"
-            err += "take the values specified in `select_on` as inputs and\n"
-            err += "return the absolute fitness.\n"
-            raise ValueError(err)
+    ens = check_ensemble(ens)
+    mut_energy = check_mut_energy(mut_energy)
+    mu_dict = check_mu_dict(mu_dict)
+    fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
+    check_calc_params(T=T)
         
     if select_on not in ["fx_obs","dG_obs"]:
         err = "select_on should be either fx_obs or dG_obs\n"
@@ -135,6 +136,15 @@ class FitnessContainer:
         See eee.evolve.fitness_function docstring for information on arguments.
         """
         
+        ens = check_ensemble(ens)
+        mu_dict = check_mu_dict(mu_dict)
+        fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
+        check_calc_params(T=T)
+    
+        if select_on not in ["fx_obs","dG_obs"]:
+            err = "select_on should be either fx_obs or dG_obs\n"
+            raise ValueError(err)
+
         self._ens = ens
         self._mu_dict = mu_dict
         self._fitness_fcns = fitness_fcns

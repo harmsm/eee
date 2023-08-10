@@ -1,12 +1,17 @@
 """
 Simulate evolution of an ensemble along an evolutionary tree. 
 """
-from eee.ensemble import Ensemble
+
 from eee.evolve.fitness import FitnessContainer
 from eee.evolve.genotype import GenotypeContainer
 from eee.evolve import wright_fisher
 from eee.evolve._helper import get_num_accumulated_mutations
-from eee.evolve._helper import check_arg_sanity
+
+from eee._private.check.ensemble import check_ensemble
+from eee._private.check.eee_variables import check_ddg_df
+from eee._private.check.eee_variables import check_mu_dict
+from eee._private.check.eee_variables import check_fitness_fcns
+from eee._private.check.eee_variables import check_calc_params
 
 import ete3
 import numpy as np
@@ -66,15 +71,16 @@ def simulate_tree(ens,
                   burn_in_generations=10):
 
 
-    check_arg_sanity(ens=ens,
-                     ddg_df=ddg_df,
-                     mu_dict=mu_dict,
-                     fitness_fcns=fitness_fcns,
-                     T=T,
-                     population_size=population_size,
-                     mutation_rate=mutation_rate,
-                     num_generations=num_generations,
-                     burn_in_generations=burn_in_generations)
+    ens = check_ensemble(ens,check_obs=True)
+    ddg_df = check_ddg_df(ddg_df)
+    mu_dict = check_mu_dict(mu_dict)
+    fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
+    
+    check_calc_params(T=T,
+                      population_size=population_size,
+                      mutation_rate=mutation_rate,
+                      num_generations=num_generations,
+                      burn_in_generations=burn_in_generations)
 
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.

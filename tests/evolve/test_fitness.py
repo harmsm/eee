@@ -1,4 +1,6 @@
 
+from eee import Ensemble
+
 from eee.evolve.fitness import ff_on
 from eee.evolve.fitness import ff_off
 from eee.evolve.fitness import _fitness_function
@@ -18,7 +20,24 @@ def test_ff_off():
 
 
 def test__fitness_function():
-    pass
+    
+    # One observable, one not
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False)
+    
+    mut_energy = {"test1":0,
+                  "test2":0}
+    mu_dict = {"X":[0,1]}
+
+    # _fitness_function(ens=ens,
+    #                   mut_energy=mut_energy,
+    #                   mu_dict=mu_dict)
+
+
 
 def test_fitness_function():
     pass

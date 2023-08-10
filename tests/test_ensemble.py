@@ -1,47 +1,9 @@
 import pytest
 
-from eee.ensemble import _array_expander
 from eee.ensemble import Ensemble
 
 import numpy as np
 import pandas as pd
-
-def test__array_expander():
-
-    out, length = _array_expander({})
-    assert issubclass(type(out),dict)
-    assert length == 0
-
-    out, length = _array_expander([])
-    assert issubclass(type(out),list)
-    assert length == 0
-
-    # Multiple lengths
-    with pytest.raises(ValueError):
-        _array_expander([[1,2],[1]])
-
-    # Multiple lengths
-    with pytest.raises(ValueError):
-        _array_expander({"test":[1,2],"this":[1]})
-
-    out, length = _array_expander([[1,2],1])
-    assert issubclass(type(out),list)
-    assert length == 2
-    assert np.array_equal(out[0],[1,2])
-    assert np.array_equal(out[1],[1,1])
-
-    out, length = _array_expander({"test":[1,2],"this":1})
-    assert issubclass(type(out),dict)
-    assert length == 2
-    assert np.array_equal(out["test"],[1,2])
-    assert np.array_equal(out["this"],[1,1])
-    
-    with pytest.raises(TypeError):
-        out, length = _array_expander(1)
-    
-    out, length = _array_expander([1,2,3])
-    assert np.array_equal(out,[1,2,3])
-    assert length == 0
 
 
 def test_Ensemble():
@@ -196,8 +158,9 @@ def test_Ensemble_get_species_dG(variable_types):
     for v in variable_types["dict"]:
         print(v,type(v))
         ens = Ensemble()
-        ens.add_species(name="test")
-        ens.get_species_dG(name="test",mu_dict=v)
+        ens.add_species(name="test1")
+        ens.add_species(name="test2",observable=True)
+        ens.get_obs(mu_dict=v)
 
     for v in variable_types["not_dict"]:
         print(v,type(v))
@@ -207,25 +170,39 @@ def test_Ensemble_get_species_dG(variable_types):
             continue
 
         ens = Ensemble()
-        ens.add_species(name="test")
+        ens.add_species(name="test1")
+        ens.add_species(name="test2",observable=True)
         with pytest.raises(ValueError):
-            ens.get_species_dG(name="test",mu_dict=v)
+            ens.get_obs(mu_dict=v)
 
     for v in variable_types["float_value_or_iter"]:
         print(v,type(v))
+        
+        if hasattr(v,"__iter__") and len(v) == 0:
+            continue
+
+        if issubclass(type(v),pd.DataFrame):
+            continue
+
         mu_dict = {"X":v}
         ens = Ensemble()
-        ens.add_species(name="test")
-        ens.get_species_dG(name="test",mu_dict=mu_dict)
+        ens.add_species(name="test1")
+        ens.add_species(name="test2",observable=True)
+        ens.get_obs(mu_dict=mu_dict)
 
-    for v in variable_types["not_float_value_or_iter"]:
+    not_allowed = variable_types["not_float_value_or_iter"][:]
+    not_allowed.append([])
+    not_allowed.append(pd.DataFrame({"X":[1,2,3]}))
+
+    for v in not_allowed:
         print(v,type(v))
     
         mu_dict = {"X":v}
         ens = Ensemble()
-        ens.add_species(name="test")
+        ens.add_species(name="test1")
+        ens.add_species(name="test2",observable=True)
         with pytest.raises(ValueError):
-            ens.get_species_dG(name="test",mu_dict=mu_dict)
+            ens.get_obs(mu_dict=mu_dict)
 
 
 def test_Ensemble_get_obs(variable_types):

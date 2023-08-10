@@ -4,83 +4,13 @@ Ensemble class and helper functions.
 
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_float
+from eee._private.check.eee_variables import check_mu_dict
+from eee._private.check.eee_variables import check_mu_stoich
+from eee._private.check.eee_variables import check_mut_energy
+from eee._private.array_expander import array_expander
 
 import numpy as np
 import pandas as pd
-
-def _array_expander(values):
-    """
-    Given a list or dict of input values (that could be a mixture of arrays and
-    single values), return a list or dict of float arrays where each has the
-    same length. Single values are expanded to be the length of the other
-    arrays. If all entries are non-iterable, return the list or dict. 
-    """
-
-    # Is values a dictionary?
-    if issubclass(type(values),dict):
-        out = {}
-        is_dict = True
-    else:
-        out = []
-        is_dict = False
-
-    # Does values contain an iterable?
-    lengths_seen = []
-    is_array = False
-    for v in values:
-
-        if is_dict:
-            a = values[v]
-        else:
-            a = v
-
-        if hasattr(a,"__iter__"):
-
-            # Skip strings. Don't throw error yet -- could be coercable into a
-            # float. 
-            if issubclass(type(a),str):
-                continue
-
-            is_array = True
-            lengths_seen.append(len(a))
-    
-    # If there was an iterable in values, expand all to be that length
-    if is_array:
-
-        # Multiple lengths seen -- throw an error
-        if len(set(lengths_seen)) != 1:
-            err = "All arrays must have the same length\n"
-            raise ValueError(err)
-        length = lengths_seen[0]
-
-        # Go through each entry
-        for v in values:
-
-            if is_dict:
-                a = values[v]
-            else:
-                a = v
-
-            # If already an iterable, make sure its a float array; otherwise, 
-            # create a new numpy array that is all the same value
-            if hasattr(a,"__iter__"):
-                new_value = np.array(a,dtype=float)
-            else:
-                new_value = a*np.ones(length,dtype=float)
-            
-            # Record results
-            if is_dict:
-                out[v] = new_value
-            else:
-                out.append(new_value)
-
-    # If it was all floats, just return the float
-    else:
-        out = values
-        length = 0
-
-    return out, length
-
 
 class Ensemble:
     """
@@ -195,17 +125,9 @@ class Ensemble:
 
         # Check sanity of inputs
         if self._do_arg_checking:
-
             observable = check_bool(observable,"observable")
             dG0 = check_float(dG0,"dG0")
-            if not issubclass(type(mu_stoich),dict):
-                err = "mu_stoich should be a dictionary that keys chemical species to stoichiometry\n"
-                raise ValueError(err)
-            for mu in mu_stoich:
-                mu_stoich[mu] = check_float(value=mu_stoich[mu],
-                                            variable_name=f"mu_stoich['{mu}']",
-                                            minimum_allowed=0,
-                                            minimum_inclusive=False)
+            mu_stoich = check_mu_stoich(mu_stoich)
     
         # Record that we saw this species. 
         self._species[name] = {"observable":observable,
@@ -254,7 +176,7 @@ class Ensemble:
         if self._do_arg_checking:
             mut_energy = check_float(value=mut_energy,
                                      variable_name="mut_energy")
-
+            
         # Get dG0 for the species
         dG0 = self._species[name]["dG0"]
 
@@ -268,32 +190,11 @@ class Ensemble:
         
         # Error check on mu_dict
         if self._do_arg_checking:
-
-            if not issubclass(type(mu_dict),dict) or issubclass(type(mu_dict),type):
-                err = "mu_dict should be a dictionary that keys chemical species to chemical potential\n"
-                raise ValueError(err)
-            
-            for mu in mu_dict:
-
-                if issubclass(type(mu_dict[mu]),type):
-                    err = f"mu_dict['{mu}'] is a type not an instance"
-                    raise ValueError(err)
-
-                if hasattr(mu_dict[mu],"__iter__"):
-                    if issubclass(type(mu_dict[mu]),str):
-                        mu_dict[mu] = check_float(mu_dict[mu],
-                                                  variable_name=f"mu_dict['{mu}']")
-                    elif issubclass(type(mu_dict[mu]),dict):
-                        err = f"mu_dict['{mu}'] must be a float or array"
-                        raise ValueError(err)
-                    else:
-                        mu_dict[mu] = np.array(mu_dict[mu],dtype=float)
-                else:
-                    mu_dict[mu] = check_float(value=mu_dict[mu],
-                                              variable_name=f"mu_dict['{mu}']")
+            mu_dict = check_mu_dict(mu_dict)
 
         # Figure out if we are returning an array or single value
-        mu_dict, length = _array_expander(mu_dict)
+        mu_dict, length = array_expander(mu_dict)
+        
         if length == 0:
             dG = dG0_mutated
         else:
@@ -367,45 +268,8 @@ class Ensemble:
         
         if self._do_arg_checking:
 
-            # Make sure mut_energy is a dictionary of floats
-            if not issubclass(type(mut_energy),dict):
-                err = "mut_energy should be a dictionary that keys chemical species to effects of mutations\n"
-                raise ValueError(err)
-            for s in mut_energy:
-                mut_energy[s] = check_float(value=mut_energy[s],
-                                            variable_name=f"mut_energy['{s}']")
-
-            # Error check on mu_dict
-            if not issubclass(type(mu_dict),dict) or issubclass(type(mu_dict),type):
-                err = "mu_dict should be a dictionary that keys chemical species to chemical potential\n"
-                raise ValueError(err)
-            
-            for mu in mu_dict:
-
-                if issubclass(type(mu_dict[mu]),type):
-                    err = f"mu_dict['{mu}'] is a type not an instance"
-                    raise ValueError(err)
-
-                if issubclass(type(mu_dict[mu]),pd.DataFrame):
-                    err = f"mu_dict['{mu}'] cannot be a pandas DataFrame"
-                    raise ValueError(err)
-
-                if hasattr(mu_dict[mu],"__iter__"):
-                    if issubclass(type(mu_dict[mu]),str):
-                        mu_dict[mu] = check_float(mu_dict[mu],
-                                                  variable_name=f"mu_dict['{mu}']")
-                    elif issubclass(type(mu_dict[mu]),dict):
-                        err = f"mu_dict['{mu}'] must be a float or array"
-                        raise ValueError(err)
-                    else:
-                        if len(mu_dict[mu]) == 0:
-                            err = f"mu_dict['{mu}'] has length 0"
-                            raise ValueError(err)
-
-                        mu_dict[mu] = np.array(mu_dict[mu],dtype=float)
-                else:
-                    mu_dict[mu] = check_float(value=mu_dict[mu],
-                                              variable_name=f"mu_dict['{mu}']")
+            mut_energy = check_mut_energy(mut_energy)
+            mu_dict = check_mu_dict(mu_dict)
 
             # Make sure T is a positive float
             T = check_float(value=T,
@@ -424,11 +288,11 @@ class Ensemble:
             if m not in mu_dict:
                 mu_dict[m] = 0.0
 
-        # Put temperature into mu so it gets expanded by _array_expander
+        # Put temperature into mu so it gets expanded by array_expander
         mu_dict["_dummy_temperature"] = T
             
         # Expand mu_dict so all values have the same length
-        mu_dict, length = _array_expander(mu_dict)
+        mu_dict, length = array_expander(mu_dict)
 
         num_species = len(self._species)
 
