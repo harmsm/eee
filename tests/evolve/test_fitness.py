@@ -6,10 +6,16 @@ from eee.evolve.fitness import fitness_function
 from eee.evolve.fitness import FitnessContainer
 
 def test_ff_on():
-    pass
+
+    assert ff_on(1) == 1
+    assert ff_on(0) == 0
+
 
 def test_ff_off():
-    pass
+
+    assert ff_off(1) == 0
+    assert ff_off(0) == 1
+
 
 def test__fitness_function():
     pass
