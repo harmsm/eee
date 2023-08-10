@@ -2,6 +2,9 @@
 Ensemble class and helper functions.
 """
 
+from eee._private.check.standard import check_bool
+from eee._private.check.standard import check_float
+
 import numpy as np
 import pandas as pd
 
@@ -10,7 +13,7 @@ def _array_expander(values):
     Given a list or dict of input values (that could be a mixture of arrays and
     single values), return a list or dict of float arrays where each has the
     same length. Single values are expanded to be the length of the other
-    arrays. If all entries are floats, return a list or dict of floats.
+    arrays. If all entries are non-iterable, return the list or dict. 
     """
 
     # Is values a dictionary?
@@ -32,6 +35,12 @@ def _array_expander(values):
             a = v
 
         if hasattr(a,"__iter__"):
+
+            # Skip strings. Don't throw error yet -- could be coercable into a
+            # float. 
+            if issubclass(type(a),str):
+                continue
+
             is_array = True
             lengths_seen.append(len(a))
     
@@ -151,6 +160,7 @@ class Ensemble:
         self._R = R
         self._species = {}
         self._mu_list = []
+        self._do_arg_checking = True
     
     def add_species(self,
                     name,
@@ -183,6 +193,20 @@ class Ensemble:
         if mu_stoich is None:
             mu_stoich = {}
 
+        # Check sanity of inputs
+        if self._do_arg_checking:
+
+            observable = check_bool(observable,"observable")
+            dG0 = check_float(dG0,"dG0")
+            if not issubclass(type(mu_stoich),dict):
+                err = "mu_stoich should be a dictionary that keys chemical species to stoichiometry\n"
+                raise ValueError(err)
+            for mu in mu_stoich:
+                mu_stoich[mu] = check_float(value=mu_stoich[mu],
+                                            variable_name=f"mu_stoich['{mu}']",
+                                            minimum_allowed=0,
+                                            minimum_inclusive=False)
+    
         # Record that we saw this species. 
         self._species[name] = {"observable":observable,
                                "dG0":dG0,
@@ -226,6 +250,11 @@ class Ensemble:
             err += "add_species function?"
             raise ValueError(err)
 
+        # Error check on mut_energy
+        if self._do_arg_checking:
+            mut_energy = check_float(value=mut_energy,
+                                     variable_name="mut_energy")
+
         # Get dG0 for the species
         dG0 = self._species[name]["dG0"]
 
@@ -237,6 +266,32 @@ class Ensemble:
         if mu_dict is None:
             return dG0_mutated
         
+        # Error check on mu_dict
+        if self._do_arg_checking:
+
+            if not issubclass(type(mu_dict),dict) or issubclass(type(mu_dict),type):
+                err = "mu_dict should be a dictionary that keys chemical species to chemical potential\n"
+                raise ValueError(err)
+            
+            for mu in mu_dict:
+
+                if issubclass(type(mu_dict[mu]),type):
+                    err = f"mu_dict['{mu}'] is a type not an instance"
+                    raise ValueError(err)
+
+                if hasattr(mu_dict[mu],"__iter__"):
+                    if issubclass(type(mu_dict[mu]),str):
+                        mu_dict[mu] = check_float(mu_dict[mu],
+                                                  variable_name=f"mu_dict['{mu}']")
+                    elif issubclass(type(mu_dict[mu]),dict):
+                        err = f"mu_dict['{mu}'] must be a float or array"
+                        raise ValueError(err)
+                    else:
+                        mu_dict[mu] = np.array(mu_dict[mu],dtype=float)
+                else:
+                    mu_dict[mu] = check_float(value=mu_dict[mu],
+                                              variable_name=f"mu_dict['{mu}']")
+
         # Figure out if we are returning an array or single value
         mu_dict, length = _array_expander(mu_dict)
         if length == 0:
@@ -289,21 +344,81 @@ class Ensemble:
                 -RTln(([obs1] + [obs2] + ...)/([not_obs1] + [not_obs2] + ...))
         """
 
+        # Make sure we have enough species loaded
+        if len(self._species) < 2:
+            err = "Add at least two species before calculating an observable.\n"
+            raise ValueError(err)
+        
+        # Make sure we have the necessary species loaded
+        num_obs = np.sum([self._species[s]["observable"] for s in self._species])
+        if num_obs < 1 or num_obs > len(self._species) - 1:
+            err = "To calculate an observable, at least one species must be\n"
+            err += "observable and at least one should not be observable.\n"
+            raise ValueError(err)
+        
         # If no mutation energy dictionary specified, make one with zero for 
         # every species
         if mut_energy is None:
             mut_energy = dict([(s,0.0) for s in self._species])
+
+        # If no mu_dict specified, make one with 0 for every chemical potential
+        if mu_dict is None:
+            mu_dict = dict([(m,0.0) for m in self._mu_list])
         
+        if self._do_arg_checking:
+
+            # Make sure mut_energy is a dictionary of floats
+            if not issubclass(type(mut_energy),dict):
+                err = "mut_energy should be a dictionary that keys chemical species to effects of mutations\n"
+                raise ValueError(err)
+            for s in mut_energy:
+                mut_energy[s] = check_float(value=mut_energy[s],
+                                            variable_name=f"mut_energy['{s}']")
+
+            # Error check on mu_dict
+            if not issubclass(type(mu_dict),dict) or issubclass(type(mu_dict),type):
+                err = "mu_dict should be a dictionary that keys chemical species to chemical potential\n"
+                raise ValueError(err)
+            
+            for mu in mu_dict:
+
+                if issubclass(type(mu_dict[mu]),type):
+                    err = f"mu_dict['{mu}'] is a type not an instance"
+                    raise ValueError(err)
+
+                if issubclass(type(mu_dict[mu]),pd.DataFrame):
+                    err = f"mu_dict['{mu}'] cannot be a pandas DataFrame"
+                    raise ValueError(err)
+
+                if hasattr(mu_dict[mu],"__iter__"):
+                    if issubclass(type(mu_dict[mu]),str):
+                        mu_dict[mu] = check_float(mu_dict[mu],
+                                                  variable_name=f"mu_dict['{mu}']")
+                    elif issubclass(type(mu_dict[mu]),dict):
+                        err = f"mu_dict['{mu}'] must be a float or array"
+                        raise ValueError(err)
+                    else:
+                        if len(mu_dict[mu]) == 0:
+                            err = f"mu_dict['{mu}'] has length 0"
+                            raise ValueError(err)
+
+                        mu_dict[mu] = np.array(mu_dict[mu],dtype=float)
+                else:
+                    mu_dict[mu] = check_float(value=mu_dict[mu],
+                                              variable_name=f"mu_dict['{mu}']")
+
+            # Make sure T is a positive float
+            T = check_float(value=T,
+                            variable_name="T",
+                            minimum_allowed=0,
+                            minimum_inclusive=False)
+
         # If a species is not specified in the mut_energy dictionary, set the
         # mutational effect to zero
         for s in self._species:
             if s not in mut_energy:
                 mut_energy[s] = 0.0
 
-        # If no mu_dict specified, make one with 0 for every chemical potential
-        if mu_dict is None:
-            mu_dict = dict([(m,0.0) for m in self._mu_list])
-        
         # If a chemical potential is not specified in the mu_dict, set it to 0
         for m in self._mu_list:
             if m not in mu_dict:
@@ -320,9 +435,6 @@ class Ensemble:
         # Pull the temperature back out of mu_dict and figure out beta
         beta = -1/(self._R*T)
         T = mu_dict.pop("_dummy_temperature")
-
-        # Get maximum allowable value for an exponent before an overflow
-        max_into_exponent = np.log(np.finfo("d").max) - 1
 
         # Create pops arrays
         if length == 0:
@@ -347,17 +459,10 @@ class Ensemble:
                                      mu_dict=mu_dict)
             pops[:,i] = dG*beta
 
-        # Shift dG*beta so the maximum species for a given condition is
-        # max_into_exponent. This prevents numerical overflows because the max
-        # value will now never be too big. Any values less than this that are 
-        # too small will underflow and go to zero -- which is fine because the
-        # species that went to zero is not populated anyway. (Only way this 
-        # would fail would be if there were like 1e500 states each with prob 
-        # less than 1e-500, such that the aggregate of the low probability 
-        # states can't be neglected. We'd hit other memory problems if someone
-        # tried to run this simulator for such a system...)
-        diff = np.max(pops - max_into_exponent,axis=1)
-        pops = pops - diff[:,None]
+        # Shift dG*beta so the midpoint between max and min values is zero. 
+        # This should prevent most numerical errors. 
+        shift = -(np.max(pops,axis=1) + np.min(pops,axis=1))/2
+        pops = pops + shift[:,None]
 
         # Take exponential. 
         pops = np.exp(pops)
@@ -401,3 +506,12 @@ class Ensemble:
         Chemical potentials in the ensemble.
         """
         return list(self._mu_list)
+    
+    @property
+    def do_arg_checking(self):
+        return self._do_arg_checking
+
+    @do_arg_checking.setter
+    def do_arg_checking(self,value):
+        self._do_arg_checking = value
+
