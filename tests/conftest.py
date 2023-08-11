@@ -66,6 +66,22 @@ def test_ddg():
     return _file_globber("data_for_tests","test_ddg","*.csv")
 
 @pytest.fixture(scope="module")
+def programs():
+    """
+    Dictionary holding paths pointing to programs to run.
+    """
+
+    dir = os.path.dirname(os.path.realpath(__file__))
+    base_dir = os.path.abspath(os.path.join(dir,"data_for_tests","programs"))
+    files = os.listdir(base_dir)
+
+    out_dict = {}
+    for f in files:
+        out_dict[f] = os.path.join(base_dir,f)
+
+    return out_dict
+
+@pytest.fixture(scope="module")
 def variable_types():
     """
     Returns a dictionary with a bunch of different argument types to jam into

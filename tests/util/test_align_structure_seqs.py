@@ -1,28 +1,21 @@
 
 import pytest
 
+from eee.util.align_structure_seqs import _run_muscle
+from eee.util.align_structure_seqs import align_structure_seqs
 from eee.io import load_structure
 from eee.data import AA_1TO3
-
-from eee.util._sync_structures import _clean_structures
-from eee.util._sync_structures import _run_muscle
-from eee.util._sync_structures import _align_seq
-from eee.util._sync_structures import _align_structures
-from eee.util._sync_structures import _create_unique_filenames
-from eee.util._sync_structures import sync_structures
 
 import numpy as np
 
 import os
 import glob
-
-def test__clean_structures():
-    pass
+import shutil
 
 def test__run_muscle():
     pass
 
-def test__align_seq(ensembles,tmpdir):
+def test_align_structure_seqs(ensembles,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -41,9 +34,12 @@ def test__align_seq(ensembles,tmpdir):
             this_df = df.loc[mask,:]
             seqs.append(list(this_df["resid"]))
 
-        aligned_dfs = _align_seq(dfs,keep_temporary=True)
+        aligned_dfs = align_structure_seqs(dfs,keep_temporary=True)
 
-        # Make sure write output is being created
+        tmp_dir = list(glob.glob("calculation_*"))[0]
+
+
+        # Make sure right output is being created
         assert len(aligned_dfs) == len(dfs)
         all_rows = np.sum([len(out_df) for out_df in aligned_dfs])
         for out_df in aligned_dfs:
@@ -51,10 +47,10 @@ def test__align_seq(ensembles,tmpdir):
             assert np.min(out_df["shared_fx"]) >= 0
             assert np.max(out_df["shared_fx"]) <= 1
 
-        assert len(glob.glob("*.fasta")) == 2
+        assert len(glob.glob(os.path.join(tmp_dir,"*.fasta"))) == 2
         
         # Make sure the input fasta is correct
-        input_fasta = glob.glob("tmp-align*input.fasta")[0]
+        input_fasta = os.path.join(tmp_dir,"tmp-align_input.fasta")
         input_seqs = []
         with open(input_fasta) as f:
             for line in f:
@@ -69,7 +65,7 @@ def test__align_seq(ensembles,tmpdir):
                                 seqs[i])
 
         # Make sure the output fasta is reasonable
-        output_fasta = glob.glob("tmp-align*output.fasta")[0]
+        output_fasta = os.path.join(tmp_dir,"tmp-align_output.fasta")
         output_seqs = []
         with open(output_fasta) as f:
             for line in f:
@@ -84,52 +80,15 @@ def test__align_seq(ensembles,tmpdir):
 
         # make sure muscle_binary is interpreted correctly
         with pytest.raises(RuntimeError):
-            _align_seq(dfs,muscle_binary="not_real")
+            align_structure_seqs(dfs,muscle_binary="not_real")
 
         # Delete temporary files
-        for f in glob.glob("*.fasta"):
-            os.remove(f)
+        for f in glob.glob("calculation_*"):
+            shutil.rmtree(f)
 
         # Make sure keep_temporary flag is interpreted correctly
         #column_contents, column_indexes 
-        aligned_dfs= _align_seq(dfs,keep_temporary=False)
-        assert len(glob.glob("*.fasta")) == 0
+        aligned_dfs= align_structure_seqs(dfs,keep_temporary=False)
+        assert len(glob.glob("calculation_*")) == 0
 
     os.chdir(current_dir)
-
-def test__align_structures(ensembles,tmpdir):
-    pass
-
-def test__create_unique_filenames():
-
-    files = ["1stn.pdb",
-            "../test/1stn.pdb",
-            "../test/this/1stn.pdb"]
-    
-    mapper = _create_unique_filenames(files)
-    assert mapper["1stn.pdb"] == "1stn.pdb"
-    assert mapper["../test/1stn.pdb"] == "test__1stn.pdb"
-    assert mapper["../test/this/1stn.pdb"] == "this__1stn.pdb"
-
-    files = ["../lab/1stn.pdb","../rocket/1stn.cif"]
-    mapper = _create_unique_filenames(files)
-    assert mapper["../lab/1stn.pdb"] == "1stn.pdb"
-    assert mapper["../rocket/1stn.cif"] == "1stn.cif"
-
-    files = ["../test/1stn.pdb",
-            "../test/1stn.pdb",
-            "../test/this/1stn.pdb"]
-    with pytest.raises(ValueError):
-        _create_unique_filenames(files)
-
-def test_sync_structures(ensembles,tmpdir):
-
-    current_dir = os.getcwd()
-    os.chdir(tmpdir)
-
-    dfs = sync_structures(ensembles["missing_residues"],
-                          "missing_residues")
-
-    os.chdir(current_dir)
-
-    pass

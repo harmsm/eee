@@ -4,7 +4,7 @@ Run a Wright-Fisher simulation given an ensemble.
 
 from eee.evolve.genotype import GenotypeContainer
 from eee.evolve._helper import get_num_accumulated_mutations
-from eee.evolve._helper import MockTqdm
+from eee._private.interface import MockTqdm
 
 import numpy as np
 from tqdm.auto import tqdm
