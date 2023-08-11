@@ -1,5 +1,5 @@
 
-from ._load_structure import load_structure
-from ._write_pdb import write_pdb
-from ._load_ddg import load_ddg
-from ._read_dataframe import read_dataframe
+from .load_ddg import load_ddg
+from .load_structure import load_structure
+from .read_dataframe import read_dataframe
+from .write_pdb import write_pdb

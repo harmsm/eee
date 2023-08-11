@@ -1,5 +1,5 @@
 
-from eee.io._load_ddg import load_ddg
+from eee.io.load_ddg import load_ddg
 from eee.evolve.genotype import Genotype
 from eee.evolve.genotype import GenotypeContainer
 

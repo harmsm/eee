@@ -3,12 +3,12 @@ Functions for taking raw RCSB output with several structures and creating input
 for an EEE calculation. 
 """
 
-from eee.io import write_pdb
-from eee.io import load_structure
+from eee.io.write_pdb import write_pdb
+from eee.io.load_structure import load_structure
 from eee._private import logger
-from eee.util.clean_structure import clean_structure
-from eee.util.align_structure_seqs import align_structure_seqs
-from eee.util.align_structures import align_structures
+from eee.structure.clean_structure import clean_structure
+from eee.structure.align_structure_seqs import align_structure_seqs
+from eee.structure.align_structures import align_structures
 
 import numpy as np
 

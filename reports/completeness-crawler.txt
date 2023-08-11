@@ -22,19 +22,19 @@ FOUND tests.evolve.test_fitness.test__fitness_function
 FOUND tests.evolve.test_fitness.test_ff_off
 FOUND tests.evolve.test_fitness.test_ff_on
 FOUND tests.evolve.test_fitness.test_fitness_function
-FOUND tests.io.test__load_ddg.test_load_ddg
-FOUND tests.io.test__load_structure.test__load_structure_cif
-FOUND tests.io.test__load_structure.test__load_structure_pdb
-FOUND tests.io.test__load_structure.test_load_structure
-FOUND tests.io.test__write_pdb.test_write_pdb
+FOUND tests.io.test_load_ddg.test_load_ddg
+FOUND tests.io.test_load_structure.test__load_structure_cif
+FOUND tests.io.test_load_structure.test__load_structure_pdb
+FOUND tests.io.test_load_structure.test_load_structure
+FOUND tests.io.test_write_pdb.test_write_pdb
+FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
+FOUND tests.structure.test_sync_structures.test__create_unique_filenames
+FOUND tests.structure.test_sync_structures.test_sync_structures
 FOUND tests.test_ensemble.test_Ensemble
 FOUND tests.test_ensemble.test_Ensemble_add_species
 FOUND tests.test_ensemble.test_Ensemble_do_arg_checking
 FOUND tests.test_ensemble.test_Ensemble_get_obs
 FOUND tests.test_ensemble.test_Ensemble_get_species_dG
-FOUND tests.util.test_align_structure_seqs.test_align_structure_seqs
-FOUND tests.util.test_sync_structures.test__create_unique_filenames
-FOUND tests.util.test_sync_structures.test_sync_structures
 FAKE tests._private.test_interface.test_MockTqdm
 FAKE tests._private.test_interface.test_MockTqdm___enter__
 FAKE tests.evolve.test__helper.test__get_num_accumulated_mutations
@@ -50,14 +50,14 @@ FAKE tests.evolve.test_genotype.test_Genotype_mutate
 FAKE tests.evolve.test_simulate_evolution.test_simulate_evolution
 FAKE tests.evolve.test_simulate_tree.test_simulate_tree
 FAKE tests.evolve.test_wright_fisher.test_wright_fisher
-FAKE tests.io.test__read_dataframe.test_read_dataframe
+FAKE tests.io.test_read_dataframe.test_read_dataframe
+FAKE tests.structure.test_align_structure_seqs.test__run_muscle
+FAKE tests.structure.test_align_structures.test_align_structures
+FAKE tests.structure.test_clean_structure.test__clean_structure
 FAKE tests.test_epistasis.test_get_all_pairs_epistasis
 FAKE tests.test_epistasis.test_get_ensemble_epistasis
 FAKE tests.test_epistasis.test_get_epistasis
 FAKE tests.test_epistasis.test_summarize_epistasis
-FAKE tests.util.test_align_structure_seqs.test__run_muscle
-FAKE tests.util.test_align_structures.test_align_structures
-FAKE tests.util.test_clean_structure.test__clean_structure
 MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.future.test_multithreading.test_MockLock
 MISSING tests._private.future.test_multithreading.test__thread
@@ -83,15 +83,15 @@ MISSING tests.evolve.test_genotype.test_Genotype_mutations
 MISSING tests.evolve.test_genotype.test_Genotype_mutations_accumulated
 MISSING tests.evolve.test_genotype.test_Genotype_sites
 MISSING tests.evolve.test_simulate_tree.test__simulate_branch
-MISSING tests.io.test__write_pdb.test_chain
-MISSING tests.io.test__write_pdb.test_last_class
+MISSING tests.io.test_write_pdb.test_chain
+MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.structure.test_clean_structure.test_clean_structure
 MISSING tests.test_ensemble.test_Ensemble_mu_list
 MISSING tests.test_ensemble.test_Ensemble_species
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
-MISSING tests.util.test_clean_structure.test_clean_structure
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
 FOUND & EXTRA tests.evolve.test__helper.test__get_num_accumulated_mutations
 FOUND & EXTRA tests.evolve.test_genotype.test_Genotype__create_ddg_dict
-FOUND & EXTRA tests.util.test_clean_structure.test__clean_structure
+FOUND & EXTRA tests.structure.test_clean_structure.test__clean_structure

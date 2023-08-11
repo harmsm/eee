@@ -1,6 +1,6 @@
 
-from eee.io._write_pdb import write_pdb
-from eee.io._load_structure import _load_structure_pdb
+from eee.io.write_pdb import write_pdb
+from eee.io.load_structure import _load_structure_pdb
 
 import numpy as np
 

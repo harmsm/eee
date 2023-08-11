@@ -1,6 +1,6 @@
 
-from eee.io import write_pdb
-from eee.io import load_structure
+from eee.io.write_pdb import write_pdb
+from eee.io.load_structure import load_structure
 
 from eee._private.interface import create_new_dir
 from eee._private.interface import launch

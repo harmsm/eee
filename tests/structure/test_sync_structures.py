@@ -3,8 +3,8 @@ import pytest
 
 from eee.data import AA_1TO3
 
-from eee.util.sync_structures import _create_unique_filenames
-from eee.util.sync_structures import sync_structures
+from eee.structure.sync_structures import _create_unique_filenames
+from eee.structure.sync_structures import sync_structures
 
 import numpy as np
 
