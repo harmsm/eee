@@ -4,9 +4,9 @@ for an EEE calculation.
 """
 
 from eee.util.data import AA_3TO1
-from eee.util import write_pdb
-from eee.util import load_structure
-from eee.util import logger
+from eee.io import write_pdb
+from eee.io import load_structure
+from eee._private import logger
 
 import numpy as np
 import pandas as pd

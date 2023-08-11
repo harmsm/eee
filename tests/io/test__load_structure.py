@@ -1,7 +1,7 @@
 
-from eee.util._load_structure import _load_structure_cif
-from eee.util._load_structure import _load_structure_pdb
-from eee.util._load_structure import load_structure
+from eee.io._load_structure import _load_structure_cif
+from eee.io._load_structure import _load_structure_pdb
+from eee.io._load_structure import load_structure
 
 import pandas as pd
 import numpy as np

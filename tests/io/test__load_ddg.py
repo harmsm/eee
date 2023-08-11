@@ -1,5 +1,5 @@
 
-from eee.util._load_ddg import load_ddg
+from eee.io._load_ddg import load_ddg
 
 import numpy as np
 
