@@ -145,4 +145,89 @@ def test_fitness_function(variable_types):
 
 
 def test_FitnessContainer():
-    pass
+
+    # this is just a wrapped version of the _fitness_function. Only new test is
+    # for select_on. All other tests are covered by test_eee_variables, 
+    # test_check_ensembles, and test_standard unit tests. 
+
+    # Basic ensemble    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,10000],"Y":[10000,0]}
+    fitness_fcns = [ff_off,ff_on]
+    select_on = "fx_obs"
+    T = 1
+
+    # make sure attributes are set correctly
+
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          fitness_kwargs={},
+                          T=T)
+  
+    assert fc.ens is ens
+    assert fc.T == T
+    
+    for k in fc._mu_dict:
+        assert np.array_equal(mu_dict[k],fc._mu_dict[k])
+    assert fc._fitness_fcns is fitness_fcns
+    assert fc._select_on == select_on
+    assert len(fc._fitness_kwargs) == 0
+    assert issubclass(type(fc._fitness_kwargs),dict)
+
+def test_FitnessContainer_fitness():
+
+    # Basic ensemble    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,100],"Y":[100,0]}
+    fitness_fcns = [ff_off,ff_on]
+    select_on = "fx_obs"
+    T = 1
+
+    # make sure attributes are set correctly
+
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          fitness_kwargs={},
+                          T=T)
+
+    mut_energy = {"test1":0,
+                  "test2":0}
+    assert fc.fitness(mut_energy=mut_energy) == 1
+
+    # Perturb so observable never populated...
+    mut_energy = {"test1":5000,
+                  "test2":0}
+    print(ens.get_obs(mu_dict=mu_dict,mut_energy=mut_energy))
+    assert fc.fitness(mut_energy=mut_energy) == 0
+
+    with pytest.raises(ValueError):
+        fc = FitnessContainer(ens=ens,
+                            mu_dict=mu_dict,
+                            fitness_fcns=fitness_fcns,
+                            select_on="not_right",
+                            fitness_kwargs={},
+                            T=T)
+
+
+
+
+    
+

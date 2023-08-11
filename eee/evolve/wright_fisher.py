@@ -126,19 +126,19 @@ def wright_fisher(gc,
     seen, counts = np.unique(population,return_counts=True)
     generations = [(seen,counts)]
 
-    
-
     # Turn off status bar if requested
     if disable_status_bar:
         pbar = MockTqdm(total=num_generations-1)
     else:
         pbar = tqdm(total=num_generations-1)
 
+    # Run the simulation
     with pbar:
     
+        # For all num_generations (first is starting population)
         for _ in range(1,num_generations):
 
-            # Get the probability of each genotype: it's frequency times its 
+            # Get the probability of each genotype: its frequency times its 
             # relative fitness. Get the current genotypes and their counts from the
             # last generation recorded
             current_genotypes, counts = generations[-1]
@@ -155,9 +155,9 @@ def wright_fisher(gc,
 
             # Select offspring, with replacement weighted by prob
             population = np.random.choice(current_genotypes,
-                                        size=population_size,
-                                        p=prob,
-                                        replace=True)
+                                          size=population_size,
+                                          p=prob,
+                                          replace=True)
 
             # Introduce mutations
             num_to_mutate = np.random.poisson(expected_num_mutations)

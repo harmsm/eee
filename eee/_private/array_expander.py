@@ -32,11 +32,6 @@ def array_expander(values):
 
         if hasattr(a,"__iter__"):
 
-            # Skip strings. Don't throw error yet -- could be coercable into a
-            # float. 
-            if issubclass(type(a),str):
-                continue
-
             is_array = True
             lengths_seen.append(len(a))
     
