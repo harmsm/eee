@@ -226,8 +226,74 @@ def test_FitnessContainer_fitness():
                             fitness_kwargs={},
                             T=T)
 
+def test_FitnessContainer_T():
 
+    # Basic ensemble    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,100],"Y":[100,0]}
+    fitness_fcns = [ff_off,ff_on]
+    select_on = "fx_obs"
+    T = 1
 
+    # make sure attributes are set correctly
 
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          fitness_kwargs={},
+                          T=T)
+    
+    assert fc.T == 1
+
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          fitness_kwargs={},
+                          T=20)
+    assert fc.T == 20
+
+    with pytest.raises(ValueError):
+        fc = FitnessContainer(ens=ens,
+                            mu_dict=mu_dict,
+                            fitness_fcns=fitness_fcns,
+                            select_on=select_on,
+                            fitness_kwargs={},
+                            T=-2)
+
+def test_FitnessContainer_ens():
+
+    # Basic ensemble    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,100],"Y":[100,0]}
+    fitness_fcns = [ff_off,ff_on]
+    select_on = "fx_obs"
+    T = 1
+
+    # make sure attributes are set correctly
+
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          fitness_kwargs={},
+                          T=T)
+
+    assert fc.ens is ens
     
 

@@ -5,7 +5,7 @@ import numpy as np
 
 from eee._private.array_expander import array_expander
 
-def testarray_expander():
+def test_array_expander():
 
     out, length = array_expander({})
     assert issubclass(type(out),dict)

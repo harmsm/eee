@@ -582,57 +582,100 @@
 ./tests/evolve/test_genotype.py:159:16: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:172:1: W293 blank line contains whitespace
 ./tests/evolve/test_genotype.py:173:15: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:198:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:200:5: E303 too many blank lines (2)
-./tests/evolve/test_genotype.py:201:45: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:201:48: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:202:52: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:202:59: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:203:52: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:203:59: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:207:44: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:217:65: W291 trailing whitespace
-./tests/evolve/test_genotype.py:226:5: E303 too many blank lines (2)
-./tests/evolve/test_genotype.py:226:71: W291 trailing whitespace
-./tests/evolve/test_genotype.py:227:17: W291 trailing whitespace
-./tests/evolve/test_genotype.py:236:28: E128 continuation line under-indented for visual indent
-./tests/evolve/test_genotype.py:238:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:244:33: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:245:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:251:71: W291 trailing whitespace
-./tests/evolve/test_genotype.py:252:17: W291 trailing whitespace
-./tests/evolve/test_genotype.py:261:28: E128 continuation line under-indented for visual indent
-./tests/evolve/test_genotype.py:263:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:270:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:271:32: W291 trailing whitespace
-./tests/evolve/test_genotype.py:275:32: W291 trailing whitespace
-./tests/evolve/test_genotype.py:280:21: E225 missing whitespace around operator
-./tests/evolve/test_genotype.py:289:44: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:290:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:299:52: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:302:31: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:307:1: E303 too many blank lines (3)
-./tests/evolve/test_genotype.py:308:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:317:44: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:318:44: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:321:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:337:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:338:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:346:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:351:57: W291 trailing whitespace
-./tests/evolve/test_genotype.py:358:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:359:34: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:362:39: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:363:39: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:364:36: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:364:49: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:365:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:374:52: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:374:55: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:374:57: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:374:59: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:375:23: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:377:1: W391 blank line at end of file
+./tests/evolve/test_genotype.py:184:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:185:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:196:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:196:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:196:41: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:197:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:202:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:203:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:214:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:214:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:214:41: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:215:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:217:38: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:221:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:232:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:232:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:232:41: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:233:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:235:50: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:239:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:250:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:250:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:250:41: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:251:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:253:34: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:269:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:271:5: E303 too many blank lines (2)
+./tests/evolve/test_genotype.py:272:45: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:272:48: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:273:52: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:273:59: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:274:52: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:274:59: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:278:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:288:65: W291 trailing whitespace
+./tests/evolve/test_genotype.py:297:5: E303 too many blank lines (2)
+./tests/evolve/test_genotype.py:297:71: W291 trailing whitespace
+./tests/evolve/test_genotype.py:298:17: W291 trailing whitespace
+./tests/evolve/test_genotype.py:307:28: E128 continuation line under-indented for visual indent
+./tests/evolve/test_genotype.py:309:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:315:33: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:316:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:322:71: W291 trailing whitespace
+./tests/evolve/test_genotype.py:323:17: W291 trailing whitespace
+./tests/evolve/test_genotype.py:332:28: E128 continuation line under-indented for visual indent
+./tests/evolve/test_genotype.py:334:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:341:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:342:32: W291 trailing whitespace
+./tests/evolve/test_genotype.py:346:32: W291 trailing whitespace
+./tests/evolve/test_genotype.py:351:21: E225 missing whitespace around operator
+./tests/evolve/test_genotype.py:360:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:361:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:370:52: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:373:31: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:376:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:377:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:386:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:387:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:390:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:406:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:407:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:415:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:416:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:417:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:423:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:426:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:426:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:426:39: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:427:33: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:427:40: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:427:46: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:428:32: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:428:35: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:428:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:429:32: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:429:35: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:429:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:430:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:435:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:439:1: E303 too many blank lines (4)
+./tests/evolve/test_genotype.py:442:57: W291 trailing whitespace
+./tests/evolve/test_genotype.py:449:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:450:34: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:453:39: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:454:39: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:455:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:455:49: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:456:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:465:52: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:465:55: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:465:57: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:465:59: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:466:23: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:468:1: W391 blank line at end of file
 ./tests/evolve/test_simulate_evolution.py:2:1: F401 'eee.evolve.simulate_evolution.simulate_evolution' imported but unused
 ./tests/evolve/test_simulate_evolution.py:4:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_simulate_evolution.py:5:9: W292 no newline at end of file
@@ -745,8 +788,36 @@
 ./tests/evolve/test_fitness.py:225:29: E128 continuation line under-indented for visual indent
 ./tests/evolve/test_fitness.py:226:29: E128 continuation line under-indented for visual indent
 ./tests/evolve/test_fitness.py:227:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:232:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:233:1: W391 blank line at end of file
+./tests/evolve/test_fitness.py:229:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:231:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:235:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:238:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:239:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:240:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:240:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:240:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:240:31: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:240:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:241:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:253:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:266:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:267:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:268:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:269:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:270:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:272:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:274:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:278:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:281:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:282:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:283:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:283:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:283:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:283:31: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:283:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:284:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:298:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:299:1: W391 blank line at end of file
 ./tests/evolve/test_simulate_tree.py:2:1: F401 'eee.evolve.simulate_tree.simulate_tree' imported but unused
 ./tests/evolve/test_simulate_tree.py:4:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_simulate_tree.py:5:9: W292 no newline at end of file
@@ -785,51 +856,56 @@
 ./tests/_private/test_array_expander.py:42:30: E231 missing whitespace after ','
 ./tests/_private/test_array_expander.py:42:33: E231 missing whitespace after ','
 ./tests/_private/test_array_expander.py:42:35: E231 missing whitespace after ','
-./tests/_private/test_interface.py:12:1: F401 'time' imported but unused
-./tests/_private/test_interface.py:14:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:34:1: W293 blank line contains whitespace
-./tests/_private/test_interface.py:47:79: E231 missing whitespace after ','
-./tests/_private/test_interface.py:51:1: W293 blank line contains whitespace
-./tests/_private/test_interface.py:56:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:60:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:67:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:84:30: E231 missing whitespace after ','
-./tests/_private/test_interface.py:88:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:94:23: E231 missing whitespace after ','
-./tests/_private/test_interface.py:102:37: E231 missing whitespace after ','
-./tests/_private/test_interface.py:105:34: E231 missing whitespace after ','
-./tests/_private/test_interface.py:108:34: E231 missing whitespace after ','
-./tests/_private/test_interface.py:111:30: E231 missing whitespace after ','
-./tests/_private/test_interface.py:112:52: E231 missing whitespace after ','
-./tests/_private/test_interface.py:115:30: E231 missing whitespace after ','
-./tests/_private/test_interface.py:115:43: E231 missing whitespace after ','
-./tests/_private/test_interface.py:116:52: E231 missing whitespace after ','
-./tests/_private/test_interface.py:119:30: E231 missing whitespace after ','
-./tests/_private/test_interface.py:120:52: E231 missing whitespace after ','
-./tests/_private/test_interface.py:121:40: E231 missing whitespace after ','
-./tests/_private/test_interface.py:124:39: E231 missing whitespace after ','
-./tests/_private/test_interface.py:125:30: E231 missing whitespace after ','
-./tests/_private/test_interface.py:125:56: E231 missing whitespace after ','
-./tests/_private/test_interface.py:126:52: E231 missing whitespace after ','
-./tests/_private/test_interface.py:126:60: E231 missing whitespace after ','
-./tests/_private/test_interface.py:136:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:143:23: E231 missing whitespace after ','
-./tests/_private/test_interface.py:152:51: E231 missing whitespace after ','
-./tests/_private/test_interface.py:156:15: E231 missing whitespace after ','
-./tests/_private/test_interface.py:156:28: E231 missing whitespace after ','
-./tests/_private/test_interface.py:156:42: E231 missing whitespace after ','
-./tests/_private/test_interface.py:160:21: E231 missing whitespace after ','
-./tests/_private/test_interface.py:162:15: E231 missing whitespace after ','
-./tests/_private/test_interface.py:164:34: E231 missing whitespace after ','
-./tests/_private/test_interface.py:172:1: E302 expected 2 blank lines, found 1
-./tests/_private/test_interface.py:179:25: E231 missing whitespace after ','
-./tests/_private/test_interface.py:186:41: E231 missing whitespace after ','
-./tests/_private/test_interface.py:186:55: E231 missing whitespace after ','
-./tests/_private/test_interface.py:190:54: E231 missing whitespace after ','
-./tests/_private/test_interface.py:194:74: W291 trailing whitespace
-./tests/_private/test_interface.py:195:42: W291 trailing whitespace
-./tests/_private/test_interface.py:198:5: E303 too many blank lines (2)
-./tests/_private/test_interface.py:198:26: W292 no newline at end of file
+./tests/_private/test_interface.py:13:1: F401 'time' imported but unused
+./tests/_private/test_interface.py:15:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:35:1: W293 blank line contains whitespace
+./tests/_private/test_interface.py:48:79: E231 missing whitespace after ','
+./tests/_private/test_interface.py:52:1: W293 blank line contains whitespace
+./tests/_private/test_interface.py:55:70: W291 trailing whitespace
+./tests/_private/test_interface.py:57:21: E231 missing whitespace after ','
+./tests/_private/test_interface.py:58:21: E231 missing whitespace after ','
+./tests/_private/test_interface.py:59:21: E231 missing whitespace after ','
+./tests/_private/test_interface.py:62:27: E231 missing whitespace after ','
+./tests/_private/test_interface.py:62:32: E231 missing whitespace after ','
+./tests/_private/test_interface.py:71:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:78:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:95:30: E231 missing whitespace after ','
+./tests/_private/test_interface.py:99:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:105:23: E231 missing whitespace after ','
+./tests/_private/test_interface.py:113:37: E231 missing whitespace after ','
+./tests/_private/test_interface.py:116:34: E231 missing whitespace after ','
+./tests/_private/test_interface.py:119:34: E231 missing whitespace after ','
+./tests/_private/test_interface.py:122:30: E231 missing whitespace after ','
+./tests/_private/test_interface.py:123:52: E231 missing whitespace after ','
+./tests/_private/test_interface.py:126:30: E231 missing whitespace after ','
+./tests/_private/test_interface.py:126:43: E231 missing whitespace after ','
+./tests/_private/test_interface.py:127:52: E231 missing whitespace after ','
+./tests/_private/test_interface.py:130:30: E231 missing whitespace after ','
+./tests/_private/test_interface.py:131:52: E231 missing whitespace after ','
+./tests/_private/test_interface.py:132:40: E231 missing whitespace after ','
+./tests/_private/test_interface.py:135:39: E231 missing whitespace after ','
+./tests/_private/test_interface.py:136:30: E231 missing whitespace after ','
+./tests/_private/test_interface.py:136:56: E231 missing whitespace after ','
+./tests/_private/test_interface.py:137:52: E231 missing whitespace after ','
+./tests/_private/test_interface.py:137:60: E231 missing whitespace after ','
+./tests/_private/test_interface.py:147:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:154:23: E231 missing whitespace after ','
+./tests/_private/test_interface.py:163:51: E231 missing whitespace after ','
+./tests/_private/test_interface.py:167:15: E231 missing whitespace after ','
+./tests/_private/test_interface.py:167:28: E231 missing whitespace after ','
+./tests/_private/test_interface.py:167:42: E231 missing whitespace after ','
+./tests/_private/test_interface.py:171:21: E231 missing whitespace after ','
+./tests/_private/test_interface.py:173:15: E231 missing whitespace after ','
+./tests/_private/test_interface.py:175:34: E231 missing whitespace after ','
+./tests/_private/test_interface.py:183:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_interface.py:190:25: E231 missing whitespace after ','
+./tests/_private/test_interface.py:197:41: E231 missing whitespace after ','
+./tests/_private/test_interface.py:197:55: E231 missing whitespace after ','
+./tests/_private/test_interface.py:201:54: E231 missing whitespace after ','
+./tests/_private/test_interface.py:205:74: W291 trailing whitespace
+./tests/_private/test_interface.py:206:42: W291 trailing whitespace
+./tests/_private/test_interface.py:209:5: E303 too many blank lines (2)
+./tests/_private/test_interface.py:209:26: W292 no newline at end of file
 ./tests/_private/check/test_standard.py:11:1: E302 expected 2 blank lines, found 1
 ./tests/_private/check/test_standard.py:13:24: E231 missing whitespace after ','
 ./tests/_private/check/test_standard.py:13:28: E231 missing whitespace after ','
@@ -2100,15 +2176,15 @@
 1     E114 indentation is not a multiple of 4 (comment)
 2     E122 continuation line missing indentation or outdented
 10    E127 continuation line over-indented for visual indent
-27    E128 continuation line under-indented for visual indent
+32    E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
 2     E222 multiple spaces after operator
 3     E225 missing whitespace around operator
-1205  E231 missing whitespace after ','
+1253  E231 missing whitespace after ','
 2     E261 at least two spaces before inline comment
 2     E265 block comment should start with '# '
 2     E301 expected 1 blank line, found 0
-100   E302 expected 2 blank lines, found 1
+105   E302 expected 2 blank lines, found 1
 41    E303 too many blank lines (2)
 2     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
@@ -2118,9 +2194,9 @@
 45    F401 'glob' imported but unused
 5     F541 f-string is missing placeholders
 6     F841 local variable 'value' is assigned to but never used
-258   W291 trailing whitespace
+261   W291 trailing whitespace
 30    W292 no newline at end of file
-305   W293 blank line contains whitespace
+320   W293 blank line contains whitespace
 10    W391 blank line at end of file
 5     W605 invalid escape sequence '\R'
-2097
+2173

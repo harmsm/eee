@@ -181,6 +181,77 @@ def test_Genotype_mutate(ens_test_data):
     assert g.mut_energy["s1"] == 0
     assert g.mut_energy["s2"] == 1
 
+def test_Genotype_mut_energy(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    # ---------------------------------
+    # Create a genotype object
+    g = Genotype(ens=ens,
+                 ddg_dict=ddg_dict,
+                 sites=[1],
+                 mutations=["M1A"],
+                 mutations_accumulated=["M1A"],
+                 mut_energy={"s1":1,"s2":-1})
+    
+    assert g.mut_energy is g._mut_energy
+    assert g.mut_energy["s1"] == 1
+    assert g.mut_energy["s2"] == -1
+
+def test_Genotype_mutations(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    # ---------------------------------
+    # Create a genotype object
+    g = Genotype(ens=ens,
+                 ddg_dict=ddg_dict,
+                 sites=[1],
+                 mutations=["M1A"],
+                 mutations_accumulated=["M1A"],
+                 mut_energy={"s1":1,"s2":-1})
+    
+    assert g.mutations is g._mutations
+    assert np.array_equal(g.mutations,["M1A"])
+
+
+def test_Genotype_mutations_accumulated(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    # ---------------------------------
+    # Create a genotype object
+    g = Genotype(ens=ens,
+                 ddg_dict=ddg_dict,
+                 sites=[1],
+                 mutations=["M1A"],
+                 mutations_accumulated=["M1A"],
+                 mut_energy={"s1":1,"s2":-1})
+    
+    assert g.mutations_accumulated is g._mutations_accumulated
+    assert np.array_equal(g.mutations_accumulated,["M1A"])
+
+
+def test_Genotype_sites(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    # ---------------------------------
+    # Create a genotype object
+    g = Genotype(ens=ens,
+                 ddg_dict=ddg_dict,
+                 sites=[1],
+                 mutations=["M1A"],
+                 mutations_accumulated=["M1A"],
+                 mut_energy={"s1":1,"s2":-1})
+    
+    assert g.sites is g._sites
+    assert np.array_equal(g.sites,[1])
+
 
 def test_GenotypeContainer(ens_test_data):
 
@@ -302,8 +373,6 @@ def test_GenotypeContainer_mutate(ens_test_data):
             for k in range(j+1,len(gc.genotypes)):
                 assert gc.genotypes[j] is not gc.genotypes[k]
 
-
-
 def test_GenotypeContainer_genotypes(ens_test_data):
     
     fc = ens_test_data["fc"]
@@ -344,6 +413,28 @@ def test_GenotypeContainer_fitnesses(ens_test_data):
     gc.mutate(0)
     assert len(gc.fitnesses) == 2
     
+def test_GenotypeContainer_wt_sequence(ens_test_data):
+    
+    fc = ens_test_data["fc"]
+    ddg_df = ens_test_data["ddg_df"]
+
+    gc = GenotypeContainer(fc=fc,
+                           ddg_df=ddg_df)
+    
+    assert gc.wt_sequence == "MP"
+
+    ddg_df = pd.DataFrame({"site":[1,2,3],
+                           "mut":["M1A","P2Q","L3A"],
+                           "s1":[0,0,0],
+                           "s2":[0,0,0]})
+    
+    gc = GenotypeContainer(fc=fc,
+                           ddg_df=ddg_df)
+
+    assert gc.wt_sequence == "MPL"
+    
+
+
 
 def test_GenotypeContainer_df(ens_test_data):
 
