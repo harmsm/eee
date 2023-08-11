@@ -22,10 +22,21 @@ FOUND tests.evolve.test_fitness.test__fitness_function
 FOUND tests.evolve.test_fitness.test_ff_off
 FOUND tests.evolve.test_fitness.test_ff_on
 FOUND tests.evolve.test_fitness.test_fitness_function
+FOUND tests.evolve.test_genotype.test_Genotype
+FOUND tests.evolve.test_genotype.test_GenotypeContainer
+FOUND tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_df
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_fitnesses
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_genotypes
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_mutate
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_trajectories
+FOUND tests.evolve.test_genotype.test_Genotype_copy
+FOUND tests.evolve.test_genotype.test_Genotype_mutate
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif
 FOUND tests.io.test_load_structure.test__load_structure_pdb
 FOUND tests.io.test_load_structure.test_load_structure
+FOUND tests.io.test_read_dataframe.test_read_dataframe
 FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
 FOUND tests.structure.test_sync_structures.test__create_unique_filenames
@@ -41,16 +52,9 @@ FAKE tests.evolve.test__helper.test__get_num_accumulated_mutations
 FAKE tests.evolve.test_analysis.test_extract_alignment
 FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
-FAKE tests.evolve.test_genotype.test_Genotype
-FAKE tests.evolve.test_genotype.test_GenotypeContainer
-FAKE tests.evolve.test_genotype.test_GenotypeContainer_mutate
-FAKE tests.evolve.test_genotype.test_Genotype__create_ddg_dict
-FAKE tests.evolve.test_genotype.test_Genotype_copy
-FAKE tests.evolve.test_genotype.test_Genotype_mutate
 FAKE tests.evolve.test_simulate_evolution.test_simulate_evolution
 FAKE tests.evolve.test_simulate_tree.test_simulate_tree
 FAKE tests.evolve.test_wright_fisher.test_wright_fisher
-FAKE tests.io.test_read_dataframe.test_read_dataframe
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test__clean_structure
@@ -72,11 +76,6 @@ MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.test__helper.test_get_num_accumulated_mutations
 MISSING tests.evolve.test_fitness.test_FitnessContainer_T
 MISSING tests.evolve.test_fitness.test_FitnessContainer_ens
-MISSING tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
-MISSING tests.evolve.test_genotype.test_GenotypeContainer_df
-MISSING tests.evolve.test_genotype.test_GenotypeContainer_fitnesses
-MISSING tests.evolve.test_genotype.test_GenotypeContainer_genotypes
-MISSING tests.evolve.test_genotype.test_GenotypeContainer_trajectories
 MISSING tests.evolve.test_genotype.test_GenotypeContainer_wt_sequence
 MISSING tests.evolve.test_genotype.test_Genotype_mut_energy
 MISSING tests.evolve.test_genotype.test_Genotype_mutations
@@ -93,5 +92,4 @@ MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
 FOUND & EXTRA tests.evolve.test__helper.test__get_num_accumulated_mutations
-FOUND & EXTRA tests.evolve.test_genotype.test_Genotype__create_ddg_dict
 FOUND & EXTRA tests.structure.test_clean_structure.test__clean_structure

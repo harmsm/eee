@@ -15,16 +15,16 @@ import shutil
 def test__run_muscle():
     pass
 
-def test_align_structure_seqs(ensembles,tmpdir):
+def test_align_structure_seqs(structure_ensembles,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
 
-    for k in ensembles:
+    for k in structure_ensembles:
         
         # Load the specified structure files
         dfs = []
-        for f in ensembles[k]:
+        for f in structure_ensembles[k]:
             dfs.append(load_structure(f))
         
         # Get lists of all CA atoms and residues
@@ -59,7 +59,7 @@ def test_align_structure_seqs(ensembles,tmpdir):
                 else:
                     input_seqs[-1].extend(list(line.strip()))
         
-        assert len(input_seqs) == len(ensembles[k])
+        assert len(input_seqs) == len(structure_ensembles[k])
         for i in range(len(input_seqs)):
             assert np.array_equal([AA_1TO3[s] for s in input_seqs[i]],
                                 seqs[i])

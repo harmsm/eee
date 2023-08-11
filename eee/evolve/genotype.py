@@ -210,7 +210,7 @@ class GenotypeContainer:
         # Fitness and ddg information
         self._fc = fc
         self._ddg_df = ddg_df
-        self._ddg_dict = self._create_ddg_dict(self._ddg_df)
+        self._create_ddg_dict()
 
         # Sites and mutations for generating mutations
         self._possible_sites = list(self._ddg_dict.keys())
@@ -222,27 +222,32 @@ class GenotypeContainer:
         self._trajectories = [[0]]
         self._fitnesses = [self._fc.fitness(self._genotypes[0].mut_energy)]
 
-    def _create_ddg_dict(self,ddg_df):
+    def _create_ddg_dict(self):
         """
         Convert a ddg_df dataframe in to a dictionary of the form:
         
         ddg_dict["site"]["mut"]["species"]
         """
 
-        ddg_dict = {}
-        for i in ddg_df.index:
-            row = ddg_df.loc[i,:]
+        species = self._fc.ens.species
+        for s in species:
+            if s not in self._ddg_df.columns:
+                err = f"\nspecies {s} is not in ddg_df.\n\n"
+                raise ValueError(err)
+            
+        self._ddg_dict = {}
+        for i in self._ddg_df.index:
+            row = self._ddg_df.loc[i,:]
             
             site = row["site"]
             mut = row["mut"]
-            if site not in ddg_dict:
-                ddg_dict[site] = {}
+            if site not in self._ddg_dict:
+                self._ddg_dict[site] = {}
                 
-            ddg_dict[site][mut] = {}
-            for k in row.keys()[1:-2]:
-                ddg_dict[site][mut][k] = row[k]
+            self._ddg_dict[site][mut] = {}
+            for s in species:
+                self._ddg_dict[site][mut][s] = row[s]
 
-        return ddg_dict
     
     def mutate(self,index):
         """
@@ -262,8 +267,8 @@ class GenotypeContainer:
         """
 
         # Sanity check
-        if index > len(self._genotypes) - 1:
-            err = f"index ({index}) should be less than {len(self._genotypes)}"
+        if index < 0 or index > len(self._genotypes) - 1:
+            err = f"index ({index}) should be between 0 and {len(self._genotypes) - 1}"
             raise IndexError(err)
         
         # Create a new genotype and mutate
@@ -320,7 +325,21 @@ class GenotypeContainer:
         Genotypes, trajectories, and fitnesses as a pandas Dataframe.
         """
 
-        out = {"genotype":self._genotypes,
+        mutations = ["/".join(g.mutations) for g in self._genotypes]
+        num_mutations = [len(g.mutations) for g in self._genotypes]
+        accum_mutations = ["/".join(g.mutations_accumulated)
+                           for g in self._genotypes]
+        num_accum_mut = [len(g.mutations_accumulated) for g in self._genotypes]
+
+        parent = [t[-2] for t in self._trajectories[1:]]
+        parent.insert(0,pd.NA)
+
+        out = {"genotype":np.arange(len(self._genotypes),dtype=int),
+               "mutations":mutations,
+               "num_mutations":num_mutations,
+               "accum_mut":accum_mutations,
+               "num_accum_mut":num_accum_mut,
+               "parent":parent,
                "trajectory":self._trajectories,
                "fitness":self._fitnesses}
         

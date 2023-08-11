@@ -6,6 +6,10 @@ import pandas as pd
 import os
 import glob
 
+from eee.ensemble import Ensemble
+from eee.evolve.fitness import FitnessContainer
+from eee.evolve.fitness import ff_on
+from eee.evolve.fitness import ff_off
 
 def _file_globber(*args):
     """
@@ -46,10 +50,10 @@ def test_pdbs():
     return _file_globber("data_for_tests","test_structures","*.pdb")
 
 @pytest.fixture(scope="module")
-def ensembles():
+def structure_ensembles():
 
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    search_string = os.path.join(base_dir,"data_for_tests","ensembles","*")
+    search_string = os.path.join(base_dir,"data_for_tests","structure_ensembles","*")
 
     file_dict = {}
     for g in glob.glob(search_string):
@@ -64,6 +68,55 @@ def ensembles():
 def test_ddg():
 
     return _file_globber("data_for_tests","test_ddg","*.csv")
+
+@pytest.fixture(scope="module")
+def spreadsheets():
+
+    return _file_globber("data_for_tests","spreadsheets","*")
+
+@pytest.fixture(scope="module")
+def ens_test_data():
+
+    # Basic ensemble
+    ens = Ensemble(R=1)
+    ens.add_species(name="s1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="s2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    # basic mu_dict 
+    mu_dict = {"X":[0,1],
+               "Y":[1,0]}
+
+    ddg_df = pd.DataFrame({"site":[1,1,2,2],
+                           "mut":["M1A","M1V","P2R","P2Q"],
+                           "s1":[1,-1,0,0],
+                           "s2":[-1,1,1,0]})
+
+    # basic ddg dictionary
+    ddg_dict = {}
+    ddg_dict[1] = {"M1A":{"s1":1,"s2":-1},
+                   "M1V":{"s1":-1,"s2":1}}
+    ddg_dict[2] = {"P2R":{"s1":0,"s2":1},
+                   "P2Q":{"s1":0,"s2":0}}
+
+    fc = FitnessContainer(ens,
+                          mu_dict,
+                          [ff_on,ff_off],
+                          select_on="fx_obs",
+                          fitness_kwargs={},
+                          T=298.15)
+    
+    out = {"ens":ens,
+           "mu_dict":mu_dict,
+           "ddg_df":ddg_df,
+           "ddg_dict":ddg_dict,
+           "fc":fc}
+    
+    return out
+
 
 @pytest.fixture(scope="module")
 def programs():
