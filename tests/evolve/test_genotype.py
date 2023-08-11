@@ -140,7 +140,7 @@ def test_Genotype_mutate(ens_test_data):
     assert g2.mut_energy["s1"] == 1
     assert g2.mut_energy["s2"] == 0 # 1 unit higher 
 
-   # Copy and mutate same site, new mutation
+    # Copy and mutate same site, new mutation
     g3 = g.copy()
     g3.mutate(1,"M1V")
     assert len(g3.sites) == 1

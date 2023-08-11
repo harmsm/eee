@@ -11,7 +11,6 @@ from tqdm.auto import tqdm
 
 import warnings
 
-
 def wright_fisher(gc,
                   population,
                   mutation_rate,
@@ -66,10 +65,10 @@ def wright_fisher(gc,
         raise ValueError(err)
 
     parse_err = \
-    """
-    population should be a population dictionary, array of genotype indexes,
-    or a positive integer indicating the population size.
-    """
+        """
+        population should be a population dictionary, array of genotype indexes,
+        or a positive integer indicating the population size.
+        """
 
     if hasattr(population,"__iter__"):
 

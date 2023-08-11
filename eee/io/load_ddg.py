@@ -1,7 +1,6 @@
 """
 Functions for manipulating ddg files.
 """
-import pandas as pd
 import numpy as np
 
 from eee.io.read_dataframe import read_dataframe

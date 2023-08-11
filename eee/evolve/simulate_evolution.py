@@ -12,9 +12,6 @@ from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_fitness_fcns
 from eee._private.check.eee_variables import check_calc_params
 
-import numpy as np
-import pandas as pd
-
 
 def simulate_evolution(ens,
                        ddg_df,

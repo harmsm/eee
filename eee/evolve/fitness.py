@@ -48,7 +48,7 @@ def _fitness_function(ens,
     
     all_F = np.zeros(num_conditions)
     for i in range(num_conditions):
-       all_F[i] = fitness_fcns[i](values[select_on].iloc[i],**fitness_kwargs)
+        all_F[i] = fitness_fcns[i](values[select_on].iloc[i],**fitness_kwargs)
 
     return all_F
        

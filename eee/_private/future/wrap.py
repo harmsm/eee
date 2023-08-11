@@ -3,7 +3,12 @@ Construct a command line argument parser for a function, parse the command
 line arguments, and then run the function.
 """
 
-import sys, inspect, argparse, re, os, copy
+import sys
+import inspect
+import argparse
+import re
+import os
+import copy
 
 class IterFromFile(argparse.Action):
     """

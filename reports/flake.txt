@@ -1,7 +1,6 @@
-./setup.py:13:1: E122 continuation line missing indentation or outdented
-./setup.py:31:22: E231 missing whitespace after ','
-./setup.py:37:22: E231 missing whitespace after ':'
-./setup.py:41:16: E261 at least two spaces before inline comment
+./setup.py:30:22: E231 missing whitespace after ','
+./setup.py:36:22: E231 missing whitespace after ':'
+./setup.py:40:16: E261 at least two spaces before inline comment
 ./tests/conftest.py:14:1: E302 expected 2 blank lines, found 1
 ./tests/conftest.py:16:78: W291 trailing whitespace
 ./tests/conftest.py:17:72: W291 trailing whitespace
@@ -577,7 +576,6 @@
 ./tests/evolve/test_genotype.py:129:16: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:141:36: E261 at least two spaces before inline comment
 ./tests/evolve/test_genotype.py:141:52: W291 trailing whitespace
-./tests/evolve/test_genotype.py:143:4: E114 indentation is not a multiple of 4 (comment)
 ./tests/evolve/test_genotype.py:145:16: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:159:16: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:172:1: W293 blank line contains whitespace
@@ -1507,33 +1505,32 @@
 ./eee/io/__init__.py:4:1: F401 '.read_dataframe.read_dataframe' imported but unused
 ./eee/io/__init__.py:5:1: F401 '.write_pdb.write_pdb' imported but unused
 ./eee/io/__init__.py:5:33: W292 no newline at end of file
-./eee/io/load_ddg.py:4:1: F401 'pandas as pd' imported but unused
-./eee/io/load_ddg.py:9:1: E302 expected 2 blank lines, found 1
-./eee/io/load_ddg.py:11:58: W291 trailing whitespace
-./eee/io/load_ddg.py:16:73: W291 trailing whitespace
-./eee/io/load_ddg.py:19:58: W291 trailing whitespace
-./eee/io/load_ddg.py:20:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:24:77: W291 trailing whitespace
-./eee/io/load_ddg.py:25:76: W291 trailing whitespace
-./eee/io/load_ddg.py:26:75: W291 trailing whitespace
-./eee/io/load_ddg.py:27:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:30:79: W291 trailing whitespace
-./eee/io/load_ddg.py:32:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:34:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:8:1: E302 expected 2 blank lines, found 1
+./eee/io/load_ddg.py:10:58: W291 trailing whitespace
+./eee/io/load_ddg.py:15:73: W291 trailing whitespace
+./eee/io/load_ddg.py:18:58: W291 trailing whitespace
+./eee/io/load_ddg.py:19:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:23:77: W291 trailing whitespace
+./eee/io/load_ddg.py:24:76: W291 trailing whitespace
+./eee/io/load_ddg.py:25:75: W291 trailing whitespace
+./eee/io/load_ddg.py:26:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:29:79: W291 trailing whitespace
+./eee/io/load_ddg.py:31:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:33:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:39:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:40:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:41:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:43:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:49:15: F541 f-string is missing placeholders
-./eee/io/load_ddg.py:52:46: W291 trailing whitespace
-./eee/io/load_ddg.py:53:55: E231 missing whitespace after ','
-./eee/io/load_ddg.py:54:40: E231 missing whitespace after ','
+./eee/io/load_ddg.py:42:1: W293 blank line contains whitespace
+./eee/io/load_ddg.py:48:15: F541 f-string is missing placeholders
+./eee/io/load_ddg.py:51:46: W291 trailing whitespace
+./eee/io/load_ddg.py:52:55: E231 missing whitespace after ','
+./eee/io/load_ddg.py:53:40: E231 missing whitespace after ','
+./eee/io/load_ddg.py:62:21: E231 missing whitespace after ','
 ./eee/io/load_ddg.py:63:21: E231 missing whitespace after ','
-./eee/io/load_ddg.py:64:21: E231 missing whitespace after ','
-./eee/io/load_ddg.py:67:18: E231 missing whitespace after ','
+./eee/io/load_ddg.py:66:18: E231 missing whitespace after ','
+./eee/io/load_ddg.py:67:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:68:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:69:1: W293 blank line contains whitespace
-./eee/io/load_ddg.py:70:5: E303 too many blank lines (2)
-./eee/io/load_ddg.py:72:1: W391 blank line at end of file
+./eee/io/load_ddg.py:69:5: E303 too many blank lines (2)
+./eee/io/load_ddg.py:71:1: W391 blank line at end of file
 ./eee/evolve/analysis.py:2:77: W291 trailing whitespace
 ./eee/evolve/analysis.py:10:1: C901 'get_genotype_frequencies' is too complex (13)
 ./eee/evolve/analysis.py:10:41: E231 missing whitespace after ','
@@ -1648,30 +1645,28 @@
 ./eee/evolve/__init__.py:16:1: F401 '.fitness.ff_off' imported but unused
 ./eee/evolve/__init__.py:17:1: F401 '.fitness.ff_on' imported but unused
 ./eee/evolve/__init__.py:17:27: W292 no newline at end of file
-./eee/evolve/simulate_evolution.py:15:1: F401 'numpy as np' imported but unused
-./eee/evolve/simulate_evolution.py:16:1: F401 'pandas as pd' imported but unused
-./eee/evolve/simulate_evolution.py:30:78: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:31:18: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:35:23: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:38:77: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:39:75: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:44:70: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:46:60: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:49:76: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:58:61: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:69:72: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:71:73: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:72:69: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:82:5: E303 too many blank lines (2)
-./eee/evolve/simulate_evolution.py:82:29: E231 missing whitespace after ','
-./eee/evolve/simulate_evolution.py:85:51: E231 missing whitespace after ','
-./eee/evolve/simulate_evolution.py:92:75: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:100:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:101:76: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:105:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:107:22: E222 multiple spaces after operator
-./eee/evolve/simulate_evolution.py:111:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:118:1: W391 blank line at end of file
+./eee/evolve/simulate_evolution.py:27:78: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:28:18: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:32:23: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:35:77: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:36:75: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:41:70: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:43:60: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:46:76: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:55:61: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:66:72: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:68:73: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:69:69: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:79:5: E303 too many blank lines (2)
+./eee/evolve/simulate_evolution.py:79:29: E231 missing whitespace after ','
+./eee/evolve/simulate_evolution.py:82:51: E231 missing whitespace after ','
+./eee/evolve/simulate_evolution.py:89:75: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:97:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:98:76: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:102:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:104:22: E222 multiple spaces after operator
+./eee/evolve/simulate_evolution.py:108:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:115:1: W391 blank line at end of file
 ./eee/evolve/fitness.py:3:25: W291 trailing whitespace
 ./eee/evolve/fitness.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/fitness.py:21:1: E302 expected 2 blank lines, found 1
@@ -1679,8 +1674,7 @@
 ./eee/evolve/fitness.py:28:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/fitness.py:39:1: W293 blank line contains whitespace
 ./eee/evolve/fitness.py:48:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:51:8: E111 indentation is not a multiple of 4
-./eee/evolve/fitness.py:51:60: E231 missing whitespace after ','
+./eee/evolve/fitness.py:51:61: E231 missing whitespace after ','
 ./eee/evolve/fitness.py:54:1: W293 blank line contains whitespace
 ./eee/evolve/fitness.py:64:73: W291 trailing whitespace
 ./eee/evolve/fitness.py:65:79: W291 trailing whitespace
@@ -1746,60 +1740,60 @@
 ./eee/evolve/simulate_tree.py:151:33: E128 continuation line under-indented for visual indent
 ./eee/evolve/simulate_tree.py:155:5: E303 too many blank lines (2)
 ./eee/evolve/simulate_tree.py:155:20: W292 no newline at end of file
-./eee/evolve/wright_fisher.py:15:1: C901 'wright_fisher' is too complex (20)
-./eee/evolve/wright_fisher.py:22:77: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:24:42: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:25:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:29:73: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:30:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:31:66: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:35:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:37:76: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:40:77: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:41:51: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:43:72: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:44:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:45:17: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:47:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:51:57: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:52:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:56:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:60:75: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:61:31: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:64:31: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:69:5: E122 continuation line missing indentation or outdented
-./eee/evolve/wright_fisher.py:74:26: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:76:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:77:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:79:39: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:85:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:86:64: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:87:41: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:95:27: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:97:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:99:46: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:100:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:104:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:109:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:115:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:126:40: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:127:25: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:137:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:139:25: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:141:76: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:147:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:148:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:174:37: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:175:59: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:179:48: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:180:37: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:14:1: C901 'wright_fisher' is too complex (20)
+./eee/evolve/wright_fisher.py:14:1: E302 expected 2 blank lines, found 1
+./eee/evolve/wright_fisher.py:21:77: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:23:42: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:24:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:28:73: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:29:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:30:66: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:34:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:36:76: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:39:77: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:40:51: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:42:72: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:43:80: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:44:17: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:46:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:50:57: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:51:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:55:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:59:75: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:60:31: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:63:31: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:73:26: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:75:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:76:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:78:39: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:84:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:85:64: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:86:41: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:94:27: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:96:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:98:46: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:99:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:103:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:108:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:114:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:125:40: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:126:25: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:136:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:138:25: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:140:76: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:146:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:147:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:173:37: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:174:59: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:178:48: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:179:37: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:181:80: W291 trailing whitespace
 ./eee/evolve/wright_fisher.py:182:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:183:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:184:61: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:189:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:193:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:200:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:204:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:183:61: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:188:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:192:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:199:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:203:1: W293 blank line contains whitespace
 ./eee/_private/interface.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:17:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:23:1: W293 blank line contains whitespace
@@ -1944,28 +1938,27 @@
 ./eee/_private/check/ensemble.py:9:1: W293 blank line contains whitespace
 ./eee/_private/check/ensemble.py:10:73: W291 trailing whitespace
 ./eee/_private/check/ensemble.py:16:15: W292 no newline at end of file
-./eee/_private/future/wrap.py:6:11: E401 multiple imports on one line
-./eee/_private/future/wrap.py:8:1: E302 expected 2 blank lines, found 1
-./eee/_private/future/wrap.py:22:5: C901 'IterFromFile.__call__' is too complex (11)
-./eee/_private/future/wrap.py:45:31: E701 multiple statements on one line (colon)
-./eee/_private/future/wrap.py:49:38: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:51:35: W605 invalid escape sequence '\R'
-./eee/_private/future/wrap.py:54:32: F541 f-string is missing placeholders
-./eee/_private/future/wrap.py:67:34: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:71:28: F541 f-string is missing placeholders
-./eee/_private/future/wrap.py:80:1: C901 'wrap_function' is too complex (15)
-./eee/_private/future/wrap.py:80:1: E302 expected 2 blank lines, found 1
-./eee/_private/future/wrap.py:80:22: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:80:32: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:80:54: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:80:68: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:114:22: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:114:26: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:120:34: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:120:37: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:156:30: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:168:37: E231 missing whitespace after ','
-./eee/_private/future/wrap.py:173:33: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:13:1: E302 expected 2 blank lines, found 1
+./eee/_private/future/wrap.py:27:5: C901 'IterFromFile.__call__' is too complex (11)
+./eee/_private/future/wrap.py:50:31: E701 multiple statements on one line (colon)
+./eee/_private/future/wrap.py:54:38: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:56:35: W605 invalid escape sequence '\R'
+./eee/_private/future/wrap.py:59:32: F541 f-string is missing placeholders
+./eee/_private/future/wrap.py:72:34: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:76:28: F541 f-string is missing placeholders
+./eee/_private/future/wrap.py:85:1: C901 'wrap_function' is too complex (15)
+./eee/_private/future/wrap.py:85:1: E302 expected 2 blank lines, found 1
+./eee/_private/future/wrap.py:85:22: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:85:32: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:85:54: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:85:68: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:119:22: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:119:26: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:125:34: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:125:37: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:161:30: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:173:37: E231 missing whitespace after ','
+./eee/_private/future/wrap.py:178:33: E231 missing whitespace after ','
 ./eee/_private/future/multithreading.py:50:27: E231 missing whitespace after ','
 ./eee/_private/future/multithreading.py:53:1: C901 'thread_manager' is too complex (27)
 ./eee/_private/future/multithreading.py:76:72: W291 trailing whitespace
@@ -2102,35 +2095,34 @@
 ./eee/structure/__init__.py:3:1: F401 '.clean_structure.clean_structure' imported but unused
 ./eee/structure/__init__.py:4:1: F401 '.sync_structures.sync_structures' imported but unused
 ./eee/structure/sync_structures.py:3:24: W291 trailing whitespace
-./eee/structure/sync_structures.py:13:1: F401 'numpy as np' imported but unused
-./eee/structure/sync_structures.py:19:1: E302 expected 2 blank lines, found 1
-./eee/structure/sync_structures.py:24:68: W291 trailing whitespace
-./eee/structure/sync_structures.py:36:36: W291 trailing whitespace
-./eee/structure/sync_structures.py:46:34: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:51:1: C901 'sync_structures' is too complex (11)
-./eee/structure/sync_structures.py:59:78: W291 trailing whitespace
-./eee/structure/sync_structures.py:63:77: W291 trailing whitespace
-./eee/structure/sync_structures.py:64:73: W291 trailing whitespace
-./eee/structure/sync_structures.py:66:19: W291 trailing whitespace
-./eee/structure/sync_structures.py:71:79: W291 trailing whitespace
-./eee/structure/sync_structures.py:75:45: W291 trailing whitespace
-./eee/structure/sync_structures.py:83:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:88:50: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:99:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:100:26: W291 trailing whitespace
-./eee/structure/sync_structures.py:112:30: W291 trailing whitespace
-./eee/structure/sync_structures.py:114:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:122:35: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:122:51: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:126:31: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:126:47: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:131:28: W291 trailing whitespace
-./eee/structure/sync_structures.py:136:33: E231 missing whitespace after ','
-./eee/structure/sync_structures.py:137:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:142:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:144:5: E303 too many blank lines (2)
-./eee/structure/sync_structures.py:145:1: W293 blank line contains whitespace
-./eee/structure/sync_structures.py:145:5: W292 no newline at end of file
+./eee/structure/sync_structures.py:17:1: E302 expected 2 blank lines, found 1
+./eee/structure/sync_structures.py:22:68: W291 trailing whitespace
+./eee/structure/sync_structures.py:34:36: W291 trailing whitespace
+./eee/structure/sync_structures.py:44:34: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:49:1: C901 'sync_structures' is too complex (11)
+./eee/structure/sync_structures.py:57:78: W291 trailing whitespace
+./eee/structure/sync_structures.py:61:77: W291 trailing whitespace
+./eee/structure/sync_structures.py:62:73: W291 trailing whitespace
+./eee/structure/sync_structures.py:64:19: W291 trailing whitespace
+./eee/structure/sync_structures.py:69:79: W291 trailing whitespace
+./eee/structure/sync_structures.py:73:45: W291 trailing whitespace
+./eee/structure/sync_structures.py:81:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:86:50: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:97:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:98:26: W291 trailing whitespace
+./eee/structure/sync_structures.py:110:30: W291 trailing whitespace
+./eee/structure/sync_structures.py:112:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:120:35: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:120:51: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:124:31: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:124:47: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:129:28: W291 trailing whitespace
+./eee/structure/sync_structures.py:134:33: E231 missing whitespace after ','
+./eee/structure/sync_structures.py:135:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:140:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:142:5: E303 too many blank lines (2)
+./eee/structure/sync_structures.py:143:1: W293 blank line contains whitespace
+./eee/structure/sync_structures.py:143:5: W292 no newline at end of file
 ./eee/structure/align_structures.py:13:1: E302 expected 2 blank lines, found 1
 ./eee/structure/align_structures.py:20:1: W293 blank line contains whitespace
 ./eee/structure/align_structures.py:31:1: W293 blank line contains whitespace
@@ -2172,9 +2164,6 @@
 ./docs/script/build_api_docs.py:68:21: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:72:1: E305 expected 2 blank lines after class or function definition, found 1
 20    C901 'array_expander' is too complex (11)
-1     E111 indentation is not a multiple of 4
-1     E114 indentation is not a multiple of 4 (comment)
-2     E122 continuation line missing indentation or outdented
 10    E127 continuation line over-indented for visual indent
 32    E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
@@ -2184,14 +2173,14 @@
 2     E261 at least two spaces before inline comment
 2     E265 block comment should start with '# '
 2     E301 expected 1 blank line, found 0
-105   E302 expected 2 blank lines, found 1
+106   E302 expected 2 blank lines, found 1
 41    E303 too many blank lines (2)
 2     E305 expected 2 blank lines after class or function definition, found 1
-4     E401 multiple imports on one line
+3     E401 multiple imports on one line
 2     E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 4     E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-45    F401 'glob' imported but unused
+41    F401 'glob' imported but unused
 5     F541 f-string is missing placeholders
 6     F841 local variable 'value' is assigned to but never used
 261   W291 trailing whitespace
@@ -2199,4 +2188,4 @@
 320   W293 blank line contains whitespace
 10    W391 blank line at end of file
 5     W605 invalid escape sequence '\R'
-2173
+2165

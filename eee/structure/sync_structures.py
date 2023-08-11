@@ -10,8 +10,6 @@ from eee.structure.clean_structure import clean_structure
 from eee.structure.align_structure_seqs import align_structure_seqs
 from eee.structure.align_structures import align_structures
 
-import numpy as np
-
 import os
 import glob
 import shutil

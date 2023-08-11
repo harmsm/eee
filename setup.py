@@ -9,8 +9,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 # Package meta-data.
-DESCRIPTION = \
-"""Ensemble Epistasis Engine."""
+DESCRIPTION = """Ensemble Epistasis Engine."""
 URL = "https://github.com/harmslab/eee"
 EMAIL = "harmsm@gmail.com"
 AUTHOR = "Michael J. Harms"
