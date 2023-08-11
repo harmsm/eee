@@ -4,17 +4,19 @@ Functions for manipulating ddg files.
 import pandas as pd
 import numpy as np
 
+from eee._private.io import read_dataframe
+
+
 def load_ddg(ddg_file):
     """
-    Load a ddg file, enforcing the rule that all self mutations (i.e., A21A)
-    have ddG = 0.
+    Load a ddg file, removing all self-to-self mutations. 
 
     Parameters
     ----------
     ddg_file : str
         csv file with "mut" column (formatted like A21A, Q45L, etc.) and columns
         for each species in the ensemble. The values in the species columns are
-        the predicted effect of that mutation on that ensemble species. 
+        the predicted energetic effect of that mutation on that ensemble species. 
         
     Returns
     -------
@@ -40,7 +42,13 @@ def load_ddg(ddg_file):
     """
     
     # Read csv file and extract sites seen
-    df = pd.read_csv(ddg_file)
+    df = read_dataframe(ddg_file)
+
+    # Check to make sure there is a mut column
+    if "mut" not in df.columns:
+        err = f"{ddg_file} should have a 'mut' column.\n"
+        raise ValueError(err)
+
     df["site"] = [int(m[1:-1]) for m in list(df.mut)]
 
     # Find the wildtype entries (i.e., Q45Q). 

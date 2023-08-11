@@ -6,28 +6,6 @@ import pandas as pd
 
 import copy
 
-def _create_ddg_dict(ddg_df):
-    """
-    Convert a ddg_df dataframe in to a dictionary of the form:
-    
-    ddg_dict["site"]["mut"]["species"]
-    """
-
-    ddg_dict = {}
-    for i in ddg_df.index:
-        row = ddg_df.loc[i,:]
-        
-        site = row["site"]
-        mut = row["mut"]
-        if site not in ddg_dict:
-            ddg_dict[site] = {}
-            
-        ddg_dict[site][mut] = {}
-        for k in row.keys()[1:-2]:
-            ddg_dict[site][mut][k] = row[k]
-
-    return ddg_dict
-
 class Genotype:
     """
     Class to hold a genotype including the mutated sites, mutations, and the
@@ -232,7 +210,7 @@ class GenotypeContainer:
         # Fitness and ddg information
         self._fc = fc
         self._ddg_df = ddg_df
-        self._ddg_dict = _create_ddg_dict(self._ddg_df)
+        self._ddg_dict = self._create_ddg_dict(self._ddg_df)
 
         # Sites and mutations for generating mutations
         self._possible_sites = list(self._ddg_dict.keys())
@@ -244,6 +222,27 @@ class GenotypeContainer:
         self._trajectories = [[0]]
         self._fitnesses = [self._fc.fitness(self._genotypes[0].mut_energy)]
 
+    def _create_ddg_dict(self,ddg_df):
+        """
+        Convert a ddg_df dataframe in to a dictionary of the form:
+        
+        ddg_dict["site"]["mut"]["species"]
+        """
+
+        ddg_dict = {}
+        for i in ddg_df.index:
+            row = ddg_df.loc[i,:]
+            
+            site = row["site"]
+            mut = row["mut"]
+            if site not in ddg_dict:
+                ddg_dict[site] = {}
+                
+            ddg_dict[site][mut] = {}
+            for k in row.keys()[1:-2]:
+                ddg_dict[site][mut][k] = row[k]
+
+        return ddg_dict
     
     def mutate(self,index):
         """
