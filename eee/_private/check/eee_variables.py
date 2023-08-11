@@ -106,6 +106,11 @@ def check_ddg_df(ddg_df):
 
 def check_fitness_fcns(fitness_fcns,mu_dict=None):
 
+    if not hasattr(fitness_fcns,"__iter__") or issubclass(type(fitness_fcns),type):
+        err = "fitness_fcns must be a list of functions that take an ensemble\n"
+        err += "observable as their first argument.\n"
+        raise ValueError(err)
+
     # Make sure all fitness_fcns can be called
     for f in fitness_fcns:
         if not callable(f):
