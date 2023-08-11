@@ -111,11 +111,11 @@ def test_Ensemble_get_species_dG(variable_types):
     
     assert ens.get_species_dG("another") == 0
     assert ens.get_species_dG("another",mut_energy=10) == 10
-    assert ens.get_species_dG("another",mut_energy=10,mu_dict={"X":10}) == 20
+    assert ens.get_species_dG("another",mut_energy=10,mu_dict={"X":10}) == 0
 
     # Pass in an array of mu X
     value = ens.get_species_dG("another",mut_energy=10,mu_dict={"X":np.arange(10)})
-    assert np.array_equal(value,np.arange(10)+10)
+    assert np.array_equal(value,-np.arange(10) + 10)
 
     # Stoichiometry of 2
     ens = Ensemble()
@@ -124,7 +124,7 @@ def test_Ensemble_get_species_dG(variable_types):
                     dG0=-5,
                     mu_stoich={"X":2})
     value = ens.get_species_dG("stoich2",mut_energy=10,mu_dict={"X":np.arange(10)})
-    assert np.array_equal(value,np.arange(10)*2 + 5)
+    assert np.array_equal(value,-np.arange(10)*2 + 5)
 
     # Two chemical potentials same species
     ens = Ensemble()
@@ -136,7 +136,7 @@ def test_Ensemble_get_species_dG(variable_types):
                                mut_energy=0,
                                mu_dict={"X":np.arange(10),
                                         "Y":np.arange(10)})
-    assert np.array_equal(value,np.arange(10)*2+np.arange(10)-5)
+    assert np.array_equal(value,-np.arange(10)*2+-np.arange(10)-5)
 
     # mut_energy argument type checking
     print("--- mut_energy ---")
@@ -279,12 +279,24 @@ def test_Ensemble_get_obs(variable_types):
     df = ens.get_obs(T=1,
                      mu_dict={"X":[0,1]})
     
-    assert df.loc[0,"dG_obs"] == -np.log(1/2)
-    assert df.loc[0,"fx_obs"] == 1/3
-    assert df.loc[0,"test1"] == 1/3
-    assert df.loc[0,"test2"] == 1/3
+    test1 = np.exp(0)
+    test2 = np.exp(0)
+    test3 = np.exp(0)
+    test_all = test1 + test2 + test3
+    numerator = test1
+    denominator = test2 + test3
 
-    test1 = np.exp(-1)
+    dG = -np.log(numerator/denominator)
+    fx = numerator/(numerator + denominator)
+
+    assert np.isclose(df.loc[0,"dG_obs"],dG)
+    assert np.isclose(df.loc[0,"fx_obs"],fx)
+    assert np.isclose(df.loc[0,"test1"],test1/test_all)
+    assert np.isclose(df.loc[0,"test2"],test2/test_all)
+    assert np.isclose(df.loc[0,"test3"],test3/test_all)
+
+
+    test1 = np.exp(1)
     test2 = np.exp(0)
     test3 = np.exp(0)
     test_all = test1 + test2 + test3
@@ -315,9 +327,9 @@ def test_Ensemble_get_obs(variable_types):
                      mu_dict={"X":[0,1]},
                      mut_energy={"test2":-1})
     
-    test1 = np.exp(-(0))
-    test2 = np.exp(-(-1))
-    test3 = np.exp(-(0))
+    test1 = np.exp(0)
+    test2 = np.exp(1)
+    test3 = np.exp(0)
     test_all = test1 + test2 + test3
     numerator = test1
     denominator = test2 + test3
@@ -331,9 +343,9 @@ def test_Ensemble_get_obs(variable_types):
     assert np.isclose(df.loc[0,"test2"],test2/test_all)
     assert np.isclose(df.loc[0,"test3"],test3/test_all)
 
-    test1 = np.exp(-(1))
-    test2 = np.exp(-(-1))
-    test3 = np.exp(-(0))
+    test1 = np.exp(1)
+    test2 = np.exp(1)
+    test3 = np.exp(0)
     test_all = test1 + test2 + test3
     numerator = test1
     denominator = test2 + test3
@@ -363,9 +375,9 @@ def test_Ensemble_get_obs(variable_types):
                      mu_dict={"X":[0,1],"Y":[0,1]},
                      mut_energy={"test2":-1})
     
-    test1 = np.exp(-(0))
-    test2 = np.exp(-(-1))
-    test3 = np.exp(-(0))
+    test1 = np.exp(0)
+    test2 = np.exp(1)
+    test3 = np.exp(0)
     test_all = test1 + test2 + test3
     numerator = test1
     denominator = test2 + test3
@@ -379,9 +391,9 @@ def test_Ensemble_get_obs(variable_types):
     assert np.isclose(df.loc[0,"test2"],test2/test_all)
     assert np.isclose(df.loc[0,"test3"],test3/test_all)
 
-    test1 = np.exp(-(1))
-    test2 = np.exp(-(0))
-    test3 = np.exp(-(0))
+    test1 = np.exp(1)
+    test2 = np.exp(2)
+    test3 = np.exp(0)
     test_all = test1 + test2 + test3
     numerator = test1
     denominator = test2 + test3

@@ -206,7 +206,7 @@ class Ensemble:
             # Perturb dG by chemical potential (if chemical potential is in 
             # mu_dict). 
             if m in mu_dict:
-                dG += mu_dict[m]*self._species[name]["mu_stoich"][m]
+                dG -= mu_dict[m]*self._species[name]["mu_stoich"][m]
 
         return dG
     
@@ -254,7 +254,7 @@ class Ensemble:
         num_obs = np.sum([self._species[s]["observable"] for s in self._species])
         if num_obs < 1 or num_obs > len(self._species) - 1:
             err = "To calculate an observable, at least one species must be\n"
-            err += "observable and at least one should not be observable.\n"
+            err += "observable and at least one must not be observable.\n"
             raise ValueError(err)
         
         # If no mutation energy dictionary specified, make one with zero for 
@@ -266,6 +266,7 @@ class Ensemble:
         if mu_dict is None:
             mu_dict = dict([(m,0.0) for m in self._mu_list])
         
+        # Argument sanity checking
         if self._do_arg_checking:
 
             mut_energy = check_mut_energy(mut_energy)
@@ -294,14 +295,14 @@ class Ensemble:
         # Expand mu_dict so all values have the same length
         mu_dict, length = array_expander(mu_dict)
 
-        num_species = len(self._species)
-
         # Pull the temperature back out of mu_dict and figure out beta
-        beta = -1/(self._R*T)
+        beta = 1/(self._R*T)
         T = mu_dict.pop("_dummy_temperature")
 
         # Create pops arrays
+        num_species = len(self._species)
         if length == 0:
+
             pops = np.zeros((1,num_species),dtype=float)
 
             # Make T into a length 1 array
@@ -317,15 +318,17 @@ class Ensemble:
         # Go through each species.
         for i, s in enumerate(self._species):
 
-            # Calculate dG store dG*beta in pops
+            # Calculate dG store -dG*beta in pops
             dG = self.get_species_dG(name=s,
                                      mut_energy=mut_energy[s],
                                      mu_dict=mu_dict)
-            pops[:,i] = dG*beta
+            pops[:,i] = -dG*beta
 
-        # Shift dG*beta so the midpoint between max and min values is zero. 
-        # This should prevent most numerical errors. 
-        shift = -(np.max(pops,axis=1) + np.min(pops,axis=1))/2
+        # Shift energies to minimize numerical errors. Shift so the species 
+        # with the highest weight is close to the highest possible float. Lower
+        # weight species will have weights close to zero, but we will not 
+        # overflow and get a anan
+        shift = np.log(np.finfo('d').max)*0.9 - np.max(pops,axis=1)
         pops = pops + shift[:,None]
 
         # Take exponential. 
@@ -353,7 +356,15 @@ class Ensemble:
                 denominator += out[s]
         
         out["fx_obs"] = numerator/(denominator + numerator)
-        out["dG_obs"] = 1/beta*np.log(numerator/denominator)
+
+        mask = np.logical_or(denominator == 0,numerator==0)
+        not_mask = np.logical_not(mask)
+        
+        dG_out = np.zeros(len(mask),dtype=float)
+        dG_out[mask] = np.nan
+        dG_out[not_mask] = -1/beta*np.log(numerator[not_mask]/denominator[not_mask])
+
+        out["dG_obs"] = dG_out
 
         return pd.DataFrame(out)
 
