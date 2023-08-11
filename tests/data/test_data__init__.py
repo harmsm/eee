@@ -1,7 +1,7 @@
 
-from eee.util.data import AA
-from eee.util.data import AA_1TO3
-from eee.util.data import AA_3TO1
+from eee.data import AA
+from eee.data import AA_1TO3
+from eee.data import AA_3TO1
 
 assert type(AA) is list
 assert len(AA) == 20

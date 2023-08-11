@@ -2,7 +2,7 @@
 import pytest
 
 from eee.io import load_structure
-from eee.util.data import AA_1TO3
+from eee.data import AA_1TO3
 
 from eee.util._sync_structures import _clean_structures
 from eee.util._sync_structures import _run_muscle

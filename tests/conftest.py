@@ -35,7 +35,7 @@ def test_cifs():
     Dictionary holding cif files for testing. 
     """
 
-    return _file_globber("data","test_structures","*.cif")
+    return _file_globber("data_for_tests","test_structures","*.cif")
 
 @pytest.fixture(scope="module")
 def test_pdbs():
@@ -43,13 +43,13 @@ def test_pdbs():
     Dictionary holding pdb files for testing. 
     """
 
-    return _file_globber("data","test_structures","*.pdb")
+    return _file_globber("data_for_tests","test_structures","*.pdb")
 
 @pytest.fixture(scope="module")
 def ensembles():
 
     base_dir = os.path.dirname(os.path.realpath(__file__))
-    search_string = os.path.join(base_dir,"data","ensembles","*")
+    search_string = os.path.join(base_dir,"data_for_tests","ensembles","*")
 
     file_dict = {}
     for g in glob.glob(search_string):
@@ -63,7 +63,7 @@ def ensembles():
 @pytest.fixture(scope="module")
 def test_ddg():
 
-    return _file_globber("data","test_ddg","*.csv")
+    return _file_globber("data_for_tests","test_ddg","*.csv")
 
 @pytest.fixture(scope="module")
 def variable_types():

@@ -1,5 +1,5 @@
 """
-Useful data for manipulating pdb files etc.
+Data used in calculations. 
 """
 
 AA = [("A","ALA"),

@@ -3,7 +3,7 @@ Functions for taking raw RCSB output with several structures and creating input
 for an EEE calculation. 
 """
 
-from eee.util.data import AA_3TO1
+from eee.data import AA_3TO1
 from eee.io import write_pdb
 from eee.io import load_structure
 from eee._private import logger

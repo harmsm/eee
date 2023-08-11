@@ -36,7 +36,7 @@ sleep 1
 genbadge coverage
 sleep 1
 
-wget https://github.com/harmslab/topiary/actions/workflows/python-app.yml/badge.svg -O ghwf.svg
-wget https://readthedocs.org/projects/topiary-asr/badge/?version=latest -O rtd.svg
+#wget https://github.com/harmslab/topiary/actions/workflows/python-app.yml/badge.svg -O ghwf.svg
+#wget https://readthedocs.org/projects/topiary-asr/badge/?version=latest -O rtd.svg
 
 mv *.svg docs/badges
