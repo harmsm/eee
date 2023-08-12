@@ -6,6 +6,11 @@ from eee.evolve.genotype import GenotypeContainer
 from eee.evolve._helper import get_num_accumulated_mutations
 from eee._private.interface import MockTqdm
 
+from eee._private.check.eee_variables import check_num_generations
+from eee._private.check.eee_variables import check_mutation_rate
+from eee._private.check.eee_variables import check_population_size
+from eee._private.check.eee_variables import check_num_mutations
+
 import numpy as np
 from tqdm.auto import tqdm
 
@@ -64,25 +69,28 @@ def wright_fisher(gc,
         err = "\ngc should be a GenotypeContainer instance.\n\n"
         raise ValueError(err)
 
-    parse_err = \
-        """
-        population should be a population dictionary, array of genotype indexes,
-        or a positive integer indicating the population size.
-        """
+    parse_err = "\npopulation should be a population dictionary, array of\n"
+    parse_err += "genotype indexes, or a positive integer indicating the\n"
+    parse_err += "population size.\n\n"
 
     if hasattr(population,"__iter__"):
+
+        # Only instances allowed
+        if issubclass(type(population),type):
+            raise ValueError(parse_err)
 
         # If someone passes in something like {5:10,8:40,9:1}, where keys are 
         # genotype indexes and values are population size, expand to a list of 
         # genotypes
         if issubclass(type(population),dict):
+            
             _population = []
             for p in population:
                 _population.extend([p for _ in range(population[p])])
             population = _population
-
+            
         # Make sure population is a numpy array, whether passed in by user as 
-        # a list or from the list built from _population above. 
+         # a list or from the list built above
         population = np.array(population,dtype=int)
         population_size = len(population)
 
@@ -91,33 +99,33 @@ def wright_fisher(gc,
         # Get the population size
         try:
             population_size = int(population)
-        except (ValueError,TypeError):
-            raise(parse_err)
+        except (ValueError,TypeError,OverflowError):
+            raise ValueError(parse_err)
         
         # Build a population of all wildtype
         population = np.zeros(population_size,dtype=int)
-            
-    # Check for sane population size
-    if population_size < 1:
-        raise ValueError(parse_err)
     
-    # Check for sane mutation rate
-    if mutation_rate < 0:
-        err = "\nmutation_rate should be a float > 0\n\n"
-        raise ValueError(err)
-    
-    # Convergence assumed unless num_mutations is defined
-    success = True
-    if num_generations < 1:
-        err = "\nnum_generations should be an integer >= 1\n\n"
-        raise ValueError(err)
-    
+    # Check variables
+    population_size = check_population_size(population_size)
+    mutation_rate = check_mutation_rate(mutation_rate)
+    num_generations = check_num_generations(num_generations)
     if num_mutations is not None:
-        success = False
-        if num_mutations < 1:
-            err = "\nIf specified, num_mutations should be an integer >= 1\n\n"
-            raise ValueError(err)
+        num_mutations = check_num_mutations(num_mutations)
 
+    # Make sure the population genotypes are in the gc object
+    min_idx = np.min(population)
+    if min_idx < 0:
+        err = f"\npopulation has a genotype ({min_idx}) that is not in the gc\n"
+        err += "object.\n\n"
+        raise ValueError(err)
+
+    # Make sure the population genotypes are in the gc object
+    max_idx = np.max(population)
+    if max_idx >= len(gc.genotypes):
+        err = f"\npopulation has a genotype ({max_idx}) that is not in the gc\n"
+        err += "object.\n\n"
+        raise ValueError(err)
+    
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
 
@@ -134,6 +142,8 @@ def wright_fisher(gc,
     # Run the simulation
     with pbar:
     
+        hit_target_num_mutations = False
+
         # For all num_generations (first is starting population)
         for _ in range(1,num_generations):
 
@@ -182,18 +192,20 @@ def wright_fisher(gc,
             # number of mutations is in the most frequent genotype. If that has 
             # greater than or equal to num_mutations, break. 
             if num_mutations is not None:
+
                 num_mutations_seen = get_num_accumulated_mutations(seen=seen,
                                                                    counts=counts,
                                                                    gc=gc)
                 
                 if num_mutations_seen >= num_mutations:
-                    success = True
+                    hit_target_num_mutations = True
                     break
             
             pbar.update(n=1)
 
     # Warn if we did not get all of the requested mutations
-    if not success:
+    if num_mutations is not None and not hit_target_num_mutations:
+        
         seen = generations[-1][0]
         counts = generations[-1][1]
     

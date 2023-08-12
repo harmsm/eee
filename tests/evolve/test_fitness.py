@@ -23,7 +23,7 @@ def test_ff_off():
     assert ff_off(0) == 1
 
 
-def test__fitness_function():
+def test__fitness_function(ens_with_fitness):
     
     # Basic ensemble
     ens = Ensemble(R=1)
@@ -102,7 +102,38 @@ def test__fitness_function():
                               T=T)
     assert np.array_equal(value,[1,2])
 
-def test_fitness_function(variable_types):
+
+    ens = ens_with_fitness["ens"]
+    mu_dict = ens_with_fitness["mu_dict"]
+
+    value = _fitness_function(ens=ens,
+                              mut_energy={},
+                              mu_dict=mu_dict,
+                              fitness_fcns=[ff_on,ff_off],
+                              select_on="fx_obs",
+                              fitness_kwargs={},
+                              T=1)
+    assert np.array_equal(np.round(value,2),[0.54,1.00])
+
+    value = _fitness_function(ens=ens,
+                              mut_energy={"s1":-1.667,"s2":3.333},
+                              mu_dict=mu_dict,
+                              fitness_fcns=[ff_on,ff_off],
+                              select_on="fx_obs",
+                              fitness_kwargs={},
+                              T=1)
+    assert np.array_equal(np.round(value,2),[0.99,0.82])
+    
+    value = _fitness_function(ens=ens,
+                              mut_energy={"s1":0.167,"s2":-16.667},
+                              mu_dict=mu_dict,
+                              fitness_fcns=[ff_on,ff_off],
+                              select_on="fx_obs",
+                              fitness_kwargs={},
+                              T=1)
+    assert np.array_equal(np.round(value,2),[0.00,1.00])
+
+def test_fitness_function():
     
     # this is just a wrapped version of the _fitness_function. Only new test is
     # for select_on. All other tests are covered by test_eee_variables, 

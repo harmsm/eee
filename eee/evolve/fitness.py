@@ -3,7 +3,7 @@ Functions and classes for calculating fitness from an ensemble during an
 evolutionary simulation. 
 """
 
-from eee._private.check.eee_variables import check_calc_params
+from eee._private.check.eee_variables import check_T
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.eee_variables import check_fitness_fcns
 from eee._private.check.eee_variables import check_mu_dict
@@ -103,7 +103,7 @@ def fitness_function(ens,
     mut_energy = check_mut_energy(mut_energy)
     mu_dict = check_mu_dict(mu_dict)
     fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
-    check_calc_params(T=T)
+    check_T(T=T)
         
     if select_on not in ["fx_obs","dG_obs"]:
         err = "select_on should be either fx_obs or dG_obs\n"
@@ -139,7 +139,7 @@ class FitnessContainer:
         ens = check_ensemble(ens)
         mu_dict = check_mu_dict(mu_dict)
         fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
-        check_calc_params(T=T)
+        check_T(T=T)
     
         if select_on not in ["fx_obs","dG_obs"]:
             err = "select_on should be either fx_obs or dG_obs\n"

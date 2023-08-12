@@ -10,8 +10,10 @@ from eee._private.check.ensemble import check_ensemble
 from eee._private.check.eee_variables import check_ddg_df
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_fitness_fcns
-from eee._private.check.eee_variables import check_calc_params
-
+from eee._private.check.eee_variables import check_T
+from eee._private.check.eee_variables import check_num_generations
+from eee._private.check.eee_variables import check_mutation_rate
+from eee._private.check.eee_variables import check_population_size
 
 def simulate_evolution(ens,
                        ddg_df,
@@ -81,10 +83,10 @@ def simulate_evolution(ens,
     mu_dict = check_mu_dict(mu_dict)
     fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
 
-    check_calc_params(T=T,
-                      population_size=population_size,
-                      mutation_rate=mutation_rate,
-                      num_generations=num_generations)
+    T = check_T(T)
+    population_size = check_population_size(population_size)
+    mutation_rate = check_mutation_rate(mutation_rate)
+    num_generations = check_num_generations(num_generations)
 
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.

@@ -1,9 +1,14 @@
-FOUND tests._private.check.test_eee_variables.test_check_calc_params
+FOUND tests._private.check.test_eee_variables.test_check_T
+FOUND tests._private.check.test_eee_variables.test_check_burn_in_generations
 FOUND tests._private.check.test_eee_variables.test_check_ddg_df
 FOUND tests._private.check.test_eee_variables.test_check_fitness_fcns
 FOUND tests._private.check.test_eee_variables.test_check_mu_dict
 FOUND tests._private.check.test_eee_variables.test_check_mu_stoich
 FOUND tests._private.check.test_eee_variables.test_check_mut_energy
+FOUND tests._private.check.test_eee_variables.test_check_mutation_rate
+FOUND tests._private.check.test_eee_variables.test_check_num_generations
+FOUND tests._private.check.test_eee_variables.test_check_num_mutations
+FOUND tests._private.check.test_eee_variables.test_check_population_size
 FOUND tests._private.check.test_standard.test_check_bool
 FOUND tests._private.check.test_standard.test_check_float
 FOUND tests._private.check.test_standard.test_check_int
@@ -42,6 +47,7 @@ FOUND tests.evolve.test_genotype.test_Genotype_mutate
 FOUND tests.evolve.test_genotype.test_Genotype_mutations
 FOUND tests.evolve.test_genotype.test_Genotype_mutations_accumulated
 FOUND tests.evolve.test_genotype.test_Genotype_sites
+FOUND tests.evolve.test_wright_fisher.test_wright_fisher
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif
 FOUND tests.io.test_load_structure.test__load_structure_pdb
@@ -62,7 +68,6 @@ FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
 FAKE tests.evolve.test_simulate_evolution.test_simulate_evolution
 FAKE tests.evolve.test_simulate_tree.test_simulate_tree
-FAKE tests.evolve.test_wright_fisher.test_wright_fisher
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test_clean_structure
@@ -71,12 +76,6 @@ FAKE tests.test_epistasis.test_get_ensemble_epistasis
 FAKE tests.test_epistasis.test_get_epistasis
 FAKE tests.test_epistasis.test_summarize_epistasis
 MISSING tests._private.check.test_ensemble.test_check_ensemble
-MISSING tests._private.future.test_multithreading.test_MockLock
-MISSING tests._private.future.test_multithreading.test__thread
-MISSING tests._private.future.test_multithreading.test_thread_manager
-MISSING tests._private.future.test_wrap.test_IterFromFile
-MISSING tests._private.future.test_wrap.test_IterFromFile___call__
-MISSING tests._private.future.test_wrap.test_wrap_function
 MISSING tests._private.test_interface.test_WrappedFunctionException
 MISSING tests._private.test_logger.test_log
 MISSING tests.bin.test_eee-sync-structures.test_main

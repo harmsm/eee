@@ -10,6 +10,8 @@ from eee.ensemble import Ensemble
 from eee.evolve.fitness import FitnessContainer
 from eee.evolve.fitness import ff_on
 from eee.evolve.fitness import ff_off
+from eee.evolve.genotype import GenotypeContainer
+
 
 def _file_globber(*args):
     """
@@ -117,6 +119,44 @@ def ens_test_data():
     
     return out
 
+
+@pytest.fixture(scope="module")
+def ens_with_fitness():
+    
+
+    ens = Ensemble(R=1)
+    ens.add_species(name="s1",
+                    dG0=0,
+                    observable=True)
+    ens.add_species(name="s2",
+                    dG0=0.167,
+                    observable=False,
+                    mu_stoich={"X":2})
+
+    mu_dict = {"X":[0,3.333]}
+
+    ddg_df = pd.DataFrame({"site":[1,1],
+                           "mut":["A1V","A1P"],
+                           "s1":[-1.677,0.167],
+                           "s2":[3.333,-5000]})
+
+    fc = FitnessContainer(ens,
+                        mu_dict,
+                        [ff_on,ff_off],
+                        select_on="fx_obs",
+                        fitness_kwargs={},
+                        T=1)
+
+    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    
+
+    out = {"ens":ens,
+           "mu_dict":mu_dict,
+           "ddg_df":ddg_df,
+           "fc":fc,
+           "gc":gc}
+    
+    return out
 
 @pytest.fixture(scope="module")
 def programs():
