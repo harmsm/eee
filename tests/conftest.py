@@ -104,6 +104,8 @@ def ens_test_data():
     ddg_dict[2] = {"P2R":{"s1":0,"s2":1},
                    "P2Q":{"s1":0,"s2":0}}
 
+    fitness_fcns = [ff_on,ff_off]
+
     fc = FitnessContainer(ens,
                           mu_dict,
                           [ff_on,ff_off],
@@ -115,6 +117,7 @@ def ens_test_data():
            "mu_dict":mu_dict,
            "ddg_df":ddg_df,
            "ddg_dict":ddg_dict,
+           "fitness_fcns":fitness_fcns,
            "fc":fc}
     
     return out
@@ -231,11 +234,11 @@ def variable_types():
     out["trues"] = trues
     out["falses"] = falses
     out["bools"] = list(trues_set | falses_set)
-    out["types"] = falses
+    out["types"] = types
     out["strings"] = strings
     out["nones"] = nones
     out["nans"] = nans
-    out["infs"] = nans
+    out["infs"] = infs
     out["iterables"] = iterables
     out["coercable_to_float"] = coercable_to_float
     out["coercable_to_int"] = coercable_to_int

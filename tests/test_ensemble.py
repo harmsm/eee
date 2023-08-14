@@ -90,6 +90,312 @@ def test_Ensemble_add_species(variable_types):
             ens.add_species(name="test",mu_stoich=v)
 
 
+def test_Ensemble__build_z_matrix():
+
+    # Single species, not observable, dG = 0, not coupled to mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+
+    ens._build_z_matrix(mu_dict={})
+    assert np.array_equal(ens._z_matrix.shape,(1,1))
+    assert np.array_equal(ens._z_matrix,[[0.0]])
+    assert np.array_equal(ens._obs_mask,[False])
+    assert np.array_equal(ens._not_obs_mask,[True])
+
+    # Single species, not observable, dG = 0, coupled to mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+
+    ens._build_z_matrix(mu_dict={})
+    assert np.array_equal(ens._z_matrix.shape,(1,1))
+    assert np.array_equal(ens._z_matrix,[[0.0]])
+    assert np.array_equal(ens._obs_mask,[False])
+    assert np.array_equal(ens._not_obs_mask,[True])
+
+    # Single species, not observable, dG = 0, coupled to mu. Now add mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+
+    ens._build_z_matrix(mu_dict={"X":np.array([1.0])})
+    assert np.array_equal(ens._z_matrix.shape,(1,1))
+    assert np.array_equal(ens._z_matrix,[[-1]])
+    assert np.array_equal(ens._obs_mask,[False])
+    assert np.array_equal(ens._not_obs_mask,[True])
+
+    # Two species, one observable, dG = 0, One coupled to mu, with single mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=0)
+
+    ens._build_z_matrix(mu_dict={"X":np.array([1.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,1))
+    assert np.array_equal(ens._z_matrix,[[-1],[0]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+
+    # Two species, one observable, dG = 0, One coupled to mu, with three mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=0)
+
+    ens._build_z_matrix(mu_dict={"X":np.array([0,0.5,1.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[0,0,0]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+    
+    # Two species, one observable, dG = 0, 1, One coupled to mu, with three mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=1)
+
+    ens._build_z_matrix(mu_dict={"X":np.array([0,0.5,1.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[1,1,1]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+
+    # Two species, one observable, dG = 0, 1, Both coupled to different mu, 
+    # with three mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=1,
+                    mu_stoich={"Y":2})
+
+    ens._build_z_matrix(mu_dict={"X":np.array([0,0.5,1.0]),
+                                 "Y":np.array([1,0.5,0.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[-2 + 1,-1 + 1,0 + 1]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+
+
+    # Three species, dG = 0, 1, 3 Two coupled to different mu,  with three mu
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=1,
+                    mu_stoich={"Y":2})
+    ens.add_species(name="test3",
+                    observable=True,
+                    dG0=3)
+
+    ens._build_z_matrix(mu_dict={"X":np.array([0,0.5,1.0]),
+                                 "Y":np.array([1,0.5,0.0])})
+    assert np.array_equal(ens._z_matrix.shape,(3,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],
+                                         [-2 + 1,-1 + 1,0 + 1],
+                                         [3,3,3]])
+    assert np.array_equal(ens._obs_mask,[False,True,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False,False])
+
+def test_Ensemble__get_weights():
+
+    # single species, R = 1, T = 1, no mutations
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0])
+    ens._build_z_matrix(mu_dict={})
+    weights = ens._get_weights(mut_energy=mut_energy,T=1)
+    assert np.array_equal(weights.shape,[1,1])
+    assert np.array_equal(weights,[np.exp([ens._max_allowed])])
+
+    # single species, R = 1, T = 500, no mutations. This tests the shift to 
+    # max_allowed. 
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0])
+    ens._build_z_matrix(mu_dict={})
+    weights = ens._get_weights(mut_energy=mut_energy,T=500)
+    assert np.array_equal(weights.shape,[1,1])
+    assert np.array_equal(weights,[np.exp([ens._max_allowed])])
+    
+    # Two species. 
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0,0.0])
+    ens._build_z_matrix(mu_dict={})
+    weights = ens._get_weights(mut_energy=mut_energy,T=1)
+    assert np.array_equal(weights.shape,[2,1])
+    assert np.array_equal(weights,[[np.exp(ens._max_allowed)],
+                                   [np.exp(ens._max_allowed)]])
+
+
+    # Two species. Mutate one. 
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0,1.0])
+    ens._build_z_matrix(mu_dict={})
+    weights = ens._get_weights(mut_energy=mut_energy,T=1)
+    assert np.array_equal(weights.shape,[2,1])
+    norm_weights = weights/np.sum(weights,axis=0)
+    Z = np.exp(0) + np.exp(-1)
+    assert np.isclose(norm_weights[0,0],np.exp(0)/Z)
+    assert np.isclose(norm_weights[1,0],np.exp(-1)/Z)
+
+    # Make sure temperature works as expected                                    
+    weights = ens._get_weights(mut_energy=mut_energy,T=50)
+    assert np.array_equal(weights.shape,[2,1])
+    norm_weights = weights/np.sum(weights,axis=0)
+    Z = np.exp(0/50) + np.exp(-1/50)
+    assert np.isclose(norm_weights[0,0],np.exp(0/50)/Z)
+    assert np.isclose(norm_weights[1,0],np.exp(-1/50)/Z)
+                                        
+
+    # Two species. Mutate one. Alter R to test gas constant
+    ens = Ensemble(R=50)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0,1.0])
+    ens._build_z_matrix(mu_dict={})
+                                  
+    weights = ens._get_weights(mut_energy=mut_energy,T=50)
+    assert np.array_equal(weights.shape,[2,1])
+    norm_weights = weights/np.sum(weights,axis=0)
+    Z = np.exp(0/2500) + np.exp(-1/2500)
+    assert np.isclose(norm_weights[0,0],np.exp(0/2500)/Z)
+    assert np.isclose(norm_weights[1,0],np.exp(-1/2500)/Z)
+
+
+    # Two species. dG0
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=-1,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0,1.0])
+    ens._build_z_matrix(mu_dict={})
+                        
+    weights = ens._get_weights(mut_energy=mut_energy,T=1)
+    assert np.array_equal(weights.shape,[2,1])
+    norm_weights = weights/np.sum(weights,axis=0)
+    Z = np.exp(1) + np.exp(-1)
+    assert np.isclose(norm_weights[0,0],np.exp(1)/Z)
+    assert np.isclose(norm_weights[1,0],np.exp(-1)/Z)
+
+    # Two species. dG0. Add mu_dict perturbation
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=-1,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    mut_energy = np.array([0.0,1.0])
+    ens._build_z_matrix(mu_dict={"X":np.array([0,0.5,1])})
+                        
+    weights = ens._get_weights(mut_energy=mut_energy,T=1)
+    assert np.array_equal(weights.shape,[2,3])
+    norm_weights = weights/np.sum(weights,axis=0)
+    Z = np.exp(1) + np.exp(-1)
+    assert np.isclose(norm_weights[0,0],np.exp(1)/Z)
+    assert np.isclose(norm_weights[1,0],np.exp(-1)/Z)
+
+    Z = np.exp(1 + 0.5) + np.exp(-1)
+    assert np.isclose(norm_weights[0,1],np.exp(1+0.5)/Z)
+    assert np.isclose(norm_weights[1,1],np.exp(-1)/Z)
+
+    Z = np.exp(1 + 1.0) + np.exp(-1)
+    assert np.isclose(norm_weights[0,2],np.exp(1+1.0)/Z)
+    assert np.isclose(norm_weights[1,2],np.exp(-1)/Z)
+
+def test__mut_dict_to_array():
+
+    # Two species. 
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    out_array = ens._mut_dict_to_array({"test1":1.0,"test2":2.0})
+    assert np.array_equal(out_array,[1,2])
+
+    out_array = ens._mut_dict_to_array({"test2":1.0,"test1":2.0})
+    assert np.array_equal(out_array,[2,1])
+
+    # Hack that should invert outputs. Never really happen in real life.
+    ens._species_list = ["test2","test1"]
+    out_array = ens._mut_dict_to_array({"test2":1.0,"test1":2.0})
+    assert np.array_equal(out_array,[1,2])
+
+    
 def test_Ensemble_get_species_dG(variable_types):
 
     ens = Ensemble()
@@ -294,7 +600,6 @@ def test_Ensemble_get_obs(variable_types):
     assert np.isclose(df.loc[0,"test1"],test1/test_all)
     assert np.isclose(df.loc[0,"test2"],test2/test_all)
     assert np.isclose(df.loc[0,"test3"],test3/test_all)
-
 
     test1 = np.exp(1)
     test2 = np.exp(0)

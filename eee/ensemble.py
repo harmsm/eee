@@ -7,7 +7,6 @@ from eee._private.check.standard import check_float
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_mu_stoich
 from eee._private.check.eee_variables import check_mut_energy
-from eee._private.array_expander import array_expander
 
 import numpy as np
 import pandas as pd
@@ -89,8 +88,16 @@ class Ensemble:
         
         self._R = R
         self._species = {}
+        
+        # Lists with species and mu in stable order
+        self._species_list = []
         self._mu_list = []
+
         self._do_arg_checking = True
+
+        # Used to avoid/minimize numerical errors in partition function 
+        # calculation. 
+        self._max_allowed = np.log(np.finfo('d').max)*0.01
     
     def add_species(self,
                     name,
@@ -140,8 +147,101 @@ class Ensemble:
             for mu in mu_stoich:
                 if mu not in self._mu_list:
                     self._mu_list.append(mu)
+
+        # Stable list of species
+        self._species_list.append(name)
     
-    def get_species_dG(self,name,mut_energy=0,mu_dict=None):
+    def _build_z_matrix(self,mu_dict):
+        """
+        Build a matrix of species energies versus conditions given the 
+        conditions in mu_dict. Creates self._z_matrix, self._obs_mask, and 
+        self._not_obs_mask. No error checking. Private function.
+        """
+
+        # Figure out number of species in matrix
+        num_species = len(self._species)
+
+        # Figure out number of conditions in matrix. If no mu_dict specified, 
+        # single condition with all mu = 0
+        if len(mu_dict) == 0:
+            num_conditions = 1
+            for mu in self._mu_list:
+                mu_dict[mu] = np.zeros(1,dtype=float)
+        else:
+            num_conditions = len(mu_dict[next(iter(mu_dict))])
+    
+        # Local dictionary with stoich for all species and all mu. If no stoich
+        # for a given species/mu, set stoich to 0. 
+        mu_stoich = {}
+        for species_name in self._species_list:
+            mu_stoich[species_name] = {}
+            for mu in mu_dict:
+                if mu in self._species[species_name]["mu_stoich"]:
+                    mu_stoich[species_name][mu] = self._species[species_name]["mu_stoich"][mu]
+                else:
+                    mu_stoich[species_name][mu] = 0
+
+        # z_matrix holds energy of all species (i) versus conditions (j). 
+        # obs_mask holds which species are observable (True) or not (False)
+        self._z_matrix = np.zeros((num_species,num_conditions),dtype=float)
+        self._obs_mask = np.zeros(num_species,dtype=bool)
+
+        # Go through each species...
+        for i, species_name in enumerate(self._species):
+
+            # Load reference energy for that species into all conditions
+            self._z_matrix[i,:] = self._species[species_name]["dG0"]
+            
+            # Go through conditions
+            for j in range(num_conditions):
+
+                # Perturb dG with mu for each species under each condition
+                for mu in self._mu_list:
+                    self._z_matrix[i,j] -= mu_dict[mu][j]*mu_stoich[species_name][mu]
+
+            # Update obs_mask 
+            self._obs_mask[i] = self._species[species_name]["observable"]
+
+        # Non-observable species
+        self._not_obs_mask = np.logical_not(self._obs_mask)
+
+    def _get_weights(self,mut_energy,T):
+        """
+        Get Boltzmann weights for each species/condition combination given 
+        mutations and current temperature. No error checking. Private.
+        """
+
+        # Perturb z_matrix by mut_energy and divide by RT
+        beta = 1/(self._R*T)
+        weights = -beta*(self._z_matrix + mut_energy[:,None])
+
+        # Shift so highest weight is highest allowed numerically. Low weights 
+        # might underflow, but these will approach zero population anyway and 
+        # can be neglected. 
+        shift = self._max_allowed - np.max(weights,axis=0)
+        weights = weights + shift[None,:]
+
+        # Return boltzmann weights
+        return np.exp(weights)
+
+
+    def _mut_dict_to_array(self,mut_energy):
+        """
+        Convert a mut_energy dictionary to an array with the correct order  
+        for _get_weights. No error checking. Private.
+        """
+        
+        out_array = np.zeros(len(self._species_list),dtype=float)
+        for i, s in enumerate(self._species_list):
+            if s in mut_energy:
+                out_array[i] = mut_energy[s]
+
+        return out_array
+
+    def get_species_dG(self,
+                       name,
+                       mut_energy=0,
+                       mu_dict=None):
         """
         Get the free energy of a species given some mutation energy and the
         current chemical potentials.
@@ -172,44 +272,27 @@ class Ensemble:
             err += "add_species function?"
             raise ValueError(err)
 
-        # Error check on mut_energy
-        if self._do_arg_checking:
-            mut_energy = check_float(value=mut_energy,
-                                     variable_name="mut_energy")
-            
-        # Get dG0 for the species
-        dG0 = self._species[name]["dG0"]
-
-        # Perturb by a mutation
-        dG0_mutated = dG0 + mut_energy
-
-        # If no mu_dict, all chemical potentials are zero. Just perturb by 
-        # mutations
+        # Variable checking 
+        mut_energy = check_float(value=mut_energy,
+                                 variable_name="mut_energy")
         if mu_dict is None:
-            return dG0_mutated
+            mu_dict = {}
+        mu_dict = check_mu_dict(mu_dict)
+
+        # build z matrix for calculation
+        self._build_z_matrix(mu_dict)
+
+        # Add mutation energy
+        idx = self._species_list.index(name)
+        dG = self._z_matrix[idx,:] + mut_energy
+
+        # If a single condition, return a single value
+        if len(dG) == 1:
+            dG = dG[0]
         
-        # Error check on mu_dict
-        if self._do_arg_checking:
-            mu_dict = check_mu_dict(mu_dict)
-
-        # Figure out if we are returning an array or single value
-        mu_dict, length = array_expander(mu_dict)
-        
-        if length == 0:
-            dG = dG0_mutated
-        else:
-            dG = np.ones(length,dtype=float)*dG0_mutated
-
-        # Calculate the effect of the chemical potentials
-        for m in self._species[name]["mu_stoich"]:
-
-            # Perturb dG by chemical potential (if chemical potential is in 
-            # mu_dict). 
-            if m in mu_dict:
-                dG -= mu_dict[m]*self._species[name]["mu_stoich"][m]
-
         return dG
-    
+
+
     def get_obs(self,mut_energy=None,mu_dict=None,T=298.15):
         """
         Get the population and observables given the energetic effects of 
@@ -264,105 +347,42 @@ class Ensemble:
 
         # If no mu_dict specified, make one with 0 for every chemical potential
         if mu_dict is None:
-            mu_dict = dict([(m,0.0) for m in self._mu_list])
+            mu_dict = dict([(m,np.zeros(1,dtype=float)) for m in self._mu_list])
         
         # Argument sanity checking
-        if self._do_arg_checking:
+        mut_energy = check_mut_energy(mut_energy)
+        mu_dict = check_mu_dict(mu_dict)
+        T = check_float(value=T,
+                        variable_name="T",
+                        minimum_allowed=0,
+                        minimum_inclusive=False)
 
-            mut_energy = check_mut_energy(mut_energy)
-            mu_dict = check_mu_dict(mu_dict)
+        self._build_z_matrix(mu_dict)
+        mut_energy_array = self._mut_dict_to_array(mut_energy)
+        weights = self._get_weights(mut_energy_array,T)
 
-            # Make sure T is a positive float
-            T = check_float(value=T,
-                            variable_name="T",
-                            minimum_allowed=0,
-                            minimum_inclusive=False)
-
-        # If a species is not specified in the mut_energy dictionary, set the
-        # mutational effect to zero
-        for s in self._species:
-            if s not in mut_energy:
-                mut_energy[s] = 0.0
-
-        # If a chemical potential is not specified in the mu_dict, set it to 0
-        for m in self._mu_list:
-            if m not in mu_dict:
-                mu_dict[m] = 0.0
-
-        # Put temperature into mu so it gets expanded by array_expander
-        mu_dict["_dummy_temperature"] = T
-            
-        # Expand mu_dict so all values have the same length
-        mu_dict, length = array_expander(mu_dict)
-
-        # Pull the temperature back out of mu_dict and figure out beta
-        beta = 1/(self._R*T)
-        T = mu_dict.pop("_dummy_temperature")
-
-        # Create pops arrays
-        num_species = len(self._species)
-        if length == 0:
-
-            pops = np.zeros((1,num_species),dtype=float)
-
-            # Make T into a length 1 array
-            T = np.array([T],dtype=float)
-            for m in mu_dict:
-                mu_dict[m] = np.array([mu_dict[m]],dtype=float)
-
-            length = 1
-            
-        else:
-            pops = np.zeros((length,num_species),dtype=float)
-
-        # Go through each species.
-        for i, s in enumerate(self._species):
-
-            # Calculate dG store -dG*beta in pops
-            dG = self.get_species_dG(name=s,
-                                     mut_energy=mut_energy[s],
-                                     mu_dict=mu_dict)
-            pops[:,i] = -dG*beta
-
-        # Shift energies to minimize numerical errors. Shift so the species 
-        # with the highest weight is close to the highest possible float. Lower
-        # weight species will have weights close to zero, but we will not 
-        # overflow and get a anan
-        shift = np.log(np.finfo('d').max)*0.9 - np.max(pops,axis=1)
-        pops = pops + shift[:,None]
-
-        # Take exponential. 
-        pops = np.exp(pops)
-
-        # Get partition function
-        Q = np.sum(pops,axis=1)
-        
         # Start building an output dataframe holding the temperature and 
         # chemical potentials
+        obs = np.sum(weights[self._obs_mask,:],axis=0)
+        not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
+
         out = {}
-        out["T"] = T
+        out["T"] = T*np.ones(len(obs),dtype=float)
         for m in mu_dict:
             out[m] = mu_dict[m]
         
-        # Define the observable numerator and denominator
-        numerator = np.zeros(length,dtype=float)
-        denominator = np.zeros(length,dtype=float)
-        for i, s in enumerate(self._species):
-            out[s] = pops[:,i]/Q
+        for i, species_name in enumerate(self._species_list):
+            out[species_name] = weights[i]/np.sum(weights,axis=0)
+            
 
-            if self._species[s]["observable"]:
-                numerator += out[s]
-            else:
-                denominator += out[s]
-        
-        out["fx_obs"] = numerator/(denominator + numerator)
+        out["fx_obs"] = obs/(obs + not_obs)
 
-        mask = np.logical_or(denominator == 0,numerator==0)
+        mask = np.logical_or(obs == 0,not_obs == 0)
         not_mask = np.logical_not(mask)
         
         dG_out = np.zeros(len(mask),dtype=float)
         dG_out[mask] = np.nan
-        dG_out[not_mask] = -1/beta*np.log(numerator[not_mask]/denominator[not_mask])
+        dG_out[not_mask] = -1/(self._R*T)*np.log(obs[not_mask]/not_obs[not_mask])
 
         out["dG_obs"] = dG_out
 

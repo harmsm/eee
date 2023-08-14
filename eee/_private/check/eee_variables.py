@@ -37,49 +37,62 @@ def check_mu_dict(mu_dict):
         err = "mu_dict should be a dictionary that keys chemical species to chemical potential\n"
         raise ValueError(err)
     
-    # Check each key...
+    # Empty dict: allowed, just return
+    if len(mu_dict) == 0:
+        return mu_dict
+
+    # Check each value...
+    mu_lengths = []
     for mu in mu_dict:
 
-        # Value should not be a type
-        if issubclass(type(mu_dict[mu]),type):
-            err = f"mu_dict['{mu}'] is a type not an instance"
-            raise ValueError(err)
-
-        # Value should not be a pandas data frame
-        if issubclass(type(mu_dict[mu]),pd.DataFrame):
-            err = f"mu_dict['{mu}'] cannot be a pandas DataFrame"
-            raise ValueError(err)
-
-        # If it is iterable, we have work to do to check
+        # Make sure not disallowed value class that has __iter__
+        value_type = type(mu_dict[mu])
+        for bad in [type,pd.DataFrame,dict]:
+            if issubclass(value_type,bad):
+                err = f"\nmu_dict['{mu}'] cannot be type {bad}\n\n"
+                raise ValueError(err)
+        
+        # If it is iterable, we have work to do to check types
         if hasattr(mu_dict[mu],"__iter__"):
 
-            # If a string, try to coerce into a float
-            if issubclass(type(mu_dict[mu]),str):
-                mu_dict[mu] = check_float(mu_dict[mu],
-                                            variable_name=f"mu_dict['{mu}']")
-                
-            # If a dictionary, die
-            elif issubclass(type(mu_dict[mu]),dict):
-                err = f"mu_dict['{mu}'] must be a float or array"
+            # Make sure there is actually something in the iterable
+            if len(mu_dict[mu]) == 0:
+                err = f"\nmu_dict['{mu}'] must have a length > 0\n\n"
                 raise ValueError(err)
-            
-            # Probably okay -- make sure length is bigger than zero and then 
-            # coerce to a numpy float array
-            else:
-                if len(mu_dict[mu]) == 0:
-                    err = f"mu_dict['{mu}'] must have a length > 0"
-                    raise ValueError(err)
 
+            # If a string, try to coerce into a float.
+            if issubclass(value_type,str):
+                v = check_float(mu_dict[mu],variable_name=f"mu_dict['{mu}']")
+                mu_dict[mu] = np.ones(1,dtype=float)*v
+            
+            # If we get here, coerce into a numpy array.
+            else:
                 mu_dict[mu] = np.array(mu_dict[mu],dtype=float)
+                if len(mu_dict[mu]) != 1:
+                    mu_lengths.append(len(mu_dict[mu]))
+
         else:
 
             # Single value float
-            mu_dict[mu] = check_float(value=mu_dict[mu],
-                                        variable_name=f"mu_dict['{mu}']")
+            v = check_float(value=mu_dict[mu],variable_name=f"mu_dict['{mu}']") 
+            mu_dict[mu] = np.ones(1,dtype=float)*v
+
+    # All lengths are 1: return
+    if len(mu_lengths) == 0:
+        return mu_dict
+
+    # Unique non-one mu_lengths
+    mu_lengths = list(set(mu_lengths))
+    if len(mu_lengths) > 1:
+        err = "\nall values in mu_dict must have the same length\n\n"
+        raise ValueError(err)
     
-    
-    # Check for expandability
-    mu_dict, _ = array_expander(mu_dict)
+    # Take any values with length one and make them the same length as the 
+    # longer value. 
+    final_mu_length = mu_lengths[0]
+    for mu in mu_dict:
+        if len(mu_dict[mu]) == 1:
+            mu_dict[mu] = np.ones(final_mu_length,dtype=float)*mu_dict[mu][0]
 
     return mu_dict
 
@@ -120,7 +133,27 @@ def check_fitness_fcns(fitness_fcns,mu_dict=None):
     
     # Make sure fitness functions is the right length
     if mu_dict is not None:
-        if len(fitness_fcns) != len(mu_dict[list(mu_dict.keys())[0]]):
+
+        # Assume mu_dict has zero length
+        mu_length = 0
+
+        # If there is at least one species in mu_dict...
+        if len(mu_dict) != 0:
+
+            # Go through each species and figure out how many entries are present
+            for s in mu_dict:
+                if hasattr(mu_dict[s],"__iter__"):
+                    this_length = len(mu_dict[s])
+                else:
+                    this_length = 1
+
+                # Take the longest length in mu_dict
+                if this_length > mu_length:
+                    mu_length = this_length
+
+        # mu_length must match the length of fitnesss_fcns (one fitness per 
+        # condition).
+        if len(fitness_fcns) != mu_length:
             err = "fitness should be the same length as the number of conditions\n"
             err += "in mu_dict.\n"
             raise ValueError(err)

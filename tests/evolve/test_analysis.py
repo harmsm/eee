@@ -1,6 +1,10 @@
+from eee.evolve.analysis import get_num_accumulated_mutations
 from eee.evolve.analysis import get_genotype_frequencies
 from eee.evolve.analysis import get_most_common
 from eee.evolve.analysis import extract_alignment
+
+def test_get_num_accumulated_mutations():
+    pass
 
 def test_get_genotype_frequencies():
     pass

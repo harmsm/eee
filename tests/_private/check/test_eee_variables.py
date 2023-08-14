@@ -1,7 +1,5 @@
 import pytest
 
-import pandas as pd
-
 from eee._private.check.eee_variables import check_mu_stoich
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_mut_energy
@@ -13,6 +11,9 @@ from eee._private.check.eee_variables import check_population_size
 from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_burn_in_generations
 from eee._private.check.eee_variables import check_num_mutations
+
+import pandas as pd
+import numpy as np
 
 def test_check_mu_stoich(variable_types):
 
@@ -30,38 +31,81 @@ def test_check_mu_stoich(variable_types):
 
 
 def test_check_mu_dict(variable_types):
-
-    for v in variable_types["dict"]:
-        print(v,type(v))
-        check_mu_dict(v)
         
     for v in variable_types["not_dict"]:
         print(v,type(v))
         with pytest.raises(ValueError):
             check_mu_dict(v)
 
-    allowed = variable_types["float_value_or_iter"][:]
-    not_allowed = variable_types["not_float_value_or_iter"][:]
-    for m in [[],()]:
-        allowed.remove(m)
-        not_allowed.append(m)
-    not_allowed.append(pd.DataFrame({"X":[1,2,3]}))
+    out = check_mu_dict({})
+    assert issubclass(type(out),dict)
+    assert len(out) == 0
 
-    for v in allowed:
-
-        if issubclass(type(v),pd.DataFrame):
-            continue
-
+    bad_types = variable_types["types"][:]
+    bad_types.extend([pd.DataFrame({"a":[1,2,3]}),
+                      {"a":[1,2,3]}])
+    for v in bad_types:
         print(v,type(v))
-        mu_dict = {"X":v}
-        check_mu_dict(mu_dict)
-
-    for v in not_allowed:
-        print(v,type(v))
-    
-        mu_dict = {"X":v}
         with pytest.raises(ValueError):
-            check_mu_dict(mu_dict)
+            check_mu_dict({"X":v})
+
+    bad_values = [[],np.array([])]
+    for v in bad_values:
+        print(v,type(v))
+        with pytest.raises(ValueError):
+            check_mu_dict({"X":v})
+
+    bad_values = ["should_be_a_number"]
+    for v in bad_values:
+        print(v,type(v))
+        with pytest.raises(ValueError):
+            check_mu_dict({"X":v})
+
+    good_values = variable_types["floats_or_coercable"][:]
+    good_values.extend([[1,2,3],
+                        [1.0,2.0,3.0],
+                        [1,2.0,3],
+                        np.array([1,2,3],dtype=int),
+                        np.array([1,2,3],dtype=float)])
+    for v in good_values:
+        print(v,type(v))
+        check_mu_dict({"X":v})
+    
+    good_values = [{"X":1,"Y":1},
+                   {"X":"1","Y":"1"},
+                   {"X":1,"Y":[1]},
+                   {"X":[1],"Y":[1]}]
+    for v in good_values:
+        print(v,type(v))
+        result = check_mu_dict(v)
+        assert np.array_equal(result["X"],[1])
+        assert np.array_equal(result["Y"],[1])
+
+    good_values = [{"X":1,"Y":[1,2,3]},
+                   {"X":[1],"Y":[1,2,3]},
+                   {"X":[1,1,1],"Y":[1,2,3]}]
+    for v in good_values:
+        print(v,type(v))
+        result = check_mu_dict(v)
+        assert np.array_equal(result["X"],[1,1,1])
+        assert np.array_equal(result["Y"],[1,2,3])
+
+    good_values = [{"X":1,"Y":[1,2,3],"Z":[2]},
+                   {"X":[1],"Y":[1,2,3],"Z":[2,2,2]},
+                   {"X":[1,1,1],"Y":[1,2,3],"Z":[2,2,2]}]
+    for v in good_values:
+        print(v,type(v))
+        result = check_mu_dict(v)
+        assert np.array_equal(result["X"],[1,1,1])
+        assert np.array_equal(result["Y"],[1,2,3])
+        assert np.array_equal(result["Z"],[2,2,2])
+
+    bad_values = [{"X":[1,2],"Y":[1,2,3]},
+                  {"X":[1,2],"Y":[1,2,3],"Z":2}]
+    for v in bad_values:
+        print(v,type(v))
+        with pytest.raises(ValueError):
+            check_mu_dict(v)
 
 def test_check_mut_energy(variable_types):
 

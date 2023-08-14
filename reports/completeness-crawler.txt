@@ -47,6 +47,7 @@ FOUND tests.evolve.test_genotype.test_Genotype_mutate
 FOUND tests.evolve.test_genotype.test_Genotype_mutations
 FOUND tests.evolve.test_genotype.test_Genotype_mutations_accumulated
 FOUND tests.evolve.test_genotype.test_Genotype_sites
+FOUND tests.evolve.test_simulate_evolution.test_simulate_evolution
 FOUND tests.evolve.test_wright_fisher.test_wright_fisher
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif
@@ -58,15 +59,16 @@ FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
 FOUND tests.structure.test_sync_structures.test__create_unique_filenames
 FOUND tests.structure.test_sync_structures.test_sync_structures
 FOUND tests.test_ensemble.test_Ensemble
+FOUND tests.test_ensemble.test_Ensemble__build_z_matrix
+FOUND tests.test_ensemble.test_Ensemble__get_weights
 FOUND tests.test_ensemble.test_Ensemble_add_species
 FOUND tests.test_ensemble.test_Ensemble_do_arg_checking
 FOUND tests.test_ensemble.test_Ensemble_get_obs
 FOUND tests.test_ensemble.test_Ensemble_get_species_dG
-FAKE tests.evolve.test__helper.test_get_num_accumulated_mutations
 FAKE tests.evolve.test_analysis.test_extract_alignment
 FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
-FAKE tests.evolve.test_simulate_evolution.test_simulate_evolution
+FAKE tests.evolve.test_analysis.test_get_num_accumulated_mutations
 FAKE tests.evolve.test_simulate_tree.test_simulate_tree
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
@@ -82,9 +84,11 @@ MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.test_simulate_tree.test__simulate_branch
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.test_ensemble.test_Ensemble__mut_dict_to_array
 MISSING tests.test_ensemble.test_Ensemble_mu_list
 MISSING tests.test_ensemble.test_Ensemble_species
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
+FOUND & EXTRA tests.test_ensemble.test__mut_dict_to_array
