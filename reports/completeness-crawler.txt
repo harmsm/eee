@@ -62,7 +62,6 @@ FOUND tests.test_ensemble.test_Ensemble
 FOUND tests.test_ensemble.test_Ensemble__build_z_matrix
 FOUND tests.test_ensemble.test_Ensemble__get_weights
 FOUND tests.test_ensemble.test_Ensemble_add_species
-FOUND tests.test_ensemble.test_Ensemble_do_arg_checking
 FOUND tests.test_ensemble.test_Ensemble_get_obs
 FOUND tests.test_ensemble.test_Ensemble_get_species_dG
 FAKE tests.evolve.test_analysis.test_extract_alignment
@@ -84,11 +83,17 @@ MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.test_simulate_tree.test__simulate_branch
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
-MISSING tests.test_ensemble.test_Ensemble__mut_dict_to_array
+MISSING tests.test_ensemble.test_Ensemble_get_dG_obs_fast
+MISSING tests.test_ensemble.test_Ensemble_get_fx_obs_fast
+MISSING tests.test_ensemble.test_Ensemble_load_mu_dict
 MISSING tests.test_ensemble.test_Ensemble_mu_list
+MISSING tests.test_ensemble.test_Ensemble_mut_dict_to_array
 MISSING tests.test_ensemble.test_Ensemble_species
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
-FOUND & EXTRA tests.test_ensemble.test__mut_dict_to_array
+FOUND & EXTRA tests.test_ensemble.test_get_dG_obs_fast
+FOUND & EXTRA tests.test_ensemble.test_get_fx_obs_fast
+FOUND & EXTRA tests.test_ensemble.test_load_mu_dict
+FOUND & EXTRA tests.test_ensemble.test_mut_dict_to_array

@@ -93,8 +93,6 @@ class Ensemble:
         self._species_list = []
         self._mu_list = []
 
-        self._do_arg_checking = True
-
         # Used to avoid/minimize numerical errors in partition function 
         # calculation. 
         self._max_allowed = np.log(np.finfo('d').max)*0.01
@@ -131,10 +129,9 @@ class Ensemble:
             mu_stoich = {}
 
         # Check sanity of inputs
-        if self._do_arg_checking:
-            observable = check_bool(observable,"observable")
-            dG0 = check_float(dG0,"dG0")
-            mu_stoich = check_mu_stoich(mu_stoich)
+        observable = check_bool(observable,"observable")
+        dG0 = check_float(dG0,"dG0")
+        mu_stoich = check_mu_stoich(mu_stoich)
     
         # Record that we saw this species. 
         self._species[name] = {"observable":observable,
@@ -224,19 +221,6 @@ class Ensemble:
         # Return boltzmann weights
         return np.exp(weights)
 
-
-    def _mut_dict_to_array(self,mut_energy):
-        """
-        Convert a mut_energy dictionary to an array with the correct order  
-        for _get_weights. No error checking. Private.
-        """
-        
-        out_array = np.zeros(len(self._species_list),dtype=float)
-        for i, s in enumerate(self._species_list):
-            if s in mut_energy:
-                out_array[i] = mut_energy[s]
-
-        return out_array
 
     def get_species_dG(self,
                        name,
@@ -358,7 +342,7 @@ class Ensemble:
                         minimum_inclusive=False)
 
         self._build_z_matrix(mu_dict)
-        mut_energy_array = self._mut_dict_to_array(mut_energy)
+        mut_energy_array = self.mut_dict_to_array(mut_energy)
         weights = self._get_weights(mut_energy_array,T)
 
         # Start building an output dataframe holding the temperature and 
@@ -388,6 +372,115 @@ class Ensemble:
 
         return pd.DataFrame(out)
 
+    def load_mu_dict(self,mu_dict={}):
+        """
+        Build a z-matrix given a mu_dict. This allows one to run 
+        get_fx_obs_fast and get_dG_obs_fast. 
+
+        Parameters
+        ----------
+        mu_dict : dict, optional
+            dictionary of chemical potentials. keys are the names of chemical
+            potentials. Values are floats or arrays of floats. Any arrays 
+            specified must have the same length. If a chemical potential is not
+            specified in the dictionary, its value is set to 0. 
+        """
+
+        mu_dict = check_mu_dict(mu_dict)
+
+        self._build_z_matrix(mu_dict)
+
+    def mut_dict_to_array(self,mut_energy):
+        """
+        Convert a mut_energy dictionary to an array with the correct order  
+        for _get_weights. Warning: no error checking. User is responsible for
+        making sure the keys match the species loaded into the ensemble and that
+        the values are floats. 
+
+        Parameters
+        ----------
+        mut_energy : dict, optional
+            dictionary holding effects of mutations on different species. Keys
+            should be species names, values should be floats with mutational
+            effects in energy units determined by the ensemble gas constant. 
+            If a species is not in the dictionary, the mutational effect for 
+            that species is set to zero. 
+
+        Returns
+        -------
+        mut_energy_array : numpy.ndarray
+            numpy array of floats where each value is the effect of the mutation
+            on that species. 
+        """
+        
+        mut_energy_array = np.zeros(len(self._species_list),dtype=float)
+        for i, s in enumerate(self._species_list):
+            if s in mut_energy:
+                mut_energy_array[i] = mut_energy[s]
+
+        return mut_energy_array
+
+    def get_fx_obs_fast(self,mut_energy_array,T):
+        """
+        Get a numpy array with the fraction observable for the ensemble. Each 
+        element is a condition in mu_dict. This only works after load_mu_dict
+        has been run to create the appropriate z-matrix. Warning: no error 
+        checking. 
+
+        Parameters
+        ----------
+        mut_energy_array  numpy.ndarray
+            numpy array of float where each value of the effect of that mutation
+            on an ensemble species. Should be generated using mut_dict_to_array
+        T : float
+            temperature
+
+        Returns
+        -------
+        fx_obs : numpy.ndarray
+            vector of fraction observable a function of the conditions in 
+            mu_dict.
+        """
+
+        weights = self._get_weights(mut_energy_array,T)
+        obs = np.sum(weights[self._obs_mask,:],axis=0)
+        not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
+        return obs/(obs + not_obs)
+    
+    def get_dG_obs_fast(self,mut_energy_array,T):
+        """
+        Get a numpy array with the Dg observable for the ensemble. Each 
+        element is a condition in mu_dict. This only works after load_mu_dict
+        has been run to create the appropriate z-matrix. Warning: no error 
+        checking. 
+
+        Parameters
+        ----------
+        mut_energy_array  numpy.ndarray
+            numpy array of float where each value of the effect of that mutation
+            on an ensemble species. Should be generated using mut_dict_to_array
+        T : float
+            temperature
+
+        Returns
+        -------
+        fx_obs : numpy.ndarray
+            vector of dG a function of the conditions in mu_dict. 
+        """
+
+        weights = self._get_weights(mut_energy_array,T)
+        obs = np.sum(weights[self._obs_mask,:],axis=0)
+        not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
+
+        mask = np.logical_or(obs == 0,not_obs == 0)
+        not_mask = np.logical_not(mask)
+        
+        dG_out = np.zeros(len(mask),dtype=float)
+        dG_out[mask] = np.nan
+        dG_out[not_mask] = -1/(self._R*T)*np.log(obs[not_mask]/not_obs[not_mask])
+
+        return dG_out
+
     @property
     def species(self):
         """
@@ -402,11 +495,3 @@ class Ensemble:
         """
         return list(self._mu_list)
     
-    @property
-    def do_arg_checking(self):
-        return self._do_arg_checking
-
-    @do_arg_checking.setter
-    def do_arg_checking(self,value):
-        self._do_arg_checking = value
-

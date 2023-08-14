@@ -371,7 +371,37 @@ def test_Ensemble__get_weights():
     assert np.isclose(norm_weights[0,2],np.exp(1+1.0)/Z)
     assert np.isclose(norm_weights[1,2],np.exp(-1)/Z)
 
-def test__mut_dict_to_array():
+def test_load_mu_dict(variable_types):
+
+    # Two species. dG0. Add mu_dict perturbation
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=1,
+                    mu_stoich={"Y":2})
+    
+    for v in variable_types["not_dict"]:
+        print(v,type(v))
+        with pytest.raises(ValueError):
+            ens.load_mu_dict(v)
+
+    assert not hasattr(ens,"_z_matrix")
+
+    # Just check one load -- wraps _create_z_matrix which we already test 
+    # extensively. 
+    ens.load_mu_dict(mu_dict={"X":np.array([0,0.5,1.0]),
+                              "Y":np.array([1,0.5,0.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[-2 + 1,-1 + 1,0 + 1]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+
+
+def test_mut_dict_to_array():
 
     # Two species. 
     ens = Ensemble(R=1)
@@ -384,18 +414,110 @@ def test__mut_dict_to_array():
                     dG0=0,
                     mu_stoich=None)
     
-    out_array = ens._mut_dict_to_array({"test1":1.0,"test2":2.0})
+    out_array = ens.mut_dict_to_array({"test1":1.0,"test2":2.0})
     assert np.array_equal(out_array,[1,2])
 
-    out_array = ens._mut_dict_to_array({"test2":1.0,"test1":2.0})
+    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
     assert np.array_equal(out_array,[2,1])
 
     # Hack that should invert outputs. Never really happen in real life.
     ens._species_list = ["test2","test1"]
-    out_array = ens._mut_dict_to_array({"test2":1.0,"test1":2.0})
+    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
     assert np.array_equal(out_array,[1,2])
 
+def test_get_fx_obs_fast():
+
     
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=1,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=0)
+    ens.add_species(name="test3",
+                    observable=True,
+                    dG0=2)
+
+    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    
+    value = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),T=1)
+    t1 = np.exp(-1)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t2 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t2 + t3)/Z)
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+    value = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),T=1)
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t2 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t2 + t3)/Z)
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+def test_get_dG_obs_fast():
+
+    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=1,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    dG0=0)
+    ens.add_species(name="test3",
+                    observable=True,
+                    dG0=2)
+
+    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    
+    value = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),T=1)
+    t1 = np.exp(-1)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted = [-np.log((t2 + t3)/t1)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted.append(-np.log((t2 + t3)/t1))
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+    value = ens.get_dG_obs_fast(mut_energy_array=np.array([0,-1,0]),T=1)
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted = [-np.log((t2 + t3)/t1)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted.append(-np.log((t2 + t3)/t1))
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+
 def test_Ensemble_get_species_dG(variable_types):
 
     ens = Ensemble()
@@ -852,13 +974,3 @@ def test_Ensemble_get_obs(variable_types):
         ens.add_species(name="test2",observable=True)
         with pytest.raises(ValueError):
             ens.get_obs(T=v)
-
-
-def test_Ensemble_do_arg_checking():
-    
-    ens = Ensemble()
-
-    assert ens.do_arg_checking == True
-    ens.do_arg_checking = False
-    assert ens.do_arg_checking == False
-

@@ -39,12 +39,9 @@ def _fitness_function(ens,
     
     num_conditions = len(fitness_fcns)
 
-    state = ens.do_arg_checking
-    ens.do_arg_checking = False
     values = ens.get_obs(mut_energy=mut_energy,
                          mu_dict=mu_dict,
                          T=T)
-    ens.do_arg_checking = state
     
     all_F = np.zeros(num_conditions)
     for i in range(num_conditions):
