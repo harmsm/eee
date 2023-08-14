@@ -239,14 +239,11 @@ def test_FitnessContainer_fitness():
                           fitness_kwargs={},
                           T=T)
 
-    mut_energy = {"test1":0,
-                  "test2":0}
+    mut_energy = np.array([0,0]) 
     assert fc.fitness(mut_energy=mut_energy) == 1
 
     # Perturb so observable never populated...
-    mut_energy = {"test1":5000,
-                  "test2":0}
-    print(ens.get_obs(mu_dict=mu_dict,mut_energy=mut_energy))
+    mut_energy = np.array([5000,0]) 
     assert fc.fitness(mut_energy=mut_energy) == 0
 
     with pytest.raises(ValueError):

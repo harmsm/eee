@@ -23,8 +23,8 @@ def test_Genotype(ens_test_data):
     assert len(g.mutations) == 0
     assert len(g.mutations_accumulated) == 0
     assert len(g.mut_energy) == 2
-    assert g.mut_energy["s1"] == 0
-    assert g.mut_energy["s2"] == 0
+    assert g.mut_energy[0] == 0
+    assert g.mut_energy[1] == 0
 
     # ---------------------------------
     # sites, mutations, mut_energy, and mutations_accumulated input
@@ -33,7 +33,7 @@ def test_Genotype(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g._ens is ens
     assert g._ddg_dict is ddg_dict
@@ -44,8 +44,8 @@ def test_Genotype(ens_test_data):
     assert len(g.mutations_accumulated) == 1
     assert g.mutations_accumulated[0] == "M1A"
     assert len(g.mut_energy) == 2
-    assert g.mut_energy["s1"] == 1
-    assert g.mut_energy["s2"] == -1
+    assert g.mut_energy[0] == 1
+    assert g.mut_energy[1] == -1
 
 
 def test_Genotype_copy(ens_test_data):
@@ -60,7 +60,7 @@ def test_Genotype_copy(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g._ens is ens
     assert g._ddg_dict is ddg_dict
@@ -71,8 +71,8 @@ def test_Genotype_copy(ens_test_data):
     assert len(g.mutations_accumulated) == 1
     assert g.mutations_accumulated[0] == "M1A"
     assert len(g.mut_energy) == 2
-    assert g.mut_energy["s1"] == 1
-    assert g.mut_energy["s2"] == -1
+    assert g.mut_energy[0] == 1
+    assert g.mut_energy[1] == -1
 
     # ---------------------------------
     # Now test copying of that genotype
@@ -97,8 +97,8 @@ def test_Genotype_copy(ens_test_data):
     assert len(g2.mutations_accumulated) == 1
     assert g2.mutations_accumulated[0] == "M1A"
     assert len(g2.mut_energy) == 2
-    assert g2.mut_energy["s1"] == 1
-    assert g2.mut_energy["s2"] == -1
+    assert g2.mut_energy[0] == 1
+    assert g2.mut_energy[1] == -1
 
 def test_Genotype_mutate(ens_test_data):
     
@@ -112,7 +112,7 @@ def test_Genotype_mutate(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert len(g.sites) == 1
     assert g.sites[0] == 1
@@ -121,8 +121,8 @@ def test_Genotype_mutate(ens_test_data):
     assert len(g.mutations_accumulated) == 1
     assert g.mutations_accumulated[0] == "M1A"
     assert len(g.mut_energy) == 2
-    assert g.mut_energy["s1"] == 1
-    assert g.mut_energy["s2"] == -1
+    assert g.mut_energy[0] == 1
+    assert g.mut_energy[1] == -1
 
     # Copy and mutate new site, new mutation
     g2 = g.copy()
@@ -137,8 +137,8 @@ def test_Genotype_mutate(ens_test_data):
     assert g2.mutations_accumulated[0] == "M1A"
     assert g2.mutations_accumulated[1] == "P2R"
     assert len(g2.mut_energy) == 2
-    assert g2.mut_energy["s1"] == 1
-    assert g2.mut_energy["s2"] == 0 # 1 unit higher 
+    assert g2.mut_energy[0] == 1
+    assert g2.mut_energy[1] == 0 # 1 unit higher 
 
     # Copy and mutate same site, new mutation
     g3 = g.copy()
@@ -151,8 +151,8 @@ def test_Genotype_mutate(ens_test_data):
     assert g3.mutations_accumulated[0] == "M1A"
     assert g3.mutations_accumulated[1] == "A1V"
     assert len(g3.mut_energy) == 2
-    assert g3.mut_energy["s1"] == -1
-    assert g3.mut_energy["s2"] == 1
+    assert g3.mut_energy[0] == -1
+    assert g3.mut_energy[1] == 1
 
     # Copy and mutate same site, same mutation --> reversion
     g4 = g.copy()
@@ -163,8 +163,8 @@ def test_Genotype_mutate(ens_test_data):
     assert g4.mutations_accumulated[0] == "M1A"
     assert g4.mutations_accumulated[1] == "A1M"
     assert len(g4.mut_energy) == 2
-    assert g4.mut_energy["s1"] == 0
-    assert g4.mut_energy["s2"] == 0
+    assert g4.mut_energy[0] == 0
+    assert g4.mut_energy[1] == 0
 
     # Start at wildtype and mutate
     g = Genotype(ens=ens,
@@ -178,8 +178,8 @@ def test_Genotype_mutate(ens_test_data):
     assert len(g.mutations_accumulated) == 1
     assert g.mutations_accumulated[0] == "P2R"
     assert len(g.mut_energy) == 2
-    assert g.mut_energy["s1"] == 0
-    assert g.mut_energy["s2"] == 1
+    assert g.mut_energy[0] == 0
+    assert g.mut_energy[1] == 1
 
 def test_Genotype_mut_energy(ens_test_data):
     
@@ -193,11 +193,11 @@ def test_Genotype_mut_energy(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g.mut_energy is g._mut_energy
-    assert g.mut_energy["s1"] == 1
-    assert g.mut_energy["s2"] == -1
+    assert g.mut_energy[0] == 1
+    assert g.mut_energy[1] == -1
 
 def test_Genotype_mutations(ens_test_data):
     
@@ -211,7 +211,7 @@ def test_Genotype_mutations(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g.mutations is g._mutations
     assert np.array_equal(g.mutations,["M1A"])
@@ -229,7 +229,7 @@ def test_Genotype_mutations_accumulated(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g.mutations_accumulated is g._mutations_accumulated
     assert np.array_equal(g.mutations_accumulated,["M1A"])
@@ -247,7 +247,7 @@ def test_Genotype_sites(ens_test_data):
                  sites=[1],
                  mutations=["M1A"],
                  mutations_accumulated=["M1A"],
-                 mut_energy={"s1":1,"s2":-1})
+                 mut_energy=np.array([1,-1]))
     
     assert g.sites is g._sites
     assert np.array_equal(g.sites,[1])
@@ -265,7 +265,7 @@ def test_GenotypeContainer(ens_test_data):
     # Make sure that ddg_df loaded correctly into ddg_dict
     for a in ddg_dict:
         for b in ddg_dict[a]:
-            assert gc._ddg_dict[a][b] == ddg_dict[a][b]
+            assert np.array_equal(gc._ddg_dict[a][b], ddg_dict[a][b])
             
 
     # Make sure possible sites and mutations at sites are correct
@@ -282,8 +282,8 @@ def test_GenotypeContainer(ens_test_data):
     assert len(gc.genotypes[0].mutations) == 0
     assert len(gc.genotypes[0].mutations_accumulated) == 0
     assert len(gc.genotypes[0].mut_energy) == 2
-    assert gc.genotypes[0].mut_energy["s1"] == 0
-    assert gc.genotypes[0].mut_energy["s2"] == 0
+    assert gc.genotypes[0].mut_energy[0] == 0
+    assert gc.genotypes[0].mut_energy[1] == 0
 
     # Make sure trajectories and fitnesses are set up correctly. 
     assert len(gc.trajectories) == 1
@@ -317,7 +317,7 @@ def test_GenotypeContainer__create_ddg_dict(ens_test_data):
     # Make sure that ddg_df loaded correctly into ddg_dict
     for a in ddg_dict:
         for b in ddg_dict[a]:
-            assert gc._ddg_dict[a][b] == ddg_dict[a][b]
+            assert np.array_equal(gc._ddg_dict[a][b], ddg_dict[a][b])
 
     # send in copy of ddg_df with mangled column names. Should throw a 
     # ValueError  

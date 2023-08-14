@@ -99,10 +99,10 @@ def ens_test_data():
 
     # basic ddg dictionary
     ddg_dict = {}
-    ddg_dict[1] = {"M1A":{"s1":1,"s2":-1},
-                   "M1V":{"s1":-1,"s2":1}}
-    ddg_dict[2] = {"P2R":{"s1":0,"s2":1},
-                   "P2Q":{"s1":0,"s2":0}}
+    ddg_dict[1] = {"M1A":np.array([1,-1]),
+                   "M1V":np.array([-1,1])}
+    ddg_dict[2] = {"P2R":np.array([0,1]),
+                   "P2Q":np.array([0,0])}
 
     fitness_fcns = [ff_on,ff_off]
 

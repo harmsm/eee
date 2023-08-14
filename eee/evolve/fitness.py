@@ -138,8 +138,13 @@ class FitnessContainer:
         fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
         check_T(T=T)
     
-        if select_on not in ["fx_obs","dG_obs"]:
-            err = "select_on should be either fx_obs or dG_obs\n"
+        obs_functions = {"fx_obs":ens.get_fx_obs_fast,
+                         "dG_obs":ens.get_dG_obs_fast}
+        if select_on not in obs_functions:
+            err = "select_on should be one of:\n"
+            for k in obs_functions:
+                err += f"    {k}\n"
+            err += "\n"
             raise ValueError(err)
 
         self._ens = ens
@@ -149,6 +154,11 @@ class FitnessContainer:
         self._fitness_kwargs = fitness_kwargs
         self._T = T
 
+        self._ens.load_mu_dict(mu_dict=self._mu_dict)
+        self._obs_function = obs_functions[self._select_on]
+        self._num_conditions = len(self._fitness_fcns)
+        self._F_array = np.zeros(self._num_conditions,dtype=float)
+
     def fitness(self,mut_energy):
         """
         Calculate the fitness of a genotype with total mutational energies 
@@ -156,15 +166,13 @@ class FitnessContainer:
         in each of the conditions specified in mu_dict. 
         """
         
-        F = _fitness_function(ens=self._ens,
-                              mut_energy=mut_energy,
-                              mu_dict=self._mu_dict,
-                              fitness_fcns=self._fitness_fcns,
-                              select_on=self._select_on,
-                              fitness_kwargs=self._fitness_kwargs,
-                              T=self._T)
+        values = self._obs_function(mut_energy_array=mut_energy,
+                                    T=self._T)        
+
+        for i in range(self._num_conditions):
+            self._F_array[i] = self._fitness_fcns[i](values[i])
  
-        return np.prod(F)
+        return np.prod(self._F_array)
     
     @property
     def ens(self):

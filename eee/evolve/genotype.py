@@ -38,9 +38,9 @@ class Genotype:
         mutations_accumulated : list, optional
             list of all mutations that have occurred to this genotype, in order, 
             over its history
-        mut_energy : dict, optional
-            dictionary (keyed to species) holding the total energetic effects
-            of all mutations
+        mut_energy : numpy.ndarray
+            numpy array holding energetic effect of mutation(s) on each species.
+            array should be in ensemble.species order. 
         """
 
         # These point to *instances* of these objects
@@ -67,11 +67,9 @@ class Genotype:
 
         # mut_energy is a new copy. 
         if mut_energy is None:
-            self._mut_energy = {}
-            for s in self._ens.species:
-                self._mut_energy[s] = 0
+            self._mut_energy = np.zeros(len(self._ens.species),dtype=float)
         else:
-            self._mut_energy = copy.deepcopy(mut_energy)
+            self._mut_energy = mut_energy.copy()
             
 
     def copy(self):
@@ -109,8 +107,7 @@ class Genotype:
             prev_mut = self._mutations[idx]
 
             # Subtract the energetic effect of the previous mutation
-            for species in self._ddg_dict[site][prev_mut]:
-                self._mut_energy[species] -= self._ddg_dict[site][prev_mut][species]
+            self._mut_energy -= self._ddg_dict[site][prev_mut]
 
             # Remove the old mutation
             self._sites.pop(idx)
@@ -123,8 +120,7 @@ class Genotype:
         if mutation != prev_mut:
 
             # Update energy of each species
-            for species in self._ddg_dict[site][mutation]:
-                self._mut_energy[species] += self._ddg_dict[site][mutation][species]
+            self._mut_energy += self._ddg_dict[site][mutation]
 
             # Update genotype with new site mutation and mutation made
             self._sites.append(site)
@@ -172,7 +168,8 @@ class Genotype:
     def mut_energy(self):
         """
         Current energetic effect of all mutations on the species in the 
-        ensemble.
+        ensemble. This is a numpy array, with species order corresponding to 
+        the ensemble.species order. 
         """
         return self._mut_energy
     
@@ -226,7 +223,7 @@ class GenotypeContainer:
         """
         Convert a ddg_df dataframe in to a dictionary of the form:
         
-        ddg_dict["site"]["mut"]["species"]
+        ddg_dict["site"]["mut"] = np_array_with_mutant_effects_on_species
         """
 
         species = self._fc.ens.species
@@ -244,9 +241,11 @@ class GenotypeContainer:
             if site not in self._ddg_dict:
                 self._ddg_dict[site] = {}
                 
-            self._ddg_dict[site][mut] = {}
+            mut_dict = {}
             for s in species:
-                self._ddg_dict[site][mut][s] = row[s]
+                mut_dict[s] = row[s]
+            
+            self._ddg_dict[site][mut] = self._fc.ens.mut_dict_to_array(mut_dict)
 
     
     def mutate(self,index):
