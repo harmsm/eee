@@ -14,6 +14,7 @@ from eee._private.check.eee_variables import check_T
 from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_mutation_rate
 from eee._private.check.eee_variables import check_population_size
+from eee._private.check.standard import check_int
 
 def simulate_evolution(ens,
                        ddg_df,
@@ -63,6 +64,13 @@ def simulate_evolution(ens,
         mutation rate for the simulation. Should be > 0.
     num_generations : int, default=100
         number of generations to run the simulation for
+    write_prefix : str, optional
+        write output files during the run with this prefix. If not specified, 
+        do not write files. If specified, gc and generations will be returned
+        *empty* as their contents will have been written to lower memory 
+        consumption.
+    write_frequency : int, default=1000
+        write the generations out every write_frequency generations. 
 
     Returns
     -------
@@ -79,7 +87,6 @@ def simulate_evolution(ens,
         and the values are the counts of those genotypes in that generation.
     """
 
-
     ens = check_ensemble(ens,check_obs=True)
     ddg_df = check_ddg_df(ddg_df)
     mu_dict = check_mu_dict(mu_dict)
@@ -89,6 +96,13 @@ def simulate_evolution(ens,
     population_size = check_population_size(population_size)
     mutation_rate = check_mutation_rate(mutation_rate)
     num_generations = check_num_generations(num_generations)
+
+    # Check write_prefix and write_frequency
+    if write_prefix is not None:
+        write_prefix = f"{write_prefix}"
+    write_frequency = check_int(value=write_frequency,
+                                variable_name="write_frequency",
+                                minimum_allowed=1)
 
     # Build a FitnessContainer object to calculate fitness values from the 
     # ensemble.

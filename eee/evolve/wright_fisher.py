@@ -17,6 +17,8 @@ from tqdm.auto import tqdm
 
 import warnings
 import pickle
+import os
+import glob
 
 def _write_outputs(gc,
                    generations,
@@ -30,14 +32,22 @@ def _write_outputs(gc,
         if final_dump:
             gen_to_write = [dict(zip(*g)) for g in generations[:]]
             generations = []
+            keep_genotypes = None
         else:
             gen_to_write = [dict(zip(*g)) for g in generations[:-1]]
             generations = [generations[-1]]
+            keep_genotypes = list(generations[-1][0])
 
         gen_fmt_string = "{:s}_generations_{:0" + f"{num_write_digits:d}" + "d}.pickle"
         gen_out_file = gen_fmt_string.format(write_prefix,write_counter)
         with open(gen_out_file,'wb') as f:
             pickle.dump(gen_to_write,f)
+        
+        # Write out the genotypes
+        gc_filename = f"{write_prefix}_genotypes.csv"
+        gc.dump_to_csv(filename=gc_filename,
+                       keep_genotypes=keep_genotypes)
+
 
     return gc, generations
 
@@ -122,9 +132,19 @@ def wright_fisher(gc,
             for p in population:
                 _population.extend([p for _ in range(population[p])])
             population = _population
-            
+        
+        if issubclass(type(population),str):
+            population_size = check_int(population)
+            population = np.zeros(population_size,dtype=int)
+
         # Make sure population is a numpy array, whether passed in by user as 
-         # a list or from the list built above
+        # a list or from the list built above
+        population = list(population)
+        for i in range(len(population)):
+            population[i] = check_int(value=population[i],
+                                      variable_name="population[i]",
+                                      minimum_allowed=0)
+
         population = np.array(population,dtype=int)
         population_size = len(population)
 
@@ -150,22 +170,13 @@ def wright_fisher(gc,
         write_frequency = check_int(value=write_frequency,
                                     variable_name=write_frequency,
                                     minimum_allowed=1)
-
-
-    # Make sure the population genotypes are in the gc object
-    min_idx = np.min(population)
-    if min_idx < 0:
-        err = f"\npopulation has a genotype ({min_idx}) that is not in the gc\n"
-        err += "object.\n\n"
-        raise ValueError(err)
-
-    # Make sure the population genotypes are in the gc object
-    max_idx = np.max(population)
-    if max_idx >= len(gc.genotypes):
-        err = f"\npopulation has a genotype ({max_idx}) that is not in the gc\n"
-        err += "object.\n\n"
-        raise ValueError(err)
     
+    in_gc = set(list(gc.genotypes.keys()))
+    in_pop = set(list(population))
+    if not in_pop.issubset(in_gc):
+        err = f"\npopulation has genotype(s) that are not in the gc object\n\n"
+        raise ValueError(err)
+
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
 
@@ -179,6 +190,13 @@ def wright_fisher(gc,
     else:
         pbar = tqdm(total=num_generations-1)
 
+    # Remove existing files
+    if write_prefix is not None:
+        to_remove = glob.glob(f"{write_prefix}*.pickle")
+        to_remove.extend(glob.glob(f"{write_prefix}*.csv"))
+        for f in to_remove:
+            os.remove(f)
+                         
     # Run the simulation
     with pbar:
     
@@ -261,13 +279,13 @@ def wright_fisher(gc,
             pbar.update(n=1)
 
 
-    gc, generations = _write_outputs(gc=gc,
-                                     generations=generations,
-                                     write_prefix=write_prefix,
-                                     write_counter=write_counter,
-                                     num_write_digits=num_write_digits,
-                                     final_dump=True)
-
+    if write_prefix is not None:
+        gc, generations = _write_outputs(gc=gc,
+                                        generations=generations,
+                                        write_prefix=write_prefix,
+                                        write_counter=write_counter,
+                                        num_write_digits=num_write_digits,
+                                        final_dump=True)
 
     # Warn if we did not get all of the requested mutations
     if num_mutations is not None and not hit_target_num_mutations:

@@ -22,7 +22,9 @@ def test_simulate_evolution(variable_types,ens_test_data,ens_with_fitness):
                        T=1,
                        population_size=100,
                        mutation_rate=0.01,
-                       num_generations=100)
+                       num_generations=100,
+                       write_prefix=None,
+                       write_frequency=5)
     
     # ens
     for v in variable_types["everything"]:
@@ -37,7 +39,9 @@ def test_simulate_evolution(variable_types,ens_test_data,ens_with_fitness):
                                T=1,
                                population_size=100,
                                mutation_rate=0.01,
-                               num_generations=100)
+                               num_generations=100,
+                               write_prefix=None,
+                               write_frequency=5)
             
     # ddg_df
     for v in variable_types["everything"]:
@@ -52,7 +56,9 @@ def test_simulate_evolution(variable_types,ens_test_data,ens_with_fitness):
                                T=1,
                                population_size=100,
                                mutation_rate=0.01,
-                               num_generations=100)
+                               num_generations=100,
+                               write_prefix=None,
+                               write_frequency=5)
 
     # mu_dict
     for v in variable_types["everything"]:
@@ -67,5 +73,7 @@ def test_simulate_evolution(variable_types,ens_test_data,ens_with_fitness):
                                T=1,
                                population_size=100,
                                mutation_rate=0.01,
-                               num_generations=100)
+                               num_generations=100,
+                               write_prefix=None,
+                               write_frequency=5)
 

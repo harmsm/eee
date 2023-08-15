@@ -6,6 +6,7 @@ from eee.evolve.wright_fisher import wright_fisher
 from eee.evolve.genotype import GenotypeContainer
 
 import numpy as np
+import pandas as pd
 
 import os
 import glob
@@ -61,12 +62,15 @@ def test__write_outputs(ens_with_fitness,tmpdir):
     assert len(out_gc.fitnesses) == len(gc.fitnesses)
     assert len(out_gen) == len(generations)
     assert len(glob.glob("*.pickle")) == 0
+    assert len(glob.glob("*.csv")) == 0
 
     # --------------------------------------------------------------------------
     # Write out non-final file
 
     gc = copy.deepcopy(template_gc)
     generations = copy.deepcopy(template_generations)
+
+    total_num_genotypes = len(gc.genotypes)
 
     out_gc, out_gen = _write_outputs(gc=gc,
                                      generations=generations,
@@ -86,6 +90,14 @@ def test__write_outputs(ens_with_fitness,tmpdir):
         
     for f in glob.glob("*.pickle"):
         os.remove(f)
+
+    # Make sure we wrote out the right number of genotypes
+    df = pd.read_csv("test_genotypes.csv")
+    assert total_num_genotypes - len(gc.genotypes) == len(df)
+    in_gc = set(list(gc.genotypes.keys()))
+    in_out = set(list(df.genotype))
+    assert len(list(in_gc.intersection(in_out))) == 0
+    os.remove("test_genotypes.csv")
 
 
     # --------------------------------------------------------------------------
@@ -113,6 +125,11 @@ def test__write_outputs(ens_with_fitness,tmpdir):
     for f in glob.glob("*.pickle"):
         os.remove(f)
 
+    # Make sure we wrote out the right number of genotypes
+    df = pd.read_csv("test_genotypes.csv")
+    assert total_num_genotypes == len(df)
+    os.remove("test_genotypes.csv")
+
     # --------------------------------------------------------------------------
     # Write out final file, altered write_counter
 
@@ -136,6 +153,11 @@ def test__write_outputs(ens_with_fitness,tmpdir):
                            template_generations)
     for f in glob.glob("*.pickle"):
         os.remove(f)
+
+    # Make sure we wrote out the right number of genotypes
+    df = pd.read_csv("test_genotypes.csv")
+    assert total_num_genotypes == len(df)
+    os.remove("test_genotypes.csv")
 
     # --------------------------------------------------------------------------
     # Write out final file, altered write_digits
@@ -191,6 +213,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(generations[0]) == 1
     assert generations[0][0] == 10
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -204,6 +227,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(generations[0]) == 1
     assert generations[0][0] == 10
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -217,7 +241,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(generations[0]) == 1
     assert generations[0][0] == 10
     assert len(glob.glob("*.pickle")) == 0 
-
+    assert len(glob.glob("*.csv")) == 0 
 
     # --------------------------------------------------------------------------
     # Mutation rate
@@ -238,6 +262,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     assert high_mut_rate_genotypes > low_mut_rate_genotypes
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
     # --------------------------------------------------------------------------
     # Num generations
@@ -249,6 +274,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                     num_generations=10)
     assert len(generations) == 10
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
     # --------------------------------------------------------------------------
     # num_mutations
@@ -267,7 +293,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
         to_sort.append((generations[-1][k],k))
     to_sort.sort()
     assert len(gc.genotypes[to_sort[-1][1]].mutations_accumulated) >= 1
-    assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.pickle")) == 0
+    assert len(glob.glob("*.csv")) == 0  
 
     # 2 mutations
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
@@ -284,6 +311,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     to_sort.sort()
     assert len(gc.genotypes[to_sort[-1][1]].mutations_accumulated) >= 2
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
     # 3 mutations
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
@@ -310,7 +338,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                         num_generations=10,
                                         num_mutations=100)
     assert len(generations) == 10
-    assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.pickle")) == 0
+    assert len(glob.glob("*.csv")) == 0  
 
     # --------------------------------------------------------------------------
     # disable_status_bar
@@ -344,7 +373,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     low_mut_rate_genotypes = len(gc.genotypes)
 
     assert high_mut_rate_genotypes > low_mut_rate_genotypes
-    assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.pickle")) == 0
+    assert len(glob.glob("*.csv")) == 0 
 
     # --------------------------------------------------------------------------
     # Check variables
@@ -377,7 +407,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # which is very fit, one that is very unfit, and wildtype which is in the 
     # middle
 
-    gc = ens_with_fitness["gc"]
+    gc = copy.deepcopy(ens_with_fitness["gc"])
 
     gc, generations = wright_fisher(gc=gc,
                                     mutation_rate=0.001,
@@ -398,12 +428,13 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert genotypes[""] < genotypes["A1V"]
     assert genotypes["A1V"] > 9000000
     assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
 
 
     # --------------------------------------------------------------------------
     # Check ability to write outputs
 
-    gc = ens_with_fitness["gc"]
+    gc = copy.deepcopy(ens_with_fitness["gc"])
 
     gc, generations = wright_fisher(gc=gc,
                                     mutation_rate=0.001,
@@ -418,7 +449,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
         os.remove(f)
 
     # Change prefix
-    gc = ens_with_fitness["gc"]
+    gc = copy.deepcopy(ens_with_fitness["gc"])
 
     gc, generations = wright_fisher(gc=gc,
                                     mutation_rate=0.001,
@@ -433,7 +464,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
         os.remove(f)
 
     # Change write frequency.
-    gc = ens_with_fitness["gc"]
+    gc = copy.deepcopy(ens_with_fitness["gc"])
 
     gc, generations = wright_fisher(gc=gc,
                                     mutation_rate=0.001,

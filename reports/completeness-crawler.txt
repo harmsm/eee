@@ -36,8 +36,10 @@ FOUND tests.evolve.test_genotype.test_Genotype
 FOUND tests.evolve.test_genotype.test_GenotypeContainer
 FOUND tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_df
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_dump_to_csv
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_fitnesses
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_genotypes
+FOUND tests.evolve.test_genotype.test_GenotypeContainer_mut_energies
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_mutate
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_trajectories
 FOUND tests.evolve.test_genotype.test_GenotypeContainer_wt_sequence
