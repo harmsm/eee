@@ -13,7 +13,6 @@ FOUND tests._private.check.test_standard.test_check_bool
 FOUND tests._private.check.test_standard.test_check_float
 FOUND tests._private.check.test_standard.test_check_int
 FOUND tests._private.check.test_standard.test_check_iter
-FOUND tests._private.test_array_expander.test_array_expander
 FOUND tests._private.test_interface.test_MockTqdm
 FOUND tests._private.test_interface.test_MockTqdm___enter__
 FOUND tests._private.test_interface.test__follow_log_generator
@@ -24,6 +23,7 @@ FOUND tests._private.test_interface.test_gen_seed
 FOUND tests._private.test_interface.test_launch
 FOUND tests._private.test_interface.test_rmtree
 FOUND tests._private.test_interface.test_run_cleanly
+FOUND tests._private.test_wrap.test_wrap_function
 FOUND tests.evolve.test_fitness.test_FitnessContainer
 FOUND tests.evolve.test_fitness.test_FitnessContainer_T
 FOUND tests.evolve.test_fitness.test_FitnessContainer_ens
@@ -67,6 +67,8 @@ FOUND tests.test_ensemble.test_Ensemble__get_weights
 FOUND tests.test_ensemble.test_Ensemble_add_species
 FOUND tests.test_ensemble.test_Ensemble_get_obs
 FOUND tests.test_ensemble.test_Ensemble_get_species_dG
+FAKE tests._private.test_wrap.test_IterFromFile
+FAKE tests._private.test_wrap.test_IterFromFile___call__
 FAKE tests.evolve.test_analysis.test_extract_alignment
 FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
@@ -82,6 +84,7 @@ FAKE tests.test_epistasis.test_summarize_epistasis
 MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.test_interface.test_WrappedFunctionException
 MISSING tests._private.test_logger.test_log
+MISSING tests.bin.test_eee-simulate-evolution.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.test_simulate_tree.test__simulate_branch
 MISSING tests.io.test_write_pdb.test_chain
