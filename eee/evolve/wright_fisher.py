@@ -10,18 +10,45 @@ from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_mutation_rate
 from eee._private.check.eee_variables import check_population_size
 from eee._private.check.eee_variables import check_num_mutations
+from eee._private.check.standard import check_int
 
 import numpy as np
 from tqdm.auto import tqdm
 
 import warnings
+import pickle
+
+def _write_outputs(gc,
+                   generations,
+                   write_prefix,
+                   write_counter,
+                   num_write_digits,
+                   final_dump=False):
+    
+    if write_prefix is not None:
+
+        if final_dump:
+            gen_to_write = [dict(zip(*g)) for g in generations[:]]
+            generations = []
+        else:
+            gen_to_write = [dict(zip(*g)) for g in generations[:-1]]
+            generations = [generations[-1]]
+
+        gen_fmt_string = "{:s}_generations_{:0" + f"{num_write_digits:d}" + "d}.pickle"
+        gen_out_file = gen_fmt_string.format(write_prefix,write_counter)
+        with open(gen_out_file,'wb') as f:
+            pickle.dump(gen_to_write,f)
+
+    return gc, generations
 
 def wright_fisher(gc,
                   population,
                   mutation_rate,
                   num_generations,
                   num_mutations=None,
-                  disable_status_bar=False):
+                  disable_status_bar=False,
+                  write_prefix=None,
+                  write_frequency=1000):
     """
     Run a Wright-Fisher simulation. This is a relatively low-level function. 
     Most users should probably call this via other simulation functions like
@@ -53,6 +80,13 @@ def wright_fisher(gc,
         either num_mutations is reached OR the simulation hits num_generations.
     disable_status_bar : bool, default=False
         turn off the tqdm status bar for the calculation 
+    write_prefix : str, optional
+        write output files during the run with this prefix. If not specified, 
+        do not write files. If specified, gc and generations will be returned
+        *empty* as their contents will have been written to lower memory 
+        consumption.
+    write_frequency : int, default=1000
+        write the generations out every write_frequency generations. 
     
     Returns
     -------
@@ -111,6 +145,12 @@ def wright_fisher(gc,
     num_generations = check_num_generations(num_generations)
     if num_mutations is not None:
         num_mutations = check_num_mutations(num_mutations)
+    if write_prefix is not None:
+        write_prefix = f"{write_prefix}"
+        write_frequency = check_int(value=write_frequency,
+                                    variable_name=write_frequency,
+                                    minimum_allowed=1)
+
 
     # Make sure the population genotypes are in the gc object
     min_idx = np.min(population)
@@ -144,8 +184,14 @@ def wright_fisher(gc,
     
         hit_target_num_mutations = False
 
+        # Set up to write files
+        write_counter = 0
+        num_write_digits = int(f"{num_generations/write_frequency:e}".split("e")[1]) + 1
+        if num_write_digits < 0:
+            num_write_digits = 1
+
         # For all num_generations (first is starting population)
-        for _ in range(1,num_generations):
+        for i in range(1,num_generations):
 
             # Get the probability of each genotype: its frequency times its 
             # relative fitness. Get the current genotypes and their counts from the
@@ -167,7 +213,7 @@ def wright_fisher(gc,
                                           size=population_size,
                                           p=prob,
                                           replace=True)
-
+            
             # Introduce mutations
             num_to_mutate = np.random.poisson(expected_num_mutations)
 
@@ -201,7 +247,27 @@ def wright_fisher(gc,
                     hit_target_num_mutations = True
                     break
             
+            if i % write_frequency == 0:
+
+                gc, generations = _write_outputs(gc=gc,
+                                                 generations=generations,
+                                                 write_prefix=write_prefix,
+                                                 write_counter=write_counter,
+                                                 num_write_digits=num_write_digits,
+                                                 final_dump=False)
+
+                write_counter += 1
+
             pbar.update(n=1)
+
+
+    gc, generations = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix=write_prefix,
+                                     write_counter=write_counter,
+                                     num_write_digits=num_write_digits,
+                                     final_dump=True)
+
 
     # Warn if we did not get all of the requested mutations
     if num_mutations is not None and not hit_target_num_mutations:

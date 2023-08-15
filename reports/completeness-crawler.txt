@@ -48,6 +48,7 @@ FOUND tests.evolve.test_genotype.test_Genotype_mutations
 FOUND tests.evolve.test_genotype.test_Genotype_mutations_accumulated
 FOUND tests.evolve.test_genotype.test_Genotype_sites
 FOUND tests.evolve.test_simulate_evolution.test_simulate_evolution
+FOUND tests.evolve.test_wright_fisher.test__write_outputs
 FOUND tests.evolve.test_wright_fisher.test_wright_fisher
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif

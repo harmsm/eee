@@ -1,13 +1,180 @@
 import pytest
 
+from eee.evolve.wright_fisher import _write_outputs
 from eee.evolve.wright_fisher import wright_fisher
+
 from eee.evolve.genotype import GenotypeContainer
 
 import numpy as np
 
-import time
+import os
+import glob
+import copy
+import pickle
 
-def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
+def test__write_outputs(ens_with_fitness,tmpdir):
+    
+    def _check_write_integrity(pickle_file,generations):
+
+        generations = [dict(zip(*g)) for g in generations]
+
+        with open(pickle_file,'rb') as f:
+            from_file = pickle.load(f)
+
+        assert len(from_file) == len(generations)
+        for i in range(len(generations)):
+            for k in generations[i]:
+                assert generations[i][k] == from_file[i][k]
+                
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    # Run short simulation to use to write outputs
+    gc = ens_with_fitness["gc"]
+    template_gc, generations = wright_fisher(gc=gc,
+                                             mutation_rate=0.001,
+                                             population=10000,
+                                             num_generations=1000)
+    
+    template_generations = []
+    for g in generations:
+        a = np.array(list(g.keys()))
+        b = np.array(list(g.values()))
+        template_generations.append((a,b))
+    
+    # --------------------------------------------------------------------------
+    # Write prefix is None -- do not write out
+
+    gc = copy.deepcopy(template_gc)
+    generations = copy.deepcopy(template_generations)
+
+    out_gc, out_gen = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix=None,
+                                     write_counter=0,
+                                     num_write_digits=3,
+                                     final_dump=False)
+    
+    assert out_gc is gc
+    assert out_gen is generations
+    assert len(out_gc.fitnesses) == len(gc.fitnesses)
+    assert len(out_gen) == len(generations)
+    assert len(glob.glob("*.pickle")) == 0
+
+    # --------------------------------------------------------------------------
+    # Write out non-final file
+
+    gc = copy.deepcopy(template_gc)
+    generations = copy.deepcopy(template_generations)
+
+    out_gc, out_gen = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix="test",
+                                     write_counter=0,
+                                     num_write_digits=3,
+                                     final_dump=False)
+    
+    assert out_gc is gc
+    assert out_gen is not generations
+    assert len(out_gc.fitnesses) == len(gc.fitnesses)
+    assert len(out_gen) == 1
+    assert len(glob.glob("*.pickle")) == 1
+    
+    _check_write_integrity("test_generations_000.pickle",
+                           template_generations[:-1])
+        
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    os.chdir(current_dir)
+
+    # --------------------------------------------------------------------------
+    # Write out final file
+
+    gc = copy.deepcopy(template_gc)
+    generations = copy.deepcopy(template_generations)
+
+    out_gc, out_gen = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix="test",
+                                     write_counter=0,
+                                     num_write_digits=3,
+                                     final_dump=True)
+    
+    assert out_gc is gc
+    assert out_gen is not generations
+    assert len(out_gc.fitnesses) == len(gc.fitnesses)
+    assert len(out_gen) == 0
+    assert len(glob.glob("*.pickle")) == 1
+    
+    _check_write_integrity("test_generations_000.pickle",
+                           template_generations)
+        
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    os.chdir(current_dir)
+
+
+    # --------------------------------------------------------------------------
+    # Write out final file, altered write_counter
+
+    gc = copy.deepcopy(template_gc)
+    generations = copy.deepcopy(template_generations)
+
+    out_gc, out_gen = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix="test",
+                                     write_counter=10,
+                                     num_write_digits=3,
+                                     final_dump=True)
+    
+    assert out_gc is gc
+    assert out_gen is not generations
+    assert len(out_gc.fitnesses) == len(gc.fitnesses)
+    assert len(out_gen) == 0
+    assert len(glob.glob("*.pickle")) == 1
+    
+    _check_write_integrity("test_generations_010.pickle",
+                           template_generations)
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    os.chdir(current_dir)
+
+    # --------------------------------------------------------------------------
+    # Write out final file, altered write_digits
+
+    gc = copy.deepcopy(template_gc)
+    generations = copy.deepcopy(template_generations)
+
+    out_gc, out_gen = _write_outputs(gc=gc,
+                                     generations=generations,
+                                     write_prefix="test",
+                                     write_counter=10,
+                                     num_write_digits=2,
+                                     final_dump=True)
+    
+    assert out_gc is gc
+    assert out_gen is not generations
+    assert len(out_gc.fitnesses) == len(gc.fitnesses)
+    assert len(out_gen) == 0
+    assert len(glob.glob("*.pickle")) == 1
+    
+    _check_write_integrity("test_generations_10.pickle",
+                           template_generations)
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    os.chdir(current_dir)
+
+
+def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
 
     def _count_pop(generation):
         return sum([generation[s] for s in generation])
@@ -29,6 +196,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     assert _count_pop(generations[1]) == 10
     assert len(generations[0]) == 1
     assert generations[0][0] == 10
+    assert len(glob.glob("*.pickle")) == 0 
 
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -41,7 +209,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     assert _count_pop(generations[1]) == 10
     assert len(generations[0]) == 1
     assert generations[0][0] == 10
-
+    assert len(glob.glob("*.pickle")) == 0 
 
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -53,7 +221,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     assert _count_pop(generations[0]) == 10
     assert _count_pop(generations[1]) == 10
     assert len(generations[0]) == 1
-    assert generations[0][0] == 10 
+    assert generations[0][0] == 10
+    assert len(glob.glob("*.pickle")) == 0 
 
 
     # --------------------------------------------------------------------------
@@ -74,6 +243,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     low_mut_rate_genotypes = len(gc.genotypes)
 
     assert high_mut_rate_genotypes > low_mut_rate_genotypes
+    assert len(glob.glob("*.pickle")) == 0 
 
     # --------------------------------------------------------------------------
     # Num generations
@@ -84,6 +254,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
                                     mutation_rate=0.1,
                                     num_generations=10)
     assert len(generations) == 10
+    assert len(glob.glob("*.pickle")) == 0 
 
     # --------------------------------------------------------------------------
     # num_mutations
@@ -102,6 +273,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
         to_sort.append((generations[-1][k],k))
     to_sort.sort()
     assert len(gc.genotypes[to_sort[-1][1]].mutations_accumulated) >= 1
+    assert len(glob.glob("*.pickle")) == 0 
 
     # 2 mutations
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
@@ -117,6 +289,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
         to_sort.append((generations[-1][k],k))
     to_sort.sort()
     assert len(gc.genotypes[to_sort[-1][1]].mutations_accumulated) >= 2
+    assert len(glob.glob("*.pickle")) == 0 
 
     # 3 mutations
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
@@ -132,7 +305,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
         to_sort.append((generations[-1][k],k))
     to_sort.sort()
     assert len(gc.genotypes[to_sort[-1][1]].mutations_accumulated) >= 3
-
+    assert len(glob.glob("*.pickle")) == 0 
 
     # Too short to complete 50 mutations -- should run 10 generations and warn
     gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
@@ -143,7 +316,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
                                         num_generations=10,
                                         num_mutations=100)
     assert len(generations) == 10
-
+    assert len(glob.glob("*.pickle")) == 0 
 
     # --------------------------------------------------------------------------
     # disable_status_bar
@@ -177,7 +350,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     low_mut_rate_genotypes = len(gc.genotypes)
 
     assert high_mut_rate_genotypes > low_mut_rate_genotypes
-
+    assert len(glob.glob("*.pickle")) == 0 
 
     # --------------------------------------------------------------------------
     # Check variables
@@ -205,8 +378,6 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
                                             num_generations=2)
 
 
-    
-
     # --------------------------------------------------------------------------
     # Run a short calculation with a dataset that has three genotypes, one of
     # which is very fit, one that is very unfit, and wildtype which is in the 
@@ -232,5 +403,60 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types):
     assert genotypes[""] > genotypes["A1P"]
     assert genotypes[""] < genotypes["A1V"]
     assert genotypes["A1V"] > 9000000
+    assert len(glob.glob("*.pickle")) == 0 
 
 
+    # --------------------------------------------------------------------------
+    # Check ability to write outputs
+
+    gc = ens_with_fitness["gc"]
+
+    gc, generations = wright_fisher(gc=gc,
+                                    mutation_rate=0.001,
+                                    population=10,
+                                    num_generations=1000,
+                                    write_prefix="test",
+                                    write_frequency=100000)
+    assert len(glob.glob("*.pickle")) == 1
+    assert glob.glob("*.pickle")[0] == "test_generations_0.pickle"
+    assert len(generations) == 0
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    # Change prefix
+    gc = ens_with_fitness["gc"]
+
+    gc, generations = wright_fisher(gc=gc,
+                                    mutation_rate=0.001,
+                                    population=10,
+                                    num_generations=1000,
+                                    write_prefix="test_this",
+                                    write_frequency=100000)
+    assert len(glob.glob("*.pickle")) == 1
+    assert glob.glob("*.pickle")[0] == "test_this_generations_0.pickle"
+    assert len(generations) == 0
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+    # Change write frequency.
+    gc = ens_with_fitness["gc"]
+
+    gc, generations = wright_fisher(gc=gc,
+                                    mutation_rate=0.001,
+                                    population=10,
+                                    num_generations=1000,
+                                    write_prefix="test",
+                                    write_frequency=100)
+    assert len(glob.glob("*.pickle")) == 10
+    files = list(glob.glob("*.pickle"))
+    files.sort()
+    assert files[0] == "test_generations_00.pickle"
+    assert files[9] == "test_generations_09.pickle"
+    assert len(generations) == 0
+    for f in glob.glob("*.pickle"):
+        os.remove(f)
+
+
+
+
+    os.chdir(current_dir)

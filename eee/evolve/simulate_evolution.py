@@ -24,7 +24,9 @@ def simulate_evolution(ens,
                        T=298.15,
                        population_size=1000,
                        mutation_rate=0.01,
-                       num_generations=100):
+                       num_generations=100,
+                       write_prefix=None,
+                       write_frequency=1000):
     """
     Simulate the evolution of a population where the fitness is determined by 
     the ensemble. 
@@ -106,7 +108,9 @@ def simulate_evolution(ens,
     gc, generations =  wright_fisher(gc=gc,
                                      population=population_size,
                                      mutation_rate=mutation_rate,
-                                     num_generations=num_generations)
+                                     num_generations=num_generations,
+                                     write_prefix=write_prefix,
+                                     write_frequency=write_frequency)
     
     return gc, generations
 
