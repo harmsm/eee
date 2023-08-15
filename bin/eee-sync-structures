@@ -16,11 +16,11 @@ def main(argv=None):
         argv = sys.argv[1:]
 
     # Function we are wrapping 
-    fcn = eee.util.sync_structures
+    fcn = eee.structure.sync_structures
 
     # Get program name from the function name
     prog = re.sub("_","-",fcn.__name__)
-    prog = f"topiary-{prog}"
+    prog = f"eee-{prog}"
 
     # Get description from the docstring of the function
     description = dict(inspect.getmembers(fcn))["__doc__"]
