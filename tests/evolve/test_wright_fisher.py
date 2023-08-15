@@ -87,7 +87,6 @@ def test__write_outputs(ens_with_fitness,tmpdir):
     for f in glob.glob("*.pickle"):
         os.remove(f)
 
-    os.chdir(current_dir)
 
     # --------------------------------------------------------------------------
     # Write out final file
@@ -114,9 +113,6 @@ def test__write_outputs(ens_with_fitness,tmpdir):
     for f in glob.glob("*.pickle"):
         os.remove(f)
 
-    os.chdir(current_dir)
-
-
     # --------------------------------------------------------------------------
     # Write out final file, altered write_counter
 
@@ -140,8 +136,6 @@ def test__write_outputs(ens_with_fitness,tmpdir):
                            template_generations)
     for f in glob.glob("*.pickle"):
         os.remove(f)
-
-    os.chdir(current_dir)
 
     # --------------------------------------------------------------------------
     # Write out final file, altered write_digits

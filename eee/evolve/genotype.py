@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 import copy
+import os
 
 class Genotype:
     """
@@ -28,7 +29,7 @@ class Genotype:
         ens : eee.Ensemble
             initialized ensemble
         ddg_dict : dict
-            nested dictionary of mutational effects [site][mutation][species]
+            nested dictionary of mutational effects [site][mutation]
         sites : list, optional
             list of sites that already have mutations
         mutations : list, optional
@@ -47,23 +48,31 @@ class Genotype:
         self._ens = ens
         self._ddg_dict = ddg_dict
 
+        # NOTE: mutations and mutations_accumulated are shallow copies of lists
+        # of strings. This is okay because all the lists do is declare which 
+        # mutations are present in a genotype -- it's fine that all genotypes 
+        # share individual string instances. It also makes the code way faster
+        # because we do not need to copy the strings over and over. The sites
+        # and mut_energy arrays are lists of numbers and numpy arrays and are
+        # thus true copies. 
+
         # Sites is a new copy
         if sites is None:
             self._sites = []
         else:
-            self._sites = copy.deepcopy(sites)
+            self._sites = copy.copy(sites)
         
         # Mutations is a new copy. 
         if mutations is None:
             self._mutations = []
         else:
-            self._mutations = copy.deepcopy(mutations)
+            self._mutations = copy.copy(mutations)
 
         # Mutations is a new copy. 
         if mutations_accumulated is None:
             self._mutations_accumulated = []
         else:
-            self._mutations_accumulated = copy.deepcopy(mutations_accumulated)
+            self._mutations_accumulated = copy.copy(mutations_accumulated)
 
         # mut_energy is a new copy. 
         if mut_energy is None:
@@ -188,6 +197,8 @@ class GenotypeContainer:
           means the genotype started as self.genotypes[0], became
           self.genotypes[10], then finally self.genotypes[48].
           
+        + mut_energies: mutational energies for the genotype.
+
         + fitnesses holds the absolute fitness of each genotype.
     """
 
@@ -213,11 +224,13 @@ class GenotypeContainer:
         self._possible_sites = list(self._ddg_dict.keys())
         self._mutations_at_sites = dict([(s,list(self._ddg_dict[s].keys()))
                                          for s in self._possible_sites])
+        self._last_index = 0
         
         # Main public attributes of the class. 
-        self._genotypes = [Genotype(self._fc.ens,self._ddg_dict)]
-        self._trajectories = [[0]]
-        self._fitnesses = [self._fc.fitness(self._genotypes[0].mut_energy)]
+        self._genotypes = {0:Genotype(self._fc.ens,self._ddg_dict)}
+        self._trajectories = {0:[0]}
+        self._mut_energies = {0:self._genotypes[0].mut_energy}
+        self._fitnesses = {0:self._fc.fitness(self._genotypes[0].mut_energy)}
 
     def _create_ddg_dict(self):
         """
@@ -266,8 +279,8 @@ class GenotypeContainer:
         """
 
         # Sanity check
-        if index < 0 or index > len(self._genotypes) - 1:
-            err = f"index ({index}) should be between 0 and {len(self._genotypes) - 1}"
+        if index not in self._genotypes:
+            err = f"\nindex ({index}) is not in genotypes\n\n"
             raise IndexError(err)
         
         # Create a new genotype and mutate
@@ -281,56 +294,99 @@ class GenotypeContainer:
         new_genotype.mutate(site,mutation)
         
         # Get index for new genotype
-        new_index = len(self._genotypes)
+        new_index = self._last_index + 1
+        self._last_index += 1
 
         # Record the new genotype
-        self._genotypes.append(new_genotype)
+        self._genotypes[new_index] = new_genotype
 
         # Record the trajectory taken to reach the current genotype
         new_trajectory = self._trajectories[index][:]
         new_trajectory.append(new_index)
-        self._trajectories.append(new_trajectory)
+        self._trajectories[new_index] = new_trajectory
         
+        self._mut_energies[new_index] = new_genotype.mut_energy
+
         # Record the fitness of this genotype
-        self._fitnesses.append(self._fc.fitness(new_genotype.mut_energy))
+        self._fitnesses[new_index] = self._fc.fitness(new_genotype.mut_energy)
 
         return new_index
 
-    @property
-    def genotypes(self):
+    def dump_to_csv(self,
+                    filename,
+                    keep_genotypes=None):
         """
-        List of genotypes.
+        Dump genotypes into a csv file. This appends to the filename if the
+        csv already exists. The dump removes the genotypes from the object. This
+        is to allow long evolutionary simulations that could potentially take 
+        a large amount of memory. If run without keep_genotypes specified, the
+        resulting GenotypeContainer will be empty. 
+        
+        Parameters
+        ----------
+        filename : str
+            csv file to write to
+        keep_genotypes : list, optional
+            list of genotypes to keep. These should be keys in self.genotypes    
         """
 
-        return self._genotypes
-    
-    @property
-    def trajectories(self):
-        """
-        List of trajectories that were taken on the way to each genotype.
-        """
-        return self._trajectories
-    
-    @property
-    def fitnesses(self):
-        """
-        Absolute fitness of each genotype.
-        """
-        return self._fitnesses
-    
+        # Get a dataframe describing the genotypes
+        df = self.df
+
+        # Create a genotype that only has genotypes to remove
+        if keep_genotypes is not None:
+            to_write = np.logical_not(df["genotype"].isin(keep_genotypes))
+            df = df.loc[to_write,:]
+
+         # Write out, either appending or creating a new file
+        if os.path.isfile(filename):
+            df.to_csv(filename,
+                      mode="a",
+                      header=False,
+                      index=False)
+        else:
+            df.to_csv(filename,
+                      mode="w",
+                      header=True,
+                      index=False)
+
+        # Update genotypes, trajectories, mut_energies, and fitnesses. Default
+        # is to drop all genotypes. Save those in keep_genotypes. 
+        genotypes = {}
+        trajectories = {}
+        mut_energies = {}
+        fitnesses = {}
+        if keep_genotypes is not None:
+
+            for g in keep_genotypes:
+                genotypes[g] = self._genotypes[g]
+                trajectories[g] = self._trajectories[g]
+                mut_energies[g] = self._mut_energies[g]
+                fitnesses[g] = self._fitnesses[g]
+            
+        self._genotypes = genotypes
+        self._trajectories = trajectories
+        self._mut_energies = mut_energies
+        self._fitnesses = fitnesses
+
+
     @property
     def df(self):
         """
-        Genotypes, trajectories, and fitnesses as a pandas Dataframe.
+        Genotypes, trajectories, energies, and fitnesses as a pandas Dataframe.
         """
 
-        mutations = ["/".join(g.mutations) for g in self._genotypes]
-        num_mutations = [len(g.mutations) for g in self._genotypes]
-        accum_mutations = ["/".join(g.mutations_accumulated)
+        mutations = ["/".join(self._genotypes[g].mutations)
+                     for g in self._genotypes]
+        num_mutations = [len(self._genotypes[g].mutations)
+                         for g in self._genotypes]
+        accum_mutations = ["/".join(self._genotypes[g].mutations_accumulated)
                            for g in self._genotypes]
-        num_accum_mut = [len(g.mutations_accumulated) for g in self._genotypes]
+        num_accum_mut = [len(self._genotypes[g].mutations_accumulated)
+                         for g in self._genotypes]
 
-        parent = [t[-2] for t in self._trajectories[1:]]
+        parent = [self._trajectories[t][-2]
+                  for t in list(self._trajectories.keys())[1:]]
         parent.insert(0,pd.NA)
 
         out = {"genotype":np.arange(len(self._genotypes),dtype=int),
@@ -339,8 +395,21 @@ class GenotypeContainer:
                "accum_mut":accum_mutations,
                "num_accum_mut":num_accum_mut,
                "parent":parent,
-               "trajectory":self._trajectories,
-               "fitness":self._fitnesses}
+               "trajectory":[self._trajectories[t] for t in self._trajectories]}
+
+        # Get mutation energies
+        mut_energy_out = {}
+        for name in self._fc.ens.species:
+            mut_energy_out[name] = []
+
+        for i in self._genotypes:
+            for j, name in enumerate(self._fc.ens.species):
+                mut_energy_out[name].append(self._mut_energies[i][j])
+
+        for k in mut_energy_out:
+            out[f"{k}_ddg"] = mut_energy_out[k]
+
+        out["fitness"] = [self._fitnesses[f] for f in self._fitnesses]
         
         return pd.DataFrame(out)
 
@@ -355,6 +424,40 @@ class GenotypeContainer:
             wt.append(self._mutations_at_sites[s][0][0])
 
         return "".join(wt)
+
+    @property
+    def genotypes(self):
+        """
+        Dictionary of genotypes.
+        """
+
+        return self._genotypes
+    
+    @property
+    def trajectories(self):
+        """
+        Dictionary of trajectories that were taken on the way to each genotype.
+        """
+        return self._trajectories
+    
+    @property
+    def mut_energies(self):
+        """
+        Dictionary of energies for each genotype.
+        """
+        return self._mut_energies
+
+    @property
+    def fitnesses(self):
+        """
+        Dictionary of absolute fitnesses.
+        """
+        return self._fitnesses
+    
+
+
+
+        
 
 
     
