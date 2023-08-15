@@ -55,7 +55,7 @@ def fitness_function(ens,
                      mu_dict,
                      fitness_fcns,
                      select_on="fx_obs",
-                     fitness_kwargs={},
+                     fitness_kwargs=None,
                      T=298.15):
     """
     Calculate fitness from the ensemble given mutations (in mut_energy), 
@@ -106,6 +106,9 @@ def fitness_function(ens,
         err = "select_on should be either fx_obs or dG_obs\n"
         raise ValueError(err)
 
+    if fitness_kwargs is None:
+        fitness_kwargs = {}
+
     return _fitness_function(ens=ens,
                              mut_energy=mut_energy,
                              mu_dict=mu_dict,
@@ -127,7 +130,7 @@ class FitnessContainer:
                  mu_dict,
                  fitness_fcns,
                  select_on="fx_obs",
-                 fitness_kwargs={},
+                 fitness_kwargs=None,
                  T=298.15):
         """
         See eee.evolve.fitness_function docstring for information on arguments.
@@ -146,6 +149,9 @@ class FitnessContainer:
                 err += f"    {k}\n"
             err += "\n"
             raise ValueError(err)
+
+        if fitness_kwargs is None:
+            fitness_kwargs = {}
 
         self._ens = ens
         self._mu_dict = mu_dict
@@ -170,7 +176,8 @@ class FitnessContainer:
                                     T=self._T)        
 
         for i in range(self._num_conditions):
-            self._F_array[i] = self._fitness_fcns[i](values[i])
+            self._F_array[i] = self._fitness_fcns[i](values[i],
+                                                     **self._fitness_kwargs)
  
         return np.prod(self._F_array)
     

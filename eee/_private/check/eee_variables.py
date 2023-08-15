@@ -5,8 +5,6 @@ Function for checking common eee variable sanity.
 from eee._private.check.standard import check_float
 from eee._private.check.standard import check_int
 
-from eee._private.array_expander import array_expander
-
 import pandas as pd
 import numpy as np
 

@@ -21,7 +21,7 @@ def simulate_evolution(ens,
                        mu_dict,
                        fitness_fcns,
                        select_on="fx_obs",
-                       fitness_kwargs={},
+                       fitness_kwargs=None,
                        T=298.15,
                        population_size=1000,
                        mutation_rate=0.01,
@@ -68,7 +68,8 @@ def simulate_evolution(ens,
         write output files during the run with this prefix. If not specified, 
         do not write files. If specified, gc and generations will be returned
         *empty* as their contents will have been written to lower memory 
-        consumption.
+        consumption. NOTE: if run from the command line, this will default to 
+        eee_sim.
     write_frequency : int, default=1000
         write the generations out every write_frequency generations. 
 
