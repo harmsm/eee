@@ -468,6 +468,7 @@ def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
     gc.dump_to_csv(filename="test.csv")
     df = pd.read_csv("test.csv")
     assert len(df) == 11
+    assert len(np.unique(df.genotype)) == 11
     os.remove("test.csv")
 
     assert len(gc.genotypes) == 0

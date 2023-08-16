@@ -376,20 +376,19 @@ class GenotypeContainer:
         Genotypes, trajectories, energies, and fitnesses as a pandas Dataframe.
         """
 
-        mutations = ["/".join(self._genotypes[g].mutations)
-                     for g in self._genotypes]
-        num_mutations = [len(self._genotypes[g].mutations)
-                         for g in self._genotypes]
+        genotypes = list(self._genotypes.keys())
+        mutations = ["/".join(self._genotypes[g].mutations) for g in genotypes]
+        num_mutations = [len(self._genotypes[g].mutations) for g in genotypes]
         accum_mutations = ["/".join(self._genotypes[g].mutations_accumulated)
-                           for g in self._genotypes]
+                           for g in genotypes]
         num_accum_mut = [len(self._genotypes[g].mutations_accumulated)
-                         for g in self._genotypes]
+                         for g in genotypes]
 
         parent = [self._trajectories[t][-2]
                   for t in list(self._trajectories.keys())[1:]]
         parent.insert(0,pd.NA)
 
-        out = {"genotype":np.arange(len(self._genotypes),dtype=int),
+        out = {"genotype":genotypes,
                "mutations":mutations,
                "num_mutations":num_mutations,
                "accum_mut":accum_mutations,

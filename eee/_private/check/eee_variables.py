@@ -21,13 +21,14 @@ def check_mu_stoich(mu_stoich):
         mu_stoich[mu] = check_float(value=mu_stoich[mu],
                                     variable_name=f"mu_stoich['{mu}']",
                                     minimum_allowed=0,
-                                    minimum_inclusive=False)
+                                    minimum_inclusive=True)
         
     return mu_stoich
 
 def check_mu_dict(mu_dict):
     """
-    Check the sanity of mu_dict. 
+    Check the sanity of mu_dict. Returns a validated mu_dict and the length of
+    the mu_dict conditions. 
     """
 
     # Should be a dictionary
@@ -37,7 +38,7 @@ def check_mu_dict(mu_dict):
     
     # Empty dict: allowed, just return
     if len(mu_dict) == 0:
-        return mu_dict
+        return mu_dict, 1
 
     # Check each value...
     mu_lengths = []
@@ -72,12 +73,13 @@ def check_mu_dict(mu_dict):
         else:
 
             # Single value float
-            v = check_float(value=mu_dict[mu],variable_name=f"mu_dict['{mu}']") 
+            v = check_float(value=mu_dict[mu],
+                            variable_name=f"mu_dict['{mu}']") 
             mu_dict[mu] = np.ones(1,dtype=float)*v
 
     # All lengths are 1: return
     if len(mu_lengths) == 0:
-        return mu_dict
+        return mu_dict, 1
 
     # Unique non-one mu_lengths
     mu_lengths = list(set(mu_lengths))
@@ -92,7 +94,7 @@ def check_mu_dict(mu_dict):
         if len(mu_dict[mu]) == 1:
             mu_dict[mu] = np.ones(final_mu_length,dtype=float)*mu_dict[mu][0]
 
-    return mu_dict
+    return mu_dict, final_mu_length
 
 def check_mut_energy(mut_energy):
 
@@ -115,7 +117,15 @@ def check_ddg_df(ddg_df):
     
     return ddg_df
 
-def check_fitness_fcns(fitness_fcns,mu_dict=None):
+def check_fitness_fcns(fitness_fcns,num_conditions):
+    """
+    Check the sanity of a fitness_functions, returning a list num_conditions 
+    long holding fitness functions. 
+    """
+
+    # If a single function, expand to a list of functions
+    if callable(fitness_fcns) and not issubclass(type(fitness_fcns),type):
+        fitness_fcns = [fitness_fcns for _ in range(num_conditions)]
 
     if not hasattr(fitness_fcns,"__iter__") or issubclass(type(fitness_fcns),type):
         err = "fitness_fcns must be a list of functions that take an ensemble\n"
@@ -130,40 +140,58 @@ def check_fitness_fcns(fitness_fcns,mu_dict=None):
             raise ValueError(f"\n{err}\n\n")
     
     # Make sure fitness functions is the right length
-    if mu_dict is not None:
-
-        # Assume mu_dict has zero length
-        mu_length = 0
-
-        # If there is at least one species in mu_dict...
-        if len(mu_dict) != 0:
-
-            # Go through each species and figure out how many entries are present
-            for s in mu_dict:
-                if hasattr(mu_dict[s],"__iter__"):
-                    this_length = len(mu_dict[s])
-                else:
-                    this_length = 1
-
-                # Take the longest length in mu_dict
-                if this_length > mu_length:
-                    mu_length = this_length
+    if num_conditions is not None:
 
         # mu_length must match the length of fitnesss_fcns (one fitness per 
         # condition).
-        if len(fitness_fcns) != mu_length:
+        if len(fitness_fcns) != num_conditions:
             err = "fitness should be the same length as the number of conditions\n"
             err += "in mu_dict.\n"
             raise ValueError(err)
 
     return fitness_fcns
 
-def check_T(T):
+def check_T(T,num_conditions):
+    """
+    Check the sanity of a temperature, returning a numpy array num_conditions 
+    long holding T. 
+    """
 
-    return check_float(value=T,
-                       variable_name="T",
-                       minimum_allowed=0,
-                       minimum_inclusive=False)
+    if issubclass(type(T),type):
+        err = f"\n T ({T}) cannot be a type\n\n"
+        raise ValueError(err)
+
+    if hasattr(T,"__iter__") and not issubclass(type(T),str):
+
+        if issubclass(type(T),dict):
+            err = "\nT cannot be a dictionary\n\n"
+            raise ValueError(err)
+
+        if len(T) != num_conditions:
+            err = "\nT should be the same length as the number of conditions. "
+            err += f"{len(T)} vs. {num_conditions})\n\n"
+            raise ValueError(err)
+
+        # Convert to floats
+        T = list(T)
+        for i in range(len(T)):
+            T[i] = check_float(T[i],
+                               variable_name=f"T[{i}]",
+                               minimum_allowed=0,
+                               minimum_inclusive=False)
+
+        # Coerce to numpy array
+        T = np.array(T,dtype=float)
+    
+    else:
+        T = check_float(T,
+                        variable_name="T",
+                        minimum_allowed=0,
+                        minimum_inclusive=False)
+        T = T*np.ones(num_conditions,dtype=float)
+
+    return T
+
 
 def check_population_size(population_size):
 

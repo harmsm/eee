@@ -28,7 +28,7 @@ FOUND tests.evolve.test_fitness.test_FitnessContainer
 FOUND tests.evolve.test_fitness.test_FitnessContainer_T
 FOUND tests.evolve.test_fitness.test_FitnessContainer_ens
 FOUND tests.evolve.test_fitness.test_FitnessContainer_fitness
-FOUND tests.evolve.test_fitness.test__fitness_function
+FOUND tests.evolve.test_fitness.test_ff_neutral
 FOUND tests.evolve.test_fitness.test_ff_off
 FOUND tests.evolve.test_fitness.test_ff_on
 FOUND tests.evolve.test_fitness.test_fitness_function

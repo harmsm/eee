@@ -250,502 +250,581 @@
 ./tests/test_ensemble.py:12:32: E231 missing whitespace after ','
 ./tests/test_ensemble.py:13:1: W293 blank line contains whitespace
 ./tests/test_ensemble.py:19:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:25:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:26:47: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/test_ensemble.py:29:39: E231 missing whitespace after ','
-./tests/test_ensemble.py:34:17: E128 continuation line under-indented for visual indent
-./tests/test_ensemble.py:35:17: E128 continuation line under-indented for visual indent
-./tests/test_ensemble.py:36:17: E128 continuation line under-indented for visual indent
-./tests/test_ensemble.py:37:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:40:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:41:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:42:50: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/test_ensemble.py:45:39: E231 missing whitespace after ','
-./tests/test_ensemble.py:50:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:52:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:56:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:58:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:63:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:65:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:69:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:72:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:77:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:79:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:82:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:26:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:27:47: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/test_ensemble.py:28:43: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/test_ensemble.py:31:39: E231 missing whitespace after ','
+./tests/test_ensemble.py:40:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:44:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:45:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:46:50: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/test_ensemble.py:47:46: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/test_ensemble.py:50:39: E231 missing whitespace after ','
+./tests/test_ensemble.py:55:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:57:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:61:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:63:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:68:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:70:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:74:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:76:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:81:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:83:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:87:16: E231 missing whitespace after ','
 ./tests/test_ensemble.py:90:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:103:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:103:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:104:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:105:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:106:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:113:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:116:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:116:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:117:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:118:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:119:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:126:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:128:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:129:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:129:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:130:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:131:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:132:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:139:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:144:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:145:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:145:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:146:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:146:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:147:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:147:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:148:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:148:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:155:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:160:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:160:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:160:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:161:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:161:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:56: E231 missing whitespace after ','
-./tests/test_ensemble.py:162:58: E231 missing whitespace after ','
-./tests/test_ensemble.py:163:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:163:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:164:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:164:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:165:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:171:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:176:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:176:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:176:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:177:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:177:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:178:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:178:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:95:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:97:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:100:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:108:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:122:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:122:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:123:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:124:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:125:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:126:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:127:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:135:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:138:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:138:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:139:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:140:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:141:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:142:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:143:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:151:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:153:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:154:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:154:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:155:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:156:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:157:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:158:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:159:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:167:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:173:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:174:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:174:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:175:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:175:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:176:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:176:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:177:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:177:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:178:43: E231 missing whitespace after ','
 ./tests/test_ensemble.py:178:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:178:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:178:56: E231 missing whitespace after ','
-./tests/test_ensemble.py:178:58: E231 missing whitespace after ','
-./tests/test_ensemble.py:179:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:179:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:180:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:180:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:182:76: W291 trailing whitespace
-./tests/test_ensemble.py:188:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:192:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:194:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:179:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:179:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:187:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:193:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:193:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:193:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:194:46: E231 missing whitespace after ','
 ./tests/test_ensemble.py:194:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:194:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:195:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:195:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:195:44: E231 missing whitespace after ','
 ./tests/test_ensemble.py:195:49: E231 missing whitespace after ','
 ./tests/test_ensemble.py:195:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:196:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:196:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:197:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:195:56: E231 missing whitespace after ','
+./tests/test_ensemble.py:195:58: E231 missing whitespace after ','
+./tests/test_ensemble.py:196:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:196:47: E231 missing whitespace after ','
 ./tests/test_ensemble.py:197:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:197:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:197:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:197:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:197:68: E231 missing whitespace after ','
-./tests/test_ensemble.py:198:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:198:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:199:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:199:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:202:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:197:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:198:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:198:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:199:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:199:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:200:1: W293 blank line contains whitespace
 ./tests/test_ensemble.py:207:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:211:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:216:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:216:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:216:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:217:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:217:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:217:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:218:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:213:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:213:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:213:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:214:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:214:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:56: E231 missing whitespace after ','
+./tests/test_ensemble.py:215:58: E231 missing whitespace after ','
+./tests/test_ensemble.py:216:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:216:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:217:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:217:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:218:43: E231 missing whitespace after ','
 ./tests/test_ensemble.py:218:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:219:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:219:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:219:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:220:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:220:56: E231 missing whitespace after ','
-./tests/test_ensemble.py:221:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:221:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:222:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:222:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:222:52: E231 missing whitespace after ','
-./tests/test_ensemble.py:223:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:223:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:223:56: E231 missing whitespace after ','
-./tests/test_ensemble.py:225:1: E302 expected 2 blank lines, found 1
-./tests/test_ensemble.py:233:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:219:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:219:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:221:76: W291 trailing whitespace
+./tests/test_ensemble.py:228:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:233:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:235:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:235:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:235:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:236:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:236:49: E231 missing whitespace after ','
 ./tests/test_ensemble.py:236:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:237:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:237:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:238:34: E231 missing whitespace after ','
-./tests/test_ensemble.py:240:76: W291 trailing whitespace
-./tests/test_ensemble.py:241:19: W291 trailing whitespace
-./tests/test_ensemble.py:247:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:250:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:251:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:251:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:252:34: E231 missing whitespace after ','
-./tests/test_ensemble.py:253:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:254:19: W291 trailing whitespace
-./tests/test_ensemble.py:264:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:265:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:267:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:237:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:237:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:61: E231 missing whitespace after ','
+./tests/test_ensemble.py:238:68: E231 missing whitespace after ','
+./tests/test_ensemble.py:239:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:239:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:240:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:240:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:241:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:241:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:242:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:242:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:245:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:251:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:256:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:262:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:262:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:262:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:263:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:263:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:263:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:264:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:264:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:265:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:265:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:265:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:266:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:266:56: E231 missing whitespace after ','
+./tests/test_ensemble.py:267:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:267:46: E231 missing whitespace after ','
 ./tests/test_ensemble.py:268:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:268:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:269:34: E231 missing whitespace after ','
-./tests/test_ensemble.py:273:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:273:31: W291 trailing whitespace
-./tests/test_ensemble.py:283:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:284:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:286:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:287:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:287:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:288:42: E231 missing whitespace after ','
-./tests/test_ensemble.py:290:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:290:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:291:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:291:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:293:46: W291 trailing whitespace
-./tests/test_ensemble.py:294:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:295:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:295:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:296:42: E231 missing whitespace after ','
-./tests/test_ensemble.py:298:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:298:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:299:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:299:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:300:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:302:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:312:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:313:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:315:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:316:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:317:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:317:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:318:42: E231 missing whitespace after ','
-./tests/test_ensemble.py:320:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:320:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:321:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:321:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:324:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:334:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:335:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:337:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:338:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:339:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:339:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:340:42: E231 missing whitespace after ','
-./tests/test_ensemble.py:342:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:342:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:343:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:343:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:350:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:355:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:356:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:357:37: E231 missing whitespace after ':'
-./tests/test_ensemble.py:357:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:357:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:358:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:359:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:360:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:360:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:361:42: E231 missing whitespace after ','
-./tests/test_ensemble.py:363:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:363:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:364:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:364:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:367:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:367:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:368:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:368:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:371:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:371:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:372:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:372:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:374:1: E302 expected 2 blank lines, found 1
-./tests/test_ensemble.py:381:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:385:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:386:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:388:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:392:27: E231 missing whitespace after ','
-./tests/test_ensemble.py:394:74: W291 trailing whitespace
-./tests/test_ensemble.py:395:19: W291 trailing whitespace
-./tests/test_ensemble.py:396:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:396:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:396:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:397:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:397:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:397:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:398:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:398:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:49: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:53: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:399:68: E231 missing whitespace after ','
-./tests/test_ensemble.py:400:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:400:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:401:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:401:50: E231 missing whitespace after ','
-./tests/test_ensemble.py:406:19: W291 trailing whitespace
-./tests/test_ensemble.py:416:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:417:47: E231 missing whitespace after ':'
-./tests/test_ensemble.py:417:51: E231 missing whitespace after ','
-./tests/test_ensemble.py:417:59: E231 missing whitespace after ':'
-./tests/test_ensemble.py:418:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:418:39: E231 missing whitespace after ','
-./tests/test_ensemble.py:420:47: E231 missing whitespace after ':'
-./tests/test_ensemble.py:420:51: E231 missing whitespace after ','
-./tests/test_ensemble.py:420:59: E231 missing whitespace after ':'
-./tests/test_ensemble.py:421:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:421:39: E231 missing whitespace after ','
-./tests/test_ensemble.py:424:33: E231 missing whitespace after ','
-./tests/test_ensemble.py:425:47: E231 missing whitespace after ':'
-./tests/test_ensemble.py:425:51: E231 missing whitespace after ','
-./tests/test_ensemble.py:425:59: E231 missing whitespace after ':'
-./tests/test_ensemble.py:426:36: E231 missing whitespace after ','
-./tests/test_ensemble.py:426:39: E231 missing whitespace after ','
-./tests/test_ensemble.py:428:1: E302 expected 2 blank lines, found 1
-./tests/test_ensemble.py:430:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:431:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:435:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:443:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:443:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:444:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:445:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:445:63: E231 missing whitespace after ','
-./tests/test_ensemble.py:445:67: E231 missing whitespace after ','
-./tests/test_ensemble.py:457:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:458:45: E231 missing whitespace after ','
-./tests/test_ensemble.py:460:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:460:64: E231 missing whitespace after ','
-./tests/test_ensemble.py:460:68: E231 missing whitespace after ','
-./tests/test_ensemble.py:472:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:473:45: E231 missing whitespace after ','
-./tests/test_ensemble.py:475:1: E302 expected 2 blank lines, found 1
-./tests/test_ensemble.py:477:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:478:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:482:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:490:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:490:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:491:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:492:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:492:63: E231 missing whitespace after ','
-./tests/test_ensemble.py:492:67: E231 missing whitespace after ','
-./tests/test_ensemble.py:503:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:504:45: E231 missing whitespace after ','
-./tests/test_ensemble.py:506:61: E231 missing whitespace after ','
-./tests/test_ensemble.py:506:64: E231 missing whitespace after ','
-./tests/test_ensemble.py:506:68: E231 missing whitespace after ','
-./tests/test_ensemble.py:517:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:518:45: E231 missing whitespace after ','
-./tests/test_ensemble.py:531:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:533:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:534:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:534:51: E231 missing whitespace after ','
-./tests/test_ensemble.py:534:64: E231 missing whitespace after ':'
-./tests/test_ensemble.py:538:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:539:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:541:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:542:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:542:54: E231 missing whitespace after ','
-./tests/test_ensemble.py:542:67: E231 missing whitespace after ':'
-./tests/test_ensemble.py:545:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:545:55: E231 missing whitespace after ','
-./tests/test_ensemble.py:545:68: E231 missing whitespace after ':'
-./tests/test_ensemble.py:546:32: E231 missing whitespace after ','
-./tests/test_ensemble.py:553:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:554:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:554:55: E231 missing whitespace after ','
-./tests/test_ensemble.py:554:68: E231 missing whitespace after ':'
-./tests/test_ensemble.py:555:32: E231 missing whitespace after ','
-./tests/test_ensemble.py:562:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:562:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:562:41: E231 missing whitespace after ':'
-./tests/test_ensemble.py:565:44: E231 missing whitespace after ':'
-./tests/test_ensemble.py:566:44: E231 missing whitespace after ':'
-./tests/test_ensemble.py:567:32: E231 missing whitespace after ','
-./tests/test_ensemble.py:572:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:575:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:578:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:582:43: E231 missing whitespace after ','
-./tests/test_ensemble.py:587:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:590:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:594:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:602:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:607:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:608:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:609:21: E231 missing whitespace after ','
-./tests/test_ensemble.py:612:30: E231 missing whitespace after ','
-./tests/test_ensemble.py:615:23: E231 missing whitespace after ':'
-./tests/test_ensemble.py:618:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:623:41: E231 missing whitespace after ':'
-./tests/test_ensemble.py:623:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:623:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:626:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:268:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:268:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:269:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:269:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:269:56: E231 missing whitespace after ','
+./tests/test_ensemble.py:270:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:270:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:270:55: E231 missing whitespace after ','
+./tests/test_ensemble.py:271:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:271:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:271:57: E231 missing whitespace after ','
+./tests/test_ensemble.py:273:1: E302 expected 2 blank lines, found 1
+./tests/test_ensemble.py:282:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:284:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:284:31: W291 trailing whitespace
+./tests/test_ensemble.py:287:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:288:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:288:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:289:34: E231 missing whitespace after ','
+./tests/test_ensemble.py:291:76: W291 trailing whitespace
+./tests/test_ensemble.py:292:19: W291 trailing whitespace
+./tests/test_ensemble.py:299:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:301:22: E231 missing whitespace after ','
+./tests/test_ensemble.py:301:35: W291 trailing whitespace
+./tests/test_ensemble.py:303:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:304:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:304:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:305:34: E231 missing whitespace after ','
+./tests/test_ensemble.py:306:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:307:19: W291 trailing whitespace
+./tests/test_ensemble.py:319:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:320:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:321:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:321:31: W291 trailing whitespace
+./tests/test_ensemble.py:323:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:324:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:324:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:325:34: E231 missing whitespace after ','
+./tests/test_ensemble.py:329:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:329:31: W291 trailing whitespace
+./tests/test_ensemble.py:341:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:342:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:343:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:343:31: W291 trailing whitespace
+./tests/test_ensemble.py:345:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:346:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:346:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:347:42: E231 missing whitespace after ','
+./tests/test_ensemble.py:349:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:349:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:350:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:350:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:353:21: E231 missing whitespace after ','
+./tests/test_ensemble.py:353:34: W291 trailing whitespace
+./tests/test_ensemble.py:354:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:355:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:355:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:356:42: E231 missing whitespace after ','
+./tests/test_ensemble.py:358:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:358:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:359:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:359:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:360:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:362:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:374:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:375:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:376:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:376:34: W291 trailing whitespace
+./tests/test_ensemble.py:378:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:379:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:380:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:380:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:381:42: E231 missing whitespace after ','
+./tests/test_ensemble.py:383:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:383:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:384:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:384:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:387:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:399:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:400:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:401:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:401:31: W291 trailing whitespace
+./tests/test_ensemble.py:403:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:404:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:405:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:405:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:406:42: E231 missing whitespace after ','
+./tests/test_ensemble.py:408:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:408:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:409:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:409:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:417:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:423:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:424:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:425:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:425:31: W291 trailing whitespace
+./tests/test_ensemble.py:426:37: E231 missing whitespace after ':'
+./tests/test_ensemble.py:426:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:426:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:427:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:428:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:429:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:429:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:430:42: E231 missing whitespace after ','
+./tests/test_ensemble.py:432:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:432:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:433:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:433:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:436:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:436:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:437:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:437:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:440:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:440:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:441:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:441:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:443:1: E302 expected 2 blank lines, found 1
+./tests/test_ensemble.py:451:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:456:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:457:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:459:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:463:27: E231 missing whitespace after ','
+./tests/test_ensemble.py:465:74: W291 trailing whitespace
+./tests/test_ensemble.py:466:19: W291 trailing whitespace
+./tests/test_ensemble.py:467:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:467:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:467:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:468:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:468:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:468:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:469:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:469:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:53: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:61: E231 missing whitespace after ','
+./tests/test_ensemble.py:470:68: E231 missing whitespace after ','
+./tests/test_ensemble.py:471:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:471:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:472:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:472:50: E231 missing whitespace after ','
+./tests/test_ensemble.py:473:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:473:49: E231 missing whitespace after ','
+./tests/test_ensemble.py:474:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:474:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:479:19: W291 trailing whitespace
+./tests/test_ensemble.py:489:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:490:47: E231 missing whitespace after ':'
+./tests/test_ensemble.py:490:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:490:59: E231 missing whitespace after ':'
+./tests/test_ensemble.py:491:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:491:39: E231 missing whitespace after ','
+./tests/test_ensemble.py:493:47: E231 missing whitespace after ':'
+./tests/test_ensemble.py:493:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:493:59: E231 missing whitespace after ':'
+./tests/test_ensemble.py:494:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:494:39: E231 missing whitespace after ','
+./tests/test_ensemble.py:497:33: E231 missing whitespace after ','
+./tests/test_ensemble.py:498:47: E231 missing whitespace after ':'
+./tests/test_ensemble.py:498:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:498:59: E231 missing whitespace after ':'
+./tests/test_ensemble.py:499:36: E231 missing whitespace after ','
+./tests/test_ensemble.py:499:39: E231 missing whitespace after ','
+./tests/test_ensemble.py:501:1: E302 expected 2 blank lines, found 1
+./tests/test_ensemble.py:508:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:518:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:518:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:519:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:519:31: W291 trailing whitespace
+./tests/test_ensemble.py:521:72: E231 missing whitespace after ','
+./tests/test_ensemble.py:521:74: E231 missing whitespace after ','
+./tests/test_ensemble.py:521:78: E231 missing whitespace after ','
+./tests/test_ensemble.py:533:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:534:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:536:20: W291 trailing whitespace
+./tests/test_ensemble.py:547:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:548:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:550:72: E231 missing whitespace after ','
+./tests/test_ensemble.py:550:75: E231 missing whitespace after ','
+./tests/test_ensemble.py:550:79: E231 missing whitespace after ','
+./tests/test_ensemble.py:562:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:563:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:564:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:576:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:577:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:582:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:583:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:588:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:598:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:598:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:599:18: E231 missing whitespace after ','
+./tests/test_ensemble.py:599:31: W291 trailing whitespace
+./tests/test_ensemble.py:601:72: E231 missing whitespace after ','
+./tests/test_ensemble.py:601:74: E231 missing whitespace after ','
+./tests/test_ensemble.py:601:78: E231 missing whitespace after ','
+./tests/test_ensemble.py:612:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:613:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:614:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:625:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:626:45: E231 missing whitespace after ','
 ./tests/test_ensemble.py:627:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:628:23: E231 missing whitespace after ':'
-./tests/test_ensemble.py:631:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:636:1: C901 'test_Ensemble_get_obs' is too complex (15)
-./tests/test_ensemble.py:673:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:675:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:676:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:677:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:678:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:687:34: W291 trailing whitespace
-./tests/test_ensemble.py:689:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:691:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:692:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:693:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:694:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:702:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:705:34: W291 trailing whitespace
-./tests/test_ensemble.py:708:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:708:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:709:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:720:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:720:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:721:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:721:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:722:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:722:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:723:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:723:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:724:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:724:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:736:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:736:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:737:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:737:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:738:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:738:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:739:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:739:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:740:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:740:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:748:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:751:34: W291 trailing whitespace
-./tests/test_ensemble.py:754:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:754:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:755:41: E231 missing whitespace after ':'
-./tests/test_ensemble.py:756:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:767:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:767:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:768:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:768:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:769:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:769:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:770:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:770:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:771:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:771:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:783:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:783:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:784:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:784:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:785:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:785:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:786:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:786:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:787:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:787:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:788:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:795:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:798:35: E231 missing whitespace after ':'
-./tests/test_ensemble.py:799:34: W291 trailing whitespace
-./tests/test_ensemble.py:802:34: E231 missing whitespace after ':'
-./tests/test_ensemble.py:802:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:802:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:802:44: E231 missing whitespace after ':'
-./tests/test_ensemble.py:802:47: E231 missing whitespace after ','
-./tests/test_ensemble.py:803:41: E231 missing whitespace after ':'
-./tests/test_ensemble.py:804:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:815:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:815:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:816:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:816:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:817:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:817:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:818:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:818:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:819:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:819:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:831:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:831:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:832:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:832:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:833:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:833:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:834:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:834:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:835:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:835:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:838:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:841:74: W291 trailing whitespace
-./tests/test_ensemble.py:856:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:858:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:858:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:859:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:859:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:860:31: E231 missing whitespace after ','
-./tests/test_ensemble.py:860:40: E231 missing whitespace after ','
-./tests/test_ensemble.py:861:23: E201 whitespace after '('
-./tests/test_ensemble.py:861:32: E231 missing whitespace after ','
-./tests/test_ensemble.py:861:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:864:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:867:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:870:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:874:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:882:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:887:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:888:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:889:21: E231 missing whitespace after ','
-./tests/test_ensemble.py:892:30: E231 missing whitespace after ','
-./tests/test_ensemble.py:895:23: E231 missing whitespace after ':'
-./tests/test_ensemble.py:898:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:903:41: E231 missing whitespace after ':'
-./tests/test_ensemble.py:903:44: E231 missing whitespace after ','
-./tests/test_ensemble.py:903:46: E231 missing whitespace after ','
-./tests/test_ensemble.py:906:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:907:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:908:23: E231 missing whitespace after ':'
-./tests/test_ensemble.py:911:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:916:17: E231 missing whitespace after ','
-./tests/test_ensemble.py:916:26: E231 missing whitespace after ':'
-./tests/test_ensemble.py:916:29: E231 missing whitespace after ','
-./tests/test_ensemble.py:916:38: E231 missing whitespace after ':'
-./tests/test_ensemble.py:916:41: E231 missing whitespace after ','
-./tests/test_ensemble.py:916:50: E231 missing whitespace after ':'
-./tests/test_ensemble.py:916:52: E231 missing whitespace after ','
-./tests/test_ensemble.py:916:60: E231 missing whitespace after ':'
-./tests/test_ensemble.py:916:65: W291 trailing whitespace
-./tests/test_ensemble.py:917:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:921:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:926:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:932:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:937:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:938:30: E231 missing whitespace after ':'
-./tests/test_ensemble.py:942:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:944:1: W293 blank line contains whitespace
-./tests/test_ensemble.py:946:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:947:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:948:30: E231 missing whitespace after ':'
-./tests/test_ensemble.py:952:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:957:5: E303 too many blank lines (2)
-./tests/test_ensemble.py:958:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:958:20: E231 missing whitespace after ','
-./tests/test_ensemble.py:959:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:963:37: E231 missing whitespace after ','
-./tests/test_ensemble.py:970:16: E231 missing whitespace after ','
-./tests/test_ensemble.py:974:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:629:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:629:72: E231 missing whitespace after ','
+./tests/test_ensemble.py:629:75: E231 missing whitespace after ','
+./tests/test_ensemble.py:629:79: E231 missing whitespace after ','
+./tests/test_ensemble.py:640:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:641:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:653:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:654:45: E231 missing whitespace after ','
+./tests/test_ensemble.py:656:1: E302 expected 2 blank lines, found 1
+./tests/test_ensemble.py:667:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:669:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:670:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:670:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:670:64: E231 missing whitespace after ':'
+./tests/test_ensemble.py:675:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:676:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:678:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:679:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:679:54: E231 missing whitespace after ','
+./tests/test_ensemble.py:679:67: E231 missing whitespace after ':'
+./tests/test_ensemble.py:682:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:682:55: E231 missing whitespace after ','
+./tests/test_ensemble.py:682:68: E231 missing whitespace after ':'
+./tests/test_ensemble.py:683:32: E231 missing whitespace after ','
+./tests/test_ensemble.py:691:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:692:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:692:55: E231 missing whitespace after ','
+./tests/test_ensemble.py:692:68: E231 missing whitespace after ':'
+./tests/test_ensemble.py:693:32: E231 missing whitespace after ','
+./tests/test_ensemble.py:701:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:701:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:701:41: E231 missing whitespace after ':'
+./tests/test_ensemble.py:704:44: E231 missing whitespace after ':'
+./tests/test_ensemble.py:705:44: E231 missing whitespace after ':'
+./tests/test_ensemble.py:706:32: E231 missing whitespace after ','
+./tests/test_ensemble.py:711:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:714:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:717:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:721:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:726:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:729:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:733:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:741:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:746:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:747:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:748:21: E231 missing whitespace after ','
+./tests/test_ensemble.py:751:30: E231 missing whitespace after ','
+./tests/test_ensemble.py:754:23: E231 missing whitespace after ':'
+./tests/test_ensemble.py:757:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:762:41: E231 missing whitespace after ':'
+./tests/test_ensemble.py:762:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:762:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:765:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:766:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:767:23: E231 missing whitespace after ':'
+./tests/test_ensemble.py:770:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:775:1: C901 'test_Ensemble_get_obs' is too complex (15)
+./tests/test_ensemble.py:819:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:821:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:822:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:823:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:824:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:825:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:836:34: W291 trailing whitespace
+./tests/test_ensemble.py:839:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:841:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:842:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:843:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:844:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:845:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:854:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:858:34: W291 trailing whitespace
+./tests/test_ensemble.py:862:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:862:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:863:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:874:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:874:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:875:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:875:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:876:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:876:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:877:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:877:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:878:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:878:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:879:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:879:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:891:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:891:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:892:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:892:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:893:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:893:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:894:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:894:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:895:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:895:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:896:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:896:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:905:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:909:34: W291 trailing whitespace
+./tests/test_ensemble.py:913:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:913:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:914:41: E231 missing whitespace after ':'
+./tests/test_ensemble.py:915:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:926:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:926:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:927:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:927:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:928:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:928:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:929:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:929:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:930:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:930:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:931:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:931:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:943:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:943:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:944:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:944:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:945:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:945:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:946:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:946:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:947:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:947:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:948:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:948:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:949:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:957:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:961:35: E231 missing whitespace after ':'
+./tests/test_ensemble.py:962:34: W291 trailing whitespace
+./tests/test_ensemble.py:966:34: E231 missing whitespace after ':'
+./tests/test_ensemble.py:966:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:966:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:966:44: E231 missing whitespace after ':'
+./tests/test_ensemble.py:966:47: E231 missing whitespace after ','
+./tests/test_ensemble.py:967:41: E231 missing whitespace after ':'
+./tests/test_ensemble.py:968:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:979:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:979:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:980:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:980:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:981:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:981:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:982:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:982:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:983:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:983:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:984:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:984:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:996:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:996:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:997:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:997:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:998:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:998:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:999:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:999:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:1000:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1000:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:1001:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1001:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:1004:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:1007:74: W291 trailing whitespace
+./tests/test_ensemble.py:1024:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:1026:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1026:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:1027:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1027:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:1028:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1028:40: E231 missing whitespace after ','
+./tests/test_ensemble.py:1029:23: E201 whitespace after '('
+./tests/test_ensemble.py:1029:32: E231 missing whitespace after ','
+./tests/test_ensemble.py:1029:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:1030:31: E231 missing whitespace after ','
+./tests/test_ensemble.py:1030:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:1033:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:1036:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1039:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1043:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1051:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1056:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1057:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:1058:21: E231 missing whitespace after ','
+./tests/test_ensemble.py:1061:30: E231 missing whitespace after ','
+./tests/test_ensemble.py:1064:23: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1067:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1072:41: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1072:44: E231 missing whitespace after ','
+./tests/test_ensemble.py:1072:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:1075:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1076:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:1077:23: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1080:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1085:17: E231 missing whitespace after ','
+./tests/test_ensemble.py:1085:26: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1085:29: E231 missing whitespace after ','
+./tests/test_ensemble.py:1085:38: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1085:41: E231 missing whitespace after ','
+./tests/test_ensemble.py:1085:50: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1085:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:1085:60: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1085:65: W291 trailing whitespace
+./tests/test_ensemble.py:1086:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1090:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1095:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1101:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1106:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1107:30: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1111:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1113:1: W293 blank line contains whitespace
+./tests/test_ensemble.py:1115:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:1116:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1117:30: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1121:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1126:5: E303 too many blank lines (2)
+./tests/test_ensemble.py:1127:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1127:20: E231 missing whitespace after ','
+./tests/test_ensemble.py:1128:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1132:37: E231 missing whitespace after ','
+./tests/test_ensemble.py:1139:16: E231 missing whitespace after ','
+./tests/test_ensemble.py:1143:37: E231 missing whitespace after ','
 ./tests/data_for_tests/programs/write_to_file_over_time.py:2:11: E401 multiple imports on one line
 ./tests/data_for_tests/programs/write_to_file_over_time.py:4:1: E302 expected 2 blank lines, found 1
 ./tests/data_for_tests/programs/write_to_file_over_time.py:4:28: E231 missing whitespace after ','
@@ -925,47 +1004,47 @@
 ./tests/evolve/test_genotype.py:457:30: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:457:32: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:466:31: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:480:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:483:57: W291 trailing whitespace
-./tests/evolve/test_genotype.py:490:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:491:34: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:495:39: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:481:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:484:57: W291 trailing whitespace
+./tests/evolve/test_genotype.py:491:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:492:34: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:496:39: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:497:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:497:39: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:498:36: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:500:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:509:52: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:509:55: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:509:57: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:509:59: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:510:23: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:514:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:520:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:523:34: E231 missing whitespace after ':'
-./tests/evolve/test_genotype.py:523:37: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:523:39: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:524:33: E231 missing whitespace after ':'
-./tests/evolve/test_genotype.py:524:40: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:524:46: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:525:32: E231 missing whitespace after ':'
-./tests/evolve/test_genotype.py:525:35: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:525:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:499:36: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:501:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:510:52: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:510:55: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:510:57: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:510:59: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:511:23: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:515:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:521:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:524:34: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:524:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:524:39: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:525:33: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:525:40: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:525:46: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:526:32: E231 missing whitespace after ':'
 ./tests/evolve/test_genotype.py:526:35: E231 missing whitespace after ','
 ./tests/evolve/test_genotype.py:526:37: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:527:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:532:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:536:1: E303 too many blank lines (4)
-./tests/evolve/test_genotype.py:537:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:546:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:527:32: E231 missing whitespace after ':'
+./tests/evolve/test_genotype.py:527:35: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:527:37: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:528:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:533:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:537:1: E303 too many blank lines (4)
+./tests/evolve/test_genotype.py:538:1: W293 blank line contains whitespace
 ./tests/evolve/test_genotype.py:547:44: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:550:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:566:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_genotype.py:576:45: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:576:48: E231 missing whitespace after ','
-./tests/evolve/test_genotype.py:578:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:581:1: W293 blank line contains whitespace
-./tests/evolve/test_genotype.py:589:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:548:44: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:551:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:567:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_genotype.py:577:45: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:577:48: E231 missing whitespace after ','
+./tests/evolve/test_genotype.py:579:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:582:1: W293 blank line contains whitespace
+./tests/evolve/test_genotype.py:590:1: W293 blank line contains whitespace
 ./tests/evolve/test_simulate_evolution.py:5:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_simulate_evolution.py:5:43: E231 missing whitespace after ','
 ./tests/evolve/test_simulate_evolution.py:5:57: E231 missing whitespace after ','
@@ -989,154 +1068,163 @@
 ./tests/evolve/test_analysis.py:15:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_analysis.py:16:9: W292 no newline at end of file
 ./tests/evolve/test_fitness.py:14:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:18:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:22:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:26:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_fitness.py:27:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:32:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:35:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:36:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:37:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:38:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:39:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:39:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:39:29: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:39:33: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:39:40: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:46:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:54:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:55:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:55:35: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:57:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:65:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:66:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:66:35: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:68:26: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:76:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:77:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:77:35: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:83:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:86:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:87:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:88:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:89:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:90:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:90:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:90:25: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:90:29: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:90:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:95:26: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:103:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:103:35: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:106:5: E303 too many blank lines (2)
-./tests/evolve/test_fitness.py:112:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:116:41: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:116:44: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:116:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:119:47: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:119:54: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:119:59: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:121:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:125:41: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:125:44: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:125:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:126:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:128:47: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:128:53: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:128:58: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:130:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:134:41: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:134:44: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:134:50: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:136:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_fitness.py:137:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:139:72: W291 trailing whitespace
-./tests/evolve/test_fitness.py:140:58: W291 trailing whitespace
-./tests/evolve/test_fitness.py:145:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:148:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:149:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:150:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:151:26: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:152:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:152:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:152:29: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:152:33: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:152:40: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:153:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:164:34: W291 trailing whitespace
-./tests/evolve/test_fitness.py:165:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:166:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:166:35: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:170:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:171:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:172:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:173:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:174:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:175:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:175:33: W291 trailing whitespace
-./tests/evolve/test_fitness.py:181:72: W291 trailing whitespace
-./tests/evolve/test_fitness.py:182:58: W291 trailing whitespace
-./tests/evolve/test_fitness.py:184:21: W291 trailing whitespace
-./tests/evolve/test_fitness.py:188:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:191:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:192:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:193:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:193:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:193:29: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:193:33: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:193:40: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:194:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:206:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:209:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:211:41: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:215:47: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:217:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_fitness.py:219:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:33:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:37:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:38:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:39:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:40:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:41:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:41:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:41:29: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:41:33: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:41:40: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:47:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:56:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:57:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:57:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:59:77: W291 trailing whitespace
+./tests/evolve/test_fitness.py:60:70: W291 trailing whitespace
+./tests/evolve/test_fitness.py:69:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:70:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:70:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:73:5: E303 too many blank lines (2)
+./tests/evolve/test_fitness.py:73:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:82:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:83:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:83:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:85:26: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:94:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:95:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:95:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:102:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:106:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:107:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:108:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:109:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:110:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:110:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:110:25: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:110:29: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:110:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:115:26: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:124:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:124:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:135:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:136:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:136:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:139:5: E303 too many blank lines (2)
+./tests/evolve/test_fitness.py:145:49: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:150:41: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:150:44: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:150:50: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:153:46: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:153:53: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:153:58: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:155:49: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:160:41: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:160:44: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:160:50: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:161:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:163:46: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:163:52: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:163:57: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:165:49: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:170:41: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:170:44: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:170:50: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:176:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:180:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:181:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:182:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:183:26: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:184:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:184:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:184:29: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:184:33: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:184:40: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:185:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:197:34: W291 trailing whitespace
+./tests/evolve/test_fitness.py:198:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:199:32: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:199:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:209:38: W291 trailing whitespace
+./tests/evolve/test_fitness.py:215:72: W291 trailing whitespace
+./tests/evolve/test_fitness.py:216:58: W291 trailing whitespace
+./tests/evolve/test_fitness.py:218:21: W291 trailing whitespace
 ./tests/evolve/test_fitness.py:223:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:226:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:227:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:228:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:228:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:228:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:228:31: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:228:36: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:229:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:242:29: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:242:33: W291 trailing whitespace
-./tests/evolve/test_fitness.py:246:32: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:246:36: W291 trailing whitespace
-./tests/evolve/test_fitness.py:251:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:252:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:253:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:254:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:255:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:257:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_fitness.py:259:21: W291 trailing whitespace
-./tests/evolve/test_fitness.py:263:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:266:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:267:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:268:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:268:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:268:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:268:31: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:268:36: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:269:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:281:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:294:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:295:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:296:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:297:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:298:29: E128 continuation line under-indented for visual indent
-./tests/evolve/test_fitness.py:300:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_fitness.py:302:21: W291 trailing whitespace
-./tests/evolve/test_fitness.py:306:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:309:35: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:310:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:311:19: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:311:22: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:311:27: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:311:31: E231 missing whitespace after ':'
-./tests/evolve/test_fitness.py:311:36: E231 missing whitespace after ','
-./tests/evolve/test_fitness.py:312:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:227:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:228:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:229:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:229:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:229:29: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:229:33: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:229:40: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:230:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:243:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:245:31: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:245:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:246:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:248:41: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:253:47: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:254:31: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:254:41: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:258:1: E303 too many blank lines (3)
+./tests/evolve/test_fitness.py:260:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:265:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:269:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:270:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:271:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:271:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:271:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:271:31: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:271:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:272:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:284:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:284:39: W291 trailing whitespace
+./tests/evolve/test_fitness.py:288:38: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:288:42: W291 trailing whitespace
+./tests/evolve/test_fitness.py:298:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:308:35: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:308:39: W291 trailing whitespace
+./tests/evolve/test_fitness.py:312:38: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:312:42: W291 trailing whitespace
+./tests/evolve/test_fitness.py:318:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:322:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:325:35: E231 missing whitespace after ':'
 ./tests/evolve/test_fitness.py:326:1: W293 blank line contains whitespace
-./tests/evolve/test_fitness.py:327:1: W391 blank line at end of file
+./tests/evolve/test_fitness.py:327:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:327:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:327:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:327:31: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:327:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:328:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:340:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:341:31: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:341:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:349:31: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:349:37: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:353:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:354:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:355:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:356:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:357:29: E128 continuation line under-indented for visual indent
+./tests/evolve/test_fitness.py:359:1: E302 expected 2 blank lines, found 1
+./tests/evolve/test_fitness.py:361:21: W291 trailing whitespace
+./tests/evolve/test_fitness.py:365:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:368:35: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:369:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:370:19: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:370:22: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:370:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:370:31: E231 missing whitespace after ':'
+./tests/evolve/test_fitness.py:370:36: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:371:27: E231 missing whitespace after ','
+./tests/evolve/test_fitness.py:385:1: W293 blank line contains whitespace
+./tests/evolve/test_fitness.py:386:1: W391 blank line at end of file
 ./tests/evolve/test_simulate_tree.py:2:1: F401 'eee.evolve.simulate_tree.simulate_tree' imported but unused
 ./tests/evolve/test_simulate_tree.py:4:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_simulate_tree.py:5:9: W292 no newline at end of file
@@ -1569,184 +1657,220 @@
 ./tests/_private/check/test_standard.py:177:1: W391 blank line at end of file
 ./tests/_private/check/test_eee_variables.py:18:1: E302 expected 2 blank lines, found 1
 ./tests/_private/check/test_eee_variables.py:23:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:23:24: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:25:1: W293 blank line contains whitespace
 ./tests/_private/check/test_eee_variables.py:27:5: E303 too many blank lines (2)
 ./tests/_private/check/test_eee_variables.py:28:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:28:24: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:34:1: W293 blank line contains whitespace
 ./tests/_private/check/test_eee_variables.py:36:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:36:24: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:41:32: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:45:40: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:45:43: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:45:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:46:27: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:46:30: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:46:32: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:48:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:50:31: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:52:21: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:54:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:56:31: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:60:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:62:31: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:65:27: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:65:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:46:40: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:46:43: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:46:45: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:47:27: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:47:30: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:47:32: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:49:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:49:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:51:31: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:53:21: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:55:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:55:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:57:31: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:61:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:61:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:63:31: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:66:27: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:66:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:66:33: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:67:27: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:67:31: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:68:36: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:68:38: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:68:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:67:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:67:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:68:27: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:68:31: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:69:36: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:69:38: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:69:41: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:71:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:72:27: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:73:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:74:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:74:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:74:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:70:36: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:70:38: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:70:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:72:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:72:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:73:27: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:74:1: W293 blank line contains whitespace
 ./tests/_private/check/test_eee_variables.py:75:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:75:28: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:75:32: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:75:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:75:30: E231 missing whitespace after ':'
 ./tests/_private/check/test_eee_variables.py:76:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:76:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:76:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:76:28: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:76:32: E231 missing whitespace after ':'
 ./tests/_private/check/test_eee_variables.py:77:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:77:28: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:79:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:81:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:82:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:84:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:84:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:84:30: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:84:33: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:84:35: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:85:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:85:28: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:85:35: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:85:37: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:77:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:77:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:78:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:78:28: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:80:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:80:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:83:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:84:42: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:86:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:86:27: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:86:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:86:32: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:86:39: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:86:41: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:88:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:90:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:90:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:90:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:91:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:91:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:91:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:93:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:93:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:93:30: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:93:33: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:93:35: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:93:38: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:94:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:94:28: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:94:35: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:94:37: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:94:40: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:86:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:86:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:86:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:86:35: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:87:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:87:28: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:87:35: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:87:37: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:88:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:88:27: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:88:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:88:32: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:88:39: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:88:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:90:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:90:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:93:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:93:45: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:93:47: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:94:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:94:45: E231 missing whitespace after ','
 ./tests/_private/check/test_eee_variables.py:94:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:94:49: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:24: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:95:27: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:32: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:39: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:41: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:44: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:51: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:95:53: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:97:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:99:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:99:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:99:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:100:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:100:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:100:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:101:42: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:101:45: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:101:47: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:103:23: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:103:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:103:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:103:36: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:103:38: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:104:23: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:104:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:104:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:104:36: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:104:38: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:104:41: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:106:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:110:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:112:17: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:112:26: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:112:29: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:112:38: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:112:41: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:112:50: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:112:52: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:112:60: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:112:65: W291 trailing whitespace
-./tests/_private/check/test_eee_variables.py:113:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:118:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:123:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:124:30: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:126:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:128:5: E303 too many blank lines (2)
-./tests/_private/check/test_eee_variables.py:129:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:130:30: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:134:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:135:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:137:68: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:138:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:140:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:144:30: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:144:33: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:144:35: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:149:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:151:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:154:21: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:154:60: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:161:26: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:166:22: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:166:25: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:167:49: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:169:22: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:169:25: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:169:27: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:171:53: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:173:22: E231 missing whitespace after ':'
-./tests/_private/check/test_eee_variables.py:175:53: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:179:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:183:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:192:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:197:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:202:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:211:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:212:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:216:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:221:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:230:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:231:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:235:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:240:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:249:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:250:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:254:1: E302 expected 2 blank lines, found 1
-./tests/_private/check/test_eee_variables.py:259:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:268:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:269:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:279:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:288:16: E231 missing whitespace after ','
-./tests/_private/check/test_eee_variables.py:289:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:292:1: W293 blank line contains whitespace
-./tests/_private/check/test_eee_variables.py:292:5: W292 no newline at end of file
+./tests/_private/check/test_eee_variables.py:96:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:96:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:96:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:96:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:96:35: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:96:38: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:97:28: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:35: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:37: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:40: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:47: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:97:49: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:24: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:98:27: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:32: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:39: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:44: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:51: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:98:53: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:100:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:100:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:103:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:103:45: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:103:47: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:104:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:104:45: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:104:47: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:105:42: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:105:45: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:105:47: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:107:23: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:107:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:107:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:107:36: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:107:38: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:108:23: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:108:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:108:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:108:36: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:108:38: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:108:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:110:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:110:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:114:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:116:17: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:116:26: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:116:29: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:116:38: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:116:41: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:116:50: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:116:52: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:116:60: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:116:65: W291 trailing whitespace
+./tests/_private/check/test_eee_variables.py:117:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:117:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:122:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:122:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:127:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:127:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:128:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:130:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:132:5: E303 too many blank lines (2)
+./tests/_private/check/test_eee_variables.py:133:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:133:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:134:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:138:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:139:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:141:68: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:142:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:144:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:144:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:148:30: E231 missing whitespace after ':'
+./tests/_private/check/test_eee_variables.py:148:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:148:35: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:153:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:157:21: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:157:60: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:161:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:161:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:163:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:165:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:166:44: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:170:49: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:173:53: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:175:33: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:182:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:186:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:186:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:192:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:197:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:197:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:200:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:201:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:202:18: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:202:21: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:202:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:202:27: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:202:39: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:203:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:205:26: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:211:30: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:213:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:218:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:218:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:227:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:227:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:228:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:232:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:237:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:237:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:246:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:246:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:247:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:251:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:256:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:256:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:265:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:265:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:266:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:270:1: E302 expected 2 blank lines, found 1
+./tests/_private/check/test_eee_variables.py:275:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:275:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:284:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:284:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:285:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:295:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:295:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:304:16: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:304:24: E231 missing whitespace after ','
+./tests/_private/check/test_eee_variables.py:305:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:308:1: W293 blank line contains whitespace
+./tests/_private/check/test_eee_variables.py:308:5: W292 no newline at end of file
 ./tests/_private/check/test_check_ensemble.py:7:1: E302 expected 2 blank lines, found 1
 ./tests/_private/check/test_check_ensemble.py:8:1: W293 blank line contains whitespace
 ./tests/_private/check/test_check_ensemble.py:10:16: E231 missing whitespace after ','
@@ -1802,158 +1926,178 @@
 ./eee/__init__.py:5:1: F401 '.io' imported but unused
 ./eee/__init__.py:6:1: F401 '.ensemble.Ensemble' imported but unused
 ./eee/__init__.py:8:53: W292 no newline at end of file
-./eee/ensemble.py:14:1: E302 expected 2 blank lines, found 1
-./eee/ensemble.py:17:77: W291 trailing whitespace
-./eee/ensemble.py:18:55: W291 trailing whitespace
-./eee/ensemble.py:19:1: W293 blank line contains whitespace
-./eee/ensemble.py:24:38: W291 trailing whitespace
-./eee/ensemble.py:26:80: W291 trailing whitespace
-./eee/ensemble.py:28:78: W291 trailing whitespace
-./eee/ensemble.py:31:31: W291 trailing whitespace
-./eee/ensemble.py:42:80: W291 trailing whitespace
-./eee/ensemble.py:54:70: W291 trailing whitespace
-./eee/ensemble.py:55:18: W291 trailing whitespace
-./eee/ensemble.py:62:8: W291 trailing whitespace
-./eee/ensemble.py:75:74: W291 trailing whitespace
-./eee/ensemble.py:78:22: E231 missing whitespace after ','
-./eee/ensemble.py:80:33: W291 trailing whitespace
-./eee/ensemble.py:85:79: W291 trailing whitespace
-./eee/ensemble.py:86:27: W291 trailing whitespace
-./eee/ensemble.py:88:1: W293 blank line contains whitespace
-./eee/ensemble.py:91:1: W293 blank line contains whitespace
-./eee/ensemble.py:96:72: W291 trailing whitespace
-./eee/ensemble.py:97:23: W291 trailing whitespace
-./eee/ensemble.py:99:1: W293 blank line contains whitespace
-./eee/ensemble.py:106:53: W291 trailing whitespace
-./eee/ensemble.py:111:54: W291 trailing whitespace
-./eee/ensemble.py:113:67: W291 trailing whitespace
-./eee/ensemble.py:115:74: W291 trailing whitespace
-./eee/ensemble.py:116:74: W291 trailing whitespace
-./eee/ensemble.py:119:73: W291 trailing whitespace
-./eee/ensemble.py:120:68: W291 trailing whitespace
-./eee/ensemble.py:132:43: E231 missing whitespace after ','
-./eee/ensemble.py:133:30: E231 missing whitespace after ','
-./eee/ensemble.py:135:1: W293 blank line contains whitespace
-./eee/ensemble.py:136:43: W291 trailing whitespace
-./eee/ensemble.py:137:44: E231 missing whitespace after ':'
-./eee/ensemble.py:138:37: E231 missing whitespace after ':'
-./eee/ensemble.py:139:43: E231 missing whitespace after ':'
-./eee/ensemble.py:142:27: W291 trailing whitespace
-./eee/ensemble.py:150:1: W293 blank line contains whitespace
-./eee/ensemble.py:151:29: E231 missing whitespace after ','
-./eee/ensemble.py:153:71: W291 trailing whitespace
-./eee/ensemble.py:154:75: W291 trailing whitespace
-./eee/ensemble.py:161:78: W291 trailing whitespace
-./eee/ensemble.py:166:41: E231 missing whitespace after ','
-./eee/ensemble.py:169:1: W293 blank line contains whitespace
-./eee/ensemble.py:171:51: W291 trailing whitespace
-./eee/ensemble.py:181:74: W291 trailing whitespace
-./eee/ensemble.py:183:47: E231 missing whitespace after ','
-./eee/ensemble.py:183:63: E231 missing whitespace after ','
-./eee/ensemble.py:184:46: E231 missing whitespace after ','
-./eee/ensemble.py:190:29: E231 missing whitespace after ','
-./eee/ensemble.py:191:1: W293 blank line contains whitespace
-./eee/ensemble.py:197:37: E231 missing whitespace after ','
-./eee/ensemble.py:199:30: W291 trailing whitespace
-./eee/ensemble.py:205:26: E231 missing whitespace after ','
-./eee/ensemble.py:205:37: E231 missing whitespace after ','
-./eee/ensemble.py:207:75: W291 trailing whitespace
-./eee/ensemble.py:213:55: E231 missing whitespace after ','
-./eee/ensemble.py:215:78: W291 trailing whitespace
-./eee/ensemble.py:216:78: W291 trailing whitespace
-./eee/ensemble.py:217:28: W291 trailing whitespace
-./eee/ensemble.py:218:51: E231 missing whitespace after ','
-./eee/ensemble.py:219:39: E231 missing whitespace after ','
-./eee/ensemble.py:225:5: E303 too many blank lines (2)
-./eee/ensemble.py:232:1: W293 blank line contains whitespace
-./eee/ensemble.py:242:74: W291 trailing whitespace
-./eee/ensemble.py:244:64: W291 trailing whitespace
-./eee/ensemble.py:245:1: W293 blank line contains whitespace
-./eee/ensemble.py:249:76: W291 trailing whitespace
-./eee/ensemble.py:259:28: W291 trailing whitespace
-./eee/ensemble.py:271:32: E231 missing whitespace after ','
-./eee/ensemble.py:276:1: W293 blank line contains whitespace
-./eee/ensemble.py:280:5: E303 too many blank lines (2)
-./eee/ensemble.py:280:21: E231 missing whitespace after ','
-./eee/ensemble.py:280:37: E231 missing whitespace after ','
-./eee/ensemble.py:280:50: E231 missing whitespace after ','
-./eee/ensemble.py:282:74: W291 trailing whitespace
-./eee/ensemble.py:284:1: W293 blank line contains whitespace
-./eee/ensemble.py:290:77: W291 trailing whitespace
-./eee/ensemble.py:291:77: W291 trailing whitespace
-./eee/ensemble.py:292:41: W291 trailing whitespace
-./eee/ensemble.py:295:74: W291 trailing whitespace
-./eee/ensemble.py:297:64: W291 trailing whitespace
-./eee/ensemble.py:300:65: W291 trailing whitespace
-./eee/ensemble.py:301:1: W293 blank line contains whitespace
-./eee/ensemble.py:305:74: W291 trailing whitespace
-./eee/ensemble.py:306:74: W291 trailing whitespace
-./eee/ensemble.py:308:1: W293 blank line contains whitespace
-./eee/ensemble.py:309:73: W291 trailing whitespace
-./eee/ensemble.py:319:1: W293 blank line contains whitespace
-./eee/ensemble.py:326:1: W293 blank line contains whitespace
-./eee/ensemble.py:327:77: W291 trailing whitespace
-./eee/ensemble.py:330:34: E231 missing whitespace after ','
-./eee/ensemble.py:334:31: E231 missing whitespace after ','
-./eee/ensemble.py:334:42: E231 missing whitespace after ','
+./eee/ensemble.py:15:1: E302 expected 2 blank lines, found 1
+./eee/ensemble.py:18:77: W291 trailing whitespace
+./eee/ensemble.py:19:55: W291 trailing whitespace
+./eee/ensemble.py:20:1: W293 blank line contains whitespace
+./eee/ensemble.py:25:38: W291 trailing whitespace
+./eee/ensemble.py:27:80: W291 trailing whitespace
+./eee/ensemble.py:29:78: W291 trailing whitespace
+./eee/ensemble.py:32:31: W291 trailing whitespace
+./eee/ensemble.py:43:80: W291 trailing whitespace
+./eee/ensemble.py:55:70: W291 trailing whitespace
+./eee/ensemble.py:56:18: W291 trailing whitespace
+./eee/ensemble.py:63:8: W291 trailing whitespace
+./eee/ensemble.py:76:74: W291 trailing whitespace
+./eee/ensemble.py:79:22: E231 missing whitespace after ','
+./eee/ensemble.py:81:33: W291 trailing whitespace
+./eee/ensemble.py:86:79: W291 trailing whitespace
+./eee/ensemble.py:89:1: W293 blank line contains whitespace
+./eee/ensemble.py:92:1: W293 blank line contains whitespace
+./eee/ensemble.py:97:72: W291 trailing whitespace
+./eee/ensemble.py:98:23: W291 trailing whitespace
+./eee/ensemble.py:100:1: W293 blank line contains whitespace
+./eee/ensemble.py:108:53: W291 trailing whitespace
+./eee/ensemble.py:113:54: W291 trailing whitespace
+./eee/ensemble.py:115:67: W291 trailing whitespace
+./eee/ensemble.py:117:74: W291 trailing whitespace
+./eee/ensemble.py:118:74: W291 trailing whitespace
+./eee/ensemble.py:121:73: W291 trailing whitespace
+./eee/ensemble.py:122:68: W291 trailing whitespace
+./eee/ensemble.py:124:51: W291 trailing whitespace
+./eee/ensemble.py:136:43: E231 missing whitespace after ','
+./eee/ensemble.py:137:35: E231 missing whitespace after ','
+./eee/ensemble.py:138:30: E231 missing whitespace after ','
+./eee/ensemble.py:140:1: W293 blank line contains whitespace
+./eee/ensemble.py:141:43: W291 trailing whitespace
+./eee/ensemble.py:142:44: E231 missing whitespace after ':'
+./eee/ensemble.py:143:40: E231 missing whitespace after ':'
+./eee/ensemble.py:144:37: E231 missing whitespace after ':'
+./eee/ensemble.py:145:43: E231 missing whitespace after ':'
+./eee/ensemble.py:148:27: W291 trailing whitespace
+./eee/ensemble.py:156:1: W293 blank line contains whitespace
+./eee/ensemble.py:157:29: E231 missing whitespace after ','
+./eee/ensemble.py:159:71: W291 trailing whitespace
+./eee/ensemble.py:160:75: W291 trailing whitespace
+./eee/ensemble.py:167:78: W291 trailing whitespace
+./eee/ensemble.py:172:41: E231 missing whitespace after ','
+./eee/ensemble.py:175:1: W293 blank line contains whitespace
+./eee/ensemble.py:177:51: W291 trailing whitespace
+./eee/ensemble.py:187:74: W291 trailing whitespace
+./eee/ensemble.py:189:47: E231 missing whitespace after ','
+./eee/ensemble.py:189:63: E231 missing whitespace after ','
+./eee/ensemble.py:190:46: E231 missing whitespace after ','
+./eee/ensemble.py:191:49: E231 missing whitespace after ','
+./eee/ensemble.py:197:29: E231 missing whitespace after ','
+./eee/ensemble.py:198:1: W293 blank line contains whitespace
+./eee/ensemble.py:204:37: E231 missing whitespace after ','
+./eee/ensemble.py:206:30: W291 trailing whitespace
+./eee/ensemble.py:214:26: E231 missing whitespace after ','
+./eee/ensemble.py:214:37: E231 missing whitespace after ','
+./eee/ensemble.py:216:75: W291 trailing whitespace
+./eee/ensemble.py:217:71: W291 trailing whitespace
+./eee/ensemble.py:219:57: W291 trailing whitespace
+./eee/ensemble.py:224:29: E231 missing whitespace after ','
+./eee/ensemble.py:224:63: E231 missing whitespace after ','
+./eee/ensemble.py:226:78: W291 trailing whitespace
+./eee/ensemble.py:227:78: W291 trailing whitespace
+./eee/ensemble.py:228:28: W291 trailing whitespace
+./eee/ensemble.py:229:51: E231 missing whitespace after ','
+./eee/ensemble.py:230:39: E231 missing whitespace after ','
+./eee/ensemble.py:242:1: W293 blank line contains whitespace
+./eee/ensemble.py:252:74: W291 trailing whitespace
+./eee/ensemble.py:254:64: W291 trailing whitespace
+./eee/ensemble.py:255:1: W293 blank line contains whitespace
+./eee/ensemble.py:259:76: W291 trailing whitespace
+./eee/ensemble.py:269:28: W291 trailing whitespace
+./eee/ensemble.py:281:32: E231 missing whitespace after ','
+./eee/ensemble.py:286:1: W293 blank line contains whitespace
+./eee/ensemble.py:289:21: E231 missing whitespace after ','
+./eee/ensemble.py:289:37: E231 missing whitespace after ','
+./eee/ensemble.py:289:50: E231 missing whitespace after ','
+./eee/ensemble.py:291:74: W291 trailing whitespace
+./eee/ensemble.py:293:1: W293 blank line contains whitespace
+./eee/ensemble.py:299:77: W291 trailing whitespace
+./eee/ensemble.py:300:77: W291 trailing whitespace
+./eee/ensemble.py:301:41: W291 trailing whitespace
+./eee/ensemble.py:304:74: W291 trailing whitespace
+./eee/ensemble.py:306:64: W291 trailing whitespace
+./eee/ensemble.py:309:65: W291 trailing whitespace
+./eee/ensemble.py:310:1: W293 blank line contains whitespace
+./eee/ensemble.py:314:74: W291 trailing whitespace
+./eee/ensemble.py:317:1: W293 blank line contains whitespace
+./eee/ensemble.py:318:73: W291 trailing whitespace
+./eee/ensemble.py:328:1: W293 blank line contains whitespace
 ./eee/ensemble.py:335:1: W293 blank line contains whitespace
-./eee/ensemble.py:346:53: E231 missing whitespace after ','
-./eee/ensemble.py:348:73: W291 trailing whitespace
-./eee/ensemble.py:350:44: E231 missing whitespace after ','
-./eee/ensemble.py:350:47: E231 missing whitespace after ','
-./eee/ensemble.py:351:52: E231 missing whitespace after ','
-./eee/ensemble.py:351:55: E231 missing whitespace after ','
-./eee/ensemble.py:354:38: E231 missing whitespace after ','
-./eee/ensemble.py:357:1: W293 blank line contains whitespace
-./eee/ensemble.py:359:58: E231 missing whitespace after ','
-./eee/ensemble.py:360:1: W293 blank line contains whitespace
-./eee/ensemble.py:362:9: E303 too many blank lines (2)
-./eee/ensemble.py:364:38: E231 missing whitespace after ','
-./eee/ensemble.py:366:1: W293 blank line contains whitespace
-./eee/ensemble.py:367:36: E231 missing whitespace after ','
-./eee/ensemble.py:375:26: E231 missing whitespace after ','
-./eee/ensemble.py:377:65: W291 trailing whitespace
-./eee/ensemble.py:378:45: W291 trailing whitespace
-./eee/ensemble.py:384:74: W291 trailing whitespace
-./eee/ensemble.py:386:64: W291 trailing whitespace
-./eee/ensemble.py:393:31: E231 missing whitespace after ','
-./eee/ensemble.py:395:75: W291 trailing whitespace
-./eee/ensemble.py:398:31: W291 trailing whitespace
-./eee/ensemble.py:405:77: W291 trailing whitespace
-./eee/ensemble.py:406:77: W291 trailing whitespace
-./eee/ensemble.py:407:41: W291 trailing whitespace
-./eee/ensemble.py:413:29: W291 trailing whitespace
-./eee/ensemble.py:415:1: W293 blank line contains whitespace
-./eee/ensemble.py:416:60: E231 missing whitespace after ','
-./eee/ensemble.py:423:29: E231 missing whitespace after ','
-./eee/ensemble.py:423:46: E231 missing whitespace after ','
-./eee/ensemble.py:425:78: W291 trailing whitespace
-./eee/ensemble.py:427:75: W291 trailing whitespace
-./eee/ensemble.py:428:18: W291 trailing whitespace
-./eee/ensemble.py:441:74: W291 trailing whitespace
-./eee/ensemble.py:445:53: E231 missing whitespace after ','
-./eee/ensemble.py:446:44: E231 missing whitespace after ','
-./eee/ensemble.py:446:47: E231 missing whitespace after ','
-./eee/ensemble.py:447:52: E231 missing whitespace after ','
-./eee/ensemble.py:447:55: E231 missing whitespace after ','
-./eee/ensemble.py:449:1: W293 blank line contains whitespace
-./eee/ensemble.py:450:29: E231 missing whitespace after ','
-./eee/ensemble.py:450:46: E231 missing whitespace after ','
-./eee/ensemble.py:452:72: W291 trailing whitespace
-./eee/ensemble.py:454:75: W291 trailing whitespace
-./eee/ensemble.py:455:18: W291 trailing whitespace
-./eee/ensemble.py:468:66: W291 trailing whitespace
-./eee/ensemble.py:471:53: E231 missing whitespace after ','
-./eee/ensemble.py:472:44: E231 missing whitespace after ','
-./eee/ensemble.py:472:47: E231 missing whitespace after ','
-./eee/ensemble.py:473:52: E231 missing whitespace after ','
-./eee/ensemble.py:473:55: E231 missing whitespace after ','
-./eee/ensemble.py:475:38: E231 missing whitespace after ','
-./eee/ensemble.py:477:1: W293 blank line contains whitespace
-./eee/ensemble.py:478:36: E231 missing whitespace after ','
-./eee/ensemble.py:490:1: W293 blank line contains whitespace
-./eee/ensemble.py:497:1: W293 blank line contains whitespace
-./eee/ensemble.py:497:5: W292 no newline at end of file
+./eee/ensemble.py:336:77: W291 trailing whitespace
+./eee/ensemble.py:339:34: E231 missing whitespace after ','
+./eee/ensemble.py:343:31: E231 missing whitespace after ','
+./eee/ensemble.py:343:42: E231 missing whitespace after ','
+./eee/ensemble.py:344:1: W293 blank line contains whitespace
+./eee/ensemble.py:348:22: E231 missing whitespace after ','
+./eee/ensemble.py:353:53: E231 missing whitespace after ','
+./eee/ensemble.py:356:44: E231 missing whitespace after ','
+./eee/ensemble.py:356:47: E231 missing whitespace after ','
+./eee/ensemble.py:357:52: E231 missing whitespace after ','
+./eee/ensemble.py:357:55: E231 missing whitespace after ','
+./eee/ensemble.py:359:73: W291 trailing whitespace
+./eee/ensemble.py:365:1: W293 blank line contains whitespace
+./eee/ensemble.py:368:58: E231 missing whitespace after ','
+./eee/ensemble.py:369:1: W293 blank line contains whitespace
+./eee/ensemble.py:370:37: W291 trailing whitespace
+./eee/ensemble.py:374:42: E231 missing whitespace after ','
+./eee/ensemble.py:376:1: W293 blank line contains whitespace
+./eee/ensemble.py:377:40: E231 missing whitespace after ','
+./eee/ensemble.py:383:27: W291 trailing whitespace
+./eee/ensemble.py:384:50: E231 missing whitespace after ','
+./eee/ensemble.py:384:53: E231 missing whitespace after ','
+./eee/ensemble.py:385:54: E231 missing whitespace after ','
+./eee/ensemble.py:385:57: E231 missing whitespace after ','
+./eee/ensemble.py:391:26: E231 missing whitespace after ','
+./eee/ensemble.py:393:65: W291 trailing whitespace
+./eee/ensemble.py:394:45: W291 trailing whitespace
+./eee/ensemble.py:400:74: W291 trailing whitespace
+./eee/ensemble.py:402:64: W291 trailing whitespace
+./eee/ensemble.py:409:31: E231 missing whitespace after ','
+./eee/ensemble.py:411:75: W291 trailing whitespace
+./eee/ensemble.py:414:31: W291 trailing whitespace
+./eee/ensemble.py:421:77: W291 trailing whitespace
+./eee/ensemble.py:422:77: W291 trailing whitespace
+./eee/ensemble.py:423:41: W291 trailing whitespace
+./eee/ensemble.py:429:29: W291 trailing whitespace
+./eee/ensemble.py:431:1: W293 blank line contains whitespace
+./eee/ensemble.py:432:60: E231 missing whitespace after ','
+./eee/ensemble.py:439:29: E231 missing whitespace after ','
+./eee/ensemble.py:439:46: E231 missing whitespace after ','
+./eee/ensemble.py:441:78: W291 trailing whitespace
+./eee/ensemble.py:443:75: W291 trailing whitespace
+./eee/ensemble.py:444:18: W291 trailing whitespace
+./eee/ensemble.py:457:74: W291 trailing whitespace
+./eee/ensemble.py:460:58: W291 trailing whitespace
+./eee/ensemble.py:463:53: E231 missing whitespace after ','
+./eee/ensemble.py:464:1: W293 blank line contains whitespace
+./eee/ensemble.py:465:44: E231 missing whitespace after ','
+./eee/ensemble.py:465:47: E231 missing whitespace after ','
+./eee/ensemble.py:466:52: E231 missing whitespace after ','
+./eee/ensemble.py:466:55: E231 missing whitespace after ','
+./eee/ensemble.py:468:50: E231 missing whitespace after ','
+./eee/ensemble.py:468:53: E231 missing whitespace after ','
+./eee/ensemble.py:469:54: E231 missing whitespace after ','
+./eee/ensemble.py:469:57: E231 missing whitespace after ','
+./eee/ensemble.py:472:1: W293 blank line contains whitespace
+./eee/ensemble.py:474:5: E303 too many blank lines (2)
+./eee/ensemble.py:474:29: E231 missing whitespace after ','
+./eee/ensemble.py:474:46: E231 missing whitespace after ','
+./eee/ensemble.py:476:72: W291 trailing whitespace
+./eee/ensemble.py:478:75: W291 trailing whitespace
+./eee/ensemble.py:479:18: W291 trailing whitespace
+./eee/ensemble.py:492:66: W291 trailing whitespace
+./eee/ensemble.py:494:58: W291 trailing whitespace
+./eee/ensemble.py:497:53: E231 missing whitespace after ','
+./eee/ensemble.py:498:44: E231 missing whitespace after ','
+./eee/ensemble.py:498:47: E231 missing whitespace after ','
+./eee/ensemble.py:499:52: E231 missing whitespace after ','
+./eee/ensemble.py:499:55: E231 missing whitespace after ','
+./eee/ensemble.py:501:38: E231 missing whitespace after ','
+./eee/ensemble.py:503:1: W293 blank line contains whitespace
+./eee/ensemble.py:504:36: E231 missing whitespace after ','
+./eee/ensemble.py:508:50: E231 missing whitespace after ','
+./eee/ensemble.py:508:53: E231 missing whitespace after ','
+./eee/ensemble.py:509:54: E231 missing whitespace after ','
+./eee/ensemble.py:509:57: E231 missing whitespace after ','
+./eee/ensemble.py:519:1: W293 blank line contains whitespace
+./eee/ensemble.py:526:1: W293 blank line contains whitespace
+./eee/ensemble.py:526:5: W292 no newline at end of file
 ./eee/epistasis.py:10:22: E231 missing whitespace after ','
 ./eee/epistasis.py:10:26: E231 missing whitespace after ','
 ./eee/epistasis.py:10:30: E231 missing whitespace after ','
@@ -2304,23 +2448,22 @@
 ./eee/evolve/genotype.py:354:66: W291 trailing whitespace
 ./eee/evolve/genotype.py:366:1: W293 blank line contains whitespace
 ./eee/evolve/genotype.py:373:5: E303 too many blank lines (2)
-./eee/evolve/genotype.py:390:24: E231 missing whitespace after ','
-./eee/evolve/genotype.py:392:26: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:392:57: E231 missing whitespace after ','
-./eee/evolve/genotype.py:393:27: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:394:31: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:395:27: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:396:31: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:397:24: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:398:28: E231 missing whitespace after ':'
-./eee/evolve/genotype.py:413:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:435:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:442:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:456:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:460:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:463:1: W293 blank line contains whitespace
-./eee/evolve/genotype.py:463:1: E303 too many blank lines (7)
-./eee/evolve/genotype.py:463:5: W292 no newline at end of file
+./eee/evolve/genotype.py:389:24: E231 missing whitespace after ','
+./eee/evolve/genotype.py:391:26: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:392:27: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:393:31: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:394:27: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:395:31: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:396:24: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:397:28: E231 missing whitespace after ':'
+./eee/evolve/genotype.py:412:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:434:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:441:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:455:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:459:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:462:1: W293 blank line contains whitespace
+./eee/evolve/genotype.py:462:1: E303 too many blank lines (7)
+./eee/evolve/genotype.py:462:5: W292 no newline at end of file
 ./eee/evolve/__init__.py:4:1: F401 '.wright_fisher.wright_fisher' imported but unused
 ./eee/evolve/__init__.py:4:1: E303 too many blank lines (3)
 ./eee/evolve/__init__.py:6:1: F401 '.simulate_evolution.simulate_evolution' imported but unused
@@ -2332,186 +2475,202 @@
 ./eee/evolve/__init__.py:15:1: F401 '.fitness.fitness_function' imported but unused
 ./eee/evolve/__init__.py:16:1: F401 '.fitness.ff_off' imported but unused
 ./eee/evolve/__init__.py:17:1: F401 '.fitness.ff_on' imported but unused
-./eee/evolve/__init__.py:17:27: W292 no newline at end of file
-./eee/evolve/simulate_evolution.py:19:1: E302 expected 2 blank lines, found 1
-./eee/evolve/simulate_evolution.py:32:78: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:33:18: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:37:23: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:40:77: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:41:75: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:46:70: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:48:60: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:51:76: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:60:61: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:68:78: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:70:73: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:71:78: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:74:69: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:79:72: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:81:73: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:82:69: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:91:29: E231 missing whitespace after ','
-./eee/evolve/simulate_evolution.py:94:51: E231 missing whitespace after ','
-./eee/evolve/simulate_evolution.py:108:75: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:116:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:117:76: W291 trailing whitespace
-./eee/evolve/simulate_evolution.py:121:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:123:22: E222 multiple spaces after operator
-./eee/evolve/simulate_evolution.py:129:1: W293 blank line contains whitespace
-./eee/evolve/simulate_evolution.py:136:1: W391 blank line at end of file
+./eee/evolve/__init__.py:18:1: F401 '.fitness.ff_neutral' imported but unused
+./eee/evolve/__init__.py:18:32: W292 no newline at end of file
+./eee/evolve/simulate_evolution.py:20:1: E302 expected 2 blank lines, found 1
+./eee/evolve/simulate_evolution.py:34:78: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:35:18: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:39:23: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:42:77: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:43:75: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:48:70: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:50:60: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:53:76: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:59:42: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:64:61: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:72:78: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:74:73: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:75:78: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:78:69: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:83:72: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:85:73: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:86:69: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:95:29: E231 missing whitespace after ','
+./eee/evolve/simulate_evolution.py:100:18: E231 missing whitespace after ','
+./eee/evolve/simulate_evolution.py:114:75: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:123:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:124:76: W291 trailing whitespace
+./eee/evolve/simulate_evolution.py:128:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:130:22: E222 multiple spaces after operator
+./eee/evolve/simulate_evolution.py:136:1: W293 blank line contains whitespace
+./eee/evolve/simulate_evolution.py:143:1: W391 blank line at end of file
 ./eee/evolve/fitness.py:3:25: W291 trailing whitespace
-./eee/evolve/fitness.py:14:1: E302 expected 2 blank lines, found 1
-./eee/evolve/fitness.py:21:1: E302 expected 2 blank lines, found 1
-./eee/evolve/fitness.py:24:76: W291 trailing whitespace
-./eee/evolve/fitness.py:28:1: E302 expected 2 blank lines, found 1
-./eee/evolve/fitness.py:39:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:45:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:48:61: E231 missing whitespace after ','
-./eee/evolve/fitness.py:51:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:61:73: W291 trailing whitespace
-./eee/evolve/fitness.py:62:79: W291 trailing whitespace
-./eee/evolve/fitness.py:63:28: W291 trailing whitespace
-./eee/evolve/fitness.py:64:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:67:23: W291 trailing whitespace
-./eee/evolve/fitness.py:72:73: W291 trailing whitespace
-./eee/evolve/fitness.py:73:73: W291 trailing whitespace
-./eee/evolve/fitness.py:74:37: W291 trailing whitespace
-./eee/evolve/fitness.py:77:70: W291 trailing whitespace
-./eee/evolve/fitness.py:79:60: W291 trailing whitespace
-./eee/evolve/fitness.py:82:76: W291 trailing whitespace
-./eee/evolve/fitness.py:91:61: W291 trailing whitespace
-./eee/evolve/fitness.py:96:58: W291 trailing whitespace
-./eee/evolve/fitness.py:102:51: E231 missing whitespace after ','
-./eee/evolve/fitness.py:104:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:105:34: E231 missing whitespace after ','
-./eee/evolve/fitness.py:123:73: W291 trailing whitespace
-./eee/evolve/fitness.py:125:70: W291 trailing whitespace
-./eee/evolve/fitness.py:126:41: W291 trailing whitespace
-./eee/evolve/fitness.py:138:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:141:55: E231 missing whitespace after ','
-./eee/evolve/fitness.py:143:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:144:34: E231 missing whitespace after ':'
-./eee/evolve/fitness.py:145:34: E231 missing whitespace after ':'
-./eee/evolve/fitness.py:166:54: E231 missing whitespace after ','
-./eee/evolve/fitness.py:168:21: E231 missing whitespace after ','
-./eee/evolve/fitness.py:170:75: W291 trailing whitespace
-./eee/evolve/fitness.py:171:76: W291 trailing whitespace
-./eee/evolve/fitness.py:172:56: W291 trailing whitespace
-./eee/evolve/fitness.py:174:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:176:47: W291 trailing whitespace
-./eee/evolve/fitness.py:181:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:183:1: W293 blank line contains whitespace
-./eee/evolve/fitness.py:191:1: W391 blank line at end of file
+./eee/evolve/fitness.py:15:1: E302 expected 2 blank lines, found 1
+./eee/evolve/fitness.py:22:1: E302 expected 2 blank lines, found 1
+./eee/evolve/fitness.py:25:76: W291 trailing whitespace
+./eee/evolve/fitness.py:29:1: E302 expected 2 blank lines, found 1
+./eee/evolve/fitness.py:32:28: W291 trailing whitespace
+./eee/evolve/fitness.py:36:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:46:73: W291 trailing whitespace
+./eee/evolve/fitness.py:47:60: W291 trailing whitespace
+./eee/evolve/fitness.py:48:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:51:23: W291 trailing whitespace
+./eee/evolve/fitness.py:56:73: W291 trailing whitespace
+./eee/evolve/fitness.py:57:73: W291 trailing whitespace
+./eee/evolve/fitness.py:58:37: W291 trailing whitespace
+./eee/evolve/fitness.py:61:70: W291 trailing whitespace
+./eee/evolve/fitness.py:63:60: W291 trailing whitespace
+./eee/evolve/fitness.py:65:81: W291 trailing whitespace
+./eee/evolve/fitness.py:67:79: W291 trailing whitespace
+./eee/evolve/fitness.py:68:78: W291 trailing whitespace
+./eee/evolve/fitness.py:69:17: W291 trailing whitespace
+./eee/evolve/fitness.py:75:75: W291 trailing whitespace
+./eee/evolve/fitness.py:76:59: W291 trailing whitespace
+./eee/evolve/fitness.py:79:61: W291 trailing whitespace
+./eee/evolve/fitness.py:85:27: W291 trailing whitespace
+./eee/evolve/fitness.py:96:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:97:34: E231 missing whitespace after ','
+./eee/evolve/fitness.py:112:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:116:45: E231 missing whitespace after ','
+./eee/evolve/fitness.py:126:73: W291 trailing whitespace
+./eee/evolve/fitness.py:128:70: W291 trailing whitespace
+./eee/evolve/fitness.py:129:41: W291 trailing whitespace
+./eee/evolve/fitness.py:142:27: W291 trailing whitespace
+./eee/evolve/fitness.py:146:74: W291 trailing whitespace
+./eee/evolve/fitness.py:148:64: W291 trailing whitespace
+./eee/evolve/fitness.py:150:85: W291 trailing whitespace
+./eee/evolve/fitness.py:152:83: W291 trailing whitespace
+./eee/evolve/fitness.py:153:82: W291 trailing whitespace
+./eee/evolve/fitness.py:154:21: W291 trailing whitespace
+./eee/evolve/fitness.py:160:79: W291 trailing whitespace
+./eee/evolve/fitness.py:161:63: W291 trailing whitespace
+./eee/evolve/fitness.py:164:65: W291 trailing whitespace
+./eee/evolve/fitness.py:166:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:173:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:174:34: E231 missing whitespace after ':'
+./eee/evolve/fitness.py:175:34: E231 missing whitespace after ':'
+./eee/evolve/fitness.py:183:38: E128 continuation line under-indented for visual indent
+./eee/evolve/fitness.py:199:54: E231 missing whitespace after ','
+./eee/evolve/fitness.py:201:21: E231 missing whitespace after ','
+./eee/evolve/fitness.py:203:75: W291 trailing whitespace
+./eee/evolve/fitness.py:204:76: W291 trailing whitespace
+./eee/evolve/fitness.py:205:56: W291 trailing whitespace
+./eee/evolve/fitness.py:209:40: W291 trailing whitespace
+./eee/evolve/fitness.py:211:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:213:58: W291 trailing whitespace
+./eee/evolve/fitness.py:218:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:223:1: W293 blank line contains whitespace
+./eee/evolve/fitness.py:231:1: W391 blank line at end of file
 ./eee/evolve/simulate_tree.py:2:62: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:24:1: E302 expected 2 blank lines, found 1
-./eee/evolve/simulate_tree.py:30:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:33:77: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:36:58: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:40:76: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:41:35: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:45:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:51:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:58:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:78:5: E303 too many blank lines (2)
-./eee/evolve/simulate_tree.py:78:29: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:81:51: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:82:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:89:75: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:97:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:98:76: W291 trailing whitespace
+./eee/evolve/simulate_tree.py:25:1: E302 expected 2 blank lines, found 1
+./eee/evolve/simulate_tree.py:31:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:34:77: W291 trailing whitespace
+./eee/evolve/simulate_tree.py:37:58: E231 missing whitespace after ','
+./eee/evolve/simulate_tree.py:41:76: W291 trailing whitespace
+./eee/evolve/simulate_tree.py:42:35: W291 trailing whitespace
+./eee/evolve/simulate_tree.py:46:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:52:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:59:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:80:5: E303 too many blank lines (2)
+./eee/evolve/simulate_tree.py:80:29: E231 missing whitespace after ','
+./eee/evolve/simulate_tree.py:85:18: E231 missing whitespace after ','
+./eee/evolve/simulate_tree.py:93:75: W291 trailing whitespace
 ./eee/evolve/simulate_tree.py:102:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:129:39: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:132:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:134:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:141:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:142:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:143:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:144:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:145:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:151:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:152:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:153:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:154:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:155:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:159:5: E303 too many blank lines (2)
-./eee/evolve/simulate_tree.py:159:20: W292 no newline at end of file
+./eee/evolve/simulate_tree.py:103:76: W291 trailing whitespace
+./eee/evolve/simulate_tree.py:107:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:134:39: E231 missing whitespace after ','
+./eee/evolve/simulate_tree.py:137:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:139:1: W293 blank line contains whitespace
+./eee/evolve/simulate_tree.py:146:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:147:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:148:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:149:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:150:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:156:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:157:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:158:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:159:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:160:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulate_tree.py:164:5: E303 too many blank lines (2)
+./eee/evolve/simulate_tree.py:164:20: W292 no newline at end of file
 ./eee/evolve/wright_fisher.py:23:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/wright_fisher.py:29:1: W293 blank line contains whitespace
 ./eee/evolve/wright_fisher.py:42:58: E231 missing whitespace after ','
 ./eee/evolve/wright_fisher.py:43:31: E231 missing whitespace after ','
 ./eee/evolve/wright_fisher.py:44:37: E231 missing whitespace after ','
 ./eee/evolve/wright_fisher.py:45:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:52:5: E303 too many blank lines (2)
-./eee/evolve/wright_fisher.py:54:1: C901 'wright_fisher' is too complex (26)
-./eee/evolve/wright_fisher.py:54:1: E302 expected 2 blank lines, found 1
-./eee/evolve/wright_fisher.py:63:77: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:65:42: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:66:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:70:73: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:71:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:72:66: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:76:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:78:76: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:81:77: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:82:51: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:84:72: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:85:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:86:17: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:88:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:92:57: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:94:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:96:73: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:99:69: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:100:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:104:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:108:75: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:109:31: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:112:31: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:120:26: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:123:39: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:126:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:127:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:129:39: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:130:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:135:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:136:39: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:138:50: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:140:78: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:148:41: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:156:27: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:156:37: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:158:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:160:46: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:161:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:173:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:177:15: F541 f-string is missing placeholders
-./eee/evolve/wright_fisher.py:184:40: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:185:25: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:199:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:202:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:212:25: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:214:76: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:220:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:221:79: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:234:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:247:37: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:248:59: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:252:48: E231 missing whitespace after ','
-./eee/evolve/wright_fisher.py:253:37: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:53:1: C901 'wright_fisher' is too complex (26)
+./eee/evolve/wright_fisher.py:53:1: E302 expected 2 blank lines, found 1
+./eee/evolve/wright_fisher.py:62:77: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:64:42: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:65:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:69:73: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:70:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:71:66: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:75:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:77:76: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:80:77: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:81:51: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:83:72: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:84:80: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:85:17: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:87:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:91:57: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:93:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:95:73: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:98:69: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:99:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:103:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:107:75: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:108:31: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:111:31: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:119:26: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:122:39: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:125:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:126:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:128:39: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:129:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:134:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:135:39: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:137:50: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:139:78: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:147:41: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:155:27: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:155:37: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:157:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:159:46: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:160:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:172:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:176:15: F541 f-string is missing placeholders
+./eee/evolve/wright_fisher.py:183:40: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:184:25: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:198:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:201:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:211:25: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:213:76: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:219:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:220:79: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:233:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:246:37: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:247:59: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:251:48: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:252:37: E231 missing whitespace after ','
+./eee/evolve/wright_fisher.py:253:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:254:80: W291 trailing whitespace
 ./eee/evolve/wright_fisher.py:255:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:256:80: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:257:61: W291 trailing whitespace
-./eee/evolve/wright_fisher.py:263:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:267:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:282:5: E303 too many blank lines (2)
-./eee/evolve/wright_fisher.py:284:41: E128 continuation line under-indented for visual indent
-./eee/evolve/wright_fisher.py:285:41: E128 continuation line under-indented for visual indent
+./eee/evolve/wright_fisher.py:256:61: W291 trailing whitespace
+./eee/evolve/wright_fisher.py:265:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:269:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:271:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:284:5: E303 too many blank lines (2)
 ./eee/evolve/wright_fisher.py:286:41: E128 continuation line under-indented for visual indent
 ./eee/evolve/wright_fisher.py:287:41: E128 continuation line under-indented for visual indent
 ./eee/evolve/wright_fisher.py:288:41: E128 continuation line under-indented for visual indent
-./eee/evolve/wright_fisher.py:292:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:295:1: W293 blank line contains whitespace
-./eee/evolve/wright_fisher.py:299:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:289:41: E128 continuation line under-indented for visual indent
+./eee/evolve/wright_fisher.py:290:41: E128 continuation line under-indented for visual indent
+./eee/evolve/wright_fisher.py:294:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:297:1: W293 blank line contains whitespace
+./eee/evolve/wright_fisher.py:301:1: W293 blank line contains whitespace
 ./eee/_private/interface.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:17:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:23:1: W293 blank line contains whitespace
@@ -2624,51 +2783,61 @@
 ./eee/_private/check/eee_variables.py:25:1: W293 blank line contains whitespace
 ./eee/_private/check/eee_variables.py:28:1: C901 'check_mu_dict' is too complex (14)
 ./eee/_private/check/eee_variables.py:28:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:30:33: W291 trailing whitespace
-./eee/_private/check/eee_variables.py:34:36: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:34:70: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:37:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:48:25: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:48:38: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:49:37: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:52:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:54:31: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:62:37: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:63:44: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:64:40: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:65:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:68:51: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:75:46: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:75:80: W291 trailing whitespace
-./eee/_private/check/eee_variables.py:76:36: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:87:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:88:75: W291 trailing whitespace
-./eee/_private/check/eee_variables.py:89:20: W291 trailing whitespace
-./eee/_private/check/eee_variables.py:93:50: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:97:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:100:39: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:100:76: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:103:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:107:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:110:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:112:35: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:115:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:118:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:118:36: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:120:32: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:120:77: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:131:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:143:38: E231 missing whitespace after ','
-./eee/_private/check/eee_variables.py:152:76: W291 trailing whitespace
-./eee/_private/check/eee_variables.py:161:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:168:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:175:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:182:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:183:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:189:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:190:1: W293 blank line contains whitespace
-./eee/_private/check/eee_variables.py:196:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee_variables.py:197:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:31:28: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:35:36: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:35:70: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:38:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:49:25: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:49:38: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:50:37: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:53:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:55:31: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:63:37: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:64:44: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:65:40: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:66:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:69:51: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:77:62: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:78:36: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:89:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:90:75: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:91:20: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:95:50: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:99:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:102:39: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:102:76: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:105:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:109:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:112:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:114:35: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:117:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:120:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:120:36: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:122:77: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:123:36: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:127:68: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:130:32: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:130:77: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:141:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:145:76: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:154:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:154:14: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:156:78: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:157:20: W291 trailing whitespace
+./eee/_private/check/eee_variables.py:160:26: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:164:17: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:164:56: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:166:30: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:184:23: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:185:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:191:37: E231 missing whitespace after ','
+./eee/_private/check/eee_variables.py:203:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:210:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:211:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:217:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:218:1: W293 blank line contains whitespace
+./eee/_private/check/eee_variables.py:224:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee_variables.py:225:1: W293 blank line contains whitespace
 ./eee/_private/check/ensemble.py:4:1: E302 expected 2 blank lines, found 1
 ./eee/_private/check/ensemble.py:4:23: E231 missing whitespace after ','
 ./eee/_private/check/ensemble.py:6:32: E231 missing whitespace after ','
@@ -2851,42 +3020,35 @@
 ./docs/script/build_api_docs.py:59:41: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:68:21: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:72:1: E305 expected 2 blank lines after class or function definition, found 1
-./profile/wright_fisher.py:4:23: E231 missing whitespace after ','
-./profile/wright_fisher.py:4:29: E231 missing whitespace after ','
-./profile/wright_fisher.py:5:20: E231 missing whitespace after ','
-./profile/wright_fisher.py:6:22: E231 missing whitespace after ','
-./profile/wright_fisher.py:6:28: E231 missing whitespace after ','
-./profile/wright_fisher.py:6:46: E231 missing whitespace after ':'
-./profile/wright_fisher.py:6:49: E231 missing whitespace after ','
-./profile/wright_fisher.py:8:128: E501 line too long (128 > 127 characters)
-./profile/wright_fisher.py:12:64: E231 missing whitespace after ':'
-./profile/wright_fisher.py:12:67: E231 missing whitespace after ','
-./profile/wright_fisher.py:22:1: W391 blank line at end of file
+./profile/wright_fisher.py:11:22: E231 missing whitespace after ','
+./profile/wright_fisher.py:18:17: E231 missing whitespace after ':'
+./profile/wright_fisher.py:19:18: E231 missing whitespace after ':'
+./profile/wright_fisher.py:20:22: E231 missing whitespace after ':'
+./profile/wright_fisher.py:36:1: W391 blank line at end of file
 18    C901 'check_mu_dict' is too complex (14)
 1     E114 indentation is not a multiple of 4 (comment)
 8     E127 continuation line over-indented for visual indent
-39    E128 continuation line under-indented for visual indent
+26    E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
 1     E222 multiple spaces after operator
 2     E225 missing whitespace around operator
-1783  E231 missing whitespace after ','
+1916  E231 missing whitespace after ','
 2     E261 at least two spaces before inline comment
 3     E265 block comment should start with '# '
 2     E301 expected 1 blank line, found 0
-122   E302 expected 2 blank lines, found 1
-60    E303 too many blank lines (2)
+121   E302 expected 2 blank lines, found 1
+59    E303 too many blank lines (2)
 2     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 2     E402 module level import not at top of file
-1     E501 line too long (128 > 127 characters)
 2     E701 multiple statements on one line (colon)
-9     E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-39    F401 'glob' imported but unused
+11    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+40    F401 'glob' imported but unused
 6     F541 f-string is missing placeholders
 6     F841 local variable 'value' is assigned to but never used
-336   W291 trailing whitespace
+374   W291 trailing whitespace
 29    W292 no newline at end of file
-373   W293 blank line contains whitespace
+378   W293 blank line contains whitespace
 9     W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-2864
+3027

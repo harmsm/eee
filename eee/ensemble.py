@@ -7,6 +7,7 @@ from eee._private.check.standard import check_float
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_mu_stoich
 from eee._private.check.eee_variables import check_mut_energy
+from eee._private.check.eee_variables import check_T
 
 import numpy as np
 import pandas as pd
@@ -83,7 +84,7 @@ class Ensemble:
         ----------
         R : float, default = 0.001987
             gas constant setting energy units for this calculation. Default is 
-            in kcal/mol/K.     
+            in kcal/mol/K.
         """
         
         self._R = R
@@ -100,6 +101,7 @@ class Ensemble:
     def add_species(self,
                     name,
                     observable=False,
+                    folded=True,
                     dG0=0,
                     mu_stoich=None):
         """
@@ -118,6 +120,8 @@ class Ensemble:
             dictionary whose keys are strings referring to chemical potentials
             that can perturb the energy of this species and whose values 
             denote the stoichiometry relative to one macromolecule. 
+        folded : bool, default=False
+            whether or not this species is folded.  
         """
 
         if name in self._species:
@@ -130,11 +134,13 @@ class Ensemble:
 
         # Check sanity of inputs
         observable = check_bool(observable,"observable")
+        folded = check_bool(folded,"folded")
         dG0 = check_float(dG0,"dG0")
         mu_stoich = check_mu_stoich(mu_stoich)
     
         # Record that we saw this species. 
         self._species[name] = {"observable":observable,
+                               "folded":folded,
                                "dG0":dG0,
                                "mu_stoich":mu_stoich}
 
@@ -182,6 +188,7 @@ class Ensemble:
         # obs_mask holds which species are observable (True) or not (False)
         self._z_matrix = np.zeros((num_species,num_conditions),dtype=float)
         self._obs_mask = np.zeros(num_species,dtype=bool)
+        self._folded_mask = np.zeros(num_species,dtype=bool)
 
         # Go through each species...
         for i, species_name in enumerate(self._species):
@@ -198,19 +205,23 @@ class Ensemble:
 
             # Update obs_mask 
             self._obs_mask[i] = self._species[species_name]["observable"]
+            self._folded_mask[i] = self._species[species_name]["folded"]
 
         # Non-observable species
         self._not_obs_mask = np.logical_not(self._obs_mask)
+        self._unfolded_mask = np.logical_not(self._folded_mask)
 
     def _get_weights(self,mut_energy,T):
         """
         Get Boltzmann weights for each species/condition combination given 
-        mutations and current temperature. No error checking. Private.
+        mutations and current temperature. No error checking. Private. 
+        mut_energy must be an array as long as the number of species; T must
+        be an array as long as the number of conditions. 
         """
 
         # Perturb z_matrix by mut_energy and divide by RT
         beta = 1/(self._R*T)
-        weights = -beta*(self._z_matrix + mut_energy[:,None])
+        weights = -beta[None,:]*(self._z_matrix + mut_energy[:,None])
 
         # Shift so highest weight is highest allowed numerically. Low weights 
         # might underflow, but these will approach zero population anyway and 
@@ -220,7 +231,6 @@ class Ensemble:
 
         # Return boltzmann weights
         return np.exp(weights)
-
 
     def get_species_dG(self,
                        name,
@@ -261,7 +271,7 @@ class Ensemble:
                                  variable_name="mut_energy")
         if mu_dict is None:
             mu_dict = {}
-        mu_dict = check_mu_dict(mu_dict)
+        mu_dict, _ = check_mu_dict(mu_dict)
 
         # build z matrix for calculation
         self._build_z_matrix(mu_dict)
@@ -275,7 +285,6 @@ class Ensemble:
             dG = dG[0]
         
         return dG
-
 
     def get_obs(self,mut_energy=None,mu_dict=None,T=298.15):
         """
@@ -303,8 +312,8 @@ class Ensemble:
         -------
         out : pandas.DataFrame
             pandas dataframe with columns for temperature, every chemical 
-            potential, the fractional population of each species, and two 
-            thermodynamic values:
+            potential, the fractional population of each species, the fraction
+            folded, and two thermodynamic values:
             
             fx_obs, the fractional population of the observable species: 
                 ([obs1] + [obs2] + ... )/([obs1] + [obs2] + ... + [not_obs1] + [not_obs2] + ...)
@@ -335,40 +344,47 @@ class Ensemble:
         
         # Argument sanity checking
         mut_energy = check_mut_energy(mut_energy)
-        mu_dict = check_mu_dict(mu_dict)
-        T = check_float(value=T,
-                        variable_name="T",
-                        minimum_allowed=0,
-                        minimum_inclusive=False)
+        mu_dict, num_conditions = check_mu_dict(mu_dict)
+        T = check_T(T,num_conditions=num_conditions)
 
+        # Get Boltzmann weights
         self._build_z_matrix(mu_dict)
         mut_energy_array = self.mut_dict_to_array(mut_energy)
         weights = self._get_weights(mut_energy_array,T)
 
-        # Start building an output dataframe holding the temperature and 
-        # chemical potentials
+        # Observable and not observable weights
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
 
+        # Start building an output dataframe holding the temperature and 
+        # chemical potentials
         out = {}
-        out["T"] = T*np.ones(len(obs),dtype=float)
+        out["T"] = T
         for m in mu_dict:
             out[m] = mu_dict[m]
         
+        # Fraction of each species
         for i, species_name in enumerate(self._species_list):
             out[species_name] = weights[i]/np.sum(weights,axis=0)
-            
-
+        
+        # Total fraction observable. 
         out["fx_obs"] = obs/(obs + not_obs)
 
-        mask = np.logical_or(obs == 0,not_obs == 0)
-        not_mask = np.logical_not(mask)
+        # dG observable with nan checking
+        nan_mask = np.logical_or(obs == 0,not_obs == 0)
+        not_nan_mask = np.logical_not(nan_mask)
         
-        dG_out = np.zeros(len(mask),dtype=float)
-        dG_out[mask] = np.nan
-        dG_out[not_mask] = -1/(self._R*T)*np.log(obs[not_mask]/not_obs[not_mask])
+        dG_out = np.zeros(len(nan_mask),dtype=float)
+        dG_out[nan_mask] = np.nan
+        dG_out[not_nan_mask] = -1/(self._R*T[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
 
         out["dG_obs"] = dG_out
+
+        # Fraction folded. 
+        folded = np.sum(weights[self._folded_mask,:],axis=0)
+        unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
+
+        out["fx_folded"] = folded/(folded + unfolded)
 
         return pd.DataFrame(out)
 
@@ -386,7 +402,7 @@ class Ensemble:
             specified in the dictionary, its value is set to 0. 
         """
 
-        mu_dict = check_mu_dict(mu_dict)
+        mu_dict, _ = check_mu_dict(mu_dict)
 
         self._build_z_matrix(mu_dict)
 
@@ -429,24 +445,32 @@ class Ensemble:
 
         Parameters
         ----------
-        mut_energy_array  numpy.ndarray
+        mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : float
-            temperature
+        T : nump.ndarray
+            numpy array of float where each value is the T at a given condition.
 
         Returns
         -------
         fx_obs : numpy.ndarray
             vector of fraction observable a function of the conditions in 
             mu_dict.
+        fx_folded : numpy.ndarray
+            vector of the fraction of the molecule folded 
         """
 
         weights = self._get_weights(mut_energy_array,T)
+        
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
-        return obs/(obs + not_obs)
+
+        folded = np.sum(weights[self._folded_mask,:],axis=0)
+        unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
+
+        return obs/(obs + not_obs), folded/(folded + unfolded)
     
+
     def get_dG_obs_fast(self,mut_energy_array,T):
         """
         Get a numpy array with the Dg observable for the ensemble. Each 
@@ -456,16 +480,18 @@ class Ensemble:
 
         Parameters
         ----------
-        mut_energy_array  numpy.ndarray
+        mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : float
-            temperature
+        T : nump.ndarray
+            numpy array of float where each value is the T at a given condition.
 
         Returns
         -------
         fx_obs : numpy.ndarray
             vector of dG a function of the conditions in mu_dict. 
+        fx_folded : numpy.ndarray
+            vector of the fraction of the molecule folded 
         """
 
         weights = self._get_weights(mut_energy_array,T)
@@ -479,7 +505,10 @@ class Ensemble:
         dG_out[mask] = np.nan
         dG_out[not_mask] = -1/(self._R*T)*np.log(obs[not_mask]/not_obs[not_mask])
 
-        return dG_out
+        folded = np.sum(weights[self._folded_mask,:],axis=0)
+        unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
+
+        return dG_out, folded/(folded + unfolded)
 
     @property
     def species(self):

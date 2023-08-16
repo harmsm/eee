@@ -30,13 +30,13 @@ def _write_outputs(gc,
     if write_prefix is not None:
 
         if final_dump:
-            gen_to_write = [dict(zip(*g)) for g in generations[:]]
+            gen_to_write = [dict(zip(*g)) for g in generations]
             generations = []
             keep_genotypes = None
         else:
             gen_to_write = [dict(zip(*g)) for g in generations[:-1]]
             generations = [generations[-1]]
-            keep_genotypes = list(generations[-1][0])
+            keep_genotypes = generations[0][0]
 
         gen_fmt_string = "{:s}_generations_{:0" + f"{num_write_digits:d}" + "d}.pickle"
         gen_out_file = gen_fmt_string.format(write_prefix,write_counter)
@@ -47,7 +47,6 @@ def _write_outputs(gc,
         gc_filename = f"{write_prefix}_genotypes.csv"
         gc.dump_to_csv(filename=gc_filename,
                        keep_genotypes=keep_genotypes)
-
 
     return gc, generations
 
@@ -180,7 +179,7 @@ def wright_fisher(gc,
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
 
-    # Dictionary of genotype populations
+    # Genotype populations
     seen, counts = np.unique(population,return_counts=True)
     generations = [(seen,counts)]
 
@@ -251,11 +250,14 @@ def wright_fisher(gc,
             # Record populations
             seen, counts = np.unique(population,return_counts=True)
             generations.append((seen,counts))
-
+            
             # If we are checking for number of mutations, check to see what the 
             # number of mutations is in the most frequent genotype. If that has 
             # greater than or equal to num_mutations, break. 
             if num_mutations is not None:
+
+                seen = generations[-1][0]
+                counts = generations[-1][1]
 
                 num_mutations_seen = get_num_accumulated_mutations(seen=seen,
                                                                    counts=counts,
@@ -266,7 +268,7 @@ def wright_fisher(gc,
                     break
             
             if i % write_frequency == 0:
-
+                
                 gc, generations = _write_outputs(gc=gc,
                                                  generations=generations,
                                                  write_prefix=write_prefix,
