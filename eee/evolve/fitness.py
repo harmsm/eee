@@ -8,6 +8,7 @@ from eee._private.check.ensemble import check_ensemble
 from eee._private.check.eee_variables import check_fitness_fcns
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_mut_energy
+from eee._private.check.standard import check_bool
 
 import numpy as np
 
@@ -25,42 +26,25 @@ def ff_off(value):
     """
     return 1 - value
 
-def _fitness_function(ens,
-                      mut_energy,
-                      mu_dict,
-                      fitness_fcns,
-                      select_on,
-                      fitness_kwargs,
-                      T):
+def ff_neutral(value):
     """
-    Private fitness function without error checking. Should be called via the
-    public fitness_function for use in the API.
+    Microscopic fitness function for fx_obs. Fitness is always 1.0, modeling
+    no selection on fx_obs. 
     """
-    
-    num_conditions = len(fitness_fcns)
+    return 1.0
 
-    values = ens.get_obs(mut_energy=mut_energy,
-                         mu_dict=mu_dict,
-                         T=T)
-    
-    all_F = np.zeros(num_conditions)
-    for i in range(num_conditions):
-        all_F[i] = fitness_fcns[i](values[select_on].iloc[i],**fitness_kwargs)
-
-    return all_F
        
-
 def fitness_function(ens,
                      mut_energy,
                      mu_dict,
                      fitness_fcns,
                      select_on="fx_obs",
+                     select_on_folded=True,
                      fitness_kwargs=None,
                      T=298.15):
     """
     Calculate fitness from the ensemble given mutations (in mut_energy), 
-    chemical potentials (mu_dict), and fitness functions for each condition in 
-    mu_dict (fitness_fcns). 
+    chemical potentials (mu_dict), and fitness function(s). 
     
     Parameters
     ----------
@@ -77,30 +61,38 @@ def fitness_function(ens,
         potentials. Values are floats or arrays of floats. Any arrays 
         specified must have the same length. If a chemical potential is not
         specified in the dictionary, its value is set to 0. 
-    fitness_fcns : list-like
-        list of fitness functions to apply. There should be one fitness function
-        for each condition specified in mu_dict. The first argument of each 
-        function must be either fx_obs or dG_obs. Other keyword arguments can be
-        specified in fitness_kwargs.
+    fitness_fcns : function or list
+        fitness function(s) to apply. Should either be a single function or list 
+        of functions. Functions should take value from "select_on" as their
+        first argument and **fitness_kwargs as their remaining arguments. If a 
+        list, the list must be the same length as the number of conditions in 
+        mu_dict. 
     select_on : str, default="fx_obs"
         observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
     fitness_kwargs : dict, optional
         pass these keyword arguments to the fitness_fcn
+    select_on_folded : bool, default=True
+        In addition to selecting on select_on, multiply the fitness by the 
+        fraction of the protein molecules that are folded. 
     T : float, default=298.15
         temperature in Kelvin. This can be an array; if so, its length must
         match the length of the arrays specified in mu_dict. 
 
     Returns
     -------
-    F : numpy.array
-        float numpy array with one fitness per condition. 
+    df : pandas.DataFrame
+        pandas dataframe holding information about the ensemble versus mu_dict,
+        including fitness. 
     """
 
     ens = check_ensemble(ens)
     mut_energy = check_mut_energy(mut_energy)
-    mu_dict = check_mu_dict(mu_dict)
-    fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
-    check_T(T=T)
+    mu_dict, num_conditions = check_mu_dict(mu_dict)
+    fitness_fcns = check_fitness_fcns(fitness_fcns,
+                                      num_conditions=num_conditions)
+
+    T = check_T(T=T,
+                num_conditions=num_conditions)
         
     if select_on not in ["fx_obs","dG_obs"]:
         err = "select_on should be either fx_obs or dG_obs\n"
@@ -109,13 +101,24 @@ def fitness_function(ens,
     if fitness_kwargs is None:
         fitness_kwargs = {}
 
-    return _fitness_function(ens=ens,
-                             mut_energy=mut_energy,
-                             mu_dict=mu_dict,
-                             fitness_fcns=fitness_fcns,
-                             select_on=select_on,
-                             fitness_kwargs=fitness_kwargs,
-                             T=T)
+    select_on_folded = check_bool(value=select_on_folded,
+                                  variable_name="select_on_folded")
+
+    num_conditions = len(fitness_fcns)
+
+    df = ens.get_obs(mut_energy=mut_energy,
+                     mu_dict=mu_dict,
+                     T=T)
+    
+    values = np.array(df[select_on])
+    all_F = np.zeros(num_conditions)
+    for i in range(num_conditions):
+        all_F[i] = fitness_fcns[i](values[i],**fitness_kwargs)
+
+    if select_on_folded:
+        all_F = all_F*np.array(df["fx_folded"])
+
+    return all_F
 
 
 class FitnessContainer:
@@ -130,16 +133,43 @@ class FitnessContainer:
                  mu_dict,
                  fitness_fcns,
                  select_on="fx_obs",
+                 select_on_folded=True,
                  fitness_kwargs=None,
                  T=298.15):
         """
-        See eee.evolve.fitness_function docstring for information on arguments.
+        Parameters
+        ----------
+        ens : eee.Ensemble 
+            initialized instance of an Ensemble class
+        mu_dict : dict, optional
+            dictionary of chemical potentials. keys are the names of chemical
+            potentials. Values are floats or arrays of floats. Any arrays 
+            specified must have the same length. If a chemical potential is not
+            specified in the dictionary, its value is set to 0. 
+        fitness_fcns : function or list
+            fitness function(s) to apply. Should either be a single function or list 
+            of functions. Functions should take value from "select_on" as their
+            first argument and **fitness_kwargs as their remaining arguments. If a 
+            list, the list must be the same length as the number of conditions in 
+            mu_dict. 
+        select_on : str, default="fx_obs"
+            observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
+        fitness_kwargs : dict, optional
+            pass these keyword arguments to the fitness_fcn
+        select_on_folded : bool, default=True
+            In addition to selecting on select_on, multiply the fitness by the 
+            fraction of the protein molecules that are folded. 
+        T : float, default=298.15
+            temperature in Kelvin. This can be an array; if so, its length must
+            match the length of the arrays specified in mu_dict. 
         """
         
         ens = check_ensemble(ens)
-        mu_dict = check_mu_dict(mu_dict)
-        fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
-        check_T(T=T)
+        mu_dict, num_conditions = check_mu_dict(mu_dict)
+        fitness_fcns = check_fitness_fcns(fitness_fcns,
+                                          num_conditions=num_conditions)
+        T = check_T(T=T,
+                    num_conditions=num_conditions)
     
         obs_functions = {"fx_obs":ens.get_fx_obs_fast,
                          "dG_obs":ens.get_dG_obs_fast}
@@ -149,6 +179,8 @@ class FitnessContainer:
                 err += f"    {k}\n"
             err += "\n"
             raise ValueError(err)
+        select_on_folded = check_bool(value=select_on_folded,
+                                     variable_name="select_on_folded")
 
         if fitness_kwargs is None:
             fitness_kwargs = {}
@@ -157,6 +189,7 @@ class FitnessContainer:
         self._mu_dict = mu_dict
         self._fitness_fcns = fitness_fcns
         self._select_on = select_on
+        self._select_on_folded = select_on_folded
         self._fitness_kwargs = fitness_kwargs
         self._T = T
 
@@ -165,20 +198,27 @@ class FitnessContainer:
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
 
-    def fitness(self,mut_energy):
+    def fitness(self,mut_energy_array):
         """
         Calculate the fitness of a genotype with total mutational energies 
         given by mut_dict. Fitness is defined as the product of the fitness 
         in each of the conditions specified in mu_dict. 
+
+        mut_energy_array : numpy.ndarray
+            array holding the effects of mutations on energy. values should be
+            in the order of ens.species 
         """
         
-        values = self._obs_function(mut_energy_array=mut_energy,
-                                    T=self._T)        
+        values, fx_folded = self._obs_function(mut_energy_array=mut_energy_array,
+                                               T=self._T)        
 
         for i in range(self._num_conditions):
             self._F_array[i] = self._fitness_fcns[i](values[i],
                                                      **self._fitness_kwargs)
  
+        if self._select_on_folded:
+            self._F_array = self._F_array*fx_folded
+
         return np.prod(self._F_array)
     
     @property

@@ -90,10 +90,10 @@ def simulate_evolution(ens,
 
     ens = check_ensemble(ens,check_obs=True)
     ddg_df = check_ddg_df(ddg_df)
-    mu_dict = check_mu_dict(mu_dict)
-    fitness_fcns = check_fitness_fcns(fitness_fcns,mu_dict=mu_dict)
-
-    T = check_T(T)
+    mu_dict, num_conditions = check_mu_dict(mu_dict)
+    fitness_fcns = check_fitness_fcns(fitness_fcns,
+                                      num_conditions=num_conditions)
+    T = check_T(T,num_conditions=num_conditions)
     population_size = check_population_size(population_size)
     mutation_rate = check_mutation_rate(mutation_rate)
     num_generations = check_num_generations(num_generations)
