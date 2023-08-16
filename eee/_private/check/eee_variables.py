@@ -38,7 +38,7 @@ def check_mu_dict(mu_dict):
     
     # Empty dict: allowed, just return
     if len(mu_dict) == 0:
-        return mu_dict, 0
+        return mu_dict, 1
 
     # Check each value...
     mu_lengths = []

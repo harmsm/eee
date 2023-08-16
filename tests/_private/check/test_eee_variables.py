@@ -40,7 +40,7 @@ def test_check_mu_dict(variable_types):
     out, length = check_mu_dict({})
     assert issubclass(type(out),dict)
     assert len(out) == 0
-    assert length == 0
+    assert length == 1
 
     bad_types = variable_types["types"][:]
     bad_types.extend([pd.DataFrame({"a":[1,2,3]}),
