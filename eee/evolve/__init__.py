@@ -15,3 +15,4 @@ from .fitness import FitnessContainer
 from .fitness import fitness_function
 from .fitness import ff_off
 from .fitness import ff_on
+from .fitness import ff_neutral

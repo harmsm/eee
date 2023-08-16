@@ -15,12 +15,14 @@ from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_mutation_rate
 from eee._private.check.eee_variables import check_population_size
 from eee._private.check.standard import check_int
+from eee._private.check.standard import check_bool
 
 def simulate_evolution(ens,
                        ddg_df,
                        mu_dict,
                        fitness_fcns,
                        select_on="fx_obs",
+                       select_on_folded=True,
                        fitness_kwargs=None,
                        T=298.15,
                        population_size=1000,
@@ -53,6 +55,8 @@ def simulate_evolution(ens,
         specified in fitness_kwargs.
     select_on : str, default="fx_obs"
         observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
+    select_on_folded : bool, default=True
+        add selection for folded protein. 
     fitness_kwargs : dict, optional
         pass these keyword arguments to the fitness_fcn
     T : float, default=298.15
@@ -97,6 +101,8 @@ def simulate_evolution(ens,
     population_size = check_population_size(population_size)
     mutation_rate = check_mutation_rate(mutation_rate)
     num_generations = check_num_generations(num_generations)
+    select_on_folded = check_bool(value=select_on_folded,
+                                  variable_name="select_on_folded")
 
     # Check write_prefix and write_frequency
     if write_prefix is not None:
@@ -111,6 +117,7 @@ def simulate_evolution(ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
+                          select_on_folded=select_on_folded,
                           fitness_kwargs=fitness_kwargs,
                           T=T)
     

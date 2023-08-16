@@ -386,9 +386,6 @@ class Ensemble:
 
         out["fx_folded"] = folded/(folded + unfolded)
 
-        for o in out:
-            print(o,out[o],type(out[o]),out[o].shape,flush=True)
-
         return pd.DataFrame(out)
 
     def load_mu_dict(self,mu_dict={}):

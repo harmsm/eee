@@ -16,6 +16,7 @@ from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_mutation_rate
 from eee._private.check.eee_variables import check_population_size
 from eee._private.check.eee_variables import check_burn_in_generations
+from eee._private.check.standard import check_bool
 
 import ete3
 import numpy as np
@@ -67,6 +68,7 @@ def simulate_tree(ens,
                   fitness_fcns,
                   newick,
                   select_on="fx_obs",
+                  select_on_folded=True,
                   fitness_kwargs={},
                   T=298.15,
                   population_size=1000,
@@ -81,6 +83,8 @@ def simulate_tree(ens,
     fitness_fcns = check_fitness_fcns(fitness_fcns,
                                       num_conditions=num_conditions)
     T = check_T(T,num_conditions=num_conditions)
+    select_on_folded = check_bool(value=select_on_folded,
+                                  variable_name="select_on_folded")
     population_size = check_population_size(population_size)
     mutation_rate = check_mutation_rate(mutation_rate)
     num_generations = check_num_generations(num_generations)
@@ -92,6 +96,7 @@ def simulate_tree(ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
+                          select_on_folded=select_on_folded,
                           fitness_kwargs=fitness_kwargs,
                           T=T)
     
