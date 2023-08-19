@@ -81,7 +81,7 @@ def test_SimulationContainer_load_json(sim_json,test_ddg,tmpdir):
         sm = load_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("R")
+    test_json["ens"].pop("R")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm = load_json("test.json")

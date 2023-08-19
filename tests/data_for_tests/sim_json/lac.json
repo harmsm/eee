@@ -10,6 +10,7 @@
     "off"
   ],
   "ens": {
+    "R": 0.008314,
     "hdna": {
       "dG0": 0.0,
       "observable": true,
@@ -37,7 +38,6 @@
       "folded": false
     }
   },
-  "R": 0.008314,
   "mu_dict": {
     "iptg": [
       1.0,

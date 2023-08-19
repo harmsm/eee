@@ -64,8 +64,8 @@ def load_json(json_file,use_stored_seed=False):
     # ------------------------------ R -------------------------------------
 
     # Get gas constant
-    if "R" in run:
-        R = run["R"]
+    if "R" in run["ens"]:
+        R = run["ens"].pop("R")
     else:
         # Get default from Ensemble class
         R = eee.Ensemble()._R
