@@ -7,7 +7,7 @@ import pytest
 def test_check_ensemble(variable_types):
     
     for v in variable_types:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             check_ensemble(v)
 

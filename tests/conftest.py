@@ -77,6 +77,11 @@ def spreadsheets():
     return _file_globber("data_for_tests","spreadsheets","*")
 
 @pytest.fixture(scope="module")
+def sim_json():
+
+    return _file_globber("data_for_tests","sim_json","*.json")
+
+@pytest.fixture(scope="module")
 def ens_test_data():
 
     # Basic ensemble
@@ -144,13 +149,15 @@ def ens_with_fitness():
                            "s2":[3.333,-5000]})
 
     fc = FitnessContainer(ens,
-                        mu_dict,
-                        [ff_on,ff_off],
-                        select_on="fx_obs",
-                        fitness_kwargs={},
-                        T=1)
+                          mu_dict,
+                          [ff_on,ff_off],
+                          select_on="fx_obs",
+                          fitness_kwargs={},
+                          T=1)
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fc.fitness,
+                           ddg_df=ddg_df)
     
 
     out = {"ens":ens,

@@ -87,6 +87,12 @@ class Ensemble:
             in kcal/mol/K.
         """
         
+        # Validate gas constant
+        R = check_float(value=R,
+                        variable_name="R",
+                        minimum_allowed=0,
+                        minimum_inclusive=False)
+        
         self._R = R
         self._species = {}
         
@@ -509,6 +515,61 @@ class Ensemble:
         unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
 
         return dG_out, folded/(folded + unfolded)
+
+    def to_dict(self):
+        """
+        Return a json-able dictionary describing the ensemble.
+        """
+
+        out = {"ens":{}}
+        attr_to_write = ["dG0","observable","mu_stoich","folded"]
+        for s in self._species:
+
+            out["ens"][s] = {}
+            for a in attr_to_write:
+                out["ens"][s][a] = self._species[s][a]
+    
+        out["R"] = self._R
+
+        return out
+    
+    
+    def get_observable_function(self,obs_fcn):
+        """
+        Get observable functions by name. 
+        
+        Parameters
+        ----------
+        obs_fcn : str
+            observable function. should be one of fx_obs or dG_obs.
+        
+        Returns
+        -------
+        fcn : function
+            fast observable function that takes a mutation energy array and
+            temperature array as inputs
+        """
+
+        obs_functions = {"fx_obs":self.get_fx_obs_fast,
+                         "dG_obs":self.get_dG_obs_fast}
+        
+        bad_value = False
+        if not issubclass(type(obs_fcn),str):
+            bad_value = True
+
+        if not bad_value:
+            if obs_fcn not in obs_functions:
+                bad_value = True
+
+        if bad_value:
+            err = f"obs_fcn ('{obs_fcn}') should be one of:\n"
+            for k in obs_functions:
+                err += f"    {k}\n"
+            err += "\n"
+            raise ValueError(err)
+        
+        return obs_functions[obs_fcn]
+
 
     @property
     def species(self):

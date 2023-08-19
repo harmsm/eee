@@ -6,16 +6,21 @@ evolutionary simulation.
 from eee._private.check.eee_variables import check_T
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.eee_variables import check_fitness_fcns
+from eee._private.check.eee_variables import check_fitness_kwargs
 from eee._private.check.eee_variables import check_mu_dict
 from eee._private.check.eee_variables import check_mut_energy
 from eee._private.check.standard import check_bool
 
 import numpy as np
 
+import copy
+
 def ff_on(value):
     """
     Microscopic fitness function for fx_obs. Fitness is linearly proportional
     to value. Useful for simulating selection to keep observable 'on'.
+
+    string_name: on
     """
     return value
 
@@ -23,6 +28,8 @@ def ff_off(value):
     """
     Microscopic fitness function for fx_obs. Fitness is linearly proportional
     to 1 - value. Useful for simulating selection to keep observable 'off'. 
+
+    string_name: off
     """
     return 1 - value
 
@@ -30,8 +37,44 @@ def ff_neutral(value):
     """
     Microscopic fitness function for fx_obs. Fitness is always 1.0, modeling
     no selection on fx_obs. 
+
+    string_name: neutral
     """
     return 1.0
+
+# These dictionaries let us look up the fitness functions using strings. They 
+# look up the name using the keyword string_name: in the function docstrings
+FITNESS_STR_TO_FUNCTION = {}
+FITNESS_FUNCTION_TO_STR = {}
+for fcn in [ff_on,ff_off,ff_neutral]:
+    string = fcn.__doc__.split("string_name:")[1].strip()
+    FITNESS_STR_TO_FUNCTION[string] = fcn
+    FITNESS_FUNCTION_TO_STR[fcn] = string
+    
+
+def get_fitness_function(fitness_fcn):
+    """
+    Get observable functions by name. 
+    
+    Parameters
+    ----------
+    fitness_fcn : str
+        fitness function. should be "on", "off", "neutral"
+    
+    Returns
+    -------
+    fcn : function
+        fast fitness function that takes a the observable as input
+    """
+    
+    if fitness_fcn not in FITNESS_STR_TO_FUNCTION:
+        err = f"fitness_fcn ('{fitness_fcn}') should be one of:\n"
+        for k in FITNESS_STR_TO_FUNCTION:
+            err += f"    {k}\n"
+        err += "\n"
+        raise ValueError(err)
+    
+    return FITNESS_STR_TO_FUNCTION[fitness_fcn]
 
        
 def fitness_function(ens,
@@ -90,22 +133,18 @@ def fitness_function(ens,
     mu_dict, num_conditions = check_mu_dict(mu_dict)
     fitness_fcns = check_fitness_fcns(fitness_fcns,
                                       num_conditions=num_conditions)
-
-    T = check_T(T=T,
-                num_conditions=num_conditions)
-        
+    
     if select_on not in ["fx_obs","dG_obs"]:
         err = "select_on should be either fx_obs or dG_obs\n"
         raise ValueError(err)
 
-    if fitness_kwargs is None:
-        fitness_kwargs = {}
-
+    fitness_kwargs = check_fitness_kwargs(fitness_kwargs,
+                                          fitness_fcns=fitness_fcns)
     select_on_folded = check_bool(value=select_on_folded,
                                   variable_name="select_on_folded")
-
-    num_conditions = len(fitness_fcns)
-
+    
+    T = check_T(T=T,num_conditions=num_conditions)
+        
     df = ens.get_obs(mut_energy=mut_energy,
                      mu_dict=mu_dict,
                      T=T)
@@ -123,10 +162,18 @@ def fitness_function(ens,
 
 class FitnessContainer:
     """
-    Convenience class used in evolutionary simulations. Holds onto fixed 
-    aspects of the fitness (ensemble, chemical potentials, fitness functions,
-    and temperature), allowing us to calculate fitness given only the 
-    mut_energy of a particular gentoype. 
+    Class used to calculate fitness of genotypes in evolutionary simulations.
+    It holds fixed aspects of the fitness (ensemble, chemical potentials,
+    fitness functions, and temperature), allowing us to quickly calculate
+    fitness given only the energy of a particular gentoype. 
+
+    Notes
+    -----
+    This class stores a private *copy* of ens. This is so the ensemble z-matrix 
+    stays identical for all calculations, even if the user uses the initial 
+    ensemble object for a calculation with a different mu_dict after initialization
+    of the FitnessContainer object. (That calculation triggers creation of new
+    z-matrix, which would potentially change output observables). 
     """
     def __init__(self,
                  ens,
@@ -168,24 +215,20 @@ class FitnessContainer:
         mu_dict, num_conditions = check_mu_dict(mu_dict)
         fitness_fcns = check_fitness_fcns(fitness_fcns,
                                           num_conditions=num_conditions)
-        T = check_T(T=T,
-                    num_conditions=num_conditions)
-    
-        obs_functions = {"fx_obs":ens.get_fx_obs_fast,
-                         "dG_obs":ens.get_dG_obs_fast}
-        if select_on not in obs_functions:
-            err = "select_on should be one of:\n"
-            for k in obs_functions:
-                err += f"    {k}\n"
-            err += "\n"
+        
+        if not issubclass(type(select_on),str) or select_on not in ["fx_obs","dG_obs"]:
+            err = "select_on should be either fx_obs or dG_obs\n"
             raise ValueError(err)
-        select_on_folded = check_bool(value=select_on_folded,
-                                     variable_name="select_on_folded")
 
-        if fitness_kwargs is None:
-            fitness_kwargs = {}
+        fitness_kwargs = check_fitness_kwargs(fitness_kwargs,
+                                            fitness_fcns=fitness_fcns)
+        select_on_folded = check_bool(value=select_on_folded,
+                                    variable_name="select_on_folded")
+
+        T = check_T(T=T,num_conditions=num_conditions)
 
         self._ens = ens
+        self._private_ens = copy.deepcopy(ens)
         self._mu_dict = mu_dict
         self._fitness_fcns = fitness_fcns
         self._select_on = select_on
@@ -193,16 +236,23 @@ class FitnessContainer:
         self._fitness_kwargs = fitness_kwargs
         self._T = T
 
-        self._ens.load_mu_dict(mu_dict=self._mu_dict)
-        self._obs_function = obs_functions[self._select_on]
+        self._fitness_fcns_strings = []
+        for f in self._fitness_fcns:
+            if f in FITNESS_FUNCTION_TO_STR:
+                self._fitness_fcns_strings.append(FITNESS_FUNCTION_TO_STR[f])
+            else:
+                self._fitness_fcns_strings.append(f"{f}")
+                
+        self._private_ens.load_mu_dict(mu_dict=self._mu_dict)
+        self._obs_function = self._private_ens.get_observable_function(self._select_on)
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
 
     def fitness(self,mut_energy_array):
         """
         Calculate the fitness of a genotype with total mutational energies 
-        given by mut_dict. Fitness is defined as the product of the fitness 
-        in each of the conditions specified in mu_dict. 
+        given by mut_energy_array. Fitness is defined as the product of the
+        fitness  in each of the conditions specified in mu_dict. 
 
         mut_energy_array : numpy.ndarray
             array holding the effects of mutations on energy. values should be
@@ -210,7 +260,7 @@ class FitnessContainer:
         """
         
         values, fx_folded = self._obs_function(mut_energy_array=mut_energy_array,
-                                               T=self._T)        
+                                               T=self._T)
 
         for i in range(self._num_conditions):
             self._F_array[i] = self._fitness_fcns[i](values[i],
@@ -218,14 +268,48 @@ class FitnessContainer:
  
         if self._select_on_folded:
             self._F_array = self._F_array*fx_folded
-
+ 
         return np.prod(self._F_array)
     
+    def to_dict(self):
+        """
+        Return a json-able dictionary describing the fitness parameters.
+        """
+
+        to_write = ["mu_dict",
+                    "select_on",
+                    "select_on_folded",
+                    "fitness_kwargs",
+                    "T"]
+        out = {}
+        for a in to_write:
+            out[a] = self.__dict__[f"_{a}"]
+
+        # Fitness functions as strings
+        out["fitness_fcns"] = self._fitness_fcns_strings
+
+        return out
+
     @property
     def ens(self):
         return self._ens
+        
+    @property
+    def mu_dict(self):
+        return self._mu_dict
+    
+    @property
+    def select_on(self):
+        return self._select_on
 
+    @property
+    def select_on_folded(self):
+        return self._select_on_folded
+
+    @property
+    def fitness_kwargs(self):
+        return self._fitness_kwargs    
+    
     @property
     def T(self):
         return self._T
-

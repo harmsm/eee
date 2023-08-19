@@ -1,0 +1,55 @@
+{
+  "population_size": 100000,
+  "mutation_rate": 1e-05,
+  "num_generations": 100000,
+  "write_prefix": "eee_sim_test",
+  "write_frequency": 10000,
+  "seed": 487698321712,
+  "fitness_fcns": [
+    "on",
+    "off"
+  ],
+  "ens": {
+    "hdna": {
+      "dG0": 0.0,
+      "observable": true,
+      "mu_stoich": {},
+      "folded": true
+    },
+    "h": {
+      "dG0": 5.0,
+      "observable": false,
+      "mu_stoich": {},
+      "folded": true
+    },
+    "l2e": {
+      "dG0": 5.0,
+      "observable": false,
+      "mu_stoich": {
+        "iptg": 4.0
+      },
+      "folded": true
+    },
+    "unfolded": {
+      "dG0": 10.0,
+      "observable": false,
+      "mu_stoich": {},
+      "folded": false
+    }
+  },
+  "R": 0.008314,
+  "mu_dict": {
+    "iptg": [
+      1.0,
+      4.0
+    ]
+  },
+  "select_on": "dG_obs",
+  "select_on_folded": false,
+  "fitness_kwargs": {},
+  "T": [
+    310.15,
+    310.15
+  ],
+  "ddg_df": "ddg.csv"
+}

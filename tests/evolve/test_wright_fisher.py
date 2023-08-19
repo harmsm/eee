@@ -195,13 +195,16 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     def _count_pop(generation):
         return sum([generation[s] for s in generation])
 
-    fc = ens_test_data["fc"]
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
     # --------------------------------------------------------------------------
     # Test three ways of setting the population (single number, dictionary, list)
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -215,7 +218,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
     assert len(glob.glob("*.csv")) == 0 
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population={0:10},
                                     mutation_rate=0.1,
@@ -229,7 +234,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
     assert len(glob.glob("*.csv")) == 0 
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=np.zeros(10,dtype=int),
                                     mutation_rate=0.1,
@@ -246,14 +253,18 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Mutation rate
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=1,
                                     num_generations=2)
     high_mut_rate_genotypes = len(gc.genotypes)
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.0001,
@@ -267,7 +278,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Num generations
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -280,7 +293,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # num_mutations
 
     # 1 mutation
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -297,7 +312,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0  
 
     # 2 mutations
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -314,7 +331,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0 
 
     # 3 mutations
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -330,7 +349,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
 
     # Too short to complete 50 mutations -- should run 10 generations and warn
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     with pytest.warns():
         gc, generations = wright_fisher(gc,
                                         population=10,
@@ -347,7 +368,9 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # this is not a real test, but at least will test ability for the code to 
     # run without crashing when this is set. 
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -358,14 +381,18 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Check the sorts of mutations being generated
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=1,
                                     num_generations=2)
     high_mut_rate_genotypes = len(gc.genotypes)
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.0001,
@@ -379,11 +406,13 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Check variables
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
 
     not_allowed = variable_types["not_ints_or_coercable"]
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         with pytest.raises(ValueError):
             gc, generations = wright_fisher(gc,
@@ -393,7 +422,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     not_allowed = variable_types["everything"]
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         with pytest.raises(ValueError):
             gc, generations = wright_fisher(gc=v,
@@ -401,6 +430,44 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                             mutation_rate=0.1,
                                             num_generations=2)
 
+
+    gc = GenotypeContainer(ens=ens,
+                           fitness_function=fitness_function,
+                           ddg_df=ddg_df)
+
+    not_allowed = variable_types["everything"]
+    for v in not_allowed:
+
+        if v is None:
+            continue
+
+        print(v,type(v),flush=True)
+
+        with pytest.raises(ValueError):
+            gc, generations = wright_fisher(gc,
+                                            population=10,
+                                            mutation_rate=0.1,
+                                            num_generations=2,
+                                            rng=v)
+
+    # Check reproducibility after passing in a fixed seed (0)
+    rng = np.random.Generator(np.random.PCG64(0))
+    gc, generations = wright_fisher(gc,
+                                    population=10,
+                                    mutation_rate=0.1,
+                                    num_generations=5,
+                                    rng=rng)
+
+    assert generations[0][0] == 10
+    assert generations[1][0] == 9
+    assert generations[1][1] == 1
+    assert generations[2][0] == 8
+    assert generations[2][2] == 1
+    assert generations[2][3] == 1
+    assert generations[3][0] == 8
+    assert generations[3][3] == 2
+    assert generations[4][0] == 7
+    assert generations[4][3] == 3
 
     # --------------------------------------------------------------------------
     # Run a short calculation with a dataset that has three genotypes, one of
@@ -413,7 +480,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                     mutation_rate=0.001,
                                     population=10000,
                                     num_generations=1000)
-    
+
     genotypes = {}
     for gen in generations:
         for g in gen:
@@ -422,7 +489,35 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                 genotypes[mut_genotype] = 0
             
             genotypes[mut_genotype] += gen[g]
-            
+
+
+    #ens = ens_with_fitness["ens"]
+    #fc = ens_with_fitness["fc"]
+
+    # ens.get_obs(mu_dict=ens_with_fitness["mu_dict"])
+    # print("ens")
+    # ens_dict = ens.to_dict()["ens"]
+    # for k in ens_dict:
+    #     print(k,ens_dict)
+    # print()
+
+    # print("species")
+    # for s in ens._species:
+    #     for k in ens._species[s]:
+    #         print(s,k,ens._species[s][k])
+    # print()
+
+    # print("fc")
+    # fc_dict = fc.to_dict()
+    # for k in fc_dict:
+    #     print(k,fc_dict[k])
+    # print()
+
+    # print('fitness')
+    # print(fc.fitness(np.array([0,0])))
+    # print(fc.fitness(np.array([-1.677,0.167])))
+    # print(fc.fitness(np.array([3.333,-5000])))
+
     assert genotypes["A1P"] < 10000
     assert genotypes[""] > genotypes["A1P"]
     assert genotypes[""] < genotypes["A1V"]
@@ -480,8 +575,5 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(generations) == 0
     for f in glob.glob("*.pickle"):
         os.remove(f)
-
-
-
 
     os.chdir(current_dir)

@@ -57,7 +57,8 @@ def wright_fisher(gc,
                   num_mutations=None,
                   disable_status_bar=False,
                   write_prefix=None,
-                  write_frequency=1000):
+                  write_frequency=1000,
+                  rng=None):
     """
     Run a Wright-Fisher simulation. This is a relatively low-level function. 
     Most users should probably call this via other simulation functions like
@@ -96,7 +97,10 @@ def wright_fisher(gc,
         consumption.
     write_frequency : int, default=1000
         write the generations out every write_frequency generations. 
-    
+    rng : numpy.random._generator.Generator, optional
+        random number generator object to allow reproducible sims. If None, one
+        is created locally. 
+
     Returns
     -------
     gc : GenotypeContainer
@@ -176,6 +180,15 @@ def wright_fisher(gc,
         err = f"\npopulation has genotype(s) that are not in the gc object\n\n"
         raise ValueError(err)
 
+    # Create random number generator 
+    if rng is None:
+        rng = np.random.Generator(np.random.PCG64())
+    
+    if not issubclass(type(rng),np.random._generator.Generator):
+        err = "\nrng (random number generator) should be a np.random.Generator\n"
+        err += "instance\n\n"
+        raise ValueError(err)
+
     # Get the mutation rate
     expected_num_mutations = mutation_rate*population_size
 
@@ -226,13 +239,13 @@ def wright_fisher(gc,
             prob = prob/np.sum(prob)
 
             # Select offspring, with replacement weighted by prob
-            population = np.random.choice(current_genotypes,
-                                          size=population_size,
-                                          p=prob,
-                                          replace=True)
+            population = rng.choice(current_genotypes,
+                                    size=population_size,
+                                    p=prob,
+                                    replace=True)
             
             # Introduce mutations
-            num_to_mutate = np.random.poisson(expected_num_mutations)
+            num_to_mutate = rng.poisson(expected_num_mutations)
 
             # If we have a ridiculously high mutation rate, do not mutate each
             # genotype more than once.
@@ -283,11 +296,11 @@ def wright_fisher(gc,
 
     if write_prefix is not None:
         gc, generations = _write_outputs(gc=gc,
-                                        generations=generations,
-                                        write_prefix=write_prefix,
-                                        write_counter=write_counter,
-                                        num_write_digits=num_write_digits,
-                                        final_dump=True)
+                                         generations=generations,
+                                         write_prefix=write_prefix,
+                                         write_counter=write_counter,
+                                         num_write_digits=num_write_digits,
+                                         final_dump=True)
 
     # Warn if we did not get all of the requested mutations
     if num_mutations is not None and not hit_target_num_mutations:

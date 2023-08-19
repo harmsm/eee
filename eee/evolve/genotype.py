@@ -1,6 +1,9 @@
 """
 Helper classes for keeping track of genotypes during an evolutionary simulation.
 """
+from eee.io import load_ddg
+from eee._private.check.ensemble import check_ensemble
+
 import numpy as np
 import pandas as pd
 
@@ -202,22 +205,34 @@ class GenotypeContainer:
         + fitnesses holds the absolute fitness of each genotype.
     """
 
-    def __init__(self,fc,ddg_df):
+    def __init__(self,ens,fitness_function,ddg_df,choice_function=None):
         """
         Initialize class. 
 
         Parameters
         ----------
-        fc : FitnessContainer
-            class for calculating fitness of each genotype given its energy
+        ens : Ensemble
+            instance of Ensemble class
+        fitness_function : function
+            function that takes mutation energy and return fitness
         ddg_df : pandas.DataFrame
             dataframe holding the effects of each mutation on the energy of 
             each species. 
+        choice_function : function, optional
+            function that randomly selects elements from a list-like object 
+            (i.e. np.random.choice). This can be passed in so we can use a 
+            seeded and reproducible random number generator. 
         """
         
         # Fitness and ddg information
-        self._fc = fc
-        self._ddg_df = ddg_df
+        self._ens = check_ensemble(ens,check_obs=True)
+        self._fitness_function = fitness_function
+        self._ddg_df = load_ddg(ddg_df)
+    
+        if choice_function is None:
+            choice_function = np.random.choice
+        self._choice_function = choice_function
+
         self._create_ddg_dict()
 
         # Sites and mutations for generating mutations
@@ -227,10 +242,10 @@ class GenotypeContainer:
         self._last_index = 0
         
         # Main public attributes of the class. 
-        self._genotypes = {0:Genotype(self._fc.ens,self._ddg_dict)}
+        self._genotypes = {0:Genotype(self._ens,self._ddg_dict)}
         self._trajectories = {0:[0]}
         self._mut_energies = {0:self._genotypes[0].mut_energy}
-        self._fitnesses = {0:self._fc.fitness(self._genotypes[0].mut_energy)}
+        self._fitnesses = {0:self._fitness_function(self._genotypes[0].mut_energy)}
 
     def _create_ddg_dict(self):
         """
@@ -239,7 +254,7 @@ class GenotypeContainer:
         ddg_dict["site"]["mut"] = np_array_with_mutant_effects_on_species
         """
 
-        species = self._fc.ens.species
+        species = self._ens.species
         for s in species:
             if s not in self._ddg_df.columns:
                 err = f"\nspecies {s} is not in ddg_df.\n\n"
@@ -258,7 +273,7 @@ class GenotypeContainer:
             for s in species:
                 mut_dict[s] = row[s]
             
-            self._ddg_dict[site][mut] = self._fc.ens.mut_dict_to_array(mut_dict)
+            self._ddg_dict[site][mut] = self._ens.mut_dict_to_array(mut_dict)
 
     
     def mutate(self,index):
@@ -287,8 +302,8 @@ class GenotypeContainer:
         new_genotype = self._genotypes[index].copy()
 
         # Randomly choose a site and mutation to introduce into the genotype
-        site = np.random.choice(self._possible_sites)
-        mutation = np.random.choice(self._mutations_at_sites[site])
+        site = self._choice_function(self._possible_sites)
+        mutation = self._choice_function(self._mutations_at_sites[site])
 
         # Introduce mutation
         new_genotype.mutate(site,mutation)
@@ -308,7 +323,7 @@ class GenotypeContainer:
         self._mut_energies[new_index] = new_genotype.mut_energy
 
         # Record the fitness of this genotype
-        self._fitnesses[new_index] = self._fc.fitness(new_genotype.mut_energy)
+        self._fitnesses[new_index] = self._fitness_function(new_genotype.mut_energy)
 
         return new_index
 
@@ -369,6 +384,12 @@ class GenotypeContainer:
         self._mut_energies = mut_energies
         self._fitnesses = fitnesses
 
+    def to_dict(self):
+        """
+        Return a json-able dictionary describing the fitness parameters.
+        """
+
+        return {}
 
     @property
     def df(self):
@@ -398,11 +419,11 @@ class GenotypeContainer:
 
         # Get mutation energies
         mut_energy_out = {}
-        for name in self._fc.ens.species:
+        for name in self._ens.species:
             mut_energy_out[name] = []
 
         for i in self._genotypes:
-            for j, name in enumerate(self._fc.ens.species):
+            for j, name in enumerate(self._ens.species):
                 mut_energy_out[name].append(self._mut_energies[i][j])
 
         for k in mut_energy_out:

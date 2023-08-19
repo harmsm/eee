@@ -5,8 +5,7 @@ from eee.ensemble import Ensemble
 import numpy as np
 import pandas as pd
 
-
-def test_Ensemble():
+def test_Ensemble(variable_types):
 
     ens = Ensemble()
     assert issubclass(type(ens),Ensemble)
@@ -14,6 +13,19 @@ def test_Ensemble():
     ens = Ensemble(R=1)
     assert ens._R == 1
 
+    bad = variable_types["not_floats_or_coercable"][:]
+    for v in variable_types["floats_or_coercable"]:
+        if float(v) <= 0:
+            bad.append(v)
+            continue
+        
+        Ensemble(R=v)
+    
+    for v in bad:
+        print(v,type(v),flush=True)
+        with pytest.raises(ValueError):
+            Ensemble(R=v)
+        
 
 def test_Ensemble_add_species(variable_types):
     
@@ -52,39 +64,39 @@ def test_Ensemble_add_species(variable_types):
     # observable argument type checking
     print("--- observable ---")
     for v in variable_types["bools"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",observable=v)
         assert ens._species["test"]["observable"] == bool(v)
 
     for v in variable_types["not_bools"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             ens.add_species(name="test",observable=v)
 
     # folded argument type checking
     print("--- folded ---")
     for v in variable_types["bools"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",folded=v)
         assert ens._species["test"]["folded"] == bool(v)
 
     for v in variable_types["not_bools"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             ens.add_species(name="test",folded=v)
 
     # dG0 argument type checking
     print("--- dG0 ---")
     for v in variable_types["floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",dG0=v)
         assert ens._species["test"]["dG0"] == float(v)
 
     for v in variable_types["not_floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         with pytest.raises(ValueError):
             ens.add_species(name="test",dG0=v)
@@ -92,12 +104,12 @@ def test_Ensemble_add_species(variable_types):
     # mu_dict argument type checking
     print("--- mu_dict ---")
     for v in variable_types["dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",mu_stoich=v)
 
     for v in variable_types["not_dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         # None is allowed
         if v is None:
@@ -440,219 +452,6 @@ def test_Ensemble__get_weights():
     assert np.isclose(norm_weights[0,2],np.exp(1+1.0)/Z)
     assert np.isclose(norm_weights[1,2],np.exp(-1)/Z)
 
-def test_load_mu_dict(variable_types):
-
-    # Two species. dG0. Add mu_dict perturbation
-    ens = Ensemble()
-    ens.add_species(name="test1",
-                    observable=False,
-                    folded=True,
-                    dG0=0,
-                    mu_stoich={"X":1})
-    ens.add_species(name="test2",
-                    observable=True,
-                    folded=False,
-                    dG0=1,
-                    mu_stoich={"Y":2})
-    
-    for v in variable_types["not_dict"]:
-        print(v,type(v))
-        with pytest.raises(ValueError):
-            ens.load_mu_dict(v)
-
-    assert not hasattr(ens,"_z_matrix")
-
-    # Just check one load -- wraps _create_z_matrix which we already test 
-    # extensively. 
-    ens.load_mu_dict(mu_dict={"X":np.array([0,0.5,1.0]),
-                              "Y":np.array([1,0.5,0.0])})
-    assert np.array_equal(ens._z_matrix.shape,(2,3))
-    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[-2 + 1,-1 + 1,0 + 1]])
-    assert np.array_equal(ens._obs_mask,[False,True])
-    assert np.array_equal(ens._not_obs_mask,[True,False])
-    assert np.array_equal(ens._folded_mask,[True,False])
-    assert np.array_equal(ens._unfolded_mask,[False,True])
-
-
-def test_mut_dict_to_array():
-
-    # Two species. 
-    ens = Ensemble(R=1)
-    ens.add_species(name="test1",
-                    observable=False,
-                    dG0=0,
-                    mu_stoich=None)
-    ens.add_species(name="test2",
-                    observable=False,
-                    dG0=0,
-                    mu_stoich=None)
-    
-    out_array = ens.mut_dict_to_array({"test1":1.0,"test2":2.0})
-    assert np.array_equal(out_array,[1,2])
-
-    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
-    assert np.array_equal(out_array,[2,1])
-
-    # Hack that should invert outputs. Never really happen in real life.
-    ens._species_list = ["test2","test1"]
-    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
-    assert np.array_equal(out_array,[1,2])
-
-def test_get_fx_obs_fast():
-
-    ens = Ensemble(R=1)
-    ens.add_species(name="test1",
-                    observable=False,
-                    folded=True,
-                    dG0=1,
-                    mu_stoich={"X":1})
-    ens.add_species(name="test2",
-                    observable=True,
-                    folded=False,
-                    dG0=0)
-    ens.add_species(name="test3",
-                    observable=True,
-                    folded=True,
-                    dG0=2)
-
-    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
-    T = np.ones(1,dtype=float)    
-
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
-    t1 = np.exp(-1)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted = [(t2 + t3)/Z]
-    t1 = np.exp(0)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted.append((t2 + t3)/Z)
-
-    assert np.array_equal(np.round(value,2),
-                          np.round(predicted,2))
-
-    t1 = np.exp(-1) 
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted = [(t1 + t3)/Z]
-    t1 = np.exp(0)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted.append((t1 + t3)/Z)
-
-    assert np.array_equal(np.round(fx_folded,2),
-                          np.round(predicted,2))
-
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
-    t1 = np.exp(-1)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted = [(t2 + t3)/Z]
-    t1 = np.exp(0)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted.append((t2 + t3)/Z)
-
-    assert np.array_equal(np.round(value,2),
-                          np.round(predicted,2))
-    
-    t1 = np.exp(-1)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted = [(t1 + t3)/Z]
-    t1 = np.exp(0)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    Z = t1 + t2 + t3
-    predicted.append((t1 + t3)/Z)
-
-    assert np.array_equal(np.round(fx_folded,2),
-                          np.round(predicted,2))
-
-
-def test_get_dG_obs_fast():
-
-    
-    ens = Ensemble(R=1)
-    ens.add_species(name="test1",
-                    observable=False,
-                    folded=True,
-                    dG0=1,
-                    mu_stoich={"X":1})
-    ens.add_species(name="test2",
-                    observable=True,
-                    folded=False,
-                    dG0=0)
-    ens.add_species(name="test3",
-                    observable=True,
-                    folded=True,
-                    dG0=2)
-
-    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
-    T = np.ones(1,dtype=float)    
-
-    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
-    t1 = np.exp(-1)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    predicted = [-np.log((t2 + t3)/t1)]
-
-    t1 = np.exp(0)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    predicted.append(-np.log((t2 + t3)/t1))
-
-    assert np.array_equal(np.round(value,2),
-                          np.round(predicted,2))
-    
-    t1 = np.exp(-1)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    predicted = [(t1 + t3)/(t1+t2+t3)]
-
-    t1 = np.exp(0)
-    t2 = np.exp(-0)
-    t3 = np.exp(-2)
-    predicted.append((t1 + t3)/(t1+t2+t3))
-
-    assert np.array_equal(np.round(fx_folded,2),
-                          np.round(predicted,2))
-    
-
-    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
-    t1 = np.exp(-1)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    predicted = [-np.log((t2 + t3)/t1)]
-
-    t1 = np.exp(0)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    predicted.append(-np.log((t2 + t3)/t1))
-
-    assert np.array_equal(np.round(value,2),
-                          np.round(predicted,2))
-
-    t1 = np.exp(-1)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    predicted = [(t1 + t3)/(t1+t2+t3)]
-
-    t1 = np.exp(0)
-    t2 = np.exp(1)
-    t3 = np.exp(-2)
-    predicted.append((t1 + t3)/(t1+t2+t3))
-
-    assert np.array_equal(np.round(fx_folded,2),
-                          np.round(predicted,2))
-
 def test_Ensemble_get_species_dG(variable_types):
 
     ens = Ensemble()
@@ -708,13 +507,13 @@ def test_Ensemble_get_species_dG(variable_types):
     # mut_energy argument type checking
     print("--- mut_energy ---")
     for v in variable_types["floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test")
         assert ens.get_species_dG(name="test",mut_energy=v) == float(v)
 
     for v in variable_types["not_floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test")
         with pytest.raises(ValueError):
@@ -723,14 +522,14 @@ def test_Ensemble_get_species_dG(variable_types):
     # mu_dict argument type checking
     print("--- mu_dict ---")
     for v in variable_types["dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test1")
         ens.add_species(name="test2",observable=True)
         ens.get_obs(mu_dict=v)
 
     for v in variable_types["not_dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         # none okay
         if v is None:
@@ -743,7 +542,7 @@ def test_Ensemble_get_species_dG(variable_types):
             ens.get_obs(mu_dict=v)
 
     for v in variable_types["float_value_or_iter"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         
         if hasattr(v,"__iter__") and len(v) == 0:
             continue
@@ -762,7 +561,7 @@ def test_Ensemble_get_species_dG(variable_types):
     not_allowed.append(pd.DataFrame({"X":[1,2,3]}))
 
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
     
         mu_dict = {"X":v}
         ens = Ensemble()
@@ -1033,14 +832,14 @@ def test_Ensemble_get_obs(variable_types):
     # mu_dict argument type checking
     print("--- mu_dict ---")
     for v in variable_types["dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test1")
         ens.add_species(name="test2",observable=True)
         ens.get_obs(mu_dict=v)
 
     for v in variable_types["not_dict"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         # none okay
         if v is None:
@@ -1053,7 +852,7 @@ def test_Ensemble_get_obs(variable_types):
             ens.get_obs(mu_dict=v)
 
     for v in variable_types["float_value_or_iter"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         
         if hasattr(v,"__iter__") and len(v) == 0:
             continue
@@ -1072,7 +871,7 @@ def test_Ensemble_get_obs(variable_types):
     not_allowed.append(pd.DataFrame({"X":[1,2,3]}))
 
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
     
         mu_dict = {"X":v}
         ens = Ensemble()
@@ -1083,7 +882,7 @@ def test_Ensemble_get_obs(variable_types):
 
     print("--- mut_energy ---")
     for v in [{},{"test1":1},{"test2":1},{"test1":1,"test2":1}]: 
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         ens = Ensemble()
         ens.add_species(name="test1")
@@ -1092,7 +891,7 @@ def test_Ensemble_get_obs(variable_types):
 
     not_allowed = variable_types["not_dict"]
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         if v is None:
             continue
 
@@ -1103,7 +902,7 @@ def test_Ensemble_get_obs(variable_types):
             ens.get_obs(mut_energy=v)
 
     for v in variable_types["floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         mut_energy = {"test1":v}
 
         ens = Ensemble()
@@ -1113,7 +912,7 @@ def test_Ensemble_get_obs(variable_types):
     
 
     for v in variable_types["not_floats_or_coercable"]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
         mut_energy = {"test1":v}
 
         ens = Ensemble()
@@ -1125,7 +924,7 @@ def test_Ensemble_get_obs(variable_types):
 
     print("--- T ---")
     for v in [1,"1",1.0]:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         ens = Ensemble()
         ens.add_species(name="test1")
@@ -1136,10 +935,271 @@ def test_Ensemble_get_obs(variable_types):
     not_allowed.append(0.0)
     not_allowed.append(-1.0)
     for v in not_allowed:
-        print(v,type(v))
+        print(v,type(v),flush=True)
 
         ens = Ensemble()
         ens.add_species(name="test1")
         ens.add_species(name="test2",observable=True)
         with pytest.raises(ValueError):
             ens.get_obs(T=v)
+
+
+def test_load_mu_dict(variable_types):
+
+    # Two species. dG0. Add mu_dict perturbation
+    ens = Ensemble()
+    ens.add_species(name="test1",
+                    observable=False,
+                    folded=True,
+                    dG0=0,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    folded=False,
+                    dG0=1,
+                    mu_stoich={"Y":2})
+    
+    for v in variable_types["not_dict"]:
+        print(v,type(v),flush=True)
+        with pytest.raises(ValueError):
+            ens.load_mu_dict(v)
+
+    assert not hasattr(ens,"_z_matrix")
+
+    # Just check one load -- wraps _create_z_matrix which we already test 
+    # extensively. 
+    ens.load_mu_dict(mu_dict={"X":np.array([0,0.5,1.0]),
+                              "Y":np.array([1,0.5,0.0])})
+    assert np.array_equal(ens._z_matrix.shape,(2,3))
+    assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[-2 + 1,-1 + 1,0 + 1]])
+    assert np.array_equal(ens._obs_mask,[False,True])
+    assert np.array_equal(ens._not_obs_mask,[True,False])
+    assert np.array_equal(ens._folded_mask,[True,False])
+    assert np.array_equal(ens._unfolded_mask,[False,True])
+
+
+def test_mut_dict_to_array():
+
+    # Two species. 
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    ens.add_species(name="test2",
+                    observable=False,
+                    dG0=0,
+                    mu_stoich=None)
+    
+    out_array = ens.mut_dict_to_array({"test1":1.0,"test2":2.0})
+    assert np.array_equal(out_array,[1,2])
+
+    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
+    assert np.array_equal(out_array,[2,1])
+
+    # Hack that should invert outputs. Never really happen in real life.
+    ens._species_list = ["test2","test1"]
+    out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
+    assert np.array_equal(out_array,[1,2])
+
+def test_get_fx_obs_fast():
+
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    folded=True,
+                    dG0=1,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    folded=False,
+                    dG0=0)
+    ens.add_species(name="test3",
+                    observable=True,
+                    folded=True,
+                    dG0=2)
+
+    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    T = np.ones(1,dtype=float)    
+
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
+    t1 = np.exp(-1)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t2 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t2 + t3)/Z)
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+    t1 = np.exp(-1) 
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t1 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t1 + t3)/Z)
+
+    assert np.array_equal(np.round(fx_folded,2),
+                          np.round(predicted,2))
+
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t2 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t2 + t3)/Z)
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+    
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted = [(t1 + t3)/Z]
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    Z = t1 + t2 + t3
+    predicted.append((t1 + t3)/Z)
+
+    assert np.array_equal(np.round(fx_folded,2),
+                          np.round(predicted,2))
+
+
+def test_get_dG_obs_fast():
+
+    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    folded=True,
+                    dG0=1,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=True,
+                    folded=False,
+                    dG0=0)
+    ens.add_species(name="test3",
+                    observable=True,
+                    folded=True,
+                    dG0=2)
+
+    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    T = np.ones(1,dtype=float)    
+
+    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
+    t1 = np.exp(-1)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted = [-np.log((t2 + t3)/t1)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted.append(-np.log((t2 + t3)/t1))
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+    
+    t1 = np.exp(-1)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted = [(t1 + t3)/(t1+t2+t3)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(-0)
+    t3 = np.exp(-2)
+    predicted.append((t1 + t3)/(t1+t2+t3))
+
+    assert np.array_equal(np.round(fx_folded,2),
+                          np.round(predicted,2))
+    
+
+    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted = [-np.log((t2 + t3)/t1)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted.append(-np.log((t2 + t3)/t1))
+
+    assert np.array_equal(np.round(value,2),
+                          np.round(predicted,2))
+
+    t1 = np.exp(-1)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted = [(t1 + t3)/(t1+t2+t3)]
+
+    t1 = np.exp(0)
+    t2 = np.exp(1)
+    t3 = np.exp(-2)
+    predicted.append((t1 + t3)/(t1+t2+t3))
+
+    assert np.array_equal(np.round(fx_folded,2),
+                          np.round(predicted,2))
+
+def test_Ensemble_to_dict():
+
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=False,
+                    folded=True,
+                    dG0=1,
+                    mu_stoich={"X":1})
+    
+    out = ens.to_dict()
+    assert out["R"] == 1
+    assert len(out["ens"]) == 1
+    assert out["ens"]["test1"]["observable"] == False
+    assert out["ens"]["test1"]["folded"] == True
+    assert out["ens"]["test1"]["dG0"] == 1
+    assert len(out["ens"]["test1"]["mu_stoich"]) == 1
+    assert out["ens"]["test1"]["mu_stoich"]["X"] == 1
+
+def test_Ensemble_get_observable_function(variable_types):
+
+    ens = Ensemble(R=1)
+    assert ens.get_observable_function("fx_obs") == ens.get_fx_obs_fast
+    assert ens.get_observable_function("dG_obs") == ens.get_dG_obs_fast
+
+    for v in variable_types["everything"]:
+        print(v,type(v),flush=True)
+        with pytest.raises(ValueError):
+            ens.get_observable_function(v)
+
+def test_Ensemble_species():
+
+    ens = Ensemble(R=1)
+    assert len(ens.species) == 0
+    ens.add_species("test1")
+    ens.add_species("test2")
+
+    assert np.array_equal(ens.species,["test1","test2"])
+
+def test_Ensemble_mu_list():
+    
+    ens = Ensemble(R=1)
+    assert len(ens.mu_list) == 0
+    ens.add_species("test1",mu_stoich={"X":1})
+    ens.add_species("test2",mu_stoich={"Y":1})
+
+    assert np.array_equal(ens.mu_list,["X","Y"])
