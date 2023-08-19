@@ -72,6 +72,21 @@ def test_SimulationContainer_load_json(sim_json,test_ddg,tmpdir):
 
     with open(sim_json["lac.json"]) as f:
         template_json = json.load(f)
+
+    test_json = copy.deepcopy(template_json)
+    test_json.pop("calc_type")
+    with open('test.json','w') as f:
+        json.dump(test_json,f)
+    with pytest.raises(ValueError):
+        sm = load_json("test.json")
+    
+    test_json = copy.deepcopy(template_json)
+    test_json.pop("calc_type")
+    test_json["calc_type"] = "not_a_real_calc"
+    with open('test.json','w') as f:
+        json.dump(test_json,f)
+    with pytest.raises(ValueError):
+        sm = load_json("test.json")
     
     test_json = copy.deepcopy(template_json)
     test_json.pop("ens")

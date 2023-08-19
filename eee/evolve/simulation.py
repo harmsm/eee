@@ -50,6 +50,21 @@ def load_json(json_file,use_stored_seed=False):
     with open(json_file) as f:
         run = json.load(f)
     
+    if "calc_type" not in run:
+        err = "\njson must have 'calc_type' key in top level that defines then\n"
+        err += "calculation being done.\n\n"
+        raise ValueError(err)
+    calc_type = run["calc_type"]
+
+    allowable_calcs = {"wright_fisher":SimulationContainer}
+    if not issubclass(type(calc_type),str) or calc_type not in allowable_calcs:
+        err = f"\ncalc_type ({calc_type}) is not recognized. calc_type should\n"
+        err += "be one of:\n"
+        for a in allowable_calcs:
+            err += f"    {a}\n"
+        err += "\n"
+        raise ValueError(err)
+
     # **********************************************************************
     # Goes into Ensemble
     # **********************************************************************
