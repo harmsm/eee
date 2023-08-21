@@ -1,11 +1,3 @@
-./yo.py:4:1: E302 expected 2 blank lines, found 1
-./yo.py:7:1: E302 expected 2 blank lines, found 1
-./yo.py:10:1: E302 expected 2 blank lines, found 1
-./yo.py:13:1: E302 expected 2 blank lines, found 1
-./yo.py:14:1: W293 blank line contains whitespace
-./yo.py:28:1: W293 blank line contains whitespace
-./yo.py:29:1: W293 blank line contains whitespace
-./yo.py:31:1: E303 too many blank lines (3)
 ./setup.py:30:22: E231 missing whitespace after ','
 ./setup.py:36:22: E231 missing whitespace after ':'
 ./setup.py:40:16: E261 at least two spaces before inline comment
@@ -1114,9 +1106,6 @@
 ./tests/evolve/test_analysis.py:12:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_analysis.py:15:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_analysis.py:16:9: W292 no newline at end of file
-./tests/evolve/test_simulate_tree.py:2:1: F401 'eee.evolve.simulate_tree.simulate_tree' imported but unused
-./tests/evolve/test_simulate_tree.py:4:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_simulate_tree.py:5:9: W292 no newline at end of file
 ./tests/evolve/test_wright_fisher.py:16:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/test_wright_fisher.py:16:41: E231 missing whitespace after ','
 ./tests/evolve/test_wright_fisher.py:17:1: W293 blank line contains whitespace
@@ -1186,165 +1175,168 @@
 ./tests/evolve/test_wright_fisher.py:525:43: W291 trailing whitespace
 ./tests/evolve/test_wright_fisher.py:526:40: W291 trailing whitespace
 ./tests/evolve/test_wright_fisher.py:529:5: E303 too many blank lines (2)
-./tests/evolve/test_simulation.py:18:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_simulation.py:20:53: W291 trailing whitespace
-./tests/evolve/test_simulation.py:22:24: E261 at least two spaces before inline comment
-./tests/evolve/test_simulation.py:23:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:34:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:43:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:52:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:60:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:73:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:78:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:92:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:93:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:96:31: E128 continuation line under-indented for visual indent
-./tests/evolve/test_simulation.py:97:31: E128 continuation line under-indented for visual indent
-./tests/evolve/test_simulation.py:99:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:114:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:115:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:116:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:122:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:134:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:137:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:138:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:139:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:140:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:146:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:158:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:160:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:161:29: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:162:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:163:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:164:22: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:170:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:184:5: E303 too many blank lines (2)
-./tests/evolve/test_simulation.py:185:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:186:33: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:187:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:193:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:202:41: E127 continuation line over-indented for visual indent
-./tests/evolve/test_simulation.py:203:41: E127 continuation line over-indented for visual indent
-./tests/evolve/test_simulation.py:207:48: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:207:57: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:212:36: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:217:22: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:217:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:217:32: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:218:42: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:220:51: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/evolve/test_simulation.py:221:47: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/evolve/test_simulation.py:225:48: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/evolve/test_simulation.py:226:44: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/evolve/test_simulation.py:230:50: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/evolve/test_simulation.py:231:46: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/evolve/test_simulation.py:232:59: E231 missing whitespace after ':'
-./tests/evolve/test_simulation.py:235:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/evolve/test_simulation.py:236:51: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/evolve/test_simulation.py:239:33: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:241:49: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:241:61: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:245:37: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/evolve/test_simulation.py:247:36: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:247:44: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:248:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:249:32: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:250:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:252:40: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:257:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:267:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:268:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:271:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:275:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:276:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:279:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:282:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:283:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:289:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:290:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:296:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:297:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:303:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:304:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:307:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:310:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:311:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:317:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:318:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:320:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/evolve/test_simulation.py:324:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:325:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:331:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:332:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:334:36: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:334:44: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:337:5: E303 too many blank lines (2)
-./tests/evolve/test_simulation.py:339:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:340:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:346:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:347:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:353:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:354:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:360:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:361:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:367:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:368:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:374:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:375:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:381:26: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:382:28: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:383:31: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:389:1: C901 'test_SimulationContainer' is too complex (20)
-./tests/evolve/test_simulation.py:389:43: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:398:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:398:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:413:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:419:30: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:422:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:422:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:440:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:440:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:458:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:458:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:476:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:476:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:491:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:505:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:508:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:508:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:524:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:541:30: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:546:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:546:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:564:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:570:9: E722 do not use bare 'except'
-./tests/evolve/test_simulation.py:573:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:573:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:591:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:597:9: E722 do not use bare 'except'
-./tests/evolve/test_simulation.py:603:16: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:603:24: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:623:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:637:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:638:37: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:640:38: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:656:37: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:658:38: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:659:41: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:661:35: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:662:35: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:666:1: E303 too many blank lines (3)
-./tests/evolve/test_simulation.py:666:47: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:677:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:691:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:693:46: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:694:46: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:695:46: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:696:46: E231 missing whitespace after ','
-./tests/evolve/test_simulation.py:697:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:700:1: E302 expected 2 blank lines, found 1
-./tests/evolve/test_simulation.py:701:1: W293 blank line contains whitespace
-./tests/evolve/test_simulation.py:720:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:18:53: W291 trailing whitespace
+./tests/evolve/simulation/test_load_json.py:20:24: E261 at least two spaces before inline comment
+./tests/evolve/simulation/test_load_json.py:21:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:32:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:41:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:50:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:58:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:71:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:76:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:90:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:91:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:94:31: E128 continuation line under-indented for visual indent
+./tests/evolve/simulation/test_load_json.py:95:31: E128 continuation line under-indented for visual indent
+./tests/evolve/simulation/test_load_json.py:97:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:112:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:113:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:114:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:120:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:132:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:135:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:136:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:137:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:138:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:144:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:156:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:158:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:159:29: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:160:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:161:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:162:22: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:168:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:182:5: E303 too many blank lines (2)
+./tests/evolve/simulation/test_load_json.py:183:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:184:33: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:185:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:191:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:200:41: E127 continuation line over-indented for visual indent
+./tests/evolve/simulation/test_load_json.py:201:41: E127 continuation line over-indented for visual indent
+./tests/evolve/simulation/test_load_json.py:205:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:205:37: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:210:36: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:215:22: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:215:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:215:32: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:216:42: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:218:51: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/evolve/simulation/test_load_json.py:219:47: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/evolve/simulation/test_load_json.py:223:48: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/evolve/simulation/test_load_json.py:224:44: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/evolve/simulation/test_load_json.py:228:50: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/evolve/simulation/test_load_json.py:229:46: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/evolve/simulation/test_load_json.py:230:59: E231 missing whitespace after ':'
+./tests/evolve/simulation/test_load_json.py:233:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/evolve/simulation/test_load_json.py:234:51: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/evolve/simulation/test_load_json.py:237:33: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:239:49: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:239:61: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:243:37: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/evolve/simulation/test_load_json.py:245:36: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:245:44: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:246:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:247:32: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:248:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:250:40: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:255:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:265:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:266:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:269:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:273:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:274:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:277:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:280:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:281:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:287:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:288:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:294:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:295:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:301:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:302:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:305:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_load_json.py:308:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:309:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:315:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:316:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:318:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/evolve/simulation/test_load_json.py:322:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:323:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:329:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:330:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:332:36: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:332:44: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:335:5: E303 too many blank lines (2)
+./tests/evolve/simulation/test_load_json.py:337:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:338:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:344:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:345:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:351:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:352:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:358:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:359:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:365:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:366:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:372:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:373:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:379:26: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:380:28: E231 missing whitespace after ','
+./tests/evolve/simulation/test_load_json.py:381:31: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulate_tree.py:2:1: F401 'eee.evolve.simulation.simulate_tree.simulate_tree' imported but unused
+./tests/evolve/simulation/test_simulate_tree.py:4:1: E302 expected 2 blank lines, found 1
+./tests/evolve/simulation/test_simulate_tree.py:5:9: W292 no newline at end of file
+./tests/evolve/simulation/test_simulation_container.py:11:1: C901 'test_SimulationContainer' is too complex (20)
+./tests/evolve/simulation/test_simulation_container.py:11:1: E302 expected 2 blank lines, found 1
+./tests/evolve/simulation/test_simulation_container.py:11:43: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:20:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:20:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:35:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:41:30: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:44:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:44:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:62:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:62:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:80:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:80:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:98:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:98:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:113:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:127:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:130:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:130:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:146:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:163:30: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:168:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:168:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:186:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:192:9: E722 do not use bare 'except'
+./tests/evolve/simulation/test_simulation_container.py:195:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:195:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:213:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:219:9: E722 do not use bare 'except'
+./tests/evolve/simulation/test_simulation_container.py:225:16: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:225:24: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:245:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:259:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:260:37: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:262:38: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:278:37: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:280:38: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:281:41: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:283:35: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:284:35: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:288:1: E303 too many blank lines (3)
+./tests/evolve/simulation/test_simulation_container.py:288:47: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:299:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:313:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:315:46: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:316:46: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:317:46: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:318:46: E231 missing whitespace after ','
+./tests/evolve/simulation/test_simulation_container.py:319:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:322:1: E302 expected 2 blank lines, found 1
+./tests/evolve/simulation/test_simulation_container.py:323:1: W293 blank line contains whitespace
+./tests/evolve/simulation/test_simulation_container.py:342:1: W293 blank line contains whitespace
 ./tests/evolve/fitness/test_evolve_fitness___init__.py:1:1: W391 blank line at end of file
 ./tests/evolve/fitness/test_ff.py:5:1: E302 expected 2 blank lines, found 1
 ./tests/evolve/fitness/test_ff.py:9:1: E302 expected 2 blank lines, found 1
@@ -2721,95 +2713,6 @@
 ./eee/io/load_ddg.py:66:18: E231 missing whitespace after ','
 ./eee/io/load_ddg.py:67:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:70:1: W391 blank line at end of file
-./eee/evolve/simulation.py:24:36: E231 missing whitespace after ','
-./eee/evolve/simulation.py:24:47: E231 missing whitespace after ','
-./eee/evolve/simulation.py:29:73: W291 trailing whitespace
-./eee/evolve/simulation.py:35:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:39:70: W291 trailing whitespace
-./eee/evolve/simulation.py:40:31: W291 trailing whitespace
-./eee/evolve/simulation.py:58:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:63:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:94:41: W291 trailing whitespace
-./eee/evolve/simulation.py:95:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:98:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:99:75: W291 trailing whitespace
-./eee/evolve/simulation.py:100:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:105:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:108:1: E302 expected 2 blank lines, found 1
-./eee/evolve/simulation.py:108:24: E231 missing whitespace after ','
-./eee/evolve/simulation.py:110:70: W291 trailing whitespace
-./eee/evolve/simulation.py:112:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:115:53: W291 trailing whitespace
-./eee/evolve/simulation.py:118:73: W291 trailing whitespace
-./eee/evolve/simulation.py:119:50: W291 trailing whitespace
-./eee/evolve/simulation.py:120:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:129:73: W291 trailing whitespace
-./eee/evolve/simulation.py:130:71: W291 trailing whitespace
-./eee/evolve/simulation.py:131:18: W291 trailing whitespace
-./eee/evolve/simulation.py:137:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:144:39: E231 missing whitespace after ':'
-./eee/evolve/simulation.py:145:38: E231 missing whitespace after ','
-./eee/evolve/simulation.py:154:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:156:27: W291 trailing whitespace
-./eee/evolve/simulation.py:161:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:169:49: W291 trailing whitespace
-./eee/evolve/simulation.py:172:26: E231 missing whitespace after ','
-./eee/evolve/simulation.py:173:36: E231 missing whitespace after ','
-./eee/evolve/simulation.py:179:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:180:60: W291 trailing whitespace
-./eee/evolve/simulation.py:189:36: W291 trailing whitespace
-./eee/evolve/simulation.py:194:1: E303 too many blank lines (3)
-./eee/evolve/simulation.py:196:76: W291 trailing whitespace
-./eee/evolve/simulation.py:198:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:216:39: W291 trailing whitespace
-./eee/evolve/simulation.py:220:27: W291 trailing whitespace
-./eee/evolve/simulation.py:223:81: W291 trailing whitespace
-./eee/evolve/simulation.py:227:74: W291 trailing whitespace
-./eee/evolve/simulation.py:229:64: W291 trailing whitespace
-./eee/evolve/simulation.py:232:80: W291 trailing whitespace
-./eee/evolve/simulation.py:238:46: W291 trailing whitespace
-./eee/evolve/simulation.py:243:65: W291 trailing whitespace
-./eee/evolve/simulation.py:251:64: W291 trailing whitespace
-./eee/evolve/simulation.py:253:73: W291 trailing whitespace
-./eee/evolve/simulation.py:257:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:260:29: W291 trailing whitespace
-./eee/evolve/simulation.py:263:43: E231 missing whitespace after ','
-./eee/evolve/simulation.py:265:65: W291 trailing whitespace
-./eee/evolve/simulation.py:274:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:284:57: W291 trailing whitespace
-./eee/evolve/simulation.py:289:51: W291 trailing whitespace
-./eee/evolve/simulation.py:293:79: W291 trailing whitespace
-./eee/evolve/simulation.py:302:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:303:80: W291 trailing whitespace
-./eee/evolve/simulation.py:308:71: W291 trailing whitespace
-./eee/evolve/simulation.py:311:17: E231 missing whitespace after ','
-./eee/evolve/simulation.py:311:34: E231 missing whitespace after ','
-./eee/evolve/simulation.py:314:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:336:78: W291 trailing whitespace
-./eee/evolve/simulation.py:340:43: E231 missing whitespace after ':'
-./eee/evolve/simulation.py:341:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:343:22: E222 multiple spaces after operator
-./eee/evolve/simulation.py:350:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:354:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:355:5: E303 too many blank lines (2)
-./eee/evolve/simulation.py:370:19: W291 trailing whitespace
-./eee/evolve/simulation.py:373:5: E303 too many blank lines (2)
-./eee/evolve/simulation.py:373:24: E231 missing whitespace after ','
-./eee/evolve/simulation.py:373:34: E231 missing whitespace after ','
-./eee/evolve/simulation.py:375:64: W291 trailing whitespace
-./eee/evolve/simulation.py:397:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:407:1: W293 blank line contains whitespace
-./eee/evolve/simulation.py:410:77: W291 trailing whitespace
-./eee/evolve/simulation.py:411:23: W291 trailing whitespace
-./eee/evolve/simulation.py:414:35: W291 trailing whitespace
-./eee/evolve/simulation.py:416:33: W291 trailing whitespace
-./eee/evolve/simulation.py:419:22: W291 trailing whitespace
-./eee/evolve/simulation.py:420:41: E231 missing whitespace after ','
-./eee/evolve/simulation.py:423:29: W291 trailing whitespace
-./eee/evolve/simulation.py:426:22: W291 trailing whitespace
-./eee/evolve/simulation.py:427:28: E231 missing whitespace after ','
-./eee/evolve/simulation.py:428:26: E231 missing whitespace after ','
-./eee/evolve/simulation.py:428:28: E231 missing whitespace after ','
 ./eee/evolve/analysis.py:2:77: W291 trailing whitespace
 ./eee/evolve/analysis.py:9:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/analysis.py:17:30: E231 missing whitespace after ','
@@ -2946,41 +2849,9 @@
 ./eee/evolve/__init__.py:5:1: F401 '.fitness.fitness_function' imported but unused
 ./eee/evolve/__init__.py:6:1: F401 '.fitness.ff_list' imported but unused
 ./eee/evolve/__init__.py:8:1: F401 '.genotype.GenotypeContainer' imported but unused
-./eee/evolve/__init__.py:9:1: F401 '.simulation.SimulationContainer' imported but unused
-./eee/evolve/__init__.py:11:1: F401 '.simulate_tree.simulate_tree' imported but unused
+./eee/evolve/__init__.py:10:1: F401 '.simulation.SimulationContainer' imported but unused
+./eee/evolve/__init__.py:11:1: F401 '.simulation.load_json' imported but unused
 ./eee/evolve/__init__.py:12:1: W391 blank line at end of file
-./eee/evolve/simulate_tree.py:2:62: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:25:1: E302 expected 2 blank lines, found 1
-./eee/evolve/simulate_tree.py:31:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:34:77: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:37:58: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:41:76: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:42:35: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:46:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:52:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:59:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:80:5: E303 too many blank lines (2)
-./eee/evolve/simulate_tree.py:80:29: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:85:18: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:93:75: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:102:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:103:76: W291 trailing whitespace
-./eee/evolve/simulate_tree.py:107:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:134:39: E231 missing whitespace after ','
-./eee/evolve/simulate_tree.py:137:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:139:1: W293 blank line contains whitespace
-./eee/evolve/simulate_tree.py:146:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:147:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:148:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:149:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:150:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:156:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:157:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:158:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:159:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:160:33: E128 continuation line under-indented for visual indent
-./eee/evolve/simulate_tree.py:164:5: E303 too many blank lines (2)
-./eee/evolve/simulate_tree.py:164:20: W292 no newline at end of file
 ./eee/evolve/wright_fisher.py:23:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/wright_fisher.py:29:1: W293 blank line contains whitespace
 ./eee/evolve/wright_fisher.py:42:58: E231 missing whitespace after ','
@@ -3057,6 +2928,132 @@
 ./eee/evolve/wright_fisher.py:307:1: W293 blank line contains whitespace
 ./eee/evolve/wright_fisher.py:310:1: W293 blank line contains whitespace
 ./eee/evolve/wright_fisher.py:314:1: W293 blank line contains whitespace
+./eee/evolve/simulation/__init__.py:2:1: F401 '.load_json.load_json' imported but unused
+./eee/evolve/simulation/__init__.py:3:1: F401 '.simulation_container.SimulationContainer' imported but unused
+./eee/evolve/simulation/__init__.py:3:54: W292 no newline at end of file
+./eee/evolve/simulation/simulation_container.py:8:1: F401 'eee.io.load_ddg' imported but unused
+./eee/evolve/simulation/simulation_container.py:23:76: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:25:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:43:39: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:47:27: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:50:81: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:54:74: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:56:64: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:59:80: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:65:46: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:70:65: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:78:64: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:80:73: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:84:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:87:29: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:90:43: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:92:65: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:101:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:111:57: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:116:51: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:120:79: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:129:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:130:80: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:135:71: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:138:17: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:138:34: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:141:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:163:78: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:167:43: E231 missing whitespace after ':'
+./eee/evolve/simulation/simulation_container.py:168:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:170:22: E222 multiple spaces after operator
+./eee/evolve/simulation/simulation_container.py:177:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:181:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:182:5: E303 too many blank lines (2)
+./eee/evolve/simulation/simulation_container.py:197:19: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:200:5: E303 too many blank lines (2)
+./eee/evolve/simulation/simulation_container.py:200:24: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:200:34: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:202:64: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:224:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:234:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulation_container.py:237:77: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:238:23: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:241:35: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:243:33: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:246:22: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:247:41: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:250:29: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:253:22: W291 trailing whitespace
+./eee/evolve/simulation/simulation_container.py:254:28: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:255:26: E231 missing whitespace after ','
+./eee/evolve/simulation/simulation_container.py:255:28: E231 missing whitespace after ','
+./eee/evolve/simulation/simulate_tree.py:2:62: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:25:1: E302 expected 2 blank lines, found 1
+./eee/evolve/simulation/simulate_tree.py:31:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:34:77: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:37:58: E231 missing whitespace after ','
+./eee/evolve/simulation/simulate_tree.py:41:76: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:42:35: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:46:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:52:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:59:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:80:5: E303 too many blank lines (2)
+./eee/evolve/simulation/simulate_tree.py:80:29: E231 missing whitespace after ','
+./eee/evolve/simulation/simulate_tree.py:85:18: E231 missing whitespace after ','
+./eee/evolve/simulation/simulate_tree.py:93:75: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:102:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:103:76: W291 trailing whitespace
+./eee/evolve/simulation/simulate_tree.py:107:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:134:39: E231 missing whitespace after ','
+./eee/evolve/simulation/simulate_tree.py:137:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:139:1: W293 blank line contains whitespace
+./eee/evolve/simulation/simulate_tree.py:146:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:147:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:148:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:149:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:150:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:156:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:157:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:158:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:159:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:160:33: E128 continuation line under-indented for visual indent
+./eee/evolve/simulation/simulate_tree.py:164:5: E303 too many blank lines (2)
+./eee/evolve/simulation/simulate_tree.py:164:20: W292 no newline at end of file
+./eee/evolve/simulation/load_json.py:11:36: E231 missing whitespace after ':'
+./eee/evolve/simulation/load_json.py:13:1: E302 expected 2 blank lines, found 1
+./eee/evolve/simulation/load_json.py:13:36: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:13:47: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:18:73: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:24:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:28:70: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:29:31: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:47:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:52:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:83:41: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:84:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:87:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:88:75: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:89:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:94:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:97:1: E302 expected 2 blank lines, found 1
+./eee/evolve/simulation/load_json.py:97:24: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:99:70: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:101:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:104:53: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:107:73: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:108:50: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:109:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:118:73: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:119:71: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:120:18: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:126:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:133:38: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:142:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:144:27: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:149:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:157:49: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:160:26: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:161:36: E231 missing whitespace after ','
+./eee/evolve/simulation/load_json.py:167:1: W293 blank line contains whitespace
+./eee/evolve/simulation/load_json.py:168:60: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:177:36: W291 trailing whitespace
+./eee/evolve/simulation/load_json.py:179:1: W391 blank line at end of file
 ./eee/evolve/fitness/fitness_container.py:2:82: W291 trailing whitespace
 ./eee/evolve/fitness/fitness_container.py:18:1: E302 expected 2 blank lines, found 1
 ./eee/evolve/fitness/fitness_container.py:23:60: W291 trailing whitespace
@@ -3525,20 +3522,20 @@
 5     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-140   E302 expected 2 blank lines, found 1
-64    E303 too many blank lines (2)
+137   E302 expected 2 blank lines, found 1
+62    E303 too many blank lines (2)
 2     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 2     E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 25    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 3     E722 do not use bare 'except'
-40    F401 'glob' imported but unused
+43    F401 'glob' imported but unused
 6     F541 f-string is missing placeholders
 6     F841 local variable 'value' is assigned to but never used
 427   W291 trailing whitespace
-28    W292 no newline at end of file
-477   W293 blank line contains whitespace
-8     W391 blank line at end of file
+29    W292 no newline at end of file
+474   W293 blank line contains whitespace
+9     W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-3515
+3512

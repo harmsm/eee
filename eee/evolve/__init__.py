@@ -6,7 +6,7 @@ from .fitness import fitness_function
 from .fitness import ff_list
 
 from .genotype import GenotypeContainer
-from .simulation import SimulationContainer
 
-from .simulate_tree import simulate_tree
+from .simulation import SimulationContainer
+from .simulation import load_json
 

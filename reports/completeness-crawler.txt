@@ -40,6 +40,11 @@ FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_to_dict
 FOUND tests.evolve.fitness.test_fitness_function.test_fitness_function
 FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test__construct_ff_dicts
 FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test_map_fitness_fcn_to_string
+FOUND tests.evolve.simulation.test_load_json.test__validate_calc_kwargs
+FOUND tests.evolve.simulation.test_load_json.test_load_json
+FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer
+FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer_run
+FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer_to_dict
 FOUND tests.evolve.test_genotype.test_Genotype
 FOUND tests.evolve.test_genotype.test_GenotypeContainer
 FOUND tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
@@ -57,10 +62,6 @@ FOUND tests.evolve.test_genotype.test_Genotype_mutate
 FOUND tests.evolve.test_genotype.test_Genotype_mutations
 FOUND tests.evolve.test_genotype.test_Genotype_mutations_accumulated
 FOUND tests.evolve.test_genotype.test_Genotype_sites
-FOUND tests.evolve.test_simulation.test_SimulationContainer
-FOUND tests.evolve.test_simulation.test_SimulationContainer_run
-FOUND tests.evolve.test_simulation.test_SimulationContainer_to_dict
-FOUND tests.evolve.test_simulation.test__validate_calc_kwargs
 FOUND tests.evolve.test_wright_fisher.test__write_outputs
 FOUND tests.evolve.test_wright_fisher.test_wright_fisher
 FOUND tests.io.test_load_ddg.test_load_ddg
@@ -84,12 +85,12 @@ FOUND tests.test_ensemble.test_Ensemble_species
 FOUND tests.test_ensemble.test_Ensemble_to_dict
 FAKE tests._private.test_wrap.test_IterFromFile
 FAKE tests._private.test_wrap.test_IterFromFile___call__
+FAKE tests.evolve.simulation.test_simulate_tree.test_simulate_tree
+FAKE tests.evolve.simulation.test_simulation_container.test_SimulationContainer_write_json
 FAKE tests.evolve.test_analysis.test_extract_alignment
 FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
 FAKE tests.evolve.test_analysis.test_get_num_accumulated_mutations
-FAKE tests.evolve.test_simulate_tree.test_simulate_tree
-FAKE tests.evolve.test_simulation.test_SimulationContainer_write_json
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test_clean_structure
@@ -103,9 +104,8 @@ MISSING tests._private.test_logger.test_log
 MISSING tests.bin.test_eee-simulate-evolution.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.fitness.test_ff.test_ff_example_function
+MISSING tests.evolve.simulation.test_simulate_tree.test__simulate_branch
 MISSING tests.evolve.test_genotype.test_GenotypeContainer_to_dict
-MISSING tests.evolve.test_simulate_tree.test__simulate_branch
-MISSING tests.evolve.test_simulation.test_load_json
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
 MISSING tests.test_ensemble.test_Ensemble_get_dG_obs_fast
@@ -117,7 +117,6 @@ MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
 FOUND & EXTRA tests.evolve.test_genotype.test_to_dict
-FOUND & EXTRA tests.evolve.test_simulation.test_SimulationContainer_load_json
 FOUND & EXTRA tests.test_ensemble.test_get_dG_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_get_fx_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_load_mu_dict
