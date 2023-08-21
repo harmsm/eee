@@ -10,10 +10,12 @@ import inspect
 
 _ALLOWABLE_CALCS = {"wright_fisher":SimulationContainer}
 
-def _validate_calc_kwargs(calc_type,calc_class,kwargs):
+def _validate_calc_kwargs(calc_type,
+                          calc_function,
+                          kwargs):
     """
     Make sure the kwargs defined in the json file match the arguments for the
-    calc_class. This does not check the types of the arguments (that is done
+    calc_function. This does not check the types of the arguments (that is done
     within each class) but does make sure we have the correct argument names.
     It will generate a human-readable error message if the arguments are 
     not correct.
@@ -23,7 +25,7 @@ def _validate_calc_kwargs(calc_type,calc_class,kwargs):
     kwargs_found = set(list(kwargs.keys()))
         
     # Get signature with all kwargs
-    sig = inspect.signature(calc_class.__init__)
+    sig = inspect.signature(calc_function)
 
     # Grab arguments, separating them into those that must be defined 
     # and those with defaults. 
@@ -82,13 +84,13 @@ def _validate_calc_kwargs(calc_type,calc_class,kwargs):
         err += f"'{calc_type}'.\n\n"
         err = err + miss_err + extra_err 
         
-        name = f"{calc_class}"
+        name = f"{calc_function}"
         dashes = len(name)*"-"
         
         err += f"\ncalc_type '{calc_type}' details:\n\n{name}\n{dashes}\n"   
         
         # Drop whole doc string into error message
-        err += f"{calc_class.__init__.__doc__}\n\n"
+        err += f"{calc_function.__doc__}\n\n"
 
         raise ValueError(err)
     
@@ -141,7 +143,7 @@ def load_json(json_file,use_stored_seed=False):
     calc_class = _ALLOWABLE_CALCS[calc_type]
     
     # Create an ensemble from the 'ens' key, which we assume will be required
-    # in every calc_class. 
+    # in every calc_function. 
     if "ens" not in run:
         err = "\njson must have 'ens' key in top level that defines the\n"
         err += "the thermodynamic ensemble.\n\n"
@@ -171,7 +173,7 @@ def load_json(json_file,use_stored_seed=False):
 
     # Validate the names of the keyword arguments
     kwargs = _validate_calc_kwargs(calc_type=calc_type,
-                                   calc_class=calc_class,
+                                   calc_function=calc_class.__init__,
                                    kwargs=run)
 
     # Set up the calculation class. 
