@@ -1167,8 +1167,8 @@ def test_Ensemble_to_dict():
                     mu_stoich={"X":1})
     
     out = ens.to_dict()
-    assert out["R"] == 1
-    assert len(out["ens"]) == 1
+    assert out["ens"]["R"] == 1
+    assert len(out["ens"]) == 2
     assert out["ens"]["test1"]["observable"] == False
     assert out["ens"]["test1"]["folded"] == True
     assert out["ens"]["test1"]["dG0"] == 1

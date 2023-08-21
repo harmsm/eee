@@ -209,8 +209,8 @@ def test_load_json(sim_json,test_ddg,tmpdir):
 
     shutil.copy(test_ddg["lac.csv"],"ddg.csv")
 
-    sm = load_json(sim_json["lac.json"],
-                   use_stored_seed=False)
+    sm, calc_params = load_json(sim_json["lac.json"],
+                                use_stored_seed=False)
 
     species = ["hdna","h","l2e","unfolded"]
     assert np.array_equal(sm._ens.species,species)
@@ -245,20 +245,28 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     assert np.array_equal(sm._fc._T,[310.15,310.15])
     
     assert sm._gc._ddg_df.loc[0,"mut"] == "L1A"
-    
-    assert sm._population_size == 100000
-    assert np.isclose(sm._mutation_rate,1e-5)
-    assert sm._num_generations == 100000
-    assert sm._write_prefix == "eee_sim_test"
-    assert sm._write_frequency == 10000
     assert sm._seed != 487698321712
-    
-    sm = load_json(sim_json["lac.json"],
-                   use_stored_seed=True)
+
+    assert len(calc_params) == 5
+    assert calc_params["population_size"] == 100000
+    assert np.isclose(calc_params["mutation_rate"],1e-5)
+    assert calc_params["num_generations"] == 100000
+    assert calc_params["write_prefix"] == "eee_sim_test"
+    assert calc_params["write_frequency"] == 10000
+
+    sm, calc_params = load_json(sim_json["lac.json"],
+                                use_stored_seed=True)
     assert sm._seed == 487698321712
 
     with open(sim_json["lac.json"]) as f:
         template_json = json.load(f)
+
+    test_json = copy.deepcopy(template_json)
+    test_json["system"].pop("seed")
+    with open('test.json','w') as f:
+        json.dump(test_json,f)
+    sm, calc_params = load_json("test.json",use_stored_seed=True)
+    assert sm._seed != 487698321712
 
     test_json = copy.deepcopy(template_json)
     test_json.pop("calc_type")
@@ -276,109 +284,106 @@ def test_load_json(sim_json,test_ddg,tmpdir):
         sm = load_json("test.json")
     
     test_json = copy.deepcopy(template_json)
-    test_json.pop("ens")
+    test_json["system"].pop("ens")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = load_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["ens"].pop("R")
+    test_json["system"]["ens"].pop("R")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
+    sm, calc_params = load_json("test.json")
     assert sm._ens._R == 0.001987
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("mu_dict")
+    test_json["system"].pop("mu_dict")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = load_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("fitness_fcns")
+    test_json["system"].pop("fitness_fcns")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = load_json("test.json")
     
     test_json = copy.deepcopy(template_json)
-    test_json.pop("select_on")
+    test_json["system"].pop("select_on")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
+    sm, calc_params = load_json("test.json")
     assert sm._fc._select_on == "fx_obs"
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("select_on_folded")
+    test_json["system"].pop("select_on_folded")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
+    sm, calc_params = load_json("test.json")
     assert sm._fc._select_on_folded == True
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("select_on")
+    test_json["system"].pop("fitness_kwargs")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
+    sm, calc_params = load_json("test.json")
     assert sm._fc._fitness_kwargs == {}
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("T")
+    test_json["system"].pop("T")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
+    sm, calc_params = load_json("test.json")
     assert np.array_equal(sm._fc._T,[298.15,298.15])
 
-
     test_json = copy.deepcopy(template_json)
-    test_json.pop("ddg_df")
+    test_json["system"].pop("ddg_df")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = load_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("population_size")
+    test_json["calc_params"].pop("population_size")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
-    sm._population_size == 1000
+    sm, calc_params = load_json("test.json")
+    assert "population_size" not in calc_params
+    assert len(calc_params) == 4
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("mutation_rate")
+    test_json["calc_params"].pop("mutation_rate")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
-    sm._mutation_rate == 0.01
+    sm, calc_params = load_json("test.json")
+    assert "mutation_rate" not in calc_params
+    assert len(calc_params) == 4
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("num_generations")
+    test_json["calc_params"].pop("num_generations")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
-    sm._mutation_rate == 100
+    sm, calc_params = load_json("test.json")
+    assert "num_generations" not in calc_params
+    assert len(calc_params) == 4
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("write_prefix")
+    test_json["calc_params"].pop("write_prefix")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
-    sm._write_prefix == "eee_sim"
+    sm, calc_params = load_json("test.json")
+    assert "write_prefix" not in calc_params
+    assert len(calc_params) == 4
 
     test_json = copy.deepcopy(template_json)
-    test_json.pop("write_frequency")
+    test_json["calc_params"].pop("write_frequency")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm = load_json("test.json")
-    sm._write_frequency == 1000
-
-    test_json = copy.deepcopy(template_json)
-    test_json.pop("seed")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    sm = load_json("test.json",use_stored_seed=True)
-    assert sm._seed != 487698321712
+    sm, calc_params = load_json("test.json")
+    assert "write_frequency" not in calc_params
+    assert len(calc_params) == 4
 
     os.chdir(current_dir)

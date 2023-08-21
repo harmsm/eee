@@ -42,9 +42,6 @@ FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test__construct_ff_dic
 FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test_map_fitness_fcn_to_string
 FOUND tests.evolve.simulation.test_load_json.test__validate_calc_kwargs
 FOUND tests.evolve.simulation.test_load_json.test_load_json
-FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer
-FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer_run
-FOUND tests.evolve.simulation.test_simulation_container.test_SimulationContainer_to_dict
 FOUND tests.evolve.test_genotype.test_Genotype
 FOUND tests.evolve.test_genotype.test_GenotypeContainer
 FOUND tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
@@ -86,7 +83,6 @@ FOUND tests.test_ensemble.test_Ensemble_to_dict
 FAKE tests._private.test_wrap.test_IterFromFile
 FAKE tests._private.test_wrap.test_IterFromFile___call__
 FAKE tests.evolve.simulation.test_simulate_tree.test_simulate_tree
-FAKE tests.evolve.simulation.test_simulation_container.test_SimulationContainer_write_json
 FAKE tests.evolve.test_analysis.test_extract_alignment
 FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
 FAKE tests.evolve.test_analysis.test_get_most_common
@@ -104,6 +100,12 @@ MISSING tests._private.test_logger.test_log
 MISSING tests.bin.test_eee-simulate-evolution.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.evolve.fitness.test_ff.test_ff_example_function
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer__complete_calc
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer__prepare_calc
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer__write_calc_params
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer_calc_type
+MISSING tests.evolve.simulation.test_container.test_SimulationContainer_run
 MISSING tests.evolve.simulation.test_simulate_tree.test__simulate_branch
 MISSING tests.evolve.test_genotype.test_GenotypeContainer_to_dict
 MISSING tests.io.test_write_pdb.test_chain
@@ -116,6 +118,11 @@ MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
+FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer
+FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__complete_calc
+FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__prepare_calc
+FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__write_calc_params
+FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer_run
 FOUND & EXTRA tests.evolve.test_genotype.test_to_dict
 FOUND & EXTRA tests.test_ensemble.test_get_dG_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_get_fx_obs_fast

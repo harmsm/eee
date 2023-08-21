@@ -5,8 +5,10 @@ from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
 
 import numpy as np
+import pandas as pd
 
 import os
+import json
 
 def test_SimulationContainer(ens_test_data,variable_types):
 
@@ -26,11 +28,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
         
     # ddg_df
@@ -50,11 +47,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
 
     # mu_dict
@@ -68,11 +60,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
 
     # fitness_fcns
@@ -86,11 +73,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
 
     # select_on
@@ -104,11 +86,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on=v,
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
             
     sm = SimulationContainer(ens=ens,
@@ -118,11 +95,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                              select_on="dG_obs",
                              fitness_kwargs={},
                              T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
                              seed=None)
     
     # select_on_folded
@@ -137,11 +109,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on_folded=v,
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
             
     sm = SimulationContainer(ens=ens,
@@ -151,11 +118,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                              select_on="dG_obs",
                              fitness_kwargs={},
                              T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
                              seed=None)
 
     # fitness_kwargs
@@ -174,11 +136,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs=v,
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
 
     # T
@@ -201,11 +158,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=v,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=None)
 
     # seed
@@ -231,11 +183,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                      select_on="fx_obs",
                                      fitness_kwargs={},
                                      T=1,
-                                     population_size=100,
-                                     mutation_rate=0.01,
-                                     num_generations=100,
-                                     write_prefix="eee_sim",
-                                     write_frequency=1000,
                                      seed=v)
 
     # Now test that things are being set reasonably well
@@ -250,11 +197,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                              select_on="fx_obs",
                              fitness_kwargs={},
                              T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
                              seed=None)
     
     assert issubclass(type(sm._seed),int)
@@ -268,11 +210,6 @@ def test_SimulationContainer(ens_test_data,variable_types):
                              select_on="fx_obs",
                              fitness_kwargs={},
                              T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
                              seed=5)
 
     assert issubclass(type(sm._seed),int)
@@ -283,7 +220,112 @@ def test_SimulationContainer(ens_test_data,variable_types):
     assert issubclass(type(sm._fc),FitnessContainer)
     assert issubclass(type(sm._gc),GenotypeContainer)
 
+def test_SimulationContainer__prepare_calc(ens_test_data,tmpdir):
 
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    assert not os.path.exists("test_dir")
+
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+
+    sm = SimulationContainer(ens=ens,
+                            ddg_df=ddg_df,
+                            mu_dict=mu_dict,
+                            fitness_fcns=fitness_fcns,
+                            select_on="fx_obs",
+                            select_on_folded=True,
+                            fitness_kwargs={},
+                            T=1,
+                            seed=5)
+    
+    sm._prepare_calc(output_directory="test_dir",
+                     calc_params={"test":1})
+    assert os.path.split(os.getcwd())[-1] == "test_dir"
+    with open("simulation.json") as f:
+        sim_json = json.load(f)
+    assert sim_json["calc_params"]["test"] == 1
+
+    sm._complete_calc()
+    assert os.getcwd() == tmpdir
+    assert os.path.exists("test_dir")
+
+    # Should not work now because directory exists
+    with pytest.raises(FileExistsError):
+        sm._prepare_calc(output_directory="test_dir",
+                         calc_params={"test":1})
+
+
+    os.chdir(current_dir)
+
+def test_SimulationContainer__write_calc_params(ens_test_data,
+                                                tmpdir):
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationContainer(ens=ens,
+                             ddg_df=ddg_df,
+                             mu_dict=mu_dict,
+                             fitness_fcns=fitness_fcns,
+                             select_on="fx_obs",
+                             select_on_folded=True,
+                             fitness_kwargs={},
+                             T=1,
+                             seed=5)
+    
+    calc_params = {"population_size":100,
+                  "mutation_rate":0.01,
+                  "num_generations":100,
+                  "write_prefix":"eee_sim",
+                  "write_frequency":1000}
+    
+    sm._write_calc_params(calc_params=calc_params)
+
+    assert os.path.exists("simulation.json")
+    assert os.path.exists("ddg.csv")
+
+    with open("simulation.json") as f:
+        as_written = json.load(f)
+
+    # Make sure run params written correctly. 
+    for k in calc_params:
+        assert as_written["calc_params"][k] == calc_params[k]
+    
+    # Make sure ensemble written correctly
+    ens_dict = ens.to_dict()
+    for k in ens_dict["ens"]:
+        assert ens_dict["ens"][k] == as_written["system"]["ens"][k]
+
+    assert ens_dict["ens"]["R"] == as_written["system"]["ens"]["R"]
+
+    assert as_written["system"]["mu_dict"] == mu_dict
+    assert as_written["system"]["select_on"] == "fx_obs"
+    assert as_written["system"]["select_on_folded"] == True
+    assert as_written["system"]["fitness_kwargs"] == {}
+    assert np.array_equal(as_written["system"]["T"],[1,1])
+    assert np.array_equal(as_written["system"]["fitness_fcns"],
+                          ["on","off"])
+    assert as_written["system"]["ddg_df"] == "ddg.csv"
+    
+    # Make sure we can read in dataframe
+    df = pd.read_csv("ddg.csv")
+
+    os.chdir(current_dir)
+
+def test_SimulationContainer__complete_calc():
+    # Tested within test__prepare_calc because these are paired functions. 
+    assert True
+    
 
 def test_SimulationContainer_run(ens_test_data,tmpdir):
 
@@ -304,50 +346,17 @@ def test_SimulationContainer_run(ens_test_data,tmpdir):
                              select_on="fx_obs",
                              fitness_kwargs={},
                              T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
                              seed=None)
     
-    sm.run("test")
+    sm.run(output_directory="test",
+           population_size=100,
+           mutation_rate=0.01,
+           num_generations=100,
+           write_prefix="eee_sim",
+           write_frequency=1000)
     assert os.path.exists(os.path.join("test","ddg.csv"))
     assert os.path.exists(os.path.join("test","simulation.json"))
     assert os.path.exists(os.path.join("test","eee_sim_genotypes.csv"))
     assert os.path.exists(os.path.join("test","eee_sim_generations_0.pickle"))
  
     os.chdir(current_dir)
-
-def test_SimulationContainer_to_dict(ens_test_data):
-    
-    ens = ens_test_data["ens"]
-    ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
-
-    sm = SimulationContainer(ens=ens,
-                             ddg_df=ddg_df,
-                             mu_dict=mu_dict,
-                             fitness_fcns=fitness_fcns,
-                             select_on="fx_obs",
-                             fitness_kwargs={},
-                             T=1,
-                             population_size=100,
-                             mutation_rate=0.01,
-                             num_generations=100,
-                             write_prefix="eee_sim",
-                             write_frequency=1000,
-                             seed=5)
-    
-    out = sm.to_dict()
-    assert out["population_size"] == 100
-    assert out["mutation_rate"] == 0.01
-    assert out["num_generations"] == 100
-    assert out["write_prefix"] == "eee_sim"
-    assert out["write_frequency"] == 1000
-    assert out["seed"] == 5
-
-
-def test_SimulationContainer_write_json():
-    pass

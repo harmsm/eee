@@ -100,14 +100,21 @@ def load_json(json_file,use_stored_seed=False):
     """
     Load a json file describing a simulation. This file must have the 
     following top-level keys:
-    
-        'ens': a dictionary of species describing the ensemble.
-        'mu_dict': a dictionary indicating the chemical potentials
-                    over which to do the simulation, 
-        'fitness_fcns': the fitness functions to apply for each of the
-                        conditions
-        'ddg_df': spreadsheet file with the effects of mutations on each 
-                    conformation in the ensemble. 
+
+        "calc_type" : a string indicating what kind of calculation this is. 
+
+        "system" : a dictionary describing the system. This dictionary must 
+                   have the following keys:
+            'ens': a dictionary of species describing the ensemble.
+            'mu_dict': a dictionary indicating the chemical potentials
+                       over which to do the simulation, 
+            'fitness_fcns': the fitness functions to apply for each of the
+                            conditions
+            'ddg_df': spreadsheet file with the effects of mutations on each 
+                      conformation in the ensemble. 
+
+        "calc_param" : any parameters needed to run the calculation indicated 
+                       by calc_type.
     
     Many other keys are permitted; see the documentation.
 
@@ -120,17 +127,26 @@ def load_json(json_file,use_stored_seed=False):
         use_stored_seed is set to True. The only time to re-use the seed 
         is to restart a simulation or reproduce it exactly for testing 
         purposes. 
+
+    Returns
+    -------
+    sc : SimulationContainer subclass
+        initialized SimulationContainer subclass with ensemble, fitness, and
+        ddg loaded.
+    calc_params : dict
+        dictionary with run parameters. sc.run(**calc_params) will run the 
+        calculation. 
     """
 
     # Read json file
     with open(json_file) as f:
-        run = json.load(f)
+        calc_input = json.load(f)
     
-    if "calc_type" not in run:
-        err = "\njson must have 'calc_type' key in top level that defines then\n"
+    if "calc_type" not in calc_input:
+        err = "\njson must have 'calc_type' key in top level that defines the\n"
         err += "calculation being done.\n\n"
         raise ValueError(err)
-    calc_type = run.pop("calc_type")
+    calc_type = calc_input.pop("calc_type")
 
     if not issubclass(type(calc_type),str) or calc_type not in _ALLOWABLE_CALCS:
         err = f"\ncalc_type '{calc_type}' is not recognized. calc_type should\n"
@@ -141,41 +157,55 @@ def load_json(json_file,use_stored_seed=False):
         raise ValueError(err)
 
     calc_class = _ALLOWABLE_CALCS[calc_type]
+
+    if "system" not in calc_input:
+        err = "\njson file must have 'system' key in top level that defines\n"
+        err += "the thermodynamic ensemble and selection pressures.\n\n"
+        raise ValueError(err)
     
     # Create an ensemble from the 'ens' key, which we assume will be required
     # in every calc_function. 
-    if "ens" not in run:
-        err = "\njson must have 'ens' key in top level that defines the\n"
+    if "ens" not in calc_input["system"]:
+        err = "\njson must have 'ens' key under the 'system' key that defines\n"
         err += "the thermodynamic ensemble.\n\n"
         raise ValueError(err)
     
     # Get gas constant
-    if "R" in run["ens"]:
-        R = run["ens"].pop("R")
+    if "R" in calc_input["system"]["ens"]:
+        R = calc_input["system"]["ens"].pop("R")
     else:
         # Get default from Ensemble class
         R = eee.Ensemble()._R
 
     # Create ensemble from entries and validate. 
     ens = eee.Ensemble(R=R)
-    for e in run["ens"]:
-        ens.add_species(e,**run["ens"][e])
-    run["ens"] = check_ensemble(ens,check_obs=True)
+    for e in calc_input["system"]["ens"]:
+        ens.add_species(e,**calc_input["system"]["ens"][e])
+    calc_input["system"]["ens"] = check_ensemble(ens,check_obs=True)
 
     # Load ddg_df here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
-    if "ddg_df" in run:
-        run["ddg_df"] = load_ddg(run["ddg_df"])
+    if "ddg_df" in calc_input["system"]:
+        calc_input["system"]["ddg_df"] = load_ddg(calc_input["system"]["ddg_df"])
         
     # Drop the seed unless we are requesting it to be kept. 
-    if "seed" in run and not use_stored_seed:
-        run.pop("seed")
+    if "seed" in calc_input["system"] and not use_stored_seed:
+        calc_input["system"].pop("seed")
 
     # Validate the names of the keyword arguments
     kwargs = _validate_calc_kwargs(calc_type=calc_type,
                                    calc_function=calc_class.__init__,
-                                   kwargs=run)
+                                   kwargs=calc_input["system"])
 
     # Set up the calculation class. 
-    return calc_class(**kwargs)
+    sc = calc_class(**kwargs)
+
+    calc_params = _validate_calc_kwargs(calc_type=calc_type,
+                                        calc_function=sc.run,
+                                        kwargs=calc_input["calc_params"])
+
+    return sc, calc_params
+
+
+    
 

@@ -529,7 +529,7 @@ class Ensemble:
             for a in attr_to_write:
                 out["ens"][s][a] = self._species[s][a]
     
-        out["R"] = self._R
+        out["ens"]["R"] = self._R
 
         return out
     
