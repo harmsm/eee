@@ -2,15 +2,7 @@
 Function for calculating fitness from an ensemble.
 """
 
-from eee._private.check.eee_variables import check_T
-from eee._private.check.ensemble import check_ensemble
-from eee._private.check.eee_variables import check_fitness_fcns
-from eee._private.check.eee_variables import check_fitness_kwargs
-from eee._private.check.eee_variables import check_mu_dict
-from eee._private.check.eee_variables import check_mut_energy
-from eee._private.check.standard import check_bool
-
-import numpy as np
+from eee.evolve.fitness.fitness_container import FitnessContainer
 
 def fitness_function(ens,
                      mut_energy,
@@ -63,34 +55,21 @@ def fitness_function(ens,
         including fitness. 
     """
 
-    ens = check_ensemble(ens)
-    mut_energy = check_mut_energy(mut_energy)
-    mu_dict, num_conditions = check_mu_dict(mu_dict)
 
-    fitness_fcns = check_fitness_fcns(fitness_fcns,
-                                      num_conditions=num_conditions)
-    
-    if select_on not in ["fx_obs","dG_obs"]:
-        err = "select_on should be either fx_obs or dG_obs\n"
-        raise ValueError(err)
-
-    fitness_kwargs = check_fitness_kwargs(fitness_kwargs,
-                                          fitness_fcns=fitness_fcns)
-    select_on_folded = check_bool(value=select_on_folded,
-                                  variable_name="select_on_folded")
-    
-    T = check_T(T=T,num_conditions=num_conditions)
+    fc = FitnessContainer(ens=ens,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on=select_on,
+                          select_on_folded=select_on_folded,
+                          fitness_kwargs=fitness_kwargs,
+                          T=T)
         
     df = ens.get_obs(mut_energy=mut_energy,
                      mu_dict=mu_dict,
                      T=T)
+
+    mut_energy_array = ens.mut_dict_to_array(mut_energy=mut_energy)
+    fitness_values = fc.fitness(mut_energy_array=mut_energy_array)
+    df["fitness"] = fitness_values
     
-    values = np.array(df[select_on])
-    all_F = np.zeros(num_conditions)
-    for i in range(num_conditions):
-        all_F[i] = fitness_fcns[i](values[i],**fitness_kwargs)
-
-    if select_on_folded:
-        all_F = all_F*np.array(df["fx_folded"])
-
-    return all_F
+    return df

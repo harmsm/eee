@@ -1,9 +1,9 @@
 import pytest
 
-from eee.evolve.wright_fisher import _write_outputs
-from eee.evolve.wright_fisher import wright_fisher
+from eee.evolve.engine.wright_fisher import _write_outputs
+from eee.evolve.engine.wright_fisher import wright_fisher
 
-from eee.evolve.genotype import GenotypeContainer
+from eee.evolve.genotype.genotype_container import GenotypeContainer
 
 import numpy as np
 import pandas as pd

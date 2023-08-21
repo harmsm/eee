@@ -194,11 +194,13 @@ def test_FitnessContainer_fitness():
                           T=T)
 
     mut_energy_array = np.array([0,0]) 
-    assert fc.fitness(mut_energy_array=mut_energy_array) == 1
+    value = fc.fitness(mut_energy_array=mut_energy_array)
+    assert np.array_equal(value,[1,1])
 
     # Perturb so observable never populated...
     mut_energy_array = np.array([5000,0]) 
-    assert fc.fitness(mut_energy_array=mut_energy_array) == 0
+    value = fc.fitness(mut_energy_array=mut_energy_array)
+    assert np.array_equal(value,[1,0])
 
     with pytest.raises(ValueError):
         fc = FitnessContainer(ens=ens,
@@ -218,11 +220,13 @@ def test_FitnessContainer_fitness():
                           T=T)
 
     mut_energy_array = np.array([0,0]) 
-    assert fc.fitness(mut_energy_array=mut_energy_array) == 0
+    value = fc.fitness(mut_energy_array=mut_energy_array)
+    assert np.array_equal(value,[0,0])
 
     # Perturb so observable never populated...
     mut_energy_array = np.array([5000,0]) 
-    assert fc.fitness(mut_energy_array=mut_energy_array) == 0
+    value = fc.fitness(mut_energy_array=mut_energy_array)
+    assert np.array_equal(value,[0,0])
 
 def test_FitnessContainer_to_dict():
 

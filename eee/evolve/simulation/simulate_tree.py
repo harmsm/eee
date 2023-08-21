@@ -3,8 +3,8 @@ Simulate evolution of an ensemble along an evolutionary tree.
 """
 
 from eee.evolve.fitness.fitness_container import FitnessContainer
-from eee.evolve.genotype import GenotypeContainer
-from eee.evolve import wright_fisher
+from eee.evolve.genotype.genotype_container import GenotypeContainer
+from eee.evolve.engine import wright_fisher
 from eee.evolve.analysis import get_num_accumulated_mutations
 
 from eee._private.check.ensemble import check_ensemble

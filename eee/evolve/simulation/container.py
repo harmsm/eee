@@ -8,7 +8,7 @@ from eee._private.interface import run_cleanly
 
 from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
-from eee.evolve.wright_fisher import wright_fisher
+from eee.evolve.engine.wright_fisher import wright_fisher
 
 import numpy as np
 

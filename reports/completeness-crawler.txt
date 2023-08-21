@@ -25,6 +25,8 @@ FOUND tests._private.test_interface.test_launch
 FOUND tests._private.test_interface.test_rmtree
 FOUND tests._private.test_interface.test_run_cleanly
 FOUND tests._private.test_wrap.test_wrap_function
+FOUND tests.evolve.engine.test_wright_fisher.test__write_outputs
+FOUND tests.evolve.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.evolve.fitness.test_ff.test_ff_neutral
 FOUND tests.evolve.fitness.test_ff.test_ff_off
 FOUND tests.evolve.fitness.test_ff.test_ff_on
@@ -40,27 +42,25 @@ FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_to_dict
 FOUND tests.evolve.fitness.test_fitness_function.test_fitness_function
 FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test__construct_ff_dicts
 FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test_map_fitness_fcn_to_string
+FOUND tests.evolve.genotype.test_genotype.test_Genotype
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_copy
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_mut_energy
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutate
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutations
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutations_accumulated
+FOUND tests.evolve.genotype.test_genotype.test_Genotype_sites
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer__create_ddg_dict
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_df
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_dump_to_csv
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_fitnesses
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_genotypes
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_mut_energies
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_mutate
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_trajectories
+FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_wt_sequence
 FOUND tests.evolve.simulation.test_load_json.test__validate_calc_kwargs
 FOUND tests.evolve.simulation.test_load_json.test_load_json
-FOUND tests.evolve.test_genotype.test_Genotype
-FOUND tests.evolve.test_genotype.test_GenotypeContainer
-FOUND tests.evolve.test_genotype.test_GenotypeContainer__create_ddg_dict
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_df
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_dump_to_csv
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_fitnesses
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_genotypes
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_mut_energies
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_mutate
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_trajectories
-FOUND tests.evolve.test_genotype.test_GenotypeContainer_wt_sequence
-FOUND tests.evolve.test_genotype.test_Genotype_copy
-FOUND tests.evolve.test_genotype.test_Genotype_mut_energy
-FOUND tests.evolve.test_genotype.test_Genotype_mutate
-FOUND tests.evolve.test_genotype.test_Genotype_mutations
-FOUND tests.evolve.test_genotype.test_Genotype_mutations_accumulated
-FOUND tests.evolve.test_genotype.test_Genotype_sites
-FOUND tests.evolve.test_wright_fisher.test__write_outputs
-FOUND tests.evolve.test_wright_fisher.test_wright_fisher
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif
 FOUND tests.io.test_load_structure.test__load_structure_pdb
@@ -99,7 +99,7 @@ MISSING tests._private.test_interface.test_WrappedFunctionException
 MISSING tests._private.test_logger.test_log
 MISSING tests.bin.test_eee-simulate-evolution.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
-MISSING tests.evolve.fitness.test_ff.test_ff_example_function
+MISSING tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_to_dict
 MISSING tests.evolve.simulation.test_container.test_SimulationContainer
 MISSING tests.evolve.simulation.test_container.test_SimulationContainer__complete_calc
 MISSING tests.evolve.simulation.test_container.test_SimulationContainer__prepare_calc
@@ -107,7 +107,6 @@ MISSING tests.evolve.simulation.test_container.test_SimulationContainer__write_c
 MISSING tests.evolve.simulation.test_container.test_SimulationContainer_calc_type
 MISSING tests.evolve.simulation.test_container.test_SimulationContainer_run
 MISSING tests.evolve.simulation.test_simulate_tree.test__simulate_branch
-MISSING tests.evolve.test_genotype.test_GenotypeContainer_to_dict
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
 MISSING tests.test_ensemble.test_Ensemble_get_dG_obs_fast
@@ -118,12 +117,12 @@ MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
+FOUND & EXTRA tests.evolve.genotype.test_genotype_container.test_to_dict
 FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer
 FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__complete_calc
 FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__prepare_calc
 FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer__write_calc_params
 FOUND & EXTRA tests.evolve.simulation.test_simulation.test_SimulationContainer_run
-FOUND & EXTRA tests.evolve.test_genotype.test_to_dict
 FOUND & EXTRA tests.test_ensemble.test_get_dG_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_get_fx_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_load_mu_dict

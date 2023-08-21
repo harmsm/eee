@@ -6,6 +6,7 @@ from eee.evolve.fitness.ff import ff_on
 from eee.evolve.fitness.ff import ff_off
 
 import numpy as np
+import pandas as pd
 
 import pytest
 
@@ -41,7 +42,8 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[1,1])
+    assert np.array_equal(value["fitness"],[1,1])
+    assert issubclass(type(value),pd.DataFrame)
 
     # Try different fitness_fcns
     fitness_fcns = ["off","on"]
@@ -54,7 +56,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[1,1])
+    assert np.array_equal(value["fitness"],[1,1])
 
     # Now select on folded. This will be folded under first condition (test2 
     # favored) and not folded under second condition (test1 favored). 
@@ -67,7 +69,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[1,0])
+    assert np.array_equal(value["fitness"],[1,0])
 
 
     fitness_fcns = [ff_off,ff_off]
@@ -80,7 +82,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[1,0])
+    assert np.array_equal(value["fitness"],[1,0])
 
     fitness_fcns = [ff_on,ff_off]
     value = fitness_function(ens=ens,
@@ -92,7 +94,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[0,0])
+    assert np.array_equal(value["fitness"],[0,0])
 
     # Check dG_obs select_on
     ens = Ensemble(R=1)
@@ -121,7 +123,7 @@ def test_fitness_function(ens_with_fitness):
                              select_on_folded=False,
                              fitness_kwargs={},
                              T=T)
-    assert np.array_equal(value,[1,2])
+    assert np.array_equal(value["fitness"],[1,2])
 
     # Now select on folded. Will be entirely unfolded --> 0,0
     value = fitness_function(ens=ens,
@@ -133,7 +135,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)
     
-    assert np.array_equal(value,[0,0])
+    assert np.array_equal(value["fitness"],[0,0])
 
 
     ens = ens_with_fitness["ens"]
@@ -147,7 +149,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              select_on_folded=False,
                              T=1)
-    assert np.array_equal(np.round(value,2),[0.54,1.00])
+    assert np.array_equal(np.round(value["fitness"],2),[0.54,1.00])
 
     value = fitness_function(ens=ens,
                              mut_energy={"s1":-1.667,"s2":3.333},
@@ -157,7 +159,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              select_on_folded=False,
                              T=1)
-    assert np.array_equal(np.round(value,2),[0.99,0.82])
+    assert np.array_equal(np.round(value["fitness"],2),[0.99,0.82])
     
     value = fitness_function(ens=ens,
                              mut_energy={"s1":0.167,"s2":-16.667},
@@ -167,7 +169,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              select_on_folded=False,
                              T=1)
-    assert np.array_equal(np.round(value,2),[0.00,1.00])
+    assert np.array_equal(np.round(value["fitness"],2),[0.00,1.00])
 
     ens = Ensemble(R=1)
     ens.add_species(name="test1",
@@ -196,7 +198,7 @@ def test_fitness_function(ens_with_fitness):
                              fitness_kwargs={},
                              T=T)    
     
-    assert np.array_equal(value,[1,1])
+    assert np.array_equal(value["fitness"],[1,1])
 
     with pytest.raises(ValueError):
         value = fitness_function(ens=ens,

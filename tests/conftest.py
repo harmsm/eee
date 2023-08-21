@@ -10,7 +10,7 @@ from eee.ensemble import Ensemble
 from eee.evolve.fitness.fitness_container import FitnessContainer
 from eee.evolve.fitness.ff import ff_on
 from eee.evolve.fitness.ff import ff_off
-from eee.evolve.genotype import GenotypeContainer
+from eee.evolve.genotype.genotype_container import GenotypeContainer
 
 
 def _file_globber(*args):

@@ -121,7 +121,7 @@ class FitnessContainer:
         if self._select_on_folded:
             self._F_array = self._F_array*fx_folded
  
-        return np.prod(self._F_array)
+        return self._F_array
     
     def to_dict(self):
         """
