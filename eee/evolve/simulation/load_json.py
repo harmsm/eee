@@ -3,7 +3,7 @@ import eee
 from eee._private.check.ensemble import check_ensemble
 
 from eee.io import load_ddg
-from .simulation_container import SimulationContainer
+from .container import SimulationContainer
 
 import json
 import inspect

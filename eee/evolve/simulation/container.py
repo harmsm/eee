@@ -5,8 +5,6 @@ from eee._private.check.eee_variables import check_population_size
 from eee._private.check.standard import check_int
 from eee._private.interface import run_cleanly
 
-from eee.io import load_ddg
-
 from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
 from eee.evolve.wright_fisher import wright_fisher
@@ -153,7 +151,7 @@ class SimulationContainer:
                 err = f"\noutput_directory ({output_directory}) already exists\n\n"
                 raise FileExistsError(err)
             else:
-                shutil.rmdir(output_directory)
+                shutil.rmtree(output_directory)
 
         # Create output directory and change into it
         os.mkdir(output_directory)

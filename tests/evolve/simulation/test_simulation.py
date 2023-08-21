@@ -1,6 +1,6 @@
 import pytest
 
-from eee.evolve.simulation.simulation_container import SimulationContainer
+from eee.evolve.simulation.container import SimulationContainer
 from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
 
