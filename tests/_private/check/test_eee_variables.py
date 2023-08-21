@@ -13,6 +13,10 @@ from eee._private.check.eee_variables import check_num_generations
 from eee._private.check.eee_variables import check_burn_in_generations
 from eee._private.check.eee_variables import check_num_mutations
 
+from eee.evolve.fitness.ff import ff_on
+from eee.evolve.fitness.ff import ff_off
+from eee.evolve.fitness.ff import ff_neutral
+
 import pandas as pd
 import numpy as np
 
@@ -152,11 +156,29 @@ def test_check_ddg_df(variable_types):
 
 def test_check_fitness_fcns(variable_types):
     
+    # Make sure named fitness functions pass through properly
+    values = check_fitness_fcns(["on","off","neutral"],num_conditions=3)
+    assert values[0] == ff_on
+    assert values[1] == ff_off
+    assert values[2] == ff_neutral
+
+    values = check_fitness_fcns([ff_on,ff_off,ff_neutral],num_conditions=3)
+    assert values[0] == ff_on
+    assert values[1] == ff_off
+    assert values[2] == ff_neutral
+
+    with pytest.raises(ValueError):
+        values = check_fitness_fcns(["bad_value","bad_value"],num_conditions=2)
+
+    # Other sorts of stuff getting passed in 
     for v in variable_types["everything"]:
 
         # Skip empty iterables
-        if hasattr(v,"__iter__") and not issubclass(type(v),type):
-            if len(v) == 0:
+        if hasattr(v,"__iter__"):
+            if issubclass(type(v),type):
+                continue
+        
+            if len(v) ==  0:
                 continue
 
         print(v,type(v),flush=True)

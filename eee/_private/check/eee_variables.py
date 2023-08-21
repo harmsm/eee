@@ -4,6 +4,7 @@ Function for checking common eee variable sanity.
 
 from eee._private.check.standard import check_float
 from eee._private.check.standard import check_int
+from eee.evolve.fitness.map_fitness_fcn_to_string import map_fitness_fcn_to_string
 
 import pandas as pd
 import numpy as np
@@ -123,14 +124,27 @@ def check_fitness_fcns(fitness_fcns,num_conditions):
     long holding fitness functions. 
     """
 
+    if issubclass(type(fitness_fcns),type):
+        err = f"\nfitness_fcns '{fitness_fcns} should not be a type\n\n"
+        raise ValueError(err)
+
     # If a single function, expand to a list of functions
-    if callable(fitness_fcns) and not issubclass(type(fitness_fcns),type):
+    if not hasattr(fitness_fcns,"__iter__"):
         fitness_fcns = [fitness_fcns for _ in range(num_conditions)]
 
-    if not hasattr(fitness_fcns,"__iter__") or issubclass(type(fitness_fcns),type):
-        err = "fitness_fcns must be a list of functions that take an ensemble\n"
-        err += "observable as their first argument.\n"
-        raise ValueError(err)
+    for f in fitness_fcns:
+        if issubclass(type(f),type):
+            err = f"\nfitness_fcns entry '{f} should not be a type\n\n"
+            raise ValueError(err)
+
+    # Convert the fitness functions to callable functions if specified as 
+    # strings (like "on", "off", and "neutral")
+    parsed_fitness_fcns = []
+    for f in fitness_fcns:
+        new_f = map_fitness_fcn_to_string(f,return_as="function")
+        parsed_fitness_fcns.append(new_f)
+
+    fitness_fcns = parsed_fitness_fcns[:]
 
     # Make sure all fitness_fcns can be called
     for f in fitness_fcns:

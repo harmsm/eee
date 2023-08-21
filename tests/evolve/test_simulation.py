@@ -1,11 +1,12 @@
 import pytest
 
+from eee.evolve.simulation import _validate_calc_kwargs
 from eee.evolve.simulation import SimulationContainer
 from eee.evolve.simulation import load_json
 from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
-from eee.evolve.fitness import ff_on
-from eee.evolve.fitness import ff_off
+from eee.evolve.fitness.ff import ff_on
+from eee.evolve.fitness.ff import ff_off
 
 import numpy as np
 
@@ -13,6 +14,194 @@ import os
 import shutil
 import json
 import copy
+
+def test__validate_calc_kwargs():
+
+    # No arg type/error checking. Internal function. 
+
+    calc_type = "dummy" # not really used in function -- just for error message
+    
+    class TestClassSomeRequired:
+        def __init__(self,
+                     required_one,
+                     required_two,
+                     not_required_one=1,
+                     not_required_two=2):
+            """
+            Docstring.
+            """
+            pass
+            
+    class TestClassAllRequired:
+        def __init__(self,
+                     required_one,
+                     required_two):
+            """
+            Docstring.
+            """
+            pass
+            
+    class TestClassNoneRequired:
+        def __init__(self,
+                     not_required_one=1,
+                     not_required_two=2):
+            """
+            Docstring.
+            """
+            pass
+    
+    # No args
+
+    kwargs = {}
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassSomeRequired,
+                                           kwargs=kwargs)
+
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                       calc_class=TestClassNoneRequired,
+                                       kwargs=kwargs)
+    assert new_kwargs is kwargs
+
+    # One of the two required
+
+    kwargs = {"required_one":1}
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassSomeRequired,
+                                           kwargs=kwargs)
+
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassNoneRequired,
+                                           kwargs=kwargs)
+
+    # Two of two required
+
+    kwargs = {"required_one":1,
+              "required_two":2}
+    # Should now work. Have all required
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                              calc_class=TestClassAllRequired,
+                              kwargs=kwargs)
+    assert new_kwargs is kwargs
+    
+    # Should now work. Have all required
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                       calc_class=TestClassSomeRequired,
+                                       kwargs=kwargs)
+    assert new_kwargs is kwargs
+
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassNoneRequired,
+                                           kwargs=kwargs)
+
+    # Two of two required, one optional
+
+    kwargs = {"required_one":1,
+              "required_two":2,
+              "not_required_one":1}
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    # Should now work. Have all required
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                       calc_class=TestClassSomeRequired,
+                                       kwargs=kwargs)
+    assert new_kwargs is kwargs
+
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassNoneRequired,
+                                           kwargs=kwargs)
+        
+    # Two of two required, two optional
+
+    kwargs = {"required_one":1,
+              "required_two":2,
+              "not_required_one":1,
+              "not_required_two":2}
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    # Should now work. Have all required
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                       calc_class=TestClassSomeRequired,
+                                       kwargs=kwargs)
+    assert new_kwargs is kwargs
+
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassNoneRequired,
+                                           kwargs=kwargs)
+        
+    # Extra
+    kwargs = {"required_one":1,
+              "required_two":2,
+              "not_required_one":1,
+              "not_required_two":2,
+              "extra":5}
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassSomeRequired,
+                                           kwargs=kwargs)
+
+    # Should now fail. Has unrecognized kwarg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassNoneRequired,
+                                           kwargs=kwargs)
+
+
+    # Only optional
+    kwargs = {"not_required_one":1,
+              "not_required_two":2}
+    
+    # Should now fail. Has unrecognized kwarg and missing arg
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassAllRequired,
+                                           kwargs=kwargs)
+    
+    # Should now fail. Has missing kwargs
+    with pytest.raises(ValueError):
+        new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                           calc_class=TestClassSomeRequired,
+                                           kwargs=kwargs)
+
+    # Should now work. Has matched optional args
+    new_kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                        calc_class=TestClassNoneRequired,
+                                        kwargs=kwargs)
+    assert new_kwargs is kwargs
 
 
 def test_SimulationContainer_load_json(sim_json,test_ddg,tmpdir):

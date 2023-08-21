@@ -12,13 +12,98 @@ from eee.io import load_ddg
 from eee.evolve import FitnessContainer
 from eee.evolve import GenotypeContainer
 from eee.evolve.wright_fisher import wright_fisher
-from eee.evolve.fitness import get_fitness_function
 
 import numpy as np
 
 import json
 import os
 import shutil
+import inspect
+
+
+def _validate_calc_kwargs(calc_type,calc_class,kwargs):
+    """
+    Make sure the kwargs defined in the json file match the arguments for the
+    calc_class. This does not check the types of the arguments (that is done
+    within each class) but does make sure we have the correct argument names.
+    It will generate a human-readable error message if the arguments are 
+    not correct.
+    """
+
+    # Set of kwargs found
+    kwargs_found = set(list(kwargs.keys()))
+        
+    # Get signature with all kwargs
+    sig = inspect.signature(calc_class.__init__)
+
+    # Grab arguments, separating them into those that must be defined 
+    # and those with defaults. 
+    required = []
+    have_defaults = []
+    for param in sig.parameters:
+        if sig.parameters[param].default is inspect._empty:
+            if param != "self":
+                required.append(param)
+        else:
+            have_defaults.append(param)
+
+    # Create sets of arguments in signature
+    required = set(required)
+    have_defaults = set(have_defaults)
+    all_allowed_args = required | have_defaults
+
+    # Look for args that are not found or extra args
+    missing_required = required - required.intersection(kwargs)
+    extra_args = kwargs_found - kwargs_found.intersection(all_allowed_args)
+    
+    # Optimistically start by assuming success
+    success = True
+    miss_err = ""
+    extra_err = ""
+    
+    # Missing arguments. Create a human-readable error string
+    if len(missing_required) > 0:
+        success = False
+
+        missing_required = list(missing_required)
+        missing_required.sort()
+
+        miss_err = "\nThe following required keys are not defined:\n"
+        for m in missing_required:
+            miss_err += f"    {m}\n"
+        miss_err += "\n"
+
+    # Extra arguments.. Create a human-readable error string
+    if len(extra_args) > 0:
+        success = False
+
+        extra_args = list(extra_args)
+        extra_args.sort()
+
+        extra_err = "\nThe following keys are not allowed:\n"
+        for e in extra_args:
+            extra_err += f"    {e}\n"
+        extra_err += "\n"
+
+    # If we failed above, construct a human-readable error string
+    if not success:
+
+        # Start with main error
+        err = "\nThe json file does not have the correct arguments for calc_type\n"
+        err += f"'{calc_type}'.\n\n"
+        err = err + miss_err + extra_err 
+        
+        name = f"{calc_class}"
+        dashes = len(name)*"-"
+        
+        err += f"\ncalc_type '{calc_type}' details:\n\n{name}\n{dashes}\n"   
+        
+        # Drop whole doc string into error message
+        err += f"{calc_class.__init__.__doc__}\n\n"
+
+        raise ValueError(err)
+    
+    return kwargs
 
 def load_json(json_file,use_stored_seed=False):
     """
@@ -54,30 +139,26 @@ def load_json(json_file,use_stored_seed=False):
         err = "\njson must have 'calc_type' key in top level that defines then\n"
         err += "calculation being done.\n\n"
         raise ValueError(err)
-    calc_type = run["calc_type"]
+    calc_type = run.pop("calc_type")
 
     allowable_calcs = {"wright_fisher":SimulationContainer}
     if not issubclass(type(calc_type),str) or calc_type not in allowable_calcs:
-        err = f"\ncalc_type ({calc_type}) is not recognized. calc_type should\n"
+        err = f"\ncalc_type '{calc_type}' is not recognized. calc_type should\n"
         err += "be one of:\n"
         for a in allowable_calcs:
             err += f"    {a}\n"
         err += "\n"
         raise ValueError(err)
 
-    # **********************************************************************
-    # Goes into Ensemble
-    # **********************************************************************
-
-    # ---------------------------- ens -------------------------------------
+    calc_class = allowable_calcs[calc_type]
     
+    # Create an ensemble from the 'ens' key, which we assume will be required
+    # in every calc_class. 
     if "ens" not in run:
         err = "\njson must have 'ens' key in top level that defines the\n"
         err += "the thermodynamic ensemble.\n\n"
         raise ValueError(err)
     
-    # ------------------------------ R -------------------------------------
-
     # Get gas constant
     if "R" in run["ens"]:
         R = run["ens"].pop("R")
@@ -85,134 +166,29 @@ def load_json(json_file,use_stored_seed=False):
         # Get default from Ensemble class
         R = eee.Ensemble()._R
 
-    # Create ensemble from entries.  
+    # Create ensemble from entries and validate. 
     ens = eee.Ensemble(R=R)
     for e in run["ens"]:
         ens.add_species(e,**run["ens"][e])
-    ens = check_ensemble(ens,check_obs=True)
+    run["ens"] = check_ensemble(ens,check_obs=True)
 
-    # **********************************************************************
-    # Goes into FitnessContainer
-    # **********************************************************************
-
-    # ---------------------------- mu_dict ---------------------------------
-    
-    if "mu_dict" not in run:
-        err = "\njson must have 'mu_dict' key in top level that holds the\n"
-        err += "chemical potential conditions over which to simulate\n"
-        err += "evolution.\n\n"
-        raise ValueError(err)
-    
-    mu_dict = run["mu_dict"]
-    
-    # ------------------------- fitness functions --------------------------
-    
-    if "fitness_fcns" not in run:
-        err = "\njson must have 'fitness_fcns' key in top level that holds thel\n"
-        err += "fitness functions to use for calculation.\n\n"
-        raise ValueError(err)
-    
-    # Get fitness functions from the str on/of/neutral entries
-    _fitness_fcns = run["fitness_fcns"]
-    fitness_fcns = []
-    for f in _fitness_fcns:
-        fitness_fcns.append(get_fitness_function(f))
-        
-    # ------------------------- optional arguments -------------------------
-        
-    try:
-        select_on = run["select_on"] 
-    except KeyError:
-        select_on = "fx_obs"
-
-    try:
-        select_on_folded = run["select_on_folded"]
-    except KeyError:
-        select_on_folded = True
-    
-    try:
-        fitness_kwargs = run["fitness_kwargs"]
-    except KeyError:
-        fitness_kwargs = {}
-    
-    try:
-        T = run["T"]
-    except KeyError:
-        T = 298.15
-    
-    # **********************************************************************
-    # Goes into GenotypeContainer
-    # **********************************************************************
-    
-    # ---------------------------- ddg_df ----------------------------------
-    
-    if "ddg_df" not in run:
-        err = "\njson must have 'ddg_df' key in top level that points to a file\n"
-        err += "containing the energetic effects of mutations on different species\n"
-        err += "in the ensemble.\n\n"
-        raise ValueError(err)
-    
-    ddg_df = run["ddg_df"]
-    
     # Load ddg_df here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
-    ddg_df = load_ddg(ddg_df)
-    
-    # **********************************************************************
-    # Goes into SimulationContainer
-    # **********************************************************************
+    if "ddg_df" in run:
+        run["ddg_df"] = load_ddg(run["ddg_df"])
+        
+    # Drop the seed unless we are requesting it to be kept. 
+    if "seed" in run and not use_stored_seed:
+        run.pop("seed")
 
-    try:
-        population_size = run["population_size"]
-    except KeyError:
-        population_size = 1000
-    
-    try:
-        mutation_rate = run["mutation_rate"]
-    except KeyError:
-        mutation_rate=0.01
+    # Validate the names of the keyword arguments
+    kwargs = _validate_calc_kwargs(calc_type=calc_type,
+                                   calc_class=calc_class,
+                                   kwargs=run)
 
-    try:
-        num_generations = run["num_generations"]
-    except KeyError:
-        num_generations = 100
+    # Set up the calculation class. 
+    return calc_class(**kwargs)
 
-    try:
-        write_prefix = run["write_prefix"]
-    except KeyError:
-        write_prefix = "eee_sim"
-    
-    try:
-        write_frequency = run["write_frequency"]
-    except KeyError:
-        write_frequency = 1000
-    
-    # ---------------------------- seed ----------------------------------
-
-    seed = None
-    if use_stored_seed and "seed" in run:
-        seed = run["seed"]
-
-    # **********************************************************************
-    # Set up run with all of the relevant input values
-    # **********************************************************************
-
-    sc = SimulationContainer(ens=ens,
-                             ddg_df=ddg_df,
-                             mu_dict=mu_dict,
-                             fitness_fcns=fitness_fcns,
-                             select_on=select_on,
-                             select_on_folded=select_on_folded,
-                             fitness_kwargs=fitness_kwargs,
-                             T=T,
-                             population_size=population_size,
-                             mutation_rate=mutation_rate,
-                             num_generations=num_generations,
-                             write_prefix=write_prefix,
-                             write_frequency=write_frequency,
-                             seed=seed)
-
-    return sc
 
 
 class SimulationContainer:
@@ -272,10 +248,7 @@ class SimulationContainer:
         num_generations : int, default=100
             number of generations to run the simulation for
         write_prefix : str, default="eee_sim"
-            write output files during the run with this prefix. If not specified, 
-            do not write files. If specified, gc and generations will be returned
-            *empty* as their contents will have been written to lower memory 
-            consumption. 
+            write output files during the run with this prefix. 
         write_frequency : int, default=1000
             write the generations out every write_frequency generations. 
         seed : int, optional
@@ -291,7 +264,7 @@ class SimulationContainer:
         self._population_size = check_population_size(population_size)
         self._mutation_rate = check_mutation_rate(mutation_rate) 
         self._num_generations = check_num_generations(num_generations)
-        self._write_prefix = write_prefix
+        self._write_prefix = f"{write_prefix}"
 
         # seed should be an integer > 0
         write_frequency = check_int(value=write_frequency,
