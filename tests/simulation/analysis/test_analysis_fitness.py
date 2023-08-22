@@ -11,7 +11,7 @@ import pandas as pd
 import pytest
 
 
-def test_fitness_function(ens_with_fitness):
+def test_fitness(ens_with_fitness):
     
     # Basic ensemble
     ens = Ensemble(R=1)

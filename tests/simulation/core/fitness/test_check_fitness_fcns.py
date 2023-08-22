@@ -12,9 +12,8 @@ from eee.simulation.core.fitness.ff import ff_neutral
 
 import pytest
 
-def test__construct_ff_dicts():
-    # Runs on initialization and creates _FITNESS_FUNCTION_TO_STR and
-    # _FITNESS_STR_TO_FUNCTION. Validate those. 
+def test__get_ff_available():
+    # Runs on initialization and creates FF_AVAILABLE. Validate that
 
     assert callable(FF_AVAILABLE["on"])
     assert FF_AVAILABLE["on"](1) == 1
@@ -125,3 +124,22 @@ def test_check_fitness_fcns(variable_types):
     assert len(f) == 5
     assert f[0] is print
     assert f[4] is print
+
+    # Check return_as argument
+    fitness_fcns = [ff_on,ff_off]
+    value = check_fitness_fcns(fitness_fcns=fitness_fcns,
+                               num_conditions=2,
+                               return_as="function")
+    assert value[0] is ff_on
+    assert value[1] is ff_off
+
+    value = check_fitness_fcns(fitness_fcns=fitness_fcns,
+                               num_conditions=2,
+                               return_as="string")
+    assert value[0] == "on"
+    assert value[1] == "off"
+
+    with pytest.raises(ValueError):
+        value = check_fitness_fcns(fitness_fcns=fitness_fcns,
+                            num_conditions=2,
+                            return_as="bad_return_as")

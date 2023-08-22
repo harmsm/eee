@@ -1,15 +1,12 @@
-FOUND tests._private.check.test_eee_variables.test_check_T
-FOUND tests._private.check.test_eee_variables.test_check_burn_in_generations
-FOUND tests._private.check.test_eee_variables.test_check_ddg_df
-FOUND tests._private.check.test_eee_variables.test_check_fitness_fcns
-FOUND tests._private.check.test_eee_variables.test_check_fitness_kwargs
-FOUND tests._private.check.test_eee_variables.test_check_mu_dict
-FOUND tests._private.check.test_eee_variables.test_check_mu_stoich
-FOUND tests._private.check.test_eee_variables.test_check_mut_energy
-FOUND tests._private.check.test_eee_variables.test_check_mutation_rate
-FOUND tests._private.check.test_eee_variables.test_check_num_generations
-FOUND tests._private.check.test_eee_variables.test_check_num_mutations
-FOUND tests._private.check.test_eee_variables.test_check_population_size
+FOUND tests._private.check.eee.test_ddg_df.test_check_ddg_df
+FOUND tests._private.check.eee.test_mu_dict.test_check_mu_dict
+FOUND tests._private.check.eee.test_mu_stoich.test_check_mu_stoich
+FOUND tests._private.check.eee.test_mut_energy.test_check_mut_energy
+FOUND tests._private.check.eee.test_pop_gen.test_check_burn_in_generations
+FOUND tests._private.check.eee.test_pop_gen.test_check_mutation_rate
+FOUND tests._private.check.eee.test_pop_gen.test_check_num_generations
+FOUND tests._private.check.eee.test_pop_gen.test_check_num_mutations
+FOUND tests._private.check.eee.test_pop_gen.test_check_population_size
 FOUND tests._private.check.test_standard.test_check_bool
 FOUND tests._private.check.test_standard.test_check_float
 FOUND tests._private.check.test_standard.test_check_int
@@ -25,50 +22,25 @@ FOUND tests._private.test_interface.test_launch
 FOUND tests._private.test_interface.test_rmtree
 FOUND tests._private.test_interface.test_run_cleanly
 FOUND tests._private.test_wrap.test_wrap_function
-FOUND tests.evolve.calculation.test_wf_sim.test_WrightFisherSimulation
-FOUND tests.evolve.calculation.test_wf_sim.test_WrightFisherSimulation_run
-FOUND tests.evolve.engine.test_wright_fisher.test__write_outputs
-FOUND tests.evolve.engine.test_wright_fisher.test_wright_fisher
-FOUND tests.evolve.fitness.test_ff.test_ff_neutral
-FOUND tests.evolve.fitness.test_ff.test_ff_off
-FOUND tests.evolve.fitness.test_ff.test_ff_on
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_T
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_ens
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_fitness
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_fitness_kwargs
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_mu_dict
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_select_on
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_select_on_folded
-FOUND tests.evolve.fitness.test_fitness_container.test_FitnessContainer_to_dict
-FOUND tests.evolve.fitness.test_fitness_function.test_fitness_function
-FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test__construct_ff_dicts
-FOUND tests.evolve.fitness.test_map_fitness_fcn_to_string.test_map_fitness_fcn_to_string
-FOUND tests.evolve.genotype.test_genotype.test_Genotype
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_copy
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_mut_energy
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutate
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutations
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_mutations_accumulated
-FOUND tests.evolve.genotype.test_genotype.test_Genotype_sites
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer__create_ddg_dict
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_df
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_dump_to_csv
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_fitnesses
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_genotypes
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_mut_energies
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_mutate
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_trajectories
-FOUND tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_wt_sequence
 FOUND tests.io.test_load_ddg.test_load_ddg
-FOUND tests.io.test_load_json.test__validate_calc_kwargs
-FOUND tests.io.test_load_json.test_load_json
 FOUND tests.io.test_load_structure.test__load_structure_cif
 FOUND tests.io.test_load_structure.test__load_structure_pdb
 FOUND tests.io.test_load_structure.test_load_structure
 FOUND tests.io.test_read_dataframe.test_read_dataframe
 FOUND tests.io.test_write_pdb.test_write_pdb
+FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation
+FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation_run
+FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__get_ff_available
+FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__map_fitness_fcn_to_string
+FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test_check_fitness_fcns
+FOUND tests.simulation.core.fitness.test_check_fitness_kwargs.test_check_fitness_kwargs
+FOUND tests.simulation.core.fitness.test_ff.test_ff_neutral
+FOUND tests.simulation.core.fitness.test_ff.test_ff_off
+FOUND tests.simulation.core.fitness.test_ff.test_ff_on
+FOUND tests.simulation.engine.test_wright_fisher.test__write_outputs
+FOUND tests.simulation.engine.test_wright_fisher.test_wright_fisher
+FOUND tests.simulation.io.test_load_json.test__validate_calc_kwargs
+FOUND tests.simulation.io.test_load_json.test_load_json
 FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
 FOUND tests.structure.test_sync_structures.test__create_unique_filenames
 FOUND tests.structure.test_sync_structures.test_sync_structures
@@ -82,13 +54,13 @@ FOUND tests.test_ensemble.test_Ensemble_get_species_dG
 FOUND tests.test_ensemble.test_Ensemble_mu_list
 FOUND tests.test_ensemble.test_Ensemble_species
 FOUND tests.test_ensemble.test_Ensemble_to_dict
+FAKE tests._private.test_logger.test_log
 FAKE tests._private.test_wrap.test_IterFromFile
 FAKE tests._private.test_wrap.test_IterFromFile___call__
-FAKE tests.evolve.base.test_simulate_tree.test_simulate_tree
-FAKE tests.evolve.test_analysis.test_extract_alignment
-FAKE tests.evolve.test_analysis.test_get_genotype_frequencies
-FAKE tests.evolve.test_analysis.test_get_most_common
-FAKE tests.evolve.test_analysis.test_get_num_accumulated_mutations
+FAKE tests.simulation.analysis.test_analysis.test_extract_alignment
+FAKE tests.simulation.analysis.test_analysis.test_get_genotype_frequencies
+FAKE tests.simulation.analysis.test_analysis.test_get_most_common
+FAKE tests.simulation.analysis.test_analysis.test_get_num_accumulated_mutations
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test_clean_structure
@@ -96,20 +68,46 @@ FAKE tests.test_epistasis.test_get_all_pairs_epistasis
 FAKE tests.test_epistasis.test_get_ensemble_epistasis
 FAKE tests.test_epistasis.test_get_epistasis
 FAKE tests.test_epistasis.test_summarize_epistasis
+MISSING tests._private.check.test_eee.test_T_check_T
 MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.test_interface.test_WrappedFunctionException
-MISSING tests._private.test_logger.test_log
 MISSING tests.bin.test_eee-simulate-evolution.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
-MISSING tests.evolve.base.test_container.test_SimulationContainer
-MISSING tests.evolve.base.test_container.test_SimulationContainer__complete_calc
-MISSING tests.evolve.base.test_container.test_SimulationContainer__prepare_calc
-MISSING tests.evolve.base.test_container.test_SimulationContainer__write_calc_params
-MISSING tests.evolve.base.test_simulate_tree.test__simulate_branch
-MISSING tests.evolve.genotype.test_genotype_container.test_GenotypeContainer_to_dict
-MISSING tests.evolve.test___init__.test__get_allowable_calcs
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.simulation.analysis.test_fitness.test_fitness
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_T
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_ens
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_fitness
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_fitness_kwargs
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_mu_dict
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_select_on
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_select_on_folded
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_to_dict
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype__create_ddg_dict
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_df
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_dump_to_csv
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_fitnesses
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_genotypes
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_mut_energies
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_mutate
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_to_dict
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_trajectories
+MISSING tests.simulation.core.genotype.test_genotype.test_Genotype_wt_sequence
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_copy
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_mut_energy
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_mutate
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_mutations
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_mutations_accumulated
+MISSING tests.simulation.core.genotype.test_single_genotype.test_SingleGenotype_sites
+MISSING tests.simulation.core.simulation.test_simulation.test_Simulation
+MISSING tests.simulation.core.simulation.test_simulation.test_Simulation__complete_calc
+MISSING tests.simulation.core.simulation.test_simulation.test_Simulation__prepare_calc
+MISSING tests.simulation.core.simulation.test_simulation.test_Simulation__write_calc_params
+MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test_ensemble.test_Ensemble_get_dG_obs_fast
 MISSING tests.test_ensemble.test_Ensemble_get_fx_obs_fast
 MISSING tests.test_ensemble.test_Ensemble_load_mu_dict
@@ -117,12 +115,40 @@ MISSING tests.test_ensemble.test_Ensemble_mut_dict_to_array
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
+FOUND & EXTRA tests._private.check.eee.test_T.test_check_T
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
-FOUND & EXTRA tests.evolve.base.test_simulation_container.test_SimulationContainer
-FOUND & EXTRA tests.evolve.base.test_simulation_container.test_SimulationContainer__complete_calc
-FOUND & EXTRA tests.evolve.base.test_simulation_container.test_SimulationContainer__prepare_calc
-FOUND & EXTRA tests.evolve.base.test_simulation_container.test_SimulationContainer__write_calc_params
-FOUND & EXTRA tests.evolve.genotype.test_genotype_container.test_to_dict
+FOUND & EXTRA tests.simulation.analysis.test_analysis_fitness.test_fitness
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_T
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_ens
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_fitness
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_fitness_kwargs
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_mu_dict
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_select_on
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_select_on_folded
+FOUND & EXTRA tests.simulation.core.fitness.test_simulation_core_fitness.test_Fitness_to_dict
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_copy
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_mut_energy
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_mutate
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_mutations
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_mutations_accumulated
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype.test_SingleGenotype_sites
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype__create_ddg_dict
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_df
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_dump_to_csv
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_fitnesses
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_genotypes
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_mut_energies
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_mutate
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_trajectories
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_Genotype_wt_sequence
+FOUND & EXTRA tests.simulation.core.genotype.test_genotype_container.test_to_dict
+FOUND & EXTRA tests.simulation.core.simulation.test_simulation_container.test_Simulation
+FOUND & EXTRA tests.simulation.core.simulation.test_simulation_container.test_Simulation__complete_calc
+FOUND & EXTRA tests.simulation.core.simulation.test_simulation_container.test_Simulation__prepare_calc
+FOUND & EXTRA tests.simulation.core.simulation.test_simulation_container.test_Simulation__write_calc_params
 FOUND & EXTRA tests.test_ensemble.test_get_dG_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_get_fx_obs_fast
 FOUND & EXTRA tests.test_ensemble.test_load_mu_dict
