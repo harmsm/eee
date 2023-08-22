@@ -4,4 +4,4 @@ from .analysis import get_most_common
 from .analysis import get_genotype_frequencies
 from .analysis import extract_alignment
 
-from .fitness import fitness
+from .ensemble_fitness import ensemble_fitness

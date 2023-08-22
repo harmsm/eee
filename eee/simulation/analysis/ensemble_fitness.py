@@ -4,14 +4,14 @@ Function for calculating fitness from an ensemble.
 
 from eee.simulation.core import Fitness
 
-def fitness(ens,
-            mut_energy,
-            mu_dict,
-            fitness_fcns,
-            select_on="fx_obs",
-            select_on_folded=True,
-            fitness_kwargs=None,
-            T=298.15):
+def ensemble_fitness(ens,
+                     mut_energy,
+                     mu_dict,
+                     fitness_fcns,
+                     select_on="fx_obs",
+                     select_on_folded=True,
+                     fitness_kwargs=None,
+                     T=298.15):
     """
     Calculate fitness from the ensemble given mutations (in mut_energy), 
     chemical potentials (mu_dict), and fitness function(s). 

@@ -1,7 +1,7 @@
 
 from eee import Ensemble
 
-from eee.simulation.analysis import fitness
+from eee.simulation.analysis import ensemble_fitness
 from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 
@@ -11,7 +11,7 @@ import pandas as pd
 import pytest
 
 
-def test_fitness(ens_with_fitness):
+def test_ensemble_fitness(ens_with_fitness):
     
     # Basic ensemble
     ens = Ensemble(R=1)
@@ -33,7 +33,7 @@ def test_fitness(ens_with_fitness):
 
     # Try different fitness_fcns
     fitness_fcns = [ff_off,ff_on]
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -47,7 +47,7 @@ def test_fitness(ens_with_fitness):
 
     # Try different fitness_fcns
     fitness_fcns = ["off","on"]
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -60,7 +60,7 @@ def test_fitness(ens_with_fitness):
 
     # Now select on folded. This will be folded under first condition (test2 
     # favored) and not folded under second condition (test1 favored). 
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -73,7 +73,7 @@ def test_fitness(ens_with_fitness):
 
 
     fitness_fcns = [ff_off,ff_off]
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -85,7 +85,7 @@ def test_fitness(ens_with_fitness):
     assert np.array_equal(value["fitness"],[1,0])
 
     fitness_fcns = [ff_on,ff_off]
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -115,7 +115,7 @@ def test_fitness(ens_with_fitness):
     select_on = "dG_obs"
 
     fitness_fcns = [ff_on,ff_off]
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -126,7 +126,7 @@ def test_fitness(ens_with_fitness):
     assert np.array_equal(value["fitness"],[1,2])
 
     # Now select on folded. Will be entirely unfolded --> 0,0
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -141,7 +141,7 @@ def test_fitness(ens_with_fitness):
     ens = ens_with_fitness["ens"]
     mu_dict = ens_with_fitness["mu_dict"]
 
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy={},
                     mu_dict=mu_dict,
                     fitness_fcns=[ff_on,ff_off],
@@ -151,7 +151,7 @@ def test_fitness(ens_with_fitness):
                     T=1)
     assert np.array_equal(np.round(value["fitness"],2),[0.54,1.00])
 
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy={"s1":-1.667,"s2":3.333},
                     mu_dict=mu_dict,
                     fitness_fcns=[ff_on,ff_off],
@@ -161,7 +161,7 @@ def test_fitness(ens_with_fitness):
                     T=1)
     assert np.array_equal(np.round(value["fitness"],2),[0.99,0.82])
     
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy={"s1":0.167,"s2":-16.667},
                     mu_dict=mu_dict,
                     fitness_fcns=[ff_on,ff_off],
@@ -189,7 +189,7 @@ def test_fitness(ens_with_fitness):
     select_on = "fx_obs"
     T = 1
 
-    value = fitness(ens=ens,
+    value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
                     mu_dict=mu_dict,
                     fitness_fcns=fitness_fcns,
@@ -201,7 +201,7 @@ def test_fitness(ens_with_fitness):
     assert np.array_equal(value["fitness"],[1,1])
 
     with pytest.raises(ValueError):
-        value = fitness(ens=ens,
+        value = ensemble_fitness(ens=ens,
                         mut_energy=mut_energy,
                         mu_dict=mu_dict,
                         fitness_fcns=fitness_fcns,

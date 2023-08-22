@@ -944,7 +944,7 @@ def test_Ensemble_get_obs(variable_types):
             ens.get_obs(T=v)
 
 
-def test_load_mu_dict(variable_types):
+def test_Ensemble_load_mu_dict(variable_types):
 
     # Two species. dG0. Add mu_dict perturbation
     ens = Ensemble()
@@ -978,7 +978,7 @@ def test_load_mu_dict(variable_types):
     assert np.array_equal(ens._unfolded_mask,[False,True])
 
 
-def test_mut_dict_to_array():
+def test_Ensemble_mut_dict_to_array():
 
     # Two species. 
     ens = Ensemble(R=1)
@@ -1002,7 +1002,7 @@ def test_mut_dict_to_array():
     out_array = ens.mut_dict_to_array({"test2":1.0,"test1":2.0})
     assert np.array_equal(out_array,[1,2])
 
-def test_get_fx_obs_fast():
+def test_Ensemble_get_fx_obs_fast():
 
     ens = Ensemble(R=1)
     ens.add_species(name="test1",
@@ -1081,7 +1081,7 @@ def test_get_fx_obs_fast():
                           np.round(predicted,2))
 
 
-def test_get_dG_obs_fast():
+def test_Ensemble_get_dG_obs_fast():
 
     
     ens = Ensemble(R=1)
