@@ -4,14 +4,14 @@ from eee._private.check.eee.mu_stoich import check_mu_stoich
 from eee._private.check.eee.mu_dict import check_mu_dict
 from eee._private.check.eee.mut_energy import check_mut_energy
 from eee._private.check.eee.ddg_df import check_ddg_df
-from eee._private.check.eee.fitness_fcns import check_fitness_fcns
-from eee._private.check.eee.fitness_kwargs import check_fitness_kwargs
+from eee.simulation.core.fitness.check_fitness_fcns import check_fitness_fcns
+from eee.simulation.core.fitness.check_fitness_kwargs import check_fitness_kwargs
 from eee._private.check.eee.T import check_T
-from eee._private.check.eee.pop_gen import check_mutation_rate
-from eee._private.check.eee.pop_gen import check_population_size
-from eee._private.check.eee.pop_gen import check_num_generations
-from eee._private.check.eee.pop_gen import check_burn_in_generations
-from eee._private.check.eee.pop_gen import check_num_mutations
+from eee._private.check.eee import check_mutation_rate
+from eee._private.check.eee import check_population_size
+from eee._private.check.eee import check_num_generations
+from eee._private.check.eee import check_burn_in_generations
+from eee._private.check.eee import check_num_mutations
 
 from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off

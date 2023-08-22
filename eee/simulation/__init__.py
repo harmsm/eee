@@ -20,7 +20,7 @@ def _get_calc_available():
 
         is_good = False
         try:
-            is_good = issubclass(p[1],core.Simulation)
+            is_good = issubclass(p[1],core.simulation.Simulation)
         except TypeError:
             continue
             

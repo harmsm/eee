@@ -1,6 +1,6 @@
-from eee.evolve.fitness.ff import ff_on
-from eee.evolve.fitness.ff import ff_off
-from eee.evolve.fitness.ff import ff_neutral
+from eee.simulation.core.fitness.ff import ff_on
+from eee.simulation.core.fitness.ff import ff_off
+from eee.simulation.core.fitness.ff import ff_neutral
 
 def test_ff_on():
     assert ff_on(1) == 1

@@ -1,7 +1,7 @@
 import eee
 
 from eee._private.check.ensemble import check_ensemble
-from eee.evolve import _ALLOWABLE_CALCS
+from eee.simulation import CALC_AVAILABLE
 
 from eee.io import load_ddg
 
@@ -147,15 +147,15 @@ def load_json(json_file,use_stored_seed=False):
         raise ValueError(err)
     calc_type = calc_input.pop("calc_type")
 
-    if not issubclass(type(calc_type),str) or calc_type not in _ALLOWABLE_CALCS:
+    if not issubclass(type(calc_type),str) or calc_type not in CALC_AVAILABLE:
         err = f"\ncalc_type '{calc_type}' is not recognized. calc_type should\n"
         err += "be one of:\n"
-        for a in _ALLOWABLE_CALCS:
+        for a in CALC_AVAILABLE:
             err += f"    {a}\n"
         err += "\n"
         raise ValueError(err)
 
-    calc_class = _ALLOWABLE_CALCS[calc_type]
+    calc_class = CALC_AVAILABLE[calc_type]
 
     if "system" not in calc_input:
         err = "\njson file must have 'system' key in top level that defines\n"

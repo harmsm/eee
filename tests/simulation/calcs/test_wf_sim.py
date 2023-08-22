@@ -1,6 +1,6 @@
 import pytest
 
-from eee.evolve.calculation import WrightFisherSimulation
+from eee.simulation.calcs import WrightFisherSimulation
 
 import os
 

@@ -1,4 +1,5 @@
-from eee.simulation.core import Simulation
+
+from eee.simulation.core.simulation import Simulation
 
 from eee.simulation.engine import wright_fisher
 

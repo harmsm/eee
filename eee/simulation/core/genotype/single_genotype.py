@@ -10,7 +10,7 @@ class SingleGenotype:
     """
     Class to hold a genotype including the mutated sites, mutations, and the
     combined energetic effects of all mutations. Generally this will be 
-    initialized by GenotypeContainer. 
+    initialized by Genotype. 
     """
 
     def __init__(self,
@@ -82,17 +82,17 @@ class SingleGenotype:
 
     def copy(self):
         """
-        Return a copy of the Genotype instance. This will copy the ens and
+        Return a copy of the SingleGenotype instance. This will copy the ens and
         ddg_dict objects as references, but make new instances of the sites, 
         mutations, and mut_energy attributes. 
         """
         
-        return Genotype(self._ens,
-                        self._ddg_dict,
-                        sites=self._sites,
-                        mutations=self._mutations,
-                        mutations_accumulated=self._mutations_accumulated,
-                        mut_energy=self._mut_energy)
+        return SingleGenotype(self._ens,
+                              self._ddg_dict,
+                              sites=self._sites,
+                              mutations=self._mutations,
+                              mutations_accumulated=self._mutations_accumulated,
+                              mut_energy=self._mut_energy)
 
 
     def mutate(self,site,mutation):

@@ -1,17 +1,15 @@
 
 from eee import Ensemble
 
-from eee.evolve.fitness.fitness_container import FitnessContainer
-from eee.evolve.fitness.ff import ff_on
-from eee.evolve.fitness.ff import ff_off
+from eee.simulation.core.fitness.fitness import Fitness
+from eee.simulation.core.fitness.ff import ff_on
+from eee.simulation.core.fitness.ff import ff_off
 
 import numpy as np
 
 import pytest
 
-
-
-def test_FitnessContainer(ens_test_data,variable_types):
+def test_Fitness(ens_test_data,variable_types):
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -31,7 +29,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     T = 1
 
     # make sure attributes are set correctly
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -65,7 +63,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)    
         with pytest.raises(ValueError):
-            FitnessContainer(ens=v,
+            Fitness(ens=v,
                              mu_dict=mu_dict,
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
@@ -77,7 +75,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=v,
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
@@ -89,7 +87,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=mu_dict,
                              fitness_fcns=v,
                              select_on="fx_obs",
@@ -101,7 +99,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=mu_dict,
                              fitness_fcns=fitness_fcns,
                              select_on=v,
@@ -109,7 +107,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
                              fitness_kwargs={},
                              T=1)
             
-    FitnessContainer(ens=ens,
+    Fitness(ens=ens,
                      mu_dict=mu_dict,
                      fitness_fcns=fitness_fcns,
                      select_on="dG_obs",
@@ -121,7 +119,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
     for v in variable_types["not_bools"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=mu_dict,
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
@@ -138,7 +136,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=mu_dict,
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
@@ -159,7 +157,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            FitnessContainer(ens=ens,
+            Fitness(ens=ens,
                              mu_dict=mu_dict,
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
@@ -167,7 +165,7 @@ def test_FitnessContainer(ens_test_data,variable_types):
                              fitness_kwargs={},
                              T=v)
 
-def test_FitnessContainer_fitness():
+def test_Fitness_fitness():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -185,7 +183,7 @@ def test_FitnessContainer_fitness():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -203,7 +201,7 @@ def test_FitnessContainer_fitness():
     assert np.array_equal(value,[1,0])
 
     with pytest.raises(ValueError):
-        fc = FitnessContainer(ens=ens,
+        fc = Fitness(ens=ens,
                               mu_dict=mu_dict,
                               fitness_fcns=fitness_fcns,
                               select_on="not_right",
@@ -211,7 +209,7 @@ def test_FitnessContainer_fitness():
                               T=T)
         
     # Now set select_on_folded to True. Always unfolded.
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -228,7 +226,7 @@ def test_FitnessContainer_fitness():
     value = fc.fitness(mut_energy_array=mut_energy_array)
     assert np.array_equal(value,[0,0])
 
-def test_FitnessContainer_to_dict():
+def test_Fitness_to_dict():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -246,7 +244,7 @@ def test_FitnessContainer_to_dict():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -266,7 +264,7 @@ def test_FitnessContainer_to_dict():
     assert np.array_equal(out_dict["fitness_fcns"],["off","on"])
 
 
-def test_FitnessContainer_ens():
+def test_Fitness_ens():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -284,7 +282,7 @@ def test_FitnessContainer_ens():
 
     # make sure attributes are set correctly
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -295,7 +293,7 @@ def test_FitnessContainer_ens():
     assert fc.ens is ens
     assert fc._private_ens is not ens
     
-def test_FitnessContainer_mu_dict():
+def test_Fitness_mu_dict():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -313,7 +311,7 @@ def test_FitnessContainer_mu_dict():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -324,7 +322,7 @@ def test_FitnessContainer_mu_dict():
     assert np.array_equal(fc.mu_dict["X"],[0,100])
     assert np.array_equal(fc.mu_dict["Y"],[100,0])
 
-def test_FitnessContainer_select_on():
+def test_Fitness_select_on():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -342,7 +340,7 @@ def test_FitnessContainer_select_on():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -351,7 +349,7 @@ def test_FitnessContainer_select_on():
                           T=T)
     assert fc.select_on == "fx_obs"
 
-def test_FitnessContainer_select_on_folded():
+def test_Fitness_select_on_folded():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -369,7 +367,7 @@ def test_FitnessContainer_select_on_folded():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -379,7 +377,7 @@ def test_FitnessContainer_select_on_folded():
     assert fc.select_on_folded == False
 
 
-def test_FitnessContainer_fitness_kwargs():
+def test_Fitness_fitness_kwargs():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -397,7 +395,7 @@ def test_FitnessContainer_fitness_kwargs():
     select_on = "fx_obs"
     T = 1
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -408,7 +406,7 @@ def test_FitnessContainer_fitness_kwargs():
     assert issubclass(type(fc.fitness_kwargs),dict)
     assert len(fc.fitness_kwargs) == 0
 
-def test_FitnessContainer_T():
+def test_Fitness_T():
 
     # Basic ensemble    
     ens = Ensemble(R=1)
@@ -426,7 +424,7 @@ def test_FitnessContainer_T():
 
     # make sure attributes are set correctly
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -435,7 +433,7 @@ def test_FitnessContainer_T():
     
     assert np.array_equal(fc.T,[1.0,1.0])
 
-    fc = FitnessContainer(ens=ens,
+    fc = Fitness(ens=ens,
                           mu_dict=mu_dict,
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
@@ -444,7 +442,7 @@ def test_FitnessContainer_T():
     assert np.array_equal(fc.T,[20.0,20.0])
 
     with pytest.raises(ValueError):
-        fc = FitnessContainer(ens=ens,
+        fc = Fitness(ens=ens,
                             mu_dict=mu_dict,
                             fitness_fcns=fitness_fcns,
                             select_on=select_on,

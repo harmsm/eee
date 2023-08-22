@@ -1,17 +1,17 @@
 
-from eee.evolve.genotype.genotype import Genotype
+from eee.simulation.core.genotype.single_genotype import SingleGenotype
 
 import numpy as np
 
 
-def test_Genotype(ens_test_data):
+def test_SingleGenotype(ens_test_data):
 
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # minimal input
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict)
     
     assert g._ens is ens
@@ -25,7 +25,7 @@ def test_Genotype(ens_test_data):
 
     # ---------------------------------
     # sites, mutations, mut_energy, and mutations_accumulated input
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -45,14 +45,14 @@ def test_Genotype(ens_test_data):
     assert g.mut_energy[1] == -1
 
 
-def test_Genotype_copy(ens_test_data):
+def test_SingleGenotype_copy(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -97,14 +97,14 @@ def test_Genotype_copy(ens_test_data):
     assert g2.mut_energy[0] == 1
     assert g2.mut_energy[1] == -1
 
-def test_Genotype_mutate(ens_test_data):
+def test_SingleGenotype_mutate(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -164,7 +164,7 @@ def test_Genotype_mutate(ens_test_data):
     assert g4.mut_energy[1] == 0
 
     # Start at wildtype and mutate
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict)
     
     g.mutate(2,"P2R")
@@ -178,14 +178,14 @@ def test_Genotype_mutate(ens_test_data):
     assert g.mut_energy[0] == 0
     assert g.mut_energy[1] == 1
 
-def test_Genotype_mut_energy(ens_test_data):
+def test_SingleGenotype_mut_energy(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -196,14 +196,14 @@ def test_Genotype_mut_energy(ens_test_data):
     assert g.mut_energy[0] == 1
     assert g.mut_energy[1] == -1
 
-def test_Genotype_mutations(ens_test_data):
+def test_SingleGenotype_mutations(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -214,14 +214,14 @@ def test_Genotype_mutations(ens_test_data):
     assert np.array_equal(g.mutations,["M1A"])
 
 
-def test_Genotype_mutations_accumulated(ens_test_data):
+def test_SingleGenotype_mutations_accumulated(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],
@@ -232,14 +232,14 @@ def test_Genotype_mutations_accumulated(ens_test_data):
     assert np.array_equal(g.mutations_accumulated,["M1A"])
 
 
-def test_Genotype_sites(ens_test_data):
+def test_SingleGenotype_sites(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_dict = ens_test_data["ddg_dict"]
 
     # ---------------------------------
     # Create a genotype object
-    g = Genotype(ens=ens,
+    g = SingleGenotype(ens=ens,
                  ddg_dict=ddg_dict,
                  sites=[1],
                  mutations=["M1A"],

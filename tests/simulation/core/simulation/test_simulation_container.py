@@ -1,8 +1,8 @@
 import pytest
 
-from eee.evolve.base.container import SimulationContainer
-from eee.evolve import FitnessContainer
-from eee.evolve import GenotypeContainer
+from eee.simulation.core.simulation import Simulation
+from eee.simulation.core import Fitness
+from eee.simulation.core import Genotype
 
 import numpy as np
 import pandas as pd
@@ -10,7 +10,7 @@ import pandas as pd
 import os
 import json
 
-class SimContSub_no_run(SimulationContainer):
+class Simulation_no_run(Simulation):
     """
     Bad dummy class. Does not have run defined, so it should throw 
     NotImplementedError.
@@ -18,7 +18,7 @@ class SimContSub_no_run(SimulationContainer):
 
     calc_type = "fake_no_run"
 
-class SimContSub_no_calc_type(SimulationContainer):
+class Simulation_no_calc_type(Simulation):
     """
     Bad dummy class. Does not have calc_type defined, so it should throw 
     NotImplementedError.
@@ -27,9 +27,9 @@ class SimContSub_no_calc_type(SimulationContainer):
     def run(self,*args,**kwargs):
         pass
 
-class SimulationContainerTester(SimulationContainer):
+class SimulationTester(Simulation):
     """
-    SimulationContainer cannot be run on its own. This dummy subclass can 
+    Simulation cannot be run on its own. This dummy subclass can 
     be used to test its core functionality.
     """
 
@@ -58,7 +58,7 @@ class SimulationContainerTester(SimulationContainer):
 
         self._complete_calc()
 
-def test_SimulationContainer(ens_test_data,variable_types):
+def test_Simulation(ens_test_data,variable_types):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
@@ -67,7 +67,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
     # Make sure implementation checks are in place. 
     with pytest.raises(NotImplementedError):
-        sm = SimulationContainer(ens=ens,
+        sm = Simulation(ens=ens,
                                  ddg_df=ddg_df,
                                  mu_dict=mu_dict,
                                  fitness_fcns=fitness_fcns,
@@ -78,7 +78,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
 
     with pytest.raises(NotImplementedError):
-        sm = SimContSub_no_run(ens=ens,
+        sm = Simulation_no_run(ens=ens,
                                ddg_df=ddg_df,
                                mu_dict=mu_dict,
                                fitness_fcns=fitness_fcns,
@@ -88,7 +88,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                seed=None)
 
     with pytest.raises(NotImplementedError):
-        sm = SimContSub_no_calc_type(ens=ens,
+        sm = Simulation_no_calc_type(ens=ens,
                                      ddg_df=ddg_df,
                                      mu_dict=mu_dict,
                                      fitness_fcns=fitness_fcns,
@@ -104,7 +104,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=v,
+            sm = SimulationTester(ens=v,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -123,7 +123,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=v,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -136,7 +136,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=v,
                                            fitness_fcns=fitness_fcns,
@@ -149,7 +149,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=v,
@@ -162,7 +162,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -171,7 +171,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                            T=1,
                                            seed=None)
                    
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -184,7 +184,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     for v in variable_types["not_bools"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -194,7 +194,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
                                            T=1,
                                            seed=None)
             
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -212,7 +212,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -234,7 +234,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -259,7 +259,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
 
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationContainerTester(ens=ens,
+            sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
                                            mu_dict=mu_dict,
                                            fitness_fcns=fitness_fcns,
@@ -273,7 +273,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     # ------------------------------------------------------------------
     # Check seed
     
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -286,7 +286,7 @@ def test_SimulationContainer(ens_test_data,variable_types):
     assert sm._seed >= 0
     assert issubclass(type(sm._pcg64),np.random._pcg64.PCG64)
 
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -300,10 +300,10 @@ def test_SimulationContainer(ens_test_data,variable_types):
     assert issubclass(type(sm._pcg64),np.random._pcg64.PCG64)
     assert np.isclose(0.8050029237453802,sm._rng.random())
 
-    assert issubclass(type(sm._fc),FitnessContainer)
-    assert issubclass(type(sm._gc),GenotypeContainer)
+    assert issubclass(type(sm._fc),Fitness)
+    assert issubclass(type(sm._gc),Genotype)
 
-def test_SimulationContainer__prepare_calc(ens_test_data,tmpdir):
+def test_Simulation__prepare_calc(ens_test_data,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -316,7 +316,7 @@ def test_SimulationContainer__prepare_calc(ens_test_data,tmpdir):
     fitness_fcns = ens_test_data["fitness_fcns"]
 
 
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -345,7 +345,7 @@ def test_SimulationContainer__prepare_calc(ens_test_data,tmpdir):
 
     os.chdir(current_dir)
 
-def test_SimulationContainer__write_calc_params(ens_test_data,
+def test_Simulation__write_calc_params(ens_test_data,
                                                 tmpdir):
 
     current_dir = os.getcwd()
@@ -356,7 +356,7 @@ def test_SimulationContainer__write_calc_params(ens_test_data,
     mu_dict = ens_test_data["mu_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
-    sm = SimulationContainerTester(ens=ens,
+    sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
                                    mu_dict=mu_dict,
                                    fitness_fcns=fitness_fcns,
@@ -405,7 +405,7 @@ def test_SimulationContainer__write_calc_params(ens_test_data,
 
     os.chdir(current_dir)
 
-def test_SimulationContainer__complete_calc():
+def test_Simulation__complete_calc():
     # Tested within test__prepare_calc because these are paired functions. 
     assert True
     

@@ -8,8 +8,7 @@ from eee._private.check.eee import check_T
 from .check_fitness_fcns import check_fitness_fcns
 from .check_fitness_kwargs import check_fitness_kwargs
 
-from eee._private.check.eee.pop_gen import check_fitness_kwargs
-from eee._private.check.eee.pop_gen import check_mu_dict
+from eee._private.check.eee import check_mu_dict
 
 from eee._private.check.standard import check_bool
 

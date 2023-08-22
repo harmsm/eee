@@ -1,9 +1,9 @@
 import pytest
 
-from eee.evolve.engine.wright_fisher import _write_outputs
-from eee.evolve.engine.wright_fisher import wright_fisher
+from eee.simulation.engine.wright_fisher import _write_outputs
+from eee.simulation.engine.wright_fisher import wright_fisher
 
-from eee.evolve.genotype.genotype_container import GenotypeContainer
+from eee.simulation.core.genotype import Genotype
 
 import numpy as np
 import pandas as pd
@@ -202,7 +202,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Test three ways of setting the population (single number, dictionary, list)
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -218,7 +218,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
     assert len(glob.glob("*.csv")) == 0 
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -234,7 +234,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
     assert len(glob.glob("*.csv")) == 0 
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -253,7 +253,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Mutation rate
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -262,7 +262,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                     num_generations=2)
     high_mut_rate_genotypes = len(gc.genotypes)
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -278,7 +278,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Num generations
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -293,7 +293,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # num_mutations
 
     # 1 mutation
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -312,7 +312,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0  
 
     # 2 mutations
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -331,7 +331,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0 
 
     # 3 mutations
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -349,7 +349,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
 
     # Too short to complete 50 mutations -- should run 10 generations and warn
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     with pytest.warns():
@@ -368,7 +368,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # this is not a real test, but at least will test ability for the code to 
     # run without crashing when this is set. 
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -381,7 +381,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Check the sorts of mutations being generated
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -390,7 +390,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                     num_generations=2)
     high_mut_rate_genotypes = len(gc.genotypes)
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
@@ -406,7 +406,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # --------------------------------------------------------------------------
     # Check variables
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
 
@@ -431,7 +431,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                             num_generations=2)
 
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
 

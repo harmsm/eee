@@ -1,8 +1,8 @@
 
 import pytest
 
-from eee.evolve.genotype.genotype import Genotype
-from eee.evolve.genotype.genotype_container import GenotypeContainer
+from eee.simulation.core.genotype.single_genotype import SingleGenotype
+from eee.simulation.core.genotype.genotype import Genotype
 
 import numpy as np
 import pandas as pd
@@ -10,7 +10,7 @@ import pandas as pd
 import os
 import random
 
-def test_GenotypeContainer(ens_test_data):
+def test_Genotype(ens_test_data):
 
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
@@ -18,7 +18,7 @@ def test_GenotypeContainer(ens_test_data):
     ddg_df = ens_test_data["ddg_df"]
     choice_function = random.choice
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df,
                            choice_function=choice_function)
@@ -33,9 +33,9 @@ def test_GenotypeContainer(ens_test_data):
     assert np.array_equal(gc._mutations_at_sites[1],["M1A","M1V"])
     assert np.array_equal(gc._mutations_at_sites[2],["P2R","P2Q"])
 
-    # Make sure it created correct Genotype instance
+    # Make sure it created correct SingleGenotype instance
     assert len(gc.genotypes) == 1
-    assert issubclass(type(gc.genotypes[0]),Genotype)
+    assert issubclass(type(gc.genotypes[0]),SingleGenotype)
     assert gc.genotypes[0]._ens is ens
     assert gc._fitness_function is fitness_function
     assert gc.genotypes[0]._ddg_dict is gc._ddg_dict
@@ -55,7 +55,7 @@ def test_GenotypeContainer(ens_test_data):
     assert gc.fitnesses[0] <= 1
 
     assert gc._choice_function is random.choice
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df,
                            choice_function=None)
@@ -71,18 +71,18 @@ def test_GenotypeContainer(ens_test_data):
     bad_ddg_df.columns = new_columns
 
     with pytest.raises(ValueError):
-        gc = GenotypeContainer(ens=ens,
+        gc = Genotype(ens=ens,
                                fitness_function=fitness_function,
                                ddg_df=bad_ddg_df)
 
-def test_GenotypeContainer__create_ddg_dict(ens_test_data):
+def test_Genotype__create_ddg_dict(ens_test_data):
 
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_dict = ens_test_data["ddg_dict"]
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -100,17 +100,17 @@ def test_GenotypeContainer__create_ddg_dict(ens_test_data):
     bad_ddg_df.columns = new_columns
 
     with pytest.raises(ValueError):
-        gc = GenotypeContainer(ens=ens,
+        gc = Genotype(ens=ens,
                                fitness_function=fitness_function,
                                ddg_df=bad_ddg_df)
 
-def test_GenotypeContainer_mutate(ens_test_data):
+def test_Genotype_mutate(ens_test_data):
 
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -142,13 +142,13 @@ def test_GenotypeContainer_mutate(ens_test_data):
         # Make sure we are accumulating genotypes objects that are not the same
         assert len(gc.genotypes) == i + 2
         for j in range(len(gc.genotypes)):
-            assert issubclass(type(gc.genotypes[j]),Genotype)
+            assert issubclass(type(gc.genotypes[j]),SingleGenotype)
             assert set(gc.genotypes[j].mutations).issubset(allowable_muts)
 
             for k in range(j+1,len(gc.genotypes)):
                 assert gc.genotypes[j] is not gc.genotypes[k]
 
-def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
+def test_Genotype_dump_to_csv(ens_test_data,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -158,7 +158,7 @@ def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -176,7 +176,7 @@ def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
 
     # Dump after making 10 mutations
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     for i in range(10):
@@ -196,7 +196,7 @@ def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
 
     # Dump only half of the genotypes
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     for i in range(10):
@@ -216,7 +216,7 @@ def test_GenotypeContainer_dump_to_csv(ens_test_data,tmpdir):
 
     # Dump in two steps, appending
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     for i in range(10):
@@ -252,7 +252,7 @@ def test_to_dict(ens_test_data):
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -260,7 +260,7 @@ def test_to_dict(ens_test_data):
     assert issubclass(type(out),dict)
     assert len(out) == 0
 
-def test_GenotypeContainer_df(ens_test_data):
+def test_Genotype_df(ens_test_data):
 
     # not a great test of all features of dataframe. Makes sure table has right
     # columns and that mutational parent tracking works. 
@@ -269,7 +269,7 @@ def test_GenotypeContainer_df(ens_test_data):
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -295,13 +295,13 @@ def test_GenotypeContainer_df(ens_test_data):
     assert gc.df.loc[3,"num_accum_mut"] == 2
 
 
-def test_GenotypeContainer_wt_sequence(ens_test_data):
+def test_Genotype_wt_sequence(ens_test_data):
     
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -313,37 +313,37 @@ def test_GenotypeContainer_wt_sequence(ens_test_data):
                            "s2":[0,0,0]})
     
     
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
 
     assert gc.wt_sequence == "MPL"
     
 
-def test_GenotypeContainer_genotypes(ens_test_data):
+def test_Genotype_genotypes(ens_test_data):
     
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
     gc.mutate(0)
 
     assert len(gc.genotypes) == 2
-    assert issubclass(type(gc.genotypes[0]),Genotype)
-    assert issubclass(type(gc.genotypes[1]),Genotype)
+    assert issubclass(type(gc.genotypes[0]),SingleGenotype)
+    assert issubclass(type(gc.genotypes[1]),SingleGenotype)
     assert gc.genotypes[0] is not gc.genotypes[1]
 
-def test_GenotypeContainer_trajectories(ens_test_data):
+def test_Genotype_trajectories(ens_test_data):
 
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc.mutate(0)
@@ -355,13 +355,13 @@ def test_GenotypeContainer_trajectories(ens_test_data):
     assert gc.trajectories[1][0] == 0
     assert gc.trajectories[1][1] == 1
 
-def test_GenotypeContainer_mut_energies(ens_test_data):
+def test_Genotype_mut_energies(ens_test_data):
 
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     
@@ -372,13 +372,13 @@ def test_GenotypeContainer_mut_energies(ens_test_data):
     assert len(gc.mut_energies[1]) == 2
     
 
-def test_GenotypeContainer_fitnesses(ens_test_data):
+def test_Genotype_fitnesses(ens_test_data):
     
     ens = ens_test_data["ens"]
     fitness_function = ens_test_data["fc"].fitness
     ddg_df = ens_test_data["ddg_df"]
 
-    gc = GenotypeContainer(ens=ens,
+    gc = Genotype(ens=ens,
                            fitness_function=fitness_function,
                            ddg_df=ddg_df)
     gc.mutate(0)
