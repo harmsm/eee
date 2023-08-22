@@ -4,10 +4,10 @@ Ensemble class and helper functions.
 
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_float
-from eee._private.check.eee_variables import check_mu_dict
-from eee._private.check.eee_variables import check_mu_stoich
-from eee._private.check.eee_variables import check_mut_energy
-from eee._private.check.eee_variables import check_T
+from eee._private.check.eee import check_mu_dict
+from eee._private.check.eee import check_mu_stoich
+from eee._private.check.eee import check_mut_energy
+from eee._private.check.eee import check_T
 
 import numpy as np
 import pandas as pd

@@ -1,2 +1,0 @@
-
-from .genotype_container import GenotypeContainer
