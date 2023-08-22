@@ -1,5 +1,5 @@
 {
-  "calc_type":"wright_fisher",
+  "calc_type":"wf_sim",
   "calc_params":{
     "population_size": 100000,
     "mutation_rate": 1e-05,

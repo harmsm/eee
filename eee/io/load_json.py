@@ -1,14 +1,13 @@
 import eee
 
 from eee._private.check.ensemble import check_ensemble
+from eee.evolve import _ALLOWABLE_CALCS
 
 from eee.io import load_ddg
-from .container import SimulationContainer
 
 import json
 import inspect
 
-_ALLOWABLE_CALCS = {"wright_fisher":SimulationContainer}
 
 def _validate_calc_kwargs(calc_type,
                           calc_function,

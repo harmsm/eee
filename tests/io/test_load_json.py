@@ -1,7 +1,7 @@
 import pytest
 
-from eee.evolve.simulation.load_json import _validate_calc_kwargs
-from eee.evolve.simulation.load_json import load_json
+from eee.io.load_json import _validate_calc_kwargs
+from eee.io.load_json import load_json
 from eee.evolve.fitness.ff import ff_on
 from eee.evolve.fitness.ff import ff_off
 
