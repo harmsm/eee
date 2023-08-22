@@ -3,7 +3,12 @@ from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 from eee.simulation.core.fitness.ff import ff_neutral
 from eee.simulation.core.fitness.check_fitness_fcns import _map_fitness_fcn_to_string
+from eee.simulation.core.fitness.check_fitness_fcns import check_fitness_fcns
 from eee.simulation import FF_AVAILABLE
+
+from eee.simulation.core.fitness.ff import ff_on
+from eee.simulation.core.fitness.ff import ff_off
+from eee.simulation.core.fitness.ff import ff_neutral
 
 import pytest
 
@@ -73,3 +78,50 @@ def test__map_fitness_fcn_to_string(variable_types):
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             _map_fitness_fcn_to_string("on",return_as=v)    
+
+
+def test_check_fitness_fcns(variable_types):
+    
+    # Make sure named fitness functions pass through properly
+    values = check_fitness_fcns(["on","off","neutral"],num_conditions=3)
+    assert values[0] == ff_on
+    assert values[1] == ff_off
+    assert values[2] == ff_neutral
+
+    values = check_fitness_fcns([ff_on,ff_off,ff_neutral],num_conditions=3)
+    assert values[0] == ff_on
+    assert values[1] == ff_off
+    assert values[2] == ff_neutral
+
+    with pytest.raises(ValueError):
+        values = check_fitness_fcns(["bad_value","bad_value"],num_conditions=2)
+
+    # Other sorts of stuff getting passed in 
+    for v in variable_types["everything"]:
+
+        # Skip empty iterables
+        if hasattr(v,"__iter__"):
+            if issubclass(type(v),type):
+                continue
+        
+            if len(v) ==  0:
+                continue
+
+        print(v,type(v),flush=True)
+        with pytest.raises(ValueError):
+            check_fitness_fcns(v,num_conditions=2)
+
+    fitness_fcns = [print,print]
+    value = check_fitness_fcns(fitness_fcns,num_conditions=2)
+    assert value[0] == fitness_fcns[0]
+    assert value[1] == fitness_fcns[1]
+
+    check_fitness_fcns(fitness_fcns=fitness_fcns,num_conditions=2)
+
+    with pytest.raises(ValueError):
+        check_fitness_fcns(fitness_fcns=fitness_fcns,num_conditions=3)
+
+    f = check_fitness_fcns(print,5)
+    assert len(f) == 5
+    assert f[0] is print
+    assert f[4] is print
