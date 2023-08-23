@@ -1599,6 +1599,172 @@
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:144:29: E128 continuation line under-indented for visual indent
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:145:29: E128 continuation line under-indented for visual indent
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:145:55: W292 no newline at end of file
+./tests/simulation/core/engine/test_exhaustive.py:12:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/engine/test_exhaustive.py:12:34: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:12:49: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:29:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_exhaustive.py:29:18: W291 trailing whitespace
+./tests/simulation/core/engine/test_exhaustive.py:35:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:36:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:37:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:38:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:40:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:44:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:45:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:45:49: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:45:61: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:46:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:46:56: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:49:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_exhaustive.py:50:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:51:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:54:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:55:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:56:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:59:30: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:59:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:59:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:59:48: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:60:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:60:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:60:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:63:53: W291 trailing whitespace
+./tests/simulation/core/engine/test_exhaustive.py:66:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:67:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:70:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:71:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:72:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:73:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:75:30: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:75:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:75:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:75:48: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:76:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:76:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:76:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:79:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_exhaustive.py:80:34: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:80:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:80:39: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:80:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:80:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:80:45: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:81:33: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:81:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:81:46: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:81:52: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:81:58: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:81:64: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:82:32: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:82:35: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:82:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:82:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:82:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:82:44: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:83:32: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:83:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:83:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:83:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:83:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:83:44: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:90:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:91:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:92:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:95:30: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:95:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:95:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:95:48: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:95:54: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:95:60: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:96:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:96:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:96:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:97:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:97:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:97:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:98:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:98:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:98:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:99:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:100:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:101:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:102:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:103:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:105:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_exhaustive.py:106:34: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:106:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:106:39: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:106:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:106:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:107:33: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:107:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:107:46: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:107:52: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:107:58: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:108:32: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:108:35: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:108:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:108:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:108:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:109:32: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_exhaustive.py:109:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:109:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:109:40: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:109:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:116:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:117:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:118:13: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:121:30: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:121:36: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:121:42: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:121:48: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:121:54: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:122:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:122:47: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:122:57: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:123:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:124:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:139:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:144:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:144:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:147:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:148:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:149:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:155:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:156:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:157:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:158:31: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:163:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:163:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:166:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:167:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:168:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:169:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:172:18: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:173:18: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:174:18: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:178:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:179:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:180:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:181:31: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:184:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:185:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:186:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:194:9: E722 do not use bare 'except'
+./tests/simulation/core/engine/test_exhaustive.py:197:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:197:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_exhaustive.py:200:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:201:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:202:21: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:203:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_exhaustive.py:206:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:207:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:208:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:212:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:213:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:214:14: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_exhaustive.py:218:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_exhaustive.py:218:26: W292 no newline at end of file
 ./tests/simulation/core/engine/test_wright_fisher.py:16:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/engine/test_wright_fisher.py:16:41: E231 missing whitespace after ','
 ./tests/simulation/core/engine/test_wright_fisher.py:17:1: W293 blank line contains whitespace
@@ -2195,6 +2361,22 @@
 ./tests/simulation/io/test_load_json.py:376:28: E231 missing whitespace after ','
 ./tests/simulation/io/test_load_json.py:383:26: E231 missing whitespace after ','
 ./tests/simulation/io/test_load_json.py:384:28: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:1:1: F401 'pytest' imported but unused
+./tests/simulation/calcs/test_dms.py:7:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_dms.py:8:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:22:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:24:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:25:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_dms.py:25:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:27:72: W291 trailing whitespace
+./tests/simulation/calcs/test_dms.py:28:46: W291 trailing whitespace
+./tests/simulation/calcs/test_dms.py:37:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:49:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:50:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:51:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:52:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:53:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_dms.py:53:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_simulate_tree.py:5:11: W292 no newline at end of file
 ./tests/simulation/calcs/test_wf_sim.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_wf_sim.py:7:1: E302 expected 2 blank lines, found 1
@@ -3450,9 +3632,40 @@
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:20:73: W291 trailing whitespace
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:24:20: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:30:26: W292 no newline at end of file
-./eee/simulation/core/engine/dms.py:4:1: E303 too many blank lines (3)
-./eee/simulation/core/engine/__init__.py:2:44: W291 trailing whitespace
 ./eee/simulation/core/engine/__init__.py:5:1: F401 '.wright_fisher.wright_fisher' imported but unused
+./eee/simulation/core/engine/__init__.py:6:1: F401 '.exhaustive.exhaustive' imported but unused
+./eee/simulation/core/engine/exhaustive.py:9:12: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:13:1: C901 'exhaustive' is too complex (12)
+./eee/simulation/core/engine/exhaustive.py:13:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/exhaustive.py:18:76: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:19:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:27:75: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:28:18: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:33:74: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:34:40: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:35:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:39:74: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:43:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:68:17: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:71:57: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:74:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:75:47: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:79:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:80:58: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:84:40: E231 missing whitespace after ':'
+./eee/simulation/core/engine/exhaustive.py:91:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:94:58: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:100:33: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:100:48: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:102:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:106:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:109:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:109:47: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:109:56: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:113:8: E714 test for object identity should be 'is not'
+./eee/simulation/core/engine/exhaustive.py:114:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:122:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:122:5: W292 no newline at end of file
 ./eee/simulation/core/engine/wright_fisher.py:24:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/engine/wright_fisher.py:30:1: W293 blank line contains whitespace
 ./eee/simulation/core/engine/wright_fisher.py:43:58: E231 missing whitespace after ','
@@ -3735,6 +3948,16 @@
 ./eee/simulation/io/load_json.py:199:36: W291 trailing whitespace
 ./eee/simulation/io/load_json.py:209:1: W293 blank line contains whitespace
 ./eee/simulation/io/load_json.py:210:1: W391 blank line at end of file
+./eee/simulation/calcs/dms.py:19:77: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:20:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:28:79: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:29:22: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:32:77: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:39:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:47:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:53:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:57:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:57:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_sim.py:27:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_sim.py:39:64: W291 trailing whitespace
 ./eee/simulation/calcs/wf_sim.py:41:73: W291 trailing whitespace
@@ -3746,6 +3969,7 @@
 ./eee/simulation/calcs/wf_sim.py:76:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_sim.py:76:5: W292 no newline at end of file
 ./eee/simulation/calcs/__init__.py:2:1: F401 '.wf_sim.WrightFisherSimulation' imported but unused
+./eee/simulation/calcs/__init__.py:3:1: F401 '.dms.DeepMutationalScan' imported but unused
 ./eee/simulation/calcs/simulate_tree.py:2:62: W291 trailing whitespace
 ./eee/simulation/calcs/simulate_tree.py:33:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/simulate_tree.py:36:79: W291 trailing whitespace
@@ -4128,35 +4352,36 @@
 ./profile/blah/wright_fisher.py:30:49: E128 continuation line under-indented for visual indent
 ./profile/blah/wright_fisher.py:31:49: E128 continuation line under-indented for visual indent
 ./profile/blah/wright_fisher.py:33:1: W391 blank line at end of file
-21    C901 'check_mu_dict' is too complex (14)
+22    C901 'check_mu_dict' is too complex (14)
 1     E114 indentation is not a multiple of 4 (comment)
 1     E117 over-indented (comment)
 1     E122 continuation line missing indentation or outdented
 289   E127 continuation line over-indented for visual indent
-139   E128 continuation line under-indented for visual indent
+185   E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
 2     E222 multiple spaces after operator
 2     E225 missing whitespace around operator
-2293  E231 missing whitespace after ','
+2413  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 5     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-148   E302 expected 2 blank lines, found 1
-65    E303 too many blank lines (2)
+152   E302 expected 2 blank lines, found 1
+70    E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 4     E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 26    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-3     E722 do not use bare 'except'
-58    F401 'glob' imported but unused
+1     E714 test for object identity should be 'is not'
+4     E722 do not use bare 'except'
+61    F401 'glob' imported but unused
 7     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 7     F841 local variable 'value' is assigned to but never used
-462   W291 trailing whitespace
-51    W292 no newline at end of file
-507   W293 blank line contains whitespace
+478   W291 trailing whitespace
+55    W292 no newline at end of file
+530   W293 blank line contains whitespace
 14    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-4130
+4354

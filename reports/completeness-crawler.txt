@@ -29,8 +29,11 @@ FOUND tests.io.test_load_structure.test_load_structure
 FOUND tests.io.test_read_dataframe.test_read_dataframe
 FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
+FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan
+FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan_run
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation_run
+FOUND tests.simulation.core.engine.test_exhaustive.test_exhaustive
 FOUND tests.simulation.core.engine.test_wright_fisher.test__write_outputs
 FOUND tests.simulation.core.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__get_ff_available
