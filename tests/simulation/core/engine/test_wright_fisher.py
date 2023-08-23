@@ -1,7 +1,7 @@
 import pytest
 
-from eee.simulation.engine.wright_fisher import _write_outputs
-from eee.simulation.engine.wright_fisher import wright_fisher
+from eee.simulation.core.engine.wright_fisher import _write_outputs
+from eee.simulation.core.engine.wright_fisher import wright_fisher
 
 from eee.simulation.core.genotype import Genotype
 

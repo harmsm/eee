@@ -104,7 +104,7 @@ class Genotype:
             self._ddg_dict[site][mut] = self._ens.mut_dict_to_array(mut_dict)
 
     
-    def mutate(self,index):
+    def mutate(self,index,site=None,mutation=None):
         """
         Mutate the genotype with "index" to a new genotype, returning the 
         index of the new genotype.
@@ -112,13 +112,18 @@ class Genotype:
         Parameters
         ----------
         index : int
-            index of genotype to mutation. Must be an index of the
-            self.genotypes array.
+            index of genotype to mutation. Must be a key in the
+            self.genotypes diectionary.
+        site : int, optional
+            site to mutate. if not specified, choose one randomly. 
+        mutation : str, optional
+            mutation at the site to mutate. if not specified, choose one 
+            randomly. 
 
         Returns
         -------
-        new_index : int
-            index of newly generated genotype
+        new_key : int
+            key of newly generated genotype
         """
 
         # Sanity check
@@ -129,9 +134,13 @@ class Genotype:
         # Create a new genotype and mutate
         new_genotype = self._genotypes[index].copy()
 
-        # Randomly choose a site and mutation to introduce into the genotype
-        site = self._choice_function(self._possible_sites)
-        mutation = self._choice_function(self._mutations_at_sites[site])
+        # If not specified, randomly choose a site
+        if site is None:
+            site = self._choice_function(self._possible_sites)
+
+        # If not specified, randomly choose a mutation
+        if mutation is None:
+            mutation = self._choice_function(self._mutations_at_sites[site])
 
         # Introduce mutation
         new_genotype.mutate(site,mutation)

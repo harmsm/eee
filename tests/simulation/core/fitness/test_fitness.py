@@ -449,7 +449,7 @@ def test_Fitness_T():
                      fitness_kwargs={},
                      T=-2)
 
-def test_condition_df():
+def test_Fitness_condition_df():
 
         # Basic ensemble    
     ens = Ensemble(R=1)

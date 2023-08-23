@@ -111,8 +111,8 @@ def test_Genotype_mutate(ens_test_data):
     ddg_df = ens_test_data["ddg_df"]
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     
     # Mutate residue not there. 
     with pytest.raises(IndexError):
@@ -147,6 +147,67 @@ def test_Genotype_mutate(ens_test_data):
 
             for k in range(j+1,len(gc.genotypes)):
                 assert gc.genotypes[j] is not gc.genotypes[k]
+
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
+    ddg_df = ens_test_data["ddg_df"]
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    seen_times = {"M1A":0,"M1V":0}
+    for i in range(10):
+        gc.mutate(index=0,site=1)
+        assert gc.genotypes[i+1].sites[0] == 1
+        assert len(gc.genotypes[i+1].sites) == 1
+
+        assert len(gc.genotypes[i+1].mutations) == 1
+        seen_times[gc.genotypes[i+1].mutations[0]] += 1
+
+    assert seen_times["M1A"] > 0
+    assert seen_times["M1V"] > 0
+
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
+    ddg_df = ens_test_data["ddg_df"]
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    seen_times = {"M1A":0,"M1V":0}
+    for i in range(10):
+        gc.mutate(index=0,site=1,mutation="M1A")
+        assert gc.genotypes[i+1].sites[0] == 1
+        assert len(gc.genotypes[i+1].sites) == 1
+
+        assert len(gc.genotypes[i+1].mutations) == 1
+        seen_times[gc.genotypes[i+1].mutations[0]] += 1
+
+    assert seen_times["M1A"] == 10
+    assert seen_times["M1V"] == 0
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    gc.mutate(index=0,site=2)
+    assert gc.genotypes[1].sites[0] == 2
+    assert len(gc.genotypes[1].sites) == 1
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    gc.mutate(index=0,site=2,mutation="P2R")
+    assert gc.genotypes[1].sites[0] == 2
+    assert len(gc.genotypes[1].sites) == 1
+    assert len(gc.genotypes[1].mutations) == 1
+    assert gc.genotypes[1].mutations[0] == "P2R"
+
+
+
 
 def test_Genotype_dump_to_csv(ens_test_data,tmpdir):
 

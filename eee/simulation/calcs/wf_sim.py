@@ -1,7 +1,7 @@
 
 from eee.simulation.core.simulation import Simulation
 
-from eee.simulation.engine import wright_fisher
+from eee.simulation.core.engine import wright_fisher
 
 from eee._private.check.eee import check_num_generations
 from eee._private.check.eee import check_mutation_rate

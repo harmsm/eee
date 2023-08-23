@@ -31,6 +31,8 @@ FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation_run
+FOUND tests.simulation.core.engine.test_wright_fisher.test__write_outputs
+FOUND tests.simulation.core.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__get_ff_available
 FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__map_fitness_fcn_to_string
 FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test_check_fitness_fcns
@@ -40,6 +42,7 @@ FOUND tests.simulation.core.fitness.test_ff.test_ff_off
 FOUND tests.simulation.core.fitness.test_ff.test_ff_on
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_T
+FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_condition_df
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_ens
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_fitness
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_fitness_kwargs
@@ -71,8 +74,6 @@ FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__prepare_
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__write_calc_params
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_get_calc_description
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_system_params
-FOUND tests.simulation.engine.test_wright_fisher.test__write_outputs
-FOUND tests.simulation.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.simulation.io.test_load_json.test__validate_calc_kwargs
 FOUND tests.simulation.io.test_load_json.test_load_json
 FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
@@ -114,7 +115,6 @@ MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
-MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_condition_df
 MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
 MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test_epistasis.test_:
@@ -122,5 +122,4 @@ MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.eee.test_T.test_check_T
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
-FOUND & EXTRA tests.simulation.core.fitness.test_fitness.test_condition_df
 FOUND & EXTRA tests.simulation.test_simulation___init__.test__get_calc_available

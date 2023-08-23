@@ -1599,6 +1599,105 @@
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:144:29: E128 continuation line under-indented for visual indent
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:145:29: E128 continuation line under-indented for visual indent
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:145:55: W292 no newline at end of file
+./tests/simulation/core/engine/test_wright_fisher.py:16:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/engine/test_wright_fisher.py:16:41: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:17:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:18:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:22:30: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:29:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:31:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:40:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:45:39: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:46:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:59:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:81:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:87:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:90:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:103:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:115:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:121:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:124:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:145:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:151:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:174:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:180:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:189:1: C901 'test_wright_fisher' is too complex (15)
+./tests/simulation/core/engine/test_wright_fisher.py:189:37: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:189:54: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:189:69: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:195:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:206:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:207:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:212:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:218:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:219:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:222:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:223:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:225:50: E231 missing whitespace after ':'
+./tests/simulation/core/engine/test_wright_fisher.py:228:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:234:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:235:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:238:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:239:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:241:59: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:244:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:250:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:251:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:257:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:258:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:266:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:267:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:275:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:276:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:282:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:283:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:289:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:290:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:297:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:298:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:308:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:312:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:316:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:317:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:327:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:330:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:331:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:335:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:336:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:346:43: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:349:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:353:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:354:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:363:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:368:78: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:369:45: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:372:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:373:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:381:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:385:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:386:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:394:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:395:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:404:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:410:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:411:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:415:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:415:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:425:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:425:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:434:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:435:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:436:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/engine/test_wright_fisher.py:444:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:444:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_wright_fisher.py:474:78: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:490:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:494:5: E303 too many blank lines (2)
+./tests/simulation/core/engine/test_wright_fisher.py:494:5: E265 block comment should start with '# '
+./tests/simulation/core/engine/test_wright_fisher.py:495:5: E265 block comment should start with '# '
+./tests/simulation/core/engine/test_wright_fisher.py:525:43: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:526:40: W291 trailing whitespace
+./tests/simulation/core/engine/test_wright_fisher.py:529:5: E303 too many blank lines (2)
 ./tests/simulation/core/genotype/test_genotype.py:13:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/genotype/test_genotype.py:22:28: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/genotype/test_genotype.py:23:28: E127 continuation line over-indented for visual indent
@@ -1629,8 +1728,6 @@
 ./tests/simulation/core/genotype/test_genotype.py:104:32: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/genotype/test_genotype.py:105:32: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/genotype/test_genotype.py:107:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:114:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:115:28: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/genotype/test_genotype.py:116:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_genotype.py:117:32: W291 trailing whitespace
 ./tests/simulation/core/genotype/test_genotype.py:121:32: W291 trailing whitespace
@@ -1640,95 +1737,111 @@
 ./tests/simulation/core/genotype/test_genotype.py:136:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_genotype.py:145:52: E231 missing whitespace after ','
 ./tests/simulation/core/genotype/test_genotype.py:148:31: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:151:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:151:44: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:162:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:163:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:164:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:180:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:181:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:184:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:200:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:201:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:205:24: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:205:26: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:205:28: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:205:30: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:205:32: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:215:31: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:220:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:221:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:225:24: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:225:26: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:225:28: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:225:30: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:225:32: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:234:31: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:249:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:250:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:256:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:257:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:258:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:260:32: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:263:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:266:57: W291 trailing whitespace
-./tests/simulation/core/genotype/test_genotype.py:273:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:274:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:275:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:276:34: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:280:39: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:281:39: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:282:36: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:283:36: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:285:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:294:52: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:294:55: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:294:57: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:294:59: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:295:23: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:299:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:305:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:306:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:307:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:310:34: E231 missing whitespace after ':'
-./tests/simulation/core/genotype/test_genotype.py:310:37: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:310:39: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:311:33: E231 missing whitespace after ':'
-./tests/simulation/core/genotype/test_genotype.py:311:40: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:311:46: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:312:32: E231 missing whitespace after ':'
-./tests/simulation/core/genotype/test_genotype.py:312:35: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:312:37: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:313:32: E231 missing whitespace after ':'
-./tests/simulation/core/genotype/test_genotype.py:313:35: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:313:37: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:314:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:315:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:316:5: E303 too many blank lines (2)
+./tests/simulation/core/genotype/test_genotype.py:158:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:159:24: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:159:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:159:32: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:161:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:178:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:179:24: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:179:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:179:32: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:181:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:181:33: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:194:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:195:22: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:202:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:203:22: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:203:29: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:212:1: E303 too many blank lines (4)
+./tests/simulation/core/genotype/test_genotype.py:212:44: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:223:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:224:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:225:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:241:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:242:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:245:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:261:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:262:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:266:24: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:266:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:266:28: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:266:30: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:266:32: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:276:31: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:281:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:282:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:286:24: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:286:26: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:286:28: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:286:30: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:286:32: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:295:31: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:310:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/genotype/test_genotype.py:311:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_genotype.py:317:28: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/genotype/test_genotype.py:318:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:321:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:324:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:330:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:331:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:332:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:336:44: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:337:44: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:340:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:347:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:348:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:358:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/genotype/test_genotype.py:365:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:319:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:321:32: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:324:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/genotype/test_genotype.py:327:57: W291 trailing whitespace
+./tests/simulation/core/genotype/test_genotype.py:334:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:335:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:336:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:337:34: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:341:39: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:342:39: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:343:36: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:344:36: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:346:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:355:52: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:355:55: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:355:57: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:355:59: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:356:23: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:360:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_genotype.py:366:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:367:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:371:45: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:371:48: E231 missing whitespace after ','
-./tests/simulation/core/genotype/test_genotype.py:373:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:367:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:368:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:371:34: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:371:37: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:371:39: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:372:33: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:372:40: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:372:46: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:373:32: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:373:35: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:373:37: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:374:32: E231 missing whitespace after ':'
+./tests/simulation/core/genotype/test_genotype.py:374:35: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:374:37: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:375:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_genotype.py:376:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:382:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:383:28: E127 continuation line over-indented for visual indent
-./tests/simulation/core/genotype/test_genotype.py:386:1: W293 blank line contains whitespace
-./tests/simulation/core/genotype/test_genotype.py:386:5: W292 no newline at end of file
+./tests/simulation/core/genotype/test_genotype.py:377:5: E303 too many blank lines (2)
+./tests/simulation/core/genotype/test_genotype.py:378:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:379:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:382:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:385:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:391:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:392:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:393:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:397:44: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:398:44: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:401:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/genotype/test_genotype.py:408:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:409:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:419:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/genotype/test_genotype.py:426:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:427:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:428:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:432:45: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:432:48: E231 missing whitespace after ','
+./tests/simulation/core/genotype/test_genotype.py:434:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:437:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:443:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:444:28: E127 continuation line over-indented for visual indent
+./tests/simulation/core/genotype/test_genotype.py:447:1: W293 blank line contains whitespace
+./tests/simulation/core/genotype/test_genotype.py:447:5: W292 no newline at end of file
 ./tests/simulation/core/genotype/test_single_genotype.py:15:18: E128 continuation line under-indented for visual indent
 ./tests/simulation/core/genotype/test_single_genotype.py:16:1: W293 blank line contains whitespace
 ./tests/simulation/core/genotype/test_single_genotype.py:29:18: E128 continuation line under-indented for visual indent
@@ -2098,105 +2211,6 @@
 ./tests/simulation/calcs/test_wf_sim.py:56:46: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:57:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_sim.py:58:26: W292 no newline at end of file
-./tests/simulation/engine/test_wright_fisher.py:16:1: E302 expected 2 blank lines, found 1
-./tests/simulation/engine/test_wright_fisher.py:16:41: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:17:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:18:43: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:22:30: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:29:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:31:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:40:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:45:39: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:46:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:59:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:81:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:87:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:90:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:103:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:115:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:121:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:124:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:145:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:151:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:174:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:180:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:189:1: C901 'test_wright_fisher' is too complex (15)
-./tests/simulation/engine/test_wright_fisher.py:189:37: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:189:54: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:189:69: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:195:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:206:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:207:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:212:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:218:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:219:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:222:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:223:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:225:50: E231 missing whitespace after ':'
-./tests/simulation/engine/test_wright_fisher.py:228:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:234:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:235:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:238:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:239:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:241:59: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:244:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:250:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:251:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:257:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:258:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:266:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:267:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:275:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:276:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:282:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:283:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:289:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:290:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:297:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:298:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:308:43: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:312:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:316:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:317:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:327:43: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:330:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:331:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:335:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:336:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:346:43: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:349:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:353:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:354:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:363:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:368:78: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:369:45: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:372:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:373:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:381:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:385:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:386:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:394:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:395:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:404:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:410:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:411:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:415:16: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:415:24: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:425:16: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:425:24: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:434:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:435:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:436:28: E127 continuation line over-indented for visual indent
-./tests/simulation/engine/test_wright_fisher.py:444:16: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:444:24: E231 missing whitespace after ','
-./tests/simulation/engine/test_wright_fisher.py:474:78: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:490:1: W293 blank line contains whitespace
-./tests/simulation/engine/test_wright_fisher.py:494:5: E303 too many blank lines (2)
-./tests/simulation/engine/test_wright_fisher.py:494:5: E265 block comment should start with '# '
-./tests/simulation/engine/test_wright_fisher.py:495:5: E265 block comment should start with '# '
-./tests/simulation/engine/test_wright_fisher.py:525:43: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:526:40: W291 trailing whitespace
-./tests/simulation/engine/test_wright_fisher.py:529:5: E303 too many blank lines (2)
 ./tests/_private/test_interface.py:13:1: F401 'time' imported but unused
 ./tests/_private/test_interface.py:15:1: E302 expected 2 blank lines, found 1
 ./tests/_private/test_interface.py:35:1: W293 blank line contains whitespace
@@ -3251,20 +3265,19 @@
 ./eee/io/load_ddg.py:67:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:70:1: W391 blank line at end of file
 ./eee/simulation/__init__.py:1:1: F401 '.analysis' imported but unused
-./eee/simulation/__init__.py:4:1: F401 '.engine' imported but unused
-./eee/simulation/__init__.py:8:1: E302 expected 2 blank lines, found 1
-./eee/simulation/__init__.py:10:76: W291 trailing whitespace
-./eee/simulation/__init__.py:11:37: W291 trailing whitespace
-./eee/simulation/__init__.py:21:38: E231 missing whitespace after ','
-./eee/simulation/__init__.py:24:1: W293 blank line contains whitespace
-./eee/simulation/__init__.py:30:1: F401 '.core.FF_AVAILABLE' imported but unused
-./eee/simulation/__init__.py:30:1: E305 expected 2 blank lines after class or function definition, found 1
-./eee/simulation/__init__.py:30:1: E402 module level import not at top of file
-./eee/simulation/__init__.py:34:75: W291 trailing whitespace
-./eee/simulation/__init__.py:35:25: W291 trailing whitespace
-./eee/simulation/__init__.py:36:1: F401 '.io' imported but unused
-./eee/simulation/__init__.py:36:1: E402 module level import not at top of file
-./eee/simulation/__init__.py:36:17: W292 no newline at end of file
+./eee/simulation/__init__.py:7:1: E302 expected 2 blank lines, found 1
+./eee/simulation/__init__.py:9:76: W291 trailing whitespace
+./eee/simulation/__init__.py:10:37: W291 trailing whitespace
+./eee/simulation/__init__.py:20:38: E231 missing whitespace after ','
+./eee/simulation/__init__.py:23:1: W293 blank line contains whitespace
+./eee/simulation/__init__.py:29:1: F401 '.core.FF_AVAILABLE' imported but unused
+./eee/simulation/__init__.py:29:1: E305 expected 2 blank lines after class or function definition, found 1
+./eee/simulation/__init__.py:29:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:33:75: W291 trailing whitespace
+./eee/simulation/__init__.py:34:25: W291 trailing whitespace
+./eee/simulation/__init__.py:35:1: F401 '.io' imported but unused
+./eee/simulation/__init__.py:35:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:35:17: W292 no newline at end of file
 ./eee/simulation/core/__init__.py:2:1: F401 '.genotype.Genotype' imported but unused
 ./eee/simulation/core/__init__.py:3:1: F401 '.fitness.Fitness' imported but unused
 ./eee/simulation/core/__init__.py:4:1: F401 '.fitness.FF_AVAILABLE' imported but unused
@@ -3437,6 +3450,85 @@
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:20:73: W291 trailing whitespace
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:24:20: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:30:26: W292 no newline at end of file
+./eee/simulation/core/engine/dms.py:4:1: E303 too many blank lines (3)
+./eee/simulation/core/engine/__init__.py:2:44: W291 trailing whitespace
+./eee/simulation/core/engine/__init__.py:5:1: F401 '.wright_fisher.wright_fisher' imported but unused
+./eee/simulation/core/engine/wright_fisher.py:24:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/wright_fisher.py:30:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:43:58: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:44:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:45:37: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:46:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:54:1: C901 'wright_fisher' is too complex (28)
+./eee/simulation/core/engine/wright_fisher.py:54:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/wright_fisher.py:64:77: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:66:42: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:67:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:71:73: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:72:78: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:73:66: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:77:78: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:79:76: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:82:77: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:83:51: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:85:72: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:86:80: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:87:17: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:89:79: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:93:57: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:95:78: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:97:73: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:100:69: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:103:28: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:108:79: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:112:75: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:113:31: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:116:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:124:26: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:127:39: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:130:78: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:131:79: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:133:39: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:134:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:139:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:140:39: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:142:50: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:144:78: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:152:41: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:160:27: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:160:37: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:162:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:164:46: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:165:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:177:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:181:15: F541 f-string is missing placeholders
+./eee/simulation/core/engine/wright_fisher.py:184:37: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:187:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:188:32: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:197:40: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:198:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:212:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:215:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:225:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:227:76: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:233:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:234:79: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:247:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:260:37: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:261:59: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:265:48: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:266:37: E231 missing whitespace after ','
+./eee/simulation/core/engine/wright_fisher.py:267:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:268:80: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:269:80: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:270:61: W291 trailing whitespace
+./eee/simulation/core/engine/wright_fisher.py:279:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:283:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:285:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:298:5: E303 too many blank lines (2)
+./eee/simulation/core/engine/wright_fisher.py:308:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:311:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/wright_fisher.py:315:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/genotype/genotype.py:28:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:34:22: E231 missing whitespace after ','
@@ -3469,35 +3561,40 @@
 ./eee/simulation/core/genotype/genotype.py:106:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:107:5: E303 too many blank lines (2)
 ./eee/simulation/core/genotype/genotype.py:107:20: E231 missing whitespace after ','
+./eee/simulation/core/genotype/genotype.py:107:26: E231 missing whitespace after ','
+./eee/simulation/core/genotype/genotype.py:107:36: E231 missing whitespace after ','
 ./eee/simulation/core/genotype/genotype.py:109:74: W291 trailing whitespace
-./eee/simulation/core/genotype/genotype.py:128:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:137:33: E231 missing whitespace after ','
-./eee/simulation/core/genotype/genotype.py:138:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:150:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:165:78: W291 trailing whitespace
-./eee/simulation/core/genotype/genotype.py:167:51: W291 trailing whitespace
-./eee/simulation/core/genotype/genotype.py:168:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:118:67: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:120:73: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:121:22: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:133:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:146:33: E231 missing whitespace after ','
+./eee/simulation/core/genotype/genotype.py:147:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:159:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:174:78: W291 trailing whitespace
-./eee/simulation/core/genotype/genotype.py:183:33: E231 missing whitespace after ','
-./eee/simulation/core/genotype/genotype.py:185:10: E114 indentation is not a multiple of 4 (comment)
-./eee/simulation/core/genotype/genotype.py:198:66: W291 trailing whitespace
-./eee/simulation/core/genotype/genotype.py:210:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:239:24: E231 missing whitespace after ','
-./eee/simulation/core/genotype/genotype.py:241:26: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:242:27: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:243:31: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:244:27: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:245:31: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:246:24: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:247:28: E231 missing whitespace after ':'
-./eee/simulation/core/genotype/genotype.py:262:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:284:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:291:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:305:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:309:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:312:1: W293 blank line contains whitespace
-./eee/simulation/core/genotype/genotype.py:312:1: E303 too many blank lines (7)
-./eee/simulation/core/genotype/genotype.py:312:5: W292 no newline at end of file
+./eee/simulation/core/genotype/genotype.py:176:51: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:177:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:183:78: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:192:33: E231 missing whitespace after ','
+./eee/simulation/core/genotype/genotype.py:194:10: E114 indentation is not a multiple of 4 (comment)
+./eee/simulation/core/genotype/genotype.py:207:66: W291 trailing whitespace
+./eee/simulation/core/genotype/genotype.py:219:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:248:24: E231 missing whitespace after ','
+./eee/simulation/core/genotype/genotype.py:250:26: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:251:27: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:252:31: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:253:27: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:254:31: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:255:24: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:256:28: E231 missing whitespace after ':'
+./eee/simulation/core/genotype/genotype.py:271:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:293:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:300:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:314:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:318:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:321:1: W293 blank line contains whitespace
+./eee/simulation/core/genotype/genotype.py:321:1: E303 too many blank lines (7)
+./eee/simulation/core/genotype/genotype.py:321:5: W292 no newline at end of file
 ./eee/simulation/core/genotype/__init__.py:2:1: F401 '.genotype.Genotype' imported but unused
 ./eee/simulation/core/genotype/__init__.py:2:31: W292 no newline at end of file
 ./eee/simulation/core/genotype/single_genotype.py:9:1: E302 expected 2 blank lines, found 1
@@ -3664,84 +3761,6 @@
 ./eee/simulation/calcs/simulate_tree.py:139:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/simulate_tree.py:141:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/simulate_tree.py:166:22: W292 no newline at end of file
-./eee/simulation/engine/__init__.py:2:44: W291 trailing whitespace
-./eee/simulation/engine/__init__.py:5:1: F401 '.wright_fisher.wright_fisher' imported but unused
-./eee/simulation/engine/wright_fisher.py:24:1: E302 expected 2 blank lines, found 1
-./eee/simulation/engine/wright_fisher.py:30:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:43:58: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:44:31: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:45:37: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:46:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:54:1: C901 'wright_fisher' is too complex (28)
-./eee/simulation/engine/wright_fisher.py:54:1: E302 expected 2 blank lines, found 1
-./eee/simulation/engine/wright_fisher.py:64:77: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:66:42: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:67:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:71:73: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:72:78: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:73:66: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:77:78: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:79:76: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:82:77: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:83:51: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:85:72: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:86:80: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:87:17: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:89:79: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:93:57: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:95:78: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:97:73: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:100:69: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:103:28: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:108:79: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:112:75: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:113:31: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:116:31: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:124:26: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:127:39: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:130:78: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:131:79: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:133:39: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:134:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:139:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:140:39: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:142:50: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:144:78: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:152:41: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:160:27: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:160:37: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:162:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:164:46: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:165:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:177:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:181:15: F541 f-string is missing placeholders
-./eee/simulation/engine/wright_fisher.py:184:37: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:187:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:188:32: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:197:40: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:198:25: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:212:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:215:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:225:25: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:227:76: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:233:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:234:79: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:247:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:260:37: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:261:59: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:265:48: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:266:37: E231 missing whitespace after ','
-./eee/simulation/engine/wright_fisher.py:267:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:268:80: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:269:80: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:270:61: W291 trailing whitespace
-./eee/simulation/engine/wright_fisher.py:279:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:283:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:285:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:298:5: E303 too many blank lines (2)
-./eee/simulation/engine/wright_fisher.py:308:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:311:1: W293 blank line contains whitespace
-./eee/simulation/engine/wright_fisher.py:315:1: W293 blank line contains whitespace
 ./eee/_private/interface.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:17:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:23:1: W293 blank line contains whitespace
@@ -4113,31 +4132,31 @@
 1     E114 indentation is not a multiple of 4 (comment)
 1     E117 over-indented (comment)
 1     E122 continuation line missing indentation or outdented
-291   E127 continuation line over-indented for visual indent
+289   E127 continuation line over-indented for visual indent
 139   E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
 2     E222 multiple spaces after operator
 2     E225 missing whitespace around operator
-2279  E231 missing whitespace after ','
+2293  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 5     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-149   E302 expected 2 blank lines, found 1
-63    E303 too many blank lines (2)
+148   E302 expected 2 blank lines, found 1
+65    E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 4     E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 26    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 3     E722 do not use bare 'except'
-59    F401 'glob' imported but unused
+58    F401 'glob' imported but unused
 7     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 7     F841 local variable 'value' is assigned to but never used
-459   W291 trailing whitespace
+462   W291 trailing whitespace
 51    W292 no newline at end of file
-503   W293 blank line contains whitespace
+507   W293 blank line contains whitespace
 14    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-4111
+4130
