@@ -585,3 +585,27 @@ class Ensemble:
         """
         return list(self._mu_list)
     
+    @property
+    def species_df(self):
+        """
+        Species as a pandas dataframe.
+        """
+        
+        if len(self._species) == 0:
+            return pd.DataFrame({})
+
+        top_level_keys = list(self._species[self.species[0]])
+        to_df = dict([(k,[]) for k in top_level_keys])
+        to_df["species"] = []
+        for species in self.species:
+            to_df["species"].append(species)
+            for k in top_level_keys:
+                to_df[k].append(self._species[species][k])
+                
+        df = pd.DataFrame(to_df)
+        column_names = ["species"]
+        column_names.extend(top_level_keys)
+        df = df.loc[:,column_names]
+
+        return df
+    

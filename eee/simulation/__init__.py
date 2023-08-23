@@ -1,9 +1,7 @@
-
 from . import analysis
 from . import calcs
 from . import core
 from . import engine
-from . import io
 
 import inspect
 
@@ -31,3 +29,8 @@ def _get_calc_available():
 
 from .core import FF_AVAILABLE
 CALC_AVAILABLE = _get_calc_available()
+
+
+# This has to go down here because io.load_json depends on CALC_AVAILABLE, 
+# which we define above. 
+from . import io

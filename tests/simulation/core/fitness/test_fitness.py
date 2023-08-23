@@ -6,6 +6,7 @@ from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 
 import numpy as np
+import pandas as pd
 
 import pytest
 
@@ -423,30 +424,60 @@ def test_Fitness_T():
     T = 1
 
     # make sure attributes are set correctly
-
     fc = Fitness(ens=ens,
-                          mu_dict=mu_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on=select_on,
-                          fitness_kwargs={},
-                          T=T)
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 fitness_kwargs={},
+                 T=T)
     
     assert np.array_equal(fc.T,[1.0,1.0])
 
     fc = Fitness(ens=ens,
-                          mu_dict=mu_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on=select_on,
-                          fitness_kwargs={},
-                          T=20)
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 fitness_kwargs={},
+                 T=20)
     assert np.array_equal(fc.T,[20.0,20.0])
 
     with pytest.raises(ValueError):
         fc = Fitness(ens=ens,
-                            mu_dict=mu_dict,
-                            fitness_fcns=fitness_fcns,
-                            select_on=select_on,
-                            fitness_kwargs={},
-                            T=-2)
+                     mu_dict=mu_dict,
+                     fitness_fcns=fitness_fcns,
+                     select_on=select_on,
+                     fitness_kwargs={},
+                     T=-2)
 
+def test_condition_df():
+
+        # Basic ensemble    
+    ens = Ensemble(R=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,100],"Y":[100,0]}
+    fitness_fcns = [ff_off,ff_on]
+    select_on = "fx_obs"
+    T = 1
+
+    # make sure attributes are set correctly
+    fc = Fitness(ens=ens,
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 fitness_kwargs={},
+                 T=T)
+
+    out_df = fc.condition_df
+    assert issubclass(type(out_df),pd.DataFrame)
+    assert len(out_df) == 2
+    assert np.array_equal(out_df["ff"],["off","on"])
+    assert np.array_equal(out_df["X"],[0,100])
+    assert np.array_equal(out_df["Y"],[100,0])
+    assert np.array_equal(out_df["T"],[1,1])
 

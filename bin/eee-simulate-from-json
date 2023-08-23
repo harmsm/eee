@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""
+Command line interface to run a generation eee simulation from a json file. 
+"""
+
+from eee.simulation.io import load_json
+
+import os
+import shutil
+import sys
+import argparse
+
+def main(argv=None):
+
+    if argv is None:
+        argv = sys.argv[1:]
+
+    parser = argparse.ArgumentParser(description="Run an eee simulation from a json file.")
+    parser.add_argument("json_file",
+                        help="json file defining ensemble and calculation")
+    parser.add_argument("output_directory",
+                        help="write calculation to this directory")
+    parser.add_argument("--use_stored_seed",
+                        action="store_true",
+                        help="use the seed stored in the json file (if present). Will reproduce previous simulation exactly. Default: False")
+    parser.add_argument("--overwrite",
+                        action="store_true",
+                        help="overwrite the output directory if it exists.")
+    cmd = parser.parse_args(argv)
+    
+
+    es, kwargs = load_json(json_file=cmd.json_file,
+                           use_stored_seed=cmd.use_stored_seed)
+
+    if os.path.exists(cmd.output_directory):
+        if cmd.overwrite:
+            shutil.rmtree(cmd.output_directory)
+        else:
+            err = f"\noutput_directory '{cmd.output_directory}' already exists\n\n"
+            raise FileExistsError(err)
+
+    print()
+    print(es.get_calc_description(kwargs))
+    print(f"\nWriting result to '{cmd.output_directory}' directory\n",flush=True)
+            
+    es.run(output_directory=cmd.output_directory,**kwargs)
+
+if __name__ == "__main__":
+    main()

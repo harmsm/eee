@@ -69,6 +69,8 @@ FOUND tests.simulation.core.simulation.test_simulation.test_Simulation
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__complete_calc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__prepare_calc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__write_calc_params
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_get_calc_description
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_system_params
 FOUND tests.simulation.engine.test_wright_fisher.test__write_outputs
 FOUND tests.simulation.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.simulation.io.test_load_json.test__validate_calc_kwargs
@@ -89,6 +91,7 @@ FOUND tests.test_ensemble.test_Ensemble_load_mu_dict
 FOUND tests.test_ensemble.test_Ensemble_mu_list
 FOUND tests.test_ensemble.test_Ensemble_mut_dict_to_array
 FOUND tests.test_ensemble.test_Ensemble_species
+FOUND tests.test_ensemble.test_Ensemble_species_df
 FOUND tests.test_ensemble.test_Ensemble_to_dict
 FAKE tests._private.test_logger.test_log
 FAKE tests._private.test_wrap.test_IterFromFile
@@ -107,14 +110,17 @@ FAKE tests.test_epistasis.test_summarize_epistasis
 MISSING tests._private.check.test_eee.test_T_check_T
 MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.test_interface.test_WrappedFunctionException
-MISSING tests.bin.test_eee-simulate-evolution.test_main
+MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.simulation.core.fitness.test_fitness.test_Fitness_condition_df
+MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
 MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.eee.test_T.test_check_T
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
+FOUND & EXTRA tests.simulation.core.fitness.test_fitness.test_condition_df
 FOUND & EXTRA tests.simulation.test_simulation___init__.test__get_calc_available

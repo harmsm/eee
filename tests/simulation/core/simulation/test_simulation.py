@@ -346,7 +346,7 @@ def test_Simulation__prepare_calc(ens_test_data,tmpdir):
     os.chdir(current_dir)
 
 def test_Simulation__write_calc_params(ens_test_data,
-                                                tmpdir):
+                                       tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -357,14 +357,14 @@ def test_Simulation__write_calc_params(ens_test_data,
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="fx_obs",
-                                   select_on_folded=True,
-                                   fitness_kwargs={},
-                                   T=1,
-                                   seed=5)
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1,
+                          seed=5)
     
     calc_params = {"population_size":100,
                   "mutation_rate":0.01,
@@ -409,4 +409,73 @@ def test_Simulation__complete_calc():
     # Tested within test__prepare_calc because these are paired functions. 
     assert True
     
+def test_Simulation_system_params(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
 
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1,
+                          seed=5)
+    
+    system_params = sm.system_params
+
+    ens = sm._ens.to_dict()
+    for k in system_params["ens"]:
+        assert ens["ens"][k] == system_params["ens"][k]
+
+    fc = sm._fc.to_dict()
+    for k in fc:
+        if hasattr(fc[k],"__iter__"):
+            assert np.array_equal(fc[k],system_params[k])
+        else:
+            assert fc[k] == system_params[k]
+
+    gc = sm._gc.to_dict()
+    for k in gc:
+        if hasattr(gc[k],"__iter__"):
+            assert np.array_equal(fc[k],system_params[k])
+        else:
+            assert gc[k] == system_params[k]
+
+    assert system_params["seed"] == sm._seed
+
+
+def test_Simulation_get_calc_description(ens_test_data):
+    
+    # print not a great test... mostly just make sure it runs without error and
+    # produces a string. 
+
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1,
+                          seed=5)
+    
+    # No kwargs passed in 
+    value1 = sm.get_calc_description()
+    assert issubclass(type(value1),str)
+
+    # Kwargs passed in
+    value2 = sm.get_calc_description(calc_kwargs={"mutation_rate":0.1})
+    assert issubclass(type(value2),str)
+
+    # kwargs should make longer
+    assert len(value1) < len(value2)

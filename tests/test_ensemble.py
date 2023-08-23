@@ -1203,3 +1203,19 @@ def test_Ensemble_mu_list():
     ens.add_species("test2",mu_stoich={"Y":1})
 
     assert np.array_equal(ens.mu_list,["X","Y"])
+
+def test_Ensemble_species_df():
+
+    ens = Ensemble(R=1)
+    assert len(ens.species_df) == 0
+    assert issubclass(type(ens.species_df),pd.DataFrame)
+
+    ens.add_species("test1",mu_stoich={"X":1},dG0=5,observable=True)
+    ens.add_species("test2",mu_stoich={"Y":1},folded=False,observable=False)
+
+    assert np.array_equal(ens.species_df["species"],["test1","test2"])
+    assert np.array_equal(ens.species_df["dG0"],[5,0])
+    assert np.array_equal(ens.species_df["folded"],[True,False])
+    assert np.array_equal(ens.species_df["observable"],[True,False])
+    assert np.array_equal(ens.species_df["mu_stoich"],[{"X":1},{"Y":1}])
+

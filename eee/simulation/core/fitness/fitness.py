@@ -13,6 +13,7 @@ from eee._private.check.eee import check_mu_dict
 from eee._private.check.standard import check_bool
 
 import numpy as np
+import pandas as pd
 
 import copy
 
@@ -167,3 +168,20 @@ class Fitness:
     @property
     def T(self):
         return self._T
+    
+    @property
+    def condition_df(self):
+        """
+        Conditions as a pandas dataframe. 
+        """
+
+        to_df = {}
+        for m in self._mu_dict:
+            to_df[m] = self._mu_dict[m]
+        
+        to_df["T"] = self._T
+        to_df["ff"] = self._fitness_fcns_strings
+    
+        return pd.DataFrame(to_df)
+    
+        

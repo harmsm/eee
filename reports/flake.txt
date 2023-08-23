@@ -875,6 +875,29 @@
 ./tests/test_ensemble.py:1203:43: E231 missing whitespace after ':'
 ./tests/test_ensemble.py:1205:38: E231 missing whitespace after ','
 ./tests/test_ensemble.py:1205:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:1207:1: E302 expected 2 blank lines, found 1
+./tests/test_ensemble.py:1211:43: E231 missing whitespace after ','
+./tests/test_ensemble.py:1213:28: E231 missing whitespace after ','
+./tests/test_ensemble.py:1213:43: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1213:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:1213:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:1214:28: E231 missing whitespace after ','
+./tests/test_ensemble.py:1214:43: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1214:46: E231 missing whitespace after ','
+./tests/test_ensemble.py:1214:59: E231 missing whitespace after ','
+./tests/test_ensemble.py:1216:52: E231 missing whitespace after ','
+./tests/test_ensemble.py:1216:61: E231 missing whitespace after ','
+./tests/test_ensemble.py:1217:48: E231 missing whitespace after ','
+./tests/test_ensemble.py:1217:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:1218:51: E231 missing whitespace after ','
+./tests/test_ensemble.py:1218:57: E231 missing whitespace after ','
+./tests/test_ensemble.py:1219:55: E231 missing whitespace after ','
+./tests/test_ensemble.py:1219:61: E231 missing whitespace after ','
+./tests/test_ensemble.py:1220:54: E231 missing whitespace after ','
+./tests/test_ensemble.py:1220:60: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1220:63: E231 missing whitespace after ','
+./tests/test_ensemble.py:1220:68: E231 missing whitespace after ':'
+./tests/test_ensemble.py:1221:1: W391 blank line at end of file
 ./tests/data_for_tests/programs/write_to_file_over_time.py:2:11: E401 multiple imports on one line
 ./tests/data_for_tests/programs/write_to_file_over_time.py:4:1: E302 expected 2 blank lines, found 1
 ./tests/data_for_tests/programs/write_to_file_over_time.py:4:28: E231 missing whitespace after ','
@@ -1153,15 +1176,6 @@
 ./tests/simulation/core/simulation/test_simulation.py:343:45: E231 missing whitespace after ':'
 ./tests/simulation/core/simulation/test_simulation.py:346:5: E303 too many blank lines (2)
 ./tests/simulation/core/simulation/test_simulation.py:348:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/simulation/test_simulation.py:349:49: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:360:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:361:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:362:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:363:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:364:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:365:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:366:36: E127 continuation line over-indented for visual indent
-./tests/simulation/core/simulation/test_simulation.py:367:36: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/simulation/test_simulation.py:368:1: W293 blank line contains whitespace
 ./tests/simulation/core/simulation/test_simulation.py:369:37: E231 missing whitespace after ':'
 ./tests/simulation/core/simulation/test_simulation.py:370:19: E128 continuation line under-indented for visual indent
@@ -1184,7 +1198,20 @@
 ./tests/simulation/core/simulation/test_simulation.py:408:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/simulation/test_simulation.py:409:75: W291 trailing whitespace
 ./tests/simulation/core/simulation/test_simulation.py:411:1: W293 blank line contains whitespace
-./tests/simulation/core/simulation/test_simulation.py:412:1: W391 blank line at end of file
+./tests/simulation/core/simulation/test_simulation.py:412:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/simulation/test_simulation.py:413:1: W293 blank line contains whitespace
+./tests/simulation/core/simulation/test_simulation.py:428:1: W293 blank line contains whitespace
+./tests/simulation/core/simulation/test_simulation.py:437:25: E231 missing whitespace after ','
+./tests/simulation/core/simulation/test_simulation.py:438:40: E231 missing whitespace after ','
+./tests/simulation/core/simulation/test_simulation.py:444:25: E231 missing whitespace after ','
+./tests/simulation/core/simulation/test_simulation.py:445:40: E231 missing whitespace after ','
+./tests/simulation/core/simulation/test_simulation.py:453:1: W293 blank line contains whitespace
+./tests/simulation/core/simulation/test_simulation.py:455:25: W291 trailing whitespace
+./tests/simulation/core/simulation/test_simulation.py:471:1: W293 blank line contains whitespace
+./tests/simulation/core/simulation/test_simulation.py:472:26: W291 trailing whitespace
+./tests/simulation/core/simulation/test_simulation.py:474:35: E231 missing whitespace after ','
+./tests/simulation/core/simulation/test_simulation.py:477:66: E231 missing whitespace after ':'
+./tests/simulation/core/simulation/test_simulation.py:478:35: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_ff.py:5:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/fitness/test_ff.py:9:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/fitness/test_ff.py:13:1: E302 expected 2 blank lines, found 1
@@ -1210,301 +1237,307 @@
 ./tests/simulation/core/fitness/test_check_fitness_kwargs.py:50:54: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_check_fitness_kwargs.py:52:38: E231 missing whitespace after ':'
 ./tests/simulation/core/fitness/test_check_fitness_kwargs.py:52:41: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:12:1: C901 'test_Fitness' is too complex (14)
-./tests/simulation/core/fitness/test_fitness.py:12:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:12:31: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:14:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:19:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:23:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:24:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:25:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:25:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:25:29: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:25:33: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:25:40: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:26:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:33:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:13:1: C901 'test_Fitness' is too complex (14)
+./tests/simulation/core/fitness/test_fitness.py:13:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:13:31: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:15:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:20:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:24:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:25:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:26:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:26:22: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:26:29: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:26:33: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:26:40: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:27:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:34:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:35:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:36:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:37:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:38:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:39:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:44:31: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:44:36: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:45:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:47:41: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:53:47: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:54:31: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:54:41: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:56:5: E266 too many leading '#' for block comment
-./tests/simulation/core/fitness/test_fitness.py:64:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:64:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:64:36: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:67:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:39:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:40:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:45:31: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:45:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:46:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:48:41: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:54:47: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:55:31: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:55:41: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:57:5: E266 too many leading '#' for block comment
+./tests/simulation/core/fitness/test_fitness.py:65:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:65:24: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:65:36: W291 trailing whitespace
 ./tests/simulation/core/fitness/test_fitness.py:68:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:69:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:70:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:71:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:72:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:73:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:76:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:76:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:79:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:73:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:74:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:77:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:77:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:80:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:81:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:82:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:83:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:84:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:88:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:88:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:91:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:85:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:89:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:89:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:92:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:93:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:94:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:95:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:96:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:97:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:100:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:100:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:103:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:97:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:98:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:101:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:101:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:104:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:105:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:106:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:107:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:108:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:109:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:111:22: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:109:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:110:1: W293 blank line contains whitespace
 ./tests/simulation/core/fitness/test_fitness.py:112:22: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:113:22: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:114:22: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:115:22: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:116:22: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:117:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:120:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:120:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:123:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:117:22: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:118:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:121:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:121:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:124:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:125:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:126:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:127:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:128:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:132:30: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:137:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:137:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:140:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:129:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:133:30: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:138:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:138:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:141:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:142:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:143:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:144:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:145:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:149:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:155:9: E722 do not use bare 'except'
-./tests/simulation/core/fitness/test_fitness.py:158:16: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:158:24: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:161:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:146:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:150:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:156:9: E722 do not use bare 'except'
+./tests/simulation/core/fitness/test_fitness.py:159:16: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:159:24: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:162:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:163:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:164:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:165:30: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:166:30: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:168:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:170:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:175:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:179:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:180:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:181:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:181:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:181:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:181:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:181:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:167:30: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:169:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:171:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:176:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:180:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:181:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:182:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:182:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:182:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:187:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:182:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:182:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:183:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:188:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:189:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:190:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:191:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:192:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:194:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:194:39: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:196:32: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:196:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:199:38: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:199:42: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:201:32: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:201:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:205:31: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:193:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:195:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:195:39: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:197:32: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:197:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:200:38: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:200:42: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:202:32: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:202:35: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:206:31: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:207:31: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:208:31: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:209:31: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:210:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:213:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:210:31: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:211:1: W293 blank line contains whitespace
 ./tests/simulation/core/fitness/test_fitness.py:214:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:215:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:216:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:217:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:218:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:220:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:220:39: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:222:32: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:222:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:225:38: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:225:42: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:227:32: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:227:35: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:229:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:231:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:236:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:240:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:241:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:242:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:242:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:242:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:242:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:242:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:219:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:221:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:221:39: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:223:32: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:223:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:226:38: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:226:42: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:228:32: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:228:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:230:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:232:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:237:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:241:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:242:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:243:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:243:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:243:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:248:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:243:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:243:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:244:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:249:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:250:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:251:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:252:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:253:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:256:59: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:256:64: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:257:51: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:257:54: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:254:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:257:59: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:257:64: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:258:51: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:258:56: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:260:41: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/core/fitness/test_fitness.py:261:55: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:263:40: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:263:43: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:264:51: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:264:58: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:269:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:273:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:276:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:277:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:278:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:278:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:278:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:278:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:278:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:258:54: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:259:51: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:259:56: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:261:41: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/simulation/core/fitness/test_fitness.py:262:55: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:264:40: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:264:43: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:265:51: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:265:58: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:270:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:274:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:277:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:278:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:279:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:279:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:279:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:286:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:279:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:279:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:280:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:287:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:288:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:289:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:290:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:295:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:296:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:298:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:303:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:307:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:308:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:309:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:309:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:309:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:309:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:309:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:291:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:296:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:297:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:299:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:304:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:308:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:309:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:310:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:310:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:310:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:315:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:310:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:310:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:311:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:316:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:317:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:318:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:319:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:320:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:321:50: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:321:55: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:322:42: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:322:45: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:321:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:322:50: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:322:55: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:323:42: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:323:47: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:325:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:327:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:332:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:336:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:337:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:338:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:338:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:338:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:338:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:338:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:323:45: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:324:42: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:324:47: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:326:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:328:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:333:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:337:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:338:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:339:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:339:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:339:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:344:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:339:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:339:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:340:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:345:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:346:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:347:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:348:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:349:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:352:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:354:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:359:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:363:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:364:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:365:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:365:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:365:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:365:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:365:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:350:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:353:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:355:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:360:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:364:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:365:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:366:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:366:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:366:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:371:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:366:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:366:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:367:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:372:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:373:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:374:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:375:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:376:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:377:32: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/core/fitness/test_fitness.py:382:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:387:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:391:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:392:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:393:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:393:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:393:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:393:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:393:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:377:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:378:32: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/simulation/core/fitness/test_fitness.py:383:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:388:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:392:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:393:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:394:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:394:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:394:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:399:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:394:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:394:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:395:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:400:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:401:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:402:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:403:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:404:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:406:46: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:409:1: E302 expected 2 blank lines, found 1
-./tests/simulation/core/fitness/test_fitness.py:411:21: W291 trailing whitespace
-./tests/simulation/core/fitness/test_fitness.py:415:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:418:35: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:419:1: W293 blank line contains whitespace
-./tests/simulation/core/fitness/test_fitness.py:420:19: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:420:22: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:420:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:420:31: E231 missing whitespace after ':'
-./tests/simulation/core/fitness/test_fitness.py:420:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:405:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:407:46: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:410:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:412:21: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:416:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:419:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:420:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:421:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:421:22: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:421:27: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:428:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:429:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:430:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:431:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:432:27: E127 continuation line over-indented for visual indent
+./tests/simulation/core/fitness/test_fitness.py:421:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:421:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:422:27: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:433:1: W293 blank line contains whitespace
 ./tests/simulation/core/fitness/test_fitness.py:434:31: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:434:36: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:437:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:438:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:439:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:440:27: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:441:27: E127 continuation line over-indented for visual indent
 ./tests/simulation/core/fitness/test_fitness.py:442:31: E231 missing whitespace after ','
 ./tests/simulation/core/fitness/test_fitness.py:442:37: E231 missing whitespace after ','
-./tests/simulation/core/fitness/test_fitness.py:446:29: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:447:29: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:448:29: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:449:29: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:450:29: E127 continuation line over-indented for visual indent
-./tests/simulation/core/fitness/test_fitness.py:452:1: W391 blank line at end of file
+./tests/simulation/core/fitness/test_fitness.py:452:1: E302 expected 2 blank lines, found 1
+./tests/simulation/core/fitness/test_fitness.py:454:9: E117 over-indented (comment)
+./tests/simulation/core/fitness/test_fitness.py:454:25: W291 trailing whitespace
+./tests/simulation/core/fitness/test_fitness.py:458:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:461:35: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:462:1: W293 blank line contains whitespace
+./tests/simulation/core/fitness/test_fitness.py:463:19: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:463:22: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:463:27: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:463:31: E231 missing whitespace after ':'
+./tests/simulation/core/fitness/test_fitness.py:463:36: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:464:27: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:477:35: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:479:39: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:479:46: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:480:38: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:480:41: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:481:38: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:481:43: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:482:38: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:482:41: E231 missing whitespace after ','
+./tests/simulation/core/fitness/test_fitness.py:483:1: W391 blank line at end of file
 ./tests/simulation/core/fitness/test_simulation_core_fitness___init__.py:1:1: W391 blank line at end of file
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:9:1: F811 redefinition of unused 'ff_on' from line 2
 ./tests/simulation/core/fitness/test_check_fitness_fcns.py:10:1: F811 redefinition of unused 'ff_off' from line 3
@@ -2971,7 +3004,12 @@
 ./eee/ensemble.py:574:5: E303 too many blank lines (2)
 ./eee/ensemble.py:580:1: W293 blank line contains whitespace
 ./eee/ensemble.py:587:1: W293 blank line contains whitespace
-./eee/ensemble.py:587:5: W292 no newline at end of file
+./eee/ensemble.py:593:1: W293 blank line contains whitespace
+./eee/ensemble.py:598:25: E231 missing whitespace after ','
+./eee/ensemble.py:604:1: W293 blank line contains whitespace
+./eee/ensemble.py:608:22: E231 missing whitespace after ','
+./eee/ensemble.py:611:1: W293 blank line contains whitespace
+./eee/ensemble.py:611:5: W292 no newline at end of file
 ./eee/epistasis.py:10:22: E231 missing whitespace after ','
 ./eee/epistasis.py:10:26: E231 missing whitespace after ','
 ./eee/epistasis.py:10:30: E231 missing whitespace after ','
@@ -3212,17 +3250,21 @@
 ./eee/io/load_ddg.py:66:18: E231 missing whitespace after ','
 ./eee/io/load_ddg.py:67:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:70:1: W391 blank line at end of file
-./eee/simulation/__init__.py:2:1: F401 '.analysis' imported but unused
-./eee/simulation/__init__.py:5:1: F401 '.engine' imported but unused
-./eee/simulation/__init__.py:6:1: F401 '.io' imported but unused
-./eee/simulation/__init__.py:10:1: E302 expected 2 blank lines, found 1
-./eee/simulation/__init__.py:12:76: W291 trailing whitespace
-./eee/simulation/__init__.py:13:37: W291 trailing whitespace
-./eee/simulation/__init__.py:23:38: E231 missing whitespace after ','
-./eee/simulation/__init__.py:26:1: W293 blank line contains whitespace
-./eee/simulation/__init__.py:32:1: F401 '.core.FF_AVAILABLE' imported but unused
-./eee/simulation/__init__.py:32:1: E305 expected 2 blank lines after class or function definition, found 1
-./eee/simulation/__init__.py:32:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:1:1: F401 '.analysis' imported but unused
+./eee/simulation/__init__.py:4:1: F401 '.engine' imported but unused
+./eee/simulation/__init__.py:8:1: E302 expected 2 blank lines, found 1
+./eee/simulation/__init__.py:10:76: W291 trailing whitespace
+./eee/simulation/__init__.py:11:37: W291 trailing whitespace
+./eee/simulation/__init__.py:21:38: E231 missing whitespace after ','
+./eee/simulation/__init__.py:24:1: W293 blank line contains whitespace
+./eee/simulation/__init__.py:30:1: F401 '.core.FF_AVAILABLE' imported but unused
+./eee/simulation/__init__.py:30:1: E305 expected 2 blank lines after class or function definition, found 1
+./eee/simulation/__init__.py:30:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:34:75: W291 trailing whitespace
+./eee/simulation/__init__.py:35:25: W291 trailing whitespace
+./eee/simulation/__init__.py:36:1: F401 '.io' imported but unused
+./eee/simulation/__init__.py:36:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:36:17: W292 no newline at end of file
 ./eee/simulation/core/__init__.py:2:1: F401 '.genotype.Genotype' imported but unused
 ./eee/simulation/core/__init__.py:3:1: F401 '.fitness.Fitness' imported but unused
 ./eee/simulation/core/__init__.py:4:1: F401 '.fitness.FF_AVAILABLE' imported but unused
@@ -3248,35 +3290,49 @@
 ./eee/simulation/core/simulation/simulation.py:99:1: W293 blank line contains whitespace
 ./eee/simulation/core/simulation/simulation.py:100:71: W291 trailing whitespace
 ./eee/simulation/core/simulation/simulation.py:123:13: E122 continuation line missing indentation or outdented
-./eee/simulation/core/simulation/simulation.py:128:66: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:131:76: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:133:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:138:62: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:141:82: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:142:34: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:151:76: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:152:28: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:168:32: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:171:20: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:185:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:198:27: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:199:24: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:200:29: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:201:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:204:77: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:205:23: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:208:35: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:210:33: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:213:22: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:214:41: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:217:29: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:220:22: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:221:36: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:222:26: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:222:28: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:230:24: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:233:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:233:5: W292 no newline at end of file
+./eee/simulation/core/simulation/simulation.py:128:68: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:130:65: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:134:75: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:138:76: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:141:61: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:144:81: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:145:37: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:147:75: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:148:23: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:157:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:163:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:169:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:172:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:174:37: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:177:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:186:76: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:187:28: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:204:5: E303 too many blank lines (2)
+./eee/simulation/core/simulation/simulation.py:204:32: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:207:20: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:217:27: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:218:24: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:219:29: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:220:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:223:77: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:224:23: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:227:35: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:229:33: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:232:22: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:233:41: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:236:29: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:239:22: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:240:36: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:241:26: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:241:28: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:249:24: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:256:72: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:270:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:279:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:280:34: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:298:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:308:20: F541 f-string is missing placeholders
+./eee/simulation/core/simulation/simulation.py:318:1: W391 blank line at end of file
 ./eee/simulation/core/simulation/__init__.py:1:1: F401 '.simulation.Simulation' imported but unused
 ./eee/simulation/core/simulation/__init__.py:1:35: W292 no newline at end of file
 ./eee/simulation/core/fitness/ff.py:2:76: W291 trailing whitespace
@@ -3331,41 +3387,48 @@
 ./eee/simulation/core/fitness/__init__.py:3:1: F401 '.check_fitness_fcns.FF_AVAILABLE' imported but unused
 ./eee/simulation/core/fitness/__init__.py:3:45: W292 no newline at end of file
 ./eee/simulation/core/fitness/fitness.py:2:82: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:19:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/fitness/fitness.py:24:60: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:28:80: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:29:76: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:32:66: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:45:27: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:49:74: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:51:64: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:53:85: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:55:83: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:56:82: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:57:21: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:63:79: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:64:63: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:67:65: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:69:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:75:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:76:42: E231 missing whitespace after ','
-./eee/simulation/core/fitness/fitness.py:76:77: E231 missing whitespace after ','
-./eee/simulation/core/fitness/fitness.py:83:37: E128 continuation line under-indented for visual indent
-./eee/simulation/core/fitness/fitness.py:85:24: E231 missing whitespace after ','
-./eee/simulation/core/fitness/fitness.py:99:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:103:54: E231 missing whitespace after ','
-./eee/simulation/core/fitness/fitness.py:105:21: E231 missing whitespace after ','
-./eee/simulation/core/fitness/fitness.py:107:75: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:109:65: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:113:40: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:115:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:122:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:125:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:127:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:150:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:154:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/fitness.py:165:36: W291 trailing whitespace
-./eee/simulation/core/fitness/fitness.py:166:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:20:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/fitness.py:25:60: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:29:80: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:30:76: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:33:66: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:46:27: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:50:74: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:52:64: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:54:85: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:56:83: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:57:82: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:58:21: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:64:79: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:65:63: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:68:65: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:70:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:76:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:77:42: E231 missing whitespace after ','
+./eee/simulation/core/fitness/fitness.py:77:77: E231 missing whitespace after ','
+./eee/simulation/core/fitness/fitness.py:84:37: E128 continuation line under-indented for visual indent
+./eee/simulation/core/fitness/fitness.py:86:24: E231 missing whitespace after ','
+./eee/simulation/core/fitness/fitness.py:100:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:104:54: E231 missing whitespace after ','
+./eee/simulation/core/fitness/fitness.py:106:21: E231 missing whitespace after ','
+./eee/simulation/core/fitness/fitness.py:108:75: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:110:65: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:114:40: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:116:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:123:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:126:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:128:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:151:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:155:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:166:36: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:167:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:171:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:175:42: W291 trailing whitespace
+./eee/simulation/core/fitness/fitness.py:181:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:184:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:186:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:187:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/fitness.py:187:9: W292 no newline at end of file
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:3:40: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:9:43: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/check_fitness_kwargs.py:13:1: W293 blank line contains whitespace
@@ -3533,6 +3596,8 @@
 ./eee/simulation/analysis/__init__.py:5:1: F401 '.analysis.extract_alignment' imported but unused
 ./eee/simulation/analysis/__init__.py:7:1: F401 '.ensemble_fitness.ensemble_fitness' imported but unused
 ./eee/simulation/analysis/__init__.py:7:47: W292 no newline at end of file
+./eee/simulation/io/__init__.py:1:1: F401 '.load_json.load_json' imported but unused
+./eee/simulation/io/__init__.py:1:33: W292 no newline at end of file
 ./eee/simulation/io/load_json.py:19:73: W291 trailing whitespace
 ./eee/simulation/io/load_json.py:25:1: W293 blank line contains whitespace
 ./eee/simulation/io/load_json.py:29:70: W291 trailing whitespace
@@ -4032,46 +4097,47 @@
 ./docs/script/build_api_docs.py:59:41: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:68:21: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:72:1: E305 expected 2 blank lines after class or function definition, found 1
-./profile/wright_fisher.py:11:22: E231 missing whitespace after ','
-./profile/wright_fisher.py:22:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:23:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:24:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:25:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:26:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:27:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:28:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:29:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:30:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:31:49: E128 continuation line under-indented for visual indent
-./profile/wright_fisher.py:33:1: W391 blank line at end of file
+./profile/blah/wright_fisher.py:11:22: E231 missing whitespace after ','
+./profile/blah/wright_fisher.py:22:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:23:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:24:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:25:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:26:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:27:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:28:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:29:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:30:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:31:49: E128 continuation line under-indented for visual indent
+./profile/blah/wright_fisher.py:33:1: W391 blank line at end of file
 21    C901 'check_mu_dict' is too complex (14)
 1     E114 indentation is not a multiple of 4 (comment)
+1     E117 over-indented (comment)
 1     E122 continuation line missing indentation or outdented
-315   E127 continuation line over-indented for visual indent
+291   E127 continuation line over-indented for visual indent
 139   E128 continuation line under-indented for visual indent
 1     E201 whitespace after '('
 2     E222 multiple spaces after operator
 2     E225 missing whitespace around operator
-2231  E231 missing whitespace after ','
+2279  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 5     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-146   E302 expected 2 blank lines, found 1
-62    E303 too many blank lines (2)
+149   E302 expected 2 blank lines, found 1
+63    E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
-3     E402 module level import not at top of file
+4     E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 26    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 3     E722 do not use bare 'except'
-58    F401 'glob' imported but unused
-6     F541 f-string is missing placeholders
+59    F401 'glob' imported but unused
+7     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 7     F841 local variable 'value' is assigned to but never used
-447   W291 trailing whitespace
-49    W292 no newline at end of file
-485   W293 blank line contains whitespace
-13    W391 blank line at end of file
+459   W291 trailing whitespace
+51    W292 no newline at end of file
+503   W293 blank line contains whitespace
+14    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-4046
+4111

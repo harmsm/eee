@@ -123,23 +123,58 @@ class Simulation:
             """
             subclasses of SimulationContainer must define the :code:`run`"
             function. This should be a function that runs the actual
-            simulation. We recommend that the function:
+            simulation. The function should:
 
-            1. Checks the sanity of all input arguments using the 
-            :code:`eee._private.check.standard` functions.
+            1. Have its first argument be :code:`output_directory`. 
 
-            2. Takes an argument :code:`output_directory` and then runs the 
-            calculation in that directory.
-            
-            3. Creates a :code:`calc_params` dictionary that holds the names and
-            values of all run arguments. The function should then pass this
-            dictionary to :code:`self._prepare_calc` before doing its run.
+            2. Check the sanity of all input arguments using the 
+               :code:`eee._private.check.standard` functions.
 
-            4. Closes out the calculation after running using 
-            :code:`self._complete_calc.`
+            3. Create a :code:`calc_params` dictionary that holds the names and
+               values of all arguments passed to :code:`run`. The function 
+               should pass this dictionary to :code:`self._prepare_calc` before
+               doing its run.
 
-            5. Uses the :code:`@run_cleanly` decorator to ensure sane behavior in 
-            the event of a crash. 
+            4. Write its outputs to files in its current working directory. 
+               (These will automatically be stored in 'output_directory'.)
+
+            5. Close out the calculation after running using 
+               :code:`self._complete_calc.`
+
+            6. Use the :code:`@run_cleanly` decorator to ensure sane behavior in 
+               the event of a crash. 
+
+            7. Have an informative docstring that uses the numpy docstring 
+               format. 
+
+            Example:
+
+            .. code-block::python
+
+                def run(self,output_directory,an_int_argument):
+                    '''
+                    Do something cool.
+                    
+                    Parameters
+                    ----------
+                    an_int_argument : int
+                        a useful number
+                    '''
+                    
+                    an_int_argument = check_int(an_int_argument,
+                                                variable_name="an_int_argument",
+                                                minimum_allowed=0)
+
+                    calc_params = {"an_int_argument":an_int_argument}
+                    
+                    self._prepare_calc(output_directory=output_directory,
+                                       calc_params=calc_params)
+                    
+                    # generates output file 'results.txt'
+                    run_stuff_here() 
+
+                    self._complete_calc()
+                    
             """
 
             raise NotImplementedError(err)
@@ -165,30 +200,14 @@ class Simulation:
         # Write calc inputs (json and csv)
         self._write_calc_params(calc_params=calc_params)
 
+
     def _write_calc_params(self,calc_params={}):
         """
         Write a simulation.json and ddg.csv file describing the simulation
         parameters. 
         """
 
-        system_dict = {}
-
-        # get ensemble
-        ens = self._ens.to_dict()
-        for k in ens:
-            system_dict[k] = ens[k]
-
-        # Get FitnessContainer
-        fc = self._fc.to_dict()
-        for k in fc:
-            system_dict[k] = fc[k]
-        
-        # Get GenotypeContainer
-        gc = self._gc.to_dict()
-        for k in gc:
-            system_dict[k] = gc[k]
-
-        system_dict["seed"] = self._seed
+        system_dict = self.system_params
 
         # Write ddg file
         self._gc._ddg_df.to_csv("ddg.csv")
@@ -230,4 +249,70 @@ class Simulation:
         if hasattr(self,"_current_dir"):
             os.chdir(self._current_dir)
 
+    @property
+    def system_params(self):
+        """
+        Dictionary of parameters describing system. This includes information
+        about the ensemble, fitness calculation, and current genotypes. 
+        """
+
+        system_dict = {}
+
+        # get ensemble
+        ens = self._ens.to_dict()
+        for k in ens:
+            system_dict[k] = ens[k]
+
+        # Get FitnessContainer
+        fc = self._fc.to_dict()
+        for k in fc:
+            system_dict[k] = fc[k]
+        
+        # Get GenotypeContainer
+        gc = self._gc.to_dict()
+        for k in gc:
+            system_dict[k] = gc[k]
+
+        system_dict["seed"] = self._seed
+
+        return system_dict
     
+    def get_calc_description(self,calc_kwargs=None):
+        """
+        Produce a pretty, human-readable string describing the calculation.
+
+        Parameters
+        ----------
+        calc_kwargs : dict, optional
+            dictionary of keyword arguments that will be passed to self.run
+
+        Returns
+        -------
+        description : str
+            description of the calculation
+        """
+
+        def _underline(some_string):
+            length = len(some_string)
+            return f"{some_string}\n{length*'-'}\n"
+        
+        out = []
+
+        out.append(_underline(f"Running a '{self.calc_type}' calculation"))
+        out.append(_underline("Ensemble properties:"))
+        out.append(f"{self._ens.species_df}\n\n")
+
+        out.append(_underline("Fitness calculation:"))
+        out.append(f"Selecting on: {self._fc.select_on}")
+        out.append(f"Selecting on folded: {self._fc.select_on_folded}")
+        out.append(f"\nConditions and fitness functions:")
+        out.append(f"{self._fc.condition_df}\n")
+
+        if calc_kwargs is not None:
+            out.append(_underline("Calculation parameters"))
+            for k in calc_kwargs:
+                out.append(f"{k}: {calc_kwargs[k]}")
+            out.append(f"seed: {self._seed}")
+
+        return "\n".join(out)
+
