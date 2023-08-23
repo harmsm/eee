@@ -1,0 +1,2 @@
+
+from .genotype import Genotype

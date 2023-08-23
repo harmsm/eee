@@ -65,7 +65,6 @@ def load_ddg(ddg_df):
     # Reorder columns
     df = df.loc[:,columns]
     
-    
     return df
 
 

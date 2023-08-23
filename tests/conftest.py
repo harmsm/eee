@@ -1,17 +1,16 @@
 import pytest
 
+from eee.ensemble import Ensemble
+from eee.simulation.core.fitness.fitness import Fitness
+from eee.simulation.core.fitness.ff import ff_on
+from eee.simulation.core.fitness.ff import ff_off
+from eee.simulation.core.genotype import Genotype
+
 import numpy as np
 import pandas as pd
 
 import os
 import glob
-
-from eee.ensemble import Ensemble
-from eee.evolve.fitness import FitnessContainer
-from eee.evolve.fitness import ff_on
-from eee.evolve.fitness import ff_off
-from eee.evolve.genotype import GenotypeContainer
-
 
 def _file_globber(*args):
     """
@@ -77,6 +76,11 @@ def spreadsheets():
     return _file_globber("data_for_tests","spreadsheets","*")
 
 @pytest.fixture(scope="module")
+def sim_json():
+
+    return _file_globber("data_for_tests","sim_json","*.json")
+
+@pytest.fixture(scope="module")
 def ens_test_data():
 
     # Basic ensemble
@@ -106,12 +110,12 @@ def ens_test_data():
 
     fitness_fcns = [ff_on,ff_off]
 
-    fc = FitnessContainer(ens,
-                          mu_dict,
-                          [ff_on,ff_off],
-                          select_on="fx_obs",
-                          fitness_kwargs={},
-                          T=298.15)
+    fc = Fitness(ens,
+                 mu_dict,
+                 [ff_on,ff_off],
+                 select_on="fx_obs",
+                 fitness_kwargs={},
+                 T=298.15)
     
     out = {"ens":ens,
            "mu_dict":mu_dict,
@@ -143,14 +147,16 @@ def ens_with_fitness():
                            "s1":[-1.677,0.167],
                            "s2":[3.333,-5000]})
 
-    fc = FitnessContainer(ens,
-                        mu_dict,
-                        [ff_on,ff_off],
-                        select_on="fx_obs",
-                        fitness_kwargs={},
-                        T=1)
+    fc = Fitness(ens,
+                 mu_dict,
+                 [ff_on,ff_off],
+                 select_on="fx_obs",
+                 fitness_kwargs={},
+                 T=1)
 
-    gc = GenotypeContainer(fc=fc,ddg_df=ddg_df)
+    gc = Genotype(ens=ens,
+                  fitness_function=fc.fitness,
+                  ddg_df=ddg_df)
     
 
     out = {"ens":ens,
