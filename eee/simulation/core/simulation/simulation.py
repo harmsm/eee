@@ -316,3 +316,36 @@ class Simulation:
 
         return "\n".join(out)
 
+    def fitness_from_energy(self,genotype_energy):
+        """
+        Return fitness given the energy of a genotype. 
+
+        Parameters
+        ----------
+        genotype_energy : numpy.ndarray or dict
+            if numpy array, treat as the energetic effects on all species in the
+            ensemble, ordered as in self.ens.species. If a dictionary, treat
+            as a mut_dict where keys are species and values are energetic effects.
+
+        Returns
+        -------
+        fitness : float
+            fitness integrated across all conditions
+        """
+
+        if issubclass(type(genotype_energy),dict):
+            genotype_energy = self.ens.mut_dict_to_array(genotype_energy)
+
+        return np.prod(self._gc._fitness_function(genotype_energy))
+
+    @property
+    def ens(self):
+        return self._ens
+
+    @property
+    def fc(self):
+        return self._fc
+
+    @property
+    def gc(self):
+        return self._gc

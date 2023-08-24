@@ -1,19 +1,22 @@
 
 from eee.simulation.core.simulation import Simulation
-from eee.simulation.core.engine import exhaustive
+from eee.simulation.core.engine import pathfinder
 
 from eee._private.check.standard import check_int
+from eee._private.check.standard import check_bool
 from eee._private.interface import run_cleanly
 
 
-class DeepMutationalScan(Simulation):
+class AcessiblePaths(Simulation):
 
-    calc_type = "dms"
+    calc_type = "accessible_paths"
 
     @run_cleanly
     def run(self,
-            output_directory="eee_dms",
+            output_directory="eee_accessible",
             max_depth=1,
+            allow_neutral=True,
+            find_all_paths=True,
             output_file="eee_dms.csv"):
         """
         Run a deep mutational scan up to depth mutations away from wildtype. 
@@ -23,18 +26,29 @@ class DeepMutationalScan(Simulation):
         output_directory : str, default="eee_sim"
             do simulation in this output directory
         max_depth : int, default=1
-            max_depth for the deep-mutational scan. 1 corresponds to all single mutants,
-            2 to all double mutants, 3 to all triple, etc. WARNING: The space gets
-            very large as the number of sites and number of possible mutations 
-            increase. 
+            explore paths up to this length. 1 corresponds to all accessible
+            single mutants, 2 to all double mutants, 3 to all triple, etc. 
         output_file : str, default="eee_dms.csv"
             write results to the indicated csv file
                 write the generations out every write_frequency generations. 
+        allow_neutral : bool, default=True
+            allow mutations that have no effect on fitness
+        find_all_paths : bool, default=True
+            visit the same sequence from different starting points. This will find 
+            all allowed paths to a given genotype. If False, ignore new paths that
+            visit the same genotype. 
+        output_file : str, default="genotypes.csv"
+            return visited genotypes (with trajectory information) to this file
         """
 
         max_depth = check_int(value=max_depth,
                               variable_name="max_depth",
-                              minimum_allowed=0)
+                              minimum_allowed=1)
+        allow_neutral = check_bool(allow_neutral,
+                                   variable_name="allow_neutral")
+        find_all_paths = check_bool(value=find_all_paths,
+                                    variable_name="find_all_paths")
+        
         output_file = f"{output_file}"
     
         # Record the new keys
@@ -46,8 +60,10 @@ class DeepMutationalScan(Simulation):
                            calc_params=calc_params)
         
         # Run and return a Wright Fisher simulation.
-        exhaustive(gc=self._gc,
+        pathfinder(gc=self._gc,
                    max_depth=max_depth,
+                   allow_neutral=allow_neutral,
+                   find_all_paths=find_all_paths,
                    output_file=output_file,
                    return_output=False)
         

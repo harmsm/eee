@@ -29,11 +29,15 @@ FOUND tests.io.test_load_structure.test_load_structure
 FOUND tests.io.test_read_dataframe.test_read_dataframe
 FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
+FOUND tests.simulation.analysis.test_num_genotypes.test_get_num_genotypes
+FOUND tests.simulation.calcs.test_accessible_paths.test_AcessiblePaths
+FOUND tests.simulation.calcs.test_accessible_paths.test_AcessiblePaths_run
 FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan
 FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan_run
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation_run
 FOUND tests.simulation.core.engine.test_exhaustive.test_exhaustive
+FOUND tests.simulation.core.engine.test_pathfinder.test_pathfinder
 FOUND tests.simulation.core.engine.test_wright_fisher.test__write_outputs
 FOUND tests.simulation.core.engine.test_wright_fisher.test_wright_fisher
 FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__get_ff_available
@@ -54,7 +58,9 @@ FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_select_on
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_select_on_folded
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_to_dict
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype
+FOUND tests.simulation.core.genotype.test_genotype.test_Genotype__add_genotype
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype__create_ddg_dict
+FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_conditional_mutate
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_ddg_dict
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_df
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_dump_to_csv
@@ -76,6 +82,10 @@ FOUND tests.simulation.core.simulation.test_simulation.test_Simulation
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__complete_calc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__prepare_calc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation__write_calc_params
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_ens
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_fc
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_fitness_from_energy
+FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_gc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_get_calc_description
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_system_params
 FOUND tests.simulation.io.test_load_json.test__validate_calc_kwargs
@@ -119,6 +129,7 @@ MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.simulation.core.engine.test_pathfinder.test__traverse
 MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
 MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test_epistasis.test_:

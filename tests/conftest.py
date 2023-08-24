@@ -168,6 +168,47 @@ def ens_with_fitness():
     return out
 
 @pytest.fixture(scope="module")
+def ens_with_fitness_two_site():
+    
+
+    ens = Ensemble(R=1)
+    ens.add_species(name="s1",
+                    dG0=0,
+                    observable=True)
+    ens.add_species(name="s2",
+                    dG0=0.167,
+                    observable=False,
+                    mu_stoich={"X":2})
+
+    mu_dict = {"X":[0,3.333]}
+
+    ddg_df = pd.DataFrame({"site":[1,1,2],
+                           "mut":["A1V","A1P","A2C"],
+                           "s1":[-1.677,0.167,0],
+                           "s2":[3.333,-5000,0]})
+
+    fc = Fitness(ens,
+                 mu_dict,
+                 [ff_on,ff_off],
+                 select_on="fx_obs",
+                 fitness_kwargs={},
+                 T=1)
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fc.fitness,
+                  ddg_df=ddg_df)
+    
+
+    out = {"ens":ens,
+           "mu_dict":mu_dict,
+           "ddg_df":ddg_df,
+           "fc":fc,
+           "gc":gc}
+    
+    return out
+
+
+@pytest.fixture(scope="module")
 def programs():
     """
     Dictionary holding paths pointing to programs to run.

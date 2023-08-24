@@ -45,9 +45,10 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
                              seed=None)
 
     dms.run(output_directory="test",
-            depth=1)
+            max_depth=1,
+            output_file="yo.csv")
     
-    assert os.path.exists(os.path.join("test","eee_dms.csv"))
+    assert os.path.exists(os.path.join("test","yo.csv"))
     
  
     os.chdir(current_dir)

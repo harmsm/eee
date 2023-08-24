@@ -386,4 +386,16 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     assert "write_frequency" not in calc_params
     assert len(calc_params) == 4
 
+    # Now test all of the json files in there to make sure they do not die. This
+    # will make sure we keep the example json files, Ensmble, and calcs in 
+    # sync with one another. 
+    for k in sim_json:
+        sm, calc_params = load_json(sim_json[k])
+
+
+
+
+
+
+
     os.chdir(current_dir)
