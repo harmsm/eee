@@ -55,13 +55,13 @@ def exhaustive(gc,
                                variable_name="return_output")
 
     # Get sites to mutate
-    all_sites = list(gc._ddg_dict.keys())
+    all_sites = list(gc.ddg_dict.keys())
     num_sites = len(all_sites)
 
     # Figure out number of mutations at each site
     site_lengths = []
     for s in all_sites:
-        site_lengths.append(len(gc._ddg_dict[s]))
+        site_lengths.append(len(gc.ddg_dict[s]))
     site_lengths = np.array(site_lengths)
 
     # Figure out number of calculations required to go from 1->depth exhaustive
@@ -94,7 +94,7 @@ def exhaustive(gc,
             for sites in itertools.combinations(all_sites,L):
 
                 # Create all possible mutations at these sites
-                for mutations in itertools.product(*[gc._ddg_dict[i] for i in sites]):
+                for mutations in itertools.product(*[gc.ddg_dict[i] for i in sites]):
 
                     bg = existing_genotype_dict[mutations[:-1]]
                     gc.mutate(bg,site=sites[-1],mutation=mutations[-1])

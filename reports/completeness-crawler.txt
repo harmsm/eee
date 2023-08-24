@@ -55,6 +55,7 @@ FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_select_on_folded
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_to_dict
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype__create_ddg_dict
+FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_ddg_dict
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_df
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_dump_to_csv
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype_fitnesses

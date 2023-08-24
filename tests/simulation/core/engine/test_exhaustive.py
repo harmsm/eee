@@ -27,8 +27,8 @@ def test_exhaustive(ens_test_data,variable_types,tmpdir):
 
 
     all_muts = []    
-    for site in gc._ddg_dict:
-        all_muts.extend(list(gc._ddg_dict[site].keys()))
+    for site in gc.ddg_dict:
+        all_muts.extend(list(gc.ddg_dict[site].keys()))
     all_muts.sort()
 
     df = exhaustive(gc=gc,

@@ -312,6 +312,16 @@ class Genotype:
         """
         return self._fitnesses
     
+    @property
+    def ddg_dict(self):
+        """
+        Dictionary with the energetic effects of mutations organized by site. 
+        Has form :code:`ddg_dict[site][mut] = np_array_with_mutant_effects_on_species`,
+        where site is an integer of sites from ddg_df, mut is a matched mutation
+        at that site, and the array has the energetic effects of the mutation on 
+        each species as ordered in ens.species. 
+        """
+        return self._ddg_dict
 
 
 

@@ -101,8 +101,8 @@ def test_Genotype__create_ddg_dict(ens_test_data):
 
     with pytest.raises(ValueError):
         gc = Genotype(ens=ens,
-                               fitness_function=fitness_function,
-                               ddg_df=bad_ddg_df)
+                      fitness_function=fitness_function,
+                      ddg_df=bad_ddg_df)
 
 def test_Genotype_mutate(ens_test_data):
 
@@ -444,4 +444,19 @@ def test_Genotype_fitnesses(ens_test_data):
                            ddg_df=ddg_df)
     gc.mutate(0)
     assert len(gc.fitnesses) == 2
-    
+
+def test_Genotype_ddg_dict(ens_test_data):
+
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
+    ddg_df = ens_test_data["ddg_df"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+        
+    # Make sure property works as expected. 
+    for a in ddg_dict:
+        for b in ddg_dict[a]:
+            assert np.array_equal(gc.ddg_dict[a][b], ddg_dict[a][b])
