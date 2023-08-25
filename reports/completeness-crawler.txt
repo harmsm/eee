@@ -54,6 +54,8 @@ FOUND tests.simulation.core.fitness.test_check_fitness_kwargs.test_check_fitness
 FOUND tests.simulation.core.fitness.test_ff.test_ff_neutral
 FOUND tests.simulation.core.fitness.test_ff.test_ff_off
 FOUND tests.simulation.core.fitness.test_ff.test_ff_on
+FOUND tests.simulation.core.fitness.test_ff.test_ff_on_above
+FOUND tests.simulation.core.fitness.test_ff.test_ff_on_below
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_T
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_condition_df

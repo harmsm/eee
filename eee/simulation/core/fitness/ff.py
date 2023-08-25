@@ -8,10 +8,12 @@ using the function.
 
 .. code-block::python
 
-    def ff_example_function(value,multiply_by):
+    def ff_example_function(value,*args,**kwargs):
         '''
         Return the fitness of a value as that value times multiply_by. 
         '''
+
+        multiply_by = kwargs["multiply_by]
 
         return value*multiply_by
 
@@ -28,23 +30,50 @@ multiply "fx_obs" by 5 at an iptg chemical potential of 1.
     
 """
 
-def ff_on(value):
+def ff_on(value,*args,**kwargs):
     """
     Microscopic fitness function for fx_obs. Fitness is linearly proportional
     to value. Useful for simulating selection to keep observable 'on'.
     """
     return value
 
-def ff_off(value):
+def ff_off(value,*args,**kwargs):
     """
     Microscopic fitness function for fx_obs. Fitness is linearly proportional
     to 1 - value. Useful for simulating selection to keep observable 'off'. 
     """
     return 1 - value
 
-def ff_neutral(value):
+def ff_neutral(value,*args,**kwargs):
     """
     Microscopic fitness function for fx_obs. Fitness is always 1.0, modeling
     no selection on fx_obs. 
     """
     return 1.0
+
+def ff_on_above(value,*args,**kwargs):
+    """
+    Microscopic fitness function for fx_obs. Fitness is 1.0 for values above a
+    threshold, 0.0 below it. When used, `fitness_kwargs = {"threshold":VALUE}`
+    must be set. 
+    """
+
+    threshold = kwargs["threshold"]
+    if value >= threshold:
+        return 1.0
+    
+    return 0.0
+
+def ff_on_below(value,*args,**kwargs):
+    """
+    Microscopic fitness function for fx_obs. Fitness is 1.0 for values below a
+    threshold, 0.0 above it. When used, `fitness_kwargs = {"threshold":VALUE}`
+    must be set. 
+    """
+
+    threshold = kwargs["threshold"]
+    if value <= threshold:
+        return 1.0
+    
+    return 0.0
+
