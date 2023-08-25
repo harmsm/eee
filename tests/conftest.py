@@ -207,6 +207,10 @@ def ens_with_fitness_two_site():
     
     return out
 
+@pytest.fixture(scope="module")
+def newick_files():
+
+    return _file_globber("data_for_tests","newick_files","*.newick")
 
 @pytest.fixture(scope="module")
 def programs():

@@ -22,6 +22,8 @@ FOUND tests._private.test_interface.test_launch
 FOUND tests._private.test_interface.test_rmtree
 FOUND tests._private.test_interface.test_run_cleanly
 FOUND tests._private.test_wrap.test_wrap_function
+FOUND tests.io.test_io_tree.test_read_tree
+FOUND tests.io.test_io_tree.test_write_tree
 FOUND tests.io.test_load_ddg.test_load_ddg
 FOUND tests.io.test_load_structure.test__load_structure_cif
 FOUND tests.io.test_load_structure.test__load_structure_pdb
@@ -115,6 +117,7 @@ FAKE tests.simulation.analysis.test_analysis.test_extract_alignment
 FAKE tests.simulation.analysis.test_analysis.test_get_genotype_frequencies
 FAKE tests.simulation.analysis.test_analysis.test_get_most_common
 FAKE tests.simulation.analysis.test_analysis.test_get_num_accumulated_mutations
+FAKE tests.simulation.core.engine.test_follow_tree.test__simulate_branch
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test_clean_structure
@@ -129,6 +132,8 @@ MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
+MISSING tests.simulation.analysis.test_on_tree.test_extract_alignment
+MISSING tests.simulation.core.engine.test_follow_tree.test_follow_tree
 MISSING tests.simulation.core.engine.test_pathfinder.test__traverse
 MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
 MISSING tests.simulation.test___init__.test__get_calc_available
