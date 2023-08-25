@@ -7,6 +7,7 @@ from .mu_dict import check_mu_dict
 from .mu_stoich import check_mu_stoich
 from .mut_energy import check_mut_energy
 from .T import check_T
+from .wf_population import check_wf_population
 
 from .pop_gen import check_mutation_rate
 from .pop_gen import check_burn_in_generations

@@ -289,6 +289,18 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.pickle")) == 0 
     assert len(glob.glob("*.csv")) == 0 
 
+    # pass in special case with 0 generations run. 
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    gc, generations = wright_fisher(gc,
+                                    population=10,
+                                    mutation_rate=0.1,
+                                    num_generations=0)
+    assert len(generations) == 1
+    assert len(glob.glob("*.pickle")) == 0 
+    assert len(glob.glob("*.csv")) == 0 
+
     # --------------------------------------------------------------------------
     # num_mutations
 
@@ -490,33 +502,6 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
             
             genotypes[mut_genotype] += gen[g]
 
-
-    #ens = ens_with_fitness["ens"]
-    #fc = ens_with_fitness["fc"]
-
-    # ens.get_obs(mu_dict=ens_with_fitness["mu_dict"])
-    # print("ens")
-    # ens_dict = ens.to_dict()["ens"]
-    # for k in ens_dict:
-    #     print(k,ens_dict)
-    # print()
-
-    # print("species")
-    # for s in ens._species:
-    #     for k in ens._species[s]:
-    #         print(s,k,ens._species[s][k])
-    # print()
-
-    # print("fc")
-    # fc_dict = fc.to_dict()
-    # for k in fc_dict:
-    #     print(k,fc_dict[k])
-    # print()
-
-    # print('fitness')
-    # print(fc.fitness(np.array([0,0])))
-    # print(fc.fitness(np.array([-1.677,0.167])))
-    # print(fc.fitness(np.array([3.333,-5000])))
 
     assert genotypes["A1P"] < 10000
     assert genotypes[""] > genotypes["A1P"]

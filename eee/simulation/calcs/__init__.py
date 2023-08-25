@@ -7,3 +7,4 @@ in simulation.json files using the `calc_type` key.
 from .wf_sim import WrightFisherSimulation
 from .dms import DeepMutationalScan
 from .accessible_paths import AcessiblePaths
+from .wf_tree_sim import WrightFisherTreeSimulation

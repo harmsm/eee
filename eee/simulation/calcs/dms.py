@@ -49,8 +49,8 @@ class DeepMutationalScan(Simulation):
         
         # Run and return a Wright Fisher simulation.
         exhaustive(gc=self._gc,
-                   max_depth=max_depth,
-                   output_file=output_file,
+                   max_depth=calc_params["max_depth"],
+                   output_file=calc_params["output_file"],
                    return_output=False)
         
         self._complete_calc()

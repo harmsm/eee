@@ -7,6 +7,7 @@ FOUND tests._private.check.eee.test_pop_gen.test_check_mutation_rate
 FOUND tests._private.check.eee.test_pop_gen.test_check_num_generations
 FOUND tests._private.check.eee.test_pop_gen.test_check_num_mutations
 FOUND tests._private.check.eee.test_pop_gen.test_check_population_size
+FOUND tests._private.check.eee.test_wf_population.test_check_wf_population
 FOUND tests._private.check.test_standard.test_check_bool
 FOUND tests._private.check.test_standard.test_check_float
 FOUND tests._private.check.test_standard.test_check_int
@@ -38,7 +39,11 @@ FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan
 FOUND tests.simulation.calcs.test_dms.test_DeepMutationalScan_run
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation
 FOUND tests.simulation.calcs.test_wf_sim.test_WrightFisherSimulation_run
+FOUND tests.simulation.calcs.test_wf_tree_sim.test_WrightFisherTreeSimulation
+FOUND tests.simulation.calcs.test_wf_tree_sim.test_WrightFisherTreeSimulation_run
 FOUND tests.simulation.core.engine.test_exhaustive.test_exhaustive
+FOUND tests.simulation.core.engine.test_follow_tree.test__simulate_branch
+FOUND tests.simulation.core.engine.test_follow_tree.test_follow_tree
 FOUND tests.simulation.core.engine.test_pathfinder.test_pathfinder
 FOUND tests.simulation.core.engine.test_wright_fisher.test__write_outputs
 FOUND tests.simulation.core.engine.test_wright_fisher.test_wright_fisher
@@ -117,7 +122,6 @@ FAKE tests.simulation.analysis.test_analysis.test_extract_alignment
 FAKE tests.simulation.analysis.test_analysis.test_get_genotype_frequencies
 FAKE tests.simulation.analysis.test_analysis.test_get_most_common
 FAKE tests.simulation.analysis.test_analysis.test_get_num_accumulated_mutations
-FAKE tests.simulation.core.engine.test_follow_tree.test__simulate_branch
 FAKE tests.structure.test_align_structure_seqs.test__run_muscle
 FAKE tests.structure.test_align_structures.test_align_structures
 FAKE tests.structure.test_clean_structure.test_clean_structure
@@ -133,7 +137,6 @@ MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
 MISSING tests.simulation.analysis.test_on_tree.test_extract_alignment
-MISSING tests.simulation.core.engine.test_follow_tree.test_follow_tree
 MISSING tests.simulation.core.engine.test_pathfinder.test__traverse
 MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
 MISSING tests.simulation.test___init__.test__get_calc_available

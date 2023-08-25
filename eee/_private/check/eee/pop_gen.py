@@ -64,7 +64,7 @@ def check_num_generations(num_generations):
     return check_int(value=num_generations,
                      variable_name="num_generations",
                      minimum_allowed=0,
-                     minimum_inclusive=False)
+                     minimum_inclusive=True)
 
 def check_burn_in_generations(burn_in_generations):
     """
@@ -84,7 +84,7 @@ def check_burn_in_generations(burn_in_generations):
     return check_int(value=burn_in_generations,
                      variable_name="burn_in_generations",
                      minimum_allowed=0,
-                     minimum_inclusive=False)
+                     minimum_inclusive=True)
 
 def check_num_mutations(num_mutations):
     """

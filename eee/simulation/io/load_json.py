@@ -7,6 +7,7 @@ from eee._private.check.ensemble import check_ensemble
 from eee.simulation import CALC_AVAILABLE
 
 from eee.io import load_ddg
+from eee.io import read_tree
 
 import json
 import inspect
@@ -189,7 +190,13 @@ def load_json(json_file,use_stored_seed=False):
     # start a simulation in new directory
     if "ddg_df" in calc_input["system"]:
         calc_input["system"]["ddg_df"] = load_ddg(calc_input["system"]["ddg_df"])
-        
+    
+    # Load newick here so we don't have to keep track of the file when/if we
+    # start a simulation in new directory
+    if "calc_params" in calc_input:
+        if "newick" in calc_input["calc_params"]:
+            calc_input["calc_params"]["newick"] = read_tree(calc_input["calc_params"]["newick"])
+
     # Drop the seed unless we are requesting it to be kept. 
     if "seed" in calc_input["system"] and not use_stored_seed:
         calc_input["system"].pop("seed")

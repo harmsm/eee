@@ -1,6 +1,7 @@
 import pytest
 
 from eee.simulation.calcs.accessible_paths import AcessiblePaths
+from eee.simulation.io import load_json
 
 import os
 
@@ -52,5 +53,14 @@ def test_AcessiblePaths_run(ens_test_data,tmpdir):
     
     assert os.path.exists(os.path.join("test","yo.csv"))
     
+    os.chdir('test')
+    _, kwargs = load_json('simulation.json')
+    assert kwargs["max_depth"] == 2
+    assert kwargs["allow_neutral"] == True
+    assert kwargs["find_all_paths"] == True
+    assert kwargs["output_file"] == "yo.csv"
+
+    os.chdir("..")
+
  
     os.chdir(current_dir)

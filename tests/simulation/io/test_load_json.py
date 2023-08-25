@@ -6,6 +6,8 @@ from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 
 import numpy as np
+import ete3
+
 
 import os
 import shutil
@@ -202,12 +204,13 @@ def test__validate_calc_kwargs():
     assert new_kwargs is kwargs
 
 
-def test_load_json(sim_json,test_ddg,tmpdir):
+def test_load_json(sim_json,test_ddg,newick_files,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
 
     shutil.copy(test_ddg["lac.csv"],"ddg.csv")
+    shutil.copy(newick_files["simple.newick"],"eee_sim.newick")
 
     sm, calc_params = load_json(sim_json["lac.json"],
                                 use_stored_seed=False)
@@ -393,7 +396,10 @@ def test_load_json(sim_json,test_ddg,tmpdir):
         sm, calc_params = load_json(sim_json[k])
 
 
-
+    # Specific case where calc will have newick file. Make sure it is loaded in
+    # as ete3 tree, not string
+    sm, calc_params = load_json(sim_json["wf_tree_sim.json"])
+    assert issubclass(type(calc_params["newick"]),ete3.TreeNode)
 
 
 

@@ -19,7 +19,7 @@ class AcessiblePaths(Simulation):
             max_depth=1,
             allow_neutral=True,
             find_all_paths=True,
-            output_file="eee_dms.csv"):
+            output_file="eee_accessible.csv"):
         """
         Identify all accessible evolutionary paths starting from a wildtype
         protein.
@@ -57,6 +57,8 @@ class AcessiblePaths(Simulation):
         # Record the new keys
         calc_params = {}
         calc_params["max_depth"] = max_depth
+        calc_params["allow_neutral"] = allow_neutral
+        calc_params["find_all_paths"] = find_all_paths
         calc_params["output_file"] = output_file
 
         self._prepare_calc(output_directory=output_directory,
@@ -64,10 +66,10 @@ class AcessiblePaths(Simulation):
         
         # Run and return a Wright Fisher simulation.
         pathfinder(gc=self._gc,
-                   max_depth=max_depth,
-                   allow_neutral=allow_neutral,
-                   find_all_paths=find_all_paths,
-                   output_file=output_file,
+                   max_depth=calc_params["max_depth"],
+                   allow_neutral=calc_params["allow_neutral"],
+                   find_all_paths=calc_params["find_all_paths"],
+                   output_file=calc_params["output_file"],
                    return_output=False)
         
         self._complete_calc()
