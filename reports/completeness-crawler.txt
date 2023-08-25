@@ -132,6 +132,7 @@ MISSING tests.bin.test_eee-get-available-functions.test_main
 MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_read_ddg.test_read_ddg
+MISSING tests.io.test_read_ensemble.test__search_for_key
 MISSING tests.io.test_read_structure.test__read_structure_cif
 MISSING tests.io.test_read_structure.test__read_structure_pdb
 MISSING tests.io.test_read_structure.test_read_structure

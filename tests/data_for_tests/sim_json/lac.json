@@ -14,7 +14,7 @@
       "off"
     ],
     "ens": {
-      "R": 0.008314,
+      "gas_constant": 0.008314,
       "hdna": {
         "dG0": 0.0,
         "observable": true,

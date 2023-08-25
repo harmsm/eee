@@ -13,7 +13,7 @@ import pytest
 def test_Fitness(ens_test_data,variable_types):
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -169,7 +169,7 @@ def test_Fitness(ens_test_data,variable_types):
 def test_Fitness_fitness():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -230,7 +230,7 @@ def test_Fitness_fitness():
 def test_Fitness_to_dict():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -268,7 +268,7 @@ def test_Fitness_to_dict():
 def test_Fitness_ens():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})
@@ -297,7 +297,7 @@ def test_Fitness_ens():
 def test_Fitness_mu_dict():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -326,7 +326,7 @@ def test_Fitness_mu_dict():
 def test_Fitness_select_on():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -353,7 +353,7 @@ def test_Fitness_select_on():
 def test_Fitness_select_on_folded():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -381,7 +381,7 @@ def test_Fitness_select_on_folded():
 def test_Fitness_fitness_kwargs():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -410,7 +410,7 @@ def test_Fitness_fitness_kwargs():
     # Test a threshold. 
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -462,7 +462,7 @@ def test_Fitness_fitness_kwargs():
 def test_Fitness_T():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})
@@ -504,7 +504,7 @@ def test_Fitness_T():
 def test_Fitness_condition_df():
 
         # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})

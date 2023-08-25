@@ -2751,7 +2751,7 @@
 ./tests/simulation/io/test_load_json.py:233:59: E231 missing whitespace after ':'
 ./tests/simulation/io/test_load_json.py:236:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 ./tests/simulation/io/test_load_json.py:237:51: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_load_json.py:240:33: E231 missing whitespace after ','
+./tests/simulation/io/test_load_json.py:240:44: E231 missing whitespace after ','
 ./tests/simulation/io/test_load_json.py:242:49: E231 missing whitespace after ','
 ./tests/simulation/io/test_load_json.py:242:61: E231 missing whitespace after ','
 ./tests/simulation/io/test_load_json.py:246:37: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
@@ -3905,6 +3905,19 @@
 ./eee/io/__init__.py:7:1: F401 '.tree.read_tree' imported but unused
 ./eee/io/__init__.py:8:1: F401 '.tree.write_tree' imported but unused
 ./eee/io/__init__.py:8:29: W292 no newline at end of file
+./eee/io/read_ensemble.py:6:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:9:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:11:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:15:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:16:43: E231 missing whitespace after ','
+./eee/io/read_ensemble.py:17:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:24:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:33:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:35:23: W291 trailing whitespace
+./eee/io/read_ensemble.py:40:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:48:51: W291 trailing whitespace
+./eee/io/read_ensemble.py:58:1: W293 blank line contains whitespace
+./eee/io/read_ensemble.py:58:9: W292 no newline at end of file
 ./eee/io/read_structure.py:2:75: W291 trailing whitespace
 ./eee/io/read_structure.py:3:27: W291 trailing whitespace
 ./eee/io/read_structure.py:11:1: E302 expected 2 blank lines, found 1
@@ -5136,7 +5149,7 @@
 2     E201 whitespace after '['
 3     E222 multiple spaces after operator
 3     E225 missing whitespace around operator
-2831  E231 missing whitespace after ','
+2832  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 3     E265 block comment should start with '# '
 2     E266 too many leading '#' for block comment
@@ -5154,9 +5167,9 @@
 9     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 10    F841 local variable 'value' is assigned to but never used
-616   W291 trailing whitespace
-67    W292 no newline at end of file
-672   W293 blank line contains whitespace
+618   W291 trailing whitespace
+68    W292 no newline at end of file
+681   W293 blank line contains whitespace
 17    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-5128
+5141

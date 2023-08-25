@@ -84,7 +84,7 @@ def sim_json():
 def ens_test_data():
 
     # Basic ensemble
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="s1",
                     observable=True,
                     mu_stoich={"X":1})
@@ -131,7 +131,7 @@ def ens_test_data():
 def ens_with_fitness():
     
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="s1",
                     dG0=0,
                     observable=True)
@@ -171,7 +171,7 @@ def ens_with_fitness():
 def ens_with_fitness_two_site():
     
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="s1",
                     dG0=0,
                     observable=True)

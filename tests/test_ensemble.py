@@ -10,8 +10,8 @@ def test_Ensemble(variable_types):
     ens = Ensemble()
     assert issubclass(type(ens),Ensemble)
     
-    ens = Ensemble(R=1)
-    assert ens._R == 1
+    ens = Ensemble(gas_constant=1)
+    assert ens._gas_constant == 1
 
     bad = variable_types["not_floats_or_coercable"][:]
     for v in variable_types["floats_or_coercable"]:
@@ -19,12 +19,12 @@ def test_Ensemble(variable_types):
             bad.append(v)
             continue
         
-        Ensemble(R=v)
+        Ensemble(gas_constant=v)
     
     for v in bad:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            Ensemble(R=v)
+            Ensemble(gas_constant=v)
         
 
 def test_Ensemble_add_species(variable_types):
@@ -285,7 +285,7 @@ def test_Ensemble__build_z_matrix():
 def test_Ensemble__get_weights():
 
     # single species, R = 1, T = 1, no mutations
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -302,7 +302,7 @@ def test_Ensemble__get_weights():
 
     # single species, R = 1, T = 500, no mutations. This tests the shift to 
     # max_allowed. 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -317,7 +317,7 @@ def test_Ensemble__get_weights():
     assert np.array_equal(weights,[np.exp([ens._max_allowed])])
     
     # Two species. 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -339,7 +339,7 @@ def test_Ensemble__get_weights():
 
 
     # Two species. Mutate one. 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -372,7 +372,7 @@ def test_Ensemble__get_weights():
                                         
 
     # Two species. Mutate one. Alter R to test gas constant
-    ens = Ensemble(R=50)
+    ens = Ensemble(gas_constant=50)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -397,7 +397,7 @@ def test_Ensemble__get_weights():
 
 
     # Two species. dG0
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -421,7 +421,7 @@ def test_Ensemble__get_weights():
     assert np.isclose(norm_weights[1,0],np.exp(-1)/Z)
 
     # Two species. dG0. Add mu_dict perturbation
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -625,7 +625,7 @@ def test_Ensemble_get_obs(variable_types):
 
     # ------------------------------------------------------------------------
     # One observable, two not. (Use R = 1 and T = 1 to simplify math)
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False)
@@ -646,7 +646,7 @@ def test_Ensemble_get_obs(variable_types):
     # ------------------------------------------------------------------------
     # One observable, two not. (Use R = 1 and T = 1 to simplify math). mu_dict
     # interesting.
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -697,7 +697,7 @@ def test_Ensemble_get_obs(variable_types):
     # ------------------------------------------------------------------------
     # One observable, two not. (Use R = 1 and T = 1 to simplify math). mu_dict
     # interesting. mut_energy interesting
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -749,7 +749,7 @@ def test_Ensemble_get_obs(variable_types):
     # ------------------------------------------------------------------------
     # One observable, two not. (Use R = 1 and T = 1 to simplify math). mu_dict
     # interesting, diff for different species. mut_energy interesting
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=True,
@@ -811,7 +811,7 @@ def test_Ensemble_get_obs(variable_types):
         x = np.exp(max_allowed + 1)
     assert np.isinf(x)
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=True,
@@ -981,7 +981,7 @@ def test_Ensemble_read_mu_dict(variable_types):
 def test_Ensemble_mut_dict_to_array():
 
     # Two species. 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     dG0=0,
@@ -1004,7 +1004,7 @@ def test_Ensemble_mut_dict_to_array():
 
 def test_Ensemble_get_fx_obs_fast():
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -1084,7 +1084,7 @@ def test_Ensemble_get_fx_obs_fast():
 def test_Ensemble_get_dG_obs_fast():
 
     
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -1159,7 +1159,7 @@ def test_Ensemble_get_dG_obs_fast():
 
 def test_Ensemble_to_dict():
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
@@ -1167,7 +1167,7 @@ def test_Ensemble_to_dict():
                     mu_stoich={"X":1})
     
     out = ens.to_dict()
-    assert out["ens"]["R"] == 1
+    assert out["ens"]["gas_constant"] == 1
     assert len(out["ens"]) == 2
     assert out["ens"]["test1"]["observable"] == False
     assert out["ens"]["test1"]["folded"] == True
@@ -1177,7 +1177,7 @@ def test_Ensemble_to_dict():
 
 def test_Ensemble_get_observable_function(variable_types):
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     assert ens.get_observable_function("fx_obs") == ens.get_fx_obs_fast
     assert ens.get_observable_function("dG_obs") == ens.get_dG_obs_fast
 
@@ -1188,7 +1188,7 @@ def test_Ensemble_get_observable_function(variable_types):
 
 def test_Ensemble_species():
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     assert len(ens.species) == 0
     ens.add_species("test1")
     ens.add_species("test2")
@@ -1197,7 +1197,7 @@ def test_Ensemble_species():
 
 def test_Ensemble_mu_list():
     
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     assert len(ens.mu_list) == 0
     ens.add_species("test1",mu_stoich={"X":1})
     ens.add_species("test2",mu_stoich={"Y":1})
@@ -1206,7 +1206,7 @@ def test_Ensemble_mu_list():
 
 def test_Ensemble_species_df():
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     assert len(ens.species_df) == 0
     assert issubclass(type(ens.species_df),pd.DataFrame)
 

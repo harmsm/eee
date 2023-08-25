@@ -35,7 +35,7 @@
         "mu_stoich": {},
         "folded": false
       },
-      "R": 0.001987
+      "gas_constant": 0.001987
     },
     "mu_dict": {
       "iptg": [ 1.0, 4.0 ]

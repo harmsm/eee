@@ -237,7 +237,7 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._ens._species["unfolded"]["folded"] == False
     assert sm._ens._species["unfolded"]["mu_stoich"] == {}
 
-    assert np.isclose(sm._ens._R,0.008314)
+    assert np.isclose(sm._ens._gas_constant,0.008314)
 
     assert np.array_equal(sm._fc.mu_dict["iptg"],np.array([1,4]))
     assert sm._fc._fitness_fcns[0] == ff_on
@@ -294,11 +294,11 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
         sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"]["ens"].pop("R")
+    test_json["system"]["ens"].pop("gas_constant")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm, calc_params = read_json("test.json")
-    assert sm._ens._R == 0.001987
+    assert sm._ens._gas_constant == 0.001987
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("mu_dict")

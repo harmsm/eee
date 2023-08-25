@@ -389,7 +389,7 @@ def test_Simulation__write_calc_params(ens_test_data,
     for k in ens_dict["ens"]:
         assert ens_dict["ens"][k] == as_written["system"]["ens"][k]
 
-    assert ens_dict["ens"]["R"] == as_written["system"]["ens"]["R"]
+    assert ens_dict["ens"]["gas_constant"] == as_written["system"]["ens"]["gas_constant"]
 
     assert as_written["system"]["mu_dict"] == mu_dict
     assert as_written["system"]["select_on"] == "fx_obs"

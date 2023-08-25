@@ -8,7 +8,7 @@
     "seed": 487698321712,
     "fitness_fcns": [ "on", "off" ],
     "ens": {
-      "R": 0.001987,
+      "gas_constant": 0.001987,
       "hdna": {
         "dG0": 0.0,
         "observable": true,

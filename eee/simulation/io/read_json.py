@@ -174,14 +174,14 @@ def read_json(json_file,use_stored_seed=False):
         raise ValueError(err)
     
     # Get gas constant
-    if "R" in calc_input["system"]["ens"]:
-        R = calc_input["system"]["ens"].pop("R")
+    if "gas_constant" in calc_input["system"]["ens"]:
+        gas_constant = calc_input["system"]["ens"].pop("gas_constant")
     else:
         # Get default from Ensemble class
-        R = eee.Ensemble()._R
+        gas_constant = eee.Ensemble()._gas_constant
 
     # Create ensemble from entries and validate. 
-    ens = eee.Ensemble(R=R)
+    ens = eee.Ensemble(gas_constant=gas_constant)
     for e in calc_input["system"]["ens"]:
         ens.add_species(e,**calc_input["system"]["ens"][e])
     calc_input["system"]["ens"] = check_ensemble(ens,check_obs=True)

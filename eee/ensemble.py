@@ -76,24 +76,24 @@ class Ensemble:
     This would sweep X from 5 to 15 kcal/mol, but fix Y at 8.18 kcal/mol. 
     """
 
-    def __init__(self,R=0.001987):
+    def __init__(self,gas_constant=0.001987):
         """
         Initialize the Ensemble. 
 
         Parameters
         ----------
-        R : float, default = 0.001987
+        gas_constant : float, default = 0.001987
             gas constant setting energy units for this calculation. Default is 
             in kcal/mol/K.
         """
         
         # Validate gas constant
-        R = check_float(value=R,
-                        variable_name="R",
-                        minimum_allowed=0,
-                        minimum_inclusive=False)
+        gas_constant = check_float(value=gas_constant,
+                                   variable_name="gas_constant",
+                                   minimum_allowed=0,
+                                   minimum_inclusive=False)
         
-        self._R = R
+        self._gas_constant = gas_constant
         self._species = {}
         
         # Lists with species and mu in stable order
@@ -226,7 +226,7 @@ class Ensemble:
         """
 
         # Perturb z_matrix by mut_energy and divide by RT
-        beta = 1/(self._R*T)
+        beta = 1/(self._gas_constant*T)
         weights = -beta[None,:]*(self._z_matrix + mut_energy[:,None])
 
         # Shift so highest weight is highest allowed numerically. Low weights 
@@ -382,7 +382,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(nan_mask),dtype=float)
         dG_out[nan_mask] = np.nan
-        dG_out[not_nan_mask] = -1/(self._R*T[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
+        dG_out[not_nan_mask] = -1/(self._gas_constant*T[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
 
         out["dG_obs"] = dG_out
 
@@ -509,7 +509,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(mask),dtype=float)
         dG_out[mask] = np.nan
-        dG_out[not_mask] = -1/(self._R*T)*np.log(obs[not_mask]/not_obs[not_mask])
+        dG_out[not_mask] = -1/(self._gas_constant*T)*np.log(obs[not_mask]/not_obs[not_mask])
 
         folded = np.sum(weights[self._folded_mask,:],axis=0)
         unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
@@ -529,7 +529,7 @@ class Ensemble:
             for a in attr_to_write:
                 out["ens"][s][a] = self._species[s][a]
     
-        out["ens"]["R"] = self._R
+        out["ens"]["gas_constant"] = self._gas_constant
 
         return out
     
