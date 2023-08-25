@@ -1,3 +1,8 @@
+"""
+Determine the number of genotypes in each shell of mutational steps away 
+from a central genotype. 
+"""
+
 from eee._private.check.standard import check_int
 
 import numpy as np
@@ -9,6 +14,20 @@ def get_num_genotypes(ddg_dict,max_depth):
     """
     Determine the number of genotypes in each shell of mutational steps away 
     from a central genotype. 
+
+    Parameters
+    ----------
+    ddg_dict : dict
+        nested dictionary of mutational effects [site][mutation]
+    max_depth : int
+        number of steps away from wildtype to proceed
+
+    Returns
+    -------
+    num_genotypes_in_shell : numpy.ndarray
+        number of genotypes from 0 to max_depth genotypes away from wildtype. 
+        The first shell has 1 genotype (wildtype); subsequent shells have how 
+        many combinations of 1, 2, 3, etc. mutations are possible. 
     """
 
     if not issubclass(type(ddg_dict),dict):

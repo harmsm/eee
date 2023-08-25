@@ -1,5 +1,5 @@
 """
-Functions used to move through genotypes.
+Code for moving through sequence space. 
 """
 
 from .wright_fisher import wright_fisher

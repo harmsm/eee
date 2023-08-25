@@ -1,4 +1,7 @@
-
+"""
+Function for exhaustively sampling sequence space and recording the fitness of
+each genotype.
+"""
 from eee._private.check.standard import check_int
 from eee._private.check.standard import check_bool
 from eee.simulation.core import Genotype

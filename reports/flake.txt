@@ -3676,92 +3676,96 @@
 ./eee/io/load_ddg.py:66:18: E231 missing whitespace after ','
 ./eee/io/load_ddg.py:67:1: W293 blank line contains whitespace
 ./eee/io/load_ddg.py:70:1: W391 blank line at end of file
-./eee/simulation/__init__.py:1:1: F401 '.analysis' imported but unused
-./eee/simulation/__init__.py:7:1: E302 expected 2 blank lines, found 1
-./eee/simulation/__init__.py:9:76: W291 trailing whitespace
-./eee/simulation/__init__.py:10:37: W291 trailing whitespace
-./eee/simulation/__init__.py:20:38: E231 missing whitespace after ','
-./eee/simulation/__init__.py:23:1: W293 blank line contains whitespace
-./eee/simulation/__init__.py:29:1: F401 '.core.FF_AVAILABLE' imported but unused
-./eee/simulation/__init__.py:29:1: E305 expected 2 blank lines after class or function definition, found 1
-./eee/simulation/__init__.py:29:1: E402 module level import not at top of file
-./eee/simulation/__init__.py:33:75: W291 trailing whitespace
-./eee/simulation/__init__.py:34:25: W291 trailing whitespace
-./eee/simulation/__init__.py:35:1: F401 '.io' imported but unused
-./eee/simulation/__init__.py:35:1: E402 module level import not at top of file
-./eee/simulation/core/__init__.py:2:1: F401 '.genotype.Genotype' imported but unused
-./eee/simulation/core/__init__.py:3:1: F401 '.fitness.Fitness' imported but unused
-./eee/simulation/core/__init__.py:4:1: F401 '.fitness.FF_AVAILABLE' imported but unused
-./eee/simulation/core/__init__.py:6:1: W391 blank line at end of file
-./eee/simulation/core/simulation/simulation.py:13:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/simulation/simulation.py:15:72: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:16:68: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:18:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:34:39: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:38:27: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:41:81: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:45:74: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:47:64: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:50:80: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:56:46: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:61:65: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:65:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:67:67: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:68:50: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:71:39: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:82:57: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:87:51: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:99:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:100:71: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:123:13: E122 continuation line missing indentation or outdented
-./eee/simulation/core/simulation/simulation.py:128:68: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:130:65: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:134:75: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:138:76: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:141:61: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:144:81: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:145:37: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:147:75: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:148:23: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:157:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:163:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:169:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:172:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:174:37: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:177:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:186:76: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:187:28: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:204:5: E303 too many blank lines (2)
-./eee/simulation/core/simulation/simulation.py:204:32: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:207:20: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:217:27: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:218:24: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:219:29: E231 missing whitespace after ':'
-./eee/simulation/core/simulation/simulation.py:220:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:223:77: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:224:23: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:227:35: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:229:33: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:232:22: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:233:41: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:236:29: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:239:22: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:240:36: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:241:26: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:241:28: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:249:24: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:256:72: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:270:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:279:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:280:34: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:298:1: W293 blank line contains whitespace
-./eee/simulation/core/simulation/simulation.py:308:20: F541 f-string is missing placeholders
-./eee/simulation/core/simulation/simulation.py:319:33: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:321:55: W291 trailing whitespace
-./eee/simulation/core/simulation/simulation.py:336:44: E231 missing whitespace after ','
-./eee/simulation/core/simulation/simulation.py:351:24: W292 no newline at end of file
-./eee/simulation/core/simulation/__init__.py:1:1: F401 '.simulation.Simulation' imported but unused
-./eee/simulation/core/simulation/__init__.py:1:35: W292 no newline at end of file
+./eee/simulation/__init__.py:2:70: W291 trailing whitespace
+./eee/simulation/__init__.py:4:1: F401 '.analysis' imported but unused
+./eee/simulation/__init__.py:10:1: E302 expected 2 blank lines, found 1
+./eee/simulation/__init__.py:12:76: W291 trailing whitespace
+./eee/simulation/__init__.py:13:37: W291 trailing whitespace
+./eee/simulation/__init__.py:23:38: E231 missing whitespace after ','
+./eee/simulation/__init__.py:26:1: W293 blank line contains whitespace
+./eee/simulation/__init__.py:32:1: F401 '.core.FF_AVAILABLE' imported but unused
+./eee/simulation/__init__.py:32:1: E305 expected 2 blank lines after class or function definition, found 1
+./eee/simulation/__init__.py:32:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:36:75: W291 trailing whitespace
+./eee/simulation/__init__.py:37:25: W291 trailing whitespace
+./eee/simulation/__init__.py:38:1: F401 '.io' imported but unused
+./eee/simulation/__init__.py:38:1: E402 module level import not at top of file
+./eee/simulation/core/__init__.py:5:1: F401 '.genotype.Genotype' imported but unused
+./eee/simulation/core/__init__.py:6:1: F401 '.fitness.Fitness' imported but unused
+./eee/simulation/core/__init__.py:7:1: F401 '.fitness.FF_AVAILABLE' imported but unused
+./eee/simulation/core/__init__.py:9:1: W391 blank line at end of file
+./eee/simulation/core/simulation/simulation.py:2:68: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:3:64: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:17:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/simulation/simulation.py:19:72: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:20:68: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:22:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:38:39: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:42:27: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:45:81: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:49:74: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:51:64: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:54:80: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:60:46: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:65:65: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:69:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:71:67: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:72:50: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:75:39: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:86:57: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:91:51: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:103:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:104:71: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:127:13: E122 continuation line missing indentation or outdented
+./eee/simulation/core/simulation/simulation.py:132:68: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:134:65: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:138:75: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:142:76: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:145:61: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:148:81: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:149:37: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:151:75: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:152:23: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:161:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:167:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:173:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:176:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:178:37: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:181:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:190:76: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:191:28: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:208:5: E303 too many blank lines (2)
+./eee/simulation/core/simulation/simulation.py:208:32: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:211:20: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:221:27: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:222:24: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:223:29: E231 missing whitespace after ':'
+./eee/simulation/core/simulation/simulation.py:224:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:227:77: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:228:23: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:231:35: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:233:33: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:236:22: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:237:41: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:240:29: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:243:22: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:244:36: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:245:26: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:245:28: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:253:24: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:260:72: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:274:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:283:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:284:34: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:302:1: W293 blank line contains whitespace
+./eee/simulation/core/simulation/simulation.py:312:20: F541 f-string is missing placeholders
+./eee/simulation/core/simulation/simulation.py:323:33: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:325:55: W291 trailing whitespace
+./eee/simulation/core/simulation/simulation.py:340:44: E231 missing whitespace after ','
+./eee/simulation/core/simulation/simulation.py:355:24: W292 no newline at end of file
+./eee/simulation/core/simulation/__init__.py:2:31: W291 trailing whitespace
+./eee/simulation/core/simulation/__init__.py:4:1: F401 '.simulation.Simulation' imported but unused
+./eee/simulation/core/simulation/__init__.py:4:35: W292 no newline at end of file
 ./eee/simulation/core/fitness/ff.py:2:76: W291 trailing whitespace
 ./eee/simulation/core/fitness/ff.py:3:75: W291 trailing whitespace
 ./eee/simulation/core/fitness/ff.py:4:77: W291 trailing whitespace
@@ -3776,43 +3780,44 @@
 ./eee/simulation/core/fitness/ff.py:41:76: W291 trailing whitespace
 ./eee/simulation/core/fitness/ff.py:45:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/fitness/ff.py:48:28: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:4:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/fitness/check_fitness_fcns.py:6:74: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:23:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/fitness/check_fitness_fcns.py:23:37: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:27:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:33:76: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:34:42: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:41:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:43:38: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:54:32: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:67:38: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:67:73: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:80:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:82:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:85:24: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:89:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:90:14: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:96:1: C901 'check_fitness_fcns' is too complex (13)
-./eee/simulation/core/fitness/check_fitness_fcns.py:100:77: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:102:78: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:103:19: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:106:37: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:111:32: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:115:30: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:119:74: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:123:45: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:134:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:138:76: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:145:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_fcns.py:146:5: E303 too many blank lines (2)
-./eee/simulation/core/fitness/check_fitness_fcns.py:152:52: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_fcns.py:159:5: E303 too many blank lines (2)
-./eee/simulation/core/fitness/check_fitness_fcns.py:161:1: E305 expected 2 blank lines after class or function definition, found 1
-./eee/simulation/core/fitness/check_fitness_fcns.py:161:35: W292 no newline at end of file
-./eee/simulation/core/fitness/__init__.py:2:1: F401 '.fitness.Fitness' imported but unused
-./eee/simulation/core/fitness/__init__.py:3:1: F401 '.check_fitness_fcns.FF_AVAILABLE' imported but unused
-./eee/simulation/core/fitness/__init__.py:3:45: W292 no newline at end of file
+./eee/simulation/core/fitness/check_fitness_fcns.py:3:26: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:8:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/check_fitness_fcns.py:10:74: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:27:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/check_fitness_fcns.py:27:37: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:31:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:37:76: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:38:42: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:45:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:47:38: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:58:32: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:71:38: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:71:73: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:84:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:86:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:89:24: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:93:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:94:14: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:100:1: C901 'check_fitness_fcns' is too complex (13)
+./eee/simulation/core/fitness/check_fitness_fcns.py:104:77: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:106:78: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:107:19: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:110:37: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:115:32: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:119:30: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:123:74: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:127:45: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:138:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:142:76: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:149:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_fcns.py:150:5: E303 too many blank lines (2)
+./eee/simulation/core/fitness/check_fitness_fcns.py:156:52: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_fcns.py:163:5: E303 too many blank lines (2)
+./eee/simulation/core/fitness/check_fitness_fcns.py:165:1: E305 expected 2 blank lines after class or function definition, found 1
+./eee/simulation/core/fitness/check_fitness_fcns.py:165:35: W292 no newline at end of file
+./eee/simulation/core/fitness/__init__.py:4:1: F401 '.fitness.Fitness' imported but unused
+./eee/simulation/core/fitness/__init__.py:5:1: F401 '.check_fitness_fcns.FF_AVAILABLE' imported but unused
+./eee/simulation/core/fitness/__init__.py:5:45: W292 no newline at end of file
 ./eee/simulation/core/fitness/fitness.py:2:82: W291 trailing whitespace
 ./eee/simulation/core/fitness/fitness.py:20:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/fitness/fitness.py:25:60: W291 trailing whitespace
@@ -3856,89 +3861,96 @@
 ./eee/simulation/core/fitness/fitness.py:186:1: W293 blank line contains whitespace
 ./eee/simulation/core/fitness/fitness.py:187:1: W293 blank line contains whitespace
 ./eee/simulation/core/fitness/fitness.py:187:9: W292 no newline at end of file
-./eee/simulation/core/fitness/check_fitness_kwargs.py:3:40: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_kwargs.py:9:43: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_kwargs.py:13:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_kwargs.py:15:34: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_kwargs.py:19:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/check_fitness_kwargs.py:20:73: W291 trailing whitespace
-./eee/simulation/core/fitness/check_fitness_kwargs.py:24:20: E231 missing whitespace after ','
-./eee/simulation/core/fitness/check_fitness_kwargs.py:30:26: W292 no newline at end of file
-./eee/simulation/core/engine/pathfinder.py:11:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/engine/pathfinder.py:20:67: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:21:78: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:25:77: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:27:55: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:29:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:33:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:36:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:40:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:43:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:44:73: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:49:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:53:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:62:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:63:18: E114 indentation is not a multiple of 4 (comment)
-./eee/simulation/core/engine/pathfinder.py:63:18: E117 over-indented (comment)
-./eee/simulation/core/engine/pathfinder.py:87:11: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:88:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:95:75: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:99:79: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:101:33: W291 trailing whitespace
-./eee/simulation/core/engine/pathfinder.py:108:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/pathfinder.py:113:33: E127 continuation line over-indented for visual indent
-./eee/simulation/core/engine/pathfinder.py:114:33: E127 continuation line over-indented for visual indent
+./eee/simulation/core/fitness/check_fitness_kwargs.py:2:64: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:5:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/check_fitness_kwargs.py:5:40: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_kwargs.py:7:72: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:8:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:14:76: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:19:34: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:26:43: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_kwargs.py:30:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:32:34: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_kwargs.py:36:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:37:73: W291 trailing whitespace
+./eee/simulation/core/fitness/check_fitness_kwargs.py:41:20: E231 missing whitespace after ','
+./eee/simulation/core/fitness/check_fitness_kwargs.py:47:26: W292 no newline at end of file
+./eee/simulation/core/engine/pathfinder.py:13:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/pathfinder.py:22:67: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:23:78: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:27:77: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:29:55: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:31:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:35:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:38:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:42:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:45:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:46:73: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:51:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:55:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:64:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:65:18: E114 indentation is not a multiple of 4 (comment)
+./eee/simulation/core/engine/pathfinder.py:65:18: E117 over-indented (comment)
+./eee/simulation/core/engine/pathfinder.py:89:11: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:90:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:97:75: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:101:79: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:103:33: W291 trailing whitespace
+./eee/simulation/core/engine/pathfinder.py:110:31: E231 missing whitespace after ','
 ./eee/simulation/core/engine/pathfinder.py:115:33: E127 continuation line over-indented for visual indent
-./eee/simulation/core/engine/pathfinder.py:119:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:122:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:127:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:133:60: E231 missing whitespace after ','
-./eee/simulation/core/engine/pathfinder.py:142:19: F541 f-string is missing placeholders
+./eee/simulation/core/engine/pathfinder.py:116:33: E127 continuation line over-indented for visual indent
+./eee/simulation/core/engine/pathfinder.py:117:33: E127 continuation line over-indented for visual indent
+./eee/simulation/core/engine/pathfinder.py:121:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:124:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:129:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:135:60: E231 missing whitespace after ','
 ./eee/simulation/core/engine/pathfinder.py:144:19: F541 f-string is missing placeholders
-./eee/simulation/core/engine/pathfinder.py:145:90: E231 missing whitespace after ','
-./eee/simulation/core/engine/pathfinder.py:148:21: E128 continuation line under-indented for visual indent
-./eee/simulation/core/engine/pathfinder.py:149:21: E128 continuation line under-indented for visual indent
+./eee/simulation/core/engine/pathfinder.py:146:19: F541 f-string is missing placeholders
+./eee/simulation/core/engine/pathfinder.py:147:91: E231 missing whitespace after ','
 ./eee/simulation/core/engine/pathfinder.py:150:21: E128 continuation line under-indented for visual indent
 ./eee/simulation/core/engine/pathfinder.py:151:21: E128 continuation line under-indented for visual indent
 ./eee/simulation/core/engine/pathfinder.py:152:21: E128 continuation line under-indented for visual indent
 ./eee/simulation/core/engine/pathfinder.py:153:21: E128 continuation line under-indented for visual indent
 ./eee/simulation/core/engine/pathfinder.py:154:21: E128 continuation line under-indented for visual indent
-./eee/simulation/core/engine/pathfinder.py:155:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:159:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/pathfinder.py:162:8: E714 test for object identity should be 'is not'
-./eee/simulation/core/engine/pathfinder.py:163:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/pathfinder.py:170:15: W292 no newline at end of file
+./eee/simulation/core/engine/pathfinder.py:155:21: E128 continuation line under-indented for visual indent
+./eee/simulation/core/engine/pathfinder.py:156:21: E128 continuation line under-indented for visual indent
+./eee/simulation/core/engine/pathfinder.py:157:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:161:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/pathfinder.py:164:8: E714 test for object identity should be 'is not'
+./eee/simulation/core/engine/pathfinder.py:165:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/pathfinder.py:172:15: W292 no newline at end of file
+./eee/simulation/core/engine/__init__.py:2:40: W291 trailing whitespace
 ./eee/simulation/core/engine/__init__.py:5:1: F401 '.wright_fisher.wright_fisher' imported but unused
 ./eee/simulation/core/engine/__init__.py:6:1: F401 '.exhaustive.exhaustive' imported but unused
 ./eee/simulation/core/engine/__init__.py:7:1: F401 '.pathfinder.pathfinder' imported but unused
-./eee/simulation/core/engine/exhaustive.py:10:1: F401 'math' imported but unused
-./eee/simulation/core/engine/exhaustive.py:10:12: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:14:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/engine/exhaustive.py:19:81: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:20:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/exhaustive.py:28:75: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:29:18: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:34:74: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:35:40: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:36:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/exhaustive.py:40:74: W291 trailing whitespace
-./eee/simulation/core/engine/exhaustive.py:44:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:58:9: E116 unexpected indentation (comment)
-./eee/simulation/core/engine/exhaustive.py:61:60: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:65:40: E231 missing whitespace after ':'
-./eee/simulation/core/engine/exhaustive.py:72:25: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:75:58: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:81:33: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:81:48: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:83:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/exhaustive.py:87:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/exhaustive.py:90:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:90:47: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:90:56: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:94:8: E714 test for object identity should be 'is not'
-./eee/simulation/core/engine/exhaustive.py:95:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/exhaustive.py:103:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/exhaustive.py:103:5: W292 no newline at end of file
+./eee/simulation/core/engine/exhaustive.py:13:1: F401 'math' imported but unused
+./eee/simulation/core/engine/exhaustive.py:13:12: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:17:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/exhaustive.py:22:81: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:23:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:31:75: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:32:18: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:37:74: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:38:40: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:39:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:43:74: W291 trailing whitespace
+./eee/simulation/core/engine/exhaustive.py:47:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:61:9: E116 unexpected indentation (comment)
+./eee/simulation/core/engine/exhaustive.py:64:60: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:68:40: E231 missing whitespace after ':'
+./eee/simulation/core/engine/exhaustive.py:75:25: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:78:58: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:84:33: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:84:48: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:86:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:90:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:93:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:93:47: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:93:56: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:97:8: E714 test for object identity should be 'is not'
+./eee/simulation/core/engine/exhaustive.py:98:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/exhaustive.py:106:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/exhaustive.py:106:5: W292 no newline at end of file
 ./eee/simulation/core/engine/wright_fisher.py:24:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/engine/wright_fisher.py:30:1: W293 blank line contains whitespace
 ./eee/simulation/core/engine/wright_fisher.py:43:58: E231 missing whitespace after ','
@@ -4104,8 +4116,8 @@
 ./eee/simulation/core/genotype/genotype.py:392:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:392:1: E303 too many blank lines (6)
 ./eee/simulation/core/genotype/genotype.py:392:5: W292 no newline at end of file
-./eee/simulation/core/genotype/__init__.py:2:1: F401 '.genotype.Genotype' imported but unused
-./eee/simulation/core/genotype/__init__.py:2:31: W292 no newline at end of file
+./eee/simulation/core/genotype/__init__.py:4:1: F401 '.genotype.Genotype' imported but unused
+./eee/simulation/core/genotype/__init__.py:4:31: W292 no newline at end of file
 ./eee/simulation/core/genotype/single_genotype.py:9:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/genotype/single_genotype.py:12:72: W291 trailing whitespace
 ./eee/simulation/core/genotype/single_genotype.py:13:29: W291 trailing whitespace
@@ -4203,98 +4215,106 @@
 ./eee/simulation/analysis/__init__.py:7:1: F401 '.ensemble_fitness.ensemble_fitness' imported but unused
 ./eee/simulation/analysis/__init__.py:9:1: F401 '.num_genotypes.get_num_genotypes' imported but unused
 ./eee/simulation/analysis/__init__.py:9:45: W292 no newline at end of file
-./eee/simulation/analysis/num_genotypes.py:8:1: E302 expected 2 blank lines, found 1
-./eee/simulation/analysis/num_genotypes.py:8:31: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:10:77: W291 trailing whitespace
-./eee/simulation/analysis/num_genotypes.py:11:29: W291 trailing whitespace
-./eee/simulation/analysis/num_genotypes.py:14:37: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:17:1: W293 blank line contains whitespace
-./eee/simulation/analysis/num_genotypes.py:21:1: W293 blank line contains whitespace
-./eee/simulation/analysis/num_genotypes.py:31:5: E303 too many blank lines (2)
-./eee/simulation/analysis/num_genotypes.py:39:57: W291 trailing whitespace
-./eee/simulation/analysis/num_genotypes.py:43:25: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:44:48: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:48:5: E303 too many blank lines (2)
-./eee/simulation/analysis/num_genotypes.py:51:25: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:53:58: E231 missing whitespace after ','
-./eee/simulation/analysis/num_genotypes.py:57:44: W292 no newline at end of file
-./eee/simulation/io/__init__.py:1:1: F401 '.load_json.load_json' imported but unused
-./eee/simulation/io/__init__.py:1:33: W292 no newline at end of file
-./eee/simulation/io/load_json.py:19:73: W291 trailing whitespace
-./eee/simulation/io/load_json.py:25:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:29:70: W291 trailing whitespace
-./eee/simulation/io/load_json.py:30:31: W291 trailing whitespace
-./eee/simulation/io/load_json.py:48:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:53:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:84:41: W291 trailing whitespace
-./eee/simulation/io/load_json.py:85:1: W293 blank line contains whitespace
+./eee/simulation/analysis/num_genotypes.py:2:73: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:3:25: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:13:1: E302 expected 2 blank lines, found 1
+./eee/simulation/analysis/num_genotypes.py:13:31: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:15:77: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:16:29: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:28:78: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:29:78: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:30:67: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:33:37: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:36:1: W293 blank line contains whitespace
+./eee/simulation/analysis/num_genotypes.py:40:1: W293 blank line contains whitespace
+./eee/simulation/analysis/num_genotypes.py:50:5: E303 too many blank lines (2)
+./eee/simulation/analysis/num_genotypes.py:58:57: W291 trailing whitespace
+./eee/simulation/analysis/num_genotypes.py:62:25: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:63:48: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:67:5: E303 too many blank lines (2)
+./eee/simulation/analysis/num_genotypes.py:70:25: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:72:58: E231 missing whitespace after ','
+./eee/simulation/analysis/num_genotypes.py:76:44: W292 no newline at end of file
+./eee/simulation/io/__init__.py:4:1: F401 '.load_json.load_json' imported but unused
+./eee/simulation/io/__init__.py:4:33: W292 no newline at end of file
+./eee/simulation/io/load_json.py:22:73: W291 trailing whitespace
+./eee/simulation/io/load_json.py:28:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:32:70: W291 trailing whitespace
+./eee/simulation/io/load_json.py:33:31: W291 trailing whitespace
+./eee/simulation/io/load_json.py:51:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:56:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:87:41: W291 trailing whitespace
 ./eee/simulation/io/load_json.py:88:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:89:75: W291 trailing whitespace
-./eee/simulation/io/load_json.py:90:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:95:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:98:1: E302 expected 2 blank lines, found 1
-./eee/simulation/io/load_json.py:98:24: E231 missing whitespace after ','
-./eee/simulation/io/load_json.py:100:70: W291 trailing whitespace
-./eee/simulation/io/load_json.py:103:76: W291 trailing whitespace
-./eee/simulation/io/load_json.py:105:76: W291 trailing whitespace
-./eee/simulation/io/load_json.py:109:56: W291 trailing whitespace
-./eee/simulation/io/load_json.py:112:77: W291 trailing whitespace
-./eee/simulation/io/load_json.py:113:52: W291 trailing whitespace
-./eee/simulation/io/load_json.py:115:78: W291 trailing whitespace
-./eee/simulation/io/load_json.py:117:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:126:73: W291 trailing whitespace
-./eee/simulation/io/load_json.py:127:71: W291 trailing whitespace
-./eee/simulation/io/load_json.py:128:18: W291 trailing whitespace
-./eee/simulation/io/load_json.py:136:75: W291 trailing whitespace
-./eee/simulation/io/load_json.py:137:21: W291 trailing whitespace
-./eee/simulation/io/load_json.py:143:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:150:38: E231 missing whitespace after ','
-./eee/simulation/io/load_json.py:164:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:166:30: W291 trailing whitespace
-./eee/simulation/io/load_json.py:171:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:179:49: W291 trailing whitespace
-./eee/simulation/io/load_json.py:182:26: E231 missing whitespace after ','
-./eee/simulation/io/load_json.py:183:53: E231 missing whitespace after ','
-./eee/simulation/io/load_json.py:189:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:190:60: W291 trailing whitespace
-./eee/simulation/io/load_json.py:199:36: W291 trailing whitespace
-./eee/simulation/io/load_json.py:209:1: W293 blank line contains whitespace
-./eee/simulation/io/load_json.py:210:1: W391 blank line at end of file
-./eee/simulation/calcs/dms.py:19:77: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:20:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:28:79: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:29:22: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:32:77: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:39:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:47:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:53:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:57:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:57:5: W292 no newline at end of file
-./eee/simulation/calcs/wf_sim.py:27:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:39:64: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:41:73: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:45:59: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:52:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:63:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:65:22: E222 multiple spaces after operator
-./eee/simulation/calcs/wf_sim.py:72:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:76:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:76:5: W292 no newline at end of file
-./eee/simulation/calcs/__init__.py:2:1: F401 '.wf_sim.WrightFisherSimulation' imported but unused
-./eee/simulation/calcs/__init__.py:3:1: F401 '.dms.DeepMutationalScan' imported but unused
-./eee/simulation/calcs/__init__.py:4:1: F401 '.accessible_paths.AcessiblePaths' imported but unused
-./eee/simulation/calcs/accessible_paths.py:22:77: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:23:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:30:75: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:33:77: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:37:83: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:39:37: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:51:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:53:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:61:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:69:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:73:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:73:5: W292 no newline at end of file
+./eee/simulation/io/load_json.py:91:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:92:75: W291 trailing whitespace
+./eee/simulation/io/load_json.py:93:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:98:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:101:1: E302 expected 2 blank lines, found 1
+./eee/simulation/io/load_json.py:101:24: E231 missing whitespace after ','
+./eee/simulation/io/load_json.py:103:70: W291 trailing whitespace
+./eee/simulation/io/load_json.py:106:76: W291 trailing whitespace
+./eee/simulation/io/load_json.py:108:76: W291 trailing whitespace
+./eee/simulation/io/load_json.py:112:56: W291 trailing whitespace
+./eee/simulation/io/load_json.py:115:77: W291 trailing whitespace
+./eee/simulation/io/load_json.py:116:52: W291 trailing whitespace
+./eee/simulation/io/load_json.py:118:78: W291 trailing whitespace
+./eee/simulation/io/load_json.py:120:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:129:73: W291 trailing whitespace
+./eee/simulation/io/load_json.py:130:71: W291 trailing whitespace
+./eee/simulation/io/load_json.py:131:18: W291 trailing whitespace
+./eee/simulation/io/load_json.py:139:75: W291 trailing whitespace
+./eee/simulation/io/load_json.py:140:21: W291 trailing whitespace
+./eee/simulation/io/load_json.py:146:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:153:38: E231 missing whitespace after ','
+./eee/simulation/io/load_json.py:167:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:169:30: W291 trailing whitespace
+./eee/simulation/io/load_json.py:174:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:182:49: W291 trailing whitespace
+./eee/simulation/io/load_json.py:185:26: E231 missing whitespace after ','
+./eee/simulation/io/load_json.py:186:53: E231 missing whitespace after ','
+./eee/simulation/io/load_json.py:192:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:193:60: W291 trailing whitespace
+./eee/simulation/io/load_json.py:202:36: W291 trailing whitespace
+./eee/simulation/io/load_json.py:212:1: W293 blank line contains whitespace
+./eee/simulation/io/load_json.py:213:1: W391 blank line at end of file
+./eee/simulation/calcs/dms.py:2:41: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:21:77: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:22:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:30:79: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:31:22: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:34:77: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:41:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:49:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:55:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:59:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:59:5: W292 no newline at end of file
+./eee/simulation/calcs/wf_sim.py:2:55: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:29:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:41:64: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:43:73: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:47:59: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:54:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:65:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:67:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_sim.py:74:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:78:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:78:5: W292 no newline at end of file
+./eee/simulation/calcs/__init__.py:2:77: W291 trailing whitespace
+./eee/simulation/calcs/__init__.py:7:1: F401 '.wf_sim.WrightFisherSimulation' imported but unused
+./eee/simulation/calcs/__init__.py:8:1: F401 '.dms.DeepMutationalScan' imported but unused
+./eee/simulation/calcs/__init__.py:9:1: F401 '.accessible_paths.AcessiblePaths' imported but unused
+./eee/simulation/calcs/accessible_paths.py:2:76: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:26:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:33:75: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:36:77: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:40:83: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:42:37: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:54:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:56:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:64:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:72:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:76:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:76:5: W292 no newline at end of file
 ./eee/simulation/calcs/simulate_tree.py:2:62: W291 trailing whitespace
 ./eee/simulation/calcs/simulate_tree.py:33:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/simulate_tree.py:36:79: W291 trailing whitespace
@@ -4356,6 +4376,9 @@
 ./eee/_private/interface.py:362:15: F541 f-string is missing placeholders
 ./eee/_private/interface.py:367:1: W293 blank line contains whitespace
 ./eee/_private/interface.py:383:1: W293 blank line contains whitespace
+./eee/_private/__init__.py:2:72: W291 trailing whitespace
+./eee/_private/__init__.py:3:33: W291 trailing whitespace
+./eee/_private/__init__.py:4:4: W292 no newline at end of file
 ./eee/_private/logger.py:5:1: E302 expected 2 blank lines, found 1
 ./eee/_private/logger.py:9:24: E231 missing whitespace after ','
 ./eee/_private/logger.py:9:36: W292 no newline at end of file
@@ -4416,79 +4439,104 @@
 ./eee/_private/check/standard.py:380:5: E303 too many blank lines (2)
 ./eee/_private/check/standard.py:416:40: E231 missing whitespace after ','
 ./eee/_private/check/standard.py:420:38: E231 missing whitespace after ','
-./eee/_private/check/ensemble.py:4:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/ensemble.py:4:23: E231 missing whitespace after ','
-./eee/_private/check/ensemble.py:6:32: E231 missing whitespace after ','
-./eee/_private/check/ensemble.py:9:1: W293 blank line contains whitespace
-./eee/_private/check/ensemble.py:10:73: W291 trailing whitespace
-./eee/_private/check/ensemble.py:16:15: W292 no newline at end of file
-./eee/_private/check/eee/mu_dict.py:7:1: C901 'check_mu_dict' is too complex (14)
-./eee/_private/check/eee/mu_dict.py:7:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/mu_dict.py:10:28: W291 trailing whitespace
-./eee/_private/check/eee/mu_dict.py:14:36: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:14:70: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:17:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_dict.py:28:25: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:28:38: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:29:37: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:32:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_dict.py:34:31: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:42:37: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:43:44: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:44:40: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:45:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_dict.py:48:51: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:56:62: W291 trailing whitespace
-./eee/_private/check/eee/mu_dict.py:57:36: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:68:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_dict.py:69:75: W291 trailing whitespace
-./eee/_private/check/eee/mu_dict.py:70:20: W291 trailing whitespace
-./eee/_private/check/eee/mu_dict.py:74:50: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_dict.py:76:36: W292 no newline at end of file
-./eee/_private/check/eee/__init__.py:2:1: F401 '.ddg_df.check_ddg_df' imported but unused
-./eee/_private/check/eee/__init__.py:3:1: F401 '.mu_dict.check_mu_dict' imported but unused
-./eee/_private/check/eee/__init__.py:4:1: F401 '.mu_stoich.check_mu_stoich' imported but unused
-./eee/_private/check/eee/__init__.py:5:1: F401 '.mut_energy.check_mut_energy' imported but unused
-./eee/_private/check/eee/__init__.py:6:1: F401 '.T.check_T' imported but unused
-./eee/_private/check/eee/__init__.py:8:1: F401 '.pop_gen.check_mutation_rate' imported but unused
-./eee/_private/check/eee/__init__.py:9:1: F401 '.pop_gen.check_burn_in_generations' imported but unused
-./eee/_private/check/eee/__init__.py:10:1: F401 '.pop_gen.check_num_generations' imported but unused
-./eee/_private/check/eee/__init__.py:11:1: F401 '.pop_gen.check_num_mutations' imported but unused
-./eee/_private/check/eee/__init__.py:12:1: F401 '.pop_gen.check_population_size' imported but unused
-./eee/_private/check/eee/__init__.py:12:43: W292 no newline at end of file
-./eee/_private/check/eee/pop_gen.py:16:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/pop_gen.py:23:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/pop_gen.py:24:1: W293 blank line contains whitespace
-./eee/_private/check/eee/pop_gen.py:30:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/pop_gen.py:31:1: W293 blank line contains whitespace
-./eee/_private/check/eee/pop_gen.py:37:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/pop_gen.py:38:1: W293 blank line contains whitespace
-./eee/_private/check/eee/ddg_df.py:4:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/ddg_df.py:6:35: E231 missing whitespace after ','
-./eee/_private/check/eee/ddg_df.py:9:1: W293 blank line contains whitespace
-./eee/_private/check/eee/ddg_df.py:10:18: W292 no newline at end of file
-./eee/_private/check/eee/mut_energy.py:4:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/mut_energy.py:7:39: E231 missing whitespace after ','
-./eee/_private/check/eee/mut_energy.py:7:76: E231 missing whitespace after ','
+./eee/_private/check/__init__.py:2:41: W291 trailing whitespace
+./eee/_private/check/__init__.py:3:4: W292 no newline at end of file
+./eee/_private/check/ensemble.py:2:49: W291 trailing whitespace
+./eee/_private/check/ensemble.py:7:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/ensemble.py:7:23: E231 missing whitespace after ','
+./eee/_private/check/ensemble.py:10:1: W293 blank line contains whitespace
+./eee/_private/check/ensemble.py:16:73: W291 trailing whitespace
+./eee/_private/check/ensemble.py:18:1: W293 blank line contains whitespace
+./eee/_private/check/ensemble.py:22:58: W291 trailing whitespace
+./eee/_private/check/ensemble.py:25:32: E231 missing whitespace after ','
+./eee/_private/check/ensemble.py:28:1: W293 blank line contains whitespace
+./eee/_private/check/ensemble.py:29:73: W291 trailing whitespace
+./eee/_private/check/ensemble.py:35:15: W292 no newline at end of file
+./eee/_private/check/eee/mu_dict.py:3:24: W291 trailing whitespace
+./eee/_private/check/eee/mu_dict.py:11:1: C901 'check_mu_dict' is too complex (14)
+./eee/_private/check/eee/mu_dict.py:11:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/mu_dict.py:13:76: W291 trailing whitespace
+./eee/_private/check/eee/mu_dict.py:15:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_dict.py:30:36: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:30:70: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:33:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_dict.py:44:25: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:44:38: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:45:37: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:48:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_dict.py:50:31: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:58:37: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:59:44: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:60:40: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:61:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_dict.py:64:51: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:72:62: W291 trailing whitespace
+./eee/_private/check/eee/mu_dict.py:73:36: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:84:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_dict.py:85:75: W291 trailing whitespace
+./eee/_private/check/eee/mu_dict.py:86:20: W291 trailing whitespace
+./eee/_private/check/eee/mu_dict.py:90:50: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_dict.py:92:36: W292 no newline at end of file
+./eee/_private/check/eee/__init__.py:5:1: F401 '.ddg_df.check_ddg_df' imported but unused
+./eee/_private/check/eee/__init__.py:6:1: F401 '.mu_dict.check_mu_dict' imported but unused
+./eee/_private/check/eee/__init__.py:7:1: F401 '.mu_stoich.check_mu_stoich' imported but unused
+./eee/_private/check/eee/__init__.py:8:1: F401 '.mut_energy.check_mut_energy' imported but unused
+./eee/_private/check/eee/__init__.py:9:1: F401 '.T.check_T' imported but unused
+./eee/_private/check/eee/__init__.py:11:1: F401 '.pop_gen.check_mutation_rate' imported but unused
+./eee/_private/check/eee/__init__.py:12:1: F401 '.pop_gen.check_burn_in_generations' imported but unused
+./eee/_private/check/eee/__init__.py:13:1: F401 '.pop_gen.check_num_generations' imported but unused
+./eee/_private/check/eee/__init__.py:14:1: F401 '.pop_gen.check_num_mutations' imported but unused
+./eee/_private/check/eee/__init__.py:15:1: F401 '.pop_gen.check_population_size' imported but unused
+./eee/_private/check/eee/__init__.py:15:43: W292 no newline at end of file
+./eee/_private/check/eee/pop_gen.py:12:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:17:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:29:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/pop_gen.py:32:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:37:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:49:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/pop_gen.py:52:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:57:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:63:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:69:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/pop_gen.py:72:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:77:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:83:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:89:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/pop_gen.py:92:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:97:1: W293 blank line contains whitespace
+./eee/_private/check/eee/pop_gen.py:103:1: W293 blank line contains whitespace
+./eee/_private/check/eee/ddg_df.py:7:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/ddg_df.py:16:1: W293 blank line contains whitespace
+./eee/_private/check/eee/ddg_df.py:20:29: W291 trailing whitespace
+./eee/_private/check/eee/ddg_df.py:23:35: E231 missing whitespace after ','
+./eee/_private/check/eee/ddg_df.py:26:1: W293 blank line contains whitespace
+./eee/_private/check/eee/ddg_df.py:27:18: W292 no newline at end of file
+./eee/_private/check/eee/mut_energy.py:7:1: E302 expected 2 blank lines, found 1
 ./eee/_private/check/eee/mut_energy.py:10:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mut_energy.py:14:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mut_energy.py:15:22: W292 no newline at end of file
-./eee/_private/check/eee/mu_stoich.py:4:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/mu_stoich.py:9:38: E231 missing whitespace after ','
-./eee/_private/check/eee/mu_stoich.py:12:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_stoich.py:18:1: W293 blank line contains whitespace
-./eee/_private/check/eee/mu_stoich.py:19:21: W292 no newline at end of file
-./eee/_private/check/eee/T.py:6:1: E302 expected 2 blank lines, found 1
-./eee/_private/check/eee/T.py:6:14: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:8:78: W291 trailing whitespace
-./eee/_private/check/eee/T.py:9:20: W291 trailing whitespace
-./eee/_private/check/eee/T.py:12:26: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:16:17: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:16:56: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:18:30: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:36:23: E231 missing whitespace after ','
-./eee/_private/check/eee/T.py:37:1: W293 blank line contains whitespace
-./eee/_private/check/eee/T.py:43:37: E231 missing whitespace after ','
+./eee/_private/check/eee/mut_energy.py:14:77: W291 trailing whitespace
+./eee/_private/check/eee/mut_energy.py:16:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mut_energy.py:24:39: E231 missing whitespace after ','
+./eee/_private/check/eee/mut_energy.py:24:76: E231 missing whitespace after ','
+./eee/_private/check/eee/mut_energy.py:27:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mut_energy.py:31:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mut_energy.py:32:22: W292 no newline at end of file
+./eee/_private/check/eee/mu_stoich.py:6:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/mu_stoich.py:21:38: E231 missing whitespace after ','
+./eee/_private/check/eee/mu_stoich.py:24:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_stoich.py:30:1: W293 blank line contains whitespace
+./eee/_private/check/eee/mu_stoich.py:31:21: W292 no newline at end of file
+./eee/_private/check/eee/T.py:9:1: E302 expected 2 blank lines, found 1
+./eee/_private/check/eee/T.py:9:14: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:11:78: W291 trailing whitespace
+./eee/_private/check/eee/T.py:12:20: W291 trailing whitespace
+./eee/_private/check/eee/T.py:19:75: W291 trailing whitespace
+./eee/_private/check/eee/T.py:28:26: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:32:17: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:32:56: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:34:30: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:52:23: E231 missing whitespace after ','
+./eee/_private/check/eee/T.py:53:1: W293 blank line contains whitespace
+./eee/_private/check/eee/T.py:59:37: E231 missing whitespace after ','
 ./eee/data/__init__.py:2:27: W291 trailing whitespace
 ./eee/data/__init__.py:5:11: E231 missing whitespace after ','
 ./eee/data/__init__.py:6:11: E231 missing whitespace after ','
@@ -4692,7 +4740,7 @@
 5     E265 block comment should start with '# '
 2     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-161   E302 expected 2 blank lines, found 1
+162   E302 expected 2 blank lines, found 1
 82    E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
@@ -4705,9 +4753,9 @@
 9     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 7     F841 local variable 'value' is assigned to but never used
-514   W291 trailing whitespace
-60    W292 no newline at end of file
-607   W293 blank line contains whitespace
+542   W291 trailing whitespace
+62    W292 no newline at end of file
+624   W293 blank line contains whitespace
 14    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-4679
+4727

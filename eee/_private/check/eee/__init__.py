@@ -1,3 +1,6 @@
+"""
+Functions for validating eee-specific arguments used throughout the codebase.
+"""
 
 from .ddg_df import check_ddg_df
 from .mu_dict import check_mu_dict

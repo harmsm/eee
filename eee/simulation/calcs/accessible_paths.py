@@ -1,4 +1,6 @@
-
+"""
+Simulation class that finds all accessible pathways through sequence space. 
+"""
 from eee.simulation.core.simulation import Simulation
 from eee.simulation.core.engine import pathfinder
 
@@ -19,7 +21,8 @@ class AcessiblePaths(Simulation):
             find_all_paths=True,
             output_file="eee_dms.csv"):
         """
-        Run a deep mutational scan up to depth mutations away from wildtype. 
+        Identify all accessible evolutionary paths starting from a wildtype
+        protein.
         
         Parameters
         ----------

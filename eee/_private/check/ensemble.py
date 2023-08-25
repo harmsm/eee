@@ -1,7 +1,26 @@
+"""
+Validate an ensemble is ready for a calculation. 
+"""
 
 from eee.ensemble import Ensemble
 
 def check_ensemble(ens,check_obs=False):
+    """
+    Validate an ensemble.
+    
+    Parameters
+    ----------
+    ens : eee.Ensemble
+        ensemble to validate
+    check_obs : bool, default=False
+        make sure the observable function can be used. This will raise a 
+        ValueError if the ensemble is not properly initialized.
+    
+    Returns
+    -------
+    ens : eee.Ensemble
+        pointer to the ensmeble passed into the function. 
+    """
 
     if not issubclass(type(ens),Ensemble):
         err = "ens should be an instance of the Ensemble class"

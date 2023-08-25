@@ -1,6 +1,23 @@
-
+"""
+Validate the keyword arguments passed to the fitness functions. 
+"""
 
 def check_fitness_kwargs(fitness_kwargs,fitness_fcns=None):
+    """
+    Validate keyword arguments passed to microscopic fitness functions. 
+    
+    Parameters
+    ----------
+    fitness_kwargs : dict
+        pass these keyword arguments to the fitness_fcn
+    fitness_fcns : list-like, optional
+        lit of fitness functions against which to check the fitness_kwargs. 
+
+    Returns
+    -------
+    fitness_kwargs : dict
+        validated fitness kwargs. 
+    """
 
     if fitness_kwargs is None:
         fitness_kwargs = {}

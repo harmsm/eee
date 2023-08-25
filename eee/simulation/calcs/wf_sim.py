@@ -1,4 +1,6 @@
-
+"""
+Code to run a Wright-Fisher simulation on an ensemble. 
+"""
 from eee.simulation.core.simulation import Simulation
 
 from eee.simulation.core.engine import wright_fisher

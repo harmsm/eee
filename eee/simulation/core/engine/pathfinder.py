@@ -1,4 +1,6 @@
-
+"""
+Find accessible paths through sequence space starting at the wildtype genotype.
+"""
 from eee.simulation.core.genotype import Genotype
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_int
@@ -142,7 +144,7 @@ def pathfinder(gc,
             print(f"Allowing adaptive and neutral steps")
         else:
             print(f"Allowing only adaptive steps")
-        print("\nNOTE: status bar gives the aximum time if all genotypes are accessible.",flush=True)
+        print("\nNOTE: status bar gives the maximum time if all genotypes are accessible.",flush=True)
 
         _ = _traverse(current_genotype_idx=0,
                     max_depth=max_depth,

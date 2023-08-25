@@ -1,3 +1,7 @@
+"""
+Base class for running simulations on thermodynamic ensembles under 
+different selective conditions. Must be sub-classed to be used.  
+"""
 
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.standard import check_int

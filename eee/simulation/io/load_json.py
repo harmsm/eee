@@ -1,3 +1,6 @@
+"""
+Load and validate eee json files.
+"""
 import eee
 
 from eee._private.check.ensemble import check_ensemble

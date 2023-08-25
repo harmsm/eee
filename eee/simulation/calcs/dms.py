@@ -1,4 +1,6 @@
-
+"""
+Run a deep mutational scan on a protein. 
+"""
 from eee.simulation.core.simulation import Simulation
 from eee.simulation.core.engine import exhaustive
 
