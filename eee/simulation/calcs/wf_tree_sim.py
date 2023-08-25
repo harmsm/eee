@@ -27,7 +27,7 @@ class WrightFisherTreeSimulation(Simulation):
             burn_in_generations=100,
             write_prefix="eee_wf-tree-sim"):
         """
-        Run a simulation and save files to an output directory.
+        Perform a Wright-Fisher simulation across an existing evolutionary tree. 
         
         Parameters
         ----------

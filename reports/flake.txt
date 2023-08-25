@@ -4095,22 +4095,22 @@
 ./eee/simulation/core/fitness/ff.py:40:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/fitness/ff.py:40:17: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/ff.py:40:23: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:43:76: W291 trailing whitespace
+./eee/simulation/core/fitness/ff.py:43:40: W291 trailing whitespace
 ./eee/simulation/core/fitness/ff.py:47:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/fitness/ff.py:47:21: E231 missing whitespace after ','
 ./eee/simulation/core/fitness/ff.py:47:27: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:50:28: W291 trailing whitespace
-./eee/simulation/core/fitness/ff.py:54:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/fitness/ff.py:54:22: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:54:28: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:58:17: W291 trailing whitespace
-./eee/simulation/core/fitness/ff.py:64:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/ff.py:67:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/fitness/ff.py:67:22: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:67:28: E231 missing whitespace after ','
-./eee/simulation/core/fitness/ff.py:71:17: W291 trailing whitespace
-./eee/simulation/core/fitness/ff.py:77:1: W293 blank line contains whitespace
-./eee/simulation/core/fitness/ff.py:79:1: W391 blank line at end of file
+./eee/simulation/core/fitness/ff.py:49:64: W291 trailing whitespace
+./eee/simulation/core/fitness/ff.py:53:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/ff.py:53:22: E231 missing whitespace after ','
+./eee/simulation/core/fitness/ff.py:53:28: E231 missing whitespace after ','
+./eee/simulation/core/fitness/ff.py:56:62: W291 trailing whitespace
+./eee/simulation/core/fitness/ff.py:62:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/ff.py:65:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/fitness/ff.py:65:22: E231 missing whitespace after ','
+./eee/simulation/core/fitness/ff.py:65:28: E231 missing whitespace after ','
+./eee/simulation/core/fitness/ff.py:68:62: W291 trailing whitespace
+./eee/simulation/core/fitness/ff.py:74:1: W293 blank line contains whitespace
+./eee/simulation/core/fitness/ff.py:76:1: W391 blank line at end of file
 ./eee/simulation/core/fitness/check_fitness_fcns.py:3:26: W291 trailing whitespace
 ./eee/simulation/core/fitness/check_fitness_fcns.py:8:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/fitness/check_fitness_fcns.py:10:74: W291 trailing whitespace
@@ -4605,17 +4605,17 @@
 ./eee/simulation/analysis/num_genotypes.py:70:25: E231 missing whitespace after ','
 ./eee/simulation/analysis/num_genotypes.py:72:58: E231 missing whitespace after ','
 ./eee/simulation/analysis/num_genotypes.py:76:44: W292 no newline at end of file
-./eee/simulation/analysis/on_tree.py:5:25: E231 missing whitespace after ','
-./eee/simulation/analysis/on_tree.py:5:30: E231 missing whitespace after ','
-./eee/simulation/analysis/on_tree.py:8:1: W293 blank line contains whitespace
-./eee/simulation/analysis/on_tree.py:17:73: W291 trailing whitespace
-./eee/simulation/analysis/on_tree.py:18:72: W291 trailing whitespace
-./eee/simulation/analysis/on_tree.py:19:26: W291 trailing whitespace
-./eee/simulation/analysis/on_tree.py:20:1: W293 blank line contains whitespace
-./eee/simulation/analysis/on_tree.py:26:78: W291 trailing whitespace
-./eee/simulation/analysis/on_tree.py:27:40: W291 trailing whitespace
+./eee/simulation/analysis/on_tree.py:2:1: F401 'eee.simulation.analysis.get_most_common' imported but unused
+./eee/simulation/analysis/on_tree.py:9:1: W293 blank line contains whitespace
+./eee/simulation/analysis/on_tree.py:16:73: W291 trailing whitespace
+./eee/simulation/analysis/on_tree.py:17:72: W291 trailing whitespace
+./eee/simulation/analysis/on_tree.py:18:26: W291 trailing whitespace
+./eee/simulation/analysis/on_tree.py:19:1: W293 blank line contains whitespace
+./eee/simulation/analysis/on_tree.py:25:78: W291 trailing whitespace
+./eee/simulation/analysis/on_tree.py:26:40: W291 trailing whitespace
 ./eee/simulation/analysis/on_tree.py:34:1: W293 blank line contains whitespace
-./eee/simulation/analysis/on_tree.py:56:21: W292 no newline at end of file
+./eee/simulation/analysis/on_tree.py:46:5: E303 too many blank lines (3)
+./eee/simulation/analysis/on_tree.py:58:23: W292 no newline at end of file
 ./eee/simulation/io/__init__.py:4:1: F401 '.read_json.read_json' imported but unused
 ./eee/simulation/io/__init__.py:4:33: W292 no newline at end of file
 ./eee/simulation/io/read_json.py:23:73: W291 trailing whitespace
@@ -4660,16 +4660,15 @@
 ./eee/simulation/io/read_json.py:219:1: W293 blank line contains whitespace
 ./eee/simulation/io/read_json.py:220:1: W391 blank line at end of file
 ./eee/simulation/calcs/dms.py:2:41: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:21:77: W291 trailing whitespace
+./eee/simulation/calcs/dms.py:21:81: W291 trailing whitespace
 ./eee/simulation/calcs/dms.py:22:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/dms.py:30:79: W291 trailing whitespace
 ./eee/simulation/calcs/dms.py:31:22: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:34:77: W291 trailing whitespace
-./eee/simulation/calcs/dms.py:41:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:49:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:55:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:59:1: W293 blank line contains whitespace
-./eee/simulation/calcs/dms.py:59:5: W292 no newline at end of file
+./eee/simulation/calcs/dms.py:40:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:48:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:54:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:58:1: W293 blank line contains whitespace
+./eee/simulation/calcs/dms.py:58:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_sim.py:2:55: W291 trailing whitespace
 ./eee/simulation/calcs/wf_sim.py:29:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_sim.py:41:64: W291 trailing whitespace
@@ -4689,16 +4688,16 @@
 ./eee/simulation/calcs/accessible_paths.py:2:76: W291 trailing whitespace
 ./eee/simulation/calcs/accessible_paths.py:26:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/accessible_paths.py:33:75: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:36:77: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:40:83: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:42:37: W291 trailing whitespace
-./eee/simulation/calcs/accessible_paths.py:54:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:56:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:66:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:74:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:78:1: W293 blank line contains whitespace
-./eee/simulation/calcs/accessible_paths.py:78:5: W292 no newline at end of file
+./eee/simulation/calcs/accessible_paths.py:39:83: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:41:37: W291 trailing whitespace
+./eee/simulation/calcs/accessible_paths.py:53:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:55:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:65:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:73:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:77:1: W293 blank line contains whitespace
+./eee/simulation/calcs/accessible_paths.py:77:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_tree_sim.py:3:6: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:30:81: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:31:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:43:77: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:45:77: W291 trailing whitespace
@@ -5137,13 +5136,13 @@
 2     E201 whitespace after '['
 3     E222 multiple spaces after operator
 3     E225 missing whitespace around operator
-2833  E231 missing whitespace after ','
+2831  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 3     E265 block comment should start with '# '
 2     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
 175   E302 expected 2 blank lines, found 1
-91    E303 too many blank lines (2)
+92    E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 4     E402 module level import not at top of file
@@ -5151,13 +5150,13 @@
 28    E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 2     E714 test for object identity should be 'is not'
 4     E722 do not use bare 'except'
-71    F401 'glob' imported but unused
+72    F401 'glob' imported but unused
 9     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 10    F841 local variable 'value' is assigned to but never used
-617   W291 trailing whitespace
+616   W291 trailing whitespace
 67    W292 no newline at end of file
 672   W293 blank line contains whitespace
 17    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-5129
+5128

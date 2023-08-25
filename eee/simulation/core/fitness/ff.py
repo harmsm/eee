@@ -32,30 +32,28 @@ multiply "fx_obs" by 5 at an iptg chemical potential of 1.
 
 def ff_on(value,*args,**kwargs):
     """
-    Microscopic fitness function for fx_obs. Fitness is linearly proportional
-    to value. Useful for simulating selection to keep observable 'on'.
+    Fitness is linearly proportional to value. Useful for simulating selection
+    to keep observable 'on'.
     """
     return value
 
 def ff_off(value,*args,**kwargs):
     """
-    Microscopic fitness function for fx_obs. Fitness is linearly proportional
-    to 1 - value. Useful for simulating selection to keep observable 'off'. 
+    Fitness is linearly proportional to 1 - value. Useful for simulating
+    selection to keep observable 'off'. 
     """
     return 1 - value
 
 def ff_neutral(value,*args,**kwargs):
     """
-    Microscopic fitness function for fx_obs. Fitness is always 1.0, modeling
-    no selection on fx_obs. 
+    Fitness is always 1.0, modeling no selection on observable. 
     """
     return 1.0
 
 def ff_on_above(value,*args,**kwargs):
     """
-    Microscopic fitness function for fx_obs. Fitness is 1.0 for values above a
-    threshold, 0.0 below it. When used, `fitness_kwargs = {"threshold":VALUE}`
-    must be set. 
+    Fitness is 1.0 when observable above a threshold, 0.0 when below it. When
+    used, `fitness_kwargs = {"threshold":VALUE}` must be set. 
     """
 
     threshold = kwargs["threshold"]
@@ -66,9 +64,8 @@ def ff_on_above(value,*args,**kwargs):
 
 def ff_on_below(value,*args,**kwargs):
     """
-    Microscopic fitness function for fx_obs. Fitness is 1.0 for values below a
-    threshold, 0.0 above it. When used, `fitness_kwargs = {"threshold":VALUE}`
-    must be set. 
+    Fitness is 0.0 when observable above a threshold, 1.0 when below it. When
+    used, `fitness_kwargs = {"threshold":VALUE}` must be set. 
     """
 
     threshold = kwargs["threshold"]

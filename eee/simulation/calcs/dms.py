@@ -18,7 +18,7 @@ class DeepMutationalScan(Simulation):
             max_depth=1,
             output_file="eee_dms.csv"):
         """
-        Run a deep mutational scan up to depth mutations away from wildtype. 
+        Run a deep mutational scan up to max_depth mutations away from wildtype. 
         
         Parameters
         ----------
@@ -31,7 +31,6 @@ class DeepMutationalScan(Simulation):
             increase. 
         output_file : str, default="eee_dms.csv"
             write results to the indicated csv file
-                write the generations out every write_frequency generations. 
         """
 
         max_depth = check_int(value=max_depth,

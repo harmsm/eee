@@ -25,7 +25,7 @@ class WrightFisherSimulation(Simulation):
             write_prefix="eee_wf-sim",
             write_frequency=1000):
         """
-        Run a simulation and save files to an output directory.
+        Run a Wright-Fisher simulation on an ensemble.
         
         Parameters
         ----------

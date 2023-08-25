@@ -33,7 +33,6 @@ class AcessiblePaths(Simulation):
             single mutants, 2 to all double mutants, 3 to all triple, etc. 
         output_file : str, default="eee_dms.csv"
             write results to the indicated csv file
-                write the generations out every write_frequency generations. 
         allow_neutral : bool, default=True
             allow mutations that have no effect on fitness
         find_all_paths : bool, default=True

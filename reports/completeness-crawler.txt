@@ -128,6 +128,7 @@ FAKE tests.test_epistasis.test_summarize_epistasis
 MISSING tests._private.check.test_eee.test_T_check_T
 MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.test_interface.test_WrappedFunctionException
+MISSING tests.bin.test_eee-get-available-functions.test_main
 MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_read_ddg.test_read_ddg

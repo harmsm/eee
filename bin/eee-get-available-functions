@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""
+Command line interface to get all of the functions available when setting up 
+an eee simulation. 
+"""
+
+from eee.simulation import FF_AVAILABLE
+from eee.simulation import CALC_AVAILABLE
+from eee.simulation.core.simulation import Simulation
+from eee import Ensemble
+
+import os
+
+def _bold(some_str):
+    return '\033[1m' + some_str +	'\033[0m'
+
+def _center(some_str):
+    width = os.get_terminal_size().columns
+    extra_space = width - len(some_str)
+    if extra_space <= 0:
+        return some_str
+    
+    num_spaces = extra_space//2
+    
+    return num_spaces*" " + some_str
+
+def main():
+    print()
+    to_write = "Define the ensemble by:"
+    print(_center(_bold(to_write)))
+    print(_center(_bold("-"*len(to_write))))
+    print("",flush=True)
+    print(Ensemble.add_species.__doc__)
+    print()
+
+    to_write = "Define the selection conditions for the ensemble by:"
+    print(_center(_bold(to_write)))
+    print(_center(_bold("-"*len(to_write))))
+    print("",flush=True)
+    print(Simulation.__init__.__doc__)
+    print()
+
+    to_write = "Fitness functions for specific conditions:"
+    print(_center(_bold(to_write)))
+    print(_center(_bold("-"*len(to_write))))
+    print("",flush=True)
+    print("Use these strings (e.g., 'on') as entries in the 'fitness_fcns' list.\n")
+
+    f_keys = list(FF_AVAILABLE.keys())
+    f_keys.sort()
+    for f in f_keys:
+        print(_center((_bold(f"{f}:"))))
+        print(FF_AVAILABLE[f].__doc__)
+
+    to_write = "Calculation types available:"
+    print(_center(_bold(to_write)))
+    print(_center(_bold("-"*len(to_write))))
+    print("",flush=True)
+    print("Use the calculation strings (e.g., 'dms') in a 'calc_type' entry.")
+    print("Use the parameters as key/value pairs in a 'calc_params' entry.")
+    print("")
+    
+    c_keys = list(CALC_AVAILABLE.keys())
+    c_keys.sort()
+    for c in c_keys:
+        print(_center(_bold(f"{c}:")))
+        print(CALC_AVAILABLE[c].run.__doc__)
+
+
+if __name__ == "__main__":
+    main()
