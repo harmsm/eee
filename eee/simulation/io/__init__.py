@@ -1,4 +1,4 @@
 """
 Functions for reading and writing simulation outputs.
 """
-from .load_json import load_json
+from .read_json import read_json

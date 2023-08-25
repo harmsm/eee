@@ -944,7 +944,7 @@ def test_Ensemble_get_obs(variable_types):
             ens.get_obs(T=v)
 
 
-def test_Ensemble_load_mu_dict(variable_types):
+def test_Ensemble_read_mu_dict(variable_types):
 
     # Two species. dG0. Add mu_dict perturbation
     ens = Ensemble()
@@ -962,13 +962,13 @@ def test_Ensemble_load_mu_dict(variable_types):
     for v in variable_types["not_dict"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            ens.load_mu_dict(v)
+            ens.read_mu_dict(v)
 
     assert not hasattr(ens,"_z_matrix")
 
     # Just check one load -- wraps _create_z_matrix which we already test 
     # extensively. 
-    ens.load_mu_dict(mu_dict={"X":np.array([0,0.5,1.0]),
+    ens.read_mu_dict(mu_dict={"X":np.array([0,0.5,1.0]),
                               "Y":np.array([1,0.5,0.0])})
     assert np.array_equal(ens._z_matrix.shape,(2,3))
     assert np.array_equal(ens._z_matrix,[[0,-0.5,-1],[-2 + 1,-1 + 1,0 + 1]])
@@ -1019,7 +1019,7 @@ def test_Ensemble_get_fx_obs_fast():
                     folded=True,
                     dG0=2)
 
-    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    ens.read_mu_dict(mu_dict={"X":np.array([0,1.0])})
     T = np.ones(1,dtype=float)    
 
     value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
@@ -1099,7 +1099,7 @@ def test_Ensemble_get_dG_obs_fast():
                     folded=True,
                     dG0=2)
 
-    ens.load_mu_dict(mu_dict={"X":np.array([0,1.0])})
+    ens.read_mu_dict(mu_dict={"X":np.array([0,1.0])})
     T = np.ones(1,dtype=float)    
 
     value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)

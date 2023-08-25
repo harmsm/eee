@@ -1,11 +1,11 @@
 import pytest
 
-from eee.io.load_ddg import load_ddg
+from eee.io.read_ddg import read_ddg
 
 import numpy as np
 import pandas as pd
 
-def test_load_ddg(test_ddg):
+def test_read_ddg(test_ddg):
 
     self_to_self = ["L1L","L2L","I3I","G4G"]
 
@@ -17,7 +17,7 @@ def test_load_ddg(test_ddg):
     for s in self_to_self:
         assert s in muts
 
-    df = load_ddg(test_ddg["ddg.csv"])
+    df = read_ddg(test_ddg["ddg.csv"])
     assert np.array_equal(df.columns,["site","mut","hdna","h","l2e"])
 
     # Make sure self->self mutations dropped
@@ -32,5 +32,5 @@ def test_load_ddg(test_ddg):
     # validate "mut" checker
     bad_df = df.loc[:,["site","hdna","h","l2e"]]
     with pytest.raises(ValueError):
-        load_ddg(bad_df)
+        read_ddg(bad_df)
 

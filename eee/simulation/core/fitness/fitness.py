@@ -98,7 +98,7 @@ class Fitness:
                                                         num_conditions=num_conditions,
                                                         return_as="string")
                 
-        self._private_ens.load_mu_dict(mu_dict=self._mu_dict)
+        self._private_ens.read_mu_dict(mu_dict=self._mu_dict)
         self._obs_function = self._private_ens.get_observable_function(self._select_on)
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)

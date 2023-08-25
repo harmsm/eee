@@ -5,7 +5,7 @@ import numpy as np
 
 from eee.io.read_dataframe import read_dataframe
 
-def load_ddg(ddg_df):
+def read_ddg(ddg_df):
     """
     Load a ddg file, removing any self-to-self mutations. 
 

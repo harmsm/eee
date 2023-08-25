@@ -113,8 +113,7 @@ def write_tree(T,
     Parameters
     ----------
     T : ete3.TreeNode
-        ete3 tree with information loaded into appropriate features. This is the
-        tree returned by :code:`load_trees`. 
+        ete3 tree
     out_file : str, optional
         output file. If defined, write the newick string the file.
     fmt : int, default=3

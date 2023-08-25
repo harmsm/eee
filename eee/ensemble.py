@@ -394,7 +394,7 @@ class Ensemble:
 
         return pd.DataFrame(out)
 
-    def load_mu_dict(self,mu_dict={}):
+    def read_mu_dict(self,mu_dict={}):
         """
         Build a z-matrix given a mu_dict. This allows one to run 
         get_fx_obs_fast and get_dG_obs_fast. 
@@ -445,7 +445,7 @@ class Ensemble:
     def get_fx_obs_fast(self,mut_energy_array,T):
         """
         Get a numpy array with the fraction observable for the ensemble. Each 
-        element is a condition in mu_dict. This only works after load_mu_dict
+        element is a condition in mu_dict. This only works after read_mu_dict
         has been run to create the appropriate z-matrix. Warning: no error 
         checking. 
 
@@ -480,7 +480,7 @@ class Ensemble:
     def get_dG_obs_fast(self,mut_energy_array,T):
         """
         Get a numpy array with the Dg observable for the ensemble. Each 
-        element is a condition in mu_dict. This only works after load_mu_dict
+        element is a condition in mu_dict. This only works after read_mu_dict
         has been run to create the appropriate z-matrix. Warning: no error 
         checking. 
 

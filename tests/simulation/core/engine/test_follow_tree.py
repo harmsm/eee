@@ -193,7 +193,7 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
     assert all_genotypes_seen == in_df
     
     # Make sure generations are passing one to the other properly
-    def _load_and_compare(pickle1,pickle2):
+    def _read_and_compare(pickle1,pickle2):
 
         with open(pickle1,'rb') as f:
             start = pickle.load(f)
@@ -207,27 +207,27 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
         assert start[0] != end[-1]
 
     #
-    _load_and_compare("eee_tree_burn-in-anc00.pickle",
+    _read_and_compare("eee_tree_burn-in-anc00.pickle",
                       "eee_tree_anc00-anc01.pickle")
 
-    _load_and_compare("eee_tree_burn-in-anc00.pickle",
+    _read_and_compare("eee_tree_burn-in-anc00.pickle",
                       "eee_tree_anc00-anc02.pickle")
 
-    _load_and_compare("eee_tree_anc00-anc01.pickle",
+    _read_and_compare("eee_tree_anc00-anc01.pickle",
                       "eee_tree_anc01-A.pickle")
 
-    _load_and_compare("eee_tree_anc00-anc01.pickle",
+    _read_and_compare("eee_tree_anc00-anc01.pickle",
                       "eee_tree_anc01-B.pickle")  
 
-    _load_and_compare("eee_tree_anc00-anc02.pickle",
+    _read_and_compare("eee_tree_anc00-anc02.pickle",
                       "eee_tree_anc02-C.pickle")
 
-    _load_and_compare("eee_tree_anc00-anc02.pickle",
+    _read_and_compare("eee_tree_anc00-anc02.pickle",
                       "eee_tree_anc02-D.pickle")  
     
     # test the test
     with pytest.raises(AssertionError):
-        _load_and_compare("eee_tree_burn-in-anc00.pickle",
+        _read_and_compare("eee_tree_burn-in-anc00.pickle",
                           "eee_tree_anc02-D.pickle")  
 
     for f in glob.glob("*.*"):

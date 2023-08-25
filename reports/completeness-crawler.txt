@@ -25,10 +25,6 @@ FOUND tests._private.test_interface.test_run_cleanly
 FOUND tests._private.test_wrap.test_wrap_function
 FOUND tests.io.test_io_tree.test_read_tree
 FOUND tests.io.test_io_tree.test_write_tree
-FOUND tests.io.test_load_ddg.test_load_ddg
-FOUND tests.io.test_load_structure.test__load_structure_cif
-FOUND tests.io.test_load_structure.test__load_structure_pdb
-FOUND tests.io.test_load_structure.test_load_structure
 FOUND tests.io.test_read_dataframe.test_read_dataframe
 FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
@@ -97,8 +93,6 @@ FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_fitness_f
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_gc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_get_calc_description
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_system_params
-FOUND tests.simulation.io.test_load_json.test__validate_calc_kwargs
-FOUND tests.simulation.io.test_load_json.test_load_json
 FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
 FOUND tests.structure.test_sync_structures.test__create_unique_filenames
 FOUND tests.structure.test_sync_structures.test_sync_structures
@@ -111,9 +105,9 @@ FOUND tests.test_ensemble.test_Ensemble_get_fx_obs_fast
 FOUND tests.test_ensemble.test_Ensemble_get_obs
 FOUND tests.test_ensemble.test_Ensemble_get_observable_function
 FOUND tests.test_ensemble.test_Ensemble_get_species_dG
-FOUND tests.test_ensemble.test_Ensemble_load_mu_dict
 FOUND tests.test_ensemble.test_Ensemble_mu_list
 FOUND tests.test_ensemble.test_Ensemble_mut_dict_to_array
+FOUND tests.test_ensemble.test_Ensemble_read_mu_dict
 FOUND tests.test_ensemble.test_Ensemble_species
 FOUND tests.test_ensemble.test_Ensemble_species_df
 FOUND tests.test_ensemble.test_Ensemble_to_dict
@@ -136,15 +130,27 @@ MISSING tests._private.check.test_ensemble.test_check_ensemble
 MISSING tests._private.test_interface.test_WrappedFunctionException
 MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
+MISSING tests.io.test_read_ddg.test_read_ddg
+MISSING tests.io.test_read_structure.test__read_structure_cif
+MISSING tests.io.test_read_structure.test__read_structure_pdb
+MISSING tests.io.test_read_structure.test_read_structure
 MISSING tests.io.test_write_pdb.test_chain
 MISSING tests.io.test_write_pdb.test_last_class
 MISSING tests.simulation.analysis.test_on_tree.test_extract_alignment
 MISSING tests.simulation.core.engine.test_pathfinder.test__traverse
 MISSING tests.simulation.core.simulation.test_simulation.test_Simulation_run
+MISSING tests.simulation.io.test_read_json.test__validate_calc_kwargs
+MISSING tests.simulation.io.test_read_json.test_read_json
 MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test_epistasis.test_:
 MISSING tests.test_epistasis.test_ep_sign1,
 MISSING tests.test_epistasis.test_of
 FOUND & EXTRA tests._private.check.eee.test_T.test_check_T
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
+FOUND & EXTRA tests.io.test_load_ddg.test_read_ddg
+FOUND & EXTRA tests.io.test_load_structure.test__read_structure_cif
+FOUND & EXTRA tests.io.test_load_structure.test__read_structure_pdb
+FOUND & EXTRA tests.io.test_load_structure.test_read_structure
+FOUND & EXTRA tests.simulation.io.test_load_json.test__validate_calc_kwargs
+FOUND & EXTRA tests.simulation.io.test_load_json.test_read_json
 FOUND & EXTRA tests.simulation.test_simulation___init__.test__get_calc_available

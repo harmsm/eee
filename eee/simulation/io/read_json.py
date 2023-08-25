@@ -6,7 +6,7 @@ import eee
 from eee._private.check.ensemble import check_ensemble
 from eee.simulation import CALC_AVAILABLE
 
-from eee.io import load_ddg
+from eee.io import read_ddg
 from eee.io import read_tree
 
 import json
@@ -99,7 +99,7 @@ def _validate_calc_kwargs(calc_type,
     
     return kwargs
 
-def load_json(json_file,use_stored_seed=False):
+def read_json(json_file,use_stored_seed=False):
     """
     Load a json file describing a simulation. This file must have the 
     following top-level keys:
@@ -189,7 +189,7 @@ def load_json(json_file,use_stored_seed=False):
     # Load ddg_df here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
     if "ddg_df" in calc_input["system"]:
-        calc_input["system"]["ddg_df"] = load_ddg(calc_input["system"]["ddg_df"])
+        calc_input["system"]["ddg_df"] = read_ddg(calc_input["system"]["ddg_df"])
     
     # Load newick here so we don't have to keep track of the file when/if we
     # start a simulation in new directory

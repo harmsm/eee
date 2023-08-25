@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherSimulation
-from eee.simulation.io import load_json
+from eee.simulation.io import read_json
 
 import pandas as pd
 
@@ -57,7 +57,7 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
     assert os.path.exists(os.path.join("test","eee_sim_generations_0.pickle"))
  
     os.chdir('test')
-    _, kwargs = load_json('simulation.json')
+    _, kwargs = read_json('simulation.json')
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.01
     assert kwargs["num_generations"] == 100

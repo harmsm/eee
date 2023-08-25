@@ -1,7 +1,7 @@
 """
 Class for keeping track of genotypes during an evolutionary simulation.
 """
-from eee.io import load_ddg
+from eee.io import read_ddg
 
 from eee._private.check.ensemble import check_ensemble
 from .single_genotype import SingleGenotype
@@ -53,7 +53,7 @@ class Genotype:
         # Fitness and ddg information
         self._ens = check_ensemble(ens,check_obs=True)
         self._fitness_function = fitness_function
-        self._ddg_df = load_ddg(ddg_df)
+        self._ddg_df = read_ddg(ddg_df)
     
         if choice_function is None:
             choice_function = np.random.choice

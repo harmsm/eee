@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherTreeSimulation
-from eee.simulation.io.load_json import load_json
+from eee.simulation.io.read_json import read_json
 
 import ete3
 
@@ -72,7 +72,7 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
     # This test makes sure the variables are being set properly and then 
     # recorded into the json. 
     os.chdir('test')
-    _, kwargs = load_json('simulation.json')
+    _, kwargs = read_json('simulation.json')
     assert issubclass(type(kwargs["newick"]),ete3.TreeNode)
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.1
