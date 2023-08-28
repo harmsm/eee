@@ -213,6 +213,11 @@ def newick_files():
     return _file_globber("data_for_tests","newick_files","*.newick")
 
 @pytest.fixture(scope="module")
+def ensemble_inputs():
+
+    return _file_globber("data_for_tests","ensemble_inputs","*.*")
+
+@pytest.fixture(scope="module")
 def programs():
     """
     Dictionary holding paths pointing to programs to run.
@@ -227,6 +232,7 @@ def programs():
         out_dict[f] = os.path.join(base_dir,f)
 
     return out_dict
+
 
 @pytest.fixture(scope="module")
 def variable_types():

@@ -26,6 +26,10 @@ FOUND tests._private.test_wrap.test_wrap_function
 FOUND tests.io.test_io_tree.test_read_tree
 FOUND tests.io.test_io_tree.test_write_tree
 FOUND tests.io.test_read_dataframe.test_read_dataframe
+FOUND tests.io.test_read_ensemble.test__json_to_ensemble
+FOUND tests.io.test_read_ensemble.test__search_for_key
+FOUND tests.io.test_read_ensemble.test__spreadsheet_to_ensemble
+FOUND tests.io.test_read_ensemble.test_read_ensemble
 FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
 FOUND tests.simulation.analysis.test_num_genotypes.test_get_num_genotypes
@@ -132,7 +136,6 @@ MISSING tests.bin.test_eee-get-available-functions.test_main
 MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.io.test_read_ddg.test_read_ddg
-MISSING tests.io.test_read_ensemble.test__search_for_key
 MISSING tests.io.test_read_structure.test__read_structure_cif
 MISSING tests.io.test_read_structure.test__read_structure_pdb
 MISSING tests.io.test_read_structure.test_read_structure
