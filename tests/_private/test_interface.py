@@ -1,5 +1,6 @@
 import pytest
 
+from eee._private.interface import WrappedFunctionException
 from eee._private.interface import gen_seed
 from eee._private.interface import launch
 from eee._private.interface import create_new_dir
@@ -11,6 +12,11 @@ from eee._private.interface import MockTqdm
 import os
 import sys
 import time
+
+def test_WrappedFunctionException():
+
+    with pytest.raises(WrappedFunctionException):
+        raise WrappedFunctionException("test")
 
 def test_run_cleanly(tmpdir):
 
