@@ -4,7 +4,7 @@ for an EEE calculation.
 """
 
 from eee.io.write_pdb import write_pdb
-from eee.io.load_structure import load_structure
+from eee.io.read_structure import read_structure
 from eee._private import logger
 from eee.structure.clean_structure import clean_structure
 from eee.structure.align_structure_seqs import align_structure_seqs
@@ -104,7 +104,7 @@ def sync_structures(structure_files,
     # Load the specified structure files
     dfs = []
     for f in structure_files:
-        dfs.append(load_structure(f))
+        dfs.append(read_structure(f))
 
     # Clean up structures --> build missing atoms or delete residues with
     # missing backbone atoms. 

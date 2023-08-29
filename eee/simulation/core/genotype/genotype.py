@@ -1,7 +1,7 @@
 """
 Class for keeping track of genotypes during an evolutionary simulation.
 """
-from eee.io import load_ddg
+from eee.io import read_ddg
 
 from eee._private.check.ensemble import check_ensemble
 from .single_genotype import SingleGenotype
@@ -53,7 +53,7 @@ class Genotype:
         # Fitness and ddg information
         self._ens = check_ensemble(ens,check_obs=True)
         self._fitness_function = fitness_function
-        self._ddg_df = load_ddg(ddg_df)
+        self._ddg_df = read_ddg(ddg_df)
     
         if choice_function is None:
             choice_function = np.random.choice
@@ -103,7 +103,34 @@ class Genotype:
             
             self._ddg_dict[site][mut] = self._ens.mut_dict_to_array(mut_dict)
 
-    
+
+    def _add_genotype(self,new_genotype,prev_index):
+        """
+        Add a newly created genotype to the object. Updates _genotypes, 
+        _mut_energies, _trajectories, and _fitnesses. Returns the key pointing
+        to the new genotype.
+        """
+
+        # Get index for new genotype
+        new_index = self._last_index + 1
+        self._last_index += 1
+
+        # Record the new genotype
+        self._genotypes[new_index] = new_genotype
+
+        # Record the trajectory taken to reach the current genotype
+        new_trajectory = self._trajectories[prev_index][:]
+        new_trajectory.append(new_index)
+        self._trajectories[new_index] = new_trajectory
+        
+        self._mut_energies[new_index] = new_genotype.mut_energy
+
+        # Record the fitness of this genotype
+        new_fitness = np.product(self._fitness_function(new_genotype.mut_energy))
+        self._fitnesses[new_index] = new_fitness
+
+        return new_index
+
     def mutate(self,index,site=None,mutation=None):
         """
         Mutate the genotype with "index" to a new genotype, returning the 
@@ -113,7 +140,7 @@ class Genotype:
         ----------
         index : int
             index of genotype to mutation. Must be a key in the
-            self.genotypes diectionary.
+            self.genotypes dictionary.
         site : int, optional
             site to mutate. if not specified, choose one randomly. 
         mutation : str, optional
@@ -145,25 +172,59 @@ class Genotype:
         # Introduce mutation
         new_genotype.mutate(site,mutation)
         
-        # Get index for new genotype
-        new_index = self._last_index + 1
-        self._last_index += 1
+        return self._add_genotype(new_genotype,index)
 
-        # Record the new genotype
-        self._genotypes[new_index] = new_genotype
 
-        # Record the trajectory taken to reach the current genotype
-        new_trajectory = self._trajectories[index][:]
-        new_trajectory.append(new_index)
-        self._trajectories[new_index] = new_trajectory
+    def conditional_mutate(self,
+                           index,
+                           site,
+                           mutation,
+                           condition_fcn):
+        """
+        Introduce a mutation, making sure its fitness meets a defined condition.
+
+        Parameters
+        ----------
+        index : int
+            index of genotype to mutation. Must be a key in the
+            self.genotypes dictionary.
+        site : int, optional
+            site to mutate. if not specified, choose one randomly. 
+        mutation : str, optional
+            mutation at the site to mutate. if not specified, choose one 
+            randomly. 
+        condition_fcn : function
+            function that takes two floats as inputs an returns a bool. 
+            np.equal would require the new genotype have the same fitness as 
+            the parent genotype; np.greater would require the new genotype have
+            improved fitness relative to the parent. 
+
+        Returns
+        -------
+        new_index : int
+            key for new genotype in self._genotypes. If the condition is not 
+            met, do not store the new genotype and return -1. 
+        """
         
-        self._mut_energies[new_index] = new_genotype.mut_energy
+        # Sanity check
+        if index not in self._genotypes:
+            err = f"\nindex ({index}) is not in genotypes\n\n"
+            raise IndexError(err)
+                           
+        # Create a new genotype and mutate
+        new_genotype = self._genotypes[index].copy()
 
-        # Record the fitness of this genotype
+        # Introduce mutation
+        new_genotype.mutate(site,mutation)
+
         new_fitness = np.product(self._fitness_function(new_genotype.mut_energy))
-        self._fitnesses[new_index] = new_fitness
 
-        return new_index
+        if condition_fcn(new_fitness,self._fitnesses[index]):
+            return self._add_genotype(new_genotype,index)
+        
+        return -1
+        
+
 
     def dump_to_csv(self,
                     filename,
@@ -312,6 +373,16 @@ class Genotype:
         """
         return self._fitnesses
     
+    @property
+    def ddg_dict(self):
+        """
+        Dictionary with the energetic effects of mutations organized by site. 
+        Has form :code:`ddg_dict[site][mut] = np_array_with_mutant_effects_on_species`,
+        where site is an integer of sites from ddg_df, mut is a matched mutation
+        at that site, and the array has the energetic effects of the mutation on 
+        each species as ordered in ens.species. 
+        """
+        return self._ddg_dict
 
 
 

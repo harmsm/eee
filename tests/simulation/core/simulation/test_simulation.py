@@ -389,7 +389,7 @@ def test_Simulation__write_calc_params(ens_test_data,
     for k in ens_dict["ens"]:
         assert ens_dict["ens"][k] == as_written["system"]["ens"][k]
 
-    assert ens_dict["ens"]["R"] == as_written["system"]["ens"]["R"]
+    assert ens_dict["ens"]["gas_constant"] == as_written["system"]["ens"]["gas_constant"]
 
     assert as_written["system"]["mu_dict"] == mu_dict
     assert as_written["system"]["select_on"] == "fx_obs"
@@ -479,3 +479,89 @@ def test_Simulation_get_calc_description(ens_test_data):
 
     # kwargs should make longer
     assert len(value1) < len(value2)
+
+
+def test_Simulation_fitness_from_energy(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1)
+    
+    f = sm.fitness_from_energy({"s1":0,"s2":0})
+    assert f == np.prod(sm._gc._fitness_function(np.zeros(2)))
+
+    f = sm.fitness_from_energy(np.zeros(2))
+    assert f == np.prod(sm._gc._fitness_function(np.zeros(2)))
+
+    
+    mut_energy = np.array([1,0])
+    f = sm.fitness_from_energy({"s1":1,"s2":0})
+    assert f == np.prod(sm._gc._fitness_function(mut_energy))
+
+    f = sm.fitness_from_energy(mut_energy)
+    assert f == np.prod(sm._gc._fitness_function(mut_energy))
+
+def test_Simulation_ens(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1)
+    
+    assert ens is sm.ens
+    assert ens is sm._ens
+
+def test_Simulation_fc(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1)
+    
+    assert sm.fc is sm._fc
+
+def test_Simulation_gc(ens_test_data):
+    
+    ens = ens_test_data["ens"]
+    ddg_df = ens_test_data["ddg_df"]
+    mu_dict = ens_test_data["mu_dict"]
+    fitness_fcns = ens_test_data["fitness_fcns"]
+
+    sm = SimulationTester(ens=ens,
+                          ddg_df=ddg_df,
+                          mu_dict=mu_dict,
+                          fitness_fcns=fitness_fcns,
+                          select_on="fx_obs",
+                          select_on_folded=True,
+                          fitness_kwargs={},
+                          T=1)
+    
+    assert sm.gc is sm._gc

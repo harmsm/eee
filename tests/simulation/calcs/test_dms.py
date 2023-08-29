@@ -1,6 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import DeepMutationalScan
+from eee.simulation.io import read_json
 
 import os
 
@@ -45,9 +46,18 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
                              seed=None)
 
     dms.run(output_directory="test",
-            depth=1)
+            max_depth=1,
+            output_file="yo.csv")
     
-    assert os.path.exists(os.path.join("test","eee_dms.csv"))
+    assert os.path.exists(os.path.join("test","yo.csv"))
     
+
+    os.chdir('test')
+    _, kwargs = read_json('simulation.json')
+    assert kwargs["max_depth"] == 1
+    assert kwargs["output_file"] == "yo.csv"
+
+    os.chdir("..")
+
  
     os.chdir(current_dir)

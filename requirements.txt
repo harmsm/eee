@@ -4,3 +4,4 @@ tqdm
 matplotlib
 pytest
 ete3
+scikit-learn

@@ -17,8 +17,8 @@ def read_dataframe(input,remove_extra_index=True):
     input : pandas.DataFrame or str
         either a pandas dataframe OR the filename to read in.
     remove_extra_index : bool, default=True
-        look for the 'Unnamed: 0' column that pandas writes out for
-        pandas.to_csv(index=True) and, if found, drop column.
+        look for any 'Unnamed: xx' columns that pandas writes out for
+        pandas.to_csv(index=True) and, if found, drop.
 
     Returns
     -------
@@ -53,15 +53,19 @@ def read_dataframe(input,remove_extra_index=True):
         err += "spreadsheet or a pandas dataframe.\n"
         raise ValueError(err)
 
-    # Look for extra index column that pandas writes out (in case user wrote out
-    # pandas frame manually, then re-read). Looks for first column that is
-    # Unnamed and has values [0,1,2,...,L]
+    # Look for extra index columns that pandas writes out (in case user wrote out
+    # pandas frame manually, then re-read). Looks for columns that start with 
+    # Unnamed and have data type int. 
     if remove_extra_index:
-        if df.columns[0].startswith("Unnamed:"):
-            possible_index = df.loc[:,df.columns[0]]
-            if np.issubdtype(possible_index.dtypes,int):
-                if np.array_equal(possible_index,np.arange(len(possible_index),dtype=int)):
-                    df = df.drop(columns=[df.columns[0]])
+        to_drop = []
 
-    
+        possible_extra = [c for c in df.columns if c.startswith("Unnamed:")]
+        for column in possible_extra:
+            possible_index = df.loc[:,column]
+            if np.issubdtype(possible_index.dtypes,int):
+                to_drop.append(column)
+        
+        if len(to_drop) > 0:
+            df = df.drop(columns=to_drop)
+
     return df

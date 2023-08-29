@@ -13,7 +13,7 @@ import pytest
 def test_Fitness(ens_test_data,variable_types):
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -169,7 +169,7 @@ def test_Fitness(ens_test_data,variable_types):
 def test_Fitness_fitness():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -230,7 +230,7 @@ def test_Fitness_fitness():
 def test_Fitness_to_dict():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -268,7 +268,7 @@ def test_Fitness_to_dict():
 def test_Fitness_ens():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})
@@ -297,7 +297,7 @@ def test_Fitness_ens():
 def test_Fitness_mu_dict():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -326,7 +326,7 @@ def test_Fitness_mu_dict():
 def test_Fitness_select_on():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -353,7 +353,7 @@ def test_Fitness_select_on():
 def test_Fitness_select_on_folded():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -381,7 +381,7 @@ def test_Fitness_select_on_folded():
 def test_Fitness_fitness_kwargs():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -397,20 +397,72 @@ def test_Fitness_fitness_kwargs():
     T = 1
 
     fc = Fitness(ens=ens,
-                          mu_dict=mu_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on=select_on,
-                          select_on_folded=False,
-                          fitness_kwargs={},
-                          T=T)
+                mu_dict=mu_dict,
+                fitness_fcns=fitness_fcns,
+                select_on=select_on,
+                select_on_folded=False,
+                fitness_kwargs={},
+                T=T)
 
     assert issubclass(type(fc.fitness_kwargs),dict)
     assert len(fc.fitness_kwargs) == 0
 
+    # Test a threshold. 
+
+    # Basic ensemble    
+    ens = Ensemble(gas_constant=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    folded=False,
+                    mu_stoich={"X":1})
+    ens.add_species(name="test2",
+                    observable=False,
+                    folded=False,
+                    mu_stoich={"Y":1})
+    
+    mu_dict = {"X":[0,100],"Y":[100,0]}
+    fitness_fcns = ["on_above","on_below"]
+    select_on = "fx_obs"
+    T = 1
+
+    # Both should be zero fitness
+    fc = Fitness(ens=ens,
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 select_on_folded=False,
+                 fitness_kwargs={"threshold":0.5},
+                 T=T)
+    
+    assert np.array_equal(np.zeros(2),fc.fitness(np.zeros(2)))
+
+    # "on_above" should be fit; "on_below" should not
+    fc = Fitness(ens=ens,
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 select_on_folded=False,
+                 fitness_kwargs={"threshold":0.0},
+                 T=T)
+    
+    assert np.array_equal([1.0,0.0],fc.fitness(np.zeros(2)))
+
+    # "on_below" should be fit; "on_above" should not
+    fc = Fitness(ens=ens,
+                 mu_dict=mu_dict,
+                 fitness_fcns=fitness_fcns,
+                 select_on=select_on,
+                 select_on_folded=False,
+                 fitness_kwargs={"threshold":1.0},
+                 T=T)
+
+    assert np.array_equal([0.0,1.0],fc.fitness(np.zeros(2)))
+
+
 def test_Fitness_T():
 
     # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})
@@ -452,7 +504,7 @@ def test_Fitness_T():
 def test_Fitness_condition_df():
 
         # Basic ensemble    
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     mu_stoich={"X":1})

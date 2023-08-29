@@ -1,3 +1,7 @@
+"""
+Functions for automatically building lists of and validating fitness functions
+(e.g. ff_on = "on"), etc. 
+"""
 import inspect
 from . import ff
 

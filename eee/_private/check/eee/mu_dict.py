@@ -1,3 +1,7 @@
+"""
+Check the sanity of mu_dict. Returns a validated mu_dict and the length of
+the mu_dict conditions. 
+"""
 
 from eee._private.check.standard import check_float
 
@@ -6,8 +10,20 @@ import pandas as pd
 
 def check_mu_dict(mu_dict):
     """
-    Check the sanity of mu_dict. Returns a validated mu_dict and the length of
-    the mu_dict conditions. 
+    Check the sanity of mu_dict, making sure all values are arrays with the 
+    same length.
+    
+    Parameters
+    ----------
+    mu_dict : dict
+        dictionary holding chemical potentials keyed to species name
+
+    Returns
+    -------
+    mu_dict : dict
+        validated mu_dict, where all values are arrays of the same length
+    length : int
+        the length of the mu_dict conditions
     """
 
     # Should be a dictionary

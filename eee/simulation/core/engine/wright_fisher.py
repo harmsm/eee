@@ -7,9 +7,9 @@ from eee.simulation.analysis import get_num_accumulated_mutations
 
 from eee._private.interface import MockTqdm
 
+from eee._private.check.eee import check_wf_population
 from eee._private.check.eee import check_num_generations
 from eee._private.check.eee import check_mutation_rate
-from eee._private.check.eee import check_population_size
 from eee._private.check.eee import check_num_mutations
 from eee._private.check.standard import check_int
 
@@ -117,54 +117,10 @@ def wright_fisher(gc,
         err = "\ngc should be a Genotype instance.\n\n"
         raise ValueError(err)
 
-    parse_err = "\npopulation should be a population dictionary, array of\n"
-    parse_err += "genotype indexes, or a positive integer indicating the\n"
-    parse_err += "population size.\n\n"
-
-    if hasattr(population,"__iter__"):
-
-        # Only instances allowed
-        if issubclass(type(population),type):
-            raise ValueError(parse_err)
-
-        # If someone passes in something like {5:10,8:40,9:1}, where keys are 
-        # genotype indexes and values are population size, expand to a list of 
-        # genotypes
-        if issubclass(type(population),dict):
-            
-            _population = []
-            for p in population:
-                _population.extend([p for _ in range(population[p])])
-            population = _population
-        
-        if issubclass(type(population),str):
-            population_size = check_int(population)
-            population = np.zeros(population_size,dtype=int)
-
-        # Make sure population is a numpy array, whether passed in by user as 
-        # a list or from the list built above
-        population = list(population)
-        for i in range(len(population)):
-            population[i] = check_int(value=population[i],
-                                      variable_name="population[i]",
-                                      minimum_allowed=0)
-
-        population = np.array(population,dtype=int)
-        population_size = len(population)
-
-    else:
-
-        # Get the population size
-        try:
-            population_size = int(population)
-        except (ValueError,TypeError,OverflowError):
-            raise ValueError(parse_err)
-        
-        # Build a population of all wildtype
-        population = np.zeros(population_size,dtype=int)
+    population = check_wf_population(population)
+    population_size = len(population)
     
     # Check variables
-    population_size = check_population_size(population_size)
     mutation_rate = check_mutation_rate(mutation_rate)
     num_generations = check_num_generations(num_generations)
     if num_mutations is not None:

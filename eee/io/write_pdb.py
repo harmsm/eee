@@ -15,7 +15,7 @@ def write_pdb(df,
     Parameters
     ----------
     df : pandas.DataFrame
-        dataframe with structural data (generally created using load_structure)
+        dataframe with structural data (generally created using read_structure)
     pdb_file : str
         name of pdb file to write
     overwrite : bool, default=False

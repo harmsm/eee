@@ -8,10 +8,10 @@ from eee.data import AA_3TO1
 import pandas as pd
 import numpy as np
 
-def _load_structure_pdb(pdb_file):
+def _read_structure_pdb(pdb_file):
     """
     Load the coordinates from a pdb file into a pandas data frame. Should 
-    generally be called via load_structure.
+    generally be called via read_structure.
     """
     
     out = {"model":[],
@@ -70,10 +70,10 @@ def _load_structure_pdb(pdb_file):
     return pd.DataFrame(out)
 
 
-def _load_structure_cif(cif_file):
+def _read_structure_cif(cif_file):
     """
     Load the coordinates from a cif file into a pandas dataframe. Should 
-    generally be called via load_structure.
+    generally be called via read_structure.
     """
 
     out = {"model":[],
@@ -119,7 +119,7 @@ def _load_structure_cif(cif_file):
     return pd.DataFrame(out)
     
 
-def load_structure(rcsb_file,
+def read_structure(rcsb_file,
                    remove_solvent=True,
                    remove_non_protein_polymer=True,
                    remove_multiple_models=True,
@@ -152,9 +152,9 @@ def load_structure(rcsb_file,
     
     # Figure out which file type this is and load
     if rcsb_file[-4:] == ".cif":
-        df = _load_structure_cif(rcsb_file)
+        df = _read_structure_cif(rcsb_file)
     elif rcsb_file[-4:] == ".pdb":
-        df = _load_structure_pdb(rcsb_file)
+        df = _read_structure_pdb(rcsb_file)
     else:
         err = "file type not recognized. Should be .cif or .pdb\n"
         raise ValueError(err)

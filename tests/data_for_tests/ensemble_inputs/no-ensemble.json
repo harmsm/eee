@@ -1,0 +1,31 @@
+{
+  "calc_type":"wf_sim",
+  "calc_params":{
+    "population_size": 100000,
+    "mutation_rate": 1e-05,
+    "num_generations": 100000,
+    "write_prefix": "eee_sim_test",
+    "write_frequency": 10000
+  },
+  "system":{
+    "seed": 487698321712,
+    "fitness_fcns": [
+      "on",
+      "off"
+    ],
+    "mu_dict": {
+      "iptg": [
+        1.0,
+        4.0
+      ]
+    },
+    "select_on": "dG_obs",
+    "select_on_folded": false,
+    "fitness_kwargs": {},
+    "T": [
+      310.15,
+      310.15
+    ],
+    "ddg_df": "ddg.csv"
+  }
+}

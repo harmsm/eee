@@ -1,11 +1,13 @@
 import pytest
 
-from eee.simulation.io.load_json import _validate_calc_kwargs
-from eee.simulation.io.load_json import load_json
+from eee.simulation.io.read_json import _validate_calc_kwargs
+from eee.simulation.io.read_json import read_json
 from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 
 import numpy as np
+import ete3
+
 
 import os
 import shutil
@@ -202,14 +204,15 @@ def test__validate_calc_kwargs():
     assert new_kwargs is kwargs
 
 
-def test_load_json(sim_json,test_ddg,tmpdir):
+def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
 
     shutil.copy(test_ddg["lac.csv"],"ddg.csv")
+    shutil.copy(newick_files["simple.newick"],"eee_sim.newick")
 
-    sm, calc_params = load_json(sim_json["lac.json"],
+    sm, calc_params = read_json(sim_json["lac.json"],
                                 use_stored_seed=False)
 
     species = ["hdna","h","l2e","unfolded"]
@@ -234,7 +237,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     assert sm._ens._species["unfolded"]["folded"] == False
     assert sm._ens._species["unfolded"]["mu_stoich"] == {}
 
-    assert np.isclose(sm._ens._R,0.008314)
+    assert np.isclose(sm._ens._gas_constant,0.008314)
 
     assert np.array_equal(sm._fc.mu_dict["iptg"],np.array([1,4]))
     assert sm._fc._fitness_fcns[0] == ff_on
@@ -254,7 +257,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     assert calc_params["write_prefix"] == "eee_sim_test"
     assert calc_params["write_frequency"] == 10000
 
-    sm, calc_params = load_json(sim_json["lac.json"],
+    sm, calc_params = read_json(sim_json["lac.json"],
                                 use_stored_seed=True)
     assert sm._seed == 487698321712
 
@@ -265,7 +268,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     test_json["system"].pop("seed")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json",use_stored_seed=True)
+    sm, calc_params = read_json("test.json",use_stored_seed=True)
     assert sm._seed != 487698321712
 
     test_json = copy.deepcopy(template_json)
@@ -273,7 +276,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
     
     test_json = copy.deepcopy(template_json)
     test_json.pop("calc_type")
@@ -281,62 +284,62 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
     
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("ens")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"]["ens"].pop("R")
+    test_json["system"]["ens"].pop("gas_constant")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
-    assert sm._ens._R == 0.001987
+    sm, calc_params = read_json("test.json")
+    assert sm._ens._gas_constant == 0.001987
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("mu_dict")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("fitness_fcns")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
     
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("select_on")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert sm._fc._select_on == "fx_obs"
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("select_on_folded")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert sm._fc._select_on_folded == True
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("fitness_kwargs")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert sm._fc._fitness_kwargs == {}
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("T")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert np.array_equal(sm._fc._T,[298.15,298.15])
 
     test_json = copy.deepcopy(template_json)
@@ -344,13 +347,13 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
-        sm = load_json("test.json")
+        sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
     test_json["calc_params"].pop("population_size")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert "population_size" not in calc_params
     assert len(calc_params) == 4
 
@@ -358,7 +361,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     test_json["calc_params"].pop("mutation_rate")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert "mutation_rate" not in calc_params
     assert len(calc_params) == 4
 
@@ -366,7 +369,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     test_json["calc_params"].pop("num_generations")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert "num_generations" not in calc_params
     assert len(calc_params) == 4
 
@@ -374,7 +377,7 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     test_json["calc_params"].pop("write_prefix")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert "write_prefix" not in calc_params
     assert len(calc_params) == 4
 
@@ -382,8 +385,23 @@ def test_load_json(sim_json,test_ddg,tmpdir):
     test_json["calc_params"].pop("write_frequency")
     with open('test.json','w') as f:
         json.dump(test_json,f)
-    sm, calc_params = load_json("test.json")
+    sm, calc_params = read_json("test.json")
     assert "write_frequency" not in calc_params
     assert len(calc_params) == 4
+
+    # Now test all of the json files in there to make sure they do not die. This
+    # will make sure we keep the example json files, Ensmble, and calcs in 
+    # sync with one another. 
+    for k in sim_json:
+        sm, calc_params = read_json(sim_json[k])
+
+
+    # Specific case where calc will have newick file. Make sure it is loaded in
+    # as ete3 tree, not string
+    sm, calc_params = read_json(sim_json["wf_tree_sim.json"])
+    assert issubclass(type(calc_params["newick"]),ete3.TreeNode)
+
+
+
 
     os.chdir(current_dir)

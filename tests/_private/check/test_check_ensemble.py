@@ -11,7 +11,7 @@ def test_check_ensemble(variable_types):
         with pytest.raises(ValueError):
             check_ensemble(v)
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     check_ensemble(ens)
     check_ensemble(ens,check_obs=False)
 

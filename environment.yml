@@ -10,3 +10,4 @@ dependencies:
   - matplotlib
   - pytest
   - ete3
+  - scikit-learn

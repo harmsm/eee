@@ -1,6 +1,6 @@
 
 from eee.io.write_pdb import write_pdb
-from eee.io.load_structure import load_structure
+from eee.io.read_structure import read_structure
 
 from eee._private.interface import create_new_dir
 from eee._private.interface import launch
@@ -60,7 +60,7 @@ def align_structures(dfs,
         launch(cmd=cmd,run_directory=tmp_dir)
                 
         # Move coordinates from aligned structure into dfs
-        new_df = load_structure(os.path.join(tmp_dir,out_file))
+        new_df = read_structure(os.path.join(tmp_dir,out_file))
         mask = dfs[i+1]["class"] == "ATOM"
 
         dfs[i+1].loc[mask,"x"] = np.array(new_df["x"])

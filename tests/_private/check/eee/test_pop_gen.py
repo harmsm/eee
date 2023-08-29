@@ -53,7 +53,7 @@ def test_check_num_generations(variable_types):
     for v in allowed:
         print(v,type(v),flush=True)
 
-        if int(v) <= 0:
+        if int(v) < 0:
             not_allowed.append(v)
             continue
 
@@ -72,7 +72,7 @@ def test_check_burn_in_generations(variable_types):
     for v in allowed:
         print(v,type(v),flush=True)
 
-        if int(v) <= 0:
+        if int(v) < 0:
             not_allowed.append(v)
             continue
 

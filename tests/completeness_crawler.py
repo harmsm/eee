@@ -28,7 +28,7 @@ def code_loader(filename,is_test):
     else:
         function_finder = re.compile("def .*?\(.*?")
 
-    class_check = re.compile("class .*?:")
+    class_check = re.compile("^class .*?:")
     in_class_check = re.compile("def .*?\(self")
 
     def_lines = []
@@ -37,8 +37,21 @@ def code_loader(filename,is_test):
     with open(filename) as f:
         for line in f:
 
+            # Checking for whether we're in a docstring
+            if line.strip().startswith("\"\"\""):
+
+                if in_docstring:
+                    in_docstring = False
+                else:
+                    in_docstring = True
+                continue
+
+            # If we're currently in a docstring, keep going.
+            if in_docstring:
+                continue
+
             # Is this a class?
-            if class_check.search(line):
+            if class_check.search(line.strip()):
                 def_lines.append((line.strip(),True))
                 continue
 
@@ -61,19 +74,6 @@ def code_loader(filename,is_test):
 
                 # Blank line or comment
                 if line.split("#")[0].strip() == "":
-                    continue
-
-                # Checking for whether we're in a docstring
-                if line.startswith("\"\"\""):
-
-                    if in_docstring:
-                        in_docstring = False
-                    else:
-                        in_docstring = True
-                    continue
-
-                # If we're currently in a docstring, keep going.
-                if in_docstring:
                     continue
 
                 # Okay, now have a non-docstring, non-blank, non-comment line
@@ -157,7 +157,7 @@ def completeness_crawler(code_dir,test_dir,bin_dir=None):
 
             # If this is a "class" line, indicate we are in a class. We're
             # going to want to test base.class_name...
-            if f.startswith("class"):
+            if f.startswith("class ") and f[-1] == ":":
                 class_name = f.split(" ")[1].split("(")[0].strip(":")
                 all_functions.append(f"{base}.{class_name}")
                 continue
@@ -276,9 +276,6 @@ def completeness_crawler(code_dir,test_dir,bin_dir=None):
         else:
             truly_extra_tests.append(e)
 
-    extra_fake_tests = fake_tests - expected_tests
-    missing_fake_tests = fake_tests.intersection(missing_tests)
-
     good_tests = list(good_tests)
     good_tests.sort()
     for g in good_tests:
@@ -293,7 +290,7 @@ def completeness_crawler(code_dir,test_dir,bin_dir=None):
     fake_tests.sort()
     for f in fake_tests:
         print("FAKE",f)
-
+    
     missing_tests = list(missing_tests)
     missing_tests.sort()
     for m in missing_tests:

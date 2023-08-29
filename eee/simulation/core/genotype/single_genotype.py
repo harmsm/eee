@@ -1,5 +1,5 @@
 """
-Class that holds a genotype.
+Class that holds an individual genotype.
 """
 
 import numpy as np

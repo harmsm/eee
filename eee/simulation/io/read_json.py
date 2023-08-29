@@ -1,9 +1,13 @@
+"""
+Load and validate eee json files.
+"""
 import eee
 
 from eee._private.check.ensemble import check_ensemble
 from eee.simulation import CALC_AVAILABLE
 
-from eee.io import load_ddg
+from eee.io import read_ddg
+from eee.io import read_tree
 
 import json
 import inspect
@@ -95,7 +99,7 @@ def _validate_calc_kwargs(calc_type,
     
     return kwargs
 
-def load_json(json_file,use_stored_seed=False):
+def read_json(json_file,use_stored_seed=False):
     """
     Load a json file describing a simulation. This file must have the 
     following top-level keys:
@@ -170,14 +174,14 @@ def load_json(json_file,use_stored_seed=False):
         raise ValueError(err)
     
     # Get gas constant
-    if "R" in calc_input["system"]["ens"]:
-        R = calc_input["system"]["ens"].pop("R")
+    if "gas_constant" in calc_input["system"]["ens"]:
+        gas_constant = calc_input["system"]["ens"].pop("gas_constant")
     else:
         # Get default from Ensemble class
-        R = eee.Ensemble()._R
+        gas_constant = eee.Ensemble()._gas_constant
 
     # Create ensemble from entries and validate. 
-    ens = eee.Ensemble(R=R)
+    ens = eee.Ensemble(gas_constant=gas_constant)
     for e in calc_input["system"]["ens"]:
         ens.add_species(e,**calc_input["system"]["ens"][e])
     calc_input["system"]["ens"] = check_ensemble(ens,check_obs=True)
@@ -185,8 +189,14 @@ def load_json(json_file,use_stored_seed=False):
     # Load ddg_df here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
     if "ddg_df" in calc_input["system"]:
-        calc_input["system"]["ddg_df"] = load_ddg(calc_input["system"]["ddg_df"])
-        
+        calc_input["system"]["ddg_df"] = read_ddg(calc_input["system"]["ddg_df"])
+    
+    # Load newick here so we don't have to keep track of the file when/if we
+    # start a simulation in new directory
+    if "calc_params" in calc_input:
+        if "newick" in calc_input["calc_params"]:
+            calc_input["calc_params"]["newick"] = read_tree(calc_input["calc_params"]["newick"])
+
     # Drop the seed unless we are requesting it to be kept. 
     if "seed" in calc_input["system"] and not use_stored_seed:
         calc_input["system"].pop("seed")

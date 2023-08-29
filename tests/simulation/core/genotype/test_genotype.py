@@ -9,6 +9,7 @@ import pandas as pd
 
 import os
 import random
+import copy
 
 def test_Genotype(ens_test_data):
 
@@ -101,8 +102,31 @@ def test_Genotype__create_ddg_dict(ens_test_data):
 
     with pytest.raises(ValueError):
         gc = Genotype(ens=ens,
-                               fitness_function=fitness_function,
-                               ddg_df=bad_ddg_df)
+                      fitness_function=fitness_function,
+                      ddg_df=bad_ddg_df)
+
+
+def test_Genotype__add_genotype(ens_test_data):
+    ## Tested implicitly (and more extensively) in test_Genotype_mutate
+
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
+    ddg_df = ens_test_data["ddg_df"]
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    sc = SingleGenotype(ens=ens,
+                        ddg_dict=gc.ddg_dict)
+    gc._add_genotype(new_genotype=sc,
+                     prev_index=0)
+    
+    assert gc._genotypes[1] is sc
+    assert np.array_equal(gc._trajectories[1],[0,1])
+    assert np.array_equal(gc._mut_energies[1],[0,0])
+    assert gc._fitnesses[0] == gc._fitnesses[1]
+
 
 def test_Genotype_mutate(ens_test_data):
 
@@ -207,6 +231,98 @@ def test_Genotype_mutate(ens_test_data):
     assert gc.genotypes[1].mutations[0] == "P2R"
 
 
+def test_Genotype_conditional_mutate(ens_with_fitness):
+
+    ens = copy.deepcopy(ens_with_fitness["ens"])
+    fitness_function = copy.deepcopy(ens_with_fitness["fc"].fitness)
+    
+    to_df = {"site":[1,1,1],
+             "mut":["A1V","A1P","A1C"],
+             "s1":[-1.677,0.167,0.000],
+             "s2":[ 3.333,-5000,0.000]}
+    
+    ddg_df = pd.DataFrame(to_df)
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+    
+    # ----------------- Favorable. ----------------------------- 
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1V",
+                                   condition_fcn=np.greater_equal)
+    assert result == 1
+    assert gc._genotypes[1].mutations[0] == "A1V"
+
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1V",
+                                   condition_fcn=np.greater)
+    assert result == 2
+    assert gc._genotypes[2].mutations[0] == "A1V"
+
+    # Not same -- do not incorporate
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1V",
+                                   condition_fcn=np.equal)
+    assert result == -1
+    assert len(gc._genotypes) == 3
+
+    # ----------------- Favorable. -----------------------------
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1P",
+                                   condition_fcn=np.greater_equal)
+    assert result == -1
+    assert len(gc._genotypes) == 3
+
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1P",
+                                   condition_fcn=np.greater)
+    assert result == -1
+    assert len(gc._genotypes) == 3
+
+    # Not same -- do not incorporate
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1P",
+                                   condition_fcn=np.equal)
+    assert result == -1
+    assert len(gc._genotypes) == 3
+
+    # Perversely select something lowering fitness
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1P",
+                                   condition_fcn=np.less)
+    assert result == 3
+    assert gc._genotypes[3].mutations[0] == "A1P"
+
+    # ----------------- Neutral. -----------------------------
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1C",
+                                   condition_fcn=np.greater_equal)
+    assert result == 4
+    assert gc._genotypes[4].mutations[0] == "A1C"
+
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1C",
+                                   condition_fcn=np.greater)
+    assert result == -1
+    assert len(gc._genotypes) == 5
+
+    # Not same -- do not incorporate
+    result = gc.conditional_mutate(index=0,
+                                   site=1,
+                                   mutation="A1C",
+                                   condition_fcn=np.equal)
+    assert result == 5
+    assert gc._genotypes[5].mutations[0] == "A1C"
 
 
 def test_Genotype_dump_to_csv(ens_test_data,tmpdir):
@@ -444,4 +560,19 @@ def test_Genotype_fitnesses(ens_test_data):
                            ddg_df=ddg_df)
     gc.mutate(0)
     assert len(gc.fitnesses) == 2
-    
+
+def test_Genotype_ddg_dict(ens_test_data):
+
+    ens = ens_test_data["ens"]
+    fitness_function = ens_test_data["fc"].fitness
+    ddg_df = ens_test_data["ddg_df"]
+    ddg_dict = ens_test_data["ddg_dict"]
+
+    gc = Genotype(ens=ens,
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
+        
+    # Make sure property works as expected. 
+    for a in ddg_dict:
+        for b in ddg_dict[a]:
+            assert np.array_equal(gc.ddg_dict[a][b], ddg_dict[a][b])

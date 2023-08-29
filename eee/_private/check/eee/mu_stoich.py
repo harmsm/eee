@@ -1,9 +1,21 @@
-
+"""
+Function to validate mu_stoich.
+"""
 from eee._private.check.standard import check_float
 
 def check_mu_stoich(mu_stoich):
     """
-    Check the sanity of mu_stoich.
+    Validate the mu_stoich dictionary.
+
+    Parameters
+    ----------
+    mu_stoich : dict
+        dictionary keying chemical species to stoichiometry
+
+    Returns
+    -------
+    mu_stoich : dict
+        validate mu_stoich dictionary
     """
 
     if not issubclass(type(mu_stoich),dict):

@@ -1,6 +1,9 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherSimulation
+from eee.simulation.io import read_json
+
+import pandas as pd
 
 import os
 
@@ -23,8 +26,6 @@ def test_WrightFisherSimulation(ens_test_data):
     assert wf.calc_type == "wf_sim"
     
 def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
-
-    # BETTER TESTING CHECKING XXXX
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -55,4 +56,14 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
     assert os.path.exists(os.path.join("test","eee_sim_genotypes.csv"))
     assert os.path.exists(os.path.join("test","eee_sim_generations_0.pickle"))
  
+    os.chdir('test')
+    _, kwargs = read_json('simulation.json')
+    assert kwargs["population_size"] == 100
+    assert kwargs["mutation_rate"] == 0.01
+    assert kwargs["num_generations"] == 100
+    assert kwargs["write_prefix"] == "eee_sim"
+    assert kwargs["write_frequency"] == 1000
+
+    os.chdir("..")
+
     os.chdir(current_dir)

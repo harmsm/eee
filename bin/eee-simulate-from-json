@@ -3,7 +3,7 @@
 Command line interface to run a generation eee simulation from a json file. 
 """
 
-from eee.simulation.io import load_json
+from eee.simulation.io import read_json
 
 import os
 import shutil
@@ -29,7 +29,7 @@ def main(argv=None):
     cmd = parser.parse_args(argv)
     
 
-    es, kwargs = load_json(json_file=cmd.json_file,
+    es, kwargs = read_json(json_file=cmd.json_file,
                            use_stored_seed=cmd.use_stored_seed)
 
     if os.path.exists(cmd.output_directory):

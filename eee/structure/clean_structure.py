@@ -1,5 +1,5 @@
 
-from eee.io.load_structure import load_structure
+from eee.io.read_structure import read_structure
 from eee.io.write_pdb import write_pdb
 
 from eee._private.interface import create_new_dir
@@ -51,7 +51,7 @@ def clean_structure(df,
     
     shutil.move(os.path.join(tmp_dir,"PF_input.fxout"),
                 os.path.join(tmp_dir,"tmp-output.pdb"))
-    new_df = load_structure(os.path.join(tmp_dir,"tmp-output.pdb"))
+    new_df = read_structure(os.path.join(tmp_dir,"tmp-output.pdb"))
 
     # foldx will drop all hetatms. bring them back in
     hetatm_df = df.loc[df["class"] == "HETATM",:]

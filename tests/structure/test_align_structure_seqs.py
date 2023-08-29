@@ -3,7 +3,7 @@ import pytest
 
 from eee.structure.align_structure_seqs import _run_muscle
 from eee.structure.align_structure_seqs import align_structure_seqs
-from eee.io.load_structure import load_structure
+from eee.io.read_structure import read_structure
 from eee.data import AA_1TO3
 
 import numpy as np
@@ -25,7 +25,7 @@ def test_align_structure_seqs(structure_ensembles,tmpdir):
         # Load the specified structure files
         dfs = []
         for f in structure_ensembles[k]:
-            dfs.append(load_structure(f))
+            dfs.append(read_structure(f))
         
         # Get lists of all CA atoms and residues
         seqs = []

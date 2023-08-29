@@ -1,4 +1,6 @@
-
+"""
+Code to run a Wright-Fisher simulation on an ensemble. 
+"""
 from eee.simulation.core.simulation import Simulation
 
 from eee.simulation.core.engine import wright_fisher
@@ -16,14 +18,14 @@ class WrightFisherSimulation(Simulation):
 
     @run_cleanly
     def run(self,
-            output_directory="eee_sim",
+            output_directory="eee_wf-sim",
             population_size=1000,
             mutation_rate=0.01,
             num_generations=100,
-            write_prefix="eee_sim",
+            write_prefix="eee_wf-sim",
             write_frequency=1000):
         """
-        Run a simulation and save files to an output directory.
+        Run a Wright-Fisher simulation on an ensemble.
         
         Parameters
         ----------
@@ -63,11 +65,11 @@ class WrightFisherSimulation(Simulation):
         
         # Run and return a Wright Fisher simulation.
         self._gc, _ =  wright_fisher(gc=self._gc,
-                                     population=population_size,
-                                     mutation_rate=mutation_rate,
-                                     num_generations=num_generations,
-                                     write_prefix=write_prefix,
-                                     write_frequency=write_frequency,
+                                     population=calc_params["population_size"],
+                                     mutation_rate=calc_params["mutation_rate"],
+                                     num_generations=calc_params["num_generations"],
+                                     write_prefix=calc_params["write_prefix"],
+                                     write_frequency=calc_params["write_frequency"],
                                      rng=self._rng)
         
         self._complete_calc()

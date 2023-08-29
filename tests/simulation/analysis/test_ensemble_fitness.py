@@ -14,7 +14,7 @@ import pytest
 def test_ensemble_fitness(ens_with_fitness):
     
     # Basic ensemble
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -97,7 +97,7 @@ def test_ensemble_fitness(ens_with_fitness):
     assert np.array_equal(value["fitness"],[0,0])
 
     # Check dG_obs select_on
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
@@ -171,7 +171,7 @@ def test_ensemble_fitness(ens_with_fitness):
                     T=1)
     assert np.array_equal(np.round(value["fitness"],2),[0.00,1.00])
 
-    ens = Ensemble(R=1)
+    ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,

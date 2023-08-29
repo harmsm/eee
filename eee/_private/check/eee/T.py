@@ -1,3 +1,6 @@
+"""
+Validate temperature inputs.
+"""
 
 from eee._private.check.standard import check_float
 
@@ -7,6 +10,19 @@ def check_T(T,num_conditions):
     """
     Check the sanity of a temperature, returning a numpy array num_conditions 
     long holding T. 
+
+    Parameters
+    ----------
+    T : float or numpy.ndarray
+        float with temperature; if numpy array, must be num_conditions long
+    num_conditions : int
+        number of conditions for calculation. will either expand T to this 
+        length or must match the length of T
+
+    Returns
+    -------
+    T : numpy.ndarray
+        array of floats num_conditions long
     """
 
     if issubclass(type(T),type):
