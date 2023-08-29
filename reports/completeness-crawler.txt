@@ -36,6 +36,8 @@ FOUND tests.io.test_read_structure.test__read_structure_cif
 FOUND tests.io.test_read_structure.test__read_structure_pdb
 FOUND tests.io.test_read_structure.test_read_structure
 FOUND tests.io.test_write_pdb.test_write_pdb
+FOUND tests.simulation.analysis.test_cluster_ddg.test__clean_up_axes
+FOUND tests.simulation.analysis.test_cluster_ddg.test_cluster_ddg
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
 FOUND tests.simulation.analysis.test_num_genotypes.test_get_num_genotypes
 FOUND tests.simulation.calcs.test_accessible_paths.test_AcessiblePaths
@@ -144,6 +146,7 @@ MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.simulation.analysis.test_on_tree.test_extract_alignment
 MISSING tests.simulation.test___init__.test__get_calc_available
+MISSING tests.test___init__.test__check_for_notebook
 FOUND & EXTRA tests._private.check.eee.test_T.test_check_T
 FOUND & EXTRA tests._private.check.test_check_ensemble.test_check_ensemble
 FOUND & EXTRA tests.simulation.test_simulation___init__.test__get_calc_available

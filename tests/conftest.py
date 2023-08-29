@@ -1,5 +1,9 @@
 import pytest
 
+# Make sure we use the non-interactive pdf backend throughout testing
+import matplotlib
+matplotlib.use('pdf')
+
 from eee.ensemble import Ensemble
 from eee.simulation.core.fitness.fitness import Fitness
 from eee.simulation.core.fitness.ff import ff_on
