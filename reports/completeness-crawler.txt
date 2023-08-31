@@ -33,6 +33,8 @@ FOUND tests.io.test_read_ensemble.test__json_to_ensemble
 FOUND tests.io.test_read_ensemble.test__search_for_key
 FOUND tests.io.test_read_ensemble.test__spreadsheet_to_ensemble
 FOUND tests.io.test_read_ensemble.test_read_ensemble
+FOUND tests.io.test_read_json.test__validate_calc_kwargs
+FOUND tests.io.test_read_json.test_read_json
 FOUND tests.io.test_read_structure.test__read_structure_cif
 FOUND tests.io.test_read_structure.test__read_structure_pdb
 FOUND tests.io.test_read_structure.test_read_structure
@@ -108,8 +110,6 @@ FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_fitness_f
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_gc
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_get_calc_description
 FOUND tests.simulation.core.simulation.test_simulation.test_Simulation_system_params
-FOUND tests.simulation.io.test_read_json.test__validate_calc_kwargs
-FOUND tests.simulation.io.test_read_json.test_read_json
 FOUND tests.structure.test_align_structure_seqs.test_align_structure_seqs
 FOUND tests.structure.test_sync_structures.test__create_unique_filenames
 FOUND tests.structure.test_sync_structures.test_sync_structures

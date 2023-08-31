@@ -1,7 +1,7 @@
 import pytest
 
-from eee.simulation.io.read_json import _validate_calc_kwargs
-from eee.simulation.io.read_json import read_json
+from eee.io.read_json import _validate_calc_kwargs
+from eee.io.read_json import read_json
 from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
 
@@ -411,7 +411,7 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     # as ete3 tree, not string
     shutil.copy(sim_json["wf_tree_sim.json"],"wf_tree_sim.json")
     sm, calc_params = read_json("wf_tree_sim.json")
-    assert issubclass(type(calc_params["newick"]),ete3.TreeNode)
+    assert issubclass(type(calc_params["tree"]),ete3.TreeNode)
 
     # Make sure we can pass in something with no calc_params defined
     shutil.copy(sim_json["dms.json"],"dms.json")

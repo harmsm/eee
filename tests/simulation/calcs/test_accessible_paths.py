@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs.accessible_paths import AcessiblePaths
-from eee.simulation.io import read_json
+from eee.io import read_json
 
 import os
 

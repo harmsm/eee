@@ -6,13 +6,12 @@ import eee
 from eee._private.check.ensemble import check_ensemble
 from eee.simulation import CALC_AVAILABLE
 
-from eee.io import read_ddg
-from eee.io import read_tree
+from .read_ddg import read_ddg
+from .tree import read_tree
 
 import json
 import inspect
 import os
-
 
 def _validate_calc_kwargs(calc_type,
                           calc_function,
@@ -201,9 +200,9 @@ def read_json(json_file,use_stored_seed=False):
     
     # Load newick here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
-    if "newick" in calc_input["calc_params"]:
-        newick_file = os.path.join(base_path,calc_input["calc_params"]["newick"])
-        calc_input["calc_params"]["newick"] = read_tree(newick_file)
+    if "tree" in calc_input["calc_params"]:
+        newick_file = os.path.join(base_path,calc_input["calc_params"]["tree"])
+        calc_input["calc_params"]["tree"] = read_tree(newick_file)
 
 
     # Drop the seed unless we are requesting it to be kept. 

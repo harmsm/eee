@@ -33,6 +33,3 @@ from .core import FF_AVAILABLE
 CALC_AVAILABLE = _get_calc_available()
 
 
-# This has to go down here because io.read_json depends on CALC_AVAILABLE, 
-# which we define above. 
-from . import io

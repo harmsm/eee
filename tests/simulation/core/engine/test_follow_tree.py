@@ -137,14 +137,14 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
     os.chdir(tmpdir)
 
     template_gc = ens_with_fitness["gc"]
-    tree_file = newick_files["simple.newick"]
+    tree = ete3.Tree(newick_files["simple.newick"])
     rng = np.random.Generator(np.random.PCG64(1))
 
     gc = copy.deepcopy(template_gc)  
 
     assert len(glob.glob("*.pickle")) == 0
     gc_out, tree_out = follow_tree(gc,
-                                   tree_file,
+                                   tree=tree,
                                    population=100,
                                    mutation_rate=0.1,
                                    num_generations=1000,
@@ -234,14 +234,16 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
         os.remove(f)
 
     # Make sure run happens with default args before passing in bad ones
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc)
     follow_tree(gc=gc,
                 num_generations=1000,
                 mutation_rate=0.1,
-                newick=newick_files["simple.newick"])
+                tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
@@ -249,10 +251,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=v,
                         num_generations=1000,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["everything"]:
         if v is None:
@@ -262,11 +265,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=1000,
                         mutation_rate=0.1,
-                        newick=v)
+                        tree=v)
     for f in glob.glob("*.*"):
         os.remove(f)
 
-
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["not_ints_or_coercable"]:
         if hasattr(v,"__iter__"):
@@ -286,10 +289,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
                         population=v,
                         num_generations=1000,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in [-1,0]:
         print(v,type(v),flush=True)
@@ -298,10 +302,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
                         population=v,
                         num_generations=1000,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["not_ints_or_coercable"]:
         
@@ -310,10 +315,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=v,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in [-1]:
         print(v,type(v),flush=True)
@@ -321,10 +327,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=v,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["not_floats_or_coercable"]:
         
@@ -333,10 +340,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=1000,
                         mutation_rate=v,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in [-1,0]:
         print(v,type(v),flush=True)
@@ -344,10 +352,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=1000,
                         mutation_rate=v,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["not_ints_or_coercable"]:
         
@@ -357,10 +366,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
                         num_generations=1000,
                         mutation_rate=0.1,
                         burn_in_generations=v,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in [-1]:
         print(v,type(v),flush=True)
@@ -369,10 +379,11 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
                         num_generations=1000,
                         mutation_rate=0.1,
                         burn_in_generations=v,
-                        newick=newick_files["simple.newick"])
+                        tree=tree)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc) 
     for v in variable_types["everything"]:
         if v is None:
@@ -382,17 +393,18 @@ def test_follow_tree(ens_with_fitness,newick_files,variable_types,tmpdir):
             follow_tree(gc=gc,
                         num_generations=1000,
                         mutation_rate=0.1,
-                        newick=newick_files["simple.newick"],
+                        tree=tree,
                         rng=v)
     for f in glob.glob("*.*"):
         os.remove(f)
 
+    tree = ete3.Tree(newick_files["simple.newick"])
     gc = copy.deepcopy(template_gc)
     with pytest.raises(ValueError):
         follow_tree(gc=gc,
                 num_generations=1000,
                 mutation_rate=0.1,
                 write_prefix=None,
-                newick=newick_files["simple.newick"])
+                tree=tree)
 
     os.chdir(current_dir)

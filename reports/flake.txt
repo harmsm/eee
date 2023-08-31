@@ -951,6 +951,131 @@
 ./tests/data_for_tests/programs/write_to_file_over_time.py:77:1: E302 expected 2 blank lines, found 1
 ./tests/data_for_tests/programs/write_to_file_over_time.py:79:33: E231 missing whitespace after ','
 ./tests/data_for_tests/programs/write_to_file_over_time.py:81:1: E305 expected 2 blank lines after class or function definition, found 1
+./tests/io/test_read_json.py:20:53: W291 trailing whitespace
+./tests/io/test_read_json.py:22:24: E261 at least two spaces before inline comment
+./tests/io/test_read_json.py:23:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:34:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:43:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:52:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:60:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:73:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:78:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:92:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:93:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:99:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:114:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:115:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:116:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:122:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:134:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:137:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:138:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:139:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:140:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:146:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:158:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:160:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:161:29: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:162:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:163:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:164:22: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:170:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:184:5: E303 too many blank lines (2)
+./tests/io/test_read_json.py:185:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:186:33: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:187:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:193:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:202:41: E127 continuation line over-indented for visual indent
+./tests/io/test_read_json.py:203:41: E127 continuation line over-indented for visual indent
+./tests/io/test_read_json.py:207:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:207:37: E231 missing whitespace after ','
+./tests/io/test_read_json.py:207:50: E231 missing whitespace after ','
+./tests/io/test_read_json.py:212:37: E231 missing whitespace after ','
+./tests/io/test_read_json.py:213:36: E231 missing whitespace after ','
+./tests/io/test_read_json.py:214:46: E231 missing whitespace after ','
+./tests/io/test_read_json.py:219:22: E231 missing whitespace after ','
+./tests/io/test_read_json.py:219:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:219:32: E231 missing whitespace after ','
+./tests/io/test_read_json.py:220:42: E231 missing whitespace after ','
+./tests/io/test_read_json.py:222:51: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/io/test_read_json.py:223:47: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/io/test_read_json.py:227:48: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/io/test_read_json.py:228:44: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/io/test_read_json.py:232:50: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/io/test_read_json.py:233:46: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/io/test_read_json.py:234:59: E231 missing whitespace after ':'
+./tests/io/test_read_json.py:237:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/io/test_read_json.py:238:51: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/io/test_read_json.py:241:44: E231 missing whitespace after ','
+./tests/io/test_read_json.py:243:49: E231 missing whitespace after ','
+./tests/io/test_read_json.py:243:61: E231 missing whitespace after ','
+./tests/io/test_read_json.py:247:37: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/io/test_read_json.py:249:36: E231 missing whitespace after ','
+./tests/io/test_read_json.py:249:44: E231 missing whitespace after ','
+./tests/io/test_read_json.py:250:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:251:32: E231 missing whitespace after ','
+./tests/io/test_read_json.py:256:51: E231 missing whitespace after ','
+./tests/io/test_read_json.py:270:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:271:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:272:44: E231 missing whitespace after ','
+./tests/io/test_read_json.py:277:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:278:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:281:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:285:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:286:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:289:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:292:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:293:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:299:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:300:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:306:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:307:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:313:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:314:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:317:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:320:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:321:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:327:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:328:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:330:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/io/test_read_json.py:334:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:335:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:341:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:342:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:344:36: E231 missing whitespace after ','
+./tests/io/test_read_json.py:344:44: E231 missing whitespace after ','
+./tests/io/test_read_json.py:348:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:349:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:355:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:356:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:363:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:364:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:371:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:372:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:379:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:380:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:387:26: E231 missing whitespace after ','
+./tests/io/test_read_json.py:388:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:394:75: W291 trailing whitespace
+./tests/io/test_read_json.py:395:29: W291 trailing whitespace
+./tests/io/test_read_json.py:397:32: E231 missing whitespace after ','
+./tests/io/test_read_json.py:404:31: E231 missing whitespace after ','
+./tests/io/test_read_json.py:405:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:410:5: E303 too many blank lines (2)
+./tests/io/test_read_json.py:412:45: E231 missing whitespace after ','
+./tests/io/test_read_json.py:414:48: E231 missing whitespace after ','
+./tests/io/test_read_json.py:417:37: E231 missing whitespace after ','
+./tests/io/test_read_json.py:421:25: E231 missing whitespace after ','
+./tests/io/test_read_json.py:422:28: E231 missing whitespace after ','
+./tests/io/test_read_json.py:423:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:426:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:428:5: E303 too many blank lines (2)
+./tests/io/test_read_json.py:431:42: E231 missing whitespace after ','
+./tests/io/test_read_json.py:432:37: E231 missing whitespace after ','
+./tests/io/test_read_json.py:433:58: E231 missing whitespace after ','
+./tests/io/test_read_json.py:436:1: W293 blank line contains whitespace
+./tests/io/test_read_json.py:440:5: E303 too many blank lines (6)
+./tests/io/test_read_json.py:440:26: W292 no newline at end of file
 ./tests/io/test_read_structure.py:9:1: E302 expected 2 blank lines, found 1
 ./tests/io/test_read_structure.py:10:1: W293 blank line contains whitespace
 ./tests/io/test_read_structure.py:13:35: E231 missing whitespace after ','
@@ -2064,54 +2189,53 @@
 ./tests/simulation/core/engine/test_follow_tree.py:226:49: W291 trailing whitespace
 ./tests/simulation/core/engine/test_follow_tree.py:227:1: W293 blank line contains whitespace
 ./tests/simulation/core/engine/test_follow_tree.py:231:53: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:245:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:247:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:247:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:256:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:260:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:260:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:270:5: E303 too many blank lines (2)
-./tests/simulation/core/engine/test_follow_tree.py:270:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:272:21: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:274:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:247:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:249:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:249:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:259:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:263:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:263:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:273:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:275:21: E231 missing whitespace after ','
 ./tests/simulation/core/engine/test_follow_tree.py:277:38: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:279:1: W293 blank line contains whitespace
-./tests/simulation/core/engine/test_follow_tree.py:283:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:283:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:293:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:294:17: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:295:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:295:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:305:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:307:1: W293 blank line contains whitespace
-./tests/simulation/core/engine/test_follow_tree.py:308:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:308:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:317:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:319:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:319:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:328:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:330:1: W293 blank line contains whitespace
-./tests/simulation/core/engine/test_follow_tree.py:331:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:331:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:340:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:341:17: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:342:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:342:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:351:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:353:1: W293 blank line contains whitespace
-./tests/simulation/core/engine/test_follow_tree.py:354:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:354:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:364:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:366:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:366:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:376:36: W291 trailing whitespace
-./tests/simulation/core/engine/test_follow_tree.py:380:16: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:380:24: E231 missing whitespace after ','
-./tests/simulation/core/engine/test_follow_tree.py:393:17: E128 continuation line under-indented for visual indent
-./tests/simulation/core/engine/test_follow_tree.py:394:17: E128 continuation line under-indented for visual indent
-./tests/simulation/core/engine/test_follow_tree.py:395:17: E128 continuation line under-indented for visual indent
-./tests/simulation/core/engine/test_follow_tree.py:396:17: E128 continuation line under-indented for visual indent
-./tests/simulation/core/engine/test_follow_tree.py:398:26: W292 no newline at end of file
+./tests/simulation/core/engine/test_follow_tree.py:280:38: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:282:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_follow_tree.py:286:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:286:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:297:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:298:17: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:299:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:299:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:310:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:312:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_follow_tree.py:313:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:313:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:323:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:325:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:325:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:335:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:337:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_follow_tree.py:338:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:338:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:348:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:349:17: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:350:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:350:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:360:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:362:1: W293 blank line contains whitespace
+./tests/simulation/core/engine/test_follow_tree.py:363:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:363:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:374:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:376:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:376:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:387:36: W291 trailing whitespace
+./tests/simulation/core/engine/test_follow_tree.py:391:16: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:391:24: E231 missing whitespace after ','
+./tests/simulation/core/engine/test_follow_tree.py:405:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_follow_tree.py:406:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_follow_tree.py:407:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_follow_tree.py:408:17: E128 continuation line under-indented for visual indent
+./tests/simulation/core/engine/test_follow_tree.py:410:26: W292 no newline at end of file
 ./tests/simulation/core/engine/test_wright_fisher.py:16:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/core/engine/test_wright_fisher.py:16:41: E231 missing whitespace after ','
 ./tests/simulation/core/engine/test_wright_fisher.py:17:1: W293 blank line contains whitespace
@@ -2923,131 +3047,6 @@
 ./tests/simulation/analysis/test_ensemble_fitness.py:210:25: E128 continuation line under-indented for visual indent
 ./tests/simulation/analysis/test_ensemble_fitness.py:211:25: E128 continuation line under-indented for visual indent
 ./tests/simulation/analysis/test_ensemble_fitness.py:211:29: W291 trailing whitespace
-./tests/simulation/io/test_read_json.py:20:53: W291 trailing whitespace
-./tests/simulation/io/test_read_json.py:22:24: E261 at least two spaces before inline comment
-./tests/simulation/io/test_read_json.py:23:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:34:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:43:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:52:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:60:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:73:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:78:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:92:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:93:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:99:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:114:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:115:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:116:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:122:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:134:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:137:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:138:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:139:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:140:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:146:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:158:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:160:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:161:29: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:162:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:163:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:164:22: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:170:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:184:5: E303 too many blank lines (2)
-./tests/simulation/io/test_read_json.py:185:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:186:33: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:187:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:193:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:202:41: E127 continuation line over-indented for visual indent
-./tests/simulation/io/test_read_json.py:203:41: E127 continuation line over-indented for visual indent
-./tests/simulation/io/test_read_json.py:207:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:207:37: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:207:50: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:212:37: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:213:36: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:214:46: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:219:22: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:219:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:219:32: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:220:42: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:222:51: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/io/test_read_json.py:223:47: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/io/test_read_json.py:227:48: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_read_json.py:228:44: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/io/test_read_json.py:232:50: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_read_json.py:233:46: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/io/test_read_json.py:234:59: E231 missing whitespace after ':'
-./tests/simulation/io/test_read_json.py:237:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_read_json.py:238:51: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_read_json.py:241:44: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:243:49: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:243:61: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:247:37: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-./tests/simulation/io/test_read_json.py:249:36: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:249:44: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:250:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:251:32: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:256:51: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:270:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:271:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:272:44: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:277:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:278:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:281:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:285:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:286:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:289:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:292:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:293:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:299:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:300:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:306:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:307:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:313:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:314:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:317:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:320:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:321:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:327:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:328:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:330:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/io/test_read_json.py:334:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:335:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:341:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:342:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:344:36: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:344:44: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:348:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:349:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:355:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:356:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:363:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:364:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:371:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:372:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:379:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:380:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:387:26: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:388:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:394:75: W291 trailing whitespace
-./tests/simulation/io/test_read_json.py:395:29: W291 trailing whitespace
-./tests/simulation/io/test_read_json.py:397:32: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:404:31: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:405:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:410:5: E303 too many blank lines (2)
-./tests/simulation/io/test_read_json.py:412:45: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:414:50: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:417:37: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:421:25: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:422:28: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:423:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:426:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:428:5: E303 too many blank lines (2)
-./tests/simulation/io/test_read_json.py:431:42: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:432:37: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:433:58: E231 missing whitespace after ','
-./tests/simulation/io/test_read_json.py:436:1: W293 blank line contains whitespace
-./tests/simulation/io/test_read_json.py:440:5: E303 too many blank lines (6)
-./tests/simulation/io/test_read_json.py:440:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_dms.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_dms.py:8:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_dms.py:9:1: W293 blank line contains whitespace
@@ -3115,7 +3114,7 @@
 ./tests/simulation/calcs/test_wf_tree_sim.py:71:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_tree_sim.py:72:73: W291 trailing whitespace
 ./tests/simulation/calcs/test_wf_tree_sim.py:73:30: W291 trailing whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:76:45: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:76:43: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_tree_sim.py:85:1: W391 blank line at end of file
 ./tests/_private/test_interface.py:14:1: F401 'time' imported but unused
 ./tests/_private/test_interface.py:16:1: E302 expected 2 blank lines, found 1
@@ -4484,9 +4483,55 @@
 ./eee/io/__init__.py:4:1: F401 '.read_dataframe.read_dataframe' imported but unused
 ./eee/io/__init__.py:5:1: F401 '.read_ensemble.read_ensemble' imported but unused
 ./eee/io/__init__.py:6:1: F401 '.write_pdb.write_pdb' imported but unused
+./eee/io/__init__.py:7:1: F401 '.read_json.read_json' imported but unused
 ./eee/io/__init__.py:9:1: F401 '.tree.read_tree' imported but unused
 ./eee/io/__init__.py:10:1: F401 '.tree.write_tree' imported but unused
 ./eee/io/__init__.py:10:29: W292 no newline at end of file
+./eee/io/read_json.py:16:1: E302 expected 2 blank lines, found 1
+./eee/io/read_json.py:23:73: W291 trailing whitespace
+./eee/io/read_json.py:29:1: W293 blank line contains whitespace
+./eee/io/read_json.py:33:70: W291 trailing whitespace
+./eee/io/read_json.py:34:31: W291 trailing whitespace
+./eee/io/read_json.py:52:1: W293 blank line contains whitespace
+./eee/io/read_json.py:57:1: W293 blank line contains whitespace
+./eee/io/read_json.py:88:41: W291 trailing whitespace
+./eee/io/read_json.py:89:1: W293 blank line contains whitespace
+./eee/io/read_json.py:92:1: W293 blank line contains whitespace
+./eee/io/read_json.py:93:75: W291 trailing whitespace
+./eee/io/read_json.py:94:1: W293 blank line contains whitespace
+./eee/io/read_json.py:99:1: W293 blank line contains whitespace
+./eee/io/read_json.py:102:1: C901 'read_json' is too complex (12)
+./eee/io/read_json.py:102:1: E302 expected 2 blank lines, found 1
+./eee/io/read_json.py:102:24: E231 missing whitespace after ','
+./eee/io/read_json.py:104:70: W291 trailing whitespace
+./eee/io/read_json.py:107:76: W291 trailing whitespace
+./eee/io/read_json.py:109:76: W291 trailing whitespace
+./eee/io/read_json.py:113:56: W291 trailing whitespace
+./eee/io/read_json.py:116:77: W291 trailing whitespace
+./eee/io/read_json.py:117:52: W291 trailing whitespace
+./eee/io/read_json.py:119:78: W291 trailing whitespace
+./eee/io/read_json.py:121:1: W293 blank line contains whitespace
+./eee/io/read_json.py:130:73: W291 trailing whitespace
+./eee/io/read_json.py:131:71: W291 trailing whitespace
+./eee/io/read_json.py:132:18: W291 trailing whitespace
+./eee/io/read_json.py:140:75: W291 trailing whitespace
+./eee/io/read_json.py:141:21: W291 trailing whitespace
+./eee/io/read_json.py:149:1: W293 blank line contains whitespace
+./eee/io/read_json.py:156:38: E231 missing whitespace after ','
+./eee/io/read_json.py:170:1: W293 blank line contains whitespace
+./eee/io/read_json.py:172:30: W291 trailing whitespace
+./eee/io/read_json.py:177:1: W293 blank line contains whitespace
+./eee/io/read_json.py:185:49: W291 trailing whitespace
+./eee/io/read_json.py:188:26: E231 missing whitespace after ','
+./eee/io/read_json.py:189:53: E231 missing whitespace after ','
+./eee/io/read_json.py:198:42: E231 missing whitespace after ','
+./eee/io/read_json.py:200:1: W293 blank line contains whitespace
+./eee/io/read_json.py:204:45: E231 missing whitespace after ','
+./eee/io/read_json.py:208:5: E303 too many blank lines (2)
+./eee/io/read_json.py:208:60: W291 trailing whitespace
+./eee/io/read_json.py:217:36: W291 trailing whitespace
+./eee/io/read_json.py:227:1: W293 blank line contains whitespace
+./eee/io/read_json.py:228:1: W391 blank line at end of file
 ./eee/io/read_ensemble.py:7:1: E302 expected 2 blank lines, found 1
 ./eee/io/read_ensemble.py:11:75: W291 trailing whitespace
 ./eee/io/read_ensemble.py:12:77: W291 trailing whitespace
@@ -4637,10 +4682,7 @@
 ./eee/simulation/__init__.py:32:1: F401 '.core.FF_AVAILABLE' imported but unused
 ./eee/simulation/__init__.py:32:1: E305 expected 2 blank lines after class or function definition, found 1
 ./eee/simulation/__init__.py:32:1: E402 module level import not at top of file
-./eee/simulation/__init__.py:36:75: W291 trailing whitespace
-./eee/simulation/__init__.py:37:25: W291 trailing whitespace
-./eee/simulation/__init__.py:38:1: F401 '.io' imported but unused
-./eee/simulation/__init__.py:38:1: E402 module level import not at top of file
+./eee/simulation/__init__.py:35:1: W391 blank line at end of file
 ./eee/simulation/core/__init__.py:5:1: F401 '.genotype.Genotype' imported but unused
 ./eee/simulation/core/__init__.py:6:1: F401 '.fitness.Fitness' imported but unused
 ./eee/simulation/core/__init__.py:7:1: F401 '.fitness.FF_AVAILABLE' imported but unused
@@ -4921,59 +4963,62 @@
 ./eee/simulation/core/engine/exhaustive.py:106:1: W293 blank line contains whitespace
 ./eee/simulation/core/engine/exhaustive.py:106:5: W292 no newline at end of file
 ./eee/simulation/core/engine/follow_tree.py:2:62: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:23:1: E302 expected 2 blank lines, found 1
-./eee/simulation/core/engine/follow_tree.py:31:77: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:32:75: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:33:73: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:34:44: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:36:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:39:77: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:43:63: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:47:76: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:48:35: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:52:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:58:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:67:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:68:52: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:70:26: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:71:32: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:73:38: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:85:67: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:86:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:90:73: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:91:78: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:92:66: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:98:78: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:100:76: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:103:77: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:104:51: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:106:72: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:107:80: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:108:17: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:110:79: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:115:44: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:117:60: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:120:28: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:125:79: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:129:75: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:130:31: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:131:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:134:31: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:136:30: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:137:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:143:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:181:9: E303 too many blank lines (2)
-./eee/simulation/core/engine/follow_tree.py:185:49: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:188:30: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:189:36: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:195:38: E231 missing whitespace after ','
-./eee/simulation/core/engine/follow_tree.py:200:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:206:64: W291 trailing whitespace
-./eee/simulation/core/engine/follow_tree.py:212:17: E303 too many blank lines (2)
-./eee/simulation/core/engine/follow_tree.py:219:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:235:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:242:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/follow_tree.py:246:20: W292 no newline at end of file
+./eee/simulation/core/engine/follow_tree.py:21:1: E302 expected 2 blank lines, found 1
+./eee/simulation/core/engine/follow_tree.py:29:77: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:30:75: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:31:73: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:32:44: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:34:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:37:77: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:41:63: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:45:76: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:46:35: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:50:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:56:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:65:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:66:52: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:68:26: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:69:32: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:71:38: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:74:1: C901 'follow_tree' is too complex (11)
+./eee/simulation/core/engine/follow_tree.py:83:67: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:84:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:88:73: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:89:78: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:90:66: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:96:78: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:98:76: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:101:77: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:102:51: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:104:72: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:105:80: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:106:17: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:108:79: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:113:44: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:115:60: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:118:28: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:123:79: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:127:75: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:128:31: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:129:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:132:31: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:134:30: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:135:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:136:33: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:138:30: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:145:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:180:9: E303 too many blank lines (2)
+./eee/simulation/core/engine/follow_tree.py:184:49: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:187:30: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:188:36: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:194:38: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:199:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:205:64: W291 trailing whitespace
+./eee/simulation/core/engine/follow_tree.py:211:17: E303 too many blank lines (2)
+./eee/simulation/core/engine/follow_tree.py:218:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:234:1: W293 blank line contains whitespace
+./eee/simulation/core/engine/follow_tree.py:238:24: E231 missing whitespace after ','
+./eee/simulation/core/engine/follow_tree.py:243:20: W292 no newline at end of file
 ./eee/simulation/core/engine/wright_fisher.py:24:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/engine/wright_fisher.py:30:1: W293 blank line contains whitespace
 ./eee/simulation/core/engine/wright_fisher.py:43:58: E231 missing whitespace after ','
@@ -5390,52 +5435,6 @@
 ./eee/simulation/analysis/on_tree.py:34:1: W293 blank line contains whitespace
 ./eee/simulation/analysis/on_tree.py:46:5: E303 too many blank lines (3)
 ./eee/simulation/analysis/on_tree.py:58:23: W292 no newline at end of file
-./eee/simulation/io/__init__.py:4:1: F401 '.read_json.read_json' imported but unused
-./eee/simulation/io/__init__.py:4:33: W292 no newline at end of file
-./eee/simulation/io/read_json.py:24:73: W291 trailing whitespace
-./eee/simulation/io/read_json.py:30:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:34:70: W291 trailing whitespace
-./eee/simulation/io/read_json.py:35:31: W291 trailing whitespace
-./eee/simulation/io/read_json.py:53:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:58:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:89:41: W291 trailing whitespace
-./eee/simulation/io/read_json.py:90:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:93:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:94:75: W291 trailing whitespace
-./eee/simulation/io/read_json.py:95:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:100:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:103:1: C901 'read_json' is too complex (12)
-./eee/simulation/io/read_json.py:103:1: E302 expected 2 blank lines, found 1
-./eee/simulation/io/read_json.py:103:24: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:105:70: W291 trailing whitespace
-./eee/simulation/io/read_json.py:108:76: W291 trailing whitespace
-./eee/simulation/io/read_json.py:110:76: W291 trailing whitespace
-./eee/simulation/io/read_json.py:114:56: W291 trailing whitespace
-./eee/simulation/io/read_json.py:117:77: W291 trailing whitespace
-./eee/simulation/io/read_json.py:118:52: W291 trailing whitespace
-./eee/simulation/io/read_json.py:120:78: W291 trailing whitespace
-./eee/simulation/io/read_json.py:122:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:131:73: W291 trailing whitespace
-./eee/simulation/io/read_json.py:132:71: W291 trailing whitespace
-./eee/simulation/io/read_json.py:133:18: W291 trailing whitespace
-./eee/simulation/io/read_json.py:141:75: W291 trailing whitespace
-./eee/simulation/io/read_json.py:142:21: W291 trailing whitespace
-./eee/simulation/io/read_json.py:150:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:157:38: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:171:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:173:30: W291 trailing whitespace
-./eee/simulation/io/read_json.py:178:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:186:49: W291 trailing whitespace
-./eee/simulation/io/read_json.py:189:26: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:190:53: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:199:42: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:201:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:205:45: E231 missing whitespace after ','
-./eee/simulation/io/read_json.py:209:5: E303 too many blank lines (2)
-./eee/simulation/io/read_json.py:209:60: W291 trailing whitespace
-./eee/simulation/io/read_json.py:218:36: W291 trailing whitespace
-./eee/simulation/io/read_json.py:228:1: W293 blank line contains whitespace
-./eee/simulation/io/read_json.py:229:1: W391 blank line at end of file
 ./eee/simulation/calcs/dms.py:2:41: W291 trailing whitespace
 ./eee/simulation/calcs/dms.py:21:81: W291 trailing whitespace
 ./eee/simulation/calcs/dms.py:22:1: W293 blank line contains whitespace
@@ -5475,20 +5474,24 @@
 ./eee/simulation/calcs/accessible_paths.py:78:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/accessible_paths.py:78:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_tree_sim.py:3:6: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:16:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/calcs/wf_tree_sim.py:30:81: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:31:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:43:77: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:45:77: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:49:48: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:51:64: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:55:59: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:59:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:71:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:73:22: E222 multiple spaces after operator
-./eee/simulation/calcs/wf_tree_sim.py:74:50: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:81:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:53:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:54:37: E231 missing whitespace after ','
+./eee/simulation/calcs/wf_tree_sim.py:56:34: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:59:59: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:63:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:75:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:77:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_tree_sim.py:78:46: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:85:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:85:5: W292 no newline at end of file
+./eee/simulation/calcs/wf_tree_sim.py:89:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:89:5: W292 no newline at end of file
 ./eee/_private/interface.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:17:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:23:1: W293 blank line contains whitespace
@@ -5944,7 +5947,7 @@
 ./profile/blah/wright_fisher.py:30:49: E128 continuation line under-indented for visual indent
 ./profile/blah/wright_fisher.py:31:49: E128 continuation line under-indented for visual indent
 ./profile/blah/wright_fisher.py:33:1: W391 blank line at end of file
-29    C901 'compare_dict' is too complex (22)
+30    C901 'compare_dict' is too complex (22)
 2     E114 indentation is not a multiple of 4 (comment)
 1     E116 unexpected indentation (comment)
 2     E117 over-indented (comment)
@@ -5956,27 +5959,27 @@
 1     E221 multiple spaces before operator
 3     E222 multiple spaces after operator
 4     E225 missing whitespace around operator
-3307  E231 missing whitespace after ','
+3310  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 4     E265 block comment should start with '# '
 2     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-190   E302 expected 2 blank lines, found 1
-102   E303 too many blank lines (2)
+192   E302 expected 2 blank lines, found 1
+101   E303 too many blank lines (2)
 5     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
-13    E402 module level import not at top of file
+12    E402 module level import not at top of file
 2     E701 multiple statements on one line (colon)
 101   E712 comparison to True should be 'if cond is True:' or 'if cond:'
 2     E714 test for object identity should be 'is not'
 4     E722 do not use bare 'except'
-74    F401 'glob' imported but unused
+73    F401 'glob' imported but unused
 9     F541 f-string is missing placeholders
 3     F811 redefinition of unused 'ff_on' from line 2
 8     F841 local variable 'value' is assigned to but never used
 684   W291 trailing whitespace
-77    W292 no newline at end of file
+76    W292 no newline at end of file
 801   W293 blank line contains whitespace
-16    W391 blank line at end of file
+17    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-5946
+5949

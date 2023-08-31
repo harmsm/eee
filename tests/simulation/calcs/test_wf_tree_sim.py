@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherTreeSimulation
-from eee.simulation.io.read_json import read_json
+from eee.io import read_json
 
 import ete3
 
@@ -47,7 +47,7 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
                                     seed=None)
 
     wf.run(output_directory="test",
-           newick=newick_files["simple.newick"],
+           tree=ete3.Tree(newick_files["simple.newick"]),
            population_size=100,
            mutation_rate=0.1,
            num_generations=1000,
@@ -73,7 +73,7 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
     # recorded into the json. 
     os.chdir('test')
     _, kwargs = read_json('simulation.json')
-    assert issubclass(type(kwargs["newick"]),ete3.TreeNode)
+    assert issubclass(type(kwargs["tree"]),ete3.TreeNode)
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.1
     assert kwargs["num_generations"] == 1000

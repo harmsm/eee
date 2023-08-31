@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import DeepMutationalScan
-from eee.simulation.io import read_json
+from eee.io import read_json
 
 import os
 

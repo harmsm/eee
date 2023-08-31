@@ -1,5 +1,5 @@
 import eee
-from eee.simulation.io.read_json import read_json
+from eee.io import read_json
 from eee._private.check.compare_dict import compare_dict
 
 import pandas as pd
