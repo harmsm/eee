@@ -237,6 +237,14 @@ def programs():
 
     return out_dict
 
+@pytest.fixture(scope="module")
+def tiny_sim_output():
+    """
+    Tiny but complete simulation outputs.
+    """
+
+    return _file_globber("data_for_tests","tiny_sim_output","*")
+
 
 @pytest.fixture(scope="module")
 def variable_types():

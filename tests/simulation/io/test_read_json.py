@@ -209,10 +209,11 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     current_dir = os.getcwd()
     os.chdir(tmpdir)
 
+    shutil.copy(sim_json["lac.json"],"lac.json")
     shutil.copy(test_ddg["lac.csv"],"ddg.csv")
     shutil.copy(newick_files["simple.newick"],"eee_sim.newick")
 
-    sm, calc_params = read_json(sim_json["lac.json"],
+    sm, calc_params = read_json("lac.json",
                                 use_stored_seed=False)
 
     species = ["hdna","h","l2e","unfolded"]
@@ -257,11 +258,11 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert calc_params["write_prefix"] == "eee_sim_test"
     assert calc_params["write_frequency"] == 10000
 
-    sm, calc_params = read_json(sim_json["lac.json"],
+    sm, calc_params = read_json("lac.json",
                                 use_stored_seed=True)
     assert sm._seed == 487698321712
 
-    with open(sim_json["lac.json"]) as f:
+    with open("lac.json") as f:
         template_json = json.load(f)
 
     test_json = copy.deepcopy(template_json)
@@ -393,14 +394,46 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     # will make sure we keep the example json files, Ensmble, and calcs in 
     # sync with one another. 
     for k in sim_json:
-        sm, calc_params = read_json(sim_json[k])
+        shutil.copy(sim_json[k],"test-this.json")
+        sm, calc_params = read_json("test-this.json")
+
+    # Raise valueError by nuking "system" key
+    with open("test-this.json") as f:
+        test_json = json.load(f)
+    test_json.pop("system")
+    with open("test-this.json","w") as f:
+        json.dump(test_json,f)
+    with pytest.raises(ValueError):
+        sm, calc_params = read_json("test-this.json")
 
 
     # Specific case where calc will have newick file. Make sure it is loaded in
     # as ete3 tree, not string
-    sm, calc_params = read_json(sim_json["wf_tree_sim.json"])
+    shutil.copy(sim_json["wf_tree_sim.json"],"wf_tree_sim.json")
+    sm, calc_params = read_json("wf_tree_sim.json")
     assert issubclass(type(calc_params["newick"]),ete3.TreeNode)
 
+    # Make sure we can pass in something with no calc_params defined
+    shutil.copy(sim_json["dms.json"],"dms.json")
+    with open("dms.json") as f:
+        test_json = json.load(f)
+    test_json.pop("calc_params")
+    with open("dms.json","w") as f:
+        json.dump(test_json,f)
+    
+    # Should work, no tree file
+    sm, calc_params = read_json("dms.json")
+    
+
+    # Make sure we can get file in non-local path.
+    os.mkdir("extra_path")
+    shutil.copy(test_ddg["lac.csv"],
+                os.path.join("extra_path","ddg.csv"))
+    shutil.copy(sim_json["lac.json"],"extra_path")
+    sm, calc_params = read_json(os.path.join("extra_path","lac.json"))
+
+
+    
 
 
 

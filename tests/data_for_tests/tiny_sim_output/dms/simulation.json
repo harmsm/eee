@@ -1,0 +1,57 @@
+{
+  "calc_type": "dms",
+  "system": {
+    "ens": {
+      "hdna": {
+        "dG0": 0.0,
+        "observable": true,
+        "mu_stoich": {},
+        "folded": true
+      },
+      "h": {
+        "dG0": 5.0,
+        "observable": false,
+        "mu_stoich": {},
+        "folded": true
+      },
+      "l2e": {
+        "dG0": 5.0,
+        "observable": false,
+        "mu_stoich": {
+          "iptg": 4.0
+        },
+        "folded": true
+      },
+      "unfolded": {
+        "dG0": 10.0,
+        "observable": false,
+        "mu_stoich": {},
+        "folded": false
+      },
+      "gas_constant": 0.001987
+    },
+    "mu_dict": {
+      "iptg": [
+        1.0,
+        3.0
+      ]
+    },
+    "select_on": "fx_obs",
+    "select_on_folded": true,
+    "fitness_kwargs": {},
+    "T": [
+      298.15,
+      298.15
+    ],
+    "fitness_fcns": [
+      "on",
+      "off"
+    ],
+    "seed": 693001669563,
+    "ddg_df": "ddg.csv"
+  },
+  "calc_params": {
+    "max_depth": 2,
+    "output_file": "eee_dms.csv"
+  }
+}

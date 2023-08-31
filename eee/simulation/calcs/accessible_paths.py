@@ -63,7 +63,8 @@ class AcessiblePaths(Simulation):
         self._prepare_calc(output_directory=output_directory,
                            calc_params=calc_params)
         
-        # Run and return a Wright Fisher simulation.
+        # Find all paths accessible from the wildtype genotype that involve 
+        # single mutations and do not compromise fitness
         pathfinder(gc=self._gc,
                    max_depth=calc_params["max_depth"],
                    allow_neutral=calc_params["allow_neutral"],

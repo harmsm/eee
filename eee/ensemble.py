@@ -570,7 +570,6 @@ class Ensemble:
         
         return obs_functions[obs_fcn]
 
-
     @property
     def species(self):
         """

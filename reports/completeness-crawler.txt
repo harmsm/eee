@@ -8,6 +8,7 @@ FOUND tests._private.check.eee.test_pop_gen.test_check_num_generations
 FOUND tests._private.check.eee.test_pop_gen.test_check_num_mutations
 FOUND tests._private.check.eee.test_pop_gen.test_check_population_size
 FOUND tests._private.check.eee.test_wf_population.test_check_wf_population
+FOUND tests._private.check.test_compare_dict.test_compare_dict
 FOUND tests._private.check.test_standard.test_check_bool
 FOUND tests._private.check.test_standard.test_check_float
 FOUND tests._private.check.test_standard.test_check_int
@@ -39,6 +40,8 @@ FOUND tests.io.test_write_pdb.test_write_pdb
 FOUND tests.simulation.analysis.test_cluster_ddg.test__clean_up_axes
 FOUND tests.simulation.analysis.test_cluster_ddg.test_cluster_ddg
 FOUND tests.simulation.analysis.test_ensemble_fitness.test_ensemble_fitness
+FOUND tests.simulation.analysis.test_epistasis_and_accessibility.test__get_rings
+FOUND tests.simulation.analysis.test_epistasis_and_accessibility.test_epistasis_and_accessibility
 FOUND tests.simulation.analysis.test_num_genotypes.test_get_num_genotypes
 FOUND tests.simulation.calcs.test_accessible_paths.test_AcessiblePaths
 FOUND tests.simulation.calcs.test_accessible_paths.test_AcessiblePaths_run
