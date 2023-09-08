@@ -12,10 +12,18 @@ class MetaWidget:
         self._widget = None
         self._update_callback = update_callback
 
-    def build_widget(self):
+    def build_widget(self,*args,**kwargs):
         """
         Redefine this in a subclass. Should build the block of widgets and store
         it as self._widget.
+        """
+
+        pass
+
+    def update(self,*args,**kwargs):
+        """
+        Redefine this in a subclass. Update the widgets in response to changes
+        elsewhere in the interface. 
         """
 
         pass
@@ -57,7 +65,7 @@ class MetaWidget:
         
         return self._widget
     
-class SelfRemovingWidgetContainer(MetaWidget):
+class VariableWidgetStack(MetaWidget):
     """
     Super MetaWidget that allows creation of new sub-widgets with a "remove"
     button. Should be subclassed before use. Minimally, the developer will want 
@@ -65,32 +73,72 @@ class SelfRemovingWidgetContainer(MetaWidget):
     """
     
     def __init__(self,
-                 parent_widget,
                  update_callback=None,
+                 widget_to_stack=None,
+                 button_description="Add",
                  hr_between_rows=False):
         """
         Create new set of widgets, each with a remove button.
         
         Parameters
         ----------
-        parent_widget : ipywidgets.widget
-            all new widgets are appended to this widget (accessible via 
-            the widget property)
         update_callback : callable, optional
             if defined, call this function without arguments whenever a 
             widget is added or subtracted. This function should take 
             the widget values as its only argument.
+        widget_to_stack : MetaWidget, optional
+            widget to stack. Should be the class, not an instance. If not
+            specified, the add button will not do anything
+        button_description : str, optional
+            words to put on the add button
         hr_between_rows : bool, default=False
-            add a horizontal row between added widgets
+            add <hr/> between elements added
         """
-            
-        self._widget = parent_widget
+
+        super().__init__(update_callback=update_callback)
+
         self._button_to_widget = {}
         self._widget_to_metawidget = {}
 
-        self._update_callback = update_callback
+        self._widget_to_stack = widget_to_stack
+    
+        self._add_button = widgets.Button(description=button_description,
+                                          disabled=False,
+                                          icon='fa-plus')
+        self._add_button.on_click(self.add_widget)
+
         self._hr_between_rows = hr_between_rows
+
+        self._widget = widgets.VBox([self._add_button])
+
+    def add_widget(self,
+                   button=None,
+                   **kwargs):
+        """
+        Add a new object to the stack. Can be called as a button click callback
+        or directly via the api. NOTE: No error checking is done in this
+        function. We assume this is done via the widgets in the gui. 
+         
+        Parameters
+        ----------
+        button : None or ipywidgets.Button
+            The "button" argument is here so this can be called as a button
+            callback, which passes the button instance as the first argument. 
+        **kwargs : 
+            passed directly to the __init__ function of self._widget_to_stack.
+        """
+
+        if self._widget_to_stack is None:
+            return
         
+        # Pass in update callback for this class if none specified. 
+        if "update_callback" not in kwargs:
+            kwargs["update_callback"] = self._update_callback
+
+        meta_widget = self._widget_to_stack(**kwargs)
+                
+        self._add_with_remove_button(some_meta_widget=meta_widget)
+
     def _append_widget(self,some_widget):
         """
         Append some_widget to the children of self._widget.
@@ -197,18 +245,6 @@ class SelfRemovingWidgetContainer(MetaWidget):
         if self._update_callback is not None:
             self._update_callback(self.get_values())
         
-    @property
-    def widgets(self):
-        """
-        List of widgets added with remove button. 
-        """
-        
-        widgets = []
-        for k in self._button_to_widget:
-            widgets.append(self._button_to_widget[k])
-        
-        return widgets
-    
     def get_values(self):
         """
         Return a list of values from all subwidgets. 
@@ -219,3 +255,12 @@ class SelfRemovingWidgetContainer(MetaWidget):
             values.append(self._widget_to_metawidget[k].get_values())
         
         return values
+    
+    @property
+    def widgets(self):
+        """
+        Return a list of metawidgets that are in the stack. 
+        """
+
+        return list(self._widget_to_metawidget.values())
+        

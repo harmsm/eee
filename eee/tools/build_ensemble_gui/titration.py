@@ -32,6 +32,14 @@ class TitrationWidget(MetaWidget):
         """
         
         super().__init__(update_callback=update_callback)
+        self.build_widget(min_value=min_value,
+                          max_value=max_value,
+                          num_steps=num_steps)
+        
+    def build_widget(self,
+                     min_value=0,
+                     max_value=20,
+                     num_steps=100):
         
         dd = widgets.Select(options=[],
                             value=None,

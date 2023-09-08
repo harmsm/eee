@@ -1,7 +1,6 @@
-
-from eee.tools.build_ensemble_gui.ligands import DefineLigands
 from eee.tools.build_ensemble_gui.base import MetaWidget
-from eee.tools.build_ensemble_gui.base import SelfRemovingWidgetContainer
+from eee.tools.build_ensemble_gui.base import VariableWidgetStack
+from eee.tools.build_ensemble_gui.ligands import LigandWidget
 
 import ipywidgets as widgets
 
@@ -52,10 +51,13 @@ class SpeciesWidget(MetaWidget):
                                 widgets.VBox(right_items)])
         
         # Ligand for building ligands
-        self._ligands = DefineLigands(update_callback=self._watcher)
+        self._ligands = VariableWidgetStack(update_callback=self._watcher,
+                                            widget_to_stack=LigandWidget,
+                                            button_description="Add ligand")
+
         if ligands is not None:
             for lig in ligands:
-                self._ligands.add_ligand(ligand_name=lig[0],
+                self._ligands.add_widget(ligand_name=lig[0],
                                          stoichiometry=lig[1])
         
         self._widget = widgets.VBox([top_box,
@@ -77,68 +79,7 @@ class SpeciesWidget(MetaWidget):
         v["ligands"] = self._ligands.get_values()
 
         return v
-    
-class DefineSpecies(SelfRemovingWidgetContainer):
-    """
-    Class for defining an arbitrary set of species in an ensemble.
-    """
-    
-    def __init__(self,update_callback=None):
-        """
-        Create a new instance that has an "Add" button.
-        """
-        
-        add_species_button = widgets.Button(description='Add species',
-                                            disabled=False,
-                                            tooltip='Add fields for another species',
-                                            icon='fa-plus')
-        add_species_button.on_click(self.add_species)
-        
-        main = widgets.VBox([add_species_button])
-        super().__init__(parent_widget=main,
-                         update_callback=update_callback,
-                         hr_between_rows=True)
-
-    def add_species(self,
-                    button=None,
-                    species_name="",
-                    dG0=0,
-                    observable=True,
-                    folded=True,
-                    ligands=None):
-        """
-        Add a species. Can be called as a button click callback or directly via
-        the api. NOTE: No error checking is done in this function. We assume 
-        this is done via the widgets in the gui. 
-         
-        Parameters
-        ----------
-        button : None or ipywidgets.Button
-            The "button" argument is here so this can be called as a button
-            callback, which passes the button instance as the first argument. 
-        species_name : str, default=""
-            name of the species
-        dG0 : float, default = 0
-            species dG0
-        observable : bool, default=True
-            whether species is observable
-        folded : bool, default=True
-            whether species is folded
-        ligands : list-like, optional
-            list of tuples defining ligands for the species. tuples should have
-            the format (ligand_name,ligand_stoichiometry)
-        """
-        
-        meta_widget = SpeciesWidget(update_callback=self._update_callback,
-                                    species_name=species_name,
-                                    dG0=dG0,
-                                    observable=observable,
-                                    folded=folded,
-                                    ligands=ligands)
-                
-        self._add_with_remove_button(some_meta_widget=meta_widget)
-        
-            
+   
         
 
 

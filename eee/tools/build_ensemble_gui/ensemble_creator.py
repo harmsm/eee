@@ -1,14 +1,16 @@
 import eee
 
-from eee.tools.build_ensemble_gui.species import DefineSpecies
+from eee.tools.build_ensemble_gui.base import VariableWidgetStack
+from eee.tools.build_ensemble_gui.species import SpeciesWidget
 from eee.tools.build_ensemble_gui.titration import TitrationWidget
+from eee.tools.build_ensemble_gui.fitness import FitnessWidget
+from eee.tools.build_ensemble_gui.basic_info import BasicInfoWidget
+
 from eee.tools import plots
 
 import ipywidgets as widgets
 from matplotlib import pyplot as plt
-import numpy as np
 
-import inspect
 import copy
 
 class EnsembleCreator:
@@ -21,44 +23,35 @@ class EnsembleCreator:
         self._update_callback = update_callback
 
         w = []
-        w.append(widgets.HTML(value="<h2>Create an ensemble</h2>"))
+        w.append(widgets.HTML(value="<h1>Create an ensemble</h1>"))
+        w.append(widgets.HTML(value="<b><hr/></b>"))
+
+        # Basic ensemble information
+        self._basic_info = BasicInfoWidget(update_callback=self._update_follower)
+        w.append(self._basic_info.widget)
         w.append(widgets.HTML(value="<hr/>"))
         
-        # Species buildter
-        self._species = DefineSpecies(update_callback=self._update_follower)
+        # Species builder
+        w.append(widgets.HTML(value="<h3>Define species</h3>"))
+        self._species = VariableWidgetStack(update_callback=self._update_follower,
+                                            widget_to_stack=SpeciesWidget,
+                                            button_description="Add species")
         w.append(self._species.widget)
         w.append(widgets.HTML(value="<hr/>"))
         
-        # temperature
-        ens = eee.Ensemble()
-        p = inspect.signature(ens.get_obs).parameters
-        default_T = p["T"].default
-        
-        T = widgets.BoundedFloatText(default_T,
-                                     description="T:",
-                                     continuous_update=False,
-                                     min=np.nextafter(0, 1),
-                                     max=np.finfo('d').max)
-        T.observe(self._update_follower)
-        
-        # Gas constant
-        p = inspect.signature(eee.Ensemble.__init__).parameters
-        default_gas_constant = p["gas_constant"].default
-        
-        R = widgets.BoundedFloatText(default_gas_constant,
-                                     description="R:",
-                                     continuous_update=False,
-                                     min=np.nextafter(0, 1),
-                                     max=np.finfo('d').max)
-        R.observe(self._update_follower)
-        
-        RT_box = widgets.HBox([T,R])
-        w.append(RT_box)
-        w.append(widgets.HTML(value="<hr/>"))
-        
         # Titration definition
+        w.append(widgets.HTML(value="<h3>Define ligand titration</h3>"))
         self._titration = TitrationWidget(update_callback=self._update_follower)
         w.append(self._titration.widget)
+        w.append(widgets.HTML(value="<hr/>"))
+
+        # # Fitness definition
+        w.append(widgets.HTML(value="<h3>Define selection conditions</h3>"))
+        self._fitness = VariableWidgetStack(update_callback=self._update_follower,
+                                            widget_to_stack=FitnessWidget,
+                                            button_description="Add condition")
+        w.append(self._fitness.widget)
+        w.append(widgets.HTML(value="<hr/>"))
 
         # Display panel
         self._out = widgets.widget_output.Output()
@@ -111,6 +104,7 @@ class EnsembleCreator:
                 mu_dict = values["titration"]
                 
         with self._out:
+
             self._out.clear_output()
             if len(values["species"]) == 0:
                 return
@@ -143,6 +137,7 @@ class EnsembleCreator:
 
     def get_values(self,*args,**kwargs):
         
+        out = self._basic_info.get_values()
         species = self._species.get_values()
         
         # Get all available ligands. 
@@ -156,30 +151,28 @@ class EnsembleCreator:
         available_ligands.sort()
         
         self._titration.update(current_ligands=available_ligands)
-        
-        temperature = self._w[4].children[0].get_interact_value()
-        gas_constant = self._w[4].children[1].get_interact_value()
+        for f in self._fitness.widgets:
+            f.update(current_ligands=available_ligands)
+    
         ligand_titrations = self._titration.get_values()
         
-        out = {"species":species,
-               "gas_constant":gas_constant,
-               "temperature":temperature,
-               "titration":ligand_titrations}
-        
+        out["species"] = species
+        out["titration"]= ligand_titrations
+               
         return out
 
     def _load_defaults(self):
         
-        self._species.add_species(species_name="A",
+        self._species.add_widget(species_name="A",
                                   dG0=0,
                                   observable=True,
                                   folded=True)
-        self._species.add_species(species_name="B",
+        self._species.add_widget(species_name="B",
                                   dG0=10,
                                   observable=False,
                                   folded=True,
                                   ligands=[("X",1)])
-        self._species.add_species(species_name="U",
+        self._species.add_widget(species_name="U",
                                   dG0=10,
                                   observable=False,
                                   folded=False)
