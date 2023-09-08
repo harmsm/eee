@@ -5,7 +5,7 @@ Run a Wright-Fisher simulation given an ensemble.
 from eee.simulation.core import Genotype
 from eee.simulation.analysis import get_num_accumulated_mutations
 
-from eee._private.interface import MockTqdm
+from eee._private.interface import MockContextManager
 
 from eee._private.check.eee import check_wf_population
 from eee._private.check.eee import check_num_generations
@@ -155,7 +155,7 @@ def wright_fisher(gc,
 
     # Turn off status bar if requested
     if disable_status_bar:
-        pbar = MockTqdm(total=num_generations-1)
+        pbar = MockContextManager(total=num_generations-1)
     else:
         pbar = tqdm(total=num_generations-1)
 

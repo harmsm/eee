@@ -2,7 +2,7 @@
 Validate plot objects.
 """
 
-from eee._private.interface import MockTqdm
+from eee._private.interface import MockContextManager
 
 import matplotlib
 from matplotlib import pyplot as plt
@@ -28,11 +28,8 @@ def check_plot(fig=None,
             err = "\n`fig` must be a matplotlib Figure object\n\n"
             raise ValueError(err)
 
-    # MockTqdm has the appropriate __enter__ and __exit__ methods to be used 
-    # in with context statements. Lets us use this in the context of an
-    # ipywidget or on its own. 
     if context_manager is None:
-        context_manager = MockTqdm()
+        context_manager = MockContextManager()
 
     if not hasattr(context_manager,"__enter__") or \
        not hasattr(context_manager,"__exit__"):

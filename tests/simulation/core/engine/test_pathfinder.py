@@ -2,7 +2,7 @@ import pytest
 
 from eee.simulation.core.engine.pathfinder import _traverse
 from eee.simulation.core.engine.pathfinder import pathfinder
-from eee._private.interface import MockTqdm
+from eee._private.interface import MockContextManager
 
 import pandas as pd
 import numpy as np
@@ -81,7 +81,7 @@ def test__traverse():
         return out
 
     # Fake progress bar
-    pbar = MockTqdm()
+    pbar = MockContextManager()
 
     # --------------------- allow any step ---------------------------
 
