@@ -11,12 +11,12 @@ def test_WrightFisherSimulation(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     wf = WrightFisherSimulation(ens=ens,
                                 ddg_df=ddg_df,
-                                mu_dict=mu_dict,
+                                ligand_dict=ligand_dict,
                                 fitness_fcns=fitness_fcns,
                                 select_on="fx_obs",
                                 fitness_kwargs={},
@@ -32,12 +32,12 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
     
     wf = WrightFisherSimulation(ens=ens,
                                 ddg_df=ddg_df,
-                                mu_dict=mu_dict,
+                                ligand_dict=ligand_dict,
                                 fitness_fcns=fitness_fcns,
                                 select_on="fx_obs",
                                 fitness_kwargs={},

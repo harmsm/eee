@@ -20,13 +20,13 @@ def test_check_ensemble(variable_types):
 
     ens.add_species(name="test1",
                     observable=True,
-                    mu_stoich={"X":1})
+                    ligand_stoich={"X":1})
 
     with pytest.raises(ValueError):
         check_ensemble(ens,check_obs=True)
 
     ens.add_species(name="test2",
                     observable=False,
-                    mu_stoich={"Y":1})
+                    ligand_stoich={"Y":1})
     
     check_ensemble(ens,check_obs=True)

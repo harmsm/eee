@@ -1,17 +1,17 @@
 import pytest
 
-from eee._private.check.eee.mu_stoich import check_mu_stoich
+from eee._private.check.eee.ligand_stoich import check_ligand_stoich
 
-def test_check_mu_stoich(variable_types):
+def test_check_ligand_stoich(variable_types):
 
-    # mu_dict argument type checking
-    print("--- mu_dict ---")
+    # ligand_stoich argument type checking
+    print("--- ligand_stoich ---")
     for v in variable_types["dict"]:
         print(v,type(v),flush=True)
-        check_mu_stoich(v)
+        check_ligand_stoich(v)
         
 
     for v in variable_types["not_dict"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_stoich(v)
+            check_ligand_stoich(v)

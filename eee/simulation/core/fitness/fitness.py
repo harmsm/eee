@@ -8,7 +8,7 @@ from eee._private.check.eee import check_T
 from .check_fitness_fcns import check_fitness_fcns
 from .check_fitness_kwargs import check_fitness_kwargs
 
-from eee._private.check.eee import check_mu_dict
+from eee._private.check.eee import check_ligand_dict
 
 from eee._private.check.standard import check_bool
 
@@ -28,13 +28,13 @@ class Fitness:
     -----
     This class stores a private *copy* of ens. This is so the ensemble z-matrix 
     stays identical for all calculations, even if the user uses the initial 
-    ensemble object for a calculation with a different mu_dict after initialization
+    ensemble object for a calculation with a different ligand_dict after initialization
     of the FitnessContainer object. (That calculation triggers creation of new
     z-matrix, which would potentially change output observables). 
     """
     def __init__(self,
                  ens,
-                 mu_dict,
+                 ligand_dict,
                  fitness_fcns,
                  select_on="fx_obs",
                  select_on_folded=True,
@@ -45,7 +45,7 @@ class Fitness:
         ----------
         ens : eee.Ensemble 
             initialized instance of an Ensemble class
-        mu_dict : dict, optional
+        ligand_dict : dict, optional
             dictionary of chemical potentials. keys are the names of chemical
             potentials. Values are floats or arrays of floats. Any arrays 
             specified must have the same length. If a chemical potential is not
@@ -55,7 +55,7 @@ class Fitness:
             of functions. Functions should take value from "select_on" as their
             first argument and **fitness_kwargs as their remaining arguments. If a 
             list, the list must be the same length as the number of conditions in 
-            mu_dict. 
+            ligand_dict. 
         select_on : str, default="fx_obs"
             observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
         fitness_kwargs : dict, optional
@@ -65,11 +65,11 @@ class Fitness:
             fraction of the protein molecules that are folded. 
         T : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
-            match the length of the arrays specified in mu_dict. 
+            match the length of the arrays specified in ligand_dict. 
         """
         
         ens = check_ensemble(ens)
-        mu_dict, num_conditions = check_mu_dict(mu_dict)
+        ligand_dict, num_conditions = check_ligand_dict(ligand_dict)
         fitness_fcns = check_fitness_fcns(fitness_fcns,
                                           num_conditions=num_conditions,
                                           return_as="function")
@@ -87,7 +87,7 @@ class Fitness:
 
         self._ens = ens
         self._private_ens = copy.deepcopy(ens)
-        self._mu_dict = mu_dict
+        self._ligand_dict = ligand_dict
         self._fitness_fcns = fitness_fcns
         self._select_on = select_on
         self._select_on_folded = select_on_folded
@@ -98,7 +98,7 @@ class Fitness:
                                                         num_conditions=num_conditions,
                                                         return_as="string")
                 
-        self._private_ens.read_mu_dict(mu_dict=self._mu_dict)
+        self._private_ens.read_ligand_dict(ligand_dict=self._ligand_dict)
         self._obs_function = self._private_ens.get_observable_function(self._select_on)
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
@@ -107,7 +107,7 @@ class Fitness:
         """
         Calculate the fitness of a genotype with total mutational energies 
         given by mut_energy_array. Fitness is defined as the product of the
-        fitness  in each of the conditions specified in mu_dict. 
+        fitness  in each of the conditions specified in ligand_dict. 
 
         mut_energy_array : numpy.ndarray
             array holding the effects of mutations on energy. values should be
@@ -131,7 +131,7 @@ class Fitness:
         Return a json-able dictionary describing the fitness parameters.
         """
 
-        to_write = ["mu_dict",
+        to_write = ["ligand_dict",
                     "select_on",
                     "select_on_folded",
                     "fitness_kwargs",
@@ -150,8 +150,8 @@ class Fitness:
         return self._ens
         
     @property
-    def mu_dict(self):
-        return self._mu_dict
+    def ligand_dict(self):
+        return self._ligand_dict
     
     @property
     def select_on(self):
@@ -176,8 +176,8 @@ class Fitness:
         """
 
         to_df = {}
-        for m in self._mu_dict:
-            to_df[m] = self._mu_dict[m]
+        for lig in self._ligand_dict:
+            to_df[lig] = self._ligand_dict[lig]
         
         to_df["T"] = self._T
         to_df["ff"] = self._fitness_fcns_strings

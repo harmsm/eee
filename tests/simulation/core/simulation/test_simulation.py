@@ -62,14 +62,14 @@ def test_Simulation(ens_test_data,variable_types):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     # Make sure implementation checks are in place. 
     with pytest.raises(NotImplementedError):
         sm = Simulation(ens=ens,
                                  ddg_df=ddg_df,
-                                 mu_dict=mu_dict,
+                                 ligand_dict=ligand_dict,
                                  fitness_fcns=fitness_fcns,
                                  select_on="fx_obs",
                                  fitness_kwargs={},
@@ -80,7 +80,7 @@ def test_Simulation(ens_test_data,variable_types):
     with pytest.raises(NotImplementedError):
         sm = Simulation_no_run(ens=ens,
                                ddg_df=ddg_df,
-                               mu_dict=mu_dict,
+                               ligand_dict=ligand_dict,
                                fitness_fcns=fitness_fcns,
                                select_on="fx_obs",
                                fitness_kwargs={},
@@ -90,7 +90,7 @@ def test_Simulation(ens_test_data,variable_types):
     with pytest.raises(NotImplementedError):
         sm = Simulation_no_calc_type(ens=ens,
                                      ddg_df=ddg_df,
-                                     mu_dict=mu_dict,
+                                     ligand_dict=ligand_dict,
                                      fitness_fcns=fitness_fcns,
                                      select_on="fx_obs",
                                      fitness_kwargs={},
@@ -106,7 +106,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=v,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
@@ -125,20 +125,20 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=v,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
                                            T=1,
                                            seed=None)
 
-    # mu_dict
+    # ligand_dict
     for v in variable_types["everything"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=v,
+                                           ligand_dict=v,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
@@ -151,7 +151,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=v,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
@@ -164,7 +164,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on=v,
                                            fitness_kwargs={},
@@ -173,7 +173,7 @@ def test_Simulation(ens_test_data,variable_types):
                    
     sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
+                                   ligand_dict=ligand_dict,
                                    fitness_fcns=fitness_fcns,
                                    select_on="dG_obs",
                                    fitness_kwargs={},
@@ -186,7 +186,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            select_on_folded=v,
@@ -196,7 +196,7 @@ def test_Simulation(ens_test_data,variable_types):
             
     sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
+                                   ligand_dict=ligand_dict,
                                    fitness_fcns=fitness_fcns,
                                    select_on="dG_obs",
                                    fitness_kwargs={},
@@ -214,7 +214,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs=v,
@@ -236,7 +236,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
@@ -261,7 +261,7 @@ def test_Simulation(ens_test_data,variable_types):
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
                                            ddg_df=ddg_df,
-                                           mu_dict=mu_dict,
+                                           ligand_dict=ligand_dict,
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
@@ -275,7 +275,7 @@ def test_Simulation(ens_test_data,variable_types):
     
     sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
+                                   ligand_dict=ligand_dict,
                                    fitness_fcns=fitness_fcns,
                                    select_on="fx_obs",
                                    fitness_kwargs={},
@@ -288,7 +288,7 @@ def test_Simulation(ens_test_data,variable_types):
 
     sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
+                                   ligand_dict=ligand_dict,
                                    fitness_fcns=fitness_fcns,
                                    select_on="fx_obs",
                                    fitness_kwargs={},
@@ -312,13 +312,13 @@ def test_Simulation__prepare_calc(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
 
     sm = SimulationTester(ens=ens,
                                    ddg_df=ddg_df,
-                                   mu_dict=mu_dict,
+                                   ligand_dict=ligand_dict,
                                    fitness_fcns=fitness_fcns,
                                    select_on="fx_obs",
                                    select_on_folded=True,
@@ -353,12 +353,12 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -391,7 +391,7 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     assert ens_dict["ens"]["gas_constant"] == as_written["system"]["ens"]["gas_constant"]
 
-    assert as_written["system"]["mu_dict"] == mu_dict
+    assert as_written["system"]["ligand_dict"] == ligand_dict
     assert as_written["system"]["select_on"] == "fx_obs"
     assert as_written["system"]["select_on_folded"] == True
     assert as_written["system"]["fitness_kwargs"] == {}
@@ -413,12 +413,12 @@ def test_Simulation_system_params(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -456,12 +456,12 @@ def test_Simulation_get_calc_description(ens_test_data):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -485,12 +485,12 @@ def test_Simulation_fitness_from_energy(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -515,12 +515,12 @@ def test_Simulation_ens(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -534,12 +534,12 @@ def test_Simulation_fc(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,
@@ -552,12 +552,12 @@ def test_Simulation_gc(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
+    ligand_dict = ens_test_data["ligand_dict"]
     fitness_fcns = ens_test_data["fitness_fcns"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          mu_dict=mu_dict,
+                          ligand_dict=ligand_dict,
                           fitness_fcns=fitness_fcns,
                           select_on="fx_obs",
                           select_on_folded=True,

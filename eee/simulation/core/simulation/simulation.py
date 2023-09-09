@@ -26,7 +26,7 @@ class Simulation:
     def __init__(self,
                  ens,
                  ddg_df,
-                 mu_dict,
+                 ligand_dict,
                  fitness_fcns,
                  select_on="fx_obs",
                  select_on_folded=True,
@@ -44,14 +44,14 @@ class Simulation:
         ddg_df : pandas.DataFrame
             pandas dataframe with columns holding 'mut', 'site' (i.e., the 21 in 
             A21P), and then columns for the predicted ddG for each species.
-        mu_dict : dict, optional
-            dictionary of chemical potentials. keys are the names of chemical
-            potentials. Values are floats or arrays of floats. Any arrays 
+        ligand_dict : dict, optional
+            dictionary of chemical potentials. keys are the names of ligands.
+            Values are floats or arrays of floats of chemical potentials. Any arrays 
             specified must have the same length. If a chemical potential is not
             specified in the dictionary, its value is set to 0. 
         fitness_fcns : list-like
             list of fitness functions to apply. There should be one fitness function
-            for each condition specified in mu_dict. The first argument of each 
+            for each condition specified in ligand_dict. The first argument of each 
             function must be either fx_obs or dG_obs. Other keyword arguments can be
             specified in fitness_kwargs.
         select_on : str, default="fx_obs"
@@ -62,12 +62,12 @@ class Simulation:
             pass these keyword arguments to the fitness_fcn
         T : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
-            match the length of the arrays specified in mu_dict. 
+            match the length of the arrays specified in ligand_dict. 
         seed : int, optional
             positive integer used to do reproducible simulations
         """
         
-        # ddg_df, mu_dict, fitness_fcns, select_on, select_on_folded,
+        # ddg_df, ligand_dict, fitness_fcns, select_on, select_on_folded,
         # fitness_kwargs, and T all tested by FitnessContainer and 
         # GenotypeContainer -- just pass through. 
 
@@ -94,7 +94,7 @@ class Simulation:
 
         # Build a Fitness object to calculate fitness values from the ensemble.
         self._fc = Fitness(ens=self._ens,
-                           mu_dict=mu_dict,
+                           ligand_dict=ligand_dict,
                            fitness_fcns=fitness_fcns,
                            select_on=select_on,
                            select_on_folded=select_on_folded,

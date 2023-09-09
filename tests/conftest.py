@@ -91,13 +91,13 @@ def ens_test_data():
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="s1",
                     observable=True,
-                    mu_stoich={"X":1})
+                    ligand_stoich={"X":1})
     ens.add_species(name="s2",
                     observable=False,
-                    mu_stoich={"Y":1})
+                    ligand_stoich={"Y":1})
     
-    # basic mu_dict 
-    mu_dict = {"X":[0,1],
+    # basic ligand_dict 
+    ligand_dict = {"X":[0,1],
                "Y":[1,0]}
 
     ddg_df = pd.DataFrame({"site":[1,1,2,2],
@@ -115,14 +115,14 @@ def ens_test_data():
     fitness_fcns = [ff_on,ff_off]
 
     fc = Fitness(ens,
-                 mu_dict,
+                 ligand_dict,
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
                  T=298.15)
     
     out = {"ens":ens,
-           "mu_dict":mu_dict,
+           "ligand_dict":ligand_dict,
            "ddg_df":ddg_df,
            "ddg_dict":ddg_dict,
            "fitness_fcns":fitness_fcns,
@@ -142,9 +142,9 @@ def ens_with_fitness():
     ens.add_species(name="s2",
                     dG0=0.167,
                     observable=False,
-                    mu_stoich={"X":2})
+                    ligand_stoich={"X":2})
 
-    mu_dict = {"X":[0,3.333]}
+    ligand_dict = {"X":[0,3.333]}
 
     ddg_df = pd.DataFrame({"site":[1,1],
                            "mut":["A1V","A1P"],
@@ -152,7 +152,7 @@ def ens_with_fitness():
                            "s2":[3.333,-5000]})
 
     fc = Fitness(ens,
-                 mu_dict,
+                 ligand_dict,
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
@@ -164,7 +164,7 @@ def ens_with_fitness():
     
 
     out = {"ens":ens,
-           "mu_dict":mu_dict,
+           "ligand_dict":ligand_dict,
            "ddg_df":ddg_df,
            "fc":fc,
            "gc":gc}
@@ -182,9 +182,9 @@ def ens_with_fitness_two_site():
     ens.add_species(name="s2",
                     dG0=0.167,
                     observable=False,
-                    mu_stoich={"X":2})
+                    ligand_stoich={"X":2})
 
-    mu_dict = {"X":[0,3.333]}
+    ligand_dict = {"X":[0,3.333]}
 
     ddg_df = pd.DataFrame({"site":[1,1,2],
                            "mut":["A1V","A1P","A2C"],
@@ -192,7 +192,7 @@ def ens_with_fitness_two_site():
                            "s2":[3.333,-5000,0]})
 
     fc = Fitness(ens,
-                 mu_dict,
+                 ligand_dict,
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
@@ -204,7 +204,7 @@ def ens_with_fitness_two_site():
     
 
     out = {"ens":ens,
-           "mu_dict":mu_dict,
+           "ligand_dict":ligand_dict,
            "ddg_df":ddg_df,
            "fc":fc,
            "gc":gc}

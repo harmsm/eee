@@ -139,11 +139,11 @@ def check_fitness_fcns(fitness_fcns,
     # Make sure fitness functions is the right length
     if num_conditions is not None:
 
-        # mu_length must match the length of fitnesss_fcns (one fitness per 
+        # ligand_length must match the length of fitnesss_fcns (one fitness per 
         # condition).
         if len(fitness_fcns) != num_conditions:
             err = "fitness should be the same length as the number of conditions\n"
-            err += "in mu_dict.\n"
+            err += "in ligand_dict.\n"
             raise ValueError(err)
 
     

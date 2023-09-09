@@ -1,19 +1,19 @@
 import pytest
 
-from eee._private.check.eee.mu_dict import check_mu_dict
+from eee._private.check.eee.ligand_dict import check_ligand_dict
 
 import pandas as pd
 import numpy as np
 
 
-def test_check_mu_dict(variable_types):
+def test_check_ligand_dict(variable_types):
         
     for v in variable_types["not_dict"]:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_dict(v)
+            check_ligand_dict(v)
 
-    out, length = check_mu_dict({})
+    out, length = check_ligand_dict({})
     assert issubclass(type(out),dict)
     assert len(out) == 0
     assert length == 1
@@ -24,19 +24,19 @@ def test_check_mu_dict(variable_types):
     for v in bad_types:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_dict({"X":v})
+            check_ligand_dict({"X":v})
 
     bad_values = [[],np.array([])]
     for v in bad_values:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_dict({"X":v})
+            check_ligand_dict({"X":v})
 
     bad_values = ["should_be_a_number"]
     for v in bad_values:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_dict({"X":v})
+            check_ligand_dict({"X":v})
 
     good_values = variable_types["floats_or_coercable"][:]
     good_values.extend([[1,2,3],
@@ -46,7 +46,7 @@ def test_check_mu_dict(variable_types):
                         np.array([1,2,3],dtype=float)])
     for v in good_values:
         print(v,type(v),flush=True)
-        check_mu_dict({"X":v})
+        check_ligand_dict({"X":v})
     
     good_values = [{"X":1,"Y":1},
                    {"X":"1","Y":"1"},
@@ -54,7 +54,7 @@ def test_check_mu_dict(variable_types):
                    {"X":[1],"Y":[1]}]
     for v in good_values:
         print(v,type(v),flush=True)
-        result, length = check_mu_dict(v)
+        result, length = check_ligand_dict(v)
         assert length == 1
         assert np.array_equal(result["X"],[1])
         assert np.array_equal(result["Y"],[1])
@@ -64,7 +64,7 @@ def test_check_mu_dict(variable_types):
                    {"X":[1,1,1],"Y":[1,2,3]}]
     for v in good_values:
         print(v,type(v),flush=True)
-        result, length = check_mu_dict(v)
+        result, length = check_ligand_dict(v)
         assert length == 3
         assert np.array_equal(result["X"],[1,1,1])
         assert np.array_equal(result["Y"],[1,2,3])
@@ -74,7 +74,7 @@ def test_check_mu_dict(variable_types):
                    {"X":[1,1,1],"Y":[1,2,3],"Z":[2,2,2]}]
     for v in good_values:
         print(v,type(v),flush=True)
-        result, length = check_mu_dict(v)
+        result, length = check_ligand_dict(v)
         assert length == 3
         assert np.array_equal(result["X"],[1,1,1])
         assert np.array_equal(result["Y"],[1,2,3])
@@ -85,4 +85,4 @@ def test_check_mu_dict(variable_types):
     for v in bad_values:
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            check_mu_dict(v)
+            check_ligand_dict(v)

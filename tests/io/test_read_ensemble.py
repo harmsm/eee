@@ -44,14 +44,14 @@ def test__spreadsheet_to_ensemble(ensemble_inputs):
     assert np.array_equal(ens.species,["s1","s2"])
 
     assert ens._species["s1"]["dG0"] == 0
-    assert ens._species["s1"]["mu_stoich"]["X"] == 1
-    assert ens._species["s1"]["mu_stoich"]["Y"] == 0
+    assert ens._species["s1"]["ligand_stoich"]["X"] == 1
+    assert ens._species["s1"]["ligand_stoich"]["Y"] == 0
     assert ens._species["s1"]["folded"] == True
     assert ens._species["s1"]["observable"] == True
         
     assert ens._species["s2"]["dG0"] == 10
-    assert ens._species["s2"]["mu_stoich"]["X"] == 0
-    assert ens._species["s2"]["mu_stoich"]["Y"] == 1
+    assert ens._species["s2"]["ligand_stoich"]["X"] == 0
+    assert ens._species["s2"]["ligand_stoich"]["Y"] == 1
     assert ens._species["s2"]["folded"] == True
     assert ens._species["s2"]["observable"] == False
 
@@ -65,14 +65,14 @@ def test__spreadsheet_to_ensemble(ensemble_inputs):
     assert np.array_equal(ens.species,["s1","s2"])
 
     assert ens._species["s1"]["dG0"] == 0
-    assert ens._species["s1"]["mu_stoich"]["X"] == 1
-    assert ens._species["s1"]["mu_stoich"]["Y"] == 0
+    assert ens._species["s1"]["ligand_stoich"]["X"] == 1
+    assert ens._species["s1"]["ligand_stoich"]["Y"] == 0
     assert ens._species["s1"]["folded"] == True
     assert ens._species["s1"]["observable"] == True
         
     assert ens._species["s2"]["dG0"] == 10
-    assert ens._species["s2"]["mu_stoich"]["X"] == 0
-    assert ens._species["s2"]["mu_stoich"]["Y"] == 1
+    assert ens._species["s2"]["ligand_stoich"]["X"] == 0
+    assert ens._species["s2"]["ligand_stoich"]["Y"] == 1
     assert ens._species["s2"]["folded"] == False
     assert ens._species["s2"]["observable"] == False   
     
@@ -86,12 +86,12 @@ def test__spreadsheet_to_ensemble(ensemble_inputs):
     assert np.array_equal(ens.species,["s1","s2"])
 
     assert ens._species["s1"]["dG0"] == 0
-    assert ens._species["s1"]["mu_stoich"] == {}
+    assert ens._species["s1"]["ligand_stoich"] == {}
     assert ens._species["s1"]["folded"] == True
     assert ens._species["s1"]["observable"] == True
         
     assert ens._species["s2"]["dG0"] == 10
-    assert ens._species["s2"]["mu_stoich"] == {}
+    assert ens._species["s2"]["ligand_stoich"] == {}
     assert ens._species["s2"]["folded"] == False
     assert ens._species["s2"]["observable"] == False   
     
@@ -100,17 +100,17 @@ def test__spreadsheet_to_ensemble(ensemble_inputs):
 
     ens = _spreadsheet_to_ensemble(df=df)
     assert ens._species["s1"]["dG0"] == 0
-    assert ens._species["s1"]["mu_stoich"] == {}
+    assert ens._species["s1"]["ligand_stoich"] == {}
     assert ens._species["s1"]["folded"] == True
     assert ens._species["s1"]["observable"] == False
         
     assert ens._species["s2"]["dG0"] == 0
-    assert ens._species["s2"]["mu_stoich"] == {}
+    assert ens._species["s2"]["ligand_stoich"] == {}
     assert ens._species["s2"]["folded"] == True
     assert ens._species["s2"]["observable"] == False  
 
     assert ens._species["s3"]["dG0"] == 0
-    assert ens._species["s3"]["mu_stoich"] == {}
+    assert ens._species["s3"]["ligand_stoich"] == {}
     assert ens._species["s3"]["folded"] == True
     assert ens._species["s3"]["observable"] == False  
 
@@ -128,22 +128,22 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     assert ens._gas_constant == 0.001987
 
     assert ens._species["hdna"]["dG0"] == 0
-    assert ens._species["hdna"]["mu_stoich"] == {}
+    assert ens._species["hdna"]["ligand_stoich"] == {}
     assert ens._species["hdna"]["folded"] == True
     assert ens._species["hdna"]["observable"] == True
 
     assert ens._species["h"]["dG0"] == 5
-    assert ens._species["h"]["mu_stoich"] == {}
+    assert ens._species["h"]["ligand_stoich"] == {}
     assert ens._species["h"]["folded"] == True
     assert ens._species["h"]["observable"] == False
 
     assert ens._species["l2e"]["dG0"] == 5
-    assert ens._species["l2e"]["mu_stoich"] == {"iptg":4}
+    assert ens._species["l2e"]["ligand_stoich"] == {"iptg":4}
     assert ens._species["l2e"]["folded"] == True
     assert ens._species["l2e"]["observable"] == False
 
     assert ens._species["unfolded"]["dG0"] == 10
-    assert ens._species["unfolded"]["mu_stoich"] == {}
+    assert ens._species["unfolded"]["ligand_stoich"] == {}
     assert ens._species["unfolded"]["folded"] == False
     assert ens._species["unfolded"]["observable"] == False
 
@@ -156,22 +156,22 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     assert ens._gas_constant == 0.008314
 
     assert ens._species["hdna"]["dG0"] == 0
-    assert ens._species["hdna"]["mu_stoich"] == {}
+    assert ens._species["hdna"]["ligand_stoich"] == {}
     assert ens._species["hdna"]["folded"] == True
     assert ens._species["hdna"]["observable"] == True
 
     assert ens._species["h"]["dG0"] == 5
-    assert ens._species["h"]["mu_stoich"] == {}
+    assert ens._species["h"]["ligand_stoich"] == {}
     assert ens._species["h"]["folded"] == True
     assert ens._species["h"]["observable"] == False
 
     assert ens._species["l2e"]["dG0"] == 5
-    assert ens._species["l2e"]["mu_stoich"] == {"iptg":4}
+    assert ens._species["l2e"]["ligand_stoich"] == {"iptg":4}
     assert ens._species["l2e"]["folded"] == True
     assert ens._species["l2e"]["observable"] == False
 
     assert ens._species["unfolded"]["dG0"] == 10
-    assert ens._species["unfolded"]["mu_stoich"] == {}
+    assert ens._species["unfolded"]["ligand_stoich"] == {}
     assert ens._species["unfolded"]["folded"] == False
     assert ens._species["unfolded"]["observable"] == False
 
@@ -209,14 +209,14 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     assert np.array_equal(ens.species,["s1","s2"])
 
     assert ens._species["s1"]["dG0"] == 0
-    assert ens._species["s1"]["mu_stoich"]["X"] == 1
-    assert ens._species["s1"]["mu_stoich"]["Y"] == 0
+    assert ens._species["s1"]["ligand_stoich"]["X"] == 1
+    assert ens._species["s1"]["ligand_stoich"]["Y"] == 0
     assert ens._species["s1"]["folded"] == True
     assert ens._species["s1"]["observable"] == True
         
     assert ens._species["s2"]["dG0"] == 10
-    assert ens._species["s2"]["mu_stoich"]["X"] == 0
-    assert ens._species["s2"]["mu_stoich"]["Y"] == 1
+    assert ens._species["s2"]["ligand_stoich"]["X"] == 0
+    assert ens._species["s2"]["ligand_stoich"]["Y"] == 1
     assert ens._species["s2"]["folded"] == True
     assert ens._species["s2"]["observable"] == False
 

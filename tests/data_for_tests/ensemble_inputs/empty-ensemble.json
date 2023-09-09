@@ -16,7 +16,7 @@
     "ens": {
       "gas_constant": 0.008314
     },
-    "mu_dict": {
+    "ligand_dict": {
       "iptg": [
         1.0,
         4.0

@@ -4,22 +4,22 @@ Plot a titration of ensemble observable versus ligand concentration.
 
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.plot import check_plot
-from eee._private.check.eee import check_mu_dict
+from eee._private.check.eee import check_ligand_dict
 
 
 def titration(ens,
-              mu_dict,
+              ligand_dict,
               fig=None,
               ax=None,
               context_manager=None):
     """
-    Plot a titration of fx_obs versus concentration specified in mu_dict.
+    Plot a titration of fx_obs versus concentration specified in ligand_dict.
 
     Parameters
     ----------
     ens : eee.Ensemble
         initialized ensemble with both observable and non-observable species
-    mu_dict : dict
+    ligand_dict : dict
         dictionary of chemical potentials. keys are the names of chemical
         potentials. Values are floats or arrays of floats. Any arrays 
         specified must have the same length. If a chemical potential is not
@@ -33,7 +33,7 @@ def titration(ens,
         a new axis object. 
     context_manager : object, optional
         do plot with this context manager. (Used for generating plots in 
-        specific windows in a jupyte notebook). context_manager should be 
+        specific windows in a jupyter notebook). context_manager should be 
         initialized object with __enter__ and __exit__ methods. 
 
     Returns
@@ -48,15 +48,15 @@ def titration(ens,
     """
 
     ens = check_ensemble(ens,check_obs=True)
-    mu_dict, _ = check_mu_dict(mu_dict)
+    ligand_dict, _ = check_ligand_dict(ligand_dict)
     fig, ax, context_manager = check_plot(fig=fig,
                                           ax=ax,
                                           context_manager=context_manager)
 
     with context_manager:
     
-        ligand_key = list(mu_dict.keys())[0]
-        df = ens.get_obs(mu_dict=mu_dict)
+        ligand_key = list(ligand_dict.keys())[0]
+        df = ens.get_obs(ligand_dict=ligand_dict)
 
         ax.plot(df[ligand_key],
                 df["fx_obs"],

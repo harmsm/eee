@@ -18,15 +18,15 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    mu_stoich={"X":1})
+                    ligand_stoich={"X":1})
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    mu_stoich={"Y":1})
+                    ligand_stoich={"Y":1})
     
     mut_energy = {"test1":0,
                   "test2":0}
-    mu_dict = {"X":[0,10000],"Y":[10000,0]}
+    ligand_dict = {"X":[0,10000],"Y":[10000,0]}
 
     T = 1
     select_on = "fx_obs"
@@ -35,7 +35,7 @@ def test_ensemble_fitness(ens_with_fitness):
     fitness_fcns = [ff_off,ff_on]
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -49,7 +49,7 @@ def test_ensemble_fitness(ens_with_fitness):
     fitness_fcns = ["off","on"]
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -62,7 +62,7 @@ def test_ensemble_fitness(ens_with_fitness):
     # favored) and not folded under second condition (test1 favored). 
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=True,
@@ -75,7 +75,7 @@ def test_ensemble_fitness(ens_with_fitness):
     fitness_fcns = [ff_off,ff_off]
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -87,7 +87,7 @@ def test_ensemble_fitness(ens_with_fitness):
     fitness_fcns = [ff_on,ff_off]
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -101,15 +101,15 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    mu_stoich={"X":1})
+                    ligand_stoich={"X":1})
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    mu_stoich={"Y":1})
+                    ligand_stoich={"Y":1})
     
     mut_energy = {"test1":0,
                   "test2":0}
-    mu_dict = {"X":[0,1],"Y":[1,0]}
+    ligand_dict = {"X":[0,1],"Y":[1,0]}
 
     T = 1
     select_on = "dG_obs"
@@ -117,7 +117,7 @@ def test_ensemble_fitness(ens_with_fitness):
     fitness_fcns = [ff_on,ff_off]
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -128,7 +128,7 @@ def test_ensemble_fitness(ens_with_fitness):
     # Now select on folded. Will be entirely unfolded --> 0,0
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=True,
@@ -139,11 +139,11 @@ def test_ensemble_fitness(ens_with_fitness):
 
 
     ens = ens_with_fitness["ens"]
-    mu_dict = ens_with_fitness["mu_dict"]
+    ligand_dict = ens_with_fitness["ligand_dict"]
 
     value = ensemble_fitness(ens=ens,
                     mut_energy={},
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=[ff_on,ff_off],
                     select_on="fx_obs",
                     fitness_kwargs={},
@@ -153,7 +153,7 @@ def test_ensemble_fitness(ens_with_fitness):
 
     value = ensemble_fitness(ens=ens,
                     mut_energy={"s1":-1.667,"s2":3.333},
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=[ff_on,ff_off],
                     select_on="fx_obs",
                     fitness_kwargs={},
@@ -163,7 +163,7 @@ def test_ensemble_fitness(ens_with_fitness):
     
     value = ensemble_fitness(ens=ens,
                     mut_energy={"s1":0.167,"s2":-16.667},
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=[ff_on,ff_off],
                     select_on="fx_obs",
                     fitness_kwargs={},
@@ -175,15 +175,15 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    mu_stoich={"X":1})
+                    ligand_stoich={"X":1})
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    mu_stoich={"Y":1})
+                    ligand_stoich={"Y":1})
     
     mut_energy = {"test1":0,
                   "test2":0}
-    mu_dict = {"X":[0,10000],"Y":[10000,0]}
+    ligand_dict = {"X":[0,10000],"Y":[10000,0]}
     fitness_fcns = [ff_off,ff_on]
 
     select_on = "fx_obs"
@@ -191,7 +191,7 @@ def test_ensemble_fitness(ens_with_fitness):
 
     value = ensemble_fitness(ens=ens,
                     mut_energy=mut_energy,
-                    mu_dict=mu_dict,
+                    ligand_dict=ligand_dict,
                     fitness_fcns=fitness_fcns,
                     select_on=select_on,
                     select_on_folded=False,
@@ -203,7 +203,7 @@ def test_ensemble_fitness(ens_with_fitness):
     with pytest.raises(ValueError):
         value = ensemble_fitness(ens=ens,
                         mut_energy=mut_energy,
-                        mu_dict=mu_dict,
+                        ligand_dict=ligand_dict,
                         fitness_fcns=fitness_fcns,
                         select_on="not_right",
                         fitness_kwargs={},

@@ -109,7 +109,7 @@ def read_json(json_file,use_stored_seed=False):
         "system" : a dictionary describing the system. This dictionary must 
                    have the following keys:
             'ens': a dictionary of species describing the ensemble.
-            'mu_dict': a dictionary indicating the chemical potentials
+            'ligand_dict': a dictionary indicating the chemical potentials
                        over which to do the simulation, 
             'fitness_fcns': the fitness functions to apply for each of the
                             conditions

@@ -111,10 +111,10 @@ class TitrationWidget(MetaWidget):
         max_value = w.children[2].get_interact_value()
         num_steps = w.children[3].get_interact_value()
         
-        mu_dict = {ligand:np.linspace(start=min_value,
-                                      stop=max_value,
-                                      num=num_steps)}
-        return mu_dict
+        ligand_dict = {ligand:np.linspace(start=min_value,
+                                          stop=max_value,
+                                          num=num_steps)}
+        return ligand_dict
     
     @property
     def widget(self):

@@ -75,13 +75,13 @@ class EnsembleCreator:
         good_ensemble = True
         for species in values["species"]:
             tmp_species = copy.deepcopy(species)
-            mu_stoich = {}
+            ligand_stoich = {}
             if "ligands" in tmp_species:
                 for lig in tmp_species["ligands"]:
-                    mu_stoich[lig[0]] = lig[1]
+                    ligand_stoich[lig[0]] = lig[1]
                 tmp_species.pop("ligands")
             
-            tmp_species["mu_stoich"] = mu_stoich
+            tmp_species["ligand_stoich"] = ligand_stoich
             try:
                 ens.add_species(**tmp_species)
             except ValueError:
@@ -96,12 +96,12 @@ class EnsembleCreator:
                 good_ensemble = False
                 
         # Only draw titration of ensemble if we have titration X values
-        mu_dict = {}
+        ligand_dict = {}
         if good_ensemble:
             if "titration" not in values:
                 good_ensemble = False
             else:
-                mu_dict = values["titration"]
+                ligand_dict = values["titration"]
                 
         with self._out:
 
@@ -117,7 +117,7 @@ class EnsembleCreator:
                                                     ax=axes[0],
                                                     context_manager=self._out)
                 fig, axes[1] = plots.titration(ens=ens,
-                                               mu_dict=mu_dict,
+                                               ligand_dict=ligand_dict,
                                                fig=fig,
                                                ax=axes[1],
                                                context_manager=self._out)

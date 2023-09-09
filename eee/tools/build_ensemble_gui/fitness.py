@@ -7,7 +7,7 @@ class FitnessWidget(MetaWidget):
 
     def __init__(self,
                  update_callback,
-                 mu_dict=None,
+                 ligand_dict=None,
                  fitness_fcn=None,
                  select_on="fx_obs",
                  select_on_folded=True):
@@ -15,23 +15,23 @@ class FitnessWidget(MetaWidget):
             
         super().__init__(update_callback=update_callback)
 
-        self.build_widget(mu_dict=mu_dict,
+        self.build_widget(ligand_dict=ligand_dict,
                           fitness_fcn=fitness_fcn,
                           select_on=select_on,
                           select_on_folded=select_on_folded)
     
     def build_widget(self,
-                     mu_dict=None,
+                     ligand_dict=None,
                      fitness_fcn=None,
                      select_on="fx_obs",
                      select_on_folded=True):
         
-        if mu_dict is None:
-            mu_dict = {}
+        if ligand_dict is None:
+            ligand_dict = {}
 
         self._conditions_w = {}
-        for k in mu_dict:
-            self._conditions_w[k] = widgets.FloatText(value=mu_dict[k],
+        for k in ligand_dict:
+            self._conditions_w[k] = widgets.FloatText(value=ligand_dict[k],
                                                       description=f"{k}:",
                                                       continuous_update=False)
             self._conditions_w[k].observe(self._watcher)
@@ -126,18 +126,18 @@ class FitnessWidget(MetaWidget):
         cond_box = self._widget.children[0]
         select_box = self._widget.children[1]
 
-        mu_dict = {}
+        ligand_dict = {}
         for cond in cond_box.children:
             k = cond.description.strip()[:-1]
             v = cond.get_interact_value()
-            mu_dict[k] = v
+            ligand_dict[k] = v
         
         out = {}
         out["select_on"] = select_box.children[0].get_interact_value()
         out["select_on_folded"] = select_box.children[1].get_interact_value()
         out["fitness_fcn"] = select_box.children[2].get_interact_value()
         out["fitness_kwargs"] = {"threshold":select_box.children[3].get_interact_value()}
-        out["mu_dict"] = mu_dict
+        out["ligand_dict"] = ligand_dict
 
         return
             

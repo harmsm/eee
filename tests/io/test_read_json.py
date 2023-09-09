@@ -221,26 +221,26 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._ens._species["hdna"]["dG0"] == 0.0
     assert sm._ens._species["hdna"]["observable"] == True
     assert sm._ens._species["hdna"]["folded"] == True
-    assert sm._ens._species["hdna"]["mu_stoich"] == {}
+    assert sm._ens._species["hdna"]["ligand_stoich"] == {}
 
     assert sm._ens._species["h"]["dG0"] == 5.0
     assert sm._ens._species["h"]["observable"] == False
     assert sm._ens._species["h"]["folded"] == True
-    assert sm._ens._species["h"]["mu_stoich"] == {}
+    assert sm._ens._species["h"]["ligand_stoich"] == {}
 
     assert sm._ens._species["l2e"]["dG0"] == 5.0
     assert sm._ens._species["l2e"]["observable"] == False
     assert sm._ens._species["l2e"]["folded"] == True
-    assert sm._ens._species["l2e"]["mu_stoich"] == {"iptg":4}
+    assert sm._ens._species["l2e"]["ligand_stoich"] == {"iptg":4}
 
     assert sm._ens._species["unfolded"]["dG0"] == 10.0
     assert sm._ens._species["unfolded"]["observable"] == False
     assert sm._ens._species["unfolded"]["folded"] == False
-    assert sm._ens._species["unfolded"]["mu_stoich"] == {}
+    assert sm._ens._species["unfolded"]["ligand_stoich"] == {}
 
     assert np.isclose(sm._ens._gas_constant,0.008314)
 
-    assert np.array_equal(sm._fc.mu_dict["iptg"],np.array([1,4]))
+    assert np.array_equal(sm._fc.ligand_dict["iptg"],np.array([1,4]))
     assert sm._fc._fitness_fcns[0] == ff_on
     assert sm._fc._fitness_fcns[1] == ff_off
     assert sm._fc._select_on == "dG_obs"
@@ -302,7 +302,7 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._ens._gas_constant == 0.001987
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("mu_dict")
+    test_json["system"].pop("ligand_dict")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):

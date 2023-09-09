@@ -45,7 +45,7 @@ def _search_for_key(some_dict,
 def _spreadsheet_to_ensemble(df,gas_constant=None):
     """
     Load a spreadsheet and try to convert to an ensemble. Rows are treated as 
-    different species; columns as keyword parameters (dG0, mu_stoich, etc.)
+    different species; columns as keyword parameters (dG0, ligand_stoich, etc.)
     """
 
     # Figure out gas constant (can't come from spreadsheet)
@@ -87,8 +87,8 @@ def _spreadsheet_to_ensemble(df,gas_constant=None):
 
     # Figure out which columns to send in as stoichiometries and which to send
     # in as keywords. 
-    pass_as_mu = columns - allowed - required
-    pass_as_kwargs = columns - pass_as_mu
+    pass_as_stoich = columns - allowed - required
+    pass_as_kwargs = columns - pass_as_stoich
     
     # Print kwarg status
     pass_as_kwargs = list(pass_as_kwargs)
@@ -96,10 +96,10 @@ def _spreadsheet_to_ensemble(df,gas_constant=None):
     for k in pass_as_kwargs:
         print(f"Interpreting column '{k}' as a ensemble.add_species keyword")
 
-    # Print mu status
-    pass_as_mu = list(pass_as_mu)
-    pass_as_mu.sort()
-    for m in pass_as_mu:
+    # Print stoich status
+    pass_as_stoich = list(pass_as_stoich)
+    pass_as_stoich.sort()
+    for m in pass_as_stoich:
         print(f"Interpreting column '{m}' as a stoichiometry")
 
     # Now load each row in as a species. 
@@ -110,11 +110,11 @@ def _spreadsheet_to_ensemble(df,gas_constant=None):
         for k in pass_as_kwargs:
             kwargs[k] = df.loc[idx,k]
             
-        # Construct mu_stoich
-        mu_stoich = {}
-        for m in pass_as_mu:
-            mu_stoich[m] = df.loc[idx,m]
-        kwargs["mu_stoich"] = mu_stoich
+        # Construct ligand_stoich
+        ligand_stoich = {}
+        for m in pass_as_stoich:
+            ligand_stoich[m] = df.loc[idx,m]
+        kwargs["ligand_stoich"] = ligand_stoich
             
         # Add species
         ens.add_species(**kwargs)
@@ -185,8 +185,8 @@ def read_ensemble(input_file):
 
         {
           "ens":{
-            "one":{"dG0":0,"mu_stoich":{"X":1},"observable":true,"folded":false},
-            "two":{"dG0":0,"mu_stoich":{"Y":1},"observable":false,"folded":false},
+            "one":{"dG0":0,"ligand_stoich":{"X":1},"observable":true,"folded":false},
+            "two":{"dG0":0,"ligand_stoich":{"Y":1},"observable":false,"folded":false},
           }
         }
 
@@ -197,8 +197,8 @@ def read_ensemble(input_file):
         {
           "ens":{
             "gas_constant":0.00197,
-            "one":{"dG0":0,"mu_stoich":{"X":1},"observable":true,"folded":false},
-            "two":{"dG0":0,"mu_stoich":{"Y":1},"observable":false,"folded":false},
+            "one":{"dG0":0,"ligand_stoich":{"X":1},"observable":true,"folded":false},
+            "two":{"dG0":0,"ligand_stoich":{"Y":1},"observable":false,"folded":false},
           }
         }
 
@@ -228,8 +228,8 @@ def read_ensemble(input_file):
             },
             "ens":{
                 "gas_constant":0.00197,
-                "one":{"dG0":0,"mu_stoich":{"X":1},"observable":true,"folded":false},
-                "two":{"dG0":0,"mu_stoich":{"Y":1},"observable":false,"folded":false},
+                "one":{"dG0":0,"ligand_stoich":{"X":1},"observable":true,"folded":false},
+                "two":{"dG0":0,"ligand_stoich":{"Y":1},"observable":false,"folded":false},
             }
         }
 
@@ -237,7 +237,7 @@ def read_ensemble(input_file):
     as values. It looks for columns corresponding to the keyword arguments to 
     :code:`Ensemble.add_species` and uses those values when adding each row to 
     the ensemble. Omitted keywords use their default values from the method. 
-    The :code:`mu_stoich` key should *not* be used. Instead, any columns in the
+    The :code:`ligand_stoich` key should *not* be used. Instead, any columns in the
     spreadsheet that do not correspond to a keyword are treated as chemical 
     potential stoichiometries. The following spreadsheet defines two species, 
     s1 and s2. s1 interacts with molecule "X" with a stoichiometry of 1, s2 
