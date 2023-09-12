@@ -31,7 +31,7 @@ class Simulation:
                  select_on="fx_obs",
                  select_on_folded=True,
                  fitness_kwargs=None,
-                 T=298.15,
+                 temperature=298.15,
                  seed=None):
         """
         Set up a simulation of the evolution of a population where the fitness
@@ -60,7 +60,7 @@ class Simulation:
             add selection for folded protein. 
         fitness_kwargs : dict, optional
             pass these keyword arguments to the fitness_fcn
-        T : float, default=298.15
+        temperature : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
             match the length of the arrays specified in ligand_dict. 
         seed : int, optional
@@ -99,7 +99,7 @@ class Simulation:
                            select_on=select_on,
                            select_on_folded=select_on_folded,
                            fitness_kwargs=fitness_kwargs,
-                           T=T)
+                           temperature=temperature)
         
         # Build a Genotype object which manages the genotypes over the 
         # simulation

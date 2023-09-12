@@ -7,7 +7,7 @@ from eee._private.check.standard import check_float
 from eee._private.check.eee import check_ligand_dict
 from eee._private.check.eee import check_ligand_stoich
 from eee._private.check.eee import check_mut_energy
-from eee._private.check.eee import check_T
+from eee._private.check.eee import check_temperature
 
 import numpy as np
 import pandas as pd
@@ -215,7 +215,7 @@ class Ensemble:
         self._not_obs_mask = np.logical_not(self._obs_mask)
         self._unfolded_mask = np.logical_not(self._folded_mask)
 
-    def _get_weights(self,mut_energy,T):
+    def _get_weights(self,mut_energy,temperature):
         """
         Get Boltzmann weights for each species/condition combination given 
         mutations and current temperature. No error checking. Private. 
@@ -224,7 +224,7 @@ class Ensemble:
         """
 
         # Perturb z_matrix by mut_energy and divide by RT
-        beta = 1/(self._gas_constant*T)
+        beta = 1/(self._gas_constant*temperature)
         weights = -beta[None,:]*(self._z_matrix + mut_energy[:,None])
 
         # Shift so highest weight is highest allowed numerically. Low weights 
@@ -290,7 +290,7 @@ class Ensemble:
         
         return dG
 
-    def get_obs(self,mut_energy=None,ligand_dict=None,T=298.15):
+    def get_obs(self,mut_energy=None,ligand_dict=None,temperature=298.15):
         """
         Get the population and observables given the energetic effects of 
         mutations, as well as the chemical potentials in ligand_dict.
@@ -308,7 +308,7 @@ class Ensemble:
             ligands. Values are floats or arrays of floats holding potentials.
             Any arrays specified must have the same length. If a chemical
             potential is not specified in the dictionary, its value is set to 0. 
-        T : float, default=298.15
+        temperature : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
             match the length of the arrays specified in ligand_dict. 
         
@@ -349,12 +349,12 @@ class Ensemble:
         # Argument sanity checking
         mut_energy = check_mut_energy(mut_energy)
         ligand_dict, num_conditions = check_ligand_dict(ligand_dict)
-        T = check_T(T,num_conditions=num_conditions)
+        temperature = check_temperature(temperature,num_conditions=num_conditions)
 
         # Get Boltzmann weights
         self._build_z_matrix(ligand_dict)
         mut_energy_array = self.mut_dict_to_array(mut_energy)
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
 
         # Observable and not observable weights
         obs = np.sum(weights[self._obs_mask,:],axis=0)
@@ -363,7 +363,7 @@ class Ensemble:
         # Start building an output dataframe holding the temperature and 
         # chemical potentials
         out = {}
-        out["T"] = T
+        out["temperature"] = temperature
         for lig in ligand_dict:
             out[lig] = ligand_dict[lig]
         
@@ -380,7 +380,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(nan_mask),dtype=float)
         dG_out[nan_mask] = np.nan
-        dG_out[not_nan_mask] = -1/(self._gas_constant*T[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
+        dG_out[not_nan_mask] = -1/(self._gas_constant*temperature[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
 
         out["dG_obs"] = dG_out
 
@@ -440,7 +440,7 @@ class Ensemble:
 
         return mut_energy_array
 
-    def get_fx_obs_fast(self,mut_energy_array,T):
+    def get_fx_obs_fast(self,mut_energy_array,temperature):
         """
         Get a numpy array with the fraction observable for the ensemble. Each 
         element is a condition in ligand_dict. This only works after
@@ -452,7 +452,7 @@ class Ensemble:
         mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : nump.ndarray
+        temperature : numpy.ndarray
             numpy array of float where each value is the T at a given condition.
 
         Returns
@@ -464,7 +464,7 @@ class Ensemble:
             vector of the fraction of the molecule folded 
         """
 
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
         
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
@@ -475,9 +475,9 @@ class Ensemble:
         return obs/(obs + not_obs), folded/(folded + unfolded)
     
 
-    def get_dG_obs_fast(self,mut_energy_array,T):
+    def get_dG_obs_fast(self,mut_energy_array,temperature):
         """
-        Get a numpy array with the Dg observable for the ensemble. Each 
+        Get a numpy array with the dG observable for the ensemble. Each 
         element is a condition in ligand_dict. This only works after
         read_ligand_dict has been run to create the appropriate z-matrix.
         Warning: no error checking. 
@@ -487,7 +487,7 @@ class Ensemble:
         mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : nump.ndarray
+        temperature : numpy.ndarray
             numpy array of float where each value is the T at a given condition.
 
         Returns
@@ -498,7 +498,7 @@ class Ensemble:
             vector of the fraction of the molecule folded 
         """
 
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
 
@@ -507,7 +507,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(mask),dtype=float)
         dG_out[mask] = np.nan
-        dG_out[not_mask] = -1/(self._gas_constant*T)*np.log(obs[not_mask]/not_obs[not_mask])
+        dG_out[not_mask] = -1/(self._gas_constant*temperature)*np.log(obs[not_mask]/not_obs[not_mask])
 
         folded = np.sum(weights[self._folded_mask,:],axis=0)
         unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)

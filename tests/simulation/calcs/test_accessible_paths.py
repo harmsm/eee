@@ -18,7 +18,7 @@ def test_AcessiblePaths(ens_test_data):
                         fitness_fcns=fitness_fcns,
                         select_on="fx_obs",
                         fitness_kwargs={},
-                        T=1,
+                        temperature=1,
                         seed=None)
     
     assert ap.calc_type == "accessible_paths"
@@ -42,7 +42,7 @@ def test_AcessiblePaths_run(ens_test_data,tmpdir):
                         fitness_fcns=fitness_fcns,
                         select_on="fx_obs",
                         fitness_kwargs={},
-                        T=1,
+                        temperature=1,
                         seed=None)
 
     ap.run(output_directory="test",

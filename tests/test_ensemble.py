@@ -284,7 +284,7 @@ def test_Ensemble__build_z_matrix():
 
 def test_Ensemble__get_weights():
 
-    # single species, R = 1, T = 1, no mutations
+    # single species, R = 1, temperature = 1, no mutations
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
@@ -293,14 +293,14 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0])
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
 
     ens._build_z_matrix(ligand_dict={})
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[1,1])
     assert np.array_equal(weights,[np.exp([ens._max_allowed])])
 
-    # single species, R = 1, T = 500, no mutations. This tests the shift to 
+    # single species, R = 1, temperature = 500, no mutations. This tests the shift to 
     # max_allowed. 
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
@@ -310,9 +310,9 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0])
-    T = 500*np.ones(1,dtype=float)    
+    temperature = 500*np.ones(1,dtype=float)    
     ens._build_z_matrix(ligand_dict={})
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[1,1])
     assert np.array_equal(weights,[np.exp([ens._max_allowed])])
     
@@ -330,9 +330,9 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0,0.0])
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
     ens._build_z_matrix(ligand_dict={})
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,1])
     assert np.array_equal(weights,[[np.exp(ens._max_allowed)],
                                    [np.exp(ens._max_allowed)]])
@@ -352,9 +352,9 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0,1.0])
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
     ens._build_z_matrix(ligand_dict={})
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,1])
     norm_weights = weights/np.sum(weights,axis=0)
     Z = np.exp(0) + np.exp(-1)
@@ -362,8 +362,8 @@ def test_Ensemble__get_weights():
     assert np.isclose(norm_weights[1,0],np.exp(-1)/Z)
 
     # Make sure temperature works as expected
-    T = 50*np.ones(1,dtype=float)                                        
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    temperature = 50*np.ones(1,dtype=float)                                        
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,1])
     norm_weights = weights/np.sum(weights,axis=0)
     Z = np.exp(0/50) + np.exp(-1/50)
@@ -385,10 +385,10 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0,1.0])
-    T = np.ones(1,dtype=float)*50    
+    temperature = np.ones(1,dtype=float)*50    
     ens._build_z_matrix(ligand_dict={})
                                   
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,1])
     norm_weights = weights/np.sum(weights,axis=0)
     Z = np.exp(0/2500) + np.exp(-1/2500)
@@ -410,10 +410,10 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0,1.0])
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
     ens._build_z_matrix(ligand_dict={})
                         
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,1])
     norm_weights = weights/np.sum(weights,axis=0)
     Z = np.exp(1) + np.exp(-1)
@@ -434,10 +434,10 @@ def test_Ensemble__get_weights():
                     ligand_stoich=None)
     
     mut_energy = np.array([0.0,1.0])
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
     ens._build_z_matrix(ligand_dict={"X":np.array([0,0.5,1])})
                         
-    weights = ens._get_weights(mut_energy=mut_energy,T=T)
+    weights = ens._get_weights(mut_energy=mut_energy,temperature=temperature)
     assert np.array_equal(weights.shape,[2,3])
     norm_weights = weights/np.sum(weights,axis=0)
     Z = np.exp(1) + np.exp(-1)
@@ -624,7 +624,7 @@ def test_Ensemble_get_obs(variable_types):
     assert df.loc[0,"fx_folded"] == 0.5
 
     # ------------------------------------------------------------------------
-    # One observable, two not. (Use R = 1 and T = 1 to simplify math)
+    # One observable, two not. (Use R = 1 and temperature = 1 to simplify math)
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
@@ -636,7 +636,7 @@ def test_Ensemble_get_obs(variable_types):
                     observable=False,
                     folded=True)
     
-    df = ens.get_obs(T=1)
+    df = ens.get_obs(temperature=1)
     assert df.loc[0,"dG_obs"] == -np.log(1/2)
     assert df.loc[0,"fx_obs"] == 1/3
     assert df.loc[0,"test1"] == 1/3
@@ -644,7 +644,7 @@ def test_Ensemble_get_obs(variable_types):
     assert df.loc[0,"fx_folded"] == 2/3
 
     # ------------------------------------------------------------------------
-    # One observable, two not. (Use R = 1 and T = 1 to simplify math). ligand_dict
+    # One observable, two not. (Use R = 1 and temperature = 1 to simplify math). ligand_dict
     # interesting.
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
@@ -657,7 +657,7 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test3",   
                     observable=False,
                     folded=True)
-    df = ens.get_obs(T=1,
+    df = ens.get_obs(temperature=1,
                      ligand_dict={"X":[0,1]})
     
     test1 = np.exp(0)
@@ -695,7 +695,7 @@ def test_Ensemble_get_obs(variable_types):
     assert np.isclose(df.loc[1,"fx_folded"],1-fx)
 
     # ------------------------------------------------------------------------
-    # One observable, two not. (Use R = 1 and T = 1 to simplify math). ligand_dict
+    # One observable, two not. (Use R = 1 and temperature = 1 to simplify math). ligand_dict
     # interesting. mut_energy interesting
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
@@ -708,7 +708,7 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test3",   
                     observable=False,
                     folded=True)
-    df = ens.get_obs(T=1,
+    df = ens.get_obs(temperature=1,
                      ligand_dict={"X":[0,1]},
                      mut_energy={"test2":-1})
     
@@ -747,7 +747,7 @@ def test_Ensemble_get_obs(variable_types):
     assert np.isclose(df.loc[1,"fx_folded"],1-fx)
     
     # ------------------------------------------------------------------------
-    # One observable, two not. (Use R = 1 and T = 1 to simplify math). ligand_dict
+    # One observable, two not. (Use R = 1 and temperature = 1 to simplify math). ligand_dict
     # interesting, diff for different species. mut_energy interesting
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
@@ -761,7 +761,7 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test3",   
                     observable=False,
                     folded=False)
-    df = ens.get_obs(T=1,
+    df = ens.get_obs(temperature=1,
                      ligand_dict={"X":[0,1],"Y":[0,1]},
                      mut_energy={"test2":-1})
     
@@ -821,7 +821,7 @@ def test_Ensemble_get_obs(variable_types):
                     folded=False,
                     dG0=max_allowed+1)
     
-    df = ens.get_obs(T=1)
+    df = ens.get_obs(temperature=1)
     assert np.isclose(df.loc[0,"dG_obs"],-np.log(np.exp(-1)/np.exp(0)))
     assert np.isclose(df.loc[0,"fx_obs"],np.exp(-1)/(np.exp(0) + np.exp(-1)))
     assert np.isclose(df.loc[0,"test1"],np.exp(-1)/(np.exp(0) + np.exp(-1)))
@@ -922,14 +922,14 @@ def test_Ensemble_get_obs(variable_types):
             ens.get_obs(mut_energy=mut_energy)
 
 
-    print("--- T ---")
+    print("--- temperature ---")
     for v in [1,"1",1.0]:
         print(v,type(v),flush=True)
 
         ens = Ensemble()
         ens.add_species(name="test1")
         ens.add_species(name="test2",observable=True)
-        ens.get_obs(T=v)
+        ens.get_obs(temperature=v)
 
     not_allowed = variable_types["not_floats_or_coercable"][:]
     not_allowed.append(0.0)
@@ -941,7 +941,7 @@ def test_Ensemble_get_obs(variable_types):
         ens.add_species(name="test1")
         ens.add_species(name="test2",observable=True)
         with pytest.raises(ValueError):
-            ens.get_obs(T=v)
+            ens.get_obs(temperature=v)
 
 
 def test_Ensemble_read_ligand_dict(variable_types):
@@ -1020,9 +1020,9 @@ def test_Ensemble_get_fx_obs_fast():
                     dG0=2)
 
     ens.read_ligand_dict(ligand_dict={"X":np.array([0,1.0])})
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
 
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(-0)
     t3 = np.exp(-2)
@@ -1051,7 +1051,7 @@ def test_Ensemble_get_fx_obs_fast():
     assert np.array_equal(np.round(fx_folded,2),
                           np.round(predicted,2))
 
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(1)
     t3 = np.exp(-2)
@@ -1100,9 +1100,9 @@ def test_Ensemble_get_dG_obs_fast():
                     dG0=2)
 
     ens.read_ligand_dict(ligand_dict={"X":np.array([0,1.0])})
-    T = np.ones(1,dtype=float)    
+    temperature = np.ones(1,dtype=float)    
 
-    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),T=T)
+    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,0,0]),temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(-0)
     t3 = np.exp(-2)
@@ -1130,7 +1130,7 @@ def test_Ensemble_get_dG_obs_fast():
                           np.round(predicted,2))
     
 
-    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,-1,0]),T=T)
+    value, fx_folded = ens.get_dG_obs_fast(mut_energy_array=np.array([0,-1,0]),temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(1)
     t3 = np.exp(-2)

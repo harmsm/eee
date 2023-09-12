@@ -1,83 +1,92 @@
-import eee
-from eee._private.check.ensemble import check_ensemble
-
-import json
-import os
-import inspect
 
 from eee.simulation.core.fitness import Fitness
+from eee._private.check.dataframe import check_dataframe
+from eee._private.check.ensemble import check_ensemble
 
-#fitness_param = inspect.signature(Fitness.__init__).parameters
+import inspect
 
-# def _spreadsheet_to_fitness(df,
-#                             ens,
-#                             default_fitness_kwargs=None,
-#                             default_select_on=None,
-#                             default_select_on_folded=None,
-#                             default_temperature=None):
-#     """
-#     Load a spreadsheet and try to convert to input to a Fitness object. 
-#     Rows are treated as different condition; columns as keyword parameters
-#     (fitness_fcn, temperature, etc.)
-#     """
+def check_conditions(ens,
+                     conditions,
+                     default_fitness_kwargs=None,
+                     default_select_on="fx_obs",
+                     default_select_on_folded=True,
+                     default_temperature=298.15):
+    """
+    """
+
+    # Read spreadsheet or list of conditions
+    df = check_dataframe(conditions,
+                         variable_name="conditions")
+    df_columns = set(df.columns)
+
+    # Set up defaults
+    if default_fitness_kwargs is None:
+        default_fitness_kwargs = {}
+
+    defaults = {"fitness_kwargs":default_fitness_kwargs,
+                "select_on":default_select_on,
+                "select_on_folded":default_select_on_folded,
+                "temperature":default_temperature}
+
+    # Absolutely required columns
+    required = set(["fitness_fcn"])
+
+    # Reserved columns (built from defaults and required)
+    reserved = list(defaults.keys())
+    reserved.extend(list(required))
+    reserved = set(reserved)
     
-#     # Read spreadsheet
-#     df = eee.io.read_dataframe(df)
-#     df_columns = set(df.columns)
-
-#     required = set(["fitness_fcn"])
-#     reserved = set(["fitness_fcn",
-#                     "fitness_kwargs",
-#                     "select_on",
-#                     "select_on_folded",
-#                     "temperature"])
-    
-#     # Get ligands in ensemble
-#     ens = check_ensemble(ens)
-#     ligands = set(ens.ligands)
+    # Get ligands that are defined in the ensemble
+    ens = check_ensemble(ens)
+    ligands = set(ens.ligands)
         
-#     # Make sure the dataframe has all required columns
-#     missing_required = list(required - df_columns)
-#     if len(missing_required) > 0:
-#         err = "\ndataframe is missing required columns:\n"
-#         for m in missing_required:
-#             err += f"    {m}\n"
-#         err += "\n"
-#         raise ValueError(err)
+    # Make sure the dataframe has all required columns
+    missing_required = list(required - df_columns)
+    if len(missing_required) > 0:
+        err = "\ndataframe is missing required columns:\n"
+        for m in missing_required:
+            err += f"    {m}\n"
+        err += "\n"
+        raise ValueError(err)
     
-#     # Make sure the ensemble does not have any ligands with reserved names
-#     in_reserved = list(ligands.isin(reserved))
-#     if len(in_reserved) > 0:
-#         err = "\nensemble must not have ligands with reserved names:\n"
-#         for r in in_reserved:
-#             err += f"    {r}\n"
-#         err += "\n"
-#         raise ValueError(err)
+    # Make sure the ensemble does not have any ligands with reserved names
+    in_reserved = list(ligands.isin(reserved))
+    if len(in_reserved) > 0:
+        err = "\nensemble must not have ligands with reserved names:\n"
+        for r in in_reserved:
+            err += f"    {r}\n"
+        err += "\n"
+        raise ValueError(err)
     
-#     ligand_columns = (df_columns - reserved)
-#     extra_ligands = list(ligands - ligand_columns)
-#     if len(extra_ligands) > 0:
-#         err = "\ncolumns in the dataframe could not be interpreted as ligands.\n"
-#         for lig in extra_ligands:
-#             err += f"    {lig}\n"
-#         err += "\n"
-#         raise ValueError(err)
+    # Make sure all non reserved columns correspond to ligands in the ensemble
+    ligand_columns = (df_columns - reserved)
+    extra_ligands = list(ligands - ligand_columns)
+    if len(extra_ligands) > 0:
+        err = "\ncolumns in the dataframe could not be interpreted as ligands.\n"
+        for lig in extra_ligands:
+            err += f"    {lig}\n"
+        err += "\n"
+        raise ValueError(err)
 
+    # Get default values for columns not defined already
+    for c in reserved:
+        if c not in df_columns:
+            df[c] = defaults[c]
     
-#     conditions = []
-#     for idx in df.index:
+    conditions = []
+    for idx in df.index:
         
-#         condition = {"ligand_dict":{}}
-#         for col in df_columns:
-#             value = df.loc[idx,col]
-#             if col not in ligand_columns:
-#                 condition[col] = value
-#             else:
-#                 condition["ligand_dict"][col] = value
+        condition = {"ligand_dict":{}}
+        for col in df_columns:
+            value = df.loc[idx,col]
+            if col not in ligand_columns:
+                condition[col] = value
+            else:
+                condition["ligand_dict"][col] = value
 
-#         conditions.append(condition)
+        conditions.append(condition)
 
-#     return conditions
+    return conditions
         
 
 # def _json_to_ensemble(json_file):
@@ -228,3 +237,15 @@ from eee.simulation.core.fitness import Fitness
 
 #     return ens
 
+
+
+    
+
+
+    pass
+    # ligand_dict,
+    # fitness_fcns,
+    # select_on="fx_obs",
+    # select_on_folded=True,
+    # fitness_kwargs=None,
+    # T=298.15

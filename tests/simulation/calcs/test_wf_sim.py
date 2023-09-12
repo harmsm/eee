@@ -20,7 +20,7 @@ def test_WrightFisherSimulation(ens_test_data):
                                 fitness_fcns=fitness_fcns,
                                 select_on="fx_obs",
                                 fitness_kwargs={},
-                                T=1,
+                                temperature=1,
                                 seed=None)
     
     assert wf.calc_type == "wf_sim"
@@ -41,7 +41,7 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
                                 fitness_fcns=fitness_fcns,
                                 select_on="fx_obs",
                                 fitness_kwargs={},
-                                T=1,
+                                temperature=1,
                                 seed=None)
 
     wf.run(output_directory="test",

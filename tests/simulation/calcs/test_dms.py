@@ -18,7 +18,7 @@ def test_DeepMutationalScan(ens_test_data):
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
                              fitness_kwargs={},
-                             T=1,
+                             temperature=1,
                              seed=None)
     
     assert dms.calc_type == "dms"
@@ -42,7 +42,7 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
                              fitness_fcns=fitness_fcns,
                              select_on="fx_obs",
                              fitness_kwargs={},
-                             T=1,
+                             temperature=1,
                              seed=None)
 
     dms.run(output_directory="test",

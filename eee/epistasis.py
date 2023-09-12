@@ -94,7 +94,7 @@ def get_ensemble_epistasis(ens,
                            mut2_dict=None,
                            mut12_dict=None,
                            ligand_dict=None,
-                           T=298.15):
+                           temperature=298.15):
     """
     Get the epistasis between two mutations across different chemical 
     potentials.
@@ -113,7 +113,7 @@ def get_ensemble_epistasis(ens,
         different species. 
     ligand_dict : dict
         dictionary of chemical potentials
-    T : float, default=298.15
+    temperature : float, default=298.15
         temperature in Kelvin
 
     Returns
@@ -129,23 +129,23 @@ def get_ensemble_epistasis(ens,
     # Calculate observables for each genotype
     df_00 = ens.get_obs(mut_energy=None,
                         ligand_dict=ligand_dict,
-                        T=T)
+                        temperature=temperature)
 
     df_10 = ens.get_obs(mut_energy=mut1_dict,
                         ligand_dict=ligand_dict,
-                        T=T)
+                        temperature=temperature)
 
     df_01 = ens.get_obs(mut_energy=mut2_dict,
                         ligand_dict=ligand_dict,
-                        T=T)
+                        temperature=temperature)
 
     df_11 = ens.get_obs(mut_energy=mut12_dict,
                         ligand_dict=ligand_dict,
-                        T=T)
+                        temperature=temperature)
 
     # Create dataframe
     columns = ens.ligands[:]
-    columns.insert(0,"T")
+    columns.insert(0,"temperature")
     df = df_00.loc[:,columns]
 
     # Epistasis in fx_obs
@@ -155,9 +155,9 @@ def get_ensemble_epistasis(ens,
     df["fx_obs_11"] = df_11.loc[:,"fx_obs"]
 
     ep_mag, ep_sign1, ep_sign2, ep_class = get_epistasis(df_00.loc[:,"fx_obs"],
-                                                            df_10.loc[:,"fx_obs"],
-                                                            df_01.loc[:,"fx_obs"],
-                                                            df_11.loc[:,"fx_obs"])
+                                                         df_10.loc[:,"fx_obs"],
+                                                         df_01.loc[:,"fx_obs"],
+                                                         df_11.loc[:,"fx_obs"])
         
     df["fx_ep_mag"] = ep_mag
     df["fx_ep_sign1"] = ep_sign1
@@ -171,9 +171,9 @@ def get_ensemble_epistasis(ens,
     df["dG_obs_11"] = df_11.loc[:,"dG_obs"]
 
     ep_mag, ep_sign1, ep_sign2, ep_class = get_epistasis(df_00.loc[:,"dG_obs"],
-                                                            df_10.loc[:,"dG_obs"],
-                                                            df_01.loc[:,"dG_obs"],
-                                                            df_11.loc[:,"dG_obs"])
+                                                         df_10.loc[:,"dG_obs"],
+                                                         df_01.loc[:,"dG_obs"],
+                                                         df_11.loc[:,"dG_obs"])
         
     df["dG_ep_mag"] = ep_mag
     df["dG_ep_sign1"] = ep_sign1

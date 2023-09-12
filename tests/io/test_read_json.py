@@ -246,7 +246,7 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._fc._select_on == "dG_obs"
     assert sm._fc._select_on_folded == False
     assert sm._fc._fitness_kwargs == {}
-    assert np.array_equal(sm._fc._T,[310.15,310.15])
+    assert np.array_equal(sm._fc._temperature,[310.15,310.15])
     
     assert sm._gc._ddg_df.loc[0,"mut"] == "L1A"
     assert sm._seed != 487698321712
@@ -337,11 +337,11 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._fc._fitness_kwargs == {}
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("T")
+    test_json["system"].pop("temperature")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm, calc_params = read_json("test.json")
-    assert np.array_equal(sm._fc._T,[298.15,298.15])
+    assert np.array_equal(sm._fc._temperature,[298.15,298.15])
 
     test_json = copy.deepcopy(template_json)
     test_json["system"].pop("ddg_df")

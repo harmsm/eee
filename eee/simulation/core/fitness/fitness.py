@@ -3,7 +3,7 @@ Class for calculating fitness from an ensemble during an evolutionary simulation
 """
 
 from eee._private.check.ensemble import check_ensemble
-from eee._private.check.eee import check_T
+from eee._private.check.eee import check_temperature
 
 from .check_fitness_fcns import check_fitness_fcns
 from .check_fitness_kwargs import check_fitness_kwargs
@@ -39,7 +39,7 @@ class Fitness:
                  select_on="fx_obs",
                  select_on_folded=True,
                  fitness_kwargs=None,
-                 T=298.15):
+                 temperature=298.15):
         """
         Parameters
         ----------
@@ -63,12 +63,13 @@ class Fitness:
         select_on_folded : bool, default=True
             In addition to selecting on select_on, multiply the fitness by the 
             fraction of the protein molecules that are folded. 
-        T : float, default=298.15
+        temperature : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
             match the length of the arrays specified in ligand_dict. 
         """
         
         ens = check_ensemble(ens)
+
         ligand_dict, num_conditions = check_ligand_dict(ligand_dict)
         fitness_fcns = check_fitness_fcns(fitness_fcns,
                                           num_conditions=num_conditions,
@@ -83,7 +84,8 @@ class Fitness:
         select_on_folded = check_bool(value=select_on_folded,
                                       variable_name="select_on_folded")
 
-        T = check_T(T=T,num_conditions=num_conditions)
+        temperature = check_temperature(temperature=temperature,
+                                        num_conditions=num_conditions)
 
         self._ens = ens
         self._private_ens = copy.deepcopy(ens)
@@ -92,7 +94,7 @@ class Fitness:
         self._select_on = select_on
         self._select_on_folded = select_on_folded
         self._fitness_kwargs = fitness_kwargs
-        self._T = T
+        self._temperature = temperature
 
         self._fitness_fcns_strings = check_fitness_fcns(self._fitness_fcns,
                                                         num_conditions=num_conditions,
@@ -102,6 +104,7 @@ class Fitness:
         self._obs_function = self._private_ens.get_observable_function(self._select_on)
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
+
 
     def fitness(self,mut_energy_array):
         """
@@ -115,15 +118,18 @@ class Fitness:
         """
         
         values, fx_folded = self._obs_function(mut_energy_array=mut_energy_array,
-                                               T=self._T)
+                                               temperature=self._temperature)
 
         for i in range(self._num_conditions):
             self._F_array[i] = self._fitness_fcns[i](values[i],
                                                      **self._fitness_kwargs)
+                                                     #**self._fitness_kwargs[i])
+            #if self._select_on_folded[i]:
+            #    self._F_array[i] *= fx_folded[i]
  
         if self._select_on_folded:
             self._F_array = self._F_array*fx_folded
- 
+
         return self._F_array
     
     def to_dict(self):
@@ -135,7 +141,7 @@ class Fitness:
                     "select_on",
                     "select_on_folded",
                     "fitness_kwargs",
-                    "T"]
+                    "temperature"]
         out = {}
         for a in to_write:
             out[a] = self.__dict__[f"_{a}"]
@@ -166,8 +172,8 @@ class Fitness:
         return self._fitness_kwargs    
     
     @property
-    def T(self):
-        return self._T
+    def temperature(self):
+        return self._temperature
     
     @property
     def condition_df(self):
@@ -179,7 +185,7 @@ class Fitness:
         for lig in self._ligand_dict:
             to_df[lig] = self._ligand_dict[lig]
         
-        to_df["T"] = self._T
+        to_df["temperature"] = self._temperature
         to_df["ff"] = self._fitness_fcns_strings
     
         return pd.DataFrame(to_df)

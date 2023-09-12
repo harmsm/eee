@@ -27,7 +27,7 @@ def test_Fitness(ens_test_data,variable_types):
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
     select_on_folded = True
-    T = 1
+    temperature = 1
 
     # make sure attributes are set correctly
     fc = Fitness(ens=ens,
@@ -36,13 +36,13 @@ def test_Fitness(ens_test_data,variable_types):
                           select_on=select_on,
                           select_on_folded=select_on_folded,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
   
     # fc._private_ens should be a copy of ens
     assert fc.ens is ens
     assert fc._private_ens is not ens
 
-    assert np.array_equal(fc.T,[1.0,1.0])
+    assert np.array_equal(fc.temperature,[1.0,1.0])
     
     for k in fc._ligand_dict:
         assert np.array_equal(ligand_dict[k],fc._ligand_dict[k])
@@ -52,7 +52,7 @@ def test_Fitness(ens_test_data,variable_types):
     assert fc._select_on_folded == select_on_folded
     assert len(fc._fitness_kwargs) == 0
     assert issubclass(type(fc._fitness_kwargs),dict)
-    assert np.array_equal(fc.T,np.ones(2,dtype=float))
+    assert np.array_equal(fc.temperature,np.ones(2,dtype=float))
 
     ## Check variable type checking
 
@@ -70,7 +70,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=True,
                              fitness_kwargs={},
-                             T=1)
+                             temperature=1)
         
     # ligand_dict
     for v in variable_types["everything"]:
@@ -82,7 +82,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=True,
                              fitness_kwargs={},
-                             T=1)
+                             temperature=1)
 
     # fitness_fcns
     for v in variable_types["everything"]:
@@ -94,7 +94,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=True,
                              fitness_kwargs={},
-                             T=1)
+                             temperature=1)
             
     # select_on
     for v in variable_types["everything"]:
@@ -106,7 +106,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on=v,
                              select_on_folded=True,
                              fitness_kwargs={},
-                             T=1)
+                             temperature=1)
             
     Fitness(ens=ens,
                      ligand_dict=ligand_dict,
@@ -114,7 +114,7 @@ def test_Fitness(ens_test_data,variable_types):
                      select_on="dG_obs",
                      select_on_folded=True,
                      fitness_kwargs={},
-                     T=1)
+                     temperature=1)
     
     # select_on_folded
     for v in variable_types["not_bools"]:
@@ -126,7 +126,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=v,
                              fitness_kwargs={},
-                             T=1)
+                             temperature=1)
 
     # fitness_kwargs
     for v in variable_types["everything"]:
@@ -143,7 +143,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=True,
                              fitness_kwargs=v,
-                             T=1)
+                             temperature=1)
 
     # T
     for v in variable_types["everything"]:
@@ -164,7 +164,7 @@ def test_Fitness(ens_test_data,variable_types):
                              select_on="fx_obs",
                              select_on_folded=True,
                              fitness_kwargs={},
-                             T=v)
+                             temperature=v)
 
 def test_Fitness_fitness():
 
@@ -182,7 +182,7 @@ def test_Fitness_fitness():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                           ligand_dict=ligand_dict,
@@ -190,7 +190,7 @@ def test_Fitness_fitness():
                           select_on=select_on,
                           select_on_folded=False,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
 
     mut_energy_array = np.array([0,0]) 
     value = fc.fitness(mut_energy_array=mut_energy_array)
@@ -207,7 +207,7 @@ def test_Fitness_fitness():
                               fitness_fcns=fitness_fcns,
                               select_on="not_right",
                               fitness_kwargs={},
-                              T=T)
+                              temperature=temperature)
         
     # Now set select_on_folded to True. Always unfolded.
     fc = Fitness(ens=ens,
@@ -216,7 +216,7 @@ def test_Fitness_fitness():
                           select_on=select_on,
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
 
     mut_energy_array = np.array([0,0]) 
     value = fc.fitness(mut_energy_array=mut_energy_array)
@@ -243,7 +243,7 @@ def test_Fitness_to_dict():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                           ligand_dict=ligand_dict,
@@ -251,7 +251,7 @@ def test_Fitness_to_dict():
                           select_on=select_on,
                           select_on_folded=False,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
 
     out_dict = fc.to_dict()
     assert np.array_equal(list(out_dict["ligand_dict"].keys()),["X","Y"])
@@ -261,7 +261,7 @@ def test_Fitness_to_dict():
     assert out_dict["select_on_folded"] == False
     assert issubclass(type(out_dict["fitness_kwargs"]),dict)
     assert len(out_dict["fitness_kwargs"]) == 0
-    assert np.array_equal(out_dict["T"],[1,1])
+    assert np.array_equal(out_dict["temperature"],[1,1])
     assert np.array_equal(out_dict["fitness_fcns"],["off","on"])
 
 
@@ -279,7 +279,7 @@ def test_Fitness_ens():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     # make sure attributes are set correctly
 
@@ -288,7 +288,7 @@ def test_Fitness_ens():
                           fitness_fcns=fitness_fcns,
                           select_on=select_on,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
 
     # fc._private_ens should be a copy of ens
     assert fc.ens is ens
@@ -310,7 +310,7 @@ def test_Fitness_ligand_dict():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                           ligand_dict=ligand_dict,
@@ -318,7 +318,7 @@ def test_Fitness_ligand_dict():
                           select_on=select_on,
                           select_on_folded=False,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
     assert np.array_equal(list(fc.ligand_dict.keys()),["X","Y"])
     assert np.array_equal(fc.ligand_dict["X"],[0,100])
     assert np.array_equal(fc.ligand_dict["Y"],[100,0])
@@ -339,7 +339,7 @@ def test_Fitness_select_on():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                           ligand_dict=ligand_dict,
@@ -347,7 +347,7 @@ def test_Fitness_select_on():
                           select_on=select_on,
                           select_on_folded=False,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
     assert fc.select_on == "fx_obs"
 
 def test_Fitness_select_on_folded():
@@ -366,7 +366,7 @@ def test_Fitness_select_on_folded():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                           ligand_dict=ligand_dict,
@@ -374,7 +374,7 @@ def test_Fitness_select_on_folded():
                           select_on=select_on,
                           select_on_folded=False,
                           fitness_kwargs={},
-                          T=T)
+                          temperature=temperature)
     assert fc.select_on_folded == False
 
 
@@ -394,7 +394,7 @@ def test_Fitness_fitness_kwargs():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     fc = Fitness(ens=ens,
                 ligand_dict=ligand_dict,
@@ -402,7 +402,7 @@ def test_Fitness_fitness_kwargs():
                 select_on=select_on,
                 select_on_folded=False,
                 fitness_kwargs={},
-                T=T)
+                temperature=temperature)
 
     assert issubclass(type(fc.fitness_kwargs),dict)
     assert len(fc.fitness_kwargs) == 0
@@ -423,7 +423,7 @@ def test_Fitness_fitness_kwargs():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = ["on_above","on_below"]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     # Both should be zero fitness
     fc = Fitness(ens=ens,
@@ -432,7 +432,7 @@ def test_Fitness_fitness_kwargs():
                  select_on=select_on,
                  select_on_folded=False,
                  fitness_kwargs={"threshold":0.5},
-                 T=T)
+                 temperature=temperature)
     
     assert np.array_equal(np.zeros(2),fc.fitness(np.zeros(2)))
 
@@ -443,7 +443,7 @@ def test_Fitness_fitness_kwargs():
                  select_on=select_on,
                  select_on_folded=False,
                  fitness_kwargs={"threshold":0.0},
-                 T=T)
+                 temperature=temperature)
     
     assert np.array_equal([1.0,0.0],fc.fitness(np.zeros(2)))
 
@@ -454,12 +454,12 @@ def test_Fitness_fitness_kwargs():
                  select_on=select_on,
                  select_on_folded=False,
                  fitness_kwargs={"threshold":1.0},
-                 T=T)
+                 temperature=temperature)
 
     assert np.array_equal([0.0,1.0],fc.fitness(np.zeros(2)))
 
 
-def test_Fitness_T():
+def test_Fitness_temperature():
 
     # Basic ensemble    
     ens = Ensemble(gas_constant=1)
@@ -473,7 +473,7 @@ def test_Fitness_T():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     # make sure attributes are set correctly
     fc = Fitness(ens=ens,
@@ -481,17 +481,17 @@ def test_Fitness_T():
                  fitness_fcns=fitness_fcns,
                  select_on=select_on,
                  fitness_kwargs={},
-                 T=T)
+                 temperature=temperature)
     
-    assert np.array_equal(fc.T,[1.0,1.0])
+    assert np.array_equal(fc.temperature,[1.0,1.0])
 
     fc = Fitness(ens=ens,
                  ligand_dict=ligand_dict,
                  fitness_fcns=fitness_fcns,
                  select_on=select_on,
                  fitness_kwargs={},
-                 T=20)
-    assert np.array_equal(fc.T,[20.0,20.0])
+                 temperature=20)
+    assert np.array_equal(fc.temperature,[20.0,20.0])
 
     with pytest.raises(ValueError):
         fc = Fitness(ens=ens,
@@ -499,7 +499,7 @@ def test_Fitness_T():
                      fitness_fcns=fitness_fcns,
                      select_on=select_on,
                      fitness_kwargs={},
-                     T=-2)
+                     temperature=-2)
 
 def test_Fitness_condition_df():
 
@@ -515,7 +515,7 @@ def test_Fitness_condition_df():
     ligand_dict = {"X":[0,100],"Y":[100,0]}
     fitness_fcns = [ff_off,ff_on]
     select_on = "fx_obs"
-    T = 1
+    temperature = 1
 
     # make sure attributes are set correctly
     fc = Fitness(ens=ens,
@@ -523,7 +523,7 @@ def test_Fitness_condition_df():
                  fitness_fcns=fitness_fcns,
                  select_on=select_on,
                  fitness_kwargs={},
-                 T=T)
+                 temperature=temperature)
 
     out_df = fc.condition_df
     assert issubclass(type(out_df),pd.DataFrame)
@@ -531,5 +531,5 @@ def test_Fitness_condition_df():
     assert np.array_equal(out_df["ff"],["off","on"])
     assert np.array_equal(out_df["X"],[0,100])
     assert np.array_equal(out_df["Y"],[100,0])
-    assert np.array_equal(out_df["T"],[1,1])
+    assert np.array_equal(out_df["temperature"],[1,1])
 

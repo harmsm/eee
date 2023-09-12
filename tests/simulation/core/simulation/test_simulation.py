@@ -73,7 +73,7 @@ def test_Simulation(ens_test_data,variable_types):
                                  fitness_fcns=fitness_fcns,
                                  select_on="fx_obs",
                                  fitness_kwargs={},
-                                 T=1,
+                                 temperature=1,
                                  seed=None)
 
 
@@ -84,7 +84,7 @@ def test_Simulation(ens_test_data,variable_types):
                                fitness_fcns=fitness_fcns,
                                select_on="fx_obs",
                                fitness_kwargs={},
-                               T=1,
+                               temperature=1,
                                seed=None)
 
     with pytest.raises(NotImplementedError):
@@ -94,7 +94,7 @@ def test_Simulation(ens_test_data,variable_types):
                                      fitness_fcns=fitness_fcns,
                                      select_on="fx_obs",
                                      fitness_kwargs={},
-                                     T=1,
+                                     temperature=1,
                                      seed=None)
 
 
@@ -110,7 +110,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
         
     # ddg_df
@@ -129,7 +129,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
 
     # ligand_dict
@@ -142,7 +142,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
 
     # fitness_fcns
@@ -155,7 +155,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=v,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
 
     # select_on
@@ -168,7 +168,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on=v,
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
                    
     sm = SimulationTester(ens=ens,
@@ -177,7 +177,7 @@ def test_Simulation(ens_test_data,variable_types):
                                    fitness_fcns=fitness_fcns,
                                    select_on="dG_obs",
                                    fitness_kwargs={},
-                                   T=1,
+                                   temperature=1,
                                    seed=None)
     
     # select_on_folded
@@ -191,7 +191,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            select_on="fx_obs",
                                            select_on_folded=v,
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
             
     sm = SimulationTester(ens=ens,
@@ -200,7 +200,7 @@ def test_Simulation(ens_test_data,variable_types):
                                    fitness_fcns=fitness_fcns,
                                    select_on="dG_obs",
                                    fitness_kwargs={},
-                                   T=1,
+                                   temperature=1,
                                    seed=None)
 
     # fitness_kwargs
@@ -218,7 +218,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs=v,
-                                           T=1,
+                                           temperature=1,
                                            seed=None)
 
     # T
@@ -240,7 +240,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=v,
+                                           temperature=v,
                                            seed=None)
 
     # seed
@@ -265,7 +265,7 @@ def test_Simulation(ens_test_data,variable_types):
                                            fitness_fcns=fitness_fcns,
                                            select_on="fx_obs",
                                            fitness_kwargs={},
-                                           T=1,
+                                           temperature=1,
                                            seed=v)
 
     # Now test that things are being set reasonably well
@@ -279,7 +279,7 @@ def test_Simulation(ens_test_data,variable_types):
                                    fitness_fcns=fitness_fcns,
                                    select_on="fx_obs",
                                    fitness_kwargs={},
-                                   T=1,
+                                   temperature=1,
                                    seed=None)
     
     assert issubclass(type(sm._seed),int)
@@ -292,7 +292,7 @@ def test_Simulation(ens_test_data,variable_types):
                                    fitness_fcns=fitness_fcns,
                                    select_on="fx_obs",
                                    fitness_kwargs={},
-                                   T=1,
+                                   temperature=1,
                                    seed=5)
 
     assert issubclass(type(sm._seed),int)
@@ -323,7 +323,7 @@ def test_Simulation__prepare_calc(ens_test_data,tmpdir):
                                    select_on="fx_obs",
                                    select_on_folded=True,
                                    fitness_kwargs={},
-                                   T=1,
+                                   temperature=1,
                                    seed=5)
     
     sm._prepare_calc(output_directory="test_dir",
@@ -363,7 +363,7 @@ def test_Simulation__write_calc_params(ens_test_data,
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1,
+                          temperature=1,
                           seed=5)
     
     calc_params = {"population_size":100,
@@ -395,7 +395,7 @@ def test_Simulation__write_calc_params(ens_test_data,
     assert as_written["system"]["select_on"] == "fx_obs"
     assert as_written["system"]["select_on_folded"] == True
     assert as_written["system"]["fitness_kwargs"] == {}
-    assert np.array_equal(as_written["system"]["T"],[1,1])
+    assert np.array_equal(as_written["system"]["temperature"],[1,1])
     assert np.array_equal(as_written["system"]["fitness_fcns"],
                           ["on","off"])
     assert as_written["system"]["ddg_df"] == "ddg.csv"
@@ -423,7 +423,7 @@ def test_Simulation_system_params(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1,
+                          temperature=1,
                           seed=5)
     
     system_params = sm.system_params
@@ -466,7 +466,7 @@ def test_Simulation_get_calc_description(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1,
+                          temperature=1,
                           seed=5)
     
     # No kwargs passed in 
@@ -495,7 +495,7 @@ def test_Simulation_fitness_from_energy(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1)
+                          temperature=1)
     
     f = sm.fitness_from_energy({"s1":0,"s2":0})
     assert f == np.prod(sm._gc._fitness_function(np.zeros(2)))
@@ -525,7 +525,7 @@ def test_Simulation_ens(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1)
+                          temperature=1)
     
     assert ens is sm.ens
     assert ens is sm._ens
@@ -544,7 +544,7 @@ def test_Simulation_fc(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1)
+                          temperature=1)
     
     assert sm.fc is sm._fc
 
@@ -562,6 +562,6 @@ def test_Simulation_gc(ens_test_data):
                           select_on="fx_obs",
                           select_on_folded=True,
                           fitness_kwargs={},
-                          T=1)
+                          temperature=1)
     
     assert sm.gc is sm._gc

@@ -11,7 +11,7 @@ def ensemble_fitness(ens,
                      select_on="fx_obs",
                      select_on_folded=True,
                      fitness_kwargs=None,
-                     T=298.15):
+                     temperature=298.15):
     """
     Calculate fitness from the ensemble given mutations (in mut_energy), 
     chemical potentials (ligand_dict), and fitness function(s). 
@@ -44,7 +44,7 @@ def ensemble_fitness(ens,
     select_on_folded : bool, default=True
         In addition to selecting on select_on, multiply the fitness by the 
         fraction of the protein molecules that are folded. 
-    T : float, default=298.15
+    temperature : float, default=298.15
         temperature in Kelvin. This can be an array; if so, its length must
         match the length of the arrays specified in ligand_dict. 
 
@@ -62,11 +62,11 @@ def ensemble_fitness(ens,
                  select_on=select_on,
                  select_on_folded=select_on_folded,
                  fitness_kwargs=fitness_kwargs,
-                 T=T)
+                 temperature=temperature)
         
     df = ens.get_obs(mut_energy=mut_energy,
                      ligand_dict=ligand_dict,
-                     T=T)
+                     temperature=temperature)
 
     mut_energy_array = ens.mut_dict_to_array(mut_energy=mut_energy)
     fitness_values = fc.fitness(mut_energy_array=mut_energy_array)

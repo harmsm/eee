@@ -43,7 +43,7 @@
     "select_on": "fx_obs",
     "select_on_folded": true,
     "fitness_kwargs": {},
-    "T": 298.15,
+    "temperature": 298.15,
     "fitness_fcns": [ "on", "off" ],
     "seed": 511031982521,
     "ddg_df": "ddg.csv"

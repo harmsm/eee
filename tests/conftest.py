@@ -119,7 +119,7 @@ def ens_test_data():
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
-                 T=298.15)
+                 temperature=298.15)
     
     out = {"ens":ens,
            "ligand_dict":ligand_dict,
@@ -156,7 +156,7 @@ def ens_with_fitness():
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
-                 T=1)
+                 temperature=1)
 
     gc = Genotype(ens=ens,
                   fitness_function=fc.fitness,
@@ -196,7 +196,7 @@ def ens_with_fitness_two_site():
                  [ff_on,ff_off],
                  select_on="fx_obs",
                  fitness_kwargs={},
-                 T=1)
+                 temperature=1)
 
     gc = Genotype(ens=ens,
                   fitness_function=fc.fitness,

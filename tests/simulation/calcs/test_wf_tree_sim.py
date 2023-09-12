@@ -20,7 +20,7 @@ def test_WrightFisherTreeSimulation(ens_test_data):
                                     fitness_fcns=fitness_fcns,
                                     select_on="fx_obs",
                                     fitness_kwargs={},
-                                    T=1,
+                                    temperature=1,
                                     seed=None)
     
     assert wf.calc_type == "wf_tree_sim"
@@ -43,7 +43,7 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
                                     fitness_fcns=fitness_fcns,
                                     select_on="fx_obs",
                                     fitness_kwargs={},
-                                    T=1,
+                                    temperature=1,
                                     seed=None)
 
     wf.run(output_directory="test",

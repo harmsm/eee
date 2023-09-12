@@ -19,27 +19,27 @@ class BasicInfoWidget(MetaWidget):
         # temperature
         ens = eee.Ensemble()
         p = inspect.signature(ens.get_obs).parameters
-        default_T = p["T"].default
+        default_temperature = p["temperature"].default
         
-        T = widgets.BoundedFloatText(default_T,
-                                     description="T:",
-                                     continuous_update=False,
-                                     min=np.nextafter(0, 1),
-                                     max=np.finfo('d').max)
-        T.observe(self._watcher)
+        temperature = widgets.BoundedFloatText(default_temperature,
+                                               description="T:",
+                                               continuous_update=False,
+                                               min=np.nextafter(0, 1),
+                                               max=np.finfo('d').max)
+        temperature.observe(self._watcher)
         
         # Gas constant
         p = inspect.signature(eee.Ensemble.__init__).parameters
         default_gas_constant = p["gas_constant"].default
         
-        R = widgets.BoundedFloatText(default_gas_constant,
-                                     description="R:",
-                                     continuous_update=False,
-                                     min=np.nextafter(0, 1),
-                                     max=np.finfo('d').max)
-        R.observe(self._watcher)
+        gas_constant = widgets.BoundedFloatText(default_gas_constant,
+                                                description="R:",
+                                                continuous_update=False,
+                                                min=np.nextafter(0, 1),
+                                                max=np.finfo('d').max)
+        gas_constant.observe(self._watcher)
         
-        self._widget = widgets.HBox([T,R])
+        self._widget = widgets.HBox([temperature,gas_constant])
 
     def get_values(self):
         

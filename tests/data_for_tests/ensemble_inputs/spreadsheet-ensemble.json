@@ -26,7 +26,7 @@
     "select_on": "dG_obs",
     "select_on_folded": false,
     "fitness_kwargs": {},
-    "T": [
+    "temperature": [
       310.15,
       310.15
     ],
