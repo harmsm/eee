@@ -81,7 +81,7 @@ class Fitness:
         fitness_kwargs = check_fitness_kwargs(fitness_kwargs,
                                               fitness_fcns=fitness_fcns)
         select_on_folded = check_bool(value=select_on_folded,
-                                    variable_name="select_on_folded")
+                                      variable_name="select_on_folded")
 
         T = check_T(T=T,num_conditions=num_conditions)
 

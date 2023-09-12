@@ -15,8 +15,8 @@ import pandas as pd
 class Ensemble:
     """
     Hold a thermodynamic ensemble with an arbitrary set of macromolecular
-    species whose free energy can be perturbed by mutations and the chemical 
-    potentials of molecules that bind to each species. 
+    species whose free energy can be perturbed by mutations and the differential
+    binding of ligands to each species. 
     
     Notes
     -----
@@ -24,12 +24,10 @@ class Ensemble:
       than the Kds for any binding reactions (i.e., that we are not in the
       stoichiometric binding regime). 
 
-    + Each species must be assigned a dG0, the chemical potentials that perturb 
-      the species, and the stoichiometry of the interaction with the molecule
-      defined by the chemical potential. dG0 is the difference in free energy 
-      between that species and a reference species when the chemical potentials
-      are all zero. The choice of reference condition for the chemical
-      potentials is arbitrary. 
+    + Each species must be assigned a dG0 and the stoichiometry of ligand  
+      binding. dG0 is the difference in free energy between that species and a
+      reference species when the chemical potentials for all ligands are zero.
+      The choice of reference condition is arbitrary.
 
     Example
     -------

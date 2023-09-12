@@ -11,7 +11,6 @@ class FitnessWidget(MetaWidget):
                  fitness_fcn=None,
                  select_on="fx_obs",
                  select_on_folded=True):
-        
             
         super().__init__(update_callback=update_callback)
 
