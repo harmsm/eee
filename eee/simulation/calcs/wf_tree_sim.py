@@ -2,7 +2,7 @@
 Code to run a Wright-Fisher simulation on an ensemble following an evolutionary
 tree. 
 """
-from eee.simulation.core.simulation import Simulation
+from .simulation_base import Simulation
 from eee.simulation.core.engine import follow_tree
 
 from eee._private.check.eee import check_num_generations

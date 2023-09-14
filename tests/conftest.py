@@ -99,10 +99,10 @@ def ens_test_data():
     # Selection conditions
     conditions = {"X":[0,1],
                   "Y":[1,0],
-                  "fitness_fcn":["off","on"],
-                  "select_on":"fx_obs",
-                  "select_on_folded":True,
-                  "temperature":1}
+                  "fitness_fcn":["on","off"],
+                  "select_on":["fx_obs","fx_obs"],
+                  "select_on_folded":[True,True],
+                  "temperature":[298.15,298.15]}
 
     ddg_df = pd.DataFrame({"site":[1,1,2,2],
                            "mut":["M1A","M1V","P2R","P2Q"],

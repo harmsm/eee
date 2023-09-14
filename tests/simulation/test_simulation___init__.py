@@ -1,5 +1,5 @@
 
-from eee.simulation.core.simulation import Simulation
+from eee.simulation.calcs.simulation_base import Simulation
 from eee.simulation import CALC_AVAILABLE
 
 def test__get_calc_available():

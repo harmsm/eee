@@ -65,8 +65,8 @@ class Simulation:
             positive integer used to do reproducible simulations
         """
         
-        # ddg_df is validated by GenotypeContainer; conditions by
-        # FitnessContainer -- just pass through. 
+        # ddg_df is validated by GenotypeContainer -- pass through
+        # conditions is validated by FitnessContainer -- pass through. 
 
         # Check observable
         self._ens = check_ensemble(ens,check_obs=True)

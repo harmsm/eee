@@ -1,7 +1,7 @@
 """
 Simulation class that finds all accessible pathways through sequence space. 
 """
-from eee.simulation.core.simulation import Simulation
+from .simulation_base import Simulation
 from eee.simulation.core.engine import pathfinder
 
 from eee._private.check.standard import check_int

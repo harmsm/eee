@@ -1,6 +1,6 @@
 import pytest
 
-from eee.simulation.core.simulation import Simulation
+from eee.simulation.calcs.simulation_base import Simulation
 from eee.simulation.core import Fitness
 from eee.simulation.core import Genotype
 
@@ -252,8 +252,8 @@ def test_Simulation__write_calc_params(ens_test_data,
     assert np.array_equal(as_written["conditions"]["select_on"],["fx_obs","fx_obs"])
     assert np.array_equal(as_written["conditions"]["select_on_folded"],[True,True])
     assert np.array_equal(as_written["conditions"]["fitness_kwargs"],[{},{}])
-    assert np.array_equal(as_written["conditions"]["temperature"],[1,1])
-    assert np.array_equal(as_written["conditions"]["fitness_fcn"], ["off","on"])
+    assert np.array_equal(as_written["conditions"]["temperature"],[298.15,298.15])
+    assert np.array_equal(as_written["conditions"]["fitness_fcn"], ["on","off"])
     assert np.array_equal(as_written["conditions"]["X"],[0,1])
     assert np.array_equal(as_written["conditions"]["Y"],[1,0])
 
