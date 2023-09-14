@@ -11,21 +11,18 @@ def test_WrightFisherTreeSimulation(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     wf = WrightFisherTreeSimulation(ens=ens,
                                     ddg_df=ddg_df,
-                                    ligand_dict=ligand_dict,
-                                    fitness_fcns=fitness_fcns,
-                                    select_on="fx_obs",
-                                    fitness_kwargs={},
-                                    temperature=1,
+                                    conditions=conditions, 
                                     seed=None)
     
     assert wf.calc_type == "wf_tree_sim"
     
-def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
+def test_WrightFisherTreeSimulation_run(ens_test_data,
+                                        newick_files,
+                                        tmpdir):
 
     # Make sure wrapper runs. 
 
@@ -34,16 +31,11 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
     
     wf = WrightFisherTreeSimulation(ens=ens,
                                     ddg_df=ddg_df,
-                                    ligand_dict=ligand_dict,
-                                    fitness_fcns=fitness_fcns,
-                                    select_on="fx_obs",
-                                    fitness_kwargs={},
-                                    temperature=1,
+                                    conditions=conditions,
                                     seed=None)
 
     wf.run(output_directory="test",

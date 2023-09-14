@@ -75,7 +75,7 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
     with open(os.path.join("acc","simulation.json")) as f:
         this_json = json.load(f)
     
-    this_json["system"]["ens"]["hdna"]["dG0"] = 5
+    this_json["ens"]["hdna"]["dG0"] = 5
 
     with open(os.path.join("acc","simulation.json"),"w") as f:
         json.dump(this_json,f)
@@ -99,8 +99,8 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
     # modify fc so acc is different between two sims
     with open(os.path.join("acc","simulation.json")) as f:
         this_json = json.load(f)
-    
-    this_json["system"]["select_on_folded"] = False
+
+    this_json["conditions"]["select_on_folded"] = [False,False]
 
     with open(os.path.join("acc","simulation.json"),"w") as f:
         json.dump(this_json,f)

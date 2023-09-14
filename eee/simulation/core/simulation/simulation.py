@@ -26,12 +26,7 @@ class Simulation:
     def __init__(self,
                  ens,
                  ddg_df,
-                 ligand_dict,
-                 fitness_fcns,
-                 select_on="fx_obs",
-                 select_on_folded=True,
-                 fitness_kwargs=None,
-                 temperature=298.15,
+                 conditions,
                  seed=None):
         """
         Set up a simulation of the evolution of a population where the fitness
@@ -49,27 +44,29 @@ class Simulation:
             Values are floats or arrays of floats of chemical potentials. Any arrays 
             specified must have the same length. If a chemical potential is not
             specified in the dictionary, its value is set to 0. 
-        fitness_fcns : list-like
-            list of fitness functions to apply. There should be one fitness function
-            for each condition specified in ligand_dict. The first argument of each 
-            function must be either fx_obs or dG_obs. Other keyword arguments can be
-            specified in fitness_kwargs.
-        select_on : str, default="fx_obs"
-            observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
-        select_on_folded : bool, default=True
-            add selection for folded protein. 
-        fitness_kwargs : dict, optional
-            pass these keyword arguments to the fitness_fcn
-        temperature : float, default=298.15
-            temperature in Kelvin. This can be an array; if so, its length must
-            match the length of the arrays specified in ligand_dict. 
+        conditions : pandas.DataFrame or similar
+            Conditions at which to do the fitness calculation. Columns are 
+            parameters, rows are conditions under which to do the calculation. 
+            The `fitness_fcn` column is required. This indicates which fitness
+            function to apply at the particular condition. Options (at this 
+            writing) are "on", "off", "neutral", "on_above", and "on_below." 
+            Other columns are: 
+            
+             + `fitness_kwargs`: keywords to pass to `fitness_fcn` (for example,
+               `{"threshold":0.5}` for `on_above` and `on_below`). 
+             + `select_on`: "fx_obs" or "dG_obs". All rows must have the same 
+               value. 
+             + `select_on_folded`: (True or False).
+             + `temperature`: (temperature in K).
+
+            All other columns are interpreted as ligand concentrations. The 
+            column names much match ligands defined in `ens`. 
         seed : int, optional
             positive integer used to do reproducible simulations
         """
         
-        # ddg_df, ligand_dict, fitness_fcns, select_on, select_on_folded,
-        # fitness_kwargs, and T all tested by FitnessContainer and 
-        # GenotypeContainer -- just pass through. 
+        # ddg_df is validated by GenotypeContainer; conditions by
+        # FitnessContainer -- just pass through. 
 
         # Check observable
         self._ens = check_ensemble(ens,check_obs=True)
@@ -94,12 +91,7 @@ class Simulation:
 
         # Build a Fitness object to calculate fitness values from the ensemble.
         self._fc = Fitness(ens=self._ens,
-                           ligand_dict=ligand_dict,
-                           fitness_fcns=fitness_fcns,
-                           select_on=select_on,
-                           select_on_folded=select_on_folded,
-                           fitness_kwargs=fitness_kwargs,
-                           temperature=temperature)
+                           conditions=conditions)
         
         # Build a Genotype object which manages the genotypes over the 
         # simulation
@@ -211,38 +203,76 @@ class Simulation:
         parameters. 
         """
 
+        # Get calculation information
+        out = {"calc_type":self.calc_type,
+               "calc_params":calc_params}
+
+        # Get system information
         system_dict = self.system_params
+        for k in system_dict:
+            out[k] = system_dict[k]
 
         # Write ddg file
         self._gc._ddg_df.to_csv("ddg.csv")
-        system_dict["ddg_df"] = "ddg.csv"
+        out["ddg_df"] = "ddg.csv"
 
-        # Get self
-        out = {"calc_type":self.calc_type,
-               "system":system_dict,
-               "calc_params":calc_params}
-    
         def iteratively_remove_ndarray(d):
             """
             Convert np.ndarray to lists in the output dictionary so they are 
             json-able. 
             """
 
+            # Go through a dictionary...
             for k, v in d.items():     
 
+                # If the value is a dictionary...
                 v_type = type(v)   
                 if issubclass(v_type, dict):
                     iteratively_remove_ndarray(v)
-                else:            
-                    if issubclass(v_type,np.ndarray):
-                        d[k] = list(v)
+
+                # Otherwise...
+                else:
+                    
+                    # If this is a non-dict, non-string iterable
+                    if not issubclass(v_type,str) and hasattr(v,"__iter__"):
+
+                        # Coerce numpy array to list
+                        if issubclass(v_type,np.ndarray):
+                            v = list(v)
+
+                        # Go through each element in the list and coerce to a
+                        # built in type
+                        for i in range(len(v)):
+                            local_v_type = type(v[i])
+                            if np.issubdtype(local_v_type,int):
+                                v[i] = int(v[i])
+                            elif np.issubdtype(local_v_type,float):
+                                v[i] = float(v[i])
+                            elif np.issubdtype(local_v_type,bool):
+                                v[i] = bool(v[i])
+                            else:
+                                continue
+
+                    # If not an iterable, coerce individual types
+                    else:
+                        if np.issubdtype(v_type,int):
+                            v = int(v)
+                        elif np.issubdtype(v_type,float):
+                            v = float(v)
+                        elif np.issubdtype(v_type,bool):
+                            v = bool(v)
+                        else:
+                            continue
+
+                    d[k] = v
+
 
         # Remove np.ndarray. 
         iteratively_remove_ndarray(out)
-
+        
         # write json. 
         with open("simulation.json",'w') as f:
-            json.dump(out,f,indent=2)
+           json.dump(out,f,indent=2)
 
     def _complete_calc(self):
         """
@@ -263,16 +293,12 @@ class Simulation:
         system_dict = {}
 
         # get ensemble
-        ens = self._ens.to_dict()
-        for k in ens:
-            system_dict[k] = ens[k]
+        system_dict["ens"] = self._ens.to_dict()
 
-        # Get FitnessContainer
-        fc = self._fc.to_dict()
-        for k in fc:
-            system_dict[k] = fc[k]
+        # get fitness "conditions"
+        system_dict["conditions"] = self._fc.to_dict()
         
-        # Get GenotypeContainer
+        # Get "ddg_df" 
         gc = self._gc.to_dict()
         for k in gc:
             system_dict[k] = gc[k]

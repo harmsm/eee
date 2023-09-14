@@ -6,8 +6,10 @@ import eee
 from eee._private.check.ensemble import check_ensemble
 from eee.simulation import CALC_AVAILABLE
 
-from .read_ddg import read_ddg
-from .tree import read_tree
+from eee.io.read_ddg import read_ddg
+from eee.io.tree import read_tree
+from eee.io.read_ensemble import read_ensemble
+from eee.io.read_conditions import read_conditions
 
 import json
 import inspect
@@ -99,27 +101,24 @@ def _validate_calc_kwargs(calc_type,
     
     return kwargs
 
-def read_json(json_file,use_stored_seed=False):
+def read_json(json_file,
+              use_stored_seed=False):
     """
     Load a json file describing a simulation. This file must have the 
     following top-level keys:
 
         "calc_type" : a string indicating what kind of calculation this is. 
+        "ens" : a dictionary of species describing the ensemble.
 
-        "system" : a dictionary describing the system. This dictionary must 
-                   have the following keys:
-            'ens': a dictionary of species describing the ensemble.
-            'ligand_dict': a dictionary indicating the chemical potentials
-                       over which to do the simulation, 
-            'fitness_fcns': the fitness functions to apply for each of the
-                            conditions
-            'ddg_df': spreadsheet file with the effects of mutations on each 
-                      conformation in the ensemble. 
+    The other allowed top-level keys are:
 
-        "calc_param" : any parameters needed to run the calculation indicated 
-                       by calc_type.
-    
-    Many other keys are permitted; see the documentation.
+        "conditions" : a dictionary describing conditions at which to do 
+                       fitness calculations
+        "ddg_df" : spreadsheet file with the effects of mutations on each 
+                   conformation in the ensemble. 
+        "calc_params" : any parameters needed to run the calculation indicated 
+                        by calc_type.
+        "seed" : an integer describing the seed for reproducible calcs. 
 
     Parameters
     ----------
@@ -146,7 +145,10 @@ def read_json(json_file,use_stored_seed=False):
         calc_input = json.load(f)
 
     base_path = os.path.dirname(os.path.abspath(json_file))
+
+    setup_kwargs = {}
     
+    # ---------------------------- calc_type -----------------------------------
     if "calc_type" not in calc_input:
         err = "\njson must have 'calc_type' key in top level that defines the\n"
         err += "calculation being done.\n\n"
@@ -162,60 +164,71 @@ def read_json(json_file,use_stored_seed=False):
         raise ValueError(err)
 
     calc_class = CALC_AVAILABLE[calc_type]
-
-    if "system" not in calc_input:
-        err = "\njson file must have 'system' key in top level that defines\n"
-        err += "the thermodynamic ensemble and selection pressures.\n\n"
-        raise ValueError(err)
     
-    # Create an ensemble from the 'ens' key, which we assume will be required
-    # in every calc_function. 
-    if "ens" not in calc_input["system"]:
-        err = "\njson must have 'ens' key under the 'system' key that defines\n"
-        err += "the thermodynamic ensemble.\n\n"
-        raise ValueError(err)
-    
-    # Get gas constant
-    if "gas_constant" in calc_input["system"]["ens"]:
-        gas_constant = calc_input["system"]["ens"].pop("gas_constant")
-    else:
-        # Get default from Ensemble class
-        gas_constant = eee.Ensemble()._gas_constant
-
-    # Create ensemble from entries and validate. 
-    ens = eee.Ensemble(gas_constant=gas_constant)
-    for e in calc_input["system"]["ens"]:
-        ens.add_species(e,**calc_input["system"]["ens"][e])
-    calc_input["system"]["ens"] = check_ensemble(ens,check_obs=True)
+    # ---------------------------- calc_params ---------------------------------
 
     # Make sure we have a "calc_params" key, even if empty
     if "calc_params" not in calc_input:
         calc_input["calc_params"] = {}
 
-    # Load ddg_df here so we don't have to keep track of the file when/if we
-    # start a simulation in new directory
-    if "ddg_df" in calc_input["system"]:
-        ddg_file = os.path.join(base_path,calc_input["system"]["ddg_df"])
-        calc_input["system"]["ddg_df"] = read_ddg(ddg_file)
-    
     # Load newick here so we don't have to keep track of the file when/if we
     # start a simulation in new directory
     if "tree" in calc_input["calc_params"]:
         newick_file = os.path.join(base_path,calc_input["calc_params"]["tree"])
         calc_input["calc_params"]["tree"] = read_tree(newick_file)
 
+    # -------------------------------- ens -------------------------------------
+
+    # Create an ensemble from the 'ens' key.
+    if "ens" not in calc_input:
+        err = "\njson must have 'ens' that defines the thermodynamic ensemble.\n\n"
+        raise ValueError(err)
+    
+    # Read the ensemble
+    ens = read_ensemble(input_value=calc_input,
+                        base_path=base_path)
+    
+    setup_kwargs["ens"] = ens
+
+    # ---------------------------- conditions ----------------------------------
+
+    if "conditions" in calc_input:
+        
+        conditions = calc_input["conditions"]
+        if issubclass(type(conditions),str):
+            conditions_file = os.path.join(base_path,conditions)
+            if not os.path.isfile(conditions_file):
+                err = "\nconditions entry '{conditions}' could not be read\n\n"
+                raise ValueError(err)
+            conditions = conditions_file
+
+
+        conditions, _, _ = read_conditions(conditions=conditions,
+                                           ens=ens)
+        setup_kwargs["conditions"] = conditions
+    
+    # ------------------------------ ddg_df ------------------------------------
+    # Load ddg_df here so we don't have to keep track of the file when/if we
+    # start a simulation in new directory
+    if "ddg_df" in calc_input:
+        ddg_file = os.path.join(base_path,calc_input["ddg_df"])
+        ddg_df = read_ddg(ddg_file)
+        setup_kwargs["ddg_df"] = ddg_df
+    
+    # ------------------------------- seed -------------------------------------
 
     # Drop the seed unless we are requesting it to be kept. 
-    if "seed" in calc_input["system"] and not use_stored_seed:
-        calc_input["system"].pop("seed")
+    if use_stored_seed and "seed" in calc_input:
+        setup_kwargs["seed"] = calc_input["seed"]
 
-    # Validate the names of the keyword arguments
-    kwargs = _validate_calc_kwargs(calc_type=calc_type,
-                                   calc_function=calc_class.__init__,
-                                   kwargs=calc_input["system"])
+    # ------------------------------- seed -------------------------------------
+
+    calc_params = _validate_calc_kwargs(calc_type=calc_type,
+                                        calc_function=calc_class.__init__,
+                                        kwargs=setup_kwargs)
 
     # Set up the calculation class. 
-    sc = calc_class(**kwargs)
+    sc = calc_class(**setup_kwargs)
 
     calc_params = _validate_calc_kwargs(calc_type=calc_type,
                                         calc_function=sc.run,

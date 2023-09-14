@@ -6,12 +6,18 @@ from eee._private.check.dataframe import check_dataframe
 import numpy as np
 import pandas as pd
 
-def test_check_dataframe(variable_types):
+import os
 
-    # make sure it takes variable_name and that this runs
-    with pytest.raises(ValueError):
+def test_check_dataframe(variable_types,tmpdir):
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    # make sure it takes variable_name and that this runs. This will die with 
+    # FileNotFoundError because this will try to parse a string as a file
+    with pytest.raises(FileNotFoundError):
         df = check_dataframe(value="stupid")
-    with pytest.raises(ValueError):
+    with pytest.raises(FileNotFoundError):
         df = check_dataframe(value="stupid",variable_name="test")
     
     # Vanilla dict
@@ -108,7 +114,37 @@ def test_check_dataframe(variable_types):
         if issubclass(type(v),dict):
             continue
         if issubclass(type(v),pd.DataFrame):
-            continue    
+            continue
+
+        if issubclass(type(v),str):
+            expected_err = FileNotFoundError
+        else:
+            expected_err = ValueError
+
         print(v,type(v))
-        with pytest.raises(ValueError):
+        with pytest.raises(expected_err):
             check_dataframe(value=v)
+
+
+    # Test dict treatment. Should be expanded. 
+    x = {"test":[1,2,3],
+         "this":{}}
+    df = check_dataframe(value=x)
+    assert np.array_equal(df["test"],[1,2,3])
+    assert np.array_equal(df["this"],[{},{},{}])
+
+    x = {"test":[1,2],
+         "this":{"a":"b"}}
+    df = check_dataframe(value=x)
+    assert np.array_equal(df["test"],[1,2])
+    assert np.array_equal(df["this"],[{"a":"b"},{"a":"b"}])
+
+    # Test dict treatment --> should be passed into dataframe constructor
+    x = {"test":{"a":1,"b":2},
+         "this":{"a":3,"b":4}}
+    df = check_dataframe(value=x)
+    assert np.array_equal(df.index,["a","b"])
+    assert np.array_equal(df["test"],[1,2])
+    assert np.array_equal(df["this"],[3,4])
+
+    os.chdir(current_dir)

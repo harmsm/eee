@@ -3,24 +3,16 @@ Class for calculating fitness from an ensemble during an evolutionary simulation
 """
 
 from eee._private.check.ensemble import check_ensemble
-from eee._private.check.eee import check_temperature
-
-from .check_fitness_fcns import check_fitness_fcns
-from .check_fitness_kwargs import check_fitness_kwargs
-
-from eee._private.check.eee import check_ligand_dict
-
-from eee._private.check.standard import check_bool
+from eee.io.read_conditions import read_conditions
 
 import numpy as np
-import pandas as pd
 
 import copy
 
 class Fitness:
     """
     Class used to calculate fitness of genotypes in evolutionary simulations.
-    It holds fixed aspects of the fitness (ensemble, chemical potentials,
+    It holds fixed aspects of the fitness (ensemble, ligand chemical potentials,
     fitness functions, and temperature), allowing us to quickly calculate
     fitness given only the energy of a particular gentoype. 
 
@@ -34,74 +26,77 @@ class Fitness:
     """
     def __init__(self,
                  ens,
-                 ligand_dict,
-                 fitness_fcns,
-                 select_on="fx_obs",
-                 select_on_folded=True,
-                 fitness_kwargs=None,
-                 temperature=298.15):
+                 conditions,
+                 default_fitness_kwargs=None,
+                 default_select_on="fx_obs",
+                 default_select_on_folded=True,
+                 default_temperature=298.15):
         """
         Parameters
         ----------
         ens : eee.Ensemble 
             initialized instance of an Ensemble class
-        ligand_dict : dict, optional
-            dictionary of chemical potentials. keys are the names of chemical
-            potentials. Values are floats or arrays of floats. Any arrays 
-            specified must have the same length. If a chemical potential is not
-            specified in the dictionary, its value is set to 0. 
-        fitness_fcns : function or list
-            fitness function(s) to apply. Should either be a single function or list 
-            of functions. Functions should take value from "select_on" as their
-            first argument and **fitness_kwargs as their remaining arguments. If a 
-            list, the list must be the same length as the number of conditions in 
-            ligand_dict. 
-        select_on : str, default="fx_obs"
-            observable to pass to fitness_fcns. Should be either fx_obs or dG_obs
-        fitness_kwargs : dict, optional
-            pass these keyword arguments to the fitness_fcn
-        select_on_folded : bool, default=True
-            In addition to selecting on select_on, multiply the fitness by the 
-            fraction of the protein molecules that are folded. 
-        temperature : float, default=298.15
-            temperature in Kelvin. This can be an array; if so, its length must
-            match the length of the arrays specified in ligand_dict. 
+        conditions : pandas.DataFrame or similar
+            Conditions at which to do the fitness calculation. Columns are 
+            parameters, rows are conditions under which to do the calculation. 
+            The `fitness_fcn` column is required. This indicates which fitness
+            function to apply at the particular condition. Options (at this 
+            writing) are "on", "off", "neutral", "on_above", and "on_below." 
+            Other columns are: 
+            
+             + `fitness_kwargs`: keywords to pass to `fitness_fcn` (for example,
+               `{"threshold":0.5}` for `on_above` and `on_below`). 
+             + `select_on`: "fx_obs" or "dG_obs". All rows must have the same 
+               value. 
+             + `select_on_folded`: (True or False).
+             + `temperature`: (temperature in K).
+
+            All other columns are interpreted as ligand concentrations. The 
+            column names much match ligands defined in `ens`. 
+        default_fitness_kwargs : dict, optional
+            if fitness_kwargs are not specified in conditions, assign this value
+        default_select_on : str, default="fx_obs"
+            if select_on is not specified in conditions, assign this value
+        default_select_on_folded : bool, default=True
+            if select_on_folded is not specified in conditions, assign this value
+        default_temperature : float, default=298.15
+            if temperature is not specified in conditions, assign this value
+            
+        Notes
+        -----
+        The conditions keyword argument is quite flexible. It can take a fully
+        filled out dataframe, the filename of a dataframe, a dictionary with 
+        columns as keys and list-like values holding entries, or a list of 
+        dictionaries with values for each condition. 
         """
         
-        ens = check_ensemble(ens)
+        # Load and validate the ensemble
+        self._ens = check_ensemble(ens,check_obs=True)
 
-        ligand_dict, num_conditions = check_ligand_dict(ligand_dict)
-        fitness_fcns = check_fitness_fcns(fitness_fcns,
-                                          num_conditions=num_conditions,
-                                          return_as="function")
-        
-        if not issubclass(type(select_on),str) or select_on not in ["fx_obs","dG_obs"]:
-            err = "select_on should be either fx_obs or dG_obs\n"
-            raise ValueError(err)
+        # Load the conditions
+        out = read_conditions(conditions=conditions,
+                              ens=self._ens,
+                              default_fitness_kwargs=default_fitness_kwargs,
+                              default_select_on=default_select_on,
+                              default_select_on_folded=default_select_on_folded,
+                              default_temperature=default_temperature) 
+                              
+        self._condition_df = out[0]
+        self._ligand_dict = out[1]
+        self._fitness_fcns = out[2]
 
-        fitness_kwargs = check_fitness_kwargs(fitness_kwargs,
-                                              fitness_fcns=fitness_fcns)
-        select_on_folded = check_bool(value=select_on_folded,
-                                      variable_name="select_on_folded")
-
-        temperature = check_temperature(temperature=temperature,
-                                        num_conditions=num_conditions)
-
-        self._ens = ens
-        self._private_ens = copy.deepcopy(ens)
-        self._ligand_dict = ligand_dict
-        self._fitness_fcns = fitness_fcns
-        self._select_on = select_on
-        self._select_on_folded = select_on_folded
-        self._fitness_kwargs = fitness_kwargs
-        self._temperature = temperature
-
-        self._fitness_fcns_strings = check_fitness_fcns(self._fitness_fcns,
-                                                        num_conditions=num_conditions,
-                                                        return_as="string")
-                
+        # Convert parts of condition_df to numpy arrays for ease of access
+        self._select_on_folded = np.array(self._condition_df["select_on_folded"])
+        self._fitness_kwargs = np.array(self._condition_df["fitness_kwargs"])
+        self._temperature = np.array(self._condition_df["temperature"])
+            
+        # Set up ensemble to do calculation
+        self._private_ens = copy.deepcopy(self._ens)
         self._private_ens.read_ligand_dict(ligand_dict=self._ligand_dict)
+        self._select_on = self._condition_df["select_on"].iloc[0]
         self._obs_function = self._private_ens.get_observable_function(self._select_on)
+
+        # Set up fitness vector
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
 
@@ -122,14 +117,10 @@ class Fitness:
 
         for i in range(self._num_conditions):
             self._F_array[i] = self._fitness_fcns[i](values[i],
-                                                     **self._fitness_kwargs)
-                                                     #**self._fitness_kwargs[i])
-            #if self._select_on_folded[i]:
-            #    self._F_array[i] *= fx_folded[i]
+                                                     **self._fitness_kwargs[i])
+            if self._select_on_folded[i]:
+               self._F_array[i] *= fx_folded[i]
  
-        if self._select_on_folded:
-            self._F_array = self._F_array*fx_folded
-
         return self._F_array
     
     def to_dict(self):
@@ -137,18 +128,9 @@ class Fitness:
         Return a json-able dictionary describing the fitness parameters.
         """
 
-        to_write = ["ligand_dict",
-                    "select_on",
-                    "select_on_folded",
-                    "fitness_kwargs",
-                    "temperature"]
         out = {}
-        for a in to_write:
-            out[a] = self.__dict__[f"_{a}"]
-
-        # Fitness functions as strings
-        out["fitness_fcns"] = self._fitness_fcns_strings
-
+        for k in self._condition_df.keys():
+            out[k] = np.array(self._condition_df[k])
         return out
 
     @property
@@ -181,13 +163,6 @@ class Fitness:
         Conditions as a pandas dataframe. 
         """
 
-        to_df = {}
-        for lig in self._ligand_dict:
-            to_df[lig] = self._ligand_dict[lig]
-        
-        to_df["temperature"] = self._temperature
-        to_df["ff"] = self._fitness_fcns_strings
-    
-        return pd.DataFrame(to_df)
-    
+        return self._condition_df.copy()
+
         

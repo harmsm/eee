@@ -244,8 +244,8 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     assert sm._fc._fitness_fcns[0] == ff_on
     assert sm._fc._fitness_fcns[1] == ff_off
     assert sm._fc._select_on == "dG_obs"
-    assert sm._fc._select_on_folded == False
-    assert sm._fc._fitness_kwargs == {}
+    assert np.array_equal(sm._fc._select_on_folded,[False,False])
+    assert np.array_equal(sm._fc._fitness_kwargs,[{},{}])
     assert np.array_equal(sm._fc._temperature,[310.15,310.15])
     
     assert sm._gc._ddg_df.loc[0,"mut"] == "L1A"
@@ -266,7 +266,7 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
         template_json = json.load(f)
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("seed")
+    test_json.pop("seed")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm, calc_params = read_json("test.json",use_stored_seed=True)
@@ -288,63 +288,29 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
         sm = read_json("test.json")
     
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("ens")
+    test_json.pop("ens")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"]["ens"].pop("gas_constant")
+    test_json["ens"].pop("gas_constant")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm, calc_params = read_json("test.json")
     assert sm._ens._gas_constant == 0.001987
 
+    # Remove conditions -- should raise error
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("ligand_dict")
+    test_json.pop("conditions")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
         sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("fitness_fcns")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    with pytest.raises(ValueError):
-        sm = read_json("test.json")
-    
-    test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("select_on")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    sm, calc_params = read_json("test.json")
-    assert sm._fc._select_on == "fx_obs"
-
-    test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("select_on_folded")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    sm, calc_params = read_json("test.json")
-    assert sm._fc._select_on_folded == True
-
-    test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("fitness_kwargs")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    sm, calc_params = read_json("test.json")
-    assert sm._fc._fitness_kwargs == {}
-
-    test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("temperature")
-    with open('test.json','w') as f:
-        json.dump(test_json,f)
-    sm, calc_params = read_json("test.json")
-    assert np.array_equal(sm._fc._temperature,[298.15,298.15])
-
-    test_json = copy.deepcopy(template_json)
-    test_json["system"].pop("ddg_df")
+    test_json.pop("ddg_df")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     with pytest.raises(ValueError):
@@ -397,16 +363,6 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
         shutil.copy(sim_json[k],"test-this.json")
         sm, calc_params = read_json("test-this.json")
 
-    # Raise valueError by nuking "system" key
-    with open("test-this.json") as f:
-        test_json = json.load(f)
-    test_json.pop("system")
-    with open("test-this.json","w") as f:
-        json.dump(test_json,f)
-    with pytest.raises(ValueError):
-        sm, calc_params = read_json("test-this.json")
-
-
     # Specific case where calc will have newick file. Make sure it is loaded in
     # as ete3 tree, not string
     shutil.copy(sim_json["wf_tree_sim.json"],"wf_tree_sim.json")
@@ -424,17 +380,12 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     # Should work, no tree file
     sm, calc_params = read_json("dms.json")
     
-
     # Make sure we can get file in non-local path.
     os.mkdir("extra_path")
     shutil.copy(test_ddg["lac.csv"],
                 os.path.join("extra_path","ddg.csv"))
     shutil.copy(sim_json["lac.json"],"extra_path")
     sm, calc_params = read_json(os.path.join("extra_path","lac.json"))
-
-
-    
-
 
 
     os.chdir(current_dir)

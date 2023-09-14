@@ -62,41 +62,27 @@ def test_Simulation(ens_test_data,variable_types):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     # Make sure implementation checks are in place. 
     with pytest.raises(NotImplementedError):
         sm = Simulation(ens=ens,
-                                 ddg_df=ddg_df,
-                                 ligand_dict=ligand_dict,
-                                 fitness_fcns=fitness_fcns,
-                                 select_on="fx_obs",
-                                 fitness_kwargs={},
-                                 temperature=1,
-                                 seed=None)
+                        ddg_df=ddg_df,
+                        conditions=conditions,
+                        seed=None)
 
 
     with pytest.raises(NotImplementedError):
         sm = Simulation_no_run(ens=ens,
                                ddg_df=ddg_df,
-                               ligand_dict=ligand_dict,
-                               fitness_fcns=fitness_fcns,
-                               select_on="fx_obs",
-                               fitness_kwargs={},
-                               temperature=1,
+                               conditions=conditions,
                                seed=None)
-
+   
     with pytest.raises(NotImplementedError):
         sm = Simulation_no_calc_type(ens=ens,
                                      ddg_df=ddg_df,
-                                     ligand_dict=ligand_dict,
-                                     fitness_fcns=fitness_fcns,
-                                     select_on="fx_obs",
-                                     fitness_kwargs={},
-                                     temperature=1,
+                                     conditions=conditions,
                                      seed=None)
-
 
     # Now test variable checking
 
@@ -105,13 +91,9 @@ def test_Simulation(ens_test_data,variable_types):
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=v,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
+                                  ddg_df=ddg_df,
+                                  conditions=conditions,
+                                  seed=None)
         
     # ddg_df
     for v in variable_types["everything"]:
@@ -124,124 +106,24 @@ def test_Simulation(ens_test_data,variable_types):
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
-                                           ddg_df=v,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
+                                  ddg_df=v,
+                                  conditions=conditions,
+                                  seed=None)
 
-    # ligand_dict
+    # conditions
     for v in variable_types["everything"]:
+
+        # str will through FileNotFound, ignore
+        if issubclass(type(v),str):
+            continue
+
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
-            sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=v,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
-
-    # fitness_fcns
-    for v in variable_types["everything"]:
-        print(v,type(v),flush=True)
-        with pytest.raises(ValueError):
-            sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=v,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
-
-    # select_on
-    for v in variable_types["everything"]:
-        print(v,type(v),flush=True)
-        with pytest.raises(ValueError):
-            sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on=v,
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
-                   
-    sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   ligand_dict=ligand_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="dG_obs",
-                                   fitness_kwargs={},
-                                   temperature=1,
-                                   seed=None)
     
-    # select_on_folded
-    for v in variable_types["not_bools"]:
-        print(v,type(v),flush=True)
-        with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           select_on_folded=v,
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=None)
-            
-    sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   ligand_dict=ligand_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="dG_obs",
-                                   fitness_kwargs={},
-                                   temperature=1,
-                                   seed=None)
-
-    # fitness_kwargs
-    for v in variable_types["everything"]:
-        if issubclass(type(v),dict):
-            continue
-        if v is None:
-            continue
-
-        print(v,type(v),flush=True)
-        with pytest.raises(ValueError):
-            sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs=v,
-                                           temperature=1,
-                                           seed=None)
-
-    # T
-    for v in variable_types["everything"]:
-        
-        # Skip coercable to float values
-        try:
-            float_v = float(v)
-            if float_v > 0:
-                continue
-        except:
-            pass
-
-        print(v,type(v),flush=True)
-        with pytest.raises(ValueError):
-            sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=v,
-                                           seed=None)
+                                  ddg_df=ddg_df,
+                                  conditions=v,
+                                  seed=None)
 
     # seed
     for v in variable_types["everything"]:
@@ -260,13 +142,9 @@ def test_Simulation(ens_test_data,variable_types):
         print(v,type(v),flush=True)
         with pytest.raises(ValueError):
             sm = SimulationTester(ens=ens,
-                                           ddg_df=ddg_df,
-                                           ligand_dict=ligand_dict,
-                                           fitness_fcns=fitness_fcns,
-                                           select_on="fx_obs",
-                                           fitness_kwargs={},
-                                           temperature=1,
-                                           seed=v)
+                                  ddg_df=ddg_df,
+                                  conditions=conditions,
+                                  seed=v)
 
     # Now test that things are being set reasonably well
 
@@ -274,26 +152,18 @@ def test_Simulation(ens_test_data,variable_types):
     # Check seed
     
     sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   ligand_dict=ligand_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="fx_obs",
-                                   fitness_kwargs={},
-                                   temperature=1,
-                                   seed=None)
+                          ddg_df=ddg_df,
+                          conditions=conditions,
+                          seed=None)
     
     assert issubclass(type(sm._seed),int)
     assert sm._seed >= 0
     assert issubclass(type(sm._pcg64),np.random._pcg64.PCG64)
 
     sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   ligand_dict=ligand_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="fx_obs",
-                                   fitness_kwargs={},
-                                   temperature=1,
-                                   seed=5)
+                          ddg_df=ddg_df,
+                          conditions=conditions,
+                          seed=5)
 
     assert issubclass(type(sm._seed),int)
     assert sm._seed == 5
@@ -312,20 +182,13 @@ def test_Simulation__prepare_calc(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
-
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
-                                   ddg_df=ddg_df,
-                                   ligand_dict=ligand_dict,
-                                   fitness_fcns=fitness_fcns,
-                                   select_on="fx_obs",
-                                   select_on_folded=True,
-                                   fitness_kwargs={},
-                                   temperature=1,
-                                   seed=5)
-    
+                          ddg_df=ddg_df,
+                          conditions=conditions,
+                          seed=5)
+
     sm._prepare_calc(output_directory="test_dir",
                      calc_params={"test":1})
     assert os.path.split(os.getcwd())[-1] == "test_dir"
@@ -353,24 +216,19 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1,
+                          conditions=conditions,
                           seed=5)
+
     
     calc_params = {"population_size":100,
-                  "mutation_rate":0.01,
-                  "num_generations":100,
-                  "write_prefix":"eee_sim",
-                  "write_frequency":1000}
+                   "mutation_rate":0.01,
+                   "num_generations":100,
+                   "write_prefix":"eee_sim",
+                   "write_frequency":1000}
     
     sm._write_calc_params(calc_params=calc_params)
 
@@ -384,22 +242,26 @@ def test_Simulation__write_calc_params(ens_test_data,
     for k in calc_params:
         assert as_written["calc_params"][k] == calc_params[k]
     
-    # Make sure ensemble written correctly
+    # ens
     ens_dict = ens.to_dict()
-    for k in ens_dict["ens"]:
-        assert ens_dict["ens"][k] == as_written["system"]["ens"][k]
+    for k in ens_dict:
+        assert ens_dict[k] == as_written["ens"][k]
+    assert ens_dict["gas_constant"] == as_written["ens"]["gas_constant"]
 
-    assert ens_dict["ens"]["gas_constant"] == as_written["system"]["ens"]["gas_constant"]
+    # conditions
+    assert np.array_equal(as_written["conditions"]["select_on"],["fx_obs","fx_obs"])
+    assert np.array_equal(as_written["conditions"]["select_on_folded"],[True,True])
+    assert np.array_equal(as_written["conditions"]["fitness_kwargs"],[{},{}])
+    assert np.array_equal(as_written["conditions"]["temperature"],[1,1])
+    assert np.array_equal(as_written["conditions"]["fitness_fcn"], ["off","on"])
+    assert np.array_equal(as_written["conditions"]["X"],[0,1])
+    assert np.array_equal(as_written["conditions"]["Y"],[1,0])
 
-    assert as_written["system"]["ligand_dict"] == ligand_dict
-    assert as_written["system"]["select_on"] == "fx_obs"
-    assert as_written["system"]["select_on_folded"] == True
-    assert as_written["system"]["fitness_kwargs"] == {}
-    assert np.array_equal(as_written["system"]["temperature"],[1,1])
-    assert np.array_equal(as_written["system"]["fitness_fcns"],
-                          ["on","off"])
-    assert as_written["system"]["ddg_df"] == "ddg.csv"
+    # ddg_df
+    assert as_written["ddg_df"] == "ddg.csv"
     
+    assert as_written["seed"] == sm._seed
+
     # Make sure we can read in dataframe
     df = pd.read_csv("ddg.csv")
 
@@ -410,41 +272,32 @@ def test_Simulation__complete_calc():
     assert True
     
 def test_Simulation_system_params(ens_test_data):
-    
+        
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1,
+                          conditions=conditions,
                           seed=5)
     
+
     system_params = sm.system_params
 
     ens = sm._ens.to_dict()
     for k in system_params["ens"]:
-        assert ens["ens"][k] == system_params["ens"][k]
+        assert ens[k] == system_params["ens"][k]
 
     fc = sm._fc.to_dict()
     for k in fc:
         if hasattr(fc[k],"__iter__"):
-            assert np.array_equal(fc[k],system_params[k])
+            assert np.array_equal(fc[k],system_params["conditions"][k])
         else:
             assert fc[k] == system_params[k]
 
     gc = sm._gc.to_dict()
-    for k in gc:
-        if hasattr(gc[k],"__iter__"):
-            assert np.array_equal(fc[k],system_params[k])
-        else:
-            assert gc[k] == system_params[k]
+    assert gc["ddg_df"] is sm._gc._ddg_df
 
     assert system_params["seed"] == sm._seed
 
@@ -456,17 +309,11 @@ def test_Simulation_get_calc_description(ens_test_data):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1,
+                          conditions=conditions,
                           seed=5)
     
     # No kwargs passed in 
@@ -483,19 +330,14 @@ def test_Simulation_get_calc_description(ens_test_data):
 
 def test_Simulation_fitness_from_energy(ens_test_data):
     
+
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1)
+                          conditions=conditions)
     
     f = sm.fitness_from_energy({"s1":0,"s2":0})
     assert f == np.prod(sm._gc._fitness_function(np.zeros(2)))
@@ -515,17 +357,11 @@ def test_Simulation_ens(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1)
+                          conditions=conditions)
     
     assert ens is sm.ens
     assert ens is sm._ens
@@ -534,17 +370,11 @@ def test_Simulation_fc(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1)
+                          conditions=conditions)
     
     assert sm.fc is sm._fc
 
@@ -552,16 +382,10 @@ def test_Simulation_gc(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     sm = SimulationTester(ens=ens,
                           ddg_df=ddg_df,
-                          ligand_dict=ligand_dict,
-                          fitness_fcns=fitness_fcns,
-                          select_on="fx_obs",
-                          select_on_folded=True,
-                          fitness_kwargs={},
-                          temperature=1)
+                          conditions=conditions)
     
     assert sm.gc is sm._gc

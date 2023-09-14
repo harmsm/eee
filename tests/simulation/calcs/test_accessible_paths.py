@@ -9,16 +9,11 @@ def test_AcessiblePaths(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
-
+    conditions = ens_test_data["conditions"]
+    
     ap = AcessiblePaths(ens=ens,
                         ddg_df=ddg_df,
-                        ligand_dict=ligand_dict,
-                        fitness_fcns=fitness_fcns,
-                        select_on="fx_obs",
-                        fitness_kwargs={},
-                        temperature=1,
+                        conditions=conditions,
                         seed=None)
     
     assert ap.calc_type == "accessible_paths"
@@ -33,16 +28,11 @@ def test_AcessiblePaths_run(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    ligand_dict = ens_test_data["ligand_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
     
     ap = AcessiblePaths(ens=ens,
                         ddg_df=ddg_df,
-                        ligand_dict=ligand_dict,
-                        fitness_fcns=fitness_fcns,
-                        select_on="fx_obs",
-                        fitness_kwargs={},
-                        temperature=1,
+                        conditions=conditions,
                         seed=None)
 
     ap.run(output_directory="test",

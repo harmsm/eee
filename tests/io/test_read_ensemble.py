@@ -3,6 +3,7 @@ import pytest
 from eee.io.read_ensemble import _search_for_key
 from eee.io.read_ensemble import _spreadsheet_to_ensemble
 from eee.io.read_ensemble import _json_to_ensemble
+from eee.io.read_ensemble import _file_to_ensemble
 from eee.io.read_ensemble import read_ensemble
 
 import numpy as np
@@ -10,6 +11,7 @@ import pandas as pd
 
 import os
 import shutil
+import json
 
 def test__search_for_key():
 
@@ -121,7 +123,8 @@ def test__spreadsheet_to_ensemble(ensemble_inputs):
 
 def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     
-    test_json = sim_json["dms.json"]
+    with open(sim_json["dms.json"]) as f:
+        test_json = json.load(f)
 
     ens = _json_to_ensemble(test_json)
 
@@ -147,7 +150,8 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     assert ens._species["unfolded"]["folded"] == False
     assert ens._species["unfolded"]["observable"] == False
 
-    test_json = sim_json["lac.json"]
+    with open(sim_json["lac.json"]) as f:
+        test_json = json.load(f)
 
     ens = _json_to_ensemble(test_json)
 
@@ -176,26 +180,36 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     assert ens._species["unfolded"]["observable"] == False
 
     # ens with no entries
-    ens = _json_to_ensemble(ensemble_inputs["empty-ensemble.json"])
+    with open(ensemble_inputs["empty-ensemble.json"]) as f:
+        test_json = json.load(f)
+    ens = _json_to_ensemble(test_json)
     assert len(ens._species) == 0
     assert ens._gas_constant == 0.008314
 
     # ensemble as top-level key
-    ens = _json_to_ensemble(ensemble_inputs["top-level-ensemble.json"])
+    with open(ensemble_inputs["top-level-ensemble.json"]) as f:
+        test_json = json.load(f)
+    ens = _json_to_ensemble(test_json)
     assert len(ens._species) == 4
     assert ens._gas_constant == 0.008314
 
     # no gas constant defined
-    ens = _json_to_ensemble(ensemble_inputs["no-gas-constant.json"])
+    with open(ensemble_inputs["no-gas-constant.json"]) as f:
+        test_json = json.load(f)
+    ens = _json_to_ensemble(test_json)
     assert len(ens._species) == 4
     assert ens._gas_constant == 0.001987
 
-    # no ensemble key at all -- die. 
+    # no ensemble key at all -- die.
+    with open(ensemble_inputs["no-ensemble.json"]) as f:
+        test_json = json.load(f)
     with pytest.raises(ValueError):
-        ens = _json_to_ensemble(ensemble_inputs["no-ensemble.json"])
+        ens = _json_to_ensemble(test_json) 
 
+    with open(ensemble_inputs["ensemble-with-bad-key.json"]) as f:
+        test_json = json.load(f)
     with pytest.raises(ValueError):
-        ens = _json_to_ensemble(ensemble_inputs["ensemble-with-bad-key.json"])
+        ens = _json_to_ensemble(test_json) 
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -204,7 +218,9 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
     # gas constant. 
 
     shutil.copy(ensemble_inputs["s1s2_folded.xlsx"],".")
-    ens = _json_to_ensemble(ensemble_inputs["spreadsheet-ensemble.json"])
+    with open(ensemble_inputs["spreadsheet-ensemble.json"]) as f:
+        test_json = json.load(f)
+    ens = _json_to_ensemble(test_json)
     ens._gas_constant == 0.008314
     assert np.array_equal(ens.species,["s1","s2"])
 
@@ -222,6 +238,23 @@ def test__json_to_ensemble(sim_json,ensemble_inputs,tmpdir):
 
     os.chdir(current_dir)
 
+def test__file_to_ensemble(tmpdir,ensemble_inputs):
+
+    current_dir = os.getcwd()
+    os.chdir(tmpdir)
+
+    with pytest.raises(FileNotFoundError):
+        _file_to_ensemble("not_a_file")
+    
+    ens = _file_to_ensemble(ensemble_inputs["top-level-ensemble.json"])
+    assert ens._gas_constant == 0.008314
+    assert len(ens.species) == 4
+
+    ens = _file_to_ensemble(ensemble_inputs["s1s2_folded.xlsx"])
+    assert ens._gas_constant == 0.001987
+    assert len(ens.species) == 2
+
+    os.chdir(current_dir)
 
 def test_read_ensemble(tmpdir,ensemble_inputs,variable_types):
 
@@ -232,19 +265,41 @@ def test_read_ensemble(tmpdir,ensemble_inputs,variable_types):
     with pytest.raises(FileNotFoundError):
         read_ensemble("not_a_file")
 
-    for v in variable_types["everything"]:
-        print(v,type(v))
-        with pytest.raises(FileNotFoundError):
-            read_ensemble(v)
-
-    # Send in json
+    # Send in json file
     ens = read_ensemble(ensemble_inputs["top-level-ensemble.json"])
     assert ens._gas_constant == 0.008314
     assert len(ens.species) == 4
 
-    # Send in excel
+    # Send in excel file
     ens = read_ensemble(ensemble_inputs["s1s2_folded.xlsx"])
     assert ens._gas_constant == 0.001987
     assert len(ens.species) == 2
+    
+    # Send in pandas 
+    df = pd.read_excel(ensemble_inputs["s1s2_folded.xlsx"])
+    ens = read_ensemble(df)
+    assert ens._gas_constant == 0.001987
+    assert len(ens.species) == 2
 
+    # Send in json 
+    with open(ensemble_inputs["top-level-ensemble.json"],'r') as f:
+        json_input = json.load(f)
+    
+    ens = read_ensemble(json_input)
+    assert ens._gas_constant == 0.008314
+    assert len(ens.species) == 4 
+
+    # General error checking
+    for v in variable_types["everything"]:
+        
+        expected_err = ValueError
+        if issubclass(type(v),dict):
+            continue
+        if issubclass(type(v),str):
+            expected_err = FileNotFoundError
+        
+        print(v,type(v))
+        with pytest.raises(expected_err):
+            read_ensemble(v)
+        
     os.chdir(current_dir)

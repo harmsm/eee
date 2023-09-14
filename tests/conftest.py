@@ -96,9 +96,13 @@ def ens_test_data():
                     observable=False,
                     ligand_stoich={"Y":1})
     
-    # basic ligand_dict 
-    ligand_dict = {"X":[0,1],
-               "Y":[1,0]}
+    # Selection conditions
+    conditions = {"X":[0,1],
+                  "Y":[1,0],
+                  "fitness_fcn":["off","on"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":True,
+                  "temperature":1}
 
     ddg_df = pd.DataFrame({"site":[1,1,2,2],
                            "mut":["M1A","M1V","P2R","P2Q"],
@@ -112,20 +116,13 @@ def ens_test_data():
     ddg_dict[2] = {"P2R":np.array([0,1]),
                    "P2Q":np.array([0,0])}
 
-    fitness_fcns = [ff_on,ff_off]
-
-    fc = Fitness(ens,
-                 ligand_dict,
-                 [ff_on,ff_off],
-                 select_on="fx_obs",
-                 fitness_kwargs={},
-                 temperature=298.15)
+    fc = Fitness(ens=ens,
+                 conditions=conditions)
     
     out = {"ens":ens,
-           "ligand_dict":ligand_dict,
+           "conditions":conditions,
            "ddg_df":ddg_df,
            "ddg_dict":ddg_dict,
-           "fitness_fcns":fitness_fcns,
            "fc":fc}
     
     return out
@@ -144,19 +141,21 @@ def ens_with_fitness():
                     observable=False,
                     ligand_stoich={"X":2})
 
-    ligand_dict = {"X":[0,3.333]}
+    # Selection conditions
+    conditions = {"X":[0,3.333],
+                  "fitness_fcn":["on","off"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":True,
+                  "temperature":1}
+
 
     ddg_df = pd.DataFrame({"site":[1,1],
                            "mut":["A1V","A1P"],
                            "s1":[-1.677,0.167],
                            "s2":[3.333,-5000]})
 
-    fc = Fitness(ens,
-                 ligand_dict,
-                 [ff_on,ff_off],
-                 select_on="fx_obs",
-                 fitness_kwargs={},
-                 temperature=1)
+    fc = Fitness(ens=ens,
+                 conditions=conditions)
 
     gc = Genotype(ens=ens,
                   fitness_function=fc.fitness,
@@ -164,7 +163,7 @@ def ens_with_fitness():
     
 
     out = {"ens":ens,
-           "ligand_dict":ligand_dict,
+           "conditions":conditions,
            "ddg_df":ddg_df,
            "fc":fc,
            "gc":gc}
@@ -184,19 +183,20 @@ def ens_with_fitness_two_site():
                     observable=False,
                     ligand_stoich={"X":2})
 
-    ligand_dict = {"X":[0,3.333]}
+    # Selection conditions
+    conditions = {"X":[0,3.333],
+                  "fitness_fcn":["on","off"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":True,
+                  "temperature":1}
 
     ddg_df = pd.DataFrame({"site":[1,1,2],
                            "mut":["A1V","A1P","A2C"],
                            "s1":[-1.677,0.167,0],
                            "s2":[3.333,-5000,0]})
 
-    fc = Fitness(ens,
-                 ligand_dict,
-                 [ff_on,ff_off],
-                 select_on="fx_obs",
-                 fitness_kwargs={},
-                 temperature=1)
+    fc = Fitness(ens=ens,
+                 conditions=conditions)
 
     gc = Genotype(ens=ens,
                   fitness_function=fc.fitness,
@@ -204,7 +204,7 @@ def ens_with_fitness_two_site():
     
 
     out = {"ens":ens,
-           "ligand_dict":ligand_dict,
+           "conditions":conditions,
            "ddg_df":ddg_df,
            "fc":fc,
            "gc":gc}

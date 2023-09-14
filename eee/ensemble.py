@@ -290,7 +290,10 @@ class Ensemble:
         
         return dG
 
-    def get_obs(self,mut_energy=None,ligand_dict=None,temperature=298.15):
+    def get_obs(self,
+                mut_energy=None,
+                ligand_dict=None,
+                temperature=298.15):
         """
         Get the population and observables given the energetic effects of 
         mutations, as well as the chemical potentials in ligand_dict.
@@ -410,7 +413,7 @@ class Ensemble:
 
         self._build_z_matrix(ligand_dict)
 
-    def mut_dict_to_array(self,mut_energy):
+    def mut_dict_to_array(self,mut_energy=None):
         """
         Convert a mut_energy dictionary to an array with the correct order  
         for _get_weights. Warning: no error checking. User is responsible for
@@ -433,6 +436,9 @@ class Ensemble:
             on that species. 
         """
         
+        if mut_energy is None:
+            mut_energy = {}
+
         mut_energy_array = np.zeros(len(self._species_list),dtype=float)
         for i, s in enumerate(self._species_list):
             if s in mut_energy:
@@ -519,15 +525,15 @@ class Ensemble:
         Return a json-able dictionary describing the ensemble.
         """
 
-        out = {"ens":{}}
+        out = {}
         attr_to_write = ["dG0","observable","ligand_stoich","folded"]
         for s in self._species:
 
-            out["ens"][s] = {}
+            out[s] = {}
             for a in attr_to_write:
-                out["ens"][s][a] = self._species[s][a]
+                out[s][a] = self._species[s][a]
     
-        out["ens"]["gas_constant"] = self._gas_constant
+        out["gas_constant"] = self._gas_constant
 
         return out
     

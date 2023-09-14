@@ -1,57 +1,46 @@
 {
   "calc_type": "dms",
-  "system": {
-    "ens": {
-      "hdna": {
-        "dG0": 0.0,
-        "observable": true,
-        "ligand_stoich": {},
-        "folded": true
-      },
-      "h": {
-        "dG0": 5.0,
-        "observable": false,
-        "ligand_stoich": {},
-        "folded": true
-      },
-      "l2e": {
-        "dG0": 5.0,
-        "observable": false,
-        "ligand_stoich": {
-          "iptg": 4.0
-        },
-        "folded": true
-      },
-      "unfolded": {
-        "dG0": 10.0,
-        "observable": false,
-        "ligand_stoich": {},
-        "folded": false
-      },
-      "gas_constant": 0.001987
+  "ens": {
+    "hdna": {
+      "dG0": 0.0,
+      "observable": true,
+      "ligand_stoich": {},
+      "folded": true
     },
-    "ligand_dict": {
-      "iptg": [
-        1.0,
-        3.0
-      ]
+    "h": {
+      "dG0": 5.0,
+      "observable": false,
+      "ligand_stoich": {},
+      "folded": true
     },
-    "select_on": "fx_obs",
-    "select_on_folded": true,
-    "fitness_kwargs": {},
-    "temperature": [
-      298.15,
-      298.15
-    ],
-    "fitness_fcns": [
-      "on",
-      "off"
-    ],
-    "seed": 693001669563,
-    "ddg_df": "ddg.csv"
+    "l2e": {
+      "dG0": 5.0,
+      "observable": false,
+      "ligand_stoich": {
+        "iptg": 4.0
+      },
+      "folded": true
+    },
+    "unfolded": {
+      "dG0": 10.0,
+      "observable": false,
+      "ligand_stoich": {},
+      "folded": false
+    },
+    "gas_constant": 0.001987
+  },
+  "conditions":{
+    "iptg": [1.0,3.0],
+    "select_on": ["fx_obs","fx_obs"],
+    "select_on_folded": [true,true],
+    "fitness_kwargs": [{},{}],
+    "temperature": [298.15,298.15],
+    "fitness_fcn": ["on","off"]
   },
   "calc_params": {
     "max_depth": 2,
     "output_file": "eee_dms.csv"
-  }
+  },
+  "seed": 693001669563,
+  "ddg_df": "ddg.csv"
 }

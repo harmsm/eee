@@ -26,73 +26,42 @@ def test_ensemble_fitness(ens_with_fitness):
     
     mut_energy = {"test1":0,
                   "test2":0}
-    ligand_dict = {"X":[0,10000],"Y":[10000,0]}
-
-    temperature = 1
-    select_on = "fx_obs"
+    
+    conditions = {"X":[0,10000],
+                  "Y":[10000,0],
+                  "fitness_fcn":["off","on"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":False,
+                  "temperature":1}
 
     # Try different fitness_fcns
-    fitness_fcns = [ff_off,ff_on]
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[1,1])
     assert issubclass(type(value),pd.DataFrame)
 
-    # Try different fitness_fcns
-    fitness_fcns = ["off","on"]
-    value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)
-    
-    assert np.array_equal(value["fitness"],[1,1])
-
     # Now select on folded. This will be folded under first condition (test2 
     # favored) and not folded under second condition (test1 favored). 
+    conditions["select_on_folded"] = True
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=True,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[1,0])
 
-
-    fitness_fcns = [ff_off,ff_off]
+    conditions["fitness_fcn"] = ["off","off"]
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[1,0])
 
-    fitness_fcns = [ff_on,ff_off]
+    conditions["fitness_fcn"] = ["on","off"]
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[0,0])
 
@@ -109,66 +78,45 @@ def test_ensemble_fitness(ens_with_fitness):
     
     mut_energy = {"test1":0,
                   "test2":0}
-    ligand_dict = {"X":[0,1],"Y":[1,0]}
+    
+    conditions = {"X":[0,1],
+                  "Y":[1,0],
+                  "fitness_fcn":["on","off"],
+                  "select_on":"dG_obs",
+                  "select_on_folded":False,
+                  "temperature":1}
 
-    temperature = 1
-    select_on = "dG_obs"
-
-    fitness_fcns = [ff_on,ff_off]
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     assert np.array_equal(value["fitness"],[1,2])
 
+    
     # Now select on folded. Will be entirely unfolded --> 0,0
+    conditions["select_on_folded"] = True
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=True,
-                    fitness_kwargs={},
-                    temperature=temperature)
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[0,0])
 
 
     ens = ens_with_fitness["ens"]
-    ligand_dict = ens_with_fitness["ligand_dict"]
+    conditions = ens_with_fitness["conditions"]
 
     value = ensemble_fitness(ens=ens,
-                    mut_energy={},
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=[ff_on,ff_off],
-                    select_on="fx_obs",
-                    fitness_kwargs={},
-                    select_on_folded=False,
-                    temperature=1)
+                             conditions=conditions,
+                             mut_energy={})
     assert np.array_equal(np.round(value["fitness"],2),[0.54,1.00])
 
     value = ensemble_fitness(ens=ens,
-                    mut_energy={"s1":-1.667,"s2":3.333},
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=[ff_on,ff_off],
-                    select_on="fx_obs",
-                    fitness_kwargs={},
-                    select_on_folded=False,
-                    temperature=1)
+                             conditions=conditions,
+                             mut_energy={"s1":-1.667,"s2":3.333})
     assert np.array_equal(np.round(value["fitness"],2),[0.99,0.82])
     
     value = ensemble_fitness(ens=ens,
-                    mut_energy={"s1":0.167,"s2":-16.667},
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=[ff_on,ff_off],
-                    select_on="fx_obs",
-                    fitness_kwargs={},
-                    select_on_folded=False,
-                    temperature=1)
+                             conditions=conditions,
+                             mut_energy={"s1":0.167,"s2":-16.667})
     assert np.array_equal(np.round(value["fitness"],2),[0.00,1.00])
 
     ens = Ensemble(gas_constant=1)
@@ -183,29 +131,16 @@ def test_ensemble_fitness(ens_with_fitness):
     
     mut_energy = {"test1":0,
                   "test2":0}
-    ligand_dict = {"X":[0,10000],"Y":[10000,0]}
-    fitness_fcns = [ff_off,ff_on]
-
-    select_on = "fx_obs"
-    temperature = 1
+    
+    conditions = {"X":[0,10000],
+                  "Y":[10000,0],
+                  "fitness_fcn":["off","on"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":False,
+                  "temperature":1}
 
     value = ensemble_fitness(ens=ens,
-                    mut_energy=mut_energy,
-                    ligand_dict=ligand_dict,
-                    fitness_fcns=fitness_fcns,
-                    select_on=select_on,
-                    select_on_folded=False,
-                    fitness_kwargs={},
-                    temperature=temperature)    
+                             conditions=conditions,
+                             mut_energy=mut_energy)
     
     assert np.array_equal(value["fitness"],[1,1])
-
-    with pytest.raises(ValueError):
-        value = ensemble_fitness(ens=ens,
-                        mut_energy=mut_energy,
-                        ligand_dict=ligand_dict,
-                        fitness_fcns=fitness_fcns,
-                        select_on="not_right",
-                        fitness_kwargs={},
-                        select_on_folded=False,
-                        temperature=temperature)    

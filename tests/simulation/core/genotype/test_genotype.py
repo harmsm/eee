@@ -430,12 +430,13 @@ def test_Genotype_to_dict(ens_test_data):
     ddg_df = ens_test_data["ddg_df"]
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     
     out = gc.to_dict()
     assert issubclass(type(out),dict)
-    assert len(out) == 0
+    assert len(out) == 1
+    assert issubclass(type(out["ddg_df"]),pd.DataFrame)
 
 def test_Genotype_df(ens_test_data):
 

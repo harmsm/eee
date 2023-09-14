@@ -1167,13 +1167,13 @@ def test_Ensemble_to_dict():
                     ligand_stoich={"X":1})
     
     out = ens.to_dict()
-    assert out["ens"]["gas_constant"] == 1
-    assert len(out["ens"]) == 2
-    assert out["ens"]["test1"]["observable"] == False
-    assert out["ens"]["test1"]["folded"] == True
-    assert out["ens"]["test1"]["dG0"] == 1
-    assert len(out["ens"]["test1"]["ligand_stoich"]) == 1
-    assert out["ens"]["test1"]["ligand_stoich"]["X"] == 1
+    assert out["gas_constant"] == 1
+    assert len(out) == 2
+    assert out["test1"]["observable"] == False
+    assert out["test1"]["folded"] == True
+    assert out["test1"]["dG0"] == 1
+    assert len(out["test1"]["ligand_stoich"]) == 1
+    assert out["test1"]["ligand_stoich"]["X"] == 1
 
 def test_Ensemble_get_observable_function(variable_types):
 
