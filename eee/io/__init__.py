@@ -1,4 +1,6 @@
-
+"""
+Functions for reading and writing files.
+"""
 
 from .read_structure import read_structure
 from .read_dataframe import read_dataframe

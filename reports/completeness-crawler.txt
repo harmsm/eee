@@ -1,4 +1,3 @@
-FOUND tests._private.check.eee.test_ddg_df.test_check_ddg_df
 FOUND tests._private.check.eee.test_ligand_dict.test_check_ligand_dict
 FOUND tests._private.check.eee.test_ligand_stoich.test_check_ligand_stoich
 FOUND tests._private.check.eee.test_mut_energy.test_check_mut_energy
@@ -63,10 +62,6 @@ FOUND tests.simulation.core.engine.test_pathfinder.test__traverse
 FOUND tests.simulation.core.engine.test_pathfinder.test_pathfinder
 FOUND tests.simulation.core.engine.test_wright_fisher.test__write_outputs
 FOUND tests.simulation.core.engine.test_wright_fisher.test_wright_fisher
-FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__get_ff_available
-FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test__map_fitness_fcn_to_string
-FOUND tests.simulation.core.fitness.test_check_fitness_fcns.test_check_fitness_fcns
-FOUND tests.simulation.core.fitness.test_check_fitness_kwargs.test_check_fitness_kwargs
 FOUND tests.simulation.core.fitness.test_ff.test_ff_neutral
 FOUND tests.simulation.core.fitness.test_ff.test_ff_off
 FOUND tests.simulation.core.fitness.test_ff.test_ff_on
@@ -82,6 +77,8 @@ FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_select_on
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_select_on_folded
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_temperature
 FOUND tests.simulation.core.fitness.test_fitness.test_Fitness_to_dict
+FOUND tests.simulation.core.fitness.test_map_fitness_fcn.test__get_ff_available
+FOUND tests.simulation.core.fitness.test_map_fitness_fcn.test_map_fitness_fcn
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype__add_genotype
 FOUND tests.simulation.core.genotype.test_genotype.test_Genotype__create_ddg_dict

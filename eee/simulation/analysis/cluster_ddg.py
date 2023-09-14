@@ -1,3 +1,7 @@
+"""
+Analyze a ddg file. 
+"""
+
 import eee
 from eee._private.check.standard import check_int
 from eee._private.check.standard import check_float

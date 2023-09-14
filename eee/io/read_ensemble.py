@@ -1,3 +1,7 @@
+"""
+Read an ensemble from a file or dictionary/dataframe input.
+"""
+
 import eee
 
 import pandas as pd

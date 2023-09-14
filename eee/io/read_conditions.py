@@ -5,9 +5,7 @@ from eee._private.check.ensemble import check_ensemble
 from eee._private.check.dataframe import check_dataframe
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_float
-from eee.simulation.core.fitness.check_fitness_fcns import _map_fitness_fcn_to_string
-
-import numpy as np
+from eee.simulation.core.fitness.map_fitness_fcn import map_fitness_fcn
 
 import json
 
@@ -128,8 +126,8 @@ def read_conditions(conditions,
     fitness_fcn_fcn = []
     for idx in df.index:
         v = df.loc[idx,"fitness_fcn"]
-        f = _map_fitness_fcn_to_string(v,return_as="function")
-        v = _map_fitness_fcn_to_string(f,return_as="string")
+        f = map_fitness_fcn(v,return_as="function")
+        v = map_fitness_fcn(f,return_as="string")
         fitness_fcn_out.append(v)
         fitness_fcn_fcn.append(f)
     df["fitness_fcn"] = fitness_fcn_out

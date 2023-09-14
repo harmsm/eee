@@ -1,6 +1,5 @@
 """
-Functions for automatically building lists of and validating fitness functions
-(e.g. ff_on = "on"), etc. 
+Functions for mapping fitness functions in ff.py to string names. 
 """
 import inspect
 from . import ff
@@ -24,7 +23,7 @@ def _get_ff_available():
 
     return available_ff
 
-def _map_fitness_fcn_to_string(value,return_as):
+def map_fitness_fcn(value,return_as):
     """
     Take an input value and map back and forth between the name of that function
     and a pointer to the function.
@@ -88,7 +87,6 @@ def _map_fitness_fcn_to_string(value,return_as):
     # FF_AVAILABLE, just return it's name. Allows a custom function
     # to be passed in). 
     elif return_as == "string":
-
         return fcn_str
     
     # Or die. 
@@ -96,70 +94,5 @@ def _map_fitness_fcn_to_string(value,return_as):
         err = f"\nreturn_as ({return_as}) should be 'function' or 'string'\n\n"
         raise ValueError(err)
 
-
-def check_fitness_fcns(fitness_fcns,
-                       num_conditions,
-                       return_as="function"):
-    """
-    Check the sanity of a fitness_functions, returning a list num_conditions 
-    long holding fitness functions. return_as can be 'function' (meaning return
-    the function itself) or 'string' (meaning return the string identifier of 
-    the function). 
-    """
-
-    if issubclass(type(fitness_fcns),type):
-        err = f"\nfitness_fcns '{fitness_fcns} should not be a type\n\n"
-        raise ValueError(err)
-
-    # If a single function, expand to a list of functions
-    if not hasattr(fitness_fcns,"__iter__"):
-        fitness_fcns = [fitness_fcns for _ in range(num_conditions)]
-
-    for f in fitness_fcns:
-        if issubclass(type(f),type):
-            err = f"\nfitness_fcns entry '{f} should not be a type\n\n"
-            raise ValueError(err)
-
-    # Convert the fitness functions to callable functions if specified as 
-    # strings (like "on", "off", and "neutral")
-    parsed_fitness_fcns = []
-    for f in fitness_fcns:
-        new_f = _map_fitness_fcn_to_string(f,return_as="function")
-        parsed_fitness_fcns.append(new_f)
-
-    fitness_fcns = parsed_fitness_fcns[:]
-
-    # Make sure all fitness_fcns can be called
-    for f in fitness_fcns:
-        if not callable(f):
-            err = "All entries in fitness_fcns should be functions that take\n"
-            err += "an ensemble observable as their first argument."
-            raise ValueError(f"\n{err}\n\n")
-    
-    # Make sure fitness functions is the right length
-    if num_conditions is not None:
-
-        # ligand_length must match the length of fitnesss_fcns (one fitness per 
-        # condition).
-        if len(fitness_fcns) != num_conditions:
-            err = "fitness should be the same length as the number of conditions\n"
-            err += "in ligand_dict.\n"
-            raise ValueError(err)
-
-    
-    if return_as == "function":
-        out = fitness_fcns
-    elif return_as == "string":
-
-        out = []
-        for f in fitness_fcns:
-            out.append(_map_fitness_fcn_to_string(f,return_as="string"))
-    else:
-        err = f"\nreturn_as '{return_as}' not recognized. Should be 'function'\n"
-        err += "or 'string'\n\n"
-        raise ValueError(err)
-
-
-    return out
 
 FF_AVAILABLE = _get_ff_available()
