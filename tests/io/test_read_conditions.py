@@ -2,11 +2,6 @@ import pytest
 
 from eee import Ensemble
 from eee.io.read_conditions import read_conditions
-from eee.simulation.core.fitness.ff import ff_on
-from eee.simulation.core.fitness.ff import ff_off
-from eee.simulation.core.fitness.ff import ff_neutral
-from eee.simulation.core.fitness.ff import ff_on_above
-from eee.simulation.core.fitness.ff import ff_on_below
 
 import numpy as np
 import pandas as pd
@@ -38,12 +33,12 @@ def test_read_conditions(tmpdir):
                   "select_on_folded":True,
                   "temperature":1}
     
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions,
-                                           default_fitness_kwargs=None,
-                                           default_select_on="fx_obs",
-                                           default_select_on_folded=True,
-                                           default_temperature=298.15)
+    df, ligand_dict = read_conditions(ens=ens,
+                                      conditions=conditions,
+                                      default_fitness_kwargs=None,
+                                      default_select_on="fx_obs",
+                                      default_select_on_folded=True,
+                                      default_temperature=298.15)
 
     assert np.array_equal(df.loc[:,"X"],conditions["X"])
     assert np.array_equal(df.loc[:,"Y"],conditions["Y"])
@@ -57,8 +52,6 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["Y"],conditions["Y"])
     assert len(ligand_dict) == 2
 
-    assert np.array_equal(ff,[ff_off,ff_on])
-
     # -------------------------------------------------------------------------
     # Missing required column
 
@@ -69,12 +62,12 @@ def test_read_conditions(tmpdir):
                   "temperature":1}
     
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                            conditions=conditions,
-                                            default_fitness_kwargs=None,
-                                            default_select_on="fx_obs",
-                                            default_select_on_folded=True,
-                                            default_temperature=298.15)
+        df, ligand_dict = read_conditions(ens=ens,
+                                          conditions=conditions,
+                                          default_fitness_kwargs=None,
+                                          default_select_on="fx_obs",
+                                          default_select_on_folded=True,
+                                          default_temperature=298.15)
 
     # -------------------------------------------------------------------------
     # Use a reserved keyword in the ensemble ligands
@@ -97,21 +90,21 @@ def test_read_conditions(tmpdir):
                   "temperature":1}
     
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions,
-                                               default_fitness_kwargs=None,
-                                               default_select_on="fx_obs",
-                                               default_select_on_folded=True,
-                                               default_temperature=298.15)
+        df, ligand_dict = read_conditions(ens=ens,
+                                          conditions=conditions,
+                                          default_fitness_kwargs=None,
+                                          default_select_on="fx_obs",
+                                          default_select_on_folded=True,
+                                          default_temperature=298.15)
     
     # make sure error is still raised even if we pass in no select_on_folded at all
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions,
-                                               default_fitness_kwargs=None,
-                                               default_select_on="fx_obs",
-                                               #default_select_on_folded=True,
-                                               default_temperature=298.15)
+        df, ligand_dict = read_conditions(ens=ens,
+                                          conditions=conditions,
+                                          default_fitness_kwargs=None,
+                                          default_select_on="fx_obs",
+                                          #default_select_on_folded=True,
+                                          default_temperature=298.15)
 
     # -------------------------------------------------------------------------
     # pass in conditions with non-ligand columns
@@ -134,12 +127,12 @@ def test_read_conditions(tmpdir):
                   "select_on_folded":True,
                   "temperature":1}
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions,
-                                               default_fitness_kwargs=None,
-                                               default_select_on="fx_obs",
-                                               default_select_on_folded=True,
-                                               default_temperature=298.15)
+        df, ligand_dict = read_conditions(ens=ens,
+                                          conditions=conditions,
+                                          default_fitness_kwargs=None,
+                                          default_select_on="fx_obs",
+                                          default_select_on_folded=True,
+                                          default_temperature=298.15)
 
     # -------------------------------------------------------------------------
     #  make sure columns get default values. 
@@ -158,12 +151,12 @@ def test_read_conditions(tmpdir):
                   "Y":[10000,0],
                   "fitness_fcn":["off","on"]}
     
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions,
-                                           default_fitness_kwargs=None,
-                                           default_select_on="dG_obs",
-                                           default_select_on_folded=False,
-                                           default_temperature=300)
+    df, ligand_dict = read_conditions(ens=ens,
+                                      conditions=conditions,
+                                      default_fitness_kwargs=None,
+                                      default_select_on="dG_obs",
+                                      default_select_on_folded=False,
+                                      default_temperature=300)
 
     assert np.array_equal(df.loc[:,"X"],conditions["X"])
     assert np.array_equal(df.loc[:,"Y"],conditions["Y"])
@@ -176,8 +169,6 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["X"],conditions["X"])
     assert np.array_equal(ligand_dict["Y"],conditions["Y"])
     assert len(ligand_dict) == 2
-
-    assert np.array_equal(ff,[ff_off,ff_on])
 
     # -------------------------------------------------------------------------
     # Make sure ligands get assigned if not in conditions
@@ -197,12 +188,12 @@ def test_read_conditions(tmpdir):
                   "select_on_folded":True,
                   "temperature":1}
     
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions,
-                                           default_fitness_kwargs=None,
-                                           default_select_on="fx_obs",
-                                           default_select_on_folded=True,
-                                           default_temperature=298.15)
+    df, ligand_dict = read_conditions(ens=ens,
+                                      conditions=conditions,
+                                      default_fitness_kwargs=None,
+                                      default_select_on="fx_obs",
+                                      default_select_on_folded=True,
+                                      default_temperature=298.15)
 
     assert np.array_equal(df.loc[:,"X"],[0,0])
     assert np.array_equal(df.loc[:,"Y"],[0,0])
@@ -215,8 +206,6 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["X"],[0,0])
     assert np.array_equal(ligand_dict["Y"],[0,0])
     assert len(ligand_dict) == 2
-
-    assert np.array_equal(ff,[ff_off,ff_on])
 
     # -------------------------------------------------------------------------
     # Test parsing of fitness_fcn
@@ -235,14 +224,13 @@ def test_read_conditions(tmpdir):
                   "Y":[0,1,2],
                   "fitness_fcn":["off","on","neutral"]}
     
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,
+                                      conditions=conditions)
 
     assert np.array_equal(df.loc[:,"X"],conditions["X"])
     assert np.array_equal(df.loc[:,"Y"],conditions["Y"])
     assert np.array_equal(df.loc[:,"fitness_fcn"],conditions["fitness_fcn"])
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{},{},{}])
-    assert np.array_equal(ff,[ff_off,ff_on,ff_neutral])
 
     # not real function
     conditions["fitness_fcn"] = ["off","on","not_real"]
@@ -275,16 +263,16 @@ def test_read_conditions(tmpdir):
                   "fitness_fcn":["off","on","neutral"],
                   "fitness_kwargs":[{},{},{}]}
     
-    df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{},{},{}])
 
     # now pass in default fitness_kwargs as {}
     conditions["fitness_kwargs"] = {}
-    df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{},{},{}])
 
     conditions["fitness_kwargs"] = {"threshold":1}
-    df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{"threshold":1},
                                                       {"threshold":1},
                                                       {"threshold":1}])
@@ -294,13 +282,13 @@ def test_read_conditions(tmpdir):
                   "fitness_fcn":["on","on_above"],
                   "fitness_kwargs":[{},{}]}
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)        
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)        
 
     # Send in usable fitness_kwargs
     conditions = {"X":[0,1],
                   "fitness_fcn":["on","on_above"],
                   "fitness_kwargs":[{},{"threshold":0.1}]}
-    df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{},
                                                       {"threshold":0.1}])  
 
@@ -308,7 +296,7 @@ def test_read_conditions(tmpdir):
     conditions = {"X":[0,1],
                   "fitness_fcn":["on","on_above"],
                   "fitness_kwargs":{"threshold":0.1}}
-    df, ligand_dict, ff = read_conditions(ens=ens,conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df.loc[:,"fitness_kwargs"],[{"threshold":0.1},
                                                       {"threshold":0.1}])  
 
@@ -328,37 +316,31 @@ def test_read_conditions(tmpdir):
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
                   "select_on":"fx_obs"}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on"],["fx_obs","fx_obs"])
 
     conditions["select_on"] = "dG_obs"
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on"],["dG_obs","dG_obs"])
 
     conditions["select_on"] = ["dG_obs","dG_obs"]
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on"],["dG_obs","dG_obs"])
 
     # should fail because must be the same across all conditions
     conditions["select_on"] = ["dG_obs","fx_obs"]
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     
     # Should fail because select_on must be a string
     conditions["select_on"] = 1.0
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
     # Should fail because select_on must be an interpretable string
     conditions["select_on"] = "not_recognized_string"
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
     # -------------------------------------------------------------------------
     # Test parsing of select_on_folded
@@ -376,26 +358,22 @@ def test_read_conditions(tmpdir):
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
                   "select_on_folded":True}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on_folded"],[True,True])
 
     conditions["select_on_folded"] = [False,True]
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on_folded"],[False,True])
 
     # Should work -- interpretable as bool
     conditions["select_on_folded"] = [0,1]
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["select_on_folded"],[False,True])
 
     # should not work, not interpetable as bool
     conditions["select_on_folded"] = "not_a_bool"
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
     # -------------------------------------------------------------------------
     # Test parsing of temperature
@@ -413,26 +391,22 @@ def test_read_conditions(tmpdir):
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
                   "temperature":100}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["temperature"],[100,100])
 
     conditions["temperature"] = [1,100]
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(df["temperature"],[1,100])
 
     # should not work, not interpretable as float
     conditions["temperature"] = "not_a_float"
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
     # should not work, bad float
     conditions["temperature"] = -1.5
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
     # -------------------------------------------------------------------------
     # Test ligand_dict construction
@@ -449,16 +423,14 @@ def test_read_conditions(tmpdir):
     
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"]}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(ligand_dict["X"],[0,10000])
     assert np.array_equal(ligand_dict["Y"],[0,0])
 
     # Should work. Can be coerced to float
     conditions = {"X":[0,"10000"],
                   "fitness_fcn":["off","on"]}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
+    df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
     assert np.array_equal(ligand_dict["X"],[0,10000])
     assert np.array_equal(ligand_dict["Y"],[0,0])
 
@@ -466,36 +438,8 @@ def test_read_conditions(tmpdir):
     conditions = {"X":[0,"test"],
                   "fitness_fcn":["off","on"]}
     with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                            conditions=conditions)
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)
 
-    # -------------------------------------------------------------------------
-    # Test ff
-
-    ens = Ensemble(gas_constant=1)
-    ens.add_species(name="test1",
-                    observable=True,
-                    folded=False,
-                    ligand_stoich={"X":1})
-    ens.add_species(name="test2",
-                    observable=False,
-                    folded=True,
-                    ligand_stoich={"Y":1})
-    
-    conditions = {"X":[0,1,2,3,4],
-                  "fitness_fcn":["off","on","neutral","on_above","on_below"],
-                  "fitness_kwargs":[{},{},{},{"threshold":1},{"threshold":0}]}
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=conditions)
-    assert np.array_equal(ff,[ff_off,ff_on,ff_neutral,ff_on_above,ff_on_below])
-
-    # should throw error because not really a function
-    conditions = {"X":[0,1,2,3,4],
-                  "fitness_fcn":["off","on","neutral","on_above","not_thing"],
-                  "fitness_kwargs":[{},{},{},{"threshold":1},{"threshold":0}]}
-    with pytest.raises(ValueError):
-        df, ligand_dict, ff = read_conditions(ens=ens,
-                                               conditions=conditions)
         
     # -------------------------------------------------------------------------
     # read conditions from file
@@ -519,8 +463,7 @@ def test_read_conditions(tmpdir):
     input_df = pd.DataFrame(conditions)
     input_df.to_csv("test.csv")
 
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions="test.csv")
+    df, ligand_dict = read_conditions(ens=ens,conditions="test.csv")
     
     assert np.array_equal(df.loc[:,"X"],conditions["X"])
     assert np.array_equal(df.loc[:,"Y"],conditions["Y"])
@@ -533,8 +476,6 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["X"],conditions["X"])
     assert np.array_equal(ligand_dict["Y"],conditions["Y"])
     assert len(ligand_dict) == 2
-
-    assert np.array_equal(ff,[ff_off,ff_on])
 
     # -------------------------------------------------------------------------
     # read conditions from dataframe
@@ -557,8 +498,7 @@ def test_read_conditions(tmpdir):
                   "temperature":1}
     input_df = pd.DataFrame(conditions)
 
-    df, ligand_dict, ff = read_conditions(ens=ens,
-                                           conditions=input_df)
+    df, ligand_dict = read_conditions(ens=ens,conditions=input_df)
     
     assert np.array_equal(df.loc[:,"X"],conditions["X"])
     assert np.array_equal(df.loc[:,"Y"],conditions["Y"])
@@ -571,9 +511,5 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["X"],conditions["X"])
     assert np.array_equal(ligand_dict["Y"],conditions["Y"])
     assert len(ligand_dict) == 2
-
-    assert np.array_equal(ff,[ff_off,ff_on])
-
-
 
     os.chdir(current_dir)

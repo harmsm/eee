@@ -1,4 +1,6 @@
-
+"""
+Read eee conditions dataframe.
+"""
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.dataframe import check_dataframe
 from eee._private.check.standard import check_bool
@@ -16,12 +18,45 @@ def read_conditions(conditions,
                     default_select_on_folded=True,
                     default_temperature=298.15):
     """
-    Read a conditions entry, returning a conditions dataframe, a ligand dict
-    (which keys ligands to arrays of chemical potentials), and fitness_fcns 
-    (an array of fitness functions to apply at each condition).
+    Read a set of conditions for a simulation or fitness calculation. 
 
-    For more information on the input parameters to this function, see the 
-    __init__ function of the Fitness class. 
+    Parameters
+    ----------
+    conditions : pandas.DataFrame or similar
+        Conditions at which to do the fitness calculation. Columns are 
+        parameters, rows are conditions under which to do the calculation. 
+        The `fitness_fcn` column is required. This indicates which fitness
+        function to apply at the particular condition. Options (at this 
+        writing) are "on", "off", "neutral", "on_above", and "on_below." 
+        Other columns are: 
+        
+            + `fitness_kwargs`: keywords to pass to `fitness_fcn` (for example,
+            `{"threshold":0.5}` for `on_above` and `on_below`). 
+            + `select_on`: "fx_obs" or "dG_obs". All rows must have the same 
+            value. 
+            + `select_on_folded`: (True or False).
+            + `temperature`: (temperature in K).
+
+        All other columns are interpreted as ligand concentrations. The 
+        column names much match ligands defined in `ens`. 
+    ens : eee.Ensemble 
+        initialized instance of an Ensemble class
+    default_fitness_kwargs : dict, optional
+        if fitness_kwargs are not specified in conditions, assign this value
+    default_select_on : str, default="fx_obs"
+        if select_on is not specified in conditions, assign this value
+    default_select_on_folded : bool, default=True
+        if select_on_folded is not specified in conditions, assign this value
+    default_temperature : float, default=298.15
+        if temperature is not specified in conditions, assign this value
+
+    Returns
+    -------
+    condition_df : pandas.DataFrame
+        conditions in a standardized, validated pandas DataFrame
+    ligand_dict : dict
+        dictionary of ligands and their concentrations in a form that can be
+        passed directly into an Ensemble object
     """
 
     # Read spreadsheet or list of conditions into a dataframe
@@ -161,7 +196,6 @@ def read_conditions(conditions,
         temperature_out.append(v)
     df["temperature"] = temperature_out
 
-
     # Construct a ligand dictionary
     ligand_dict = {}
     for c in ligands:
@@ -173,4 +207,4 @@ def read_conditions(conditions,
             df.loc[idx,c] = v
         ligand_dict[c] = df[c]
 
-    return df, ligand_dict, np.array(fitness_fcn_fcn)
+    return df, ligand_dict

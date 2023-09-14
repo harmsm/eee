@@ -4,6 +4,7 @@ Class for calculating fitness from an ensemble during an evolutionary simulation
 
 from eee._private.check.ensemble import check_ensemble
 from eee.io.read_conditions import read_conditions
+from .check_fitness_fcns import _map_fitness_fcn_to_string
 
 import numpy as np
 
@@ -83,8 +84,7 @@ class Fitness:
                               
         self._condition_df = out[0]
         self._ligand_dict = out[1]
-        self._fitness_fcns = out[2]
-
+        
         # Convert parts of condition_df to numpy arrays for ease of access
         self._select_on_folded = np.array(self._condition_df["select_on_folded"])
         self._fitness_kwargs = np.array(self._condition_df["fitness_kwargs"])
@@ -96,7 +96,13 @@ class Fitness:
         self._select_on = self._condition_df["select_on"].iloc[0]
         self._obs_function = self._private_ens.get_observable_function(self._select_on)
 
-        # Set up fitness vector
+        # Set up fitness calculations
+        fitness_fcns = []
+        for ff in self._condition_df["fitness_fcn"]:
+            fitness_fcns.append(_map_fitness_fcn_to_string(value=ff,
+                                                           return_as="function"))
+        self._fitness_fcns = np.array(fitness_fcns)
+                                
         self._num_conditions = len(self._fitness_fcns)
         self._F_array = np.zeros(self._num_conditions,dtype=float)
 

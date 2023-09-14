@@ -203,8 +203,8 @@ def read_json(json_file,
             conditions = conditions_file
 
 
-        conditions, _, _ = read_conditions(conditions=conditions,
-                                           ens=ens)
+        conditions, _ = read_conditions(conditions=conditions,
+                                        ens=ens)
         setup_kwargs["conditions"] = conditions
     
     # ------------------------------ ddg_df ------------------------------------
