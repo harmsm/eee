@@ -3115,9 +3115,7 @@
 ./tests/simulation/calcs/test_wf_sim.py:22:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_sim.py:23:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_wf_sim.py:23:50: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_sim.py:43:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_sim.py:44:46: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_sim.py:44:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:44:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_sim.py:45:46: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:45:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:46:46: E231 missing whitespace after ','
@@ -3125,10 +3123,13 @@
 ./tests/simulation/calcs/test_wf_sim.py:47:46: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:47:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:48:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:48:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:49:46: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_sim.py:50:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_sim.py:52:47: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_sim.py:61:26: W292 no newline at end of file
+./tests/simulation/calcs/test_wf_sim.py:50:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:51:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_wf_sim.py:53:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_wf_sim.py:54:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:64:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_wf_tree_sim.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_wf_tree_sim.py:10:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_wf_tree_sim.py:11:1: W293 blank line contains whitespace
@@ -5082,14 +5083,14 @@
 ./eee/io/read_ensemble.py:48:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:51:1: E302 expected 2 blank lines, found 1
 ./eee/io/read_ensemble.py:54:78: W291 trailing whitespace
-./eee/io/read_ensemble.py:58:50: E231 missing whitespace after ','
+./eee/io/read_ensemble.py:58:5: E265 block comment should start with '# '
 ./eee/io/read_ensemble.py:59:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:69:41: W291 trailing whitespace
 ./eee/io/read_ensemble.py:75:35: E231 missing whitespace after ','
 ./eee/io/read_ensemble.py:76:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:79:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:86:49: W291 trailing whitespace
-./eee/io/read_ensemble.py:89:41: E231 missing whitespace after ','
+./eee/io/read_ensemble.py:89:5: E265 block comment should start with '# '
 ./eee/io/read_ensemble.py:95:43: E231 missing whitespace after ','
 ./eee/io/read_ensemble.py:106:43: E231 missing whitespace after ','
 ./eee/io/read_ensemble.py:112:1: W293 blank line contains whitespace
@@ -5102,7 +5103,7 @@
 ./eee/io/read_ensemble.py:123:35: E231 missing whitespace after ','
 ./eee/io/read_ensemble.py:130:1: E302 expected 2 blank lines, found 1
 ./eee/io/read_ensemble.py:133:72: W291 trailing whitespace
-./eee/io/read_ensemble.py:136:49: E231 missing whitespace after ','
+./eee/io/read_ensemble.py:136:5: E265 block comment should start with '# '
 ./eee/io/read_ensemble.py:142:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:147:36: W291 trailing whitespace
 ./eee/io/read_ensemble.py:149:1: W293 blank line contains whitespace
@@ -5127,6 +5128,9 @@
 ./eee/io/read_ensemble.py:268:27: E231 missing whitespace after ','
 ./eee/io/read_ensemble.py:271:1: W293 blank line contains whitespace
 ./eee/io/read_ensemble.py:273:10: W291 trailing whitespace
+./eee/io/read_ensemble.py:278:5: E265 block comment should start with '# '
+./eee/io/read_ensemble.py:279:5: E265 block comment should start with '# '
+./eee/io/read_ensemble.py:280:5: E265 block comment should start with '# '
 ./eee/io/read_ensemble.py:282:15: W292 no newline at end of file
 ./eee/io/read_structure.py:2:75: W291 trailing whitespace
 ./eee/io/read_structure.py:3:27: W291 trailing whitespace
@@ -5522,8 +5526,6 @@
 ./eee/simulation/core/engine/wright_fisher.py:241:1: W293 blank line contains whitespace
 ./eee/simulation/core/engine/wright_fisher.py:254:5: E303 too many blank lines (2)
 ./eee/simulation/core/engine/wright_fisher.py:264:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/wright_fisher.py:267:1: W293 blank line contains whitespace
-./eee/simulation/core/engine/wright_fisher.py:271:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/core/genotype/genotype.py:28:1: W293 blank line contains whitespace
 ./eee/simulation/core/genotype/genotype.py:34:22: E231 missing whitespace after ','
@@ -5889,16 +5891,17 @@
 ./eee/simulation/calcs/dms.py:58:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/dms.py:58:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_sim.py:2:55: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:29:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:41:64: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:43:73: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:47:59: W291 trailing whitespace
-./eee/simulation/calcs/wf_sim.py:54:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:65:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:67:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_sim.py:31:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:43:83: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:47:64: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:49:73: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:53:59: W291 trailing whitespace
+./eee/simulation/calcs/wf_sim.py:62:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/wf_sim.py:74:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:78:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_sim.py:78:5: W292 no newline at end of file
+./eee/simulation/calcs/wf_sim.py:76:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_sim.py:84:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:88:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_sim.py:88:5: W292 no newline at end of file
 ./eee/simulation/calcs/__init__.py:2:77: W291 trailing whitespace
 ./eee/simulation/calcs/__init__.py:7:1: F401 '.wf_sim.WrightFisherSimulation' imported but unused
 ./eee/simulation/calcs/__init__.py:8:1: F401 '.dms.DeepMutationalScan' imported but unused
@@ -5921,23 +5924,23 @@
 ./eee/simulation/calcs/wf_tree_sim.py:20:1: E302 expected 2 blank lines, found 1
 ./eee/simulation/calcs/wf_tree_sim.py:34:81: W291 trailing whitespace
 ./eee/simulation/calcs/wf_tree_sim.py:35:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:47:77: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:49:77: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:53:48: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:55:64: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:57:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:59:9: E303 too many blank lines (2)
-./eee/simulation/calcs/wf_tree_sim.py:62:36: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:65:59: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:69:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:81:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:83:22: E222 multiple spaces after operator
-./eee/simulation/calcs/wf_tree_sim.py:84:46: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:91:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:94:41: E231 missing whitespace after ','
-./eee/simulation/calcs/wf_tree_sim.py:95:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:99:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:99:5: W292 no newline at end of file
+./eee/simulation/calcs/wf_tree_sim.py:39:84: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:48:77: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:50:77: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:54:48: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:56:64: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:58:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:61:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:64:59: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:68:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:80:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:82:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_tree_sim.py:83:46: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:90:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:93:41: E231 missing whitespace after ','
+./eee/simulation/calcs/wf_tree_sim.py:94:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:98:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:98:5: W292 no newline at end of file
 ./eee/simulation/calcs/simulation_base.py:2:68: W291 trailing whitespace
 ./eee/simulation/calcs/simulation_base.py:3:64: W291 trailing whitespace
 ./eee/simulation/calcs/simulation_base.py:19:1: E302 expected 2 blank lines, found 1
@@ -6508,251 +6511,7 @@
 ./docs/script/build_api_docs.py:59:41: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:68:21: E231 missing whitespace after ','
 ./docs/script/build_api_docs.py:72:1: E305 expected 2 blank lines after class or function definition, found 1
-./profile/blah/wright_fisher.py:11:22: E231 missing whitespace after ','
-./profile/blah/wright_fisher.py:22:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:23:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:24:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:25:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:26:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:27:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:28:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:29:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:30:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:31:49: E128 continuation line under-indented for visual indent
-./profile/blah/wright_fisher.py:33:1: W391 blank line at end of file
-./profile/.ipynb_checkpoints/gui-checkpoint.py:25:1: F811 redefinition of unused 'widgets' from line 7
-./profile/.ipynb_checkpoints/gui-checkpoint.py:25:1: E402 module level import not at top of file
-./profile/.ipynb_checkpoints/gui-checkpoint.py:27:1: E302 expected 2 blank lines, found 1
-./profile/.ipynb_checkpoints/gui-checkpoint.py:30:12: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:32:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:39:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:43:72: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:46:72: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:47:69: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:52:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:57:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:58:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:63:51: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:67:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:68:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:68:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:73:51: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:75:37: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:77:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:78:25: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:84:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:91:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:92:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:96:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:104:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:105:5: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:112:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:119:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:123:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:124:64: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:131:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:132:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:133:9: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:135:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:140:38: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:141:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:144:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:145:37: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:152:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:155:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:158:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:162:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:168:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:170:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:174:50: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:176:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:180:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:182:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:186:42: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:188:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:191:22: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:191:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:194:73: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:196:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:199:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:202:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:206:75: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:209:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:210:22: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:220:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:224:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:232:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:241:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:245:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:249:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:251:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:252:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:253:5: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:257:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:262:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:263:36: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:264:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:272:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:273:22: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:277:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:283:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:288:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:291:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:302:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:312:55: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:313:51: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:320:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:321:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:322:9: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:324:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:326:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:331:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:334:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:336:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:339:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:341:5: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:341:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:341:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:346:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:349:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:352:78: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:353:35: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:355:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:358:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:360:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:366:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:370:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:372:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:373:37: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:380:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:383:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:388:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:391:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:396:1: E302 expected 2 blank lines, found 1
-./profile/.ipynb_checkpoints/gui-checkpoint.py:397:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:407:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:409:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:433:40: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:433:50: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:433:60: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:434:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:435:22: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:435:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:436:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:438:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:439:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:439:30: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:439:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:440:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:443:24: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:445:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:446:20: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:447:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:449:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:450:30: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:450:40: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:451:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:454:38: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:454:46: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:456:38: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:456:46: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:457:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:459:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:459:45: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:461:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:461:45: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:462:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:465:43: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:467:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:469:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:473:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:477:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:478:26: E231 missing whitespace after ':'
-./profile/.ipynb_checkpoints/gui-checkpoint.py:482:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:487:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:488:1: C901 '_plot_energy_diagram' is too complex (13)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:488:32: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:488:36: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:488:39: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:489:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:23: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:31: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:36: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:41: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:45: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:502:50: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:519:41: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:519:48: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:551:28: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:558:50: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:562:34: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:566:9: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:579:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:581:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:582:1: E302 expected 2 blank lines, found 1
-./profile/.ipynb_checkpoints/gui-checkpoint.py:582:24: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:582:32: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:582:36: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:582:39: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:583:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:585:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:594:26: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:598:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:600:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:601:1: E302 expected 2 blank lines, found 1
-./profile/.ipynb_checkpoints/gui-checkpoint.py:605:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:606:22: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:607:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:613:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:618:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:623:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:630:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:634:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:641:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:642:33: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:645:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:653:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:659:5: C901 'EnsembleCreator._update_follower' is too complex (13)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:659:30: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:659:36: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:660:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:663:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:666:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:677:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:684:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:691:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:699:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:704:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:707:43: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:707:45: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:707:57: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:718:41: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:718:52: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:723:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:726:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:727:24: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:727:30: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:728:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:730:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:731:37: W291 trailing whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:740:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:742:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:746:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:747:25: E231 missing whitespace after ':'
-./profile/.ipynb_checkpoints/gui-checkpoint.py:748:30: E231 missing whitespace after ':'
-./profile/.ipynb_checkpoints/gui-checkpoint.py:749:29: E231 missing whitespace after ':'
-./profile/.ipynb_checkpoints/gui-checkpoint.py:750:27: E231 missing whitespace after ':'
-./profile/.ipynb_checkpoints/gui-checkpoint.py:751:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:756:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:757:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:758:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:759:5: E303 too many blank lines (6)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:760:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:769:48: E231 missing whitespace after ','
-./profile/.ipynb_checkpoints/gui-checkpoint.py:775:1: W293 blank line contains whitespace
-./profile/.ipynb_checkpoints/gui-checkpoint.py:776:5: E303 too many blank lines (2)
-./profile/.ipynb_checkpoints/gui-checkpoint.py:777:26: W292 no newline at end of file
-34    C901 'compare_dict' is too complex (22)
+32    C901 'compare_dict' is too complex (22)
 2     E111 indentation is not a multiple of 4
 2     E114 indentation is not a multiple of 4 (comment)
 1     E116 unexpected indentation (comment)
@@ -6760,21 +6519,21 @@
 1     E122 continuation line missing indentation or outdented
 1     E124 closing bracket does not match visual indentation
 59    E127 continuation line over-indented for visual indent
-104   E128 continuation line under-indented for visual indent
+94    E128 continuation line under-indented for visual indent
 3     E201 whitespace after '{'
 1     E221 multiple spaces before operator
 3     E222 multiple spaces after operator
 5     E225 missing whitespace around operator
-4000  E231 missing whitespace after ','
+3923  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
-4     E265 block comment should start with '# '
+10    E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-208   E302 expected 2 blank lines, found 1
-117   E303 too many blank lines (2)
+204   E302 expected 2 blank lines, found 1
+108   E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
-15    E402 module level import not at top of file
+14    E402 module level import not at top of file
 1     E501 line too long (128 > 127 characters)
 2     E701 multiple statements on one line (colon)
 96    E712 comparison to True should be 'if cond is True:' or 'if cond:'
@@ -6782,11 +6541,10 @@
 2     E722 do not use bare 'except'
 86    F401 'glob' imported but unused
 9     F541 f-string is missing placeholders
-1     F811 redefinition of unused 'widgets' from line 7
 8     F841 local variable 'value' is assigned to but never used
-785   W291 trailing whitespace
-83    W292 no newline at end of file
-1081  W293 blank line contains whitespace
-19    W391 blank line at end of file
+770   W291 trailing whitespace
+82    W292 no newline at end of file
+955   W293 blank line contains whitespace
+18    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-6754
+6513

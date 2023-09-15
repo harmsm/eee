@@ -37,7 +37,8 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
     wf.run(output_directory="test",
            population_size=100,
            mutation_rate=0.01,
-           num_generations=100,
+           num_generations=10000,
+           num_mutations=1,
            write_prefix="eee_sim",
            write_frequency=1000)
     
@@ -46,13 +47,15 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
     assert os.path.exists(os.path.join("test","input","conditions.csv"))
     assert os.path.exists(os.path.join("test","input","simulation.json"))
     assert os.path.exists(os.path.join("test","eee_sim_genotypes.csv"))
-    assert os.path.exists(os.path.join("test","eee_sim_generations_0.pickle"))
+    assert os.path.exists(os.path.join("test","eee_sim_generations_00.pickle"))
  
     os.chdir('test')
+    
     _, kwargs = read_json(os.path.join("input",'simulation.json'))
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.01
-    assert kwargs["num_generations"] == 100
+    assert kwargs["num_generations"] == 10000
+    assert kwargs["num_mutations"] == 1
     assert kwargs["write_prefix"] == "eee_sim"
     assert kwargs["write_frequency"] == 1000
 

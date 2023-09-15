@@ -55,7 +55,7 @@ def _spreadsheet_to_ensemble(df,
     different species; columns as keyword parameters (dG0, ligands, etc.)
     """
 
-    print("Loading ensemble from a spreadsheet\n",flush=True)
+    #print("Loading ensemble from a spreadsheet\n",flush=True)
     
     # Get columns from spreadsheet
     df = eee.io.read_dataframe(df)
@@ -86,7 +86,7 @@ def _json_to_ensemble(calc_input,
     Read json and try to convert to an ensemble. 
     """
 
-    print("Loading ensemble from json\n",flush=True)
+    #print("Loading ensemble from json\n",flush=True)
 
     if base_path is None:
         base_path = ""
@@ -133,7 +133,7 @@ def _file_to_ensemble(input_file,
     Open file and choose whether or not to read as json or spreadsheet. 
     """
 
-    print(f"Reading ensemble from {input_file}.",flush=True)
+    #print(f"Reading ensemble from {input_file}.",flush=True)
 
     # Make sure the file exists.
     if not os.path.isfile(input_file):
@@ -275,8 +275,8 @@ def read_ensemble(input_value,
         raise ValueError(err)
 
     # Print status of loaded ensemble
-    print("\nBuilt the following ensemble\n")
-    print(ens.species_df)
-    print()
+    #print("\nBuilt the following ensemble\n")
+    #print(ens.species_df)
+    #print()
 
     return ens

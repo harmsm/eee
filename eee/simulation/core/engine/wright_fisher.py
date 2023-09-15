@@ -261,16 +261,9 @@ def wright_fisher(gc,
 
     # Warn if we did not get all of the requested mutations
     if num_mutations is not None and not hit_target_num_mutations:
-        
-        seen = generations[-1][0]
-        counts = generations[-1][1]
-    
-        num_accum = get_num_accumulated_mutations(seen=seen,
-                                                  counts=counts,
-                                                  gc=gc)
-        
+                
         w = f"\n\nDid not accumulate requested number of mutations after {num_generations}\n"
-        w += f"generations. Accumulated {num_accum} of {num_mutations} requested.\n"
+        w += f"generations. Accumulated {num_mutations_seen} of {num_mutations} requested.\n"
         w += "Try increasing num_generations and/or mutation_rate.\n\n"
         warnings.warn(w)
 
