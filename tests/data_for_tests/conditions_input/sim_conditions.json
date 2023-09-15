@@ -1,7 +1,7 @@
 {
   "calc_type":"dms",
   "calc_params":{
-    "max_depth":2,
+   "max_depth":2,
     "output_file":"eee_dms.csv"
   },
   "seed": 487698321712,
@@ -21,7 +21,7 @@
     "l2e": {
       "dG0": 5.0,
       "observable": false,
-      "iptg":4.0,
+      "iptg": 4.0,
       "folded": true
     },
     "unfolded": {
@@ -30,12 +30,5 @@
       "folded": false
     }
   },
-  "conditions":{
-    "fitness_fcn": [ "on", "off" ],
-    "iptg": [ 1.0, 4.0 ],
-    "select_on": ["fx_obs","fx_obs"],
-    "select_on_folded": [true,true],
-    "fitness_kwargs": [{},{}],
-    "temperature": [298.15,298.15]
-  }
+  "conditions":"sim_conditions.csv"
 }

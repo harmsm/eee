@@ -85,16 +85,21 @@ def sim_json():
     return _file_globber("data_for_tests","sim_json","*.json")
 
 @pytest.fixture(scope="module")
+def conditions_input():
+
+    return _file_globber("data_for_tests","conditions_input","*.*")
+
+@pytest.fixture(scope="module")
 def ens_test_data():
 
     # Basic ensemble
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="s1",
                     observable=True,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="s2",
                     observable=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     # Selection conditions
     conditions = {"X":[0,1],
@@ -139,7 +144,7 @@ def ens_with_fitness():
     ens.add_species(name="s2",
                     dG0=0.167,
                     observable=False,
-                    ligand_stoich={"X":2})
+                    X=2)
 
     # Selection conditions
     conditions = {"X":[0,3.333],
@@ -181,7 +186,7 @@ def ens_with_fitness_two_site():
     ens.add_species(name="s2",
                     dG0=0.167,
                     observable=False,
-                    ligand_stoich={"X":2})
+                    X=2)
 
     # Selection conditions
     conditions = {"X":[0,3.333],

@@ -212,9 +212,18 @@ class Simulation:
         for k in system_dict:
             out[k] = system_dict[k]
 
-        # Write ddg file
-        self._gc._ddg_df.to_csv("ddg.csv")
+        # Write ensemble to a csv file
+        ens_df = self.ens.species_df
+        ens_df.to_csv("ensemble.csv",index=False)
+        out["ens"] = "ensemble.csv"
+
+        # Write ddg to a csv file
+        self._gc._ddg_df.to_csv("ddg.csv",index=False)
         out["ddg_df"] = "ddg.csv"
+
+        # Write conditions to a csv file
+        self._fc.condition_df.to_csv("conditions.csv",index=False)
+        out["conditions"] = "conditions.csv"
 
         def iteratively_remove_ndarray(d):
             """
@@ -293,7 +302,9 @@ class Simulation:
         system_dict = {}
 
         # get ensemble
-        system_dict["ens"] = self._ens.to_dict()
+        from_ens = self._ens.to_dict()
+        for k in from_ens:
+            system_dict[k] = from_ens[k]
 
         # get fitness "conditions"
         system_dict["conditions"] = self._fc.to_dict()

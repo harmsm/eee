@@ -3,6 +3,8 @@ import pytest
 from eee.simulation.calcs.simulation_base import Simulation
 from eee.simulation.core import Fitness
 from eee.simulation.core import Genotype
+from eee.io.read_ensemble import read_ensemble
+from eee.io.read_conditions import read_conditions
 
 import numpy as np
 import pandas as pd
@@ -234,6 +236,8 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     assert os.path.exists("simulation.json")
     assert os.path.exists("ddg.csv")
+    assert os.path.exists("ensemble.csv")
+    assert os.path.exists("conditions.csv")
 
     with open("simulation.json") as f:
         as_written = json.load(f)
@@ -243,19 +247,31 @@ def test_Simulation__write_calc_params(ens_test_data,
         assert as_written["calc_params"][k] == calc_params[k]
     
     # ens
+    ens_written = read_ensemble(as_written["ens"]).to_dict()
     ens_dict = ens.to_dict()
-    for k in ens_dict:
-        assert ens_dict[k] == as_written["ens"][k]
-    assert ens_dict["gas_constant"] == as_written["ens"]["gas_constant"]
+
+    for k in ens_dict["ens"]:
+        for n in ens_dict["ens"][k]:
+            print(ens_dict["ens"][k])
+            print(ens_written["ens"][k])
+            assert ens_dict["ens"][k][n] == ens_written["ens"][k][n]
+
+    assert ens_dict["gas_constant"] == as_written["gas_constant"]
 
     # conditions
-    assert np.array_equal(as_written["conditions"]["select_on"],["fx_obs","fx_obs"])
-    assert np.array_equal(as_written["conditions"]["select_on_folded"],[True,True])
-    assert np.array_equal(as_written["conditions"]["fitness_kwargs"],[{},{}])
-    assert np.array_equal(as_written["conditions"]["temperature"],[298.15,298.15])
-    assert np.array_equal(as_written["conditions"]["fitness_fcn"], ["on","off"])
-    assert np.array_equal(as_written["conditions"]["X"],[0,1])
-    assert np.array_equal(as_written["conditions"]["Y"],[1,0])
+    assert as_written["conditions"] == "conditions.csv"
+    cond_written, _ = read_conditions(conditions="conditions.csv",
+                                      ens=sm.ens)
+    
+    keys_to_check =  ["select_on",
+                      "select_on_folded",
+                      "fitness_kwargs",
+                      "temperature",
+                      "fitness_fcn",
+                      "X",
+                      "Y"]
+    for key in keys_to_check:
+        assert np.array_equal(cond_written[key],sm.fc.condition_df[key])
 
     # ddg_df
     assert as_written["ddg_df"] == "ddg.csv"
@@ -287,7 +303,7 @@ def test_Simulation_system_params(ens_test_data):
 
     ens = sm._ens.to_dict()
     for k in system_params["ens"]:
-        assert ens[k] == system_params["ens"][k]
+        assert ens["ens"][k] == system_params["ens"][k]
 
     fc = sm._fc.to_dict()
     for k in fc:

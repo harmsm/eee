@@ -20,11 +20,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],
@@ -70,54 +70,17 @@ def test_read_conditions(tmpdir):
                                           default_temperature=298.15)
 
     # -------------------------------------------------------------------------
-    # Use a reserved keyword in the ensemble ligands
-
-    ens = Ensemble(gas_constant=1)
-    ens.add_species(name="test1",
-                    observable=True,
-                    folded=False,
-                    ligand_stoich={"select_on_folded":1})
-    ens.add_species(name="test2",
-                    observable=False,
-                    folded=True,
-                    ligand_stoich={"Y":1})
-    
-    conditions = {"select_on_folded":[0,10000],
-                  "Y":[10000,0],
-                  "fitness_fcn":["off","on"],
-                  "select_on":"fx_obs",
-                  "select_on_folded":True,
-                  "temperature":1}
-    
-    with pytest.raises(ValueError):
-        df, ligand_dict = read_conditions(ens=ens,
-                                          conditions=conditions,
-                                          default_fitness_kwargs=None,
-                                          default_select_on="fx_obs",
-                                          default_select_on_folded=True,
-                                          default_temperature=298.15)
-    
-    # make sure error is still raised even if we pass in no select_on_folded at all
-    with pytest.raises(ValueError):
-        df, ligand_dict = read_conditions(ens=ens,
-                                          conditions=conditions,
-                                          default_fitness_kwargs=None,
-                                          default_select_on="fx_obs",
-                                          #default_select_on_folded=True,
-                                          default_temperature=298.15)
-
-    # -------------------------------------------------------------------------
     # pass in conditions with non-ligand columns
 
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],
@@ -141,11 +104,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],
@@ -177,11 +140,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"fitness_fcn":["off","on"],
                   "select_on":"fx_obs",
@@ -214,11 +177,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,1,2],
                   "Y":[0,1,2],
@@ -253,11 +216,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,1,2],
                   "fitness_fcn":["off","on","neutral"],
@@ -307,11 +270,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
@@ -349,11 +312,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
@@ -382,11 +345,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"],
@@ -415,11 +378,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "fitness_fcn":["off","on"]}
@@ -448,11 +411,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],
@@ -484,11 +447,11 @@ def test_read_conditions(tmpdir):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],

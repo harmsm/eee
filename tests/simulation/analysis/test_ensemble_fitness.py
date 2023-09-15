@@ -18,11 +18,11 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     mut_energy = {"test1":0,
                   "test2":0}
@@ -70,11 +70,11 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     mut_energy = {"test1":0,
                   "test2":0}
@@ -123,11 +123,11 @@ def test_ensemble_fitness(ens_with_fitness):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     mut_energy = {"test1":0,
                   "test2":0}

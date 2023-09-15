@@ -2,10 +2,10 @@
 Ensemble class and helper functions.
 """
 
+from eee.data import GAS_CONSTANT
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_float
 from eee._private.check.eee import check_ligand_dict
-from eee._private.check.eee import check_ligand_stoich
 from eee._private.check.eee import check_mut_energy
 from eee._private.check.eee import check_temperature
 
@@ -38,14 +38,14 @@ class Ensemble:
     We would define the system as having two species: M and MX, with MX as our
     observable. The dG0 for MX is -8.18 kcal/mol because, at 1 M X, we are
     1E6 times above our Kd (dG0 = -R*T*ln(1e6)). The stoichiometry of the
-    interaction is 1:1, ligand_stoich["X"] = 1. (If we had 2X per M, this would
-    be 2. If we had 2M per X, this would be 0.5.)
+    interaction is 1:1, (X = 1). (If we had 2X per M, this would be 2. If we
+    had 2M per X, this would be 0.5.)
 
     .. code-block:: python
 
         ens = Ensemble()
         ens.add_species(name="M")
-        ens.add_species(name="MX",observable=True,dG0=-8.18,ligand_stoich={"X":1})
+        ens.add_species(name="MX",observable=True,dG0=-8.18,X=1)
 
         df = ens.get_pops_and_obs(ligand_dict={"X":np.arange(-10,11)})
 
@@ -64,9 +64,8 @@ class Ensemble:
 
         ens = Ensemble()
         ens.add_species(name="M")
-        ens.add_species(name="MX", observable=True, dG0=-8.18,ligand_stoich={"X":1})
-        ens.add_species(name="MXY",observable=True,dG0=-16.36,ligand_stoich={"X":1,
-                                                                             "Y":2})
+        ens.add_species(name="MX", observable=True, dG0=-8.18,X=1)
+        ens.add_species(name="MXY",observable=True,dG0=-16.36,X=1,Y=2)
 
         df = ens.get_pops_and_obs(ligand_dict={"X":np.arange(5,16),
                                                "Y":8.18})
@@ -74,15 +73,14 @@ class Ensemble:
     This would sweep X from 5 to 15 kcal/mol, but fix Y at 8.18 kcal/mol. 
     """
 
-    def __init__(self,gas_constant=0.001987):
+    def __init__(self,gas_constant=GAS_CONSTANT):
         """
         Initialize the Ensemble. 
 
         Parameters
         ----------
-        gas_constant : float, default = 0.001987
-            gas constant setting energy units for this calculation. Default is 
-            in kcal/mol/K.
+        gas_constant : float, default = eee.data.GAS_CONSTANT
+            gas constant setting energy units for this calculation. 
         """
         
         # Validate gas constant
@@ -92,7 +90,7 @@ class Ensemble:
                                    minimum_inclusive=False)
         
         self._gas_constant = gas_constant
-        self._species = {}
+        self._species_dict = {}
         
         # Lists with species and ligands in stable order
         self._species_list = []
@@ -104,10 +102,10 @@ class Ensemble:
     
     def add_species(self,
                     name,
+                    dG0=0,
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None):
+                    **ligands):
         """
         Add a new molecular species to the ensemble. 
 
@@ -115,45 +113,49 @@ class Ensemble:
         ----------
         name : str
             name of the species. This must be unique. 
-        observable : bool, default=False
-            whether or not this species is part of the observable. 
         dG0 : float, default = 0
             relative free energy of this conformation under the reference 
             conditions where all chemical potentials are defined as zero. 
-        ligand_stoich : dict, optional
-            dictionary whose keys are strings referring to ligands whose
-            concentrations that can perturb the energy of this species and
-            whose values denote the stoichiometry relative to one macromolecule. 
+        observable : bool, default=False
+            whether or not this species is part of the observable. 
         folded : bool, default=False
             whether or not this species is folded.  
+        **kwargs : float
+            any remaining keyword arguments are interpreted as ligand
+            stoichiometries where the keyword is the ligand identity and the 
+            value is the stoichiometry.
         """
 
-        if name in self._species:
+        name = f"{name}"
+
+        if name in self._species_dict:
             err = f"A species with name {name} is already in the ensemble.\n"
             raise ValueError(err)
-
-        # Make ligand_stoich an empty dictionary if not specified
-        if ligand_stoich is None:
-            ligand_stoich = {}
 
         # Check sanity of inputs
         observable = check_bool(observable,"observable")
         folded = check_bool(folded,"folded")
         dG0 = check_float(dG0,"dG0")
-        ligand_stoich = check_ligand_stoich(ligand_stoich)
-    
-        # Record that we saw this species. 
-        self._species[name] = {"observable":observable,
-                               "folded":folded,
-                               "dG0":dG0,
-                               "ligand_stoich":ligand_stoich}
 
+        # Record that we saw this species. 
+        self._species_dict[name] = {"observable":observable,
+                               "folded":folded,
+                               "dG0":dG0}
+        
+        ligands_seen = []
+        for lig in ligands:
+            value = check_float(value=ligands[lig],
+                                variable_name=lig,
+                                minimum_allowed=0,
+                                minimum_inclusive=True)
+            self._species_dict[name][lig] = value
+            ligands_seen.append(lig)
+            
         # Record the presence of this chemical potential if we haven't seen in
         # another species. 
-        if ligand_stoich is not None:
-            for lig in ligand_stoich:
-                if lig not in self._ligand_list:
-                    self._ligand_list.append(lig)
+        for lig in ligands_seen:
+            if lig not in self._ligand_list:
+                self._ligand_list.append(lig)
 
         # Stable list of species
         self._species_list.append(name)
@@ -166,7 +168,7 @@ class Ensemble:
         """
 
         # Figure out number of species in matrix
-        num_species = len(self._species)
+        num_species = len(self._species_dict)
 
         # Figure out number of conditions in matrix. If no ligand_dict specified, 
         # single condition with all ligand chemical potential = 0
@@ -179,14 +181,14 @@ class Ensemble:
     
         # Local dictionary with stoich for all species and all ligands. If no stoich
         # for a given species/ligands, set stoich to 0. 
-        ligand_stoich = {}
+        stoich = {}
         for species_name in self._species_list:
-            ligand_stoich[species_name] = {}
+            stoich[species_name] = {}
             for lig in ligand_dict:
-                if lig in self._species[species_name]["ligand_stoich"]:
-                    ligand_stoich[species_name][lig] = self._species[species_name]["ligand_stoich"][lig]
+                if lig in self._species_dict[species_name]:
+                    stoich[species_name][lig] = self._species_dict[species_name][lig]
                 else:
-                    ligand_stoich[species_name][lig] = 0
+                    stoich[species_name][lig] = 0
 
         # z_matrix holds energy of all species (i) versus conditions (j). 
         # obs_mask holds which species are observable (True) or not (False)
@@ -195,21 +197,21 @@ class Ensemble:
         self._folded_mask = np.zeros(num_species,dtype=bool)
 
         # Go through each species...
-        for i, species_name in enumerate(self._species):
+        for i, species_name in enumerate(self._species_dict):
 
             # Load reference energy for that species into all conditions
-            self._z_matrix[i,:] = self._species[species_name]["dG0"]
+            self._z_matrix[i,:] = self._species_dict[species_name]["dG0"]
             
             # Go through conditions
             for j in range(num_conditions):
 
                 # Perturb dG with ligand chemical potential for each species under each condition
                 for lig in self._ligand_list:
-                    self._z_matrix[i,j] -= ligand_dict[lig][j]*ligand_stoich[species_name][lig]
+                    self._z_matrix[i,j] -= ligand_dict[lig][j]*stoich[species_name][lig]
 
             # Update obs_mask 
-            self._obs_mask[i] = self._species[species_name]["observable"]
-            self._folded_mask[i] = self._species[species_name]["folded"]
+            self._obs_mask[i] = self._species_dict[species_name]["observable"]
+            self._folded_mask[i] = self._species_dict[species_name]["folded"]
 
         # Non-observable species
         self._not_obs_mask = np.logical_not(self._obs_mask)
@@ -265,7 +267,7 @@ class Ensemble:
         """
 
         # See if we recognize the name
-        if name not in self._species:
+        if name not in self._species_dict:
             err = f"species {name} not recognized. Has it been added via the\n"
             err += "add_species function?"
             raise ValueError(err)
@@ -329,13 +331,13 @@ class Ensemble:
         """
 
         # Make sure we have enough species loaded
-        if len(self._species) < 2:
+        if len(self._species_dict) < 2:
             err = "Add at least two species before calculating an observable.\n"
             raise ValueError(err)
         
         # Make sure we have the necessary species loaded
-        num_obs = np.sum([self._species[s]["observable"] for s in self._species])
-        if num_obs < 1 or num_obs > len(self._species) - 1:
+        num_obs = np.sum([self._species_dict[s]["observable"] for s in self._species_dict])
+        if num_obs < 1 or num_obs > len(self._species_dict) - 1:
             err = "To calculate an observable, at least one species must be\n"
             err += "observable and at least one must not be observable.\n"
             raise ValueError(err)
@@ -343,7 +345,7 @@ class Ensemble:
         # If no mutation energy dictionary specified, make one with zero for 
         # every species
         if mut_energy is None:
-            mut_energy = dict([(s,0.0) for s in self._species])
+            mut_energy = dict([(s,0.0) for s in self._species_dict])
 
         # If no ligand_dict specified, make one with 0 for every chemical potential
         if ligand_dict is None:
@@ -525,13 +527,12 @@ class Ensemble:
         Return a json-able dictionary describing the ensemble.
         """
 
-        out = {}
-        attr_to_write = ["dG0","observable","ligand_stoich","folded"]
-        for s in self._species:
+        out = {"ens":{}}
+        for s in self._species_dict:
 
-            out[s] = {}
-            for a in attr_to_write:
-                out[s][a] = self._species[s][a]
+            out["ens"][s] = {}
+            for a in self._species_dict[s]:
+                out["ens"][s][a] = self._species_dict[s][a]
     
         out["gas_constant"] = self._gas_constant
 
@@ -594,21 +595,27 @@ class Ensemble:
         Species as a pandas dataframe.
         """
         
-        if len(self._species) == 0:
+        if len(self._species_dict) == 0:
             return pd.DataFrame({})
 
-        top_level_keys = list(self._species[self.species[0]])
+        top_level_keys = ["name","dG0","observable","folded"]
+
         to_df = dict([(k,[]) for k in top_level_keys])
-        to_df["species"] = []
-        for species in self.species:
-            to_df["species"].append(species)
-            for k in top_level_keys:
-                to_df[k].append(self._species[species][k])
-                
+        for lig in self.ligands:
+            to_df[lig] = []
+
+        for s in self._species_dict:
+
+            to_df["name"].append(s)
+            for key in top_level_keys[1:]:
+                to_df[key].append(self._species_dict[s][key])
+            for lig in self.ligands:
+                if lig in self._species_dict[s]:
+                    to_df[lig].append(self._species_dict[s][lig])
+                else:
+                    to_df[lig].append(0.0)
+
         df = pd.DataFrame(to_df)
-        column_names = ["species"]
-        column_names.extend(top_level_keys)
-        df = df.loc[:,column_names]
 
         return df
     

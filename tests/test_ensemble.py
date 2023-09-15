@@ -33,13 +33,13 @@ def test_Ensemble_add_species(variable_types):
     ens.add_species(name="test",
                     observable=False,
                     folded=True,
-                    dG0=-1,
-                    ligand_stoich=None)
+                    dG0=-1)
     
-    assert ens._species["test"]["observable"] == False
-    assert ens._species["test"]["folded"] == True
-    assert ens._species["test"]["dG0"] == -1
-    assert ens._species["test"]["ligand_stoich"] == {}
+    assert len(ens._species_dict["test"]) == 3
+    assert ens._species_dict["test"]["observable"] == False
+    assert ens._species_dict["test"]["folded"] == True
+    assert ens._species_dict["test"]["dG0"] == -1
+    
     assert np.array_equal(ens._ligand_list,[])
 
     # Check for something already in ensemble
@@ -47,18 +47,17 @@ def test_Ensemble_add_species(variable_types):
         ens.add_species(name="test",
                         observable=False,
                         folded=True,
-                        dG0=-1,
-                        ligand_stoich=None)
+                        dG0=-1)
         
     ens.add_species(name="another",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     
-    assert ens._species["another"]["observable"] == True
-    assert ens._species["another"]["folded"] == False
-    assert ens._species["another"]["dG0"] == 0
-    assert ens._species["another"]["ligand_stoich"]["X"] == 1
+    assert ens._species_dict["another"]["observable"] == True
+    assert ens._species_dict["another"]["folded"] == False
+    assert ens._species_dict["another"]["dG0"] == 0
+    assert ens._species_dict["another"]["X"] == 1
     assert np.array_equal(ens._ligand_list,["X"])
 
     # observable argument type checking
@@ -67,7 +66,7 @@ def test_Ensemble_add_species(variable_types):
         print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",observable=v)
-        assert ens._species["test"]["observable"] == bool(v)
+        assert ens._species_dict["test"]["observable"] == bool(v)
 
     for v in variable_types["not_bools"]:
         print(v,type(v),flush=True)
@@ -80,7 +79,7 @@ def test_Ensemble_add_species(variable_types):
         print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",folded=v)
-        assert ens._species["test"]["folded"] == bool(v)
+        assert ens._species_dict["test"]["folded"] == bool(v)
 
     for v in variable_types["not_bools"]:
         print(v,type(v),flush=True)
@@ -93,7 +92,7 @@ def test_Ensemble_add_species(variable_types):
         print(v,type(v),flush=True)
         ens = Ensemble()
         ens.add_species(name="test",dG0=v)
-        assert ens._species["test"]["dG0"] == float(v)
+        assert ens._species_dict["test"]["dG0"] == float(v)
 
     for v in variable_types["not_floats_or_coercable"]:
         print(v,type(v),flush=True)
@@ -101,23 +100,28 @@ def test_Ensemble_add_species(variable_types):
         with pytest.raises(ValueError):
             ens.add_species(name="test",dG0=v)
 
-    # ligand_dict argument type checking
-    print("--- ligand_dict ---")
-    for v in variable_types["dict"]:
-        print(v,type(v),flush=True)
-        ens = Ensemble()
-        ens.add_species(name="test",ligand_stoich=v)
+    # Pass in a ligand
+    print("--- ligands ---")
+    bad_ones = []
+    for v in variable_types["floats_or_coercable"]:
 
-    for v in variable_types["not_dict"]:
-        print(v,type(v),flush=True)
-
-        # None is allowed
-        if v is None:
+        if float(v) < 0:
+            bad_ones.append(v)
             continue
+
+        print(v,type(v),flush=True)
+
+        ens = Ensemble()
+        ens.add_species(name="test",X=v)
+        assert ens._species_dict["test"]["X"] == float(v)
+
+    bad_ones.extend(variable_types["not_floats_or_coercable"])
+    for v in bad_ones:
+        print(v,type(v),flush=True)
 
         ens = Ensemble()
         with pytest.raises(ValueError):
-            ens.add_species(name="test",ligand_stoich=v)
+            ens.add_species(name="test",X=v)
 
 
 def test_Ensemble__build_z_matrix():
@@ -127,8 +131,7 @@ def test_Ensemble__build_z_matrix():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
 
     ens._build_z_matrix(ligand_dict={})
     assert np.array_equal(ens._z_matrix.shape,(1,1))
@@ -144,7 +147,7 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
 
     ens._build_z_matrix(ligand_dict={})
     assert np.array_equal(ens._z_matrix.shape,(1,1))
@@ -160,7 +163,7 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
 
     ens._build_z_matrix(ligand_dict={"X":np.array([1.0])})
     assert np.array_equal(ens._z_matrix.shape,(1,1))
@@ -176,7 +179,7 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
@@ -196,7 +199,7 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
@@ -216,7 +219,7 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
@@ -237,12 +240,12 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
                     dG0=1,
-                    ligand_stoich={"Y":2})
+                    Y=2)
 
     ens._build_z_matrix(ligand_dict={"X":np.array([0,0.5,1.0]),
                                  "Y":np.array([1,0.5,0.0])})
@@ -260,12 +263,12 @@ def test_Ensemble__build_z_matrix():
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
                     dG0=1,
-                    ligand_stoich={"Y":2})
+                    Y=2)
     ens.add_species(name="test3",
                     observable=True,
                     folded=True,
@@ -289,8 +292,7 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0])
     temperature = np.ones(1,dtype=float)    
@@ -306,8 +308,7 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0])
     temperature = 500*np.ones(1,dtype=float)    
@@ -321,13 +322,11 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0,0.0])
     temperature = np.ones(1,dtype=float)    
@@ -343,13 +342,11 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0,1.0])
     temperature = np.ones(1,dtype=float)    
@@ -376,13 +373,11 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0,1.0])
     temperature = np.ones(1,dtype=float)*50    
@@ -401,13 +396,11 @@ def test_Ensemble__get_weights():
     ens.add_species(name="test1",
                     observable=False,
                     folded=True,
-                    dG0=-1,
-                    ligand_stoich=None)
+                    dG0=-1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0,1.0])
     temperature = np.ones(1,dtype=float)    
@@ -426,12 +419,11 @@ def test_Ensemble__get_weights():
                     observable=False,
                     folded=True,
                     dG0=-1,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     mut_energy = np.array([0.0,1.0])
     temperature = np.ones(1,dtype=float)    
@@ -458,8 +450,7 @@ def test_Ensemble_get_species_dG(variable_types):
     ens.add_species(name="test",
                     observable=False,
                     folded=True,
-                    dG0=-1,
-                    ligand_stoich=None)
+                    dG0=-1)
 
     with pytest.raises(ValueError):
         ens.get_species_dG("not_a_species")
@@ -471,7 +462,7 @@ def test_Ensemble_get_species_dG(variable_types):
     ens.add_species(name="another",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     
     assert ens.get_species_dG("another") == 0
     assert ens.get_species_dG("another",mut_energy=10) == 10
@@ -487,7 +478,7 @@ def test_Ensemble_get_species_dG(variable_types):
                     observable=False,
                     folded=True,
                     dG0=-5,
-                    ligand_stoich={"X":2})
+                    X=2)
     value = ens.get_species_dG("stoich2",mut_energy=10,ligand_dict={"X":np.arange(10)})
     assert np.array_equal(value,-np.arange(10)*2 + 5)
 
@@ -497,7 +488,8 @@ def test_Ensemble_get_species_dG(variable_types):
                     observable=False,
                     folded=True,
                     dG0=-5,
-                    ligand_stoich={"X":2,"Y":1})
+                    X=2,
+                    Y=1)
     value = ens.get_species_dG("two_ligand",
                                mut_energy=0,
                                ligand_dict={"X":np.arange(10),
@@ -650,7 +642,7 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True)
@@ -701,7 +693,7 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True)
@@ -753,11 +745,11 @@ def test_Ensemble_get_obs(variable_types):
     ens.add_species(name="test1",
                     observable=True,
                     folded=True,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     ens.add_species(name="test3",   
                     observable=False,
                     folded=False)
@@ -952,12 +944,12 @@ def test_Ensemble_read_ligand_dict(variable_types):
                     observable=False,
                     folded=True,
                     dG0=0,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
                     dG0=1,
-                    ligand_stoich={"Y":2})
+                    Y=2)
     
     for v in variable_types["not_dict"]:
         print(v,type(v),flush=True)
@@ -984,12 +976,10 @@ def test_Ensemble_mut_dict_to_array():
     ens = Ensemble(gas_constant=1)
     ens.add_species(name="test1",
                     observable=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     ens.add_species(name="test2",
                     observable=False,
-                    dG0=0,
-                    ligand_stoich=None)
+                    dG0=0)
     
     out_array = ens.mut_dict_to_array({"test1":1.0,"test2":2.0})
     assert np.array_equal(out_array,[1,2])
@@ -1009,7 +999,7 @@ def test_Ensemble_get_fx_obs_fast():
                     observable=False,
                     folded=True,
                     dG0=1,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
@@ -1022,7 +1012,8 @@ def test_Ensemble_get_fx_obs_fast():
     ens.read_ligand_dict(ligand_dict={"X":np.array([0,1.0])})
     temperature = np.ones(1,dtype=float)    
 
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),temperature=temperature)
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,0,0]),
+                                           temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(-0)
     t3 = np.exp(-2)
@@ -1051,7 +1042,8 @@ def test_Ensemble_get_fx_obs_fast():
     assert np.array_equal(np.round(fx_folded,2),
                           np.round(predicted,2))
 
-    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),temperature=temperature)
+    value, fx_folded = ens.get_fx_obs_fast(mut_energy_array=np.array([0,-1,0]),
+                                           temperature=temperature)
     t1 = np.exp(-1)
     t2 = np.exp(1)
     t3 = np.exp(-2)
@@ -1089,7 +1081,7 @@ def test_Ensemble_get_dG_obs_fast():
                     observable=False,
                     folded=True,
                     dG0=1,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=True,
                     folded=False,
@@ -1164,16 +1156,17 @@ def test_Ensemble_to_dict():
                     observable=False,
                     folded=True,
                     dG0=1,
-                    ligand_stoich={"X":1})
+                    X=1)
     
     out = ens.to_dict()
     assert out["gas_constant"] == 1
     assert len(out) == 2
-    assert out["test1"]["observable"] == False
-    assert out["test1"]["folded"] == True
-    assert out["test1"]["dG0"] == 1
-    assert len(out["test1"]["ligand_stoich"]) == 1
-    assert out["test1"]["ligand_stoich"]["X"] == 1
+    assert out["ens"]["test1"]["observable"] == False
+    assert out["ens"]["test1"]["folded"] == True
+    assert out["ens"]["test1"]["dG0"] == 1
+    assert out["ens"]["test1"]["X"] == 1
+    assert len(out["ens"]) == 1
+    assert len(out["ens"]["test1"]) == 4
 
 def test_Ensemble_get_observable_function(variable_types):
 
@@ -1199,8 +1192,8 @@ def test_Ensemble_ligands():
     
     ens = Ensemble(gas_constant=1)
     assert len(ens.ligands) == 0
-    ens.add_species("test1",ligand_stoich={"X":1})
-    ens.add_species("test2",ligand_stoich={"Y":1})
+    ens.add_species("test1",X=1)
+    ens.add_species("test2",Y=1)
 
     assert np.array_equal(ens.ligands,["X","Y"])
 
@@ -1210,12 +1203,13 @@ def test_Ensemble_species_df():
     assert len(ens.species_df) == 0
     assert issubclass(type(ens.species_df),pd.DataFrame)
 
-    ens.add_species("test1",ligand_stoich={"X":1},dG0=5,observable=True)
-    ens.add_species("test2",ligand_stoich={"Y":1},folded=False,observable=False)
+    ens.add_species("test1",X=1,dG0=5,observable=True)
+    ens.add_species("test2",Y=1,folded=False,observable=False)
 
-    assert np.array_equal(ens.species_df["species"],["test1","test2"])
+    assert np.array_equal(ens.species_df["name"],["test1","test2"])
     assert np.array_equal(ens.species_df["dG0"],[5,0])
     assert np.array_equal(ens.species_df["folded"],[True,False])
     assert np.array_equal(ens.species_df["observable"],[True,False])
-    assert np.array_equal(ens.species_df["ligand_stoich"],[{"X":1},{"Y":1}])
+    assert np.array_equal(ens.species_df["X"],[1,0])
+    assert np.array_equal(ens.species_df["Y"],[0,1])
 

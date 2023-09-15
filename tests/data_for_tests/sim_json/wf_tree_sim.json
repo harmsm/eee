@@ -10,32 +10,27 @@
   },
   "seed": 873512453322,
   "ddg_df": "ddg.csv",
+  "gas_constant": 0.001987,
   "ens": {
-    "gas_constant": 0.001987,
     "hdna": {
       "dG0": 0.0,
       "observable": true,
-      "ligand_stoich": {},
       "folded": true
     },
     "h": {
       "dG0": 5.0,
       "observable": false,
-      "ligand_stoich": {},
       "folded": true
     },
     "l2e": {
       "dG0": 5.0,
       "observable": false,
-      "ligand_stoich": {
-        "iptg": 4.0
-      },
+      "iptg":4.0,
       "folded": true
     },
     "unfolded": {
       "dG0": 10.0,
       "observable": false,
-      "ligand_stoich": {},
       "folded": false
     }
   },

@@ -3,7 +3,6 @@ Functions for validating eee-specific arguments used throughout the codebase.
 """
 
 from .ligand_dict import check_ligand_dict
-from .ligand_stoich import check_ligand_stoich
 from .mut_energy import check_mut_energy
 from .temperature import check_temperature
 from .wf_population import check_wf_population

@@ -4,6 +4,7 @@ from eee.io.read_json import _validate_calc_kwargs
 from eee.io.read_json import read_json
 from eee.simulation.core.fitness.ff import ff_on
 from eee.simulation.core.fitness.ff import ff_off
+from eee.data import GAS_CONSTANT
 
 import numpy as np
 import ete3
@@ -204,7 +205,7 @@ def test__validate_calc_kwargs():
     assert new_kwargs is kwargs
 
 
-def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
+def test_read_json(sim_json,test_ddg,newick_files,conditions_input,tmpdir):
 
     current_dir = os.getcwd()
     os.chdir(tmpdir)
@@ -218,25 +219,25 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
 
     species = ["hdna","h","l2e","unfolded"]
     assert np.array_equal(sm._ens.species,species)
-    assert sm._ens._species["hdna"]["dG0"] == 0.0
-    assert sm._ens._species["hdna"]["observable"] == True
-    assert sm._ens._species["hdna"]["folded"] == True
-    assert sm._ens._species["hdna"]["ligand_stoich"] == {}
+    assert sm._ens._species_dict["hdna"]["dG0"] == 0.0
+    assert sm._ens._species_dict["hdna"]["observable"] == True
+    assert sm._ens._species_dict["hdna"]["folded"] == True
+    assert len(sm._ens._species_dict["hdna"]) == 3
 
-    assert sm._ens._species["h"]["dG0"] == 5.0
-    assert sm._ens._species["h"]["observable"] == False
-    assert sm._ens._species["h"]["folded"] == True
-    assert sm._ens._species["h"]["ligand_stoich"] == {}
+    assert sm._ens._species_dict["h"]["dG0"] == 5.0
+    assert sm._ens._species_dict["h"]["observable"] == False
+    assert sm._ens._species_dict["h"]["folded"] == True
+    assert len(sm._ens._species_dict["h"]) == 3
 
-    assert sm._ens._species["l2e"]["dG0"] == 5.0
-    assert sm._ens._species["l2e"]["observable"] == False
-    assert sm._ens._species["l2e"]["folded"] == True
-    assert sm._ens._species["l2e"]["ligand_stoich"] == {"iptg":4}
+    assert sm._ens._species_dict["l2e"]["dG0"] == 5.0
+    assert sm._ens._species_dict["l2e"]["observable"] == False
+    assert sm._ens._species_dict["l2e"]["folded"] == True
+    assert sm._ens._species_dict["l2e"]["iptg"] == 4
 
-    assert sm._ens._species["unfolded"]["dG0"] == 10.0
-    assert sm._ens._species["unfolded"]["observable"] == False
-    assert sm._ens._species["unfolded"]["folded"] == False
-    assert sm._ens._species["unfolded"]["ligand_stoich"] == {}
+    assert sm._ens._species_dict["unfolded"]["dG0"] == 10.0
+    assert sm._ens._species_dict["unfolded"]["observable"] == False
+    assert sm._ens._species_dict["unfolded"]["folded"] == False
+    assert len(sm._ens._species_dict["unfolded"]) == 3
 
     assert np.isclose(sm._ens._gas_constant,0.008314)
 
@@ -295,11 +296,11 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
         sm = read_json("test.json")
 
     test_json = copy.deepcopy(template_json)
-    test_json["ens"].pop("gas_constant")
+    test_json.pop("gas_constant")
     with open('test.json','w') as f:
         json.dump(test_json,f)
     sm, calc_params = read_json("test.json")
-    assert sm._ens._gas_constant == 0.001987
+    assert sm._ens._gas_constant == GAS_CONSTANT
 
     # Remove conditions -- should raise error
     test_json = copy.deepcopy(template_json)
@@ -387,5 +388,17 @@ def test_read_json(sim_json,test_ddg,newick_files,tmpdir):
     shutil.copy(sim_json["lac.json"],"extra_path")
     sm, calc_params = read_json(os.path.join("extra_path","lac.json"))
 
+    # test for ability to load conditions from string in file
+    os.mkdir("cond")
+    shutil.copy(conditions_input["sim_conditions.json"],
+                os.path.join("cond","sim_conditions.json"))
+    shutil.copy(conditions_input["sim_conditions.csv"],
+                os.path.join("cond","sim_conditions.csv"))
+    shutil.copy(test_ddg["lac.csv"],
+                os.path.join("cond","ddg.csv"))
+
+    sm, calc_params = read_json(os.path.join("cond","sim_conditions.json"))
+    assert sm.calc_type == "dms"
+    assert np.array_equal(sm.fc.condition_df["fitness_fcn"],["on","off"])
 
     os.chdir(current_dir)

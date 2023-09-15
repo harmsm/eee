@@ -139,9 +139,9 @@ def read_conditions(conditions,
 
         # Convert into a dict if necessary
         if issubclass(type(v),str):
-            kwargs_out.append(json.loads(v))
+            v = json.loads(v)
         elif issubclass(type(v),dict):
-            kwargs_out.append(v)
+            pass
         else:
             err = "\ncould not parse fitness_kwargs '{v}'\n\n"
             raise ValueError(err) 
@@ -152,8 +152,10 @@ def read_conditions(conditions,
             fitness_fcn_fcn[i](1.0,**v)
         except Exception as e:
             err = f"\nfitness_fcn {df.loc[idx,'fitness_fcn']} cannot take\n"
-            err += f"fitness_kwargs '{df.loc[idx,'fitness_kwargs']}\n\n"
+            err += f"fitness_kwargs '{df.loc[idx,'fitness_kwargs']}'\n\n"
             raise ValueError(err) from e
+
+        kwargs_out.append(v)
 
     df["fitness_kwargs"] = kwargs_out
     

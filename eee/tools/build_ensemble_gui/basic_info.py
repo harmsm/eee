@@ -1,5 +1,6 @@
 import eee
 from eee.tools.build_ensemble_gui.base import MetaWidget
+from eee.data import GAS_CONSTANT
 
 import ipywidgets as widgets
 import numpy as np
@@ -29,10 +30,8 @@ class BasicInfoWidget(MetaWidget):
         temperature.observe(self._watcher)
         
         # Gas constant
-        p = inspect.signature(eee.Ensemble.__init__).parameters
-        default_gas_constant = p["gas_constant"].default
         
-        gas_constant = widgets.BoundedFloatText(default_gas_constant,
+        gas_constant = widgets.BoundedFloatText(GAS_CONSTANT,
                                                 description="R:",
                                                 continuous_update=False,
                                                 min=np.nextafter(0, 1),

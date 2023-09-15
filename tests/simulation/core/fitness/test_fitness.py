@@ -20,11 +20,11 @@ def test_Fitness():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=True,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,10000],
                   "Y":[10000,0],
@@ -70,11 +70,11 @@ def test_Fitness_fitness():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -123,11 +123,11 @@ def test_Fitness_to_dict():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -154,11 +154,11 @@ def test_Fitness_ens():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -180,11 +180,11 @@ def test_Fitness_ligand_dict():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -206,11 +206,11 @@ def test_Fitness_select_on():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -233,11 +233,11 @@ def test_Fitness_select_on_folded():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -261,11 +261,11 @@ def test_Fitness_fitness_kwargs():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -288,11 +288,11 @@ def test_Fitness_temperature():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
@@ -315,11 +315,11 @@ def test_Fitness_condition_df():
     ens.add_species(name="test1",
                     observable=True,
                     folded=False,
-                    ligand_stoich={"X":1})
+                    X=1)
     ens.add_species(name="test2",
                     observable=False,
                     folded=False,
-                    ligand_stoich={"Y":1})
+                    Y=1)
     
     conditions = {"X":[0,100],
                   "Y":[100,0],
