@@ -26,7 +26,7 @@ multiply "fx_obs" by 5 at an iptg chemical potential of 1.
     {"fitness_fcns":["example_function"],
     "select_on": "fx_obs",
     "fitness_kwargs":{"multiply_by":5},
-    "mu_dict":{"iptg":1}}
+    "ligand_dict":{"iptg":1}}
     
 """
 

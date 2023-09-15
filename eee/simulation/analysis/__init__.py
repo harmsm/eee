@@ -1,3 +1,6 @@
+"""
+Functions for analyzing simulation outputs.
+"""
 
 from .analysis import get_num_accumulated_mutations
 from .analysis import get_most_common

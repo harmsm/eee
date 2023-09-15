@@ -1,7 +1,7 @@
 """
 Run a deep mutational scan on a protein. 
 """
-from eee.simulation.core.simulation import Simulation
+from .simulation_base import Simulation
 from eee.simulation.core.engine import exhaustive
 
 from eee._private.check.standard import check_int

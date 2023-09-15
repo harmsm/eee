@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import DeepMutationalScan
-from eee.simulation.io import read_json
+from eee.io import read_json
 
 import os
 
@@ -9,16 +9,11 @@ def test_DeepMutationalScan(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     dms = DeepMutationalScan(ens=ens,
                              ddg_df=ddg_df,
-                             mu_dict=mu_dict,
-                             fitness_fcns=fitness_fcns,
-                             select_on="fx_obs",
-                             fitness_kwargs={},
-                             T=1,
+                             conditions=conditions,
                              seed=None)
     
     assert dms.calc_type == "dms"
@@ -33,16 +28,11 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
-    
+    conditions = ens_test_data["conditions"]
+
     dms = DeepMutationalScan(ens=ens,
                              ddg_df=ddg_df,
-                             mu_dict=mu_dict,
-                             fitness_fcns=fitness_fcns,
-                             select_on="fx_obs",
-                             fitness_kwargs={},
-                             T=1,
+                             conditions=conditions,
                              seed=None)
 
     dms.run(output_directory="test",
@@ -50,10 +40,13 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
             output_file="yo.csv")
     
     assert os.path.exists(os.path.join("test","yo.csv"))
-    
+    assert os.path.exists(os.path.join("test","input","ddg.csv"))
+    assert os.path.exists(os.path.join("test","input","ensemble.csv"))
+    assert os.path.exists(os.path.join("test","input","conditions.csv"))
+    assert os.path.exists(os.path.join("test","input","simulation.json"))
 
     os.chdir('test')
-    _, kwargs = read_json('simulation.json')
+    _, kwargs = read_json(os.path.join("input",'simulation.json'))
     assert kwargs["max_depth"] == 1
     assert kwargs["output_file"] == "yo.csv"
 

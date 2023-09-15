@@ -2,8 +2,7 @@
 Code to run a Wright-Fisher simulation on an ensemble following an evolutionary
 tree. 
 """
-from eee.simulation.core.simulation import Simulation
-
+from .simulation_base import Simulation
 from eee.simulation.core.engine import follow_tree
 
 from eee._private.check.eee import check_num_generations
@@ -11,7 +10,12 @@ from eee._private.check.eee import check_mutation_rate
 from eee._private.check.eee import check_population_size
 from eee._private.check.eee import check_burn_in_generations
 from eee._private.interface import run_cleanly
+from eee.io.tree import read_tree
 
+import ete3
+
+import shutil
+import os
 
 class WrightFisherTreeSimulation(Simulation):
 
@@ -19,7 +23,7 @@ class WrightFisherTreeSimulation(Simulation):
 
     @run_cleanly
     def run(self,
-            newick,
+            tree,
             output_directory="eee_wf-tree-sim",
             population_size=1000,
             mutation_rate=0.01,
@@ -31,8 +35,9 @@ class WrightFisherTreeSimulation(Simulation):
         
         Parameters
         ----------
-        newick : str or ete3.Tree
-            newick formatted tree with branch lengths and tip labels
+        tree : ete3.Tree or str
+            something that can be read as an ete3.Tree (newick file, newick string, 
+            or ete3.Tree object)
         output_directory : str, default="eee_sim"
             do simulation in this output directory
         population_size : int, default=1000
@@ -50,7 +55,11 @@ class WrightFisherTreeSimulation(Simulation):
         write_prefix : str, default="eee_sim"
             write output files during the run with this prefix. 
         """
-
+        
+        # Read the tree
+        tree = read_tree(tree)
+        
+        # Check various input variables
         population_size = check_population_size(population_size)
         mutation_rate = check_mutation_rate(mutation_rate) 
         num_generations = check_num_generations(num_generations)
@@ -59,7 +68,7 @@ class WrightFisherTreeSimulation(Simulation):
     
         # Record the new keys
         calc_params = {}
-        calc_params["newick"] = f"{write_prefix}.newick"
+        calc_params["tree"] = f"{write_prefix}.newick"
         calc_params["population_size"] = population_size
         calc_params["mutation_rate"] = mutation_rate
         calc_params["num_generations"] = num_generations
@@ -69,15 +78,19 @@ class WrightFisherTreeSimulation(Simulation):
         self._prepare_calc(output_directory=output_directory,
                            calc_params=calc_params)
         
-        # Run and return a Wright Fisher simulation.
+        # Run and return a Wright Fisher simulation
         self._gc, _ =  follow_tree(gc=self._gc,
-                                   newick=newick, 
+                                   tree=tree, 
                                    population=calc_params["population_size"],
                                    mutation_rate=calc_params["mutation_rate"],
                                    num_generations=calc_params["num_generations"],
                                    burn_in_generations=calc_params["burn_in_generations"],
                                    write_prefix=calc_params["write_prefix"],
                                    rng=self._rng)
+        
+        # A small hack to copy tree to input directory so json can load
+        shutil.copy(calc_params["tree"],
+                    os.path.join("input",calc_params["tree"]))
         
         self._complete_calc()
 

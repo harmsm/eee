@@ -1,7 +1,7 @@
 """
 Class for keeping track of genotypes during an evolutionary simulation.
 """
-from eee.io import read_ddg
+from eee.io.read_ddg import read_ddg
 
 from eee._private.check.ensemble import check_ensemble
 from .single_genotype import SingleGenotype
@@ -285,10 +285,10 @@ class Genotype:
 
     def to_dict(self):
         """
-        Return a json-able dictionary describing the fitness parameters.
+        Return a json-able dictionary describing the ddg genotype parameters.
         """
 
-        return {}
+        return {"ddg_df":self._ddg_df}
 
     @property
     def df(self):

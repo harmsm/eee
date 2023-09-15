@@ -1,3 +1,7 @@
+"""
+Analyze a ddg file. 
+"""
+
 import eee
 from eee._private.check.standard import check_int
 from eee._private.check.standard import check_float
@@ -82,7 +86,7 @@ def cluster_ddg(ddg_df,
 
     # Check inputs.
 
-    df = eee.io.read_ddg(ddg_df)
+    input_df = eee.io.read_ddg(ddg_df)
 
     max_num_clusters = check_int(value=max_num_clusters,
                                  variable_name="max_num_clusters",
@@ -101,10 +105,10 @@ def cluster_ddg(ddg_df,
     if exclude_columns is not None:
         exclude_columns = list(exclude_columns)
         drop_col.extend(exclude_columns)
-    drop_col = list(set(drop_col).intersection(set(df.columns)))
+    drop_col = list(set(drop_col).intersection(set(input_df.columns)))
 
     # Drop columns
-    df = df.drop(columns=drop_col)
+    df = input_df.drop(columns=drop_col)
     
     # List of species in dataframe. 
     species = list(df.columns)
@@ -221,7 +225,17 @@ def cluster_ddg(ddg_df,
 
     _plot_close_out()
 
+    columns = df.columns[:]
+
     df["cluster"] = kmeans.labels_
+
+    for c in drop_col:
+        df[c] = input_df[c]
+        columns = columns.insert(0,c)
+
+    columns = columns.insert(0,"cluster")
+
+    df = df.loc[:,columns]
     
     return df
     

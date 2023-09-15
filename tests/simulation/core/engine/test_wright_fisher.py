@@ -203,8 +203,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # Test three ways of setting the population (single number, dictionary, list)
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -219,8 +219,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0 
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population={0:10},
                                     mutation_rate=0.1,
@@ -235,8 +235,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0 
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=np.zeros(10,dtype=int),
                                     mutation_rate=0.1,
@@ -254,8 +254,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # Mutation rate
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=1,
@@ -263,8 +263,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     high_mut_rate_genotypes = len(gc.genotypes)
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.0001,
@@ -279,8 +279,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # Num generations
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -306,8 +306,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     # 1 mutation
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -325,8 +325,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     # 2 mutations
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -344,8 +344,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     # 3 mutations
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=100,
                                     mutation_rate=0.01,
@@ -362,8 +362,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
     # Too short to complete 50 mutations -- should run 10 generations and warn
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     with pytest.warns():
         gc, generations = wright_fisher(gc,
                                         population=10,
@@ -381,8 +381,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # run without crashing when this is set. 
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.1,
@@ -394,8 +394,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # Check the sorts of mutations being generated
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=1,
@@ -403,8 +403,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     high_mut_rate_genotypes = len(gc.genotypes)
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
     gc, generations = wright_fisher(gc,
                                     population=10,
                                     mutation_rate=0.0001,
@@ -419,8 +419,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     # Check variables
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
 
     not_allowed = variable_types["not_ints_or_coercable"]
     for v in not_allowed:
@@ -444,8 +444,8 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
 
 
     gc = Genotype(ens=ens,
-                           fitness_function=fitness_function,
-                           ddg_df=ddg_df)
+                  fitness_function=fitness_function,
+                  ddg_df=ddg_df)
 
     not_allowed = variable_types["everything"]
     for v in not_allowed:

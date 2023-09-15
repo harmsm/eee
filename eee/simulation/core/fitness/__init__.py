@@ -2,4 +2,4 @@
 Classes and functions for managing fitness calculations on ensembles.
 """
 from .fitness import Fitness
-from .check_fitness_fcns import FF_AVAILABLE
+from .map_fitness_fcn import FF_AVAILABLE

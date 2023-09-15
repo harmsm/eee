@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherSimulation
-from eee.simulation.io import read_json
+from eee.io import read_json
 
 import pandas as pd
 
@@ -11,16 +11,11 @@ def test_WrightFisherSimulation(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     wf = WrightFisherSimulation(ens=ens,
                                 ddg_df=ddg_df,
-                                mu_dict=mu_dict,
-                                fitness_fcns=fitness_fcns,
-                                select_on="fx_obs",
-                                fitness_kwargs={},
-                                T=1,
+                                conditions=conditions,
                                 seed=None)
     
     assert wf.calc_type == "wf_sim"
@@ -32,16 +27,11 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
-    
+    conditions = ens_test_data["conditions"]
+
     wf = WrightFisherSimulation(ens=ens,
                                 ddg_df=ddg_df,
-                                mu_dict=mu_dict,
-                                fitness_fcns=fitness_fcns,
-                                select_on="fx_obs",
-                                fitness_kwargs={},
-                                T=1,
+                                conditions=conditions,
                                 seed=None)
 
     wf.run(output_directory="test",
@@ -51,13 +41,15 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
            write_prefix="eee_sim",
            write_frequency=1000)
     
-    assert os.path.exists(os.path.join("test","ddg.csv"))
-    assert os.path.exists(os.path.join("test","simulation.json"))
+    assert os.path.exists(os.path.join("test","input","ddg.csv"))
+    assert os.path.exists(os.path.join("test","input","ensemble.csv"))
+    assert os.path.exists(os.path.join("test","input","conditions.csv"))
+    assert os.path.exists(os.path.join("test","input","simulation.json"))
     assert os.path.exists(os.path.join("test","eee_sim_genotypes.csv"))
     assert os.path.exists(os.path.join("test","eee_sim_generations_0.pickle"))
  
     os.chdir('test')
-    _, kwargs = read_json('simulation.json')
+    _, kwargs = read_json(os.path.join("input",'simulation.json'))
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.01
     assert kwargs["num_generations"] == 100

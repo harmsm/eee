@@ -1,7 +1,7 @@
 import pytest
 
 from eee.simulation.calcs import WrightFisherTreeSimulation
-from eee.simulation.io.read_json import read_json
+from eee.io import read_json
 
 import ete3
 
@@ -11,21 +11,18 @@ def test_WrightFisherTreeSimulation(ens_test_data):
     
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
 
     wf = WrightFisherTreeSimulation(ens=ens,
                                     ddg_df=ddg_df,
-                                    mu_dict=mu_dict,
-                                    fitness_fcns=fitness_fcns,
-                                    select_on="fx_obs",
-                                    fitness_kwargs={},
-                                    T=1,
+                                    conditions=conditions, 
                                     seed=None)
     
     assert wf.calc_type == "wf_tree_sim"
     
-def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
+def test_WrightFisherTreeSimulation_run(ens_test_data,
+                                        newick_files,
+                                        tmpdir):
 
     # Make sure wrapper runs. 
 
@@ -34,29 +31,22 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
 
     ens = ens_test_data["ens"]
     ddg_df = ens_test_data["ddg_df"]
-    mu_dict = ens_test_data["mu_dict"]
-    fitness_fcns = ens_test_data["fitness_fcns"]
+    conditions = ens_test_data["conditions"]
     
     wf = WrightFisherTreeSimulation(ens=ens,
                                     ddg_df=ddg_df,
-                                    mu_dict=mu_dict,
-                                    fitness_fcns=fitness_fcns,
-                                    select_on="fx_obs",
-                                    fitness_kwargs={},
-                                    T=1,
+                                    conditions=conditions,
                                     seed=None)
 
     wf.run(output_directory="test",
-           newick=newick_files["simple.newick"],
+           tree=ete3.Tree(newick_files["simple.newick"]),
            population_size=100,
            mutation_rate=0.1,
            num_generations=1000,
            burn_in_generations=10,
            write_prefix="eee_sim")
     
-    expected_files = ["ddg.csv",
-                      "simulation.json",
-                      "eee_sim.newick",
+    expected_files = ["eee_sim.newick",
                       "eee_sim_genotypes.csv",
                       "eee_sim_burn-in-anc00.pickle",
                       "eee_sim_anc00-anc01.pickle",
@@ -69,11 +59,16 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,newick_files,tmpdir):
     for f in expected_files:
         assert os.path.exists(os.path.join("test",f))
  
+    assert os.path.exists(os.path.join("test","input","ddg.csv"))
+    assert os.path.exists(os.path.join("test","input","ensemble.csv"))
+    assert os.path.exists(os.path.join("test","input","conditions.csv"))
+    assert os.path.exists(os.path.join("test","input","simulation.json"))
+
     # This test makes sure the variables are being set properly and then 
     # recorded into the json. 
     os.chdir('test')
-    _, kwargs = read_json('simulation.json')
-    assert issubclass(type(kwargs["newick"]),ete3.TreeNode)
+    _, kwargs = read_json(os.path.join("input",'simulation.json'))
+    assert issubclass(type(kwargs["tree"]),ete3.TreeNode)
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.1
     assert kwargs["num_generations"] == 1000

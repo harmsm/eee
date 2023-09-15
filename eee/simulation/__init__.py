@@ -20,10 +20,14 @@ def _get_calc_available():
 
         is_good = False
         try:
-            is_good = issubclass(p[1],core.simulation.Simulation)
+            is_good = issubclass(p[1],calcs.simulation_base.Simulation)
         except TypeError:
             continue
-            
+
+        # Get rid of base class
+        if p[1] is calcs.simulation_base.Simulation:
+            is_good = False
+
         if is_good:
             available_calcs[p[1].calc_type] = p[1]
 
@@ -33,6 +37,3 @@ from .core import FF_AVAILABLE
 CALC_AVAILABLE = _get_calc_available()
 
 
-# This has to go down here because io.read_json depends on CALC_AVAILABLE, 
-# which we define above. 
-from . import io

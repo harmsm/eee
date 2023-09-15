@@ -2,12 +2,12 @@
 Ensemble class and helper functions.
 """
 
+from eee.data import GAS_CONSTANT
 from eee._private.check.standard import check_bool
 from eee._private.check.standard import check_float
-from eee._private.check.eee import check_mu_dict
-from eee._private.check.eee import check_mu_stoich
+from eee._private.check.eee import check_ligand_dict
 from eee._private.check.eee import check_mut_energy
-from eee._private.check.eee import check_T
+from eee._private.check.eee import check_temperature
 
 import numpy as np
 import pandas as pd
@@ -15,8 +15,8 @@ import pandas as pd
 class Ensemble:
     """
     Hold a thermodynamic ensemble with an arbitrary set of macromolecular
-    species whose free energy can be perturbed by mutations and the chemical 
-    potentials of molecules that bind to each species. 
+    species whose free energy can be perturbed by mutations and the differential
+    binding of ligands to each species. 
     
     Notes
     -----
@@ -24,12 +24,10 @@ class Ensemble:
       than the Kds for any binding reactions (i.e., that we are not in the
       stoichiometric binding regime). 
 
-    + Each species must be assigned a dG0, the chemical potentials that perturb 
-      the species, and the stoichiometry of the interaction with the molecule
-      defined by the chemical potential. dG0 is the difference in free energy 
-      between that species and a reference species when the chemical potentials
-      are all zero. The choice of reference condition for the chemical
-      potentials is arbitrary. 
+    + Each species must be assigned a dG0 and the stoichiometry of ligand  
+      binding. dG0 is the difference in free energy between that species and a
+      reference species when the chemical potentials for all ligands are zero.
+      The choice of reference condition is arbitrary.
 
     Example
     -------
@@ -40,16 +38,16 @@ class Ensemble:
     We would define the system as having two species: M and MX, with MX as our
     observable. The dG0 for MX is -8.18 kcal/mol because, at 1 M X, we are
     1E6 times above our Kd (dG0 = -R*T*ln(1e6)). The stoichiometry of the
-    interaction is 1:1, mu_dict["X"] = 1. (If we had 2X per M, this would be 2. 
-    If we had 2M per X, this would be 0.5.)
+    interaction is 1:1, (X = 1). (If we had 2X per M, this would be 2. If we
+    had 2M per X, this would be 0.5.)
 
     .. code-block:: python
 
         ens = Ensemble()
         ens.add_species(name="M")
-        ens.add_species(name="MX",observable=True,dG0=-8.18,mu_dict={"X":1})
+        ens.add_species(name="MX",observable=True,dG0=-8.18,X=1)
 
-        df = ens.get_pops_and_obs(mu_dict={"X":np.arange(-10,11)})
+        df = ens.get_pops_and_obs(ligand_dict={"X":np.arange(-10,11)})
 
     The df output will give the relative populations of M and MX as a function
     of X, the fx_obs (defined as MX/(M + MX)), and dG_obs (defined as 
@@ -66,25 +64,23 @@ class Ensemble:
 
         ens = Ensemble()
         ens.add_species(name="M")
-        ens.add_species(name="MX", observable=True, dG0=-8.18,mu_dict={"X":1})
-        ens.add_species(name="MXY",observable=True,dG0=-16.36,mu_dict={"X":1,
-                                                                       "Y":2})
+        ens.add_species(name="MX", observable=True, dG0=-8.18,X=1)
+        ens.add_species(name="MXY",observable=True,dG0=-16.36,X=1,Y=2)
 
-        df = ens.get_pops_and_obs(mu_dict={"X":np.arange(5,16),
-                                           "Y":8.18})
+        df = ens.get_pops_and_obs(ligand_dict={"X":np.arange(5,16),
+                                               "Y":8.18})
 
     This would sweep X from 5 to 15 kcal/mol, but fix Y at 8.18 kcal/mol. 
     """
 
-    def __init__(self,gas_constant=0.001987):
+    def __init__(self,gas_constant=GAS_CONSTANT):
         """
         Initialize the Ensemble. 
 
         Parameters
         ----------
-        gas_constant : float, default = 0.001987
-            gas constant setting energy units for this calculation. Default is 
-            in kcal/mol/K.
+        gas_constant : float, default = eee.data.GAS_CONSTANT
+            gas constant setting energy units for this calculation. 
         """
         
         # Validate gas constant
@@ -94,11 +90,11 @@ class Ensemble:
                                    minimum_inclusive=False)
         
         self._gas_constant = gas_constant
-        self._species = {}
+        self._species_dict = {}
         
-        # Lists with species and mu in stable order
+        # Lists with species and ligands in stable order
         self._species_list = []
-        self._mu_list = []
+        self._ligand_list = []
 
         # Used to avoid/minimize numerical errors in partition function 
         # calculation. 
@@ -106,10 +102,10 @@ class Ensemble:
     
     def add_species(self,
                     name,
+                    dG0=0,
                     observable=False,
                     folded=True,
-                    dG0=0,
-                    mu_stoich=None):
+                    **ligands):
         """
         Add a new molecular species to the ensemble. 
 
@@ -117,78 +113,82 @@ class Ensemble:
         ----------
         name : str
             name of the species. This must be unique. 
-        observable : bool, default=False
-            whether or not this species is part of the observable. 
         dG0 : float, default = 0
             relative free energy of this conformation under the reference 
             conditions where all chemical potentials are defined as zero. 
-        mu_stoich : dict, optional
-            dictionary whose keys are strings referring to chemical potentials
-            that can perturb the energy of this species and whose values 
-            denote the stoichiometry relative to one macromolecule. 
+        observable : bool, default=False
+            whether or not this species is part of the observable. 
         folded : bool, default=False
             whether or not this species is folded.  
+        **kwargs : float
+            any remaining keyword arguments are interpreted as ligand
+            stoichiometries where the keyword is the ligand identity and the 
+            value is the stoichiometry.
         """
 
-        if name in self._species:
+        name = f"{name}"
+
+        if name in self._species_dict:
             err = f"A species with name {name} is already in the ensemble.\n"
             raise ValueError(err)
-
-        # Make mu_stoich an empty dictionary if not specified
-        if mu_stoich is None:
-            mu_stoich = {}
 
         # Check sanity of inputs
         observable = check_bool(observable,"observable")
         folded = check_bool(folded,"folded")
         dG0 = check_float(dG0,"dG0")
-        mu_stoich = check_mu_stoich(mu_stoich)
-    
-        # Record that we saw this species. 
-        self._species[name] = {"observable":observable,
-                               "folded":folded,
-                               "dG0":dG0,
-                               "mu_stoich":mu_stoich}
 
+        # Record that we saw this species. 
+        self._species_dict[name] = {"observable":observable,
+                               "folded":folded,
+                               "dG0":dG0}
+        
+        ligands_seen = []
+        for lig in ligands:
+            value = check_float(value=ligands[lig],
+                                variable_name=lig,
+                                minimum_allowed=0,
+                                minimum_inclusive=True)
+            self._species_dict[name][lig] = value
+            ligands_seen.append(lig)
+            
         # Record the presence of this chemical potential if we haven't seen in
         # another species. 
-        if mu_stoich is not None:
-            for mu in mu_stoich:
-                if mu not in self._mu_list:
-                    self._mu_list.append(mu)
+        for lig in ligands_seen:
+            if lig not in self._ligand_list:
+                self._ligand_list.append(lig)
 
         # Stable list of species
         self._species_list.append(name)
     
-    def _build_z_matrix(self,mu_dict):
+    def _build_z_matrix(self,ligand_dict):
         """
         Build a matrix of species energies versus conditions given the 
-        conditions in mu_dict. Creates self._z_matrix, self._obs_mask, and 
+        conditions in ligand_dict. Creates self._z_matrix, self._obs_mask, and 
         self._not_obs_mask. No error checking. Private function.
         """
 
         # Figure out number of species in matrix
-        num_species = len(self._species)
+        num_species = len(self._species_dict)
 
-        # Figure out number of conditions in matrix. If no mu_dict specified, 
-        # single condition with all mu = 0
-        if len(mu_dict) == 0:
+        # Figure out number of conditions in matrix. If no ligand_dict specified, 
+        # single condition with all ligand chemical potential = 0
+        if len(ligand_dict) == 0:
             num_conditions = 1
-            for mu in self._mu_list:
-                mu_dict[mu] = np.zeros(1,dtype=float)
+            for lig in self._ligand_list:
+                ligand_dict[lig] = np.zeros(1,dtype=float)
         else:
-            num_conditions = len(mu_dict[next(iter(mu_dict))])
+            num_conditions = len(ligand_dict[next(iter(ligand_dict))])
     
-        # Local dictionary with stoich for all species and all mu. If no stoich
-        # for a given species/mu, set stoich to 0. 
-        mu_stoich = {}
+        # Local dictionary with stoich for all species and all ligands. If no stoich
+        # for a given species/ligands, set stoich to 0. 
+        stoich = {}
         for species_name in self._species_list:
-            mu_stoich[species_name] = {}
-            for mu in mu_dict:
-                if mu in self._species[species_name]["mu_stoich"]:
-                    mu_stoich[species_name][mu] = self._species[species_name]["mu_stoich"][mu]
+            stoich[species_name] = {}
+            for lig in ligand_dict:
+                if lig in self._species_dict[species_name]:
+                    stoich[species_name][lig] = self._species_dict[species_name][lig]
                 else:
-                    mu_stoich[species_name][mu] = 0
+                    stoich[species_name][lig] = 0
 
         # z_matrix holds energy of all species (i) versus conditions (j). 
         # obs_mask holds which species are observable (True) or not (False)
@@ -197,27 +197,27 @@ class Ensemble:
         self._folded_mask = np.zeros(num_species,dtype=bool)
 
         # Go through each species...
-        for i, species_name in enumerate(self._species):
+        for i, species_name in enumerate(self._species_dict):
 
             # Load reference energy for that species into all conditions
-            self._z_matrix[i,:] = self._species[species_name]["dG0"]
+            self._z_matrix[i,:] = self._species_dict[species_name]["dG0"]
             
             # Go through conditions
             for j in range(num_conditions):
 
-                # Perturb dG with mu for each species under each condition
-                for mu in self._mu_list:
-                    self._z_matrix[i,j] -= mu_dict[mu][j]*mu_stoich[species_name][mu]
+                # Perturb dG with ligand chemical potential for each species under each condition
+                for lig in self._ligand_list:
+                    self._z_matrix[i,j] -= ligand_dict[lig][j]*stoich[species_name][lig]
 
             # Update obs_mask 
-            self._obs_mask[i] = self._species[species_name]["observable"]
-            self._folded_mask[i] = self._species[species_name]["folded"]
+            self._obs_mask[i] = self._species_dict[species_name]["observable"]
+            self._folded_mask[i] = self._species_dict[species_name]["folded"]
 
         # Non-observable species
         self._not_obs_mask = np.logical_not(self._obs_mask)
         self._unfolded_mask = np.logical_not(self._folded_mask)
 
-    def _get_weights(self,mut_energy,T):
+    def _get_weights(self,mut_energy,temperature):
         """
         Get Boltzmann weights for each species/condition combination given 
         mutations and current temperature. No error checking. Private. 
@@ -226,7 +226,7 @@ class Ensemble:
         """
 
         # Perturb z_matrix by mut_energy and divide by RT
-        beta = 1/(self._gas_constant*T)
+        beta = 1/(self._gas_constant*temperature)
         weights = -beta[None,:]*(self._z_matrix + mut_energy[:,None])
 
         # Shift so highest weight is highest allowed numerically. Low weights 
@@ -241,7 +241,7 @@ class Ensemble:
     def get_species_dG(self,
                        name,
                        mut_energy=0,
-                       mu_dict=None):
+                       ligand_dict=None):
         """
         Get the free energy of a species given some mutation energy and the
         current chemical potentials.
@@ -253,7 +253,7 @@ class Ensemble:
             method.
         mut_energy : float, default = 0
             perturb the energy of the species by some mut_energy
-        mu_dict : dict, optional
+        ligand_dict : dict, optional
             dictionary of chemical potentials. keys are the names of chemical
             potentials. Values are floats or arrays of floats. Any arrays 
             specified must have the same length. If a chemical potential is not
@@ -262,12 +262,12 @@ class Ensemble:
         Returns
         -------
         dG : float OR numpy.ndarray
-            return free energy of species. If mu_dict has arrays, return an 
+            return free energy of species. If ligand_dict has arrays, return an 
             array; otherwise, return a single float value.
         """
 
         # See if we recognize the name
-        if name not in self._species:
+        if name not in self._species_dict:
             err = f"species {name} not recognized. Has it been added via the\n"
             err += "add_species function?"
             raise ValueError(err)
@@ -275,12 +275,12 @@ class Ensemble:
         # Variable checking 
         mut_energy = check_float(value=mut_energy,
                                  variable_name="mut_energy")
-        if mu_dict is None:
-            mu_dict = {}
-        mu_dict, _ = check_mu_dict(mu_dict)
+        if ligand_dict is None:
+            ligand_dict = {}
+        ligand_dict, _ = check_ligand_dict(ligand_dict)
 
         # build z matrix for calculation
-        self._build_z_matrix(mu_dict)
+        self._build_z_matrix(ligand_dict)
 
         # Add mutation energy
         idx = self._species_list.index(name)
@@ -292,10 +292,13 @@ class Ensemble:
         
         return dG
 
-    def get_obs(self,mut_energy=None,mu_dict=None,T=298.15):
+    def get_obs(self,
+                mut_energy=None,
+                ligand_dict=None,
+                temperature=298.15):
         """
         Get the population and observables given the energetic effects of 
-        mutations, as well as the chemical potentials in mu_dict.
+        mutations, as well as the chemical potentials in ligand_dict.
         
         Parameters
         ----------
@@ -305,14 +308,14 @@ class Ensemble:
             effects in energy units determined by the ensemble gas constant. 
             If a species is not in the dictionary, the mutational effect for 
             that species is set to zero. 
-        mu_dict : dict, optional
-            dictionary of chemical potentials. keys are the names of chemical
-            potentials. Values are floats or arrays of floats. Any arrays 
-            specified must have the same length. If a chemical potential is not
-            specified in the dictionary, its value is set to 0. 
-        T : float, default=298.15
+        ligand_dict : dict, optional
+            dictionary of ligand chemical potentials. keys are the names of 
+            ligands. Values are floats or arrays of floats holding potentials.
+            Any arrays specified must have the same length. If a chemical
+            potential is not specified in the dictionary, its value is set to 0. 
+        temperature : float, default=298.15
             temperature in Kelvin. This can be an array; if so, its length must
-            match the length of the arrays specified in mu_dict. 
+            match the length of the arrays specified in ligand_dict. 
         
         Returns
         -------
@@ -328,13 +331,13 @@ class Ensemble:
         """
 
         # Make sure we have enough species loaded
-        if len(self._species) < 2:
+        if len(self._species_dict) < 2:
             err = "Add at least two species before calculating an observable.\n"
             raise ValueError(err)
         
         # Make sure we have the necessary species loaded
-        num_obs = np.sum([self._species[s]["observable"] for s in self._species])
-        if num_obs < 1 or num_obs > len(self._species) - 1:
+        num_obs = np.sum([self._species_dict[s]["observable"] for s in self._species_dict])
+        if num_obs < 1 or num_obs > len(self._species_dict) - 1:
             err = "To calculate an observable, at least one species must be\n"
             err += "observable and at least one must not be observable.\n"
             raise ValueError(err)
@@ -342,21 +345,21 @@ class Ensemble:
         # If no mutation energy dictionary specified, make one with zero for 
         # every species
         if mut_energy is None:
-            mut_energy = dict([(s,0.0) for s in self._species])
+            mut_energy = dict([(s,0.0) for s in self._species_dict])
 
-        # If no mu_dict specified, make one with 0 for every chemical potential
-        if mu_dict is None:
-            mu_dict = dict([(m,np.zeros(1,dtype=float)) for m in self._mu_list])
+        # If no ligand_dict specified, make one with 0 for every chemical potential
+        if ligand_dict is None:
+            ligand_dict = dict([(m,np.zeros(1,dtype=float)) for m in self._ligand_list])
         
         # Argument sanity checking
         mut_energy = check_mut_energy(mut_energy)
-        mu_dict, num_conditions = check_mu_dict(mu_dict)
-        T = check_T(T,num_conditions=num_conditions)
+        ligand_dict, num_conditions = check_ligand_dict(ligand_dict)
+        temperature = check_temperature(temperature,num_conditions=num_conditions)
 
         # Get Boltzmann weights
-        self._build_z_matrix(mu_dict)
+        self._build_z_matrix(ligand_dict)
         mut_energy_array = self.mut_dict_to_array(mut_energy)
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
 
         # Observable and not observable weights
         obs = np.sum(weights[self._obs_mask,:],axis=0)
@@ -365,9 +368,9 @@ class Ensemble:
         # Start building an output dataframe holding the temperature and 
         # chemical potentials
         out = {}
-        out["T"] = T
-        for m in mu_dict:
-            out[m] = mu_dict[m]
+        out["temperature"] = temperature
+        for lig in ligand_dict:
+            out[lig] = ligand_dict[lig]
         
         # Fraction of each species
         for i, species_name in enumerate(self._species_list):
@@ -382,7 +385,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(nan_mask),dtype=float)
         dG_out[nan_mask] = np.nan
-        dG_out[not_nan_mask] = -1/(self._gas_constant*T[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
+        dG_out[not_nan_mask] = -1/(self._gas_constant*temperature[not_nan_mask])*np.log(obs[not_nan_mask]/not_obs[not_nan_mask])
 
         out["dG_obs"] = dG_out
 
@@ -394,25 +397,25 @@ class Ensemble:
 
         return pd.DataFrame(out)
 
-    def read_mu_dict(self,mu_dict={}):
+    def read_ligand_dict(self,ligand_dict={}):
         """
-        Build a z-matrix given a mu_dict. This allows one to run 
+        Build a z-matrix given a ligand_dict. This allows one to run 
         get_fx_obs_fast and get_dG_obs_fast. 
 
         Parameters
         ----------
-        mu_dict : dict, optional
+        ligand_dict : dict, optional
             dictionary of chemical potentials. keys are the names of chemical
             potentials. Values are floats or arrays of floats. Any arrays 
             specified must have the same length. If a chemical potential is not
             specified in the dictionary, its value is set to 0. 
         """
 
-        mu_dict, _ = check_mu_dict(mu_dict)
+        ligand_dict, _ = check_ligand_dict(ligand_dict)
 
-        self._build_z_matrix(mu_dict)
+        self._build_z_matrix(ligand_dict)
 
-    def mut_dict_to_array(self,mut_energy):
+    def mut_dict_to_array(self,mut_energy=None):
         """
         Convert a mut_energy dictionary to an array with the correct order  
         for _get_weights. Warning: no error checking. User is responsible for
@@ -435,6 +438,9 @@ class Ensemble:
             on that species. 
         """
         
+        if mut_energy is None:
+            mut_energy = {}
+
         mut_energy_array = np.zeros(len(self._species_list),dtype=float)
         for i, s in enumerate(self._species_list):
             if s in mut_energy:
@@ -442,31 +448,31 @@ class Ensemble:
 
         return mut_energy_array
 
-    def get_fx_obs_fast(self,mut_energy_array,T):
+    def get_fx_obs_fast(self,mut_energy_array,temperature):
         """
         Get a numpy array with the fraction observable for the ensemble. Each 
-        element is a condition in mu_dict. This only works after read_mu_dict
-        has been run to create the appropriate z-matrix. Warning: no error 
-        checking. 
+        element is a condition in ligand_dict. This only works after
+        read_ligand_dict has been run to create the appropriate z-matrix.
+        Warning: no error checking. 
 
         Parameters
         ----------
         mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : nump.ndarray
+        temperature : numpy.ndarray
             numpy array of float where each value is the T at a given condition.
 
         Returns
         -------
         fx_obs : numpy.ndarray
             vector of fraction observable a function of the conditions in 
-            mu_dict.
+            ligand_dict.
         fx_folded : numpy.ndarray
             vector of the fraction of the molecule folded 
         """
 
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
         
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
@@ -477,30 +483,30 @@ class Ensemble:
         return obs/(obs + not_obs), folded/(folded + unfolded)
     
 
-    def get_dG_obs_fast(self,mut_energy_array,T):
+    def get_dG_obs_fast(self,mut_energy_array,temperature):
         """
-        Get a numpy array with the Dg observable for the ensemble. Each 
-        element is a condition in mu_dict. This only works after read_mu_dict
-        has been run to create the appropriate z-matrix. Warning: no error 
-        checking. 
+        Get a numpy array with the dG observable for the ensemble. Each 
+        element is a condition in ligand_dict. This only works after
+        read_ligand_dict has been run to create the appropriate z-matrix.
+        Warning: no error checking. 
 
         Parameters
         ----------
         mut_energy_array : numpy.ndarray
             numpy array of float where each value of the effect of that mutation
             on an ensemble species. Should be generated using mut_dict_to_array
-        T : nump.ndarray
+        temperature : numpy.ndarray
             numpy array of float where each value is the T at a given condition.
 
         Returns
         -------
         fx_obs : numpy.ndarray
-            vector of dG a function of the conditions in mu_dict. 
+            vector of dG a function of the conditions in ligand_dict. 
         fx_folded : numpy.ndarray
             vector of the fraction of the molecule folded 
         """
 
-        weights = self._get_weights(mut_energy_array,T)
+        weights = self._get_weights(mut_energy_array,temperature)
         obs = np.sum(weights[self._obs_mask,:],axis=0)
         not_obs = np.sum(weights[self._not_obs_mask,:],axis=0)
 
@@ -509,7 +515,7 @@ class Ensemble:
         
         dG_out = np.zeros(len(mask),dtype=float)
         dG_out[mask] = np.nan
-        dG_out[not_mask] = -1/(self._gas_constant*T)*np.log(obs[not_mask]/not_obs[not_mask])
+        dG_out[not_mask] = -1/(self._gas_constant*temperature)*np.log(obs[not_mask]/not_obs[not_mask])
 
         folded = np.sum(weights[self._folded_mask,:],axis=0)
         unfolded = np.sum(weights[self._unfolded_mask,:],axis=0)
@@ -522,14 +528,13 @@ class Ensemble:
         """
 
         out = {"ens":{}}
-        attr_to_write = ["dG0","observable","mu_stoich","folded"]
-        for s in self._species:
+        for s in self._species_dict:
 
             out["ens"][s] = {}
-            for a in attr_to_write:
-                out["ens"][s][a] = self._species[s][a]
+            for a in self._species_dict[s]:
+                out["ens"][s][a] = self._species_dict[s][a]
     
-        out["ens"]["gas_constant"] = self._gas_constant
+        out["gas_constant"] = self._gas_constant
 
         return out
     
@@ -570,20 +575,19 @@ class Ensemble:
         
         return obs_functions[obs_fcn]
 
-
     @property
     def species(self):
         """
         Species in the ensemble.
         """
-        return list(self._species.keys())
+        return list(self._species_list)
     
     @property
-    def mu_list(self):
+    def ligands(self):
         """
         Chemical potentials in the ensemble.
         """
-        return list(self._mu_list)
+        return list(self._ligand_list)
     
     @property
     def species_df(self):
@@ -591,21 +595,27 @@ class Ensemble:
         Species as a pandas dataframe.
         """
         
-        if len(self._species) == 0:
+        if len(self._species_dict) == 0:
             return pd.DataFrame({})
 
-        top_level_keys = list(self._species[self.species[0]])
+        top_level_keys = ["name","dG0","observable","folded"]
+
         to_df = dict([(k,[]) for k in top_level_keys])
-        to_df["species"] = []
-        for species in self.species:
-            to_df["species"].append(species)
-            for k in top_level_keys:
-                to_df[k].append(self._species[species][k])
-                
+        for lig in self.ligands:
+            to_df[lig] = []
+
+        for s in self._species_dict:
+
+            to_df["name"].append(s)
+            for key in top_level_keys[1:]:
+                to_df[key].append(self._species_dict[s][key])
+            for lig in self.ligands:
+                if lig in self._species_dict[s]:
+                    to_df[lig].append(self._species_dict[s][lig])
+                else:
+                    to_df[lig].append(0.0)
+
         df = pd.DataFrame(to_df)
-        column_names = ["species"]
-        column_names.extend(top_level_keys)
-        df = df.loc[:,column_names]
 
         return df
     

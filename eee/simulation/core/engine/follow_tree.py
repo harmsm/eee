@@ -12,11 +12,9 @@ from eee._private.check.eee import check_wf_population
 
 from eee.simulation.core.genotype import Genotype
 
-from eee.io import read_tree
-from eee.io import write_tree
-
 import numpy as np
 from tqdm.auto import tqdm
+import ete3
 
 import pickle
 
@@ -74,7 +72,7 @@ def _simulate_branch(start_node,
 
 
 def follow_tree(gc,
-                newick,
+                tree,
                 population=1000,
                 mutation_rate=0.01,
                 num_generations=100,
@@ -90,8 +88,8 @@ def follow_tree(gc,
         container holding genotypes with either a wildtype sequence or a 
         sequences from a previous evolutionary simulation. This will bring in 
         everything we need to calculate fitness of each genotype. 
-    newick : str or ete3.Tree
-            newick formatted tree with branch lengths and tip labels
+    tree : ete3.Tree
+        ete3 tree with branch lengths and tip labels
     population : dict, list-like, or int
         population for the simulation. Can be a dictionary of populations where
         keys are genotypes and values are populations. Can be an array where the
@@ -135,6 +133,10 @@ def follow_tree(gc,
         err = "\ngc must be of type Genotype\n\n"
         raise ValueError(err)    
     
+    if not issubclass(type(tree),ete3.TreeNode):
+        err = "\ntree must be an ete3.Tree object\n\n"
+        raise ValueError(err)  
+
     population = check_wf_population(population)
     population_size = len(population)
     mutation_rate = check_mutation_rate(mutation_rate)
@@ -148,9 +150,6 @@ def follow_tree(gc,
 
     if rng is None:
         rng = np.random.Generator(np.random.PCG64())
-
-    # Load tree
-    tree = read_tree(newick)
 
     # Figure out the number of branches for the status bar
     total_branches = 1
@@ -236,10 +235,8 @@ def follow_tree(gc,
                 pbar.update(n=1)
 
     # Write tree
-    write_tree(tree,
-               fmt=3,
-               out_file=f"{write_prefix}.newick")
-    
+    tree.write(format=3,outfile=f"{write_prefix}.newick")
+
     # Write genotypes
     gc.df.to_csv(f"{write_prefix}_genotypes.csv")
 
