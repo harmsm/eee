@@ -52,6 +52,39 @@ def test_read_conditions(tmpdir):
     assert np.array_equal(ligand_dict["Y"],conditions["Y"])
     assert len(ligand_dict) == 2
 
+    # Pass in {} for default fitness_kwargs
+    df, ligand_dict = read_conditions(ens=ens,
+                                      conditions=conditions,
+                                      default_fitness_kwargs={},
+                                      default_select_on="fx_obs",
+                                      default_select_on_folded=True,
+                                      default_temperature=298.15)
+
+    # -------------------------------------------------------------------------
+    # Ensemble has reserved name for a ligand
+
+    ens = Ensemble(gas_constant=1)
+    ens.add_species(name="test1",
+                    observable=True,
+                    folded=False,
+                    select_on=1)
+    
+    conditions = {"X":[0,10000],
+                  "Y":[10000,0],
+                  "fitness_fcn":["off","on"],
+                  "select_on":"fx_obs",
+                  "select_on_folded":True,
+                  "temperature":1}
+    
+    # Send in ligand with a reserved name
+    with pytest.raises(ValueError):
+        df, ligand_dict = read_conditions(ens=ens,
+                                            conditions=conditions,
+                                            default_fitness_kwargs=None,
+                                            default_select_on="fx_obs",
+                                            default_select_on_folded=True,
+                                            default_temperature=298.15)
+
     # -------------------------------------------------------------------------
     # Missing required column
 
@@ -68,6 +101,9 @@ def test_read_conditions(tmpdir):
                                           default_select_on="fx_obs",
                                           default_select_on_folded=True,
                                           default_temperature=298.15)
+
+
+
 
     # -------------------------------------------------------------------------
     # pass in conditions with non-ligand columns
@@ -246,6 +282,14 @@ def test_read_conditions(tmpdir):
                   "fitness_kwargs":[{},{}]}
     with pytest.raises(ValueError):
         df, ligand_dict = read_conditions(ens=ens,conditions=conditions)        
+
+    # Send in unparsable fitness_kwargs
+    conditions = {"X":[0,1],
+                  "fitness_fcn":["on","on"],
+                  "fitness_kwargs":[4,5]}
+    with pytest.raises(ValueError):
+        df, ligand_dict = read_conditions(ens=ens,conditions=conditions)        
+
 
     # Send in usable fitness_kwargs
     conditions = {"X":[0,1],

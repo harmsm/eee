@@ -24,6 +24,7 @@ FOUND tests._private.test_interface.test_gen_seed
 FOUND tests._private.test_interface.test_launch
 FOUND tests._private.test_interface.test_rmtree
 FOUND tests._private.test_interface.test_run_cleanly
+FOUND tests._private.test_utility.test_prep_for_json
 FOUND tests._private.test_wrap.test_wrap_function
 FOUND tests.io.test_io_tree.test_read_tree
 FOUND tests.io.test_io_tree.test_write_tree

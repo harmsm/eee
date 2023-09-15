@@ -9,6 +9,8 @@ from eee._private.check.standard import check_int
 from eee.simulation.core.fitness import Fitness
 from eee.simulation.core.genotype import Genotype
 
+from eee._private.utility import prep_for_json
+
 import numpy as np
 
 import json
@@ -225,59 +227,8 @@ class Simulation:
         self._fc.condition_df.to_csv("conditions.csv",index=False)
         out["conditions"] = "conditions.csv"
 
-        def iteratively_remove_ndarray(d):
-            """
-            Convert np.ndarray to lists in the output dictionary so they are 
-            json-able. 
-            """
-
-            # Go through a dictionary...
-            for k, v in d.items():     
-
-                # If the value is a dictionary...
-                v_type = type(v)   
-                if issubclass(v_type, dict):
-                    iteratively_remove_ndarray(v)
-
-                # Otherwise...
-                else:
-                    
-                    # If this is a non-dict, non-string iterable
-                    if not issubclass(v_type,str) and hasattr(v,"__iter__"):
-
-                        # Coerce numpy array to list
-                        if issubclass(v_type,np.ndarray):
-                            v = list(v)
-
-                        # Go through each element in the list and coerce to a
-                        # built in type
-                        for i in range(len(v)):
-                            local_v_type = type(v[i])
-                            if np.issubdtype(local_v_type,int):
-                                v[i] = int(v[i])
-                            elif np.issubdtype(local_v_type,float):
-                                v[i] = float(v[i])
-                            elif np.issubdtype(local_v_type,bool):
-                                v[i] = bool(v[i])
-                            else:
-                                continue
-
-                    # If not an iterable, coerce individual types
-                    else:
-                        if np.issubdtype(v_type,int):
-                            v = int(v)
-                        elif np.issubdtype(v_type,float):
-                            v = float(v)
-                        elif np.issubdtype(v_type,bool):
-                            v = bool(v)
-                        else:
-                            continue
-
-                    d[k] = v
-
-
-        # Remove np.ndarray. 
-        iteratively_remove_ndarray(out)
+        # Convert to python data types so we can write out
+        out = prep_for_json(out)
         
         # write json. 
         with open("simulation.json",'w') as f:

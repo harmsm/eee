@@ -1125,328 +1125,354 @@
 ./tests/io/test_read_conditions.py:50:1: W293 blank line contains whitespace
 ./tests/io/test_read_conditions.py:51:43: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:52:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:58:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:58:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:59:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:59:29: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:60:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:61:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:62:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:63:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:84:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:85:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:85:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:86:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:86:29: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:87:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:87:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:88:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:88:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:89:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:90:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:91:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:101:45: W291 trailing whitespace
-./tests/io/test_read_conditions.py:112:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:113:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:113:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:114:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:114:29: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:115:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:115:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:116:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:124:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:124:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:125:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:125:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:126:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:126:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:127:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:127:48: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:127:58: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:128:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:128:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:128:62: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:129:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:129:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:129:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:130:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:130:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:130:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:131:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:132:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:133:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:71:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:72:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:72:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:73:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:73:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:74:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:74:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:75:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:76:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:77:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:78:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:82:45: E127 continuation line over-indented for visual indent
+./tests/io/test_read_conditions.py:83:45: E127 continuation line over-indented for visual indent
+./tests/io/test_read_conditions.py:84:45: E127 continuation line over-indented for visual indent
+./tests/io/test_read_conditions.py:85:45: E127 continuation line over-indented for visual indent
+./tests/io/test_read_conditions.py:86:45: E127 continuation line over-indented for visual indent
+./tests/io/test_read_conditions.py:91:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:91:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:92:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:92:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:93:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:94:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:95:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:96:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:108:5: E303 too many blank lines (4)
+./tests/io/test_read_conditions.py:120:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:121:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:121:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:122:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:122:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:123:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:123:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:124:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:124:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:125:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:126:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:127:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:137:45: W291 trailing whitespace
 ./tests/io/test_read_conditions.py:148:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:149:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:149:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:150:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:151:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:152:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:153:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:149:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:149:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:150:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:150:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:151:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:151:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:152:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:160:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:160:40: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:161:35: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:161:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:161:43: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:162:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:162:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:162:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:162:50: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:163:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:163:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:163:48: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:163:58: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:164:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:164:48: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:164:58: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:164:55: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:164:62: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:165:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:165:50: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:165:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:165:61: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:166:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:166:50: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:166:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:167:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:167:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:167:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:168:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:166:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:167:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:168:43: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:169:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:169:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:170:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:170:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:185:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:186:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:186:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:186:27: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:187:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:187:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:187:27: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:184:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:185:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:185:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:186:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:187:37: E231 missing whitespace after ':'
 ./tests/io/test_read_conditions.py:188:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:188:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:188:44: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:189:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:193:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:193:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:194:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:194:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:195:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:195:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:196:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:196:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:196:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:196:60: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:199:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:199:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:201:32: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:204:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:204:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:206:32: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:207:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:209:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:209:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:210:28: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:224:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:225:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:225:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:225:27: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:226:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:226:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:226:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:227:35: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:227:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:227:42: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:228:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:229:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:197:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:197:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:197:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:198:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:198:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:198:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:199:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:199:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:200:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:200:48: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:200:58: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:201:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:201:55: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:201:61: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:202:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:202:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:202:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:203:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:203:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:203:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:204:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:205:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:205:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:206:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:206:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:221:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:222:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:222:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:222:27: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:223:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:223:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:223:27: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:224:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:224:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:224:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:225:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:229:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:229:40: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:230:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:230:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:230:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:230:60: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:234:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:235:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:235:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:235:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:235:60: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:237:48: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:238:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:239:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:239:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:239:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:240:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:241:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:244:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:244:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:245:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:245:38: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:246:35: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:246:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:248:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:248:73: W291 trailing whitespace
-./tests/io/test_read_conditions.py:251:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:251:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:252:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:252:38: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:253:35: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:253:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:253:52: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:254:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:255:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:255:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:256:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:256:74: W291 trailing whitespace
-./tests/io/test_read_conditions.py:259:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:259:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:260:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:260:38: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:261:35: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:261:48: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:262:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:263:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:263:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:263:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:264:67: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:264:74: W291 trailing whitespace
-./tests/io/test_read_conditions.py:278:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:279:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:279:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:280:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:280:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:281:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:282:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:283:42: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:283:52: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:286:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:287:42: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:287:52: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:289:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:290:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:291:42: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:291:52: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:294:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:296:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:297:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:301:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:306:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:320:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:321:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:321:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:322:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:322:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:323:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:324:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:325:49: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:325:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:327:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:328:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:329:49: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:329:56: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:332:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:333:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:334:49: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:334:56: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:339:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:353:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:354:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:354:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:355:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:355:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:356:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:357:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:358:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:358:49: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:360:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:361:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:362:44: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:362:47: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:367:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:372:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:386:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:387:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:387:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:388:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:388:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:389:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:390:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:390:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:391:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:391:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:394:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:394:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:395:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:395:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:396:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:397:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:397:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:398:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:398:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:401:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:401:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:402:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:402:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:404:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:406:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:407:5: E303 too many blank lines (2)
-./tests/io/test_read_conditions.py:409:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:419:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:420:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:420:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:421:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:421:29: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:422:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:422:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:423:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:424:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:425:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:429:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:230:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:231:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:231:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:232:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:232:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:232:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:232:60: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:235:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:235:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:237:32: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:240:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:240:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:242:32: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:243:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:245:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:245:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:246:28: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:260:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:261:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:261:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:261:27: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:262:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:262:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:262:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:263:35: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:263:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:263:42: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:264:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:265:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:266:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:266:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:266:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:266:60: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:270:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:271:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:271:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:271:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:271:60: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:273:48: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:274:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:275:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:275:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:275:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:276:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:277:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:280:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:280:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:281:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:281:38: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:282:35: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:282:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:284:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:284:73: W291 trailing whitespace
+./tests/io/test_read_conditions.py:287:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:287:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:288:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:288:38: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:289:35: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:289:38: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:291:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:291:73: W291 trailing whitespace
+./tests/io/test_read_conditions.py:294:5: E303 too many blank lines (2)
+./tests/io/test_read_conditions.py:295:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:295:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:296:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:296:38: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:297:35: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:297:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:297:52: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:298:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:299:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:299:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:300:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:300:74: W291 trailing whitespace
+./tests/io/test_read_conditions.py:303:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:303:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:304:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:304:38: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:305:35: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:305:48: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:306:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:307:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:307:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:307:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:308:67: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:308:74: W291 trailing whitespace
+./tests/io/test_read_conditions.py:322:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:323:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:323:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:324:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:324:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:325:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:326:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:327:42: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:327:52: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:330:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:331:42: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:331:52: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:333:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:334:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:335:42: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:335:52: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:338:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:340:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:341:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:345:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:350:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:364:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:365:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:365:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:366:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:366:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:367:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:368:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:369:49: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:369:55: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:371:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:372:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:373:49: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:373:56: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:376:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:377:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:378:49: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:378:56: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:383:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:397:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:398:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:398:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:399:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:399:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:400:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:401:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:402:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:402:49: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:404:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:405:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:406:44: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:406:47: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:411:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:416:50: E231 missing whitespace after ','
 ./tests/io/test_read_conditions.py:430:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:431:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:431:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:432:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:432:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:433:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:433:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:434:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:434:48: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:434:58: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:435:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:435:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:435:61: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:436:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:436:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:436:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:437:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:437:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:437:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:438:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:439:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:440:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:445:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:455:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:456:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:456:25: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:457:22: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:457:29: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:458:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:458:39: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:459:30: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:460:37: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:461:32: E231 missing whitespace after ':'
-./tests/io/test_read_conditions.py:464:46: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:465:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:466:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:466:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:467:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:467:40: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:468:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:468:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:469:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:469:48: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:469:58: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:470:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:470:55: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:470:61: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:471:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:471:50: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:471:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:472:35: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:472:53: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:472:57: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:473:1: W293 blank line contains whitespace
-./tests/io/test_read_conditions.py:474:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:475:43: E231 missing whitespace after ','
-./tests/io/test_read_conditions.py:478:26: W292 no newline at end of file
+./tests/io/test_read_conditions.py:431:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:431:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:432:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:432:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:433:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:434:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:434:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:435:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:435:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:438:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:438:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:439:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:439:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:440:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:441:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:441:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:442:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:442:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:445:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:445:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:446:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:446:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:448:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:450:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:451:5: E303 too many blank lines (2)
+./tests/io/test_read_conditions.py:453:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:463:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:464:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:464:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:465:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:465:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:466:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:466:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:467:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:468:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:469:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:473:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:474:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:475:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:475:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:476:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:476:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:477:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:477:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:478:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:478:48: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:478:58: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:479:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:479:55: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:479:61: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:480:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:480:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:480:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:481:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:481:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:481:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:482:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:483:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:484:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:489:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:499:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:500:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:500:25: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:501:22: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:501:29: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:502:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:502:39: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:503:30: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:504:37: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:505:32: E231 missing whitespace after ':'
+./tests/io/test_read_conditions.py:508:46: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:509:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:510:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:510:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:511:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:511:40: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:512:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:512:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:513:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:513:48: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:513:58: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:514:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:514:55: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:514:61: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:515:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:515:50: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:515:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:516:35: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:516:53: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:516:57: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:517:1: W293 blank line contains whitespace
+./tests/io/test_read_conditions.py:518:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:519:43: E231 missing whitespace after ','
+./tests/io/test_read_conditions.py:522:26: W292 no newline at end of file
 ./tests/io/test_io_tree.py:10:1: E302 expected 2 blank lines, found 1
 ./tests/io/test_io_tree.py:10:32: E231 missing whitespace after ','
 ./tests/io/test_io_tree.py:10:47: E231 missing whitespace after ','
@@ -3090,6 +3116,67 @@
 ./tests/simulation/calcs/test_wf_tree_sim.py:65:30: W291 trailing whitespace
 ./tests/simulation/calcs/test_wf_tree_sim.py:68:43: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_tree_sim.py:77:1: W391 blank line at end of file
+./tests/_private/test_utility.py:8:1: E302 expected 2 blank lines, found 1
+./tests/_private/test_utility.py:12:30: E231 missing whitespace after ','
+./tests/_private/test_utility.py:14:16: E231 missing whitespace after ','
+./tests/_private/test_utility.py:29:20: E231 missing whitespace after ','
+./tests/_private/test_utility.py:29:29: E231 missing whitespace after ','
+./tests/_private/test_utility.py:29:33: E231 missing whitespace after ','
+./tests/_private/test_utility.py:30:22: E231 missing whitespace after ','
+./tests/_private/test_utility.py:30:33: E231 missing whitespace after ','
+./tests/_private/test_utility.py:30:39: E231 missing whitespace after ','
+./tests/_private/test_utility.py:31:21: E231 missing whitespace after ','
+./tests/_private/test_utility.py:31:30: E231 missing whitespace after ','
+./tests/_private/test_utility.py:31:35: E231 missing whitespace after ','
+./tests/_private/test_utility.py:32:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:40:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:41:49: E231 missing whitespace after ','
+./tests/_private/test_utility.py:44:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:46:9: E303 too many blank lines (2)
+./tests/_private/test_utility.py:47:52: E231 missing whitespace after ','
+./tests/_private/test_utility.py:48:48: E231 missing whitespace after ','
+./tests/_private/test_utility.py:53:5: E303 too many blank lines (2)
+./tests/_private/test_utility.py:54:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:60:26: E231 missing whitespace after ','
+./tests/_private/test_utility.py:62:49: E231 missing whitespace after ','
+./tests/_private/test_utility.py:63:52: E231 missing whitespace after ','
+./tests/_private/test_utility.py:64:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:69:52: E231 missing whitespace after ','
+./tests/_private/test_utility.py:70:55: E231 missing whitespace after ','
+./tests/_private/test_utility.py:71:48: E231 missing whitespace after ','
+./tests/_private/test_utility.py:72:51: E231 missing whitespace after ','
+./tests/_private/test_utility.py:76:71: W291 trailing whitespace
+./tests/_private/test_utility.py:78:22: E231 missing whitespace after ','
+./tests/_private/test_utility.py:79:20: E201 whitespace after '{'
+./tests/_private/test_utility.py:79:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:80:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:81:31: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:82:31: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:83:35: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:84:35: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:85:35: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:86:35: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:87:31: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:88:31: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:89:31: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:90:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:91:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:92:27: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:95:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:98:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:100:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:101:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:102:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:102:29: E231 missing whitespace after ','
+./tests/_private/test_utility.py:102:31: E231 missing whitespace after ','
+./tests/_private/test_utility.py:103:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:104:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:105:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:105:34: E231 missing whitespace after ','
+./tests/_private/test_utility.py:106:26: E231 missing whitespace after ':'
+./tests/_private/test_utility.py:111:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:112:1: W293 blank line contains whitespace
+./tests/_private/test_utility.py:113:1: W391 blank line at end of file
 ./tests/_private/test_interface.py:14:1: F401 'time' imported but unused
 ./tests/_private/test_interface.py:16:1: E302 expected 2 blank lines, found 1
 ./tests/_private/test_interface.py:21:1: E302 expected 2 blank lines, found 1
@@ -5811,94 +5898,97 @@
 ./eee/simulation/calcs/wf_tree_sim.py:89:5: W292 no newline at end of file
 ./eee/simulation/calcs/simulation_base.py:2:68: W291 trailing whitespace
 ./eee/simulation/calcs/simulation_base.py:3:64: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:17:1: E302 expected 2 blank lines, found 1
-./eee/simulation/calcs/simulation_base.py:19:72: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:20:68: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:22:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:33:39: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:37:27: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:40:81: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:44:85: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:46:64: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:48:75: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:49:79: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:51:76: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:52:77: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:53:31: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:54:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:56:67: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:57:78: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:58:22: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:62:76: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:63:62: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:67:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:69:71: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:72:39: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:83:57: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:88:51: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:95:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:96:71: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:119:13: E122 continuation line missing indentation or outdented
-./eee/simulation/calcs/simulation_base.py:124:68: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:126:65: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:130:75: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:134:76: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:137:61: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:140:81: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:141:37: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:143:75: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:144:23: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:153:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:159:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:165:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:168:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:170:37: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:173:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:182:76: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:183:28: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:200:5: C901 'Simulation._write_calc_params' is too complex (14)
-./eee/simulation/calcs/simulation_base.py:200:5: E303 too many blank lines (2)
-./eee/simulation/calcs/simulation_base.py:200:32: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:203:20: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:207:27: E231 missing whitespace after ':'
-./eee/simulation/calcs/simulation_base.py:208:29: E231 missing whitespace after ':'
-./eee/simulation/calcs/simulation_base.py:217:37: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:221:42: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:225:54: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:230:77: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:231:23: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:235:35: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:238:33: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:244:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:246:45: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:246:64: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:249:45: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:256:58: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:258:60: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:260:60: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:267:48: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:269:50: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:271:50: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:279:9: E303 too many blank lines (2)
-./eee/simulation/calcs/simulation_base.py:279:29: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:281:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:282:22: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:283:36: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:284:12: E111 indentation is not a multiple of 4
-./eee/simulation/calcs/simulation_base.py:284:25: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:284:27: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:292:24: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:299:72: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:311:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:312:23: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:320:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:321:34: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:339:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:349:20: F541 f-string is missing placeholders
-./eee/simulation/calcs/simulation_base.py:360:33: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:362:55: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:377:44: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:392:24: W292 no newline at end of file
+./eee/simulation/calcs/simulation_base.py:19:1: E302 expected 2 blank lines, found 1
+./eee/simulation/calcs/simulation_base.py:21:72: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:22:68: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:24:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:35:39: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:39:27: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:42:81: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:46:85: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:48:64: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:50:75: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:51:79: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:53:76: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:54:77: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:55:31: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:56:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:58:67: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:59:78: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:60:22: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:64:76: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:65:62: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:69:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:71:71: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:74:39: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:85:57: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:90:51: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:97:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:98:71: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:121:13: E122 continuation line missing indentation or outdented
+./eee/simulation/calcs/simulation_base.py:126:68: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:128:65: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:132:75: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:136:76: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:139:61: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:142:81: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:143:37: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:145:75: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:146:23: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:155:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:161:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:167:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:170:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:172:37: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:175:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:184:76: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:185:28: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:202:5: E303 too many blank lines (2)
+./eee/simulation/calcs/simulation_base.py:202:32: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:205:20: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:209:27: E231 missing whitespace after ':'
+./eee/simulation/calcs/simulation_base.py:210:29: E231 missing whitespace after ':'
+./eee/simulation/calcs/simulation_base.py:219:37: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:223:42: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:227:54: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:232:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:233:22: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:234:36: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:235:12: E111 indentation is not a multiple of 4
+./eee/simulation/calcs/simulation_base.py:235:25: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:235:27: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:243:24: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:250:72: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:262:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:263:23: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:271:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:272:34: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:290:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:300:20: F541 f-string is missing placeholders
+./eee/simulation/calcs/simulation_base.py:311:33: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:313:55: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:328:44: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:343:24: W292 no newline at end of file
+./eee/_private/utility.py:2:35: W291 trailing whitespace
+./eee/_private/utility.py:9:1: C901 'prep_for_json' is too complex (14)
+./eee/_private/utility.py:9:1: E302 expected 2 blank lines, found 1
+./eee/_private/utility.py:9:28: E231 missing whitespace after ','
+./eee/_private/utility.py:12:47: W291 trailing whitespace
+./eee/_private/utility.py:25:38: E231 missing whitespace after ','
+./eee/_private/utility.py:33:35: W291 trailing whitespace
+./eee/_private/utility.py:36:25: W291 trailing whitespace
+./eee/_private/utility.py:38:28: E231 missing whitespace after ','
+./eee/_private/utility.py:42:1: W293 blank line contains whitespace
+./eee/_private/utility.py:44:37: E231 missing whitespace after ','
+./eee/_private/utility.py:44:56: E231 missing whitespace after ','
+./eee/_private/utility.py:47:37: E231 missing whitespace after ','
+./eee/_private/utility.py:54:50: E231 missing whitespace after ','
+./eee/_private/utility.py:56:52: E231 missing whitespace after ','
+./eee/_private/utility.py:58:52: E231 missing whitespace after ','
+./eee/_private/utility.py:65:40: E231 missing whitespace after ','
+./eee/_private/utility.py:67:42: E231 missing whitespace after ','
+./eee/_private/utility.py:69:42: E231 missing whitespace after ','
+./eee/_private/utility.py:76:21: W292 no newline at end of file
 ./eee/_private/interface.py:14:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:17:1: E302 expected 2 blank lines, found 1
 ./eee/_private/interface.py:23:1: W293 blank line contains whitespace
@@ -6626,19 +6716,19 @@
 1     E117 over-indented (comment)
 1     E122 continuation line missing indentation or outdented
 1     E124 closing bracket does not match visual indentation
-54    E127 continuation line over-indented for visual indent
+59    E127 continuation line over-indented for visual indent
 104   E128 continuation line under-indented for visual indent
-2     E201 whitespace after '['
+3     E201 whitespace after '{'
 1     E221 multiple spaces before operator
 3     E222 multiple spaces after operator
 5     E225 missing whitespace around operator
-3891  E231 missing whitespace after ','
+3958  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 4     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-206   E302 expected 2 blank lines, found 1
-114   E303 too many blank lines (2)
+208   E302 expected 2 blank lines, found 1
+117   E303 too many blank lines (2)
 4     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 15    E402 module level import not at top of file
@@ -6651,9 +6741,9 @@
 9     F541 f-string is missing placeholders
 1     F811 redefinition of unused 'widgets' from line 7
 8     F841 local variable 'value' is assigned to but never used
-784   W291 trailing whitespace
-82    W292 no newline at end of file
-1072  W293 blank line contains whitespace
-18    W391 blank line at end of file
+785   W291 trailing whitespace
+83    W292 no newline at end of file
+1081  W293 blank line contains whitespace
+19    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-6621
+6711
