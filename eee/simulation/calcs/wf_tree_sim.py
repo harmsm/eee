@@ -10,8 +10,12 @@ from eee._private.check.eee import check_mutation_rate
 from eee._private.check.eee import check_population_size
 from eee._private.check.eee import check_burn_in_generations
 from eee._private.interface import run_cleanly
+from eee.io.tree import read_tree
 
 import ete3
+
+import shutil
+import os
 
 class WrightFisherTreeSimulation(Simulation):
 
@@ -31,8 +35,9 @@ class WrightFisherTreeSimulation(Simulation):
         
         Parameters
         ----------
-        newick : ete3.Tree
-            ete3.Tree object
+        tree : ete3.Tree or str
+            something that can be read as an ete3.Tree (newick file, newick string, 
+            or ete3.Tree object)
         output_directory : str, default="eee_sim"
             do simulation in this output directory
         population_size : int, default=1000
@@ -51,10 +56,10 @@ class WrightFisherTreeSimulation(Simulation):
             write output files during the run with this prefix. 
         """
         
-        if not issubclass(type(tree),ete3.TreeNode):
-            err = "\ntree must be an ete3.Tree object\n\n"
-            raise ValueError(err)  
-
+        # Read the tree
+        tree = read_tree(tree)
+        
+        # Check various input variables
         population_size = check_population_size(population_size)
         mutation_rate = check_mutation_rate(mutation_rate) 
         num_generations = check_num_generations(num_generations)
@@ -82,6 +87,10 @@ class WrightFisherTreeSimulation(Simulation):
                                    burn_in_generations=calc_params["burn_in_generations"],
                                    write_prefix=calc_params["write_prefix"],
                                    rng=self._rng)
+        
+        # A small hack to copy tree to input directory so json can load
+        shutil.copy(calc_params["tree"],
+                    os.path.join("input",calc_params["tree"]))
         
         self._complete_calc()
 

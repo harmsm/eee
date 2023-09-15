@@ -40,10 +40,13 @@ def test_DeepMutationalScan_run(ens_test_data,tmpdir):
             output_file="yo.csv")
     
     assert os.path.exists(os.path.join("test","yo.csv"))
-    
+    assert os.path.exists(os.path.join("test","input","ddg.csv"))
+    assert os.path.exists(os.path.join("test","input","ensemble.csv"))
+    assert os.path.exists(os.path.join("test","input","conditions.csv"))
+    assert os.path.exists(os.path.join("test","input","simulation.json"))
 
     os.chdir('test')
-    _, kwargs = read_json('simulation.json')
+    _, kwargs = read_json(os.path.join("input",'simulation.json'))
     assert kwargs["max_depth"] == 1
     assert kwargs["output_file"] == "yo.csv"
 

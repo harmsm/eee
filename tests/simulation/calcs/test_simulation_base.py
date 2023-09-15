@@ -194,7 +194,7 @@ def test_Simulation__prepare_calc(ens_test_data,tmpdir):
     sm._prepare_calc(output_directory="test_dir",
                      calc_params={"test":1})
     assert os.path.split(os.getcwd())[-1] == "test_dir"
-    with open("simulation.json") as f:
+    with open(os.path.join("input","simulation.json")) as f:
         sim_json = json.load(f)
     assert sim_json["calc_params"]["test"] == 1
 
@@ -234,12 +234,12 @@ def test_Simulation__write_calc_params(ens_test_data,
     
     sm._write_calc_params(calc_params=calc_params)
 
-    assert os.path.exists("simulation.json")
-    assert os.path.exists("ddg.csv")
-    assert os.path.exists("ensemble.csv")
-    assert os.path.exists("conditions.csv")
+    assert os.path.exists(os.path.join("input","simulation.json"))
+    assert os.path.exists(os.path.join("input","ddg.csv"))
+    assert os.path.exists(os.path.join("input","ensemble.csv"))
+    assert os.path.exists(os.path.join("input","conditions.csv"))
 
-    with open("simulation.json") as f:
+    with open(os.path.join("input","simulation.json")) as f:
         as_written = json.load(f)
 
     # Make sure run params written correctly. 
@@ -247,7 +247,7 @@ def test_Simulation__write_calc_params(ens_test_data,
         assert as_written["calc_params"][k] == calc_params[k]
     
     # ens
-    ens_written = read_ensemble(as_written["ens"]).to_dict()
+    ens_written = read_ensemble(os.path.join("input",as_written["ens"])).to_dict()
     ens_dict = ens.to_dict()
 
     for k in ens_dict["ens"]:
@@ -260,7 +260,8 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     # conditions
     assert as_written["conditions"] == "conditions.csv"
-    cond_written, _ = read_conditions(conditions="conditions.csv",
+    cond_written, _ = read_conditions(conditions=os.path.join("input",
+                                                              "conditions.csv"),
                                       ens=sm.ens)
     
     keys_to_check =  ["select_on",
@@ -279,7 +280,7 @@ def test_Simulation__write_calc_params(ens_test_data,
     assert as_written["seed"] == sm._seed
 
     # Make sure we can read in dataframe
-    df = pd.read_csv("ddg.csv")
+    df = pd.read_csv(os.path.join("input","ddg.csv"))
 
     os.chdir(current_dir)
 

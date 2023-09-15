@@ -2993,6 +2993,7 @@
 ./tests/simulation/calcs/test_simulation_base.py:178:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_simulation_base.py:178:48: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_simulation_base.py:195:41: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:197:35: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_simulation_base.py:208:45: E231 missing whitespace after ':'
 ./tests/simulation/calcs/test_simulation_base.py:211:5: E303 too many blank lines (2)
 ./tests/simulation/calcs/test_simulation_base.py:213:1: E302 expected 2 blank lines, found 1
@@ -3004,51 +3005,58 @@
 ./tests/simulation/calcs/test_simulation_base.py:232:34: E231 missing whitespace after ':'
 ./tests/simulation/calcs/test_simulation_base.py:233:37: E231 missing whitespace after ':'
 ./tests/simulation/calcs/test_simulation_base.py:234:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:237:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:238:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:239:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:240:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:242:35: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_simulation_base.py:245:46: W291 trailing whitespace
 ./tests/simulation/calcs/test_simulation_base.py:248:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:265:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:266:20: E222 multiple spaces after operator
-./tests/simulation/calcs/test_simulation_base.py:274:48: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:278:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:282:5: F841 local variable 'df' is assigned to but never used
-./tests/simulation/calcs/test_simulation_base.py:286:1: E302 expected 2 blank lines, found 1
-./tests/simulation/calcs/test_simulation_base.py:287:75: W291 trailing whitespace
-./tests/simulation/calcs/test_simulation_base.py:289:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:290:1: E302 expected 2 blank lines, found 1
-./tests/simulation/calcs/test_simulation_base.py:291:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:300:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:302:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_simulation_base.py:310:25: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:311:40: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:322:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:324:25: W291 trailing whitespace
-./tests/simulation/calcs/test_simulation_base.py:334:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:335:26: W291 trailing whitespace
-./tests/simulation/calcs/test_simulation_base.py:337:35: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:340:66: E231 missing whitespace after ':'
-./tests/simulation/calcs/test_simulation_base.py:341:35: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:348:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:350:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_simulation_base.py:357:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:358:37: E231 missing whitespace after ':'
-./tests/simulation/calcs/test_simulation_base.py:358:39: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:358:44: E231 missing whitespace after ':'
-./tests/simulation/calcs/test_simulation_base.py:364:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:365:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_simulation_base.py:365:29: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:366:37: E231 missing whitespace after ':'
-./tests/simulation/calcs/test_simulation_base.py:366:39: E231 missing whitespace after ','
-./tests/simulation/calcs/test_simulation_base.py:366:44: E231 missing whitespace after ':'
-./tests/simulation/calcs/test_simulation_base.py:372:1: E302 expected 2 blank lines, found 1
-./tests/simulation/calcs/test_simulation_base.py:373:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:381:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:385:1: E302 expected 2 blank lines, found 1
-./tests/simulation/calcs/test_simulation_base.py:386:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:394:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:397:1: E302 expected 2 blank lines, found 1
-./tests/simulation/calcs/test_simulation_base.py:398:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:406:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_simulation_base.py:407:27: W292 no newline at end of file
+./tests/simulation/calcs/test_simulation_base.py:250:53: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:266:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:267:20: E222 multiple spaces after operator
+./tests/simulation/calcs/test_simulation_base.py:275:48: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:279:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:283:5: F841 local variable 'df' is assigned to but never used
+./tests/simulation/calcs/test_simulation_base.py:283:42: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:287:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_simulation_base.py:288:75: W291 trailing whitespace
+./tests/simulation/calcs/test_simulation_base.py:290:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:291:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_simulation_base.py:292:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:301:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:303:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_simulation_base.py:311:25: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:312:40: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:323:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:325:25: W291 trailing whitespace
+./tests/simulation/calcs/test_simulation_base.py:335:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:336:26: W291 trailing whitespace
+./tests/simulation/calcs/test_simulation_base.py:338:35: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:341:66: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:342:35: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:349:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:351:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_simulation_base.py:358:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:359:37: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:359:39: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:359:44: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:365:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:366:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_simulation_base.py:366:29: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:367:37: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:367:39: E231 missing whitespace after ','
+./tests/simulation/calcs/test_simulation_base.py:367:44: E231 missing whitespace after ':'
+./tests/simulation/calcs/test_simulation_base.py:373:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_simulation_base.py:374:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:382:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:386:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_simulation_base.py:387:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:395:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:398:1: E302 expected 2 blank lines, found 1
+./tests/simulation/calcs/test_simulation_base.py:399:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:407:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_simulation_base.py:408:27: W292 no newline at end of file
 ./tests/simulation/calcs/test_dms.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_dms.py:8:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_dms.py:9:1: W293 blank line contains whitespace
@@ -3060,11 +3068,18 @@
 ./tests/simulation/calcs/test_dms.py:24:46: W291 trailing whitespace
 ./tests/simulation/calcs/test_dms.py:41:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_dms.py:42:46: E231 missing whitespace after ','
-./tests/simulation/calcs/test_dms.py:43:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_dms.py:45:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_dms.py:52:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_dms.py:53:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_dms.py:53:26: W292 no newline at end of file
+./tests/simulation/calcs/test_dms.py:43:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:43:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:44:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:44:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:45:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:45:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:46:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:46:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:49:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_dms.py:55:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_dms.py:56:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_dms.py:56:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_accessible_paths.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_accessible_paths.py:8:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_accessible_paths.py:9:1: W293 blank line contains whitespace
@@ -3078,12 +3093,20 @@
 ./tests/simulation/calcs/test_accessible_paths.py:32:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_accessible_paths.py:43:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_accessible_paths.py:44:46: E231 missing whitespace after ','
-./tests/simulation/calcs/test_accessible_paths.py:45:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_accessible_paths.py:49:36: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/calcs/test_accessible_paths.py:50:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
-./tests/simulation/calcs/test_accessible_paths.py:55:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_accessible_paths.py:56:5: E303 too many blank lines (2)
-./tests/simulation/calcs/test_accessible_paths.py:56:26: W292 no newline at end of file
+./tests/simulation/calcs/test_accessible_paths.py:45:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:45:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:46:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:46:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:47:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:47:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:48:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:48:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:51:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_accessible_paths.py:53:36: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/simulation/calcs/test_accessible_paths.py:54:37: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/simulation/calcs/test_accessible_paths.py:59:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_accessible_paths.py:60:5: E303 too many blank lines (2)
+./tests/simulation/calcs/test_accessible_paths.py:60:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_wf_sim.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_wf_sim.py:6:1: F401 'pandas as pd' imported but unused
 ./tests/simulation/calcs/test_wf_sim.py:10:1: E302 expected 2 blank lines, found 1
@@ -3094,11 +3117,18 @@
 ./tests/simulation/calcs/test_wf_sim.py:23:50: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:43:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_sim.py:44:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:44:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:45:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:45:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:46:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:46:54: E231 missing whitespace after ','
 ./tests/simulation/calcs/test_wf_sim.py:47:46: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_sim.py:48:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_sim.py:59:26: W292 no newline at end of file
+./tests/simulation/calcs/test_wf_sim.py:47:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:48:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:49:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:50:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_wf_sim.py:52:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_sim.py:61:26: W292 no newline at end of file
 ./tests/simulation/calcs/test_wf_tree_sim.py:1:1: F401 'pytest' imported but unused
 ./tests/simulation/calcs/test_wf_tree_sim.py:10:1: E302 expected 2 blank lines, found 1
 ./tests/simulation/calcs/test_wf_tree_sim.py:11:1: W293 blank line contains whitespace
@@ -3109,13 +3139,22 @@
 ./tests/simulation/calcs/test_wf_tree_sim.py:27:30: W291 trailing whitespace
 ./tests/simulation/calcs/test_wf_tree_sim.py:35:1: W293 blank line contains whitespace
 ./tests/simulation/calcs/test_wf_tree_sim.py:48:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:60:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:62:50: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_tree_sim.py:63:1: W293 blank line contains whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:64:73: W291 trailing whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:65:30: W291 trailing whitespace
-./tests/simulation/calcs/test_wf_tree_sim.py:68:43: E231 missing whitespace after ','
-./tests/simulation/calcs/test_wf_tree_sim.py:77:1: W391 blank line at end of file
+./tests/simulation/calcs/test_wf_tree_sim.py:58:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_wf_tree_sim.py:60:50: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:61:1: W293 blank line contains whitespace
+./tests/simulation/calcs/test_wf_tree_sim.py:62:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:62:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:63:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:63:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:64:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:64:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:65:46: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:65:54: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:67:73: W291 trailing whitespace
+./tests/simulation/calcs/test_wf_tree_sim.py:68:30: W291 trailing whitespace
+./tests/simulation/calcs/test_wf_tree_sim.py:70:47: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:71:43: E231 missing whitespace after ','
+./tests/simulation/calcs/test_wf_tree_sim.py:80:1: W391 blank line at end of file
 ./tests/_private/test_utility.py:8:1: E302 expected 2 blank lines, found 1
 ./tests/_private/test_utility.py:12:30: E231 missing whitespace after ','
 ./tests/_private/test_utility.py:14:16: E231 missing whitespace after ','
@@ -5878,24 +5917,27 @@
 ./eee/simulation/calcs/accessible_paths.py:78:1: W293 blank line contains whitespace
 ./eee/simulation/calcs/accessible_paths.py:78:5: W292 no newline at end of file
 ./eee/simulation/calcs/wf_tree_sim.py:3:6: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:16:1: E302 expected 2 blank lines, found 1
-./eee/simulation/calcs/wf_tree_sim.py:30:81: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:31:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:43:77: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:45:77: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:49:48: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:51:64: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:53:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:54:37: E231 missing whitespace after ','
-./eee/simulation/calcs/wf_tree_sim.py:56:34: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:59:59: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:63:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:75:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:77:22: E222 multiple spaces after operator
-./eee/simulation/calcs/wf_tree_sim.py:78:46: W291 trailing whitespace
-./eee/simulation/calcs/wf_tree_sim.py:85:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:89:1: W293 blank line contains whitespace
-./eee/simulation/calcs/wf_tree_sim.py:89:5: W292 no newline at end of file
+./eee/simulation/calcs/wf_tree_sim.py:15:1: F401 'ete3' imported but unused
+./eee/simulation/calcs/wf_tree_sim.py:20:1: E302 expected 2 blank lines, found 1
+./eee/simulation/calcs/wf_tree_sim.py:34:81: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:35:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:47:77: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:49:77: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:53:48: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:55:64: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:57:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:59:9: E303 too many blank lines (2)
+./eee/simulation/calcs/wf_tree_sim.py:62:36: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:65:59: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:69:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:81:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:83:22: E222 multiple spaces after operator
+./eee/simulation/calcs/wf_tree_sim.py:84:46: W291 trailing whitespace
+./eee/simulation/calcs/wf_tree_sim.py:91:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:94:41: E231 missing whitespace after ','
+./eee/simulation/calcs/wf_tree_sim.py:95:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:99:1: W293 blank line contains whitespace
+./eee/simulation/calcs/wf_tree_sim.py:99:5: W292 no newline at end of file
 ./eee/simulation/calcs/simulation_base.py:2:68: W291 trailing whitespace
 ./eee/simulation/calcs/simulation_base.py:3:64: W291 trailing whitespace
 ./eee/simulation/calcs/simulation_base.py:19:1: E302 expected 2 blank lines, found 1
@@ -5946,29 +5988,30 @@
 ./eee/simulation/calcs/simulation_base.py:202:5: E303 too many blank lines (2)
 ./eee/simulation/calcs/simulation_base.py:202:32: E231 missing whitespace after ','
 ./eee/simulation/calcs/simulation_base.py:205:20: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:209:27: E231 missing whitespace after ':'
-./eee/simulation/calcs/simulation_base.py:210:29: E231 missing whitespace after ':'
-./eee/simulation/calcs/simulation_base.py:219:37: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:223:42: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:227:54: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:232:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:233:22: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:234:36: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:235:12: E111 indentation is not a multiple of 4
-./eee/simulation/calcs/simulation_base.py:235:25: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:235:27: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:243:24: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:250:72: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:262:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:263:23: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:271:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:272:34: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:290:1: W293 blank line contains whitespace
-./eee/simulation/calcs/simulation_base.py:300:20: F541 f-string is missing placeholders
-./eee/simulation/calcs/simulation_base.py:311:33: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:313:55: W291 trailing whitespace
-./eee/simulation/calcs/simulation_base.py:328:44: E231 missing whitespace after ','
-./eee/simulation/calcs/simulation_base.py:343:24: W292 no newline at end of file
+./eee/simulation/calcs/simulation_base.py:212:27: E231 missing whitespace after ':'
+./eee/simulation/calcs/simulation_base.py:213:29: E231 missing whitespace after ':'
+./eee/simulation/calcs/simulation_base.py:222:37: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:226:42: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:230:54: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:235:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:236:22: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:237:36: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:238:12: E111 indentation is not a multiple of 4
+./eee/simulation/calcs/simulation_base.py:238:25: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:238:27: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:239:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:248:24: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:255:72: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:267:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:268:23: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:276:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:277:34: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:295:1: W293 blank line contains whitespace
+./eee/simulation/calcs/simulation_base.py:303:20: F541 f-string is missing placeholders
+./eee/simulation/calcs/simulation_base.py:314:33: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:316:55: W291 trailing whitespace
+./eee/simulation/calcs/simulation_base.py:331:44: E231 missing whitespace after ','
+./eee/simulation/calcs/simulation_base.py:346:24: W292 no newline at end of file
 ./eee/_private/utility.py:2:35: W291 trailing whitespace
 ./eee/_private/utility.py:9:1: C901 'prep_for_json' is too complex (14)
 ./eee/_private/utility.py:9:1: E302 expected 2 blank lines, found 1
@@ -6722,7 +6765,7 @@
 1     E221 multiple spaces before operator
 3     E222 multiple spaces after operator
 5     E225 missing whitespace around operator
-3958  E231 missing whitespace after ','
+4000  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 4     E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
@@ -6737,7 +6780,7 @@
 96    E712 comparison to True should be 'if cond is True:' or 'if cond:'
 2     E714 test for object identity should be 'is not'
 2     E722 do not use bare 'except'
-85    F401 'glob' imported but unused
+86    F401 'glob' imported but unused
 9     F541 f-string is missing placeholders
 1     F811 redefinition of unused 'widgets' from line 7
 8     F841 local variable 'value' is assigned to but never used
@@ -6746,4 +6789,4 @@
 1081  W293 blank line contains whitespace
 19    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-6711
+6754

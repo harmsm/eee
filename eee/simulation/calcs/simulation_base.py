@@ -205,6 +205,9 @@ class Simulation:
         parameters. 
         """
 
+        os.mkdir("input")
+        os.chdir("input")
+
         # Get calculation information
         out = {"calc_type":self.calc_type,
                "calc_params":calc_params}
@@ -233,6 +236,8 @@ class Simulation:
         # write json. 
         with open("simulation.json",'w') as f:
            json.dump(out,f,indent=2)
+        
+        os.chdir("../")
 
     def _complete_calc(self):
         """
@@ -290,13 +295,11 @@ class Simulation:
         
         out = []
 
-        out.append(_underline(f"Running a '{self.calc_type}' calculation"))
+        out.append(_underline(f"Calculation: '{self.calc_type}'"))
         out.append(_underline("Ensemble properties:"))
         out.append(f"{self._ens.species_df}\n\n")
 
         out.append(_underline("Fitness calculation:"))
-        out.append(f"Selecting on: {self._fc.select_on}")
-        out.append(f"Selecting on folded: {self._fc.select_on_folded}")
         out.append(f"\nConditions and fitness functions:")
         out.append(f"{self._fc.condition_df}\n")
 

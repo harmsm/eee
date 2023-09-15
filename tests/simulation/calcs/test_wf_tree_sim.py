@@ -46,9 +46,7 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,
            burn_in_generations=10,
            write_prefix="eee_sim")
     
-    expected_files = ["ddg.csv",
-                      "simulation.json",
-                      "eee_sim.newick",
+    expected_files = ["eee_sim.newick",
                       "eee_sim_genotypes.csv",
                       "eee_sim_burn-in-anc00.pickle",
                       "eee_sim_anc00-anc01.pickle",
@@ -61,10 +59,15 @@ def test_WrightFisherTreeSimulation_run(ens_test_data,
     for f in expected_files:
         assert os.path.exists(os.path.join("test",f))
  
+    assert os.path.exists(os.path.join("test","input","ddg.csv"))
+    assert os.path.exists(os.path.join("test","input","ensemble.csv"))
+    assert os.path.exists(os.path.join("test","input","conditions.csv"))
+    assert os.path.exists(os.path.join("test","input","simulation.json"))
+
     # This test makes sure the variables are being set properly and then 
     # recorded into the json. 
     os.chdir('test')
-    _, kwargs = read_json('simulation.json')
+    _, kwargs = read_json(os.path.join("input",'simulation.json'))
     assert issubclass(type(kwargs["tree"]),ete3.TreeNode)
     assert kwargs["population_size"] == 100
     assert kwargs["mutation_rate"] == 0.1
