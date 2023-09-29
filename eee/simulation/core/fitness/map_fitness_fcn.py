@@ -55,7 +55,7 @@ def map_fitness_fcn(value,return_as):
 
     # If what came in is a string ...
     elif issubclass(type(value),str):
-        fcn_str = value
+        fcn_str = value.strip().lower()
         if value in str_to_fcn:
             fcn = str_to_fcn[fcn_str]
         else:

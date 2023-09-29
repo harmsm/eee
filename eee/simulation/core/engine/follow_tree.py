@@ -59,7 +59,7 @@ def _simulate_branch(start_node,
                                     mutation_rate=mutation_rate,
                                     num_generations=num_generations,
                                     num_mutations=num_mutations,
-                                    disable_status_bar=True,
+                                    verbose=False,
                                     write_prefix=None,
                                     rng=rng)
     
@@ -172,7 +172,7 @@ def follow_tree(gc,
                                         population=population_size,
                                         mutation_rate=mutation_rate,
                                         num_generations=burn_in_generations,
-                                        disable_status_bar=True,
+                                        verbose=False,
                                         write_prefix=None,
                                         rng=rng)
 

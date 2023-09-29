@@ -56,7 +56,7 @@ def wright_fisher(gc,
                   mutation_rate,
                   num_generations,
                   num_mutations=None,
-                  disable_status_bar=False,
+                  verbose=True,
                   write_prefix=None,
                   write_frequency=1000,
                   rng=None):
@@ -89,8 +89,8 @@ def wright_fisher(gc,
         stop the simulation after the most frequent genotype has num_mutations 
         mutations. Should be >= 1. If specified, the simulation will run until
         either num_mutations is reached OR the simulation hits num_generations.
-    disable_status_bar : bool, default=False
-        turn off the tqdm status bar for the calculation 
+    verbose : bool, default=True
+        whether to print outputs and status bars
     write_prefix : str, optional
         write output files during the run with this prefix. If not specified, 
         do not write files. If specified, gc and generations will be returned
@@ -154,10 +154,10 @@ def wright_fisher(gc,
     generations = [(seen,counts)]
 
     # Turn off status bar if requested
-    if disable_status_bar:
-        pbar = MockContextManager(total=num_generations-1)
-    else:
+    if verbose:
         pbar = tqdm(total=num_generations-1)
+    else:
+        pbar = MockContextManager(total=num_generations-1)
 
     # Remove existing files
     if write_prefix is not None:

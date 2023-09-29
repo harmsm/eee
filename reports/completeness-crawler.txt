@@ -149,6 +149,14 @@ MISSING tests.bin.test_eee-get-available-functions.test_main
 MISSING tests.bin.test_eee-simulate-from-json.test_main
 MISSING tests.bin.test_eee-sync-structures.test_main
 MISSING tests.simulation.analysis.test_on_tree.test_extract_alignment
+MISSING tests.simulation.analysis.wf.test_summary.test_extract_key_trajectories
+MISSING tests.simulation.analysis.wf.test_summary.test_fitness_and_variance
+MISSING tests.simulation.analysis.wf.test_summary.test_load_simulation_results
+MISSING tests.simulation.analysis.wf.test_summary.test_plot_fitness
+MISSING tests.simulation.analysis.wf.test_summary.test_plot_genotypes_vs_generations
+MISSING tests.simulation.analysis.wf.test_summary.test_summarize_simulation
+MISSING tests.simulation.analysis.wf.test_traj_epistasis.test_get_min_max
+MISSING tests.simulation.analysis.wf.test_traj_epistasis.test_traj_epistasis
 MISSING tests.simulation.test___init__.test__get_calc_available
 MISSING tests.test___init__.test__check_for_notebook
 MISSING tests.tools.build_ensemble_gui.test_base.test_MetaWidget

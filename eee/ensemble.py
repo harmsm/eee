@@ -179,6 +179,11 @@ class Ensemble:
         else:
             num_conditions = len(ligand_dict[next(iter(ligand_dict))])
     
+        # If a ligand is not specified in ligand_dict, set to zero.
+        for lig in self._ligand_list:
+            if lig not in ligand_dict:
+                ligand_dict[lig] = np.zeros(num_conditions,dtype=float)
+
         # Local dictionary with stoich for all species and all ligands. If no stoich
         # for a given species/ligands, set stoich to 0. 
         stoich = {}

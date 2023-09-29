@@ -375,7 +375,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
     assert len(glob.glob("*.csv")) == 0  
 
     # --------------------------------------------------------------------------
-    # disable_status_bar
+    # verbose
 
     # this is not a real test, but at least will test ability for the code to 
     # run without crashing when this is set. 
@@ -387,7 +387,7 @@ def test_wright_fisher(ens_test_data,ens_with_fitness,variable_types,tmpdir):
                                     population=10,
                                     mutation_rate=0.1,
                                     num_generations=10,
-                                    disable_status_bar=True)
+                                    verbose=False)
 
 
     # --------------------------------------------------------------------------

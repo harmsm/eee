@@ -66,13 +66,13 @@ def epistasis_and_accessibility(dms_dir,
     """
     
     # Read dms_calc and make sure it is correct calc type
-    dms_calc, dms_kwargs = read_json(os.path.join(dms_dir,"simulation.json"))
+    dms_calc, dms_kwargs = read_json(os.path.join(dms_dir,"input","simulation.json"))
     if dms_calc.calc_type != "dms":
         err = f"\ndms_dir calc_type is '{dms_calc.calc_type}', not 'dms'\n\n"
         raise ValueError(err)
 
     # Read acc_calc and make sure it is correct calc type
-    acc_calc, acc_kwargs = read_json(os.path.join(accessible_dir,"simulation.json"))
+    acc_calc, acc_kwargs = read_json(os.path.join(accessible_dir,"input","simulation.json"))
     if acc_calc.calc_type != "accessible_paths":
         err = f"\naccessible_dir calc_type is '{acc_calc.calc_type}', not 'accessible_paths'\n\n"
         raise ValueError(err)

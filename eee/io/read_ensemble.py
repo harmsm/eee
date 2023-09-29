@@ -137,7 +137,7 @@ def _file_to_ensemble(input_file,
 
     # Make sure the file exists.
     if not os.path.isfile(input_file):
-        err = "\ninput_file '{input_file}' could not be read as file\n\n"
+        err = f"\ninput_file '{input_file}' could not be read as file\n\n"
         raise FileNotFoundError(err)
     
     # If it has a .json extension

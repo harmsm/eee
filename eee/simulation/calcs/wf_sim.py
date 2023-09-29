@@ -10,6 +10,7 @@ from eee._private.check.eee import check_num_mutations
 from eee._private.check.eee import check_mutation_rate
 from eee._private.check.eee import check_population_size
 from eee._private.check.standard import check_int
+from eee._private.check.standard import check_bool
 from eee._private.interface import run_cleanly
 
 
@@ -25,7 +26,8 @@ class WrightFisherSimulation(Simulation):
             num_generations=100,
             num_mutations=None,
             write_prefix="eee_wf-sim",
-            write_frequency=1000):
+            write_frequency=1000,
+            verbose=True):
         """
         Run a Wright-Fisher simulation on an ensemble.
         
@@ -47,6 +49,8 @@ class WrightFisherSimulation(Simulation):
             write output files during the run with this prefix. 
         write_frequency : int, default=1000
             write the generations out every write_frequency generations. 
+        verbose : bool, default=True
+            whether to print information and status bars
         """
 
         population_size = check_population_size(population_size)
@@ -59,6 +63,8 @@ class WrightFisherSimulation(Simulation):
         write_frequency = check_int(value=write_frequency,
                                     variable_name="write_frequency",
                                     minimum_allowed=1)
+        verbose = check_bool(value=verbose,
+                             variable_name="verbose")
     
         # Record the new keys
         calc_params = {}
@@ -68,6 +74,7 @@ class WrightFisherSimulation(Simulation):
         calc_params["num_mutations"] = num_mutations
         calc_params["write_prefix"] = write_prefix
         calc_params["write_frequency"] = write_frequency
+        calc_params["verbose"] = verbose
 
         self._prepare_calc(output_directory=output_directory,
                            calc_params=calc_params)
@@ -80,6 +87,7 @@ class WrightFisherSimulation(Simulation):
                                      num_mutations=calc_params["num_mutations"],
                                      write_prefix=calc_params["write_prefix"],
                                      write_frequency=calc_params["write_frequency"],
+                                     verbose=calc_params["verbose"],
                                      rng=self._rng)
         
         self._complete_calc()

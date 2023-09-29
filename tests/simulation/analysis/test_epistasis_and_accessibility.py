@@ -72,12 +72,12 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
                                      accessible_dir="acc")
 
     # modify ensemble so acc is different between two sims
-    with open(os.path.join("acc","simulation.json")) as f:
+    with open(os.path.join("acc","input","simulation.json")) as f:
         this_json = json.load(f)
     
     this_json["ens"]["hdna"]["dG0"] = 5
 
-    with open(os.path.join("acc","simulation.json"),"w") as f:
+    with open(os.path.join("acc","input","simulation.json"),"w") as f:
         json.dump(this_json,f)
     
     with pytest.raises(ValueError):
@@ -97,12 +97,12 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
                                      accessible_dir="acc")
 
     # modify fc so acc is different between two sims
-    with open(os.path.join("acc","simulation.json")) as f:
+    with open(os.path.join("acc","input","simulation.json")) as f:
         this_json = json.load(f)
 
     this_json["conditions"]["select_on_folded"] = [False,False]
 
-    with open(os.path.join("acc","simulation.json"),"w") as f:
+    with open(os.path.join("acc","input","simulation.json"),"w") as f:
         json.dump(this_json,f)
     
     with pytest.raises(ValueError):
@@ -123,12 +123,12 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
                                      accessible_dir="acc")
     
     
-    with open(os.path.join("acc","simulation.json")) as f:
+    with open(os.path.join("acc","input","simulation.json")) as f:
         this_json = json.load(f)
     
     this_json["calc_params"]["max_depth"] = 1
 
-    with open(os.path.join("acc","simulation.json"),"w") as f:
+    with open(os.path.join("acc","input","simulation.json"),"w") as f:
         json.dump(this_json,f)
     
     with pytest.raises(ValueError):
@@ -149,12 +149,12 @@ def test_epistasis_and_accessibility(tiny_sim_output,tmpdir):
                                      accessible_dir="acc")
     
     
-    with open(os.path.join("dms","simulation.json")) as f:
+    with open(os.path.join("dms","input","simulation.json")) as f:
         this_json = json.load(f)
     
     this_json["calc_params"]["max_depth"] = 1
 
-    with open(os.path.join("dms","simulation.json"),"w") as f:
+    with open(os.path.join("dms","input","simulation.json"),"w") as f:
         json.dump(this_json,f)
     
     with pytest.raises(ValueError):

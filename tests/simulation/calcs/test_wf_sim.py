@@ -40,7 +40,8 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
            num_generations=10000,
            num_mutations=1,
            write_prefix="eee_sim",
-           write_frequency=1000)
+           write_frequency=1000,
+           verbose=False)
     
     assert os.path.exists(os.path.join("test","input","ddg.csv"))
     assert os.path.exists(os.path.join("test","input","ensemble.csv"))
@@ -58,6 +59,7 @@ def test_WrightFisherSimulation_run(ens_test_data,tmpdir):
     assert kwargs["num_mutations"] == 1
     assert kwargs["write_prefix"] == "eee_sim"
     assert kwargs["write_frequency"] == 1000
+    assert kwargs["verbose"] == False
 
     os.chdir("..")
 
