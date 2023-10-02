@@ -47,7 +47,7 @@ class FitnessWidget(MetaWidget):
         self._on_folded_w.observe(self._watcher)
 
         # Get list of possible fitness functions
-        ff_options = list(eee.simulation.FF_AVAILABLE.keys())
+        ff_options = list(eee.core.FF_AVAILABLE.keys())
         if fitness_fcn is None:
             fitness_fcn = ff_options[0]
         self._ff_w = widgets.Select(options=ff_options,

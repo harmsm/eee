@@ -1,6 +1,6 @@
 
 from eee._private.check.ensemble import check_ensemble
-from eee.ensemble import Ensemble
+from eee.core.ensemble import Ensemble
 
 import pytest
 

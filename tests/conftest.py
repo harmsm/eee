@@ -4,11 +4,11 @@ import pytest
 import matplotlib
 matplotlib.use('pdf')
 
-from eee.ensemble import Ensemble
-from eee.simulation.core.fitness.fitness import Fitness
-from eee.simulation.core.fitness.ff import ff_on
-from eee.simulation.core.fitness.ff import ff_off
-from eee.simulation.core.genotype import Genotype
+from eee.core.ensemble import Ensemble
+from eee.core.fitness.fitness import Fitness
+from eee.core.fitness.ff import ff_on
+from eee.core.fitness.ff import ff_off
+from eee.core.genotype import Genotype
 
 import numpy as np
 import pandas as pd

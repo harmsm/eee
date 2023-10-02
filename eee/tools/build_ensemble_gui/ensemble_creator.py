@@ -68,7 +68,7 @@ class EnsembleCreator:
         self._update_callback(self.get_values())
         
         # Start creating an ensemble
-        ens = eee.Ensemble(gas_constant=values["gas_constant"])
+        ens = eee.core.Ensemble(gas_constant=values["gas_constant"])
         
         # Try to add species to the ensemble. If this throws an error, the
         # species info is not complete. Set good_ensemble to False
