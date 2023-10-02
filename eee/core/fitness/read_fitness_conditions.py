@@ -2,7 +2,7 @@
 Read eee conditions dataframe.
 """
 
-from .fitness_fcn import check_fitness_fcn
+from .map_fitness_fcn import map_fitness_fcn
 
 from eee._private.check.ensemble import check_ensemble
 from eee._private.check.dataframe import check_dataframe
@@ -11,12 +11,12 @@ from eee._private.check.standard import check_float
 
 import json
 
-def read_conditions(conditions,
-                    ens,
-                    default_fitness_kwargs=None,
-                    default_select_on="fx_obs",
-                    default_select_on_folded=True,
-                    default_temperature=298.15):
+def read_fitness_conditions(conditions,
+                            ens,
+                            default_fitness_kwargs=None,
+                            default_select_on="fx_obs",
+                            default_select_on_folded=True,
+                            default_temperature=298.15):
     """
     Read a set of conditions for a simulation or fitness calculation. 
 
@@ -128,8 +128,8 @@ def read_conditions(conditions,
     fitness_fcn_fcn = []
     for idx in df.index:
         v = df.loc[idx,"fitness_fcn"]
-        f = check_fitness_fcn(v,return_as="function")
-        v = check_fitness_fcn(f,return_as="string")
+        f = map_fitness_fcn(v,return_as="function")
+        v = map_fitness_fcn(f,return_as="string")
         fitness_fcn_out.append(v)
         fitness_fcn_fcn.append(f)
     df["fitness_fcn"] = fitness_fcn_out

@@ -1,7 +1,7 @@
 
 from eee.core import Ensemble
 
-from eee.simulation.analysis import ensemble_fitness
+from eee.analysis import ensemble_fitness
 from eee.core.fitness.ff import ff_on
 from eee.core.fitness.ff import ff_off
 

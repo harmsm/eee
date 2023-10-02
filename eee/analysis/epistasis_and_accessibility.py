@@ -154,10 +154,10 @@ def epistasis_and_accessibility(dms_dir,
         f11 = row.fitness
         
         # Calculate the epistasis in fitness between these mutations
-        mag, sign01, sign10, ep_class = eee.epistasis.get_epistasis(f00,
-                                                                    f01,
-                                                                    f10,
-                                                                    f11)
+        mag, sign01, sign10, ep_class = eee.analysis.epistasis.get_epistasis(f00,
+                                                                             f01,
+                                                                             f10,
+                                                                             f11)
         
         # Record the epistasis
         ep_out["m01"].append(singles[0])

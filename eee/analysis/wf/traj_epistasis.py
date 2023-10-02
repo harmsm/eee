@@ -108,7 +108,10 @@ def traj_epistasis(sim_results,
     out["m1_fitness"] = m1_fitness
     out["m2_fitness"] = m2_fitness
     out["m12_fitness"] = m12_fitness
-    fit_ep = eee.epistasis.get_epistasis(wt_fitness,m1_fitness,m2_fitness,m12_fitness)
+    fit_ep = eee.analysis.epistasis.get_epistasis(wt_fitness,
+                                                  m1_fitness,
+                                                  m2_fitness,
+                                                  m12_fitness)
 
     ligand_values = so.fc.ligand_dict[ligand_name]
 
@@ -129,11 +132,11 @@ def traj_epistasis(sim_results,
         m2_dict[so.ens.species[idx]] = m2_ddg[idx]
         m12_dict[so.ens.species[idx]] = m1_ddg[idx] + m2_ddg[idx]
 
-    ens_ep = eee.epistasis.get_ensemble_epistasis(so.ens,
-                                                  mut1_dict=m1_dict,
-                                                  mut2_dict=m2_dict,
-                                                  mut12_dict=m12_dict,
-                                                  ligand_dict=ligand_dict)
+    ens_ep = eee.analysis.epistasis.get_ensemble_epistasis(so.ens,
+                                                           mut1_dict=m1_dict,
+                                                           mut2_dict=m2_dict,
+                                                           mut12_dict=m12_dict,
+                                                           ligand_dict=ligand_dict)
 
     low_ligand = so.fc.ligand_dict[ligand_name][0]
     high_ligand = so.fc.ligand_dict[ligand_name][1]

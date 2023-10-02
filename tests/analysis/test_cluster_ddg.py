@@ -1,7 +1,7 @@
 import pytest
 
-from eee.simulation.analysis.cluster_ddg import _clean_up_axes
-from eee.simulation.analysis.cluster_ddg import cluster_ddg
+from eee.analysis.cluster_ddg import _clean_up_axes
+from eee.analysis.cluster_ddg import cluster_ddg
 
 import numpy as np
 import pandas as pd

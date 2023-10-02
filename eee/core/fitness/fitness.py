@@ -2,8 +2,8 @@
 Class for calculating fitness from an ensemble during an evolutionary simulation. 
 """
 
-from . read_conditions import read_conditions
-from . fitness_fcn import check_fitness_fcn
+from .read_fitness_conditions import read_fitness_conditions
+from .map_fitness_fcn import map_fitness_fcn
 
 from eee._private.check.ensemble import check_ensemble
 
@@ -76,7 +76,7 @@ class Fitness:
         self._ens = check_ensemble(ens,check_obs=True)
 
         # Load the conditions
-        out = read_conditions(conditions=conditions,
+        out = read_fitness_conditions(conditions=conditions,
                               ens=self._ens,
                               default_fitness_kwargs=default_fitness_kwargs,
                               default_select_on=default_select_on,
@@ -100,7 +100,7 @@ class Fitness:
         # Set up fitness calculations
         fitness_fcns = []
         for ff in self._condition_df["fitness_fcn"]:
-            fitness_fcns.append(check_fitness_fcn(value=ff,return_as="function"))
+            fitness_fcns.append(map_fitness_fcn(value=ff,return_as="function"))
         self._fitness_fcns = np.array(fitness_fcns)
                                 
         self._num_conditions = len(self._fitness_fcns)

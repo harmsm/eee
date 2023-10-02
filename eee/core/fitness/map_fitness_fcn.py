@@ -4,7 +4,7 @@ Functions for mapping fitness functions in ff.py to string names.
 
 from .ff import FF_AVAILABLE
 
-def check_fitness_fcn(value,return_as):
+def map_fitness_fcn(value,return_as):
     """
     Take an input value and map back and forth between the name of that function
     and a pointer to the function.

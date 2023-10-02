@@ -1,6 +1,6 @@
 import pytest
 
-from eee.simulation.analysis.num_genotypes import get_num_genotypes
+from eee.analysis.num_genotypes import get_num_genotypes
 
 import numpy as np
 

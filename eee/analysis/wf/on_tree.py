@@ -1,6 +1,5 @@
 
-from eee.simulation.analysis import get_most_common
-
+from eee.analysis.wf.analysis import get_most_common
 
 def extract_alignment(calc_dir,
                       include_ancestors=False):

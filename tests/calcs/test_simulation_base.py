@@ -4,7 +4,7 @@ from eee.calcs.simulation_base import Simulation
 from eee.core import Fitness
 from eee.core import Genotype
 from eee.io.read_ensemble import read_ensemble
-from eee.core.fitness.read_conditions import read_conditions
+from eee.core.fitness.read_fitness_conditions import read_fitness_conditions
 
 import numpy as np
 import pandas as pd
@@ -260,7 +260,7 @@ def test_Simulation__write_calc_params(ens_test_data,
 
     # conditions
     assert as_written["conditions"] == "conditions.csv"
-    cond_written, _ = read_conditions(conditions=os.path.join("input",
+    cond_written, _ = read_fitness_conditions(conditions=os.path.join("input",
                                                               "conditions.csv"),
                                       ens=sm.ens)
     

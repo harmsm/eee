@@ -8,7 +8,7 @@ from eee.core import Genotype
 from eee._private.check.standard import check_int
 from eee._private.check.standard import check_bool
 
-from eee.simulation.analysis import get_num_genotypes
+from eee.analysis import get_num_genotypes
 
 import numpy as np
 from tqdm.auto import tqdm

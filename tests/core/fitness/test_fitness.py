@@ -57,7 +57,7 @@ def test_Fitness():
     assert len(fc._fitness_kwargs[0]) == 0
     assert np.array_equal(fc.temperature,np.ones(2,dtype=float))
 
-    # We test all kinds of inputs to conditions in the test_read_conditions
+    # We test all kinds of inputs to conditions in the test_read_fitness_conditions
     # function. This is just a pass-through that then sets attributes, so these
     # tests are sufficient. 
 
