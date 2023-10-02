@@ -3,7 +3,7 @@ Compare a deep mutational scan and epistasis calculation.
 """
 
 import eee
-from eee.io import read_json
+from eee.calcs import read_json
 from eee._private.check.compare_dict import compare_dict
 
 import pandas as pd

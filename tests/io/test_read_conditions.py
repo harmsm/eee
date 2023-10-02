@@ -1,7 +1,7 @@
 import pytest
 
-from eee import Ensemble
-from eee.io.read_conditions import read_conditions
+from eee.core import Ensemble
+from eee.core.fitness.read_conditions import read_conditions
 
 import numpy as np
 import pandas as pd

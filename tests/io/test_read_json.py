@@ -1,10 +1,10 @@
 import pytest
 
-from eee.io.read_json import _validate_calc_kwargs
-from eee.io.read_json import read_json
-from eee.simulation.core.fitness.ff import ff_on
-from eee.simulation.core.fitness.ff import ff_off
-from eee.data import GAS_CONSTANT
+from eee.calcs.read_json import _validate_calc_kwargs
+from eee.calcs.read_json import read_json
+from eee.core.fitness.ff import ff_on
+from eee.core.fitness.ff import ff_off
+from eee.core.data import GAS_CONSTANT
 
 import numpy as np
 import ete3

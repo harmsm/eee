@@ -1,9 +1,9 @@
 
-from eee import Ensemble
+from eee.core import Ensemble
 
 from eee.simulation.analysis import ensemble_fitness
-from eee.simulation.core.fitness.ff import ff_on
-from eee.simulation.core.fitness.ff import ff_off
+from eee.core.fitness.ff import ff_on
+from eee.core.fitness.ff import ff_off
 
 import numpy as np
 import pandas as pd

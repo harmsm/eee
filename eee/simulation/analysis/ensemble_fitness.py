@@ -2,7 +2,8 @@
 Function for calculating fitness from an ensemble.
 """
 
-from eee.simulation.core import Fitness
+
+from eee.core.fitness import Fitness
 
 def ensemble_fitness(ens,
                      conditions,
@@ -13,7 +14,7 @@ def ensemble_fitness(ens,
     
     Parameters
     ----------
-    ens : eee.Ensemble 
+    ens : eee.core.Ensemble 
         initialized instance of an Ensemble class
     conditions : pandas.DataFrame or similar
         Conditions at which to do the fitness calculation. Columns are 

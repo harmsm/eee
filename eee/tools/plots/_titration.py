@@ -17,7 +17,7 @@ def titration(ens,
 
     Parameters
     ----------
-    ens : eee.Ensemble
+    ens : eee.core.Ensemble
         initialized ensemble with both observable and non-observable species
     ligand_dict : dict
         dictionary of chemical potentials. keys are the names of chemical

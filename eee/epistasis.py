@@ -101,7 +101,7 @@ def get_ensemble_epistasis(ens,
     
     Parameters
     ----------
-    ens : eee.Ensemble 
+    ens : eee.core.Ensemble 
         ensemble instance whose species whose names match the keys in the
         mut_dicts and whose ligands match the keys in ligand_dict
     mut_dict1 : dict

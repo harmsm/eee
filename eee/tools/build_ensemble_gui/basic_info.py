@@ -1,6 +1,6 @@
 import eee
 from eee.tools.build_ensemble_gui.base import MetaWidget
-from eee.data import GAS_CONSTANT
+from eee.core.data import GAS_CONSTANT
 
 import ipywidgets as widgets
 import numpy as np
@@ -18,7 +18,7 @@ class BasicInfoWidget(MetaWidget):
     def build_widget(self):
 
         # temperature
-        ens = eee.Ensemble()
+        ens = eee.core.Ensemble()
         p = inspect.signature(ens.get_obs).parameters
         default_temperature = p["temperature"].default
         

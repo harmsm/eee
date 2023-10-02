@@ -3,7 +3,7 @@ Read an ensemble from a file or dictionary/dataframe input.
 """
 
 import eee
-from eee.data import GAS_CONSTANT
+from eee.core.data import GAS_CONSTANT
 
 import pandas as pd
 
@@ -64,7 +64,7 @@ def _spreadsheet_to_ensemble(df,
         raise ValueError(err)
 
     # Create ensemble
-    ens = eee.Ensemble(gas_constant=gas_constant)
+    ens = eee.core.Ensemble(gas_constant=gas_constant)
 
     # Now load each row in as a species. 
     for idx in df.index:
@@ -116,7 +116,7 @@ def _json_to_ensemble(calc_input,
         return _spreadsheet_to_ensemble(df=df,gas_constant=gas_constant)
     
     # Create ensemble from entries and validate. 
-    ens = eee.Ensemble(gas_constant=gas_constant)
+    ens = eee.core.Ensemble(gas_constant=gas_constant)
     for s in calc_input:
         
         try:
@@ -250,7 +250,7 @@ def read_ensemble(input_value,
     +------+-----+------------+---+---+
 
     A spreadsheet does NOT define a gas constant, so the default defined in 
-    eee.data.GAS_CONSTANT is used. 
+    eee.core.data.GAS_CONSTANT is used. 
     """
 
     v_type = type(input_value)

@@ -17,7 +17,7 @@ def energy_diagram(values,
 
     Parameters
     ----------
-    ens : eee.Ensemble
+    ens : eee.core.Ensemble
         initialized ensemble with both observable and non-observable species
     fig : matplotlib.Figure, optional
         matplotlib Figure object. If this is specified, ax must be specified 

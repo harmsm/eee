@@ -1,6 +1,6 @@
 import pytest
 
-from eee.ensemble import Ensemble
+from eee.core.ensemble import Ensemble
 
 import numpy as np
 import pandas as pd

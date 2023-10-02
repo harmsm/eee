@@ -3,7 +3,7 @@ import pytest
 
 from eee.simulation.analysis.epistasis_and_accessibility import _get_rings
 from eee.simulation.analysis.epistasis_and_accessibility import epistasis_and_accessibility
-from eee.data import AA_1TO3
+from eee.core.data import AA_1TO3
 
 import numpy as np
 import pandas as pd

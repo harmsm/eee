@@ -1,6 +1,6 @@
 import pytest
 
-from eee.data import GAS_CONSTANT
+from eee.core.data import GAS_CONSTANT
 from eee.io.read_ensemble import _search_for_key
 from eee.io.read_ensemble import _spreadsheet_to_ensemble
 from eee.io.read_ensemble import _json_to_ensemble
