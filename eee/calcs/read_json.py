@@ -98,7 +98,8 @@ def _validate_calc_kwargs(calc_type,
     return kwargs
 
 def read_json(json_file,
-              use_stored_seed=False):
+              use_stored_seed=False,
+              tree_fmt=None):
     """
     Load a json file describing a simulation. This file must have the 
     following top-level keys:
@@ -127,6 +128,9 @@ def read_json(json_file,
         use_stored_seed is set to True. The only time to re-use the seed 
         is to restart a simulation or reproduce it exactly for testing 
         purposes. 
+    tree_fmt : int, optional
+        see the documentation for eee.io.read_tree for details. If None, try 
+        to guess the correct format.
 
     Returns
     -------
@@ -174,7 +178,8 @@ def read_json(json_file,
     # start a simulation in new directory
     if "tree" in calc_input["calc_params"]:
         newick_file = os.path.join(base_path,calc_input["calc_params"]["tree"])
-        calc_input["calc_params"]["tree"] = read_tree(newick_file)
+        calc_input["calc_params"]["tree"] = read_tree(newick_file,
+                                                      fmt=tree_fmt)
 
     # -------------------------------- ens -------------------------------------
 
