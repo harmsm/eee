@@ -118,6 +118,8 @@ def read_json(json_file,
         "seed" : an integer describing the seed for reproducible calcs. 
         "gas_constant" : a positive float holding the gas constant (sets the 
                          energy units for the calculation)
+        "eee_version" : string for which version of eee wrote out data (usually
+                        not defined by user)
 
     Parameters
     ----------

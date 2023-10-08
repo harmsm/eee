@@ -32,4 +32,6 @@ def _check_for_notebook():
 
 _in_notebook = _check_for_notebook()
 
+from .__version__ import __version__
+
 
