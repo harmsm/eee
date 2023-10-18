@@ -29,8 +29,7 @@ FOUND tests._private.test_wrap.test_wrap_function
 FOUND tests.analysis.test_cluster_ddg.test__clean_up_axes
 FOUND tests.analysis.test_cluster_ddg.test_cluster_ddg
 FOUND tests.analysis.test_ensemble_fitness.test_ensemble_fitness
-FOUND tests.analysis.test_epistasis_and_accessibility.test__get_rings
-FOUND tests.analysis.test_epistasis_and_accessibility.test_epistasis_and_accessibility
+FOUND tests.analysis.test_epistasis.test_get_epistasis
 FOUND tests.analysis.test_num_genotypes.test_get_num_genotypes
 FOUND tests.calcs.test_accessible_paths.test_AccessiblePaths
 FOUND tests.calcs.test_accessible_paths.test_AccessiblePaths_run
@@ -132,9 +131,9 @@ FOUND tests.structure.test_sync_structures.test_sync_structures
 FAKE tests._private.test_logger.test_log
 FAKE tests._private.test_wrap.test_IterFromFile
 FAKE tests._private.test_wrap.test_IterFromFile___call__
+FAKE tests.analysis.test_dms_epistasis.test_dms_epistasis
 FAKE tests.analysis.test_epistasis.test_get_all_pairs_epistasis
 FAKE tests.analysis.test_epistasis.test_get_ensemble_epistasis
-FAKE tests.analysis.test_epistasis.test_get_epistasis
 FAKE tests.analysis.test_epistasis.test_summarize_epistasis
 FAKE tests.analysis.wf.test_analysis.test_extract_alignment
 FAKE tests.analysis.wf.test_analysis.test_get_genotype_frequencies

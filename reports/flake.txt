@@ -2356,79 +2356,73 @@
 ./tests/analysis/test_cluster_ddg.py:182:1: W293 blank line contains whitespace
 ./tests/analysis/test_cluster_ddg.py:184:5: E303 too many blank lines (2)
 ./tests/analysis/test_cluster_ddg.py:184:26: W292 no newline at end of file
-./tests/analysis/test_epistasis_and_accessibility.py:15:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis_and_accessibility.py:15:36: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:16:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:40:5: E303 too many blank lines (2)
-./tests/analysis/test_epistasis_and_accessibility.py:42:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis_and_accessibility.py:42:53: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:43:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:49:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:50:31: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:59:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:63:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:67:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:68:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:75:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:75:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:77:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:80:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:80:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:80:60: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:81:28: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:82:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:86:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:92:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:93:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:100:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:100:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:103:57: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:105:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:105:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:105:60: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:106:28: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:107:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:113:5: E303 too many blank lines (2)
-./tests/analysis/test_epistasis_and_accessibility.py:118:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:119:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:124:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:125:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:126:5: E303 too many blank lines (2)
-./tests/analysis/test_epistasis_and_accessibility.py:126:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:126:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:128:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:131:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:131:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:131:60: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:132:28: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:133:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:136:63: W291 trailing whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:139:5: E303 too many blank lines (2)
-./tests/analysis/test_epistasis_and_accessibility.py:144:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:145:43: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:150:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:151:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:152:5: E303 too many blank lines (2)
-./tests/analysis/test_epistasis_and_accessibility.py:152:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:152:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:154:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:157:33: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:157:41: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:157:60: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:158:28: E231 missing whitespace after ','
-./tests/analysis/test_epistasis_and_accessibility.py:159:1: W293 blank line contains whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:162:63: W291 trailing whitespace
-./tests/analysis/test_epistasis_and_accessibility.py:168:5: E303 too many blank lines (5)
-./tests/analysis/test_epistasis_and_accessibility.py:168:26: W292 no newline at end of file
-./tests/analysis/test_epistasis.py:1:1: F401 'eee.analysis.epistasis.get_epistasis' imported but unused
 ./tests/analysis/test_epistasis.py:2:1: F401 'eee.analysis.epistasis.get_ensemble_epistasis' imported but unused
 ./tests/analysis/test_epistasis.py:3:1: F401 'eee.analysis.epistasis.get_all_pairs_epistasis' imported but unused
 ./tests/analysis/test_epistasis.py:4:1: F401 'eee.analysis.epistasis.summarize_epistasis' imported but unused
-./tests/analysis/test_epistasis.py:6:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis.py:9:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis.py:12:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis.py:15:1: E302 expected 2 blank lines, found 1
-./tests/analysis/test_epistasis.py:16:9: W292 no newline at end of file
+./tests/analysis/test_epistasis.py:8:1: E302 expected 2 blank lines, found 1
+./tests/analysis/test_epistasis.py:9:1: W293 blank line contains whitespace
+./tests/analysis/test_epistasis.py:16:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:17:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:26:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:27:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:35:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:36:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:38:1: W293 blank line contains whitespace
+./tests/analysis/test_epistasis.py:45:18: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/analysis/test_epistasis.py:46:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:55:18: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./tests/analysis/test_epistasis.py:56:18: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/analysis/test_epistasis.py:65:18: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/analysis/test_epistasis.py:66:18: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+./tests/analysis/test_epistasis.py:70:5: E303 too many blank lines (2)
+./tests/analysis/test_epistasis.py:71:22: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:71:24: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:71:26: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:71:28: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:71:30: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:72:22: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:72:24: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:72:26: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:72:29: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:72:31: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:73:22: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:73:24: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:73:26: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:73:28: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:73:31: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:74:22: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:74:24: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:74:26: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:74:28: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:74:30: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:30: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:33: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:35: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:38: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:40: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:81:42: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:32: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:35: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:37: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:39: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:41: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:82:43: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:32: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:35: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:37: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:39: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:41: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:83:43: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:35: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:41: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:47: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:53: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:60: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:84:67: E231 missing whitespace after ','
+./tests/analysis/test_epistasis.py:88:1: E303 too many blank lines (3)
+./tests/analysis/test_epistasis.py:91:1: E302 expected 2 blank lines, found 1
+./tests/analysis/test_epistasis.py:94:1: E302 expected 2 blank lines, found 1
+./tests/analysis/test_epistasis.py:95:9: W292 no newline at end of file
 ./tests/analysis/test_num_genotypes.py:7:1: E302 expected 2 blank lines, found 1
 ./tests/analysis/test_num_genotypes.py:9:18: E231 missing whitespace after ':'
 ./tests/analysis/test_num_genotypes.py:9:23: E231 missing whitespace after ','
@@ -2489,6 +2483,16 @@
 ./tests/analysis/test_num_genotypes.py:90:1: W293 blank line contains whitespace
 ./tests/analysis/test_num_genotypes.py:91:1: W293 blank line contains whitespace
 ./tests/analysis/test_num_genotypes.py:92:1: W293 blank line contains whitespace
+./tests/analysis/test_dms_epistasis.py:2:1: F401 'pytest' imported but unused
+./tests/analysis/test_dms_epistasis.py:4:1: F401 'eee.analysis.dms_epistasis.dms_epistasis' imported but unused
+./tests/analysis/test_dms_epistasis.py:5:1: F401 'eee.core.data.AA_1TO3' imported but unused
+./tests/analysis/test_dms_epistasis.py:7:1: F401 'numpy as np' imported but unused
+./tests/analysis/test_dms_epistasis.py:8:1: F401 'pandas as pd' imported but unused
+./tests/analysis/test_dms_epistasis.py:10:1: F401 'os' imported but unused
+./tests/analysis/test_dms_epistasis.py:11:1: F401 'shutil' imported but unused
+./tests/analysis/test_dms_epistasis.py:12:1: F401 'json' imported but unused
+./tests/analysis/test_dms_epistasis.py:16:1: W293 blank line contains whitespace
+./tests/analysis/test_dms_epistasis.py:17:9: W292 no newline at end of file
 ./tests/analysis/test_ensemble_fitness.py:5:1: F401 'eee.core.fitness.ff.ff_on' imported but unused
 ./tests/analysis/test_ensemble_fitness.py:6:1: F401 'eee.core.fitness.ff.ff_off' imported but unused
 ./tests/analysis/test_ensemble_fitness.py:11:1: F401 'pytest' imported but unused
@@ -5290,61 +5294,6 @@
 ./eee/core/genotype/single_genotype.py:179:77: W291 trailing whitespace
 ./eee/core/genotype/single_genotype.py:180:36: W291 trailing whitespace
 ./eee/core/genotype/single_genotype.py:183:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:15:1: E302 expected 2 blank lines, found 1
-./eee/analysis/epistasis_and_accessibility.py:17:73: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:18:29: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:20:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:21:32: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:24:33: E225 missing whitespace around operator
-./eee/analysis/epistasis_and_accessibility.py:24:36: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:31:26: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:36:13: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:38:53: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:39:58: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:41:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:43:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:44:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:48:77: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:51:46: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:52:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:58:69: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:59:25: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:60:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:64:78: W291 trailing whitespace
-./eee/analysis/epistasis_and_accessibility.py:67:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:69:58: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:69:66: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:75:65: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:75:73: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:91:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:100:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:102:36: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:106:43: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:108:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:110:56: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:112:29: E128 continuation line under-indented for visual indent
-./eee/analysis/epistasis_and_accessibility.py:123:56: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:128:48: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:129:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:131:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:135:20: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:135:26: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:136:20: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:136:26: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:136:32: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:137:20: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:137:29: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:137:38: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:139:22: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:142:57: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:146:29: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:147:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:150:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:155:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:161:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:174:1: W293 blank line contains whitespace
-./eee/analysis/epistasis_and_accessibility.py:199:13: E231 missing whitespace after ','
-./eee/analysis/epistasis_and_accessibility.py:201:17: W292 no newline at end of file
 ./eee/analysis/ensemble_fitness.py:8:1: E302 expected 2 blank lines, found 1
 ./eee/analysis/ensemble_fitness.py:12:73: W291 trailing whitespace
 ./eee/analysis/ensemble_fitness.py:13:64: W291 trailing whitespace
@@ -5489,102 +5438,159 @@
 ./eee/analysis/epistasis.py:61:1: W293 blank line contains whitespace
 ./eee/analysis/epistasis.py:63:36: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:64:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:65:37: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:68:35: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:69:37: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:70:39: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:71:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:74:19: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:99:70: W291 trailing whitespace
-./eee/analysis/epistasis.py:101:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:104:28: W291 trailing whitespace
-./eee/analysis/epistasis.py:108:71: W291 trailing whitespace
-./eee/analysis/epistasis.py:110:71: W291 trailing whitespace
-./eee/analysis/epistasis.py:113:27: W291 trailing whitespace
-./eee/analysis/epistasis.py:122:70: W291 trailing whitespace
-./eee/analysis/epistasis.py:123:62: W291 trailing whitespace
-./eee/analysis/epistasis.py:125:73: W291 trailing whitespace
-./eee/analysis/epistasis.py:126:47: W291 trailing whitespace
-./eee/analysis/epistasis.py:148:21: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:69:35: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:70:37: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:71:39: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:72:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:75:19: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:100:70: W291 trailing whitespace
+./eee/analysis/epistasis.py:102:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:105:28: W291 trailing whitespace
+./eee/analysis/epistasis.py:109:71: W291 trailing whitespace
+./eee/analysis/epistasis.py:111:71: W291 trailing whitespace
+./eee/analysis/epistasis.py:114:27: W291 trailing whitespace
+./eee/analysis/epistasis.py:123:70: W291 trailing whitespace
+./eee/analysis/epistasis.py:124:62: W291 trailing whitespace
+./eee/analysis/epistasis.py:126:73: W291 trailing whitespace
+./eee/analysis/epistasis.py:127:47: W291 trailing whitespace
 ./eee/analysis/epistasis.py:149:21: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:152:34: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:150:21: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:153:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:154:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:155:34: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:157:69: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:156:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:158:69: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:159:69: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:160:69: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:161:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:168:34: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:161:69: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:162:1: W293 blank line contains whitespace
 ./eee/analysis/epistasis.py:169:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:170:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:171:34: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:173:69: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:172:34: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:174:69: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:175:69: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:176:69: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:177:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:186:32: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:186:39: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:186:51: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:188:75: W291 trailing whitespace
-./eee/analysis/epistasis.py:190:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:198:25: W291 trailing whitespace
-./eee/analysis/epistasis.py:204:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:209:76: W291 trailing whitespace
-./eee/analysis/epistasis.py:210:53: W291 trailing whitespace
-./eee/analysis/epistasis.py:214:5: E303 too many blank lines (2)
-./eee/analysis/epistasis.py:216:48: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:216:62: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:217:36: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:218:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:220:26: W291 trailing whitespace
-./eee/analysis/epistasis.py:223:20: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:223:25: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:223:30: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:223:35: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:223:44: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:224:19: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:225:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:233:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:235:49: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:242:58: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:245:31: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:248:46: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:248:84: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:251:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:253:53: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:260:62: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:272:60: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:177:69: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:178:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:187:32: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:187:39: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:187:51: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:189:75: W291 trailing whitespace
+./eee/analysis/epistasis.py:191:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:199:25: W291 trailing whitespace
+./eee/analysis/epistasis.py:205:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:210:76: W291 trailing whitespace
+./eee/analysis/epistasis.py:211:53: W291 trailing whitespace
+./eee/analysis/epistasis.py:215:5: E303 too many blank lines (2)
+./eee/analysis/epistasis.py:217:48: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:217:62: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:218:36: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:219:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:221:26: W291 trailing whitespace
+./eee/analysis/epistasis.py:224:20: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:224:25: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:224:30: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:224:35: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:224:44: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:225:19: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:226:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:234:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:236:49: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:243:58: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:246:31: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:249:46: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:249:84: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:252:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:254:53: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:261:62: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:273:60: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:274:60: E231 missing whitespace after ','
 ./eee/analysis/epistasis.py:275:60: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:278:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:285:1: E302 expected 2 blank lines, found 1
-./eee/analysis/epistasis.py:285:27: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:288:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:295:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:299:78: W291 trailing whitespace
-./eee/analysis/epistasis.py:301:76: W291 trailing whitespace
-./eee/analysis/epistasis.py:304:61: W291 trailing whitespace
-./eee/analysis/epistasis.py:308:25: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:308:35: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:276:60: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:279:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:286:1: E302 expected 2 blank lines, found 1
+./eee/analysis/epistasis.py:286:27: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:289:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:296:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:300:78: W291 trailing whitespace
+./eee/analysis/epistasis.py:302:76: W291 trailing whitespace
+./eee/analysis/epistasis.py:305:61: W291 trailing whitespace
 ./eee/analysis/epistasis.py:309:25: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:309:34: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:309:45: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:310:19: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:321:45: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:322:35: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:323:1: W293 blank line contains whitespace
-./eee/analysis/epistasis.py:327:47: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:334:64: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:335:58: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:337:41: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:338:24: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:338:32: E231 missing whitespace after ','
-./eee/analysis/epistasis.py:352:5: E303 too many blank lines (2)
-./eee/analysis/epistasis.py:356:1: W391 blank line at end of file
+./eee/analysis/epistasis.py:309:35: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:310:25: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:310:34: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:310:45: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:311:19: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:322:45: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:323:35: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:324:1: W293 blank line contains whitespace
+./eee/analysis/epistasis.py:328:47: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:335:64: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:336:58: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:338:41: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:339:24: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:339:32: E231 missing whitespace after ','
+./eee/analysis/epistasis.py:353:5: E303 too many blank lines (2)
+./eee/analysis/epistasis.py:357:1: W391 blank line at end of file
+./eee/analysis/dms_epistasis.py:15:1: E302 expected 2 blank lines, found 1
+./eee/analysis/dms_epistasis.py:19:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:26:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:30:78: W291 trailing whitespace
+./eee/analysis/dms_epistasis.py:33:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:35:58: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:35:66: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:39:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:44:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:45:36: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:49:33: E127 continuation line over-indented for visual indent
+./eee/analysis/dms_epistasis.py:57:45: E225 missing whitespace around operator
+./eee/analysis/dms_epistasis.py:57:48: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:58:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:60:56: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:65:56: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:68:48: E225 missing whitespace around operator
+./eee/analysis/dms_epistasis.py:68:51: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:70:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:74:22: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:74:28: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:74:34: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:74:45: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:78:24: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:78:30: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:78:36: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:78:42: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:79:42: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:83:26: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:83:35: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:83:48: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:84:41: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:88:30: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:89:40: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:99:33: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:101:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:104:33: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:111:37: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:112:37: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:113:37: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:114:37: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:124:64: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:125:64: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:127:80: W291 trailing whitespace
+./eee/analysis/dms_epistasis.py:129:37: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:154:1: W293 blank line contains whitespace
+./eee/analysis/dms_epistasis.py:160:26: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:160:32: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:161:26: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:161:32: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:161:38: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:162:26: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:162:35: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:162:44: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:163:32: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:164:34: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:164:49: E231 missing whitespace after ','
+./eee/analysis/dms_epistasis.py:166:26: E231 missing whitespace after ','
 ./eee/analysis/plots/__init__.py:16:1: F401 '._energy_diagram.energy_diagram' imported but unused
 ./eee/analysis/plots/__init__.py:16:1: E402 module level import not at top of file
 ./eee/analysis/plots/__init__.py:17:1: F401 '._titration.titration' imported but unused
@@ -6839,34 +6845,34 @@
 1     E117 over-indented (comment)
 1     E122 continuation line missing indentation or outdented
 1     E124 closing bracket does not match visual indentation
-55    E127 continuation line over-indented for visual indent
-144   E128 continuation line under-indented for visual indent
+56    E127 continuation line over-indented for visual indent
+143   E128 continuation line under-indented for visual indent
 3     E201 whitespace after '{'
 1     E203 whitespace before ','
 1     E221 multiple spaces before operator
 3     E222 multiple spaces after operator
-5     E225 missing whitespace around operator
-4107  E231 missing whitespace after ','
+6     E225 missing whitespace around operator
+4130  E231 missing whitespace after ','
 3     E261 at least two spaces before inline comment
 10    E265 block comment should start with '# '
 1     E266 too many leading '#' for block comment
 2     E301 expected 1 blank line, found 0
-210   E302 expected 2 blank lines, found 1
-111   E303 too many blank lines (2)
+207   E302 expected 2 blank lines, found 1
+107   E303 too many blank lines (2)
 5     E305 expected 2 blank lines after class or function definition, found 1
 4     E401 multiple imports on one line
 15    E402 module level import not at top of file
 1     E501 line too long (128 > 127 characters)
 2     E701 multiple statements on one line (colon)
-97    E712 comparison to True should be 'if cond is True:' or 'if cond:'
+109   E712 comparison to True should be 'if cond is True:' or 'if cond:'
 2     E714 test for object identity should be 'is not'
 2     E722 do not use bare 'except'
-78    F401 'glob' imported but unused
+85    F401 'glob' imported but unused
 9     F541 f-string is missing placeholders
 8     F841 local variable 'value' is assigned to but never used
-802   W291 trailing whitespace
-83    W292 no newline at end of file
-1006  W293 blank line contains whitespace
+795   W291 trailing whitespace
+82    W292 no newline at end of file
+984   W293 blank line contains whitespace
 17    W391 blank line at end of file
 4     W605 invalid escape sequence '\('
-6834
+6840
