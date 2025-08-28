@@ -72,7 +72,7 @@ class Genotype:
         self._trajectories = {0:[0]}
         self._mut_energies = {0:self._genotypes[0].mut_energy}
 
-        wt_fitness = np.product(self._fitness_function(self._genotypes[0].mut_energy))
+        wt_fitness = np.prod(self._fitness_function(self._genotypes[0].mut_energy))
         self._fitnesses = {0:wt_fitness}
 
     def _create_ddg_dict(self):
@@ -126,7 +126,7 @@ class Genotype:
         self._mut_energies[new_index] = new_genotype.mut_energy
 
         # Record the fitness of this genotype
-        new_fitness = np.product(self._fitness_function(new_genotype.mut_energy))
+        new_fitness = np.prod(self._fitness_function(new_genotype.mut_energy))
         self._fitnesses[new_index] = new_fitness
 
         return new_index
@@ -217,7 +217,7 @@ class Genotype:
         # Introduce mutation
         new_genotype.mutate(site,mutation)
 
-        new_fitness = np.product(self._fitness_function(new_genotype.mut_energy))
+        new_fitness = np.prod(self._fitness_function(new_genotype.mut_energy))
 
         if condition_fcn(new_fitness,self._fitnesses[index]):
             return self._add_genotype(new_genotype,index)

@@ -49,14 +49,16 @@ def _search_for_key(some_dict,
     return current_stack
 
 def _spreadsheet_to_ensemble(df,
-                             gas_constant=GAS_CONSTANT):
+                             gas_constant=None):
     """
     Load a spreadsheet and try to convert to an ensemble. Rows are treated as 
     different species; columns as keyword parameters (dG0, ligands, etc.)
     """
 
     #print("Loading ensemble from a spreadsheet\n",flush=True)
-    
+    if gas_constant is None:
+        gas_constant = GAS_CONSTANT
+
     # Get columns from spreadsheet
     df = eee.io.read_dataframe(df)
     if "name" not in df.columns:
@@ -81,7 +83,8 @@ def _spreadsheet_to_ensemble(df,
 
 
 def _json_to_ensemble(calc_input,
-                      base_path=None):
+                      base_path=None,
+                      gas_constant=None):
     """
     Read json and try to convert to an ensemble. 
     """
@@ -92,14 +95,16 @@ def _json_to_ensemble(calc_input,
         base_path = ""
 
     # Look for gas constant somewhere in input. If not there, use default
-    key_stack = _search_for_key(calc_input,"gas_constant")
-    if len(key_stack) > 0:
-        gc = calc_input
-        for k in key_stack:
-            gc = gc[k]
-        gas_constant = gc
-    else:
-        gas_constant = GAS_CONSTANT
+    if gas_constant is None:
+
+        key_stack = _search_for_key(calc_input,"gas_constant")
+        if len(key_stack) > 0:
+            gc = calc_input
+            for k in key_stack:
+                gc = gc[k]
+            gas_constant = gc
+        else:
+            gas_constant = GAS_CONSTANT
 
     # Look for "ens" key somewhere in the json output. If it's there, pull that
     # sub-dictionary out by itself
@@ -128,7 +133,8 @@ def _json_to_ensemble(calc_input,
     return ens
 
 def _file_to_ensemble(input_file,
-                      base_path=None):
+                      base_path=None,
+                      gas_constant=None):
     """
     Open file and choose whether or not to read as json or spreadsheet. 
     """
@@ -148,18 +154,22 @@ def _file_to_ensemble(input_file,
             input_json = json.load(f)
         
         # Construct ensemble
-        ens = _json_to_ensemble(input_json,base_path=base_path)
+        ens = _json_to_ensemble(input_json,
+                                base_path=base_path,
+                                gas_constant=gas_constant)
 
     # Otherwise, assume it's a spreadsheet. _spreadsheet_to_ensemble uses a 
     # flexible df loader that loads files, so pass in un-edited. 
     else:
-        ens = _spreadsheet_to_ensemble(df=input_file)
+        ens = _spreadsheet_to_ensemble(df=input_file,
+                                       gas_constant=gas_constant)
 
     return ens
 
 
 def read_ensemble(input_value,
-                  base_path=None):
+                  base_path=None,
+                  gas_constant=None):
     """
     Read an ensemble from input. The function will try to interpret the input
     as a file (json file or spreadsheet), raw json, or a pandas.DataFrame. 
@@ -170,7 +180,12 @@ def read_ensemble(input_value,
         input to read
     base_path : str, optional
         path to any files that might be encountered when reading the input
-
+    gas_constant : float, optional
+        gas constant for the ensemble. If not specified, the gas constant is
+        either read from the input ensemble (json/dict) or assigned a value of
+        eee.core.data.GAS_CONSTANT. If specified, this gas constant will 
+        override the gas constant in the ensemble. 
+        
     Notes
     -----
     If a the input is json, the ensemble is defined under the "ens" key. There
@@ -249,8 +264,9 @@ def read_ensemble(input_value,
     | s2   | 5   | FALSE      | 0 | 2 |
     +------+-----+------------+---+---+
 
-    A spreadsheet does NOT define a gas constant, so the default defined in 
-    eee.core.data.GAS_CONSTANT is used. 
+    A spreadsheet does NOT define a gas constant, so it will be assigned a gas
+    constant of eee.core.data.GAS_CONSTANT unless the gas_constant argument 
+    to this function is defined. 
     """
 
     v_type = type(input_value)
@@ -258,16 +274,19 @@ def read_ensemble(input_value,
     # If it's a string, parse as a file
     if issubclass(v_type,str):
         ens = _file_to_ensemble(input_value,
-                                base_path=base_path)
+                                base_path=base_path,
+                                gas_constant=gas_constant)
 
     # If it's a dataframe, parse as a dataframe
     elif issubclass(v_type,pd.DataFrame):
-        ens = _spreadsheet_to_ensemble(input_value)
+        ens = _spreadsheet_to_ensemble(input_value,
+                                       gas_constant=gas_constant)
 
     # If it's dict, treat as json
     elif issubclass(v_type,dict):
         ens = _json_to_ensemble(input_value,
-                                base_path=base_path)
+                                base_path=base_path,
+                                gas_constant=gas_constant)
     
     # Otherwise, throw an error
     else: 
